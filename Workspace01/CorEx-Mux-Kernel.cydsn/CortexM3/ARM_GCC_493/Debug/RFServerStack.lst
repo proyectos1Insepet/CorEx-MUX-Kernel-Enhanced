@@ -1,0 +1,2687 @@
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"RFServerStack.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	_g_rfresolvers
+  19              		.data
+  20              		.align	2
+  21              		.type	_g_rfresolvers, %object
+  22              		.size	_g_rfresolvers, 304
+  23              	_g_rfresolvers:
+  24 0000 A1       		.byte	-95
+  25 0001 A1       		.byte	-95
+  26 0002 0000     		.space	2
+  27 0004 00000000 		.word	RFStateReqResp
+  28 0008 00000000 		.word	RFErrorHandler
+  29 000c 32       		.byte	50
+  30 000d 000000   		.space	3
+  31 0010 A2       		.byte	-94
+  32 0011 A2       		.byte	-94
+  33 0012 0000     		.space	2
+  34 0014 00000000 		.word	RFCreditSerialAuthReqResp
+  35 0018 00000000 		.word	RFErrorHandler
+  36 001c 32       		.byte	50
+  37 001d 000000   		.space	3
+  38 0020 A3       		.byte	-93
+  39 0021 A3       		.byte	-93
+  40 0022 0000     		.space	2
+  41 0024 00000000 		.word	RFCreditAuthorizationReqResp
+  42 0028 00000000 		.word	RFErrorHandler
+  43 002c 32       		.byte	50
+  44 002d 000000   		.space	3
+  45 0030 AE       		.byte	-82
+  46 0031 AE       		.byte	-82
+  47 0032 0000     		.space	2
+  48 0034 00000000 		.word	RFCreditSalePresetReportReqResp
+  49 0038 00000000 		.word	RFErrorHandler
+  50 003c 32       		.byte	50
+  51 003d 000000   		.space	3
+  52 0040 AA       		.byte	-86
+  53 0041 AA       		.byte	-86
+  54 0042 0000     		.space	2
+  55 0044 00000000 		.word	RFCashSalePresetReportReqResp
+  56 0048 00000000 		.word	RFErrorHandler
+  57 004c 32       		.byte	50
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 2
+
+
+  58 004d 000000   		.space	3
+  59 0050 A4       		.byte	-92
+  60 0051 A4       		.byte	-92
+  61 0052 0000     		.space	2
+  62 0054 00000000 		.word	RFCashCreditSaleFinalReportReqResp
+  63 0058 00000000 		.word	RFErrorHandler
+  64 005c 32       		.byte	50
+  65 005d 000000   		.space	3
+  66 0060 AD       		.byte	-83
+  67 0061 AD       		.byte	-83
+  68 0062 0000     		.space	2
+  69 0064 00000000 		.word	RFPendingCashSaleReqResp
+  70 0068 00000000 		.word	RFErrorHandler
+  71 006c 32       		.byte	50
+  72 006d 000000   		.space	3
+  73 0070 A5       		.byte	-91
+  74 0071 A5       		.byte	-91
+  75 0072 0000     		.space	2
+  76 0074 00000000 		.word	RFTotalsDataReqResp
+  77 0078 00000000 		.word	RFErrorHandler
+  78 007c 32       		.byte	50
+  79 007d 000000   		.space	3
+  80 0080 E8       		.byte	-24
+  81 0081 E8       		.byte	-24
+  82 0082 0000     		.space	2
+  83 0084 00000000 		.word	RFTotalsDataReportReqResp
+  84 0088 00000000 		.word	RFErrorHandler
+  85 008c 32       		.byte	50
+  86 008d 000000   		.space	3
+  87 0090 A6       		.byte	-90
+  88 0091 A6       		.byte	-90
+  89 0092 0000     		.space	2
+  90 0094 00000000 		.word	RFPriceChangeReqResp
+  91 0098 00000000 		.word	RFErrorHandler
+  92 009c 32       		.byte	50
+  93 009d 000000   		.space	3
+  94 00a0 A7       		.byte	-89
+  95 00a1 A7       		.byte	-89
+  96 00a2 0000     		.space	2
+  97 00a4 00000000 		.word	RFGeneralPrintReqResp
+  98 00a8 00000000 		.word	RFErrorHandler
+  99 00ac 32       		.byte	50
+ 100 00ad 000000   		.space	3
+ 101 00b0 A8       		.byte	-88
+ 102 00b1 A8       		.byte	-88
+ 103 00b2 0000     		.space	2
+ 104 00b4 00000000 		.word	RFCreditSalePrintReqResp
+ 105 00b8 00000000 		.word	RFErrorHandler
+ 106 00bc 32       		.byte	50
+ 107 00bd 000000   		.space	3
+ 108 00c0 A9       		.byte	-87
+ 109 00c1 A9       		.byte	-87
+ 110 00c2 0000     		.space	2
+ 111 00c4 00000000 		.word	RFCashSalePrintReqResp
+ 112 00c8 00000000 		.word	RFErrorHandler
+ 113 00cc 32       		.byte	50
+ 114 00cd 000000   		.space	3
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 3
+
+
+ 115 00d0 AC       		.byte	-84
+ 116 00d1 AC       		.byte	-84
+ 117 00d2 0000     		.space	2
+ 118 00d4 00000000 		.word	RFPendingCreditSaleReqResp
+ 119 00d8 00000000 		.word	RFErrorHandler
+ 120 00dc 32       		.byte	50
+ 121 00dd 000000   		.space	3
+ 122 00e0 E1       		.byte	-31
+ 123 00e1 E1       		.byte	-31
+ 124 00e2 0000     		.space	2
+ 125 00e4 00000000 		.word	RFBroadcastConfigurationReqResp
+ 126 00e8 00000000 		.word	RFErrorHandler
+ 127 00ec 32       		.byte	50
+ 128 00ed 000000   		.space	3
+ 129 00f0 E2       		.byte	-30
+ 130 00f1 E2       		.byte	-30
+ 131 00f2 0000     		.space	2
+ 132 00f4 00000000 		.word	RFPositionConfigurationReqResp
+ 133 00f8 00000000 		.word	RFErrorHandler
+ 134 00fc 32       		.byte	50
+ 135 00fd 000000   		.space	3
+ 136 0100 E3       		.byte	-29
+ 137 0101 E3       		.byte	-29
+ 138 0102 0000     		.space	2
+ 139 0104 00000000 		.word	RFIslandOperDataReqResp
+ 140 0108 00000000 		.word	RFErrorHandler
+ 141 010c 32       		.byte	50
+ 142 010d 000000   		.space	3
+ 143 0110 E4       		.byte	-28
+ 144 0111 E4       		.byte	-28
+ 145 0112 0000     		.space	2
+ 146 0114 00000000 		.word	RFIslandAdminReqResp
+ 147 0118 00000000 		.word	RFErrorHandler
+ 148 011c 32       		.byte	50
+ 149 011d 000000   		.space	3
+ 150 0120 FF       		.byte	-1
+ 151 0121 FF       		.byte	-1
+ 152 0122 0000     		.space	2
+ 153 0124 00000000 		.word	0
+ 154 0128 00000000 		.word	0
+ 155 012c 00       		.byte	0
+ 156 012d 000000   		.space	3
+ 157              		.global	_g_rfreqpayloadmap
+ 158              		.align	2
+ 159              		.type	_g_rfreqpayloadmap, %object
+ 160              		.size	_g_rfreqpayloadmap, 136
+ 161              	_g_rfreqpayloadmap:
+ 162 0130 A1       		.byte	-95
+ 163 0131 00       		.space	1
+ 164 0132 0800     		.short	8
+ 165 0134 00000000 		.word	0
+ 166 0138 A2       		.byte	-94
+ 167 0139 00       		.space	1
+ 168 013a 0800     		.short	8
+ 169 013c 00000000 		.word	0
+ 170 0140 A3       		.byte	-93
+ 171 0141 00       		.space	1
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 4
+
+
+ 172 0142 1900     		.short	25
+ 173 0144 00000000 		.word	0
+ 174 0148 AA       		.byte	-86
+ 175 0149 00       		.space	1
+ 176 014a 0800     		.short	8
+ 177 014c 00000000 		.word	0
+ 178 0150 A4       		.byte	-92
+ 179 0151 00       		.space	1
+ 180 0152 0800     		.short	8
+ 181 0154 00000000 		.word	0
+ 182 0158 AD       		.byte	-83
+ 183 0159 00       		.space	1
+ 184 015a 0800     		.short	8
+ 185 015c 00000000 		.word	0
+ 186 0160 AC       		.byte	-84
+ 187 0161 00       		.space	1
+ 188 0162 0800     		.short	8
+ 189 0164 00000000 		.word	0
+ 190 0168 A5       		.byte	-91
+ 191 0169 00       		.space	1
+ 192 016a 0800     		.short	8
+ 193 016c 00000000 		.word	0
+ 194 0170 A6       		.byte	-90
+ 195 0171 00       		.space	1
+ 196 0172 0F00     		.short	15
+ 197 0174 00000000 		.word	0
+ 198 0178 A7       		.byte	-89
+ 199 0179 00       		.space	1
+ 200 017a 0000     		.short	0
+ 201 017c 00000000 		.word	GeneralPrintRequestPayloadSizeResolver
+ 202 0180 A8       		.byte	-88
+ 203 0181 00       		.space	1
+ 204 0182 7600     		.short	118
+ 205 0184 00000000 		.word	0
+ 206 0188 A9       		.byte	-87
+ 207 0189 00       		.space	1
+ 208 018a 1300     		.short	19
+ 209 018c 00000000 		.word	0
+ 210 0190 E1       		.byte	-31
+ 211 0191 00       		.space	1
+ 212 0192 5201     		.short	338
+ 213 0194 00000000 		.word	0
+ 214 0198 E2       		.byte	-30
+ 215 0199 00       		.space	1
+ 216 019a 0E00     		.short	14
+ 217 019c 00000000 		.word	0
+ 218 01a0 E3       		.byte	-29
+ 219 01a1 00       		.space	1
+ 220 01a2 0900     		.short	9
+ 221 01a4 00000000 		.word	0
+ 222 01a8 E4       		.byte	-28
+ 223 01a9 00       		.space	1
+ 224 01aa 0900     		.short	9
+ 225 01ac 00000000 		.word	0
+ 226 01b0 FF       		.byte	-1
+ 227 01b1 00       		.space	1
+ 228 01b2 0000     		.short	0
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 5
+
+
+ 229 01b4 00000000 		.word	0
+ 230              		.global	_g_rfcommandstatemap
+ 231              		.align	2
+ 232              		.type	_g_rfcommandstatemap, %object
+ 233              		.size	_g_rfcommandstatemap, 16
+ 234              	_g_rfcommandstatemap:
+ 235 01b8 08       		.byte	8
+ 236 01b9 00       		.byte	0
+ 237 01ba 01       		.byte	1
+ 238 01bb AA       		.byte	-86
+ 239 01bc 01       		.byte	1
+ 240 01bd AE       		.byte	-82
+ 241 01be 02       		.byte	2
+ 242 01bf A4       		.byte	-92
+ 243 01c0 03       		.byte	3
+ 244 01c1 A3       		.byte	-93
+ 245 01c2 05       		.byte	5
+ 246 01c3 E3       		.byte	-29
+ 247 01c4 06       		.byte	6
+ 248 01c5 AC       		.byte	-84
+ 249 01c6 FF       		.byte	-1
+ 250 01c7 FF       		.byte	-1
+ 251              		.section	.text.RFGetPayloadLengthFromRequestCode,"ax",%progbits
+ 252              		.align	2
+ 253              		.global	RFGetPayloadLengthFromRequestCode
+ 254              		.thumb
+ 255              		.thumb_func
+ 256              		.type	RFGetPayloadLengthFromRequestCode, %function
+ 257              	RFGetPayloadLengthFromRequestCode:
+ 258              	.LFB0:
+ 259              		.file 1 ".\\RFServerStack.c"
+   1:.\RFServerStack.c **** /* ========================================
+   2:.\RFServerStack.c ****  *
+   3:.\RFServerStack.c ****  * Copyright INSEPET SISTEMAS, 2016
+   4:.\RFServerStack.c ****  * All Rights Reserved
+   5:.\RFServerStack.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\RFServerStack.c ****  *
+   7:.\RFServerStack.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\RFServerStack.c ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\RFServerStack.c ****  *
+  10:.\RFServerStack.c ****  * ========================================
+  11:.\RFServerStack.c **** @Created By: HIJH
+  12:.\RFServerStack.c **** @Date: Septembre de 2016
+  13:.\RFServerStack.c **** */
+  14:.\RFServerStack.c **** 
+  15:.\RFServerStack.c **** #include "GlobalDefinitions.h"
+  16:.\RFServerStack.c **** #include "UARTManager.h"
+  17:.\RFServerStack.c **** #include "RFLink.h"
+  18:.\RFServerStack.c **** 
+  19:.\RFServerStack.c **** bool RFStateReqResp(void *pparam);
+  20:.\RFServerStack.c **** bool RFCreditSerialAuthReqResp(void *pparam);
+  21:.\RFServerStack.c **** bool RFCreditAuthorizationReqResp(void *pparam);
+  22:.\RFServerStack.c **** bool RFCreditSalePresetReportReqResp(void *pparam);
+  23:.\RFServerStack.c **** bool RFCashSalePresetReportReqResp(void *pparam);
+  24:.\RFServerStack.c **** bool RFTotalsDataReqResp(void *pparam);
+  25:.\RFServerStack.c **** bool RFTotalsDataReportReqResp(void *pparam);
+  26:.\RFServerStack.c **** bool RFPriceChangeReqResp(void *pparam);
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 6
+
+
+  27:.\RFServerStack.c **** bool RFGeneralPrintReqResp(void *pparam);
+  28:.\RFServerStack.c **** bool RFCreditSalePrintReqResp(void *pparam);
+  29:.\RFServerStack.c **** bool RFCashSalePrintReqResp(void *pparam);
+  30:.\RFServerStack.c **** bool RFPendingCreditSaleReqResp(void *pparam);
+  31:.\RFServerStack.c **** bool RFCashCreditSaleFinalReportReqResp(void *pparam);
+  32:.\RFServerStack.c **** bool RFPendingCashSaleReqResp(void *pparam);
+  33:.\RFServerStack.c **** bool RFBroadcastConfigurationReqResp(void *pparam);
+  34:.\RFServerStack.c **** bool RFPositionConfigurationReqResp(void *pparam);
+  35:.\RFServerStack.c **** bool RFIslandOperDataReqResp(void *pparam);
+  36:.\RFServerStack.c **** bool RFIslandAdminReqResp(void *pparam);
+  37:.\RFServerStack.c **** uint16 GeneralPrintRequestPayloadSizeResolver(LPVOID pbuffer);
+  38:.\RFServerStack.c **** 
+  39:.\RFServerStack.c **** void RFErrorHandler(void *pparam);
+  40:.\RFServerStack.c **** 
+  41:.\RFServerStack.c **** //@Created By: HIJH
+  42:.\RFServerStack.c **** //@Date: Septembre de 2016
+  43:.\RFServerStack.c **** //Server RPC mapping of invocation codes and Request / Response Handlers
+  44:.\RFServerStack.c **** RFRequestResponse _g_rfresolvers[] = 
+  45:.\RFServerStack.c **** {
+  46:.\RFServerStack.c ****     { 
+  47:.\RFServerStack.c ****         RF_MUX_STATE_REQUEST, RF_MUX_STATE_RESPONSE,
+  48:.\RFServerStack.c ****         RFStateReqResp,
+  49:.\RFServerStack.c ****         RFErrorHandler,
+  50:.\RFServerStack.c ****         _RF_MAX_TIMEOUT_LIMIT_
+  51:.\RFServerStack.c ****     },
+  52:.\RFServerStack.c ****     { 
+  53:.\RFServerStack.c ****         RF_MUX_CREDIT_SERIAL_AUTH_REQUEST, RF_MUX_CREDIT_SERIAL_AUTH_RESPONSE,
+  54:.\RFServerStack.c ****         RFCreditSerialAuthReqResp,
+  55:.\RFServerStack.c ****         RFErrorHandler,
+  56:.\RFServerStack.c ****         _RF_MAX_TIMEOUT_LIMIT_
+  57:.\RFServerStack.c ****     },
+  58:.\RFServerStack.c ****     { 
+  59:.\RFServerStack.c ****         RF_MUX_CREDIT_PRESET_AUTHORIZATION_REQUEST, RF_MUX_CREDIT_PRESET_AUTHORIZATION_RESPONSE,
+  60:.\RFServerStack.c ****         RFCreditAuthorizationReqResp,
+  61:.\RFServerStack.c ****         RFErrorHandler,
+  62:.\RFServerStack.c ****         _RF_MAX_TIMEOUT_LIMIT_
+  63:.\RFServerStack.c ****     },
+  64:.\RFServerStack.c ****     { 
+  65:.\RFServerStack.c ****         RF_MUX_CREDIT_PRESET_NOTIFICATION_REQUEST, RF_MUX_CREDIT_PRESET_NOTIFICATION_RESPONSE,
+  66:.\RFServerStack.c ****         RFCreditSalePresetReportReqResp,
+  67:.\RFServerStack.c ****         RFErrorHandler,
+  68:.\RFServerStack.c ****         _RF_MAX_TIMEOUT_LIMIT_
+  69:.\RFServerStack.c ****     },
+  70:.\RFServerStack.c ****     { 
+  71:.\RFServerStack.c ****         RF_MUX_CASH_SALE_START_REQUEST, RF_MUX_CASH_SALE_START_RESPONSE,
+  72:.\RFServerStack.c ****         RFCashSalePresetReportReqResp,
+  73:.\RFServerStack.c ****         RFErrorHandler,
+  74:.\RFServerStack.c ****         _RF_MAX_TIMEOUT_LIMIT_
+  75:.\RFServerStack.c ****     },
+  76:.\RFServerStack.c ****     { 
+  77:.\RFServerStack.c ****         RF_MUX_CASH_SALE_END_REPORT_REQUEST, RF_MUX_CASH_SALE_END_REPORT_RESPONSE,
+  78:.\RFServerStack.c ****         RFCashCreditSaleFinalReportReqResp,
+  79:.\RFServerStack.c ****         RFErrorHandler,
+  80:.\RFServerStack.c ****         _RF_MAX_TIMEOUT_LIMIT_
+  81:.\RFServerStack.c ****     },
+  82:.\RFServerStack.c ****     {
+  83:.\RFServerStack.c ****         RF_MUX_LAST_CASH_SALE_REQUEST, RF_MUX_LAST_CASH_SALE_RESPONSE,
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 7
+
+
+  84:.\RFServerStack.c ****         RFPendingCashSaleReqResp,
+  85:.\RFServerStack.c ****         RFErrorHandler,
+  86:.\RFServerStack.c ****         _RF_MAX_TIMEOUT_LIMIT_
+  87:.\RFServerStack.c ****     },
+  88:.\RFServerStack.c ****     { 
+  89:.\RFServerStack.c ****         RF_MUX_TOTALS_REQUEST, RF_MUX_TOTALS_RESPONSE,
+  90:.\RFServerStack.c ****         RFTotalsDataReqResp,
+  91:.\RFServerStack.c ****         RFErrorHandler,
+  92:.\RFServerStack.c ****         _RF_MAX_TIMEOUT_LIMIT_
+  93:.\RFServerStack.c ****     },
+  94:.\RFServerStack.c ****     { 
+  95:.\RFServerStack.c ****         RF_MUX_TOTALS_REPORT_REQUEST, RF_MUX_TOTALS_REPORT_RESPONSE,
+  96:.\RFServerStack.c ****         RFTotalsDataReportReqResp,
+  97:.\RFServerStack.c ****         RFErrorHandler,
+  98:.\RFServerStack.c ****         _RF_MAX_TIMEOUT_LIMIT_
+  99:.\RFServerStack.c ****     },
+ 100:.\RFServerStack.c ****     { 
+ 101:.\RFServerStack.c ****         RF_MUX_PRICE_CHANGE_REQUEST, RF_MUX_PRICE_CHANGE_RESPONSE,
+ 102:.\RFServerStack.c ****         RFPriceChangeReqResp,
+ 103:.\RFServerStack.c ****         RFErrorHandler,
+ 104:.\RFServerStack.c ****         _RF_MAX_TIMEOUT_LIMIT_
+ 105:.\RFServerStack.c ****     },
+ 106:.\RFServerStack.c ****     { 
+ 107:.\RFServerStack.c ****         RF_MUX_GENERAL_PRINT_REQUEST, RF_MUX_GENERAL_PRINT_RESPONSE,
+ 108:.\RFServerStack.c ****         RFGeneralPrintReqResp,
+ 109:.\RFServerStack.c ****         RFErrorHandler,
+ 110:.\RFServerStack.c ****         _RF_MAX_TIMEOUT_LIMIT_
+ 111:.\RFServerStack.c ****     },
+ 112:.\RFServerStack.c ****     { 
+ 113:.\RFServerStack.c ****         RF_MUX_CREDIT_SALE_PRINT_REQUEST, RF_MUX_CREDIT_SALE_PRINT_RESPONSE,
+ 114:.\RFServerStack.c ****         RFCreditSalePrintReqResp,
+ 115:.\RFServerStack.c ****         RFErrorHandler,
+ 116:.\RFServerStack.c ****         _RF_MAX_TIMEOUT_LIMIT_
+ 117:.\RFServerStack.c ****     },
+ 118:.\RFServerStack.c ****     { 
+ 119:.\RFServerStack.c ****         RF_MUX_CASH_SALE_PRINT_REQUEST, RF_MUX_CASH_SALE_PRINT_RESPONSE,
+ 120:.\RFServerStack.c ****         RFCashSalePrintReqResp,
+ 121:.\RFServerStack.c ****         RFErrorHandler,
+ 122:.\RFServerStack.c ****         _RF_MAX_TIMEOUT_LIMIT_
+ 123:.\RFServerStack.c ****     },
+ 124:.\RFServerStack.c ****     { 
+ 125:.\RFServerStack.c ****         RF_MUX_PENDING_CREDIT_SALE_REQUEST, RF_MUX_PENDING_CREDIT_SALE_RESPONSE,
+ 126:.\RFServerStack.c ****         RFPendingCreditSaleReqResp,
+ 127:.\RFServerStack.c ****         RFErrorHandler,
+ 128:.\RFServerStack.c ****         _RF_MAX_TIMEOUT_LIMIT_
+ 129:.\RFServerStack.c ****     },
+ 130:.\RFServerStack.c ****     { 
+ 131:.\RFServerStack.c ****         RF_MUX_BROADCAST_CFG_REQUEST, RF_MUX_BROADCAST_CFG_RESPONSE,
+ 132:.\RFServerStack.c ****         RFBroadcastConfigurationReqResp,
+ 133:.\RFServerStack.c ****         RFErrorHandler,
+ 134:.\RFServerStack.c ****         _RF_MAX_TIMEOUT_LIMIT_
+ 135:.\RFServerStack.c ****     },
+ 136:.\RFServerStack.c ****     { 
+ 137:.\RFServerStack.c ****         RF_MUX_POSITION_CFG_REQUEST, RF_MUX_POSITION_CFG_RESPONSE,
+ 138:.\RFServerStack.c ****         RFPositionConfigurationReqResp,
+ 139:.\RFServerStack.c ****         RFErrorHandler,
+ 140:.\RFServerStack.c ****         _RF_MAX_TIMEOUT_LIMIT_
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 8
+
+
+ 141:.\RFServerStack.c ****     },
+ 142:.\RFServerStack.c ****     { 
+ 143:.\RFServerStack.c ****         RF_MUX_ISLAND_OPER_DATA_REQUEST, RF_MUX_ISLAND_OPER_DATA_RESPONSE,
+ 144:.\RFServerStack.c ****         RFIslandOperDataReqResp,
+ 145:.\RFServerStack.c ****         RFErrorHandler,
+ 146:.\RFServerStack.c ****         _RF_MAX_TIMEOUT_LIMIT_
+ 147:.\RFServerStack.c ****     },
+ 148:.\RFServerStack.c ****     { 
+ 149:.\RFServerStack.c ****         RF_MUX_ISLAND_ADMIN_REQUEST, RF_MUX_ISLAND_ADMIN_RESPONSE,
+ 150:.\RFServerStack.c ****         RFIslandAdminReqResp,
+ 151:.\RFServerStack.c ****         RFErrorHandler,
+ 152:.\RFServerStack.c ****         _RF_MAX_TIMEOUT_LIMIT_
+ 153:.\RFServerStack.c ****     },
+ 154:.\RFServerStack.c ****     {
+ 155:.\RFServerStack.c ****         RF_MUX_NULL, RF_MUX_NULL,
+ 156:.\RFServerStack.c ****         NULL, NULL, _RF_NO_TIMEOUT_
+ 157:.\RFServerStack.c ****     }
+ 158:.\RFServerStack.c **** };
+ 159:.\RFServerStack.c **** 
+ 160:.\RFServerStack.c **** //@Created By: HIJH
+ 161:.\RFServerStack.c **** //@Date: Septembre de 2016
+ 162:.\RFServerStack.c **** //Static payload size / RPC code map. If the specified size is
+ 163:.\RFServerStack.c **** //zero, then the payload size is dynamic
+ 164:.\RFServerStack.c **** RFRequestPayloadLengthMap _g_rfreqpayloadmap[] = 
+ 165:.\RFServerStack.c **** {
+ 166:.\RFServerStack.c ****     //FRAME SIZE MAPPING/ DEFINITION FOR THE COMMUNICATION COMING FROM THE REMOTE PEER (NSX)
+ 167:.\RFServerStack.c ****     { RF_MUX_STATE_REQUEST,                         8u,   NULL },
+ 168:.\RFServerStack.c ****     { RF_MUX_CREDIT_SERIAL_AUTH_REQUEST,            8u,   NULL },
+ 169:.\RFServerStack.c ****     { RF_MUX_CREDIT_PRESET_AUTHORIZATION_REQUEST,   25u,  NULL },
+ 170:.\RFServerStack.c ****     { RF_MUX_CASH_SALE_START_REQUEST,               8u,   NULL},
+ 171:.\RFServerStack.c ****     { RF_MUX_CASH_SALE_END_REPORT_REQUEST,          8u,   NULL },
+ 172:.\RFServerStack.c ****     
+ 173:.\RFServerStack.c ****     { RF_MUX_LAST_CASH_SALE_REQUEST,                8u,   NULL},
+ 174:.\RFServerStack.c ****     { RF_MUX_PENDING_CREDIT_SALE_REQUEST,           8u,   NULL },
+ 175:.\RFServerStack.c ****     
+ 176:.\RFServerStack.c ****     { RF_MUX_TOTALS_REQUEST,                        8u,   NULL },
+ 177:.\RFServerStack.c ****     { RF_MUX_PRICE_CHANGE_REQUEST,                  15u,  NULL },
+ 178:.\RFServerStack.c ****     { RF_MUX_GENERAL_PRINT_REQUEST,                 0u,   GeneralPrintRequestPayloadSizeResolver },
+ 179:.\RFServerStack.c ****     { RF_MUX_CREDIT_SALE_PRINT_REQUEST,             118u, NULL },
+ 180:.\RFServerStack.c ****     { RF_MUX_CASH_SALE_PRINT_REQUEST,               19u,  NULL },
+ 181:.\RFServerStack.c ****     { RF_MUX_BROADCAST_CFG_REQUEST,                 338u, NULL },
+ 182:.\RFServerStack.c ****     { RF_MUX_POSITION_CFG_REQUEST,                  14u,  NULL },
+ 183:.\RFServerStack.c ****     { RF_MUX_ISLAND_OPER_DATA_REQUEST,              9u,   NULL },
+ 184:.\RFServerStack.c ****     { RF_MUX_ISLAND_ADMIN_REQUEST,                  9u,   NULL },
+ 185:.\RFServerStack.c ****     
+ 186:.\RFServerStack.c ****     //FRAME SIZE MAPPING/ DEFINITIONS FOR THE COMMUNICATION COMING FROM THE SIBBLINGS
+ 187:.\RFServerStack.c **** 
+ 188:.\RFServerStack.c ****     ////////////////////////////////////////////////
+ 189:.\RFServerStack.c ****     //THESE IDENTIFIERS ARE RESERVED FOR FUTURE USE
+ 190:.\RFServerStack.c ****     ////////////////////////////////////////////////    
+ 191:.\RFServerStack.c ****     
+ 192:.\RFServerStack.c ****     { RF_MUX_NULL, 0x0000, NULL }    
+ 193:.\RFServerStack.c **** };
+ 194:.\RFServerStack.c **** 
+ 195:.\RFServerStack.c **** RFCommandStateMap _g_rfcommandstatemap[] =
+ 196:.\RFServerStack.c **** {
+ 197:.\RFServerStack.c ****     { RF_IDLE,              0x00 },
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 9
+
+
+ 198:.\RFServerStack.c ****     { RF_DELIVERING,        RF_MUX_CASH_SALE_START_REQUEST },
+ 199:.\RFServerStack.c ****     { RF_DELIVERING,        RF_MUX_CREDIT_PRESET_NOTIFICATION_REQUEST },
+ 200:.\RFServerStack.c ****     { RF_CASHSALEREPORT,    RF_MUX_CASH_SALE_END_REPORT_REQUEST },
+ 201:.\RFServerStack.c ****     { RF_CREDITSALEAUTH,    RF_MUX_CREDIT_PRESET_AUTHORIZATION_RESPONSE },
+ 202:.\RFServerStack.c ****     { RF_WORKSHIFTREQ,      RF_MUX_ISLAND_OPER_DATA_REQUEST },
+ 203:.\RFServerStack.c ****     { RF_CREDITSALEREPORT,  RF_MUX_PENDING_CREDIT_SALE_REQUEST },
+ 204:.\RFServerStack.c ****     { RF_MUX_NULL,          RF_MUX_NULL }
+ 205:.\RFServerStack.c **** };
+ 206:.\RFServerStack.c **** 
+ 207:.\RFServerStack.c **** //@Created By: HIJH
+ 208:.\RFServerStack.c **** //@Date: Septembre de 2016
+ 209:.\RFServerStack.c **** //This function acquires the payload size based on the unmapped RPC code
+ 210:.\RFServerStack.c **** uint16 RFGetPayloadLengthFromRequestCode(uint8 reqcode)
+ 211:.\RFServerStack.c **** {
+ 260              		.loc 1 211 0
+ 261              		.cfi_startproc
+ 262              		@ args = 0, pretend = 0, frame = 16
+ 263              		@ frame_needed = 1, uses_anonymous_args = 0
+ 264              		@ link register save eliminated.
+ 265 0000 80B4     		push	{r7}
+ 266              		.cfi_def_cfa_offset 4
+ 267              		.cfi_offset 7, -4
+ 268 0002 85B0     		sub	sp, sp, #20
+ 269              		.cfi_def_cfa_offset 24
+ 270 0004 00AF     		add	r7, sp, #0
+ 271              		.cfi_def_cfa_register 7
+ 272 0006 0346     		mov	r3, r0
+ 273 0008 FB71     		strb	r3, [r7, #7]
+ 212:.\RFServerStack.c ****     uint16 retval = 0x0000;
+ 274              		.loc 1 212 0
+ 275 000a 0023     		movs	r3, #0
+ 276 000c FB81     		strh	r3, [r7, #14]	@ movhi
+ 213:.\RFServerStack.c ****     PNEAR_RFREQUESTPAYLOADLENGTHMAP preqpaylliterator = _g_rfreqpayloadmap;
+ 277              		.loc 1 213 0
+ 278 000e 0D4B     		ldr	r3, .L7
+ 279 0010 BB60     		str	r3, [r7, #8]
+ 214:.\RFServerStack.c ****     while(preqpaylliterator->_requestcode != RF_MUX_NULL)
+ 280              		.loc 1 214 0
+ 281 0012 0BE0     		b	.L2
+ 282              	.L5:
+ 215:.\RFServerStack.c ****     {
+ 216:.\RFServerStack.c ****         if(preqpaylliterator->_requestcode == reqcode)
+ 283              		.loc 1 216 0
+ 284 0014 BB68     		ldr	r3, [r7, #8]
+ 285 0016 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 286 0018 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 287 001a 9A42     		cmp	r2, r3
+ 288 001c 03D1     		bne	.L3
+ 217:.\RFServerStack.c ****         {
+ 218:.\RFServerStack.c ****             retval = preqpaylliterator->_requestpayloadsize;
+ 289              		.loc 1 218 0
+ 290 001e BB68     		ldr	r3, [r7, #8]
+ 291 0020 5B88     		ldrh	r3, [r3, #2]	@ movhi
+ 292 0022 FB81     		strh	r3, [r7, #14]	@ movhi
+ 219:.\RFServerStack.c ****             break;
+ 293              		.loc 1 219 0
+ 294 0024 06E0     		b	.L4
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 10
+
+
+ 295              	.L3:
+ 220:.\RFServerStack.c ****         }
+ 221:.\RFServerStack.c ****         preqpaylliterator++;
+ 296              		.loc 1 221 0
+ 297 0026 BB68     		ldr	r3, [r7, #8]
+ 298 0028 0833     		adds	r3, r3, #8
+ 299 002a BB60     		str	r3, [r7, #8]
+ 300              	.L2:
+ 214:.\RFServerStack.c ****     {
+ 301              		.loc 1 214 0
+ 302 002c BB68     		ldr	r3, [r7, #8]
+ 303 002e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 304 0030 FF2B     		cmp	r3, #255
+ 305 0032 EFD1     		bne	.L5
+ 306              	.L4:
+ 222:.\RFServerStack.c ****     }
+ 223:.\RFServerStack.c ****     return retval;
+ 307              		.loc 1 223 0
+ 308 0034 FB89     		ldrh	r3, [r7, #14]
+ 224:.\RFServerStack.c **** }
+ 309              		.loc 1 224 0
+ 310 0036 1846     		mov	r0, r3
+ 311 0038 1437     		adds	r7, r7, #20
+ 312              		.cfi_def_cfa_offset 4
+ 313 003a BD46     		mov	sp, r7
+ 314              		.cfi_def_cfa_register 13
+ 315              		@ sp needed
+ 316 003c 5DF8047B 		ldr	r7, [sp], #4
+ 317              		.cfi_restore 7
+ 318              		.cfi_def_cfa_offset 0
+ 319 0040 7047     		bx	lr
+ 320              	.L8:
+ 321 0042 00BF     		.align	2
+ 322              	.L7:
+ 323 0044 00000000 		.word	_g_rfreqpayloadmap
+ 324              		.cfi_endproc
+ 325              	.LFE0:
+ 326              		.size	RFGetPayloadLengthFromRequestCode, .-RFGetPayloadLengthFromRequestCode
+ 327              		.section	.text.RFGetDynamicPayloadLengthFromRequestCode,"ax",%progbits
+ 328              		.align	2
+ 329              		.global	RFGetDynamicPayloadLengthFromRequestCode
+ 330              		.thumb
+ 331              		.thumb_func
+ 332              		.type	RFGetDynamicPayloadLengthFromRequestCode, %function
+ 333              	RFGetDynamicPayloadLengthFromRequestCode:
+ 334              	.LFB1:
+ 225:.\RFServerStack.c **** 
+ 226:.\RFServerStack.c **** //@Created By: HIJH
+ 227:.\RFServerStack.c **** //@Date: Octobre de 2016
+ 228:.\RFServerStack.c **** //This function acquires the payload size resolver based on the unmapped RPC code
+ 229:.\RFServerStack.c **** PayloadSizeResolver RFGetDynamicPayloadLengthFromRequestCode(uint8 reqcode)
+ 230:.\RFServerStack.c **** {
+ 335              		.loc 1 230 0
+ 336              		.cfi_startproc
+ 337              		@ args = 0, pretend = 0, frame = 16
+ 338              		@ frame_needed = 1, uses_anonymous_args = 0
+ 339              		@ link register save eliminated.
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 11
+
+
+ 340 0000 80B4     		push	{r7}
+ 341              		.cfi_def_cfa_offset 4
+ 342              		.cfi_offset 7, -4
+ 343 0002 85B0     		sub	sp, sp, #20
+ 344              		.cfi_def_cfa_offset 24
+ 345 0004 00AF     		add	r7, sp, #0
+ 346              		.cfi_def_cfa_register 7
+ 347 0006 0346     		mov	r3, r0
+ 348 0008 FB71     		strb	r3, [r7, #7]
+ 231:.\RFServerStack.c ****     PayloadSizeResolver pretval = PNEAR_NULLPTR;
+ 349              		.loc 1 231 0
+ 350 000a 0023     		movs	r3, #0
+ 351 000c FB60     		str	r3, [r7, #12]
+ 232:.\RFServerStack.c ****     PNEAR_RFREQUESTPAYLOADLENGTHMAP preqpaylliterator = _g_rfreqpayloadmap;
+ 352              		.loc 1 232 0
+ 353 000e 0D4B     		ldr	r3, .L15
+ 354 0010 BB60     		str	r3, [r7, #8]
+ 233:.\RFServerStack.c ****     while(preqpaylliterator->_requestcode != RF_MUX_NULL)
+ 355              		.loc 1 233 0
+ 356 0012 0BE0     		b	.L10
+ 357              	.L13:
+ 234:.\RFServerStack.c ****     {
+ 235:.\RFServerStack.c ****         if(preqpaylliterator->_requestcode == reqcode)
+ 358              		.loc 1 235 0
+ 359 0014 BB68     		ldr	r3, [r7, #8]
+ 360 0016 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 361 0018 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 362 001a 9A42     		cmp	r2, r3
+ 363 001c 03D1     		bne	.L11
+ 236:.\RFServerStack.c ****         {
+ 237:.\RFServerStack.c ****             pretval = preqpaylliterator->_fpPayloadSizeResolver;
+ 364              		.loc 1 237 0
+ 365 001e BB68     		ldr	r3, [r7, #8]
+ 366 0020 5B68     		ldr	r3, [r3, #4]
+ 367 0022 FB60     		str	r3, [r7, #12]
+ 238:.\RFServerStack.c ****             break;
+ 368              		.loc 1 238 0
+ 369 0024 06E0     		b	.L12
+ 370              	.L11:
+ 239:.\RFServerStack.c ****         }
+ 240:.\RFServerStack.c ****         preqpaylliterator++;
+ 371              		.loc 1 240 0
+ 372 0026 BB68     		ldr	r3, [r7, #8]
+ 373 0028 0833     		adds	r3, r3, #8
+ 374 002a BB60     		str	r3, [r7, #8]
+ 375              	.L10:
+ 233:.\RFServerStack.c ****     {
+ 376              		.loc 1 233 0
+ 377 002c BB68     		ldr	r3, [r7, #8]
+ 378 002e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 379 0030 FF2B     		cmp	r3, #255
+ 380 0032 EFD1     		bne	.L13
+ 381              	.L12:
+ 241:.\RFServerStack.c ****     }
+ 242:.\RFServerStack.c ****     return pretval;
+ 382              		.loc 1 242 0
+ 383 0034 FB68     		ldr	r3, [r7, #12]
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 12
+
+
+ 243:.\RFServerStack.c **** }
+ 384              		.loc 1 243 0
+ 385 0036 1846     		mov	r0, r3
+ 386 0038 1437     		adds	r7, r7, #20
+ 387              		.cfi_def_cfa_offset 4
+ 388 003a BD46     		mov	sp, r7
+ 389              		.cfi_def_cfa_register 13
+ 390              		@ sp needed
+ 391 003c 5DF8047B 		ldr	r7, [sp], #4
+ 392              		.cfi_restore 7
+ 393              		.cfi_def_cfa_offset 0
+ 394 0040 7047     		bx	lr
+ 395              	.L16:
+ 396 0042 00BF     		.align	2
+ 397              	.L15:
+ 398 0044 00000000 		.word	_g_rfreqpayloadmap
+ 399              		.cfi_endproc
+ 400              	.LFE1:
+ 401              		.size	RFGetDynamicPayloadLengthFromRequestCode, .-RFGetDynamicPayloadLengthFromRequestCode
+ 402              		.section	.text.RFGetRequestResponseServerHandler,"ax",%progbits
+ 403              		.align	2
+ 404              		.global	RFGetRequestResponseServerHandler
+ 405              		.thumb
+ 406              		.thumb_func
+ 407              		.type	RFGetRequestResponseServerHandler, %function
+ 408              	RFGetRequestResponseServerHandler:
+ 409              	.LFB2:
+ 244:.\RFServerStack.c **** 
+ 245:.\RFServerStack.c **** //@Created By: HIJH
+ 246:.\RFServerStack.c **** //@Date: Septembre de 2016
+ 247:.\RFServerStack.c **** //This function unmaps the RPC request code coming from the RF Link and returns 
+ 248:.\RFServerStack.c **** //the mapped handler
+ 249:.\RFServerStack.c **** PNEAR_REQRESPTR RFGetRequestResponseServerHandler(uint8 reqcode)
+ 250:.\RFServerStack.c **** {
+ 410              		.loc 1 250 0
+ 411              		.cfi_startproc
+ 412              		@ args = 0, pretend = 0, frame = 16
+ 413              		@ frame_needed = 1, uses_anonymous_args = 0
+ 414              		@ link register save eliminated.
+ 415 0000 80B4     		push	{r7}
+ 416              		.cfi_def_cfa_offset 4
+ 417              		.cfi_offset 7, -4
+ 418 0002 85B0     		sub	sp, sp, #20
+ 419              		.cfi_def_cfa_offset 24
+ 420 0004 00AF     		add	r7, sp, #0
+ 421              		.cfi_def_cfa_register 7
+ 422 0006 0346     		mov	r3, r0
+ 423 0008 FB71     		strb	r3, [r7, #7]
+ 251:.\RFServerStack.c ****     PNEAR_REQRESPTR pretval = PNEAR_NULLPTR;
+ 424              		.loc 1 251 0
+ 425 000a 0023     		movs	r3, #0
+ 426 000c FB60     		str	r3, [r7, #12]
+ 252:.\RFServerStack.c ****     PNEAR_REQRESPTR preqrespiterator = &_g_rfresolvers[0];
+ 427              		.loc 1 252 0
+ 428 000e 0E4B     		ldr	r3, .L23
+ 429 0010 BB60     		str	r3, [r7, #8]
+ 253:.\RFServerStack.c ****     while((preqrespiterator->_requestcode != RF_MUX_NULL) &&
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 13
+
+
+ 430              		.loc 1 253 0
+ 431 0012 0AE0     		b	.L18
+ 432              	.L21:
+ 254:.\RFServerStack.c ****     (preqrespiterator->_responsecode != RF_MUX_NULL))
+ 255:.\RFServerStack.c ****     {
+ 256:.\RFServerStack.c ****         if(preqrespiterator->_requestcode == reqcode)
+ 433              		.loc 1 256 0
+ 434 0014 BB68     		ldr	r3, [r7, #8]
+ 435 0016 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 436 0018 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 437 001a 9A42     		cmp	r2, r3
+ 438 001c 02D1     		bne	.L19
+ 257:.\RFServerStack.c ****         {
+ 258:.\RFServerStack.c ****             pretval = preqrespiterator;
+ 439              		.loc 1 258 0
+ 440 001e BB68     		ldr	r3, [r7, #8]
+ 441 0020 FB60     		str	r3, [r7, #12]
+ 259:.\RFServerStack.c ****             break;
+ 442              		.loc 1 259 0
+ 443 0022 0AE0     		b	.L20
+ 444              	.L19:
+ 260:.\RFServerStack.c ****         }
+ 261:.\RFServerStack.c ****         preqrespiterator++;
+ 445              		.loc 1 261 0
+ 446 0024 BB68     		ldr	r3, [r7, #8]
+ 447 0026 1033     		adds	r3, r3, #16
+ 448 0028 BB60     		str	r3, [r7, #8]
+ 449              	.L18:
+ 253:.\RFServerStack.c ****     (preqrespiterator->_responsecode != RF_MUX_NULL))
+ 450              		.loc 1 253 0
+ 451 002a BB68     		ldr	r3, [r7, #8]
+ 452 002c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 453 002e FF2B     		cmp	r3, #255
+ 454 0030 03D0     		beq	.L20
+ 254:.\RFServerStack.c ****     {
+ 455              		.loc 1 254 0 discriminator 1
+ 456 0032 BB68     		ldr	r3, [r7, #8]
+ 457 0034 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 253:.\RFServerStack.c ****     (preqrespiterator->_responsecode != RF_MUX_NULL))
+ 458              		.loc 1 253 0 discriminator 1
+ 459 0036 FF2B     		cmp	r3, #255
+ 460 0038 ECD1     		bne	.L21
+ 461              	.L20:
+ 262:.\RFServerStack.c ****     }
+ 263:.\RFServerStack.c ****     return pretval;
+ 462              		.loc 1 263 0
+ 463 003a FB68     		ldr	r3, [r7, #12]
+ 264:.\RFServerStack.c **** }
+ 464              		.loc 1 264 0
+ 465 003c 1846     		mov	r0, r3
+ 466 003e 1437     		adds	r7, r7, #20
+ 467              		.cfi_def_cfa_offset 4
+ 468 0040 BD46     		mov	sp, r7
+ 469              		.cfi_def_cfa_register 13
+ 470              		@ sp needed
+ 471 0042 5DF8047B 		ldr	r7, [sp], #4
+ 472              		.cfi_restore 7
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 14
+
+
+ 473              		.cfi_def_cfa_offset 0
+ 474 0046 7047     		bx	lr
+ 475              	.L24:
+ 476              		.align	2
+ 477              	.L23:
+ 478 0048 00000000 		.word	_g_rfresolvers
+ 479              		.cfi_endproc
+ 480              	.LFE2:
+ 481              		.size	RFGetRequestResponseServerHandler, .-RFGetRequestResponseServerHandler
+ 482              		.section	.text.RFGetCRC,"ax",%progbits
+ 483              		.align	2
+ 484              		.global	RFGetCRC
+ 485              		.thumb
+ 486              		.thumb_func
+ 487              		.type	RFGetCRC, %function
+ 488              	RFGetCRC:
+ 489              	.LFB3:
+ 265:.\RFServerStack.c **** 
+ 266:.\RFServerStack.c **** 
+ 267:.\RFServerStack.c **** uint8 RFGetCRC(uint8 commandid, PNEAR_BYTE_PTR pbuffer)
+ 268:.\RFServerStack.c **** {
+ 490              		.loc 1 268 0
+ 491              		.cfi_startproc
+ 492              		@ args = 0, pretend = 0, frame = 16
+ 493              		@ frame_needed = 1, uses_anonymous_args = 0
+ 494 0000 80B5     		push	{r7, lr}
+ 495              		.cfi_def_cfa_offset 8
+ 496              		.cfi_offset 7, -8
+ 497              		.cfi_offset 14, -4
+ 498 0002 84B0     		sub	sp, sp, #16
+ 499              		.cfi_def_cfa_offset 24
+ 500 0004 00AF     		add	r7, sp, #0
+ 501              		.cfi_def_cfa_register 7
+ 502 0006 0346     		mov	r3, r0
+ 503 0008 3960     		str	r1, [r7]
+ 504 000a FB71     		strb	r3, [r7, #7]
+ 269:.\RFServerStack.c ****     uint8 retval = 0x00;
+ 505              		.loc 1 269 0
+ 506 000c 0023     		movs	r3, #0
+ 507 000e FB73     		strb	r3, [r7, #15]
+ 270:.\RFServerStack.c ****     PNEAR_RFREQUESTPAYLOADLENGTHMAP preqplliterator = (PNEAR_RFREQUESTPAYLOADLENGTHMAP)_g_rfreqpayl
+ 508              		.loc 1 270 0
+ 509 0010 154B     		ldr	r3, .L33
+ 510 0012 BB60     		str	r3, [r7, #8]
+ 271:.\RFServerStack.c ****     while(preqplliterator->_requestcode != RF_MUX_NULL)
+ 511              		.loc 1 271 0
+ 512 0014 1EE0     		b	.L26
+ 513              	.L31:
+ 272:.\RFServerStack.c ****     {
+ 273:.\RFServerStack.c ****         if(preqplliterator->_requestcode == commandid)
+ 514              		.loc 1 273 0
+ 515 0016 BB68     		ldr	r3, [r7, #8]
+ 516 0018 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 517 001a FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 518 001c 9A42     		cmp	r2, r3
+ 519 001e 16D1     		bne	.L27
+ 274:.\RFServerStack.c ****         {
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 15
+
+
+ 275:.\RFServerStack.c ****             if(preqplliterator->_requestpayloadsize > 0)
+ 520              		.loc 1 275 0
+ 521 0020 BB68     		ldr	r3, [r7, #8]
+ 522 0022 5B88     		ldrh	r3, [r3, #2]
+ 523 0024 002B     		cmp	r3, #0
+ 524 0026 07D0     		beq	.L28
+ 276:.\RFServerStack.c ****                 retval = pbuffer[preqplliterator->_requestpayloadsize - 1];
+ 525              		.loc 1 276 0
+ 526 0028 BB68     		ldr	r3, [r7, #8]
+ 527 002a 5B88     		ldrh	r3, [r3, #2]
+ 528 002c 013B     		subs	r3, r3, #1
+ 529 002e 3A68     		ldr	r2, [r7]
+ 530 0030 1344     		add	r3, r3, r2
+ 531 0032 1B78     		ldrb	r3, [r3]
+ 532 0034 FB73     		strb	r3, [r7, #15]
+ 277:.\RFServerStack.c ****             else
+ 278:.\RFServerStack.c ****                 retval = pbuffer[preqplliterator->_fpPayloadSizeResolver(pbuffer) - 1];
+ 279:.\RFServerStack.c **** 
+ 280:.\RFServerStack.c ****             break;
+ 533              		.loc 1 280 0
+ 534 0036 11E0     		b	.L30
+ 535              	.L28:
+ 278:.\RFServerStack.c **** 
+ 536              		.loc 1 278 0
+ 537 0038 BB68     		ldr	r3, [r7, #8]
+ 538 003a 5B68     		ldr	r3, [r3, #4]
+ 539 003c 3868     		ldr	r0, [r7]
+ 540 003e 9847     		blx	r3
+ 541 0040 0346     		mov	r3, r0
+ 542 0042 013B     		subs	r3, r3, #1
+ 543 0044 3A68     		ldr	r2, [r7]
+ 544 0046 1344     		add	r3, r3, r2
+ 545 0048 1B78     		ldrb	r3, [r3]
+ 546 004a FB73     		strb	r3, [r7, #15]
+ 547              		.loc 1 280 0
+ 548 004c 06E0     		b	.L30
+ 549              	.L27:
+ 281:.\RFServerStack.c ****         }
+ 282:.\RFServerStack.c ****         preqplliterator++;
+ 550              		.loc 1 282 0
+ 551 004e BB68     		ldr	r3, [r7, #8]
+ 552 0050 0833     		adds	r3, r3, #8
+ 553 0052 BB60     		str	r3, [r7, #8]
+ 554              	.L26:
+ 271:.\RFServerStack.c ****     {
+ 555              		.loc 1 271 0
+ 556 0054 BB68     		ldr	r3, [r7, #8]
+ 557 0056 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 558 0058 FF2B     		cmp	r3, #255
+ 559 005a DCD1     		bne	.L31
+ 560              	.L30:
+ 283:.\RFServerStack.c ****     }
+ 284:.\RFServerStack.c ****     
+ 285:.\RFServerStack.c ****     return retval;
+ 561              		.loc 1 285 0
+ 562 005c FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 286:.\RFServerStack.c **** }
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 16
+
+
+ 563              		.loc 1 286 0
+ 564 005e 1846     		mov	r0, r3
+ 565 0060 1037     		adds	r7, r7, #16
+ 566              		.cfi_def_cfa_offset 8
+ 567 0062 BD46     		mov	sp, r7
+ 568              		.cfi_def_cfa_register 13
+ 569              		@ sp needed
+ 570 0064 80BD     		pop	{r7, pc}
+ 571              	.L34:
+ 572 0066 00BF     		.align	2
+ 573              	.L33:
+ 574 0068 00000000 		.word	_g_rfreqpayloadmap
+ 575              		.cfi_endproc
+ 576              	.LFE3:
+ 577              		.size	RFGetCRC, .-RFGetCRC
+ 578              		.section	.text.RFUnmapCommand2State,"ax",%progbits
+ 579              		.align	2
+ 580              		.global	RFUnmapCommand2State
+ 581              		.thumb
+ 582              		.thumb_func
+ 583              		.type	RFUnmapCommand2State, %function
+ 584              	RFUnmapCommand2State:
+ 585              	.LFB4:
+ 287:.\RFServerStack.c **** 
+ 288:.\RFServerStack.c **** uint8 RFUnmapCommand2State(uint8 commandid)
+ 289:.\RFServerStack.c **** {
+ 586              		.loc 1 289 0
+ 587              		.cfi_startproc
+ 588              		@ args = 0, pretend = 0, frame = 16
+ 589              		@ frame_needed = 1, uses_anonymous_args = 0
+ 590              		@ link register save eliminated.
+ 591 0000 80B4     		push	{r7}
+ 592              		.cfi_def_cfa_offset 4
+ 593              		.cfi_offset 7, -4
+ 594 0002 85B0     		sub	sp, sp, #20
+ 595              		.cfi_def_cfa_offset 24
+ 596 0004 00AF     		add	r7, sp, #0
+ 597              		.cfi_def_cfa_register 7
+ 598 0006 0346     		mov	r3, r0
+ 599 0008 FB71     		strb	r3, [r7, #7]
+ 290:.\RFServerStack.c ****     uint8 retval = RF_MUX_NULL;
+ 600              		.loc 1 290 0
+ 601 000a FF23     		movs	r3, #255
+ 602 000c FB73     		strb	r3, [r7, #15]
+ 291:.\RFServerStack.c ****     PNEAR_RFCOMMANDSTATEMAPPTR ptr = &_g_rfcommandstatemap[0x00];
+ 603              		.loc 1 291 0
+ 604 000e 0D4B     		ldr	r3, .L41
+ 605 0010 BB60     		str	r3, [r7, #8]
+ 292:.\RFServerStack.c ****     while(ptr->_commandid != RF_MUX_NULL)
+ 606              		.loc 1 292 0
+ 607 0012 0BE0     		b	.L36
+ 608              	.L39:
+ 293:.\RFServerStack.c ****     {
+ 294:.\RFServerStack.c ****         if(ptr->_commandid == commandid)
+ 609              		.loc 1 294 0
+ 610 0014 BB68     		ldr	r3, [r7, #8]
+ 611 0016 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 17
+
+
+ 612 0018 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 613 001a 9A42     		cmp	r2, r3
+ 614 001c 03D1     		bne	.L37
+ 295:.\RFServerStack.c ****         {
+ 296:.\RFServerStack.c ****             retval = ptr->_stateid;
+ 615              		.loc 1 296 0
+ 616 001e BB68     		ldr	r3, [r7, #8]
+ 617 0020 1B78     		ldrb	r3, [r3]
+ 618 0022 FB73     		strb	r3, [r7, #15]
+ 297:.\RFServerStack.c ****             break;
+ 619              		.loc 1 297 0
+ 620 0024 06E0     		b	.L38
+ 621              	.L37:
+ 298:.\RFServerStack.c ****         }
+ 299:.\RFServerStack.c ****         
+ 300:.\RFServerStack.c ****         ptr++;
+ 622              		.loc 1 300 0
+ 623 0026 BB68     		ldr	r3, [r7, #8]
+ 624 0028 0233     		adds	r3, r3, #2
+ 625 002a BB60     		str	r3, [r7, #8]
+ 626              	.L36:
+ 292:.\RFServerStack.c ****     {
+ 627              		.loc 1 292 0
+ 628 002c BB68     		ldr	r3, [r7, #8]
+ 629 002e 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 630 0030 FF2B     		cmp	r3, #255
+ 631 0032 EFD1     		bne	.L39
+ 632              	.L38:
+ 301:.\RFServerStack.c ****     }
+ 302:.\RFServerStack.c ****     return retval;
+ 633              		.loc 1 302 0
+ 634 0034 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 303:.\RFServerStack.c **** }
+ 635              		.loc 1 303 0
+ 636 0036 1846     		mov	r0, r3
+ 637 0038 1437     		adds	r7, r7, #20
+ 638              		.cfi_def_cfa_offset 4
+ 639 003a BD46     		mov	sp, r7
+ 640              		.cfi_def_cfa_register 13
+ 641              		@ sp needed
+ 642 003c 5DF8047B 		ldr	r7, [sp], #4
+ 643              		.cfi_restore 7
+ 644              		.cfi_def_cfa_offset 0
+ 645 0040 7047     		bx	lr
+ 646              	.L42:
+ 647 0042 00BF     		.align	2
+ 648              	.L41:
+ 649 0044 00000000 		.word	_g_rfcommandstatemap
+ 650              		.cfi_endproc
+ 651              	.LFE4:
+ 652              		.size	RFUnmapCommand2State, .-RFUnmapCommand2State
+ 653              		.text
+ 654              	.Letext0:
+ 655              		.file 2 "Generated_Source\\PSoC5/cytypes.h"
+ 656              		.file 3 ".\\GlobalDefinitions.h"
+ 657              		.file 4 ".\\RFLink.h"
+ 658              		.section	.debug_info,"",%progbits
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 18
+
+
+ 659              	.Ldebug_info0:
+ 660 0000 11050000 		.4byte	0x511
+ 661 0004 0400     		.2byte	0x4
+ 662 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 663 000a 04       		.byte	0x4
+ 664 000b 01       		.uleb128 0x1
+ 665 000c 55000000 		.4byte	.LASF96
+ 666 0010 01       		.byte	0x1
+ 667 0011 81010000 		.4byte	.LASF97
+ 668 0015 60050000 		.4byte	.LASF98
+ 669 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 670 001d 00000000 		.4byte	0
+ 671 0021 00000000 		.4byte	.Ldebug_line0
+ 672 0025 02       		.uleb128 0x2
+ 673 0026 01       		.byte	0x1
+ 674 0027 06       		.byte	0x6
+ 675 0028 62040000 		.4byte	.LASF0
+ 676 002c 02       		.uleb128 0x2
+ 677 002d 01       		.byte	0x1
+ 678 002e 08       		.byte	0x8
+ 679 002f 42040000 		.4byte	.LASF1
+ 680 0033 02       		.uleb128 0x2
+ 681 0034 02       		.byte	0x2
+ 682 0035 05       		.byte	0x5
+ 683 0036 19010000 		.4byte	.LASF2
+ 684 003a 02       		.uleb128 0x2
+ 685 003b 02       		.byte	0x2
+ 686 003c 07       		.byte	0x7
+ 687 003d 13050000 		.4byte	.LASF3
+ 688 0041 02       		.uleb128 0x2
+ 689 0042 04       		.byte	0x4
+ 690 0043 05       		.byte	0x5
+ 691 0044 2B050000 		.4byte	.LASF4
+ 692 0048 02       		.uleb128 0x2
+ 693 0049 04       		.byte	0x4
+ 694 004a 07       		.byte	0x7
+ 695 004b A0060000 		.4byte	.LASF5
+ 696 004f 02       		.uleb128 0x2
+ 697 0050 08       		.byte	0x8
+ 698 0051 05       		.byte	0x5
+ 699 0052 D8020000 		.4byte	.LASF6
+ 700 0056 02       		.uleb128 0x2
+ 701 0057 08       		.byte	0x8
+ 702 0058 07       		.byte	0x7
+ 703 0059 85040000 		.4byte	.LASF7
+ 704 005d 03       		.uleb128 0x3
+ 705 005e 04       		.byte	0x4
+ 706 005f 05       		.byte	0x5
+ 707 0060 696E7400 		.ascii	"int\000"
+ 708 0064 02       		.uleb128 0x2
+ 709 0065 04       		.byte	0x4
+ 710 0066 07       		.byte	0x7
+ 711 0067 AB040000 		.4byte	.LASF8
+ 712 006b 04       		.uleb128 0x4
+ 713 006c BF050000 		.4byte	.LASF9
+ 714 0070 02       		.byte	0x2
+ 715 0071 3801     		.2byte	0x138
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 19
+
+
+ 716 0073 2C000000 		.4byte	0x2c
+ 717 0077 04       		.uleb128 0x4
+ 718 0078 26020000 		.4byte	.LASF10
+ 719 007c 02       		.byte	0x2
+ 720 007d 3901     		.2byte	0x139
+ 721 007f 3A000000 		.4byte	0x3a
+ 722 0083 02       		.uleb128 0x2
+ 723 0084 04       		.byte	0x4
+ 724 0085 04       		.byte	0x4
+ 725 0086 BD020000 		.4byte	.LASF11
+ 726 008a 02       		.uleb128 0x2
+ 727 008b 08       		.byte	0x8
+ 728 008c 04       		.byte	0x4
+ 729 008d B2060000 		.4byte	.LASF12
+ 730 0091 02       		.uleb128 0x2
+ 731 0092 01       		.byte	0x1
+ 732 0093 08       		.byte	0x8
+ 733 0094 26050000 		.4byte	.LASF13
+ 734 0098 02       		.uleb128 0x2
+ 735 0099 04       		.byte	0x4
+ 736 009a 07       		.byte	0x7
+ 737 009b 42010000 		.4byte	.LASF14
+ 738 009f 05       		.uleb128 0x5
+ 739 00a0 04       		.byte	0x4
+ 740 00a1 02       		.uleb128 0x2
+ 741 00a2 08       		.byte	0x8
+ 742 00a3 04       		.byte	0x4
+ 743 00a4 01040000 		.4byte	.LASF15
+ 744 00a8 06       		.uleb128 0x6
+ 745 00a9 FB070000 		.4byte	.LASF16
+ 746 00ad 03       		.byte	0x3
+ 747 00ae 50       		.byte	0x50
+ 748 00af B3000000 		.4byte	0xb3
+ 749 00b3 07       		.uleb128 0x7
+ 750 00b4 04       		.byte	0x4
+ 751 00b5 6B000000 		.4byte	0x6b
+ 752 00b9 08       		.uleb128 0x8
+ 753 00ba C4000000 		.4byte	0xc4
+ 754 00be 09       		.uleb128 0x9
+ 755 00bf 9F000000 		.4byte	0x9f
+ 756 00c3 00       		.byte	0
+ 757 00c4 07       		.uleb128 0x7
+ 758 00c5 04       		.byte	0x4
+ 759 00c6 B9000000 		.4byte	0xb9
+ 760 00ca 02       		.uleb128 0x2
+ 761 00cb 01       		.byte	0x1
+ 762 00cc 02       		.byte	0x2
+ 763 00cd C5050000 		.4byte	.LASF17
+ 764 00d1 0A       		.uleb128 0xa
+ 765 00d2 01       		.byte	0x1
+ 766 00d3 04       		.byte	0x4
+ 767 00d4 26       		.byte	0x26
+ 768 00d5 DD010000 		.4byte	0x1dd
+ 769 00d9 0B       		.uleb128 0xb
+ 770 00da C3020000 		.4byte	.LASF18
+ 771 00de A101     		.sleb128 161
+ 772 00e0 0B       		.uleb128 0xb
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 20
+
+
+ 773 00e1 2C040000 		.4byte	.LASF19
+ 774 00e5 A101     		.sleb128 161
+ 775 00e7 0B       		.uleb128 0xb
+ 776 00e8 53070000 		.4byte	.LASF20
+ 777 00ec A201     		.sleb128 162
+ 778 00ee 0B       		.uleb128 0xb
+ 779 00ef 59080000 		.4byte	.LASF21
+ 780 00f3 A201     		.sleb128 162
+ 781 00f5 0B       		.uleb128 0xb
+ 782 00f6 75060000 		.4byte	.LASF22
+ 783 00fa A301     		.sleb128 163
+ 784 00fc 0B       		.uleb128 0xb
+ 785 00fd 3F020000 		.4byte	.LASF23
+ 786 0101 A301     		.sleb128 163
+ 787 0103 0B       		.uleb128 0xb
+ 788 0104 D7030000 		.4byte	.LASF24
+ 789 0108 AE01     		.sleb128 174
+ 790 010a 0B       		.uleb128 0xb
+ 791 010b CB050000 		.4byte	.LASF25
+ 792 010f AE01     		.sleb128 174
+ 793 0111 0B       		.uleb128 0xb
+ 794 0112 16030000 		.4byte	.LASF26
+ 795 0116 AA01     		.sleb128 170
+ 796 0118 0B       		.uleb128 0xb
+ 797 0119 FC060000 		.4byte	.LASF27
+ 798 011d AA01     		.sleb128 170
+ 799 011f 0B       		.uleb128 0xb
+ 800 0120 1C000000 		.4byte	.LASF28
+ 801 0124 A401     		.sleb128 164
+ 802 0126 0B       		.uleb128 0xb
+ 803 0127 3B060000 		.4byte	.LASF29
+ 804 012b A401     		.sleb128 164
+ 805 012d 0B       		.uleb128 0xb
+ 806 012e C8080000 		.4byte	.LASF30
+ 807 0132 A501     		.sleb128 165
+ 808 0134 0B       		.uleb128 0xb
+ 809 0135 AA070000 		.4byte	.LASF31
+ 810 0139 A501     		.sleb128 165
+ 811 013b 0B       		.uleb128 0xb
+ 812 013c 3D030000 		.4byte	.LASF32
+ 813 0140 E801     		.sleb128 232
+ 814 0142 0B       		.uleb128 0xb
+ 815 0143 14060000 		.4byte	.LASF33
+ 816 0147 E801     		.sleb128 232
+ 817 0149 0B       		.uleb128 0xb
+ 818 014a DB010000 		.4byte	.LASF34
+ 819 014e A601     		.sleb128 166
+ 820 0150 0B       		.uleb128 0xb
+ 821 0151 8C080000 		.4byte	.LASF35
+ 822 0155 A601     		.sleb128 166
+ 823 0157 0B       		.uleb128 0xb
+ 824 0158 C1070000 		.4byte	.LASF36
+ 825 015c A701     		.sleb128 167
+ 826 015e 0B       		.uleb128 0xb
+ 827 015f F6050000 		.4byte	.LASF37
+ 828 0163 A701     		.sleb128 167
+ 829 0165 0B       		.uleb128 0xb
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 21
+
+
+ 830 0166 B9060000 		.4byte	.LASF38
+ 831 016a A801     		.sleb128 168
+ 832 016c 0B       		.uleb128 0xb
+ 833 016d B9010000 		.4byte	.LASF39
+ 834 0171 A801     		.sleb128 168
+ 835 0173 0B       		.uleb128 0xb
+ 836 0174 23010000 		.4byte	.LASF40
+ 837 0178 A901     		.sleb128 169
+ 838 017a 0B       		.uleb128 0xb
+ 839 017b 0A080000 		.4byte	.LASF41
+ 840 017f A901     		.sleb128 169
+ 841 0181 0B       		.uleb128 0xb
+ 842 0182 30070000 		.4byte	.LASF42
+ 843 0186 AC01     		.sleb128 172
+ 844 0188 0B       		.uleb128 0xb
+ 845 0189 3C050000 		.4byte	.LASF43
+ 846 018d AC01     		.sleb128 172
+ 847 018f 0B       		.uleb128 0xb
+ 848 0190 87020000 		.4byte	.LASF44
+ 849 0194 AD01     		.sleb128 173
+ 850 0196 0B       		.uleb128 0xb
+ 851 0197 0D040000 		.4byte	.LASF45
+ 852 019b AD01     		.sleb128 173
+ 853 019d 0B       		.uleb128 0xb
+ 854 019e E6020000 		.4byte	.LASF46
+ 855 01a2 E101     		.sleb128 225
+ 856 01a4 0B       		.uleb128 0xb
+ 857 01a5 C1040000 		.4byte	.LASF47
+ 858 01a9 E101     		.sleb128 225
+ 859 01ab 0B       		.uleb128 0xb
+ 860 01ac FD000000 		.4byte	.LASF48
+ 861 01b0 E201     		.sleb128 226
+ 862 01b2 0B       		.uleb128 0xb
+ 863 01b3 DE070000 		.4byte	.LASF49
+ 864 01b7 E201     		.sleb128 226
+ 865 01b9 0B       		.uleb128 0xb
+ 866 01ba B7030000 		.4byte	.LASF50
+ 867 01be E301     		.sleb128 227
+ 868 01c0 0B       		.uleb128 0xb
+ 869 01c1 04090000 		.4byte	.LASF51
+ 870 01c5 E301     		.sleb128 227
+ 871 01c7 0B       		.uleb128 0xb
+ 872 01c8 00000000 		.4byte	.LASF52
+ 873 01cc E401     		.sleb128 228
+ 874 01ce 0B       		.uleb128 0xb
+ 875 01cf 3C080000 		.4byte	.LASF53
+ 876 01d3 E401     		.sleb128 228
+ 877 01d5 0B       		.uleb128 0xb
+ 878 01d6 40000000 		.4byte	.LASF54
+ 879 01da FF01     		.sleb128 255
+ 880 01dc 00       		.byte	0
+ 881 01dd 06       		.uleb128 0x6
+ 882 01de 90070000 		.4byte	.LASF55
+ 883 01e2 04       		.byte	0x4
+ 884 01e3 65       		.byte	0x65
+ 885 01e4 E8010000 		.4byte	0x1e8
+ 886 01e8 07       		.uleb128 0x7
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 22
+
+
+ 887 01e9 04       		.byte	0x4
+ 888 01ea EE010000 		.4byte	0x1ee
+ 889 01ee 0C       		.uleb128 0xc
+ 890 01ef CA000000 		.4byte	0xca
+ 891 01f3 FD010000 		.4byte	0x1fd
+ 892 01f7 09       		.uleb128 0x9
+ 893 01f8 9F000000 		.4byte	0x9f
+ 894 01fc 00       		.byte	0
+ 895 01fd 06       		.uleb128 0x6
+ 896 01fe B6080000 		.4byte	.LASF56
+ 897 0202 04       		.byte	0x4
+ 898 0203 66       		.byte	0x66
+ 899 0204 C4000000 		.4byte	0xc4
+ 900 0208 0D       		.uleb128 0xd
+ 901 0209 10       		.byte	0x10
+ 902 020a 04       		.byte	0x4
+ 903 020b 6A       		.byte	0x6a
+ 904 020c 4D020000 		.4byte	0x24d
+ 905 0210 0E       		.uleb128 0xe
+ 906 0211 A9080000 		.4byte	.LASF57
+ 907 0215 04       		.byte	0x4
+ 908 0216 6C       		.byte	0x6c
+ 909 0217 6B000000 		.4byte	0x6b
+ 910 021b 00       		.byte	0
+ 911 021c 0E       		.uleb128 0xe
+ 912 021d 06020000 		.4byte	.LASF58
+ 913 0221 04       		.byte	0x4
+ 914 0222 6D       		.byte	0x6d
+ 915 0223 6B000000 		.4byte	0x6b
+ 916 0227 01       		.byte	0x1
+ 917 0228 0E       		.uleb128 0xe
+ 918 0229 01050000 		.4byte	.LASF59
+ 919 022d 04       		.byte	0x4
+ 920 022e 6F       		.byte	0x6f
+ 921 022f DD010000 		.4byte	0x1dd
+ 922 0233 04       		.byte	0x4
+ 923 0234 0E       		.uleb128 0xe
+ 924 0235 35030000 		.4byte	.LASF60
+ 925 0239 04       		.byte	0x4
+ 926 023a 70       		.byte	0x70
+ 927 023b FD010000 		.4byte	0x1fd
+ 928 023f 08       		.byte	0x8
+ 929 0240 0E       		.uleb128 0xe
+ 930 0241 EE080000 		.4byte	.LASF61
+ 931 0245 04       		.byte	0x4
+ 932 0246 72       		.byte	0x72
+ 933 0247 6B000000 		.4byte	0x6b
+ 934 024b 0C       		.byte	0xc
+ 935 024c 00       		.byte	0
+ 936 024d 06       		.uleb128 0x6
+ 937 024e DF040000 		.4byte	.LASF62
+ 938 0252 04       		.byte	0x4
+ 939 0253 74       		.byte	0x74
+ 940 0254 08020000 		.4byte	0x208
+ 941 0258 06       		.uleb128 0x6
+ 942 0259 7C080000 		.4byte	.LASF63
+ 943 025d 04       		.byte	0x4
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 23
+
+
+ 944 025e 74       		.byte	0x74
+ 945 025f 63020000 		.4byte	0x263
+ 946 0263 07       		.uleb128 0x7
+ 947 0264 04       		.byte	0x4
+ 948 0265 08020000 		.4byte	0x208
+ 949 0269 06       		.uleb128 0x6
+ 950 026a 5A030000 		.4byte	.LASF64
+ 951 026e 04       		.byte	0x4
+ 952 026f 76       		.byte	0x76
+ 953 0270 74020000 		.4byte	0x274
+ 954 0274 07       		.uleb128 0x7
+ 955 0275 04       		.byte	0x4
+ 956 0276 7A020000 		.4byte	0x27a
+ 957 027a 0C       		.uleb128 0xc
+ 958 027b 77000000 		.4byte	0x77
+ 959 027f 89020000 		.4byte	0x289
+ 960 0283 09       		.uleb128 0x9
+ 961 0284 9F000000 		.4byte	0x9f
+ 962 0288 00       		.byte	0
+ 963 0289 0D       		.uleb128 0xd
+ 964 028a 08       		.byte	0x8
+ 965 028b 04       		.byte	0x4
+ 966 028c 78       		.byte	0x78
+ 967 028d B6020000 		.4byte	0x2b6
+ 968 0291 0E       		.uleb128 0xe
+ 969 0292 A9080000 		.4byte	.LASF57
+ 970 0296 04       		.byte	0x4
+ 971 0297 7A       		.byte	0x7a
+ 972 0298 6B000000 		.4byte	0x6b
+ 973 029c 00       		.byte	0
+ 974 029d 0E       		.uleb128 0xe
+ 975 029e 73020000 		.4byte	.LASF65
+ 976 02a2 04       		.byte	0x4
+ 977 02a3 7B       		.byte	0x7b
+ 978 02a4 77000000 		.4byte	0x77
+ 979 02a8 02       		.byte	0x2
+ 980 02a9 0E       		.uleb128 0xe
+ 981 02aa 6E040000 		.4byte	.LASF66
+ 982 02ae 04       		.byte	0x4
+ 983 02af 7C       		.byte	0x7c
+ 984 02b0 69020000 		.4byte	0x269
+ 985 02b4 04       		.byte	0x4
+ 986 02b5 00       		.byte	0
+ 987 02b6 06       		.uleb128 0x6
+ 988 02b7 E3000000 		.4byte	.LASF67
+ 989 02bb 04       		.byte	0x4
+ 990 02bc 7E       		.byte	0x7e
+ 991 02bd 89020000 		.4byte	0x289
+ 992 02c1 06       		.uleb128 0x6
+ 993 02c2 97030000 		.4byte	.LASF68
+ 994 02c6 04       		.byte	0x4
+ 995 02c7 7E       		.byte	0x7e
+ 996 02c8 CC020000 		.4byte	0x2cc
+ 997 02cc 07       		.uleb128 0x7
+ 998 02cd 04       		.byte	0x4
+ 999 02ce 89020000 		.4byte	0x289
+ 1000 02d2 0F       		.uleb128 0xf
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 24
+
+
+ 1001 02d3 75010000 		.4byte	.LASF99
+ 1002 02d7 01       		.byte	0x1
+ 1003 02d8 04       		.byte	0x4
+ 1004 02d9 87       		.byte	0x87
+ 1005 02da 09030000 		.4byte	0x309
+ 1006 02de 0B       		.uleb128 0xb
+ 1007 02df 4B010000 		.4byte	.LASF69
+ 1008 02e3 08       		.sleb128 8
+ 1009 02e4 0B       		.uleb128 0xb
+ 1010 02e5 AF020000 		.4byte	.LASF70
+ 1011 02e9 01       		.sleb128 1
+ 1012 02ea 0B       		.uleb128 0xb
+ 1013 02eb 2A080000 		.4byte	.LASF71
+ 1014 02ef 02       		.sleb128 2
+ 1015 02f0 0B       		.uleb128 0xb
+ 1016 02f1 14020000 		.4byte	.LASF72
+ 1017 02f5 03       		.sleb128 3
+ 1018 02f6 0B       		.uleb128 0xb
+ 1019 02f7 DE080000 		.4byte	.LASF73
+ 1020 02fb 05       		.sleb128 5
+ 1021 02fc 0B       		.uleb128 0xb
+ 1022 02fd 1C070000 		.4byte	.LASF74
+ 1023 0301 06       		.sleb128 6
+ 1024 0302 0B       		.uleb128 0xb
+ 1025 0303 B8040000 		.4byte	.LASF75
+ 1026 0307 04       		.sleb128 4
+ 1027 0308 00       		.byte	0
+ 1028 0309 0D       		.uleb128 0xd
+ 1029 030a 02       		.byte	0x2
+ 1030 030b 04       		.byte	0x4
+ 1031 030c 92       		.byte	0x92
+ 1032 030d 2A030000 		.4byte	0x32a
+ 1033 0311 0E       		.uleb128 0xe
+ 1034 0312 4C000000 		.4byte	.LASF76
+ 1035 0316 04       		.byte	0x4
+ 1036 0317 94       		.byte	0x94
+ 1037 0318 6B000000 		.4byte	0x6b
+ 1038 031c 00       		.byte	0
+ 1039 031d 0E       		.uleb128 0xe
+ 1040 031e 9F070000 		.4byte	.LASF77
+ 1041 0322 04       		.byte	0x4
+ 1042 0323 95       		.byte	0x95
+ 1043 0324 6B000000 		.4byte	0x6b
+ 1044 0328 01       		.byte	0x1
+ 1045 0329 00       		.byte	0
+ 1046 032a 06       		.uleb128 0x6
+ 1047 032b 2D020000 		.4byte	.LASF78
+ 1048 032f 04       		.byte	0x4
+ 1049 0330 97       		.byte	0x97
+ 1050 0331 09030000 		.4byte	0x309
+ 1051 0335 06       		.uleb128 0x6
+ 1052 0336 75070000 		.4byte	.LASF79
+ 1053 033a 04       		.byte	0x4
+ 1054 033b 97       		.byte	0x97
+ 1055 033c 40030000 		.4byte	0x340
+ 1056 0340 07       		.uleb128 0x7
+ 1057 0341 04       		.byte	0x4
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 25
+
+
+ 1058 0342 09030000 		.4byte	0x309
+ 1059 0346 10       		.uleb128 0x10
+ 1060 0347 53010000 		.4byte	.LASF82
+ 1061 034b 01       		.byte	0x1
+ 1062 034c D2       		.byte	0xd2
+ 1063 034d 77000000 		.4byte	0x77
+ 1064 0351 00000000 		.4byte	.LFB0
+ 1065 0355 48000000 		.4byte	.LFE0-.LFB0
+ 1066 0359 01       		.uleb128 0x1
+ 1067 035a 9C       		.byte	0x9c
+ 1068 035b 8A030000 		.4byte	0x38a
+ 1069 035f 11       		.uleb128 0x11
+ 1070 0360 6B020000 		.4byte	.LASF84
+ 1071 0364 01       		.byte	0x1
+ 1072 0365 D2       		.byte	0xd2
+ 1073 0366 6B000000 		.4byte	0x6b
+ 1074 036a 02       		.uleb128 0x2
+ 1075 036b 91       		.byte	0x91
+ 1076 036c 6F       		.sleb128 -17
+ 1077 036d 12       		.uleb128 0x12
+ 1078 036e FF010000 		.4byte	.LASF80
+ 1079 0372 01       		.byte	0x1
+ 1080 0373 D4       		.byte	0xd4
+ 1081 0374 77000000 		.4byte	0x77
+ 1082 0378 02       		.uleb128 0x2
+ 1083 0379 91       		.byte	0x91
+ 1084 037a 76       		.sleb128 -10
+ 1085 037b 12       		.uleb128 0x12
+ 1086 037c 50040000 		.4byte	.LASF81
+ 1087 0380 01       		.byte	0x1
+ 1088 0381 D5       		.byte	0xd5
+ 1089 0382 C1020000 		.4byte	0x2c1
+ 1090 0386 02       		.uleb128 0x2
+ 1091 0387 91       		.byte	0x91
+ 1092 0388 70       		.sleb128 -16
+ 1093 0389 00       		.byte	0
+ 1094 038a 10       		.uleb128 0x10
+ 1095 038b 6E030000 		.4byte	.LASF83
+ 1096 038f 01       		.byte	0x1
+ 1097 0390 E5       		.byte	0xe5
+ 1098 0391 69020000 		.4byte	0x269
+ 1099 0395 00000000 		.4byte	.LFB1
+ 1100 0399 48000000 		.4byte	.LFE1-.LFB1
+ 1101 039d 01       		.uleb128 0x1
+ 1102 039e 9C       		.byte	0x9c
+ 1103 039f CE030000 		.4byte	0x3ce
+ 1104 03a3 11       		.uleb128 0x11
+ 1105 03a4 6B020000 		.4byte	.LASF84
+ 1106 03a8 01       		.byte	0x1
+ 1107 03a9 E5       		.byte	0xe5
+ 1108 03aa 6B000000 		.4byte	0x6b
+ 1109 03ae 02       		.uleb128 0x2
+ 1110 03af 91       		.byte	0x91
+ 1111 03b0 6F       		.sleb128 -17
+ 1112 03b1 12       		.uleb128 0x12
+ 1113 03b2 34050000 		.4byte	.LASF85
+ 1114 03b6 01       		.byte	0x1
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 26
+
+
+ 1115 03b7 E7       		.byte	0xe7
+ 1116 03b8 69020000 		.4byte	0x269
+ 1117 03bc 02       		.uleb128 0x2
+ 1118 03bd 91       		.byte	0x91
+ 1119 03be 74       		.sleb128 -12
+ 1120 03bf 12       		.uleb128 0x12
+ 1121 03c0 50040000 		.4byte	.LASF81
+ 1122 03c4 01       		.byte	0x1
+ 1123 03c5 E8       		.byte	0xe8
+ 1124 03c6 C1020000 		.4byte	0x2c1
+ 1125 03ca 02       		.uleb128 0x2
+ 1126 03cb 91       		.byte	0x91
+ 1127 03cc 70       		.sleb128 -16
+ 1128 03cd 00       		.byte	0
+ 1129 03ce 10       		.uleb128 0x10
+ 1130 03cf DA060000 		.4byte	.LASF86
+ 1131 03d3 01       		.byte	0x1
+ 1132 03d4 F9       		.byte	0xf9
+ 1133 03d5 58020000 		.4byte	0x258
+ 1134 03d9 00000000 		.4byte	.LFB2
+ 1135 03dd 4C000000 		.4byte	.LFE2-.LFB2
+ 1136 03e1 01       		.uleb128 0x1
+ 1137 03e2 9C       		.byte	0x9c
+ 1138 03e3 12040000 		.4byte	0x412
+ 1139 03e7 11       		.uleb128 0x11
+ 1140 03e8 6B020000 		.4byte	.LASF84
+ 1141 03ec 01       		.byte	0x1
+ 1142 03ed F9       		.byte	0xf9
+ 1143 03ee 6B000000 		.4byte	0x6b
+ 1144 03f2 02       		.uleb128 0x2
+ 1145 03f3 91       		.byte	0x91
+ 1146 03f4 6F       		.sleb128 -17
+ 1147 03f5 12       		.uleb128 0x12
+ 1148 03f6 34050000 		.4byte	.LASF85
+ 1149 03fa 01       		.byte	0x1
+ 1150 03fb FB       		.byte	0xfb
+ 1151 03fc 58020000 		.4byte	0x258
+ 1152 0400 02       		.uleb128 0x2
+ 1153 0401 91       		.byte	0x91
+ 1154 0402 74       		.sleb128 -12
+ 1155 0403 12       		.uleb128 0x12
+ 1156 0404 A8010000 		.4byte	.LASF87
+ 1157 0408 01       		.byte	0x1
+ 1158 0409 FC       		.byte	0xfc
+ 1159 040a 58020000 		.4byte	0x258
+ 1160 040e 02       		.uleb128 0x2
+ 1161 040f 91       		.byte	0x91
+ 1162 0410 70       		.sleb128 -16
+ 1163 0411 00       		.byte	0
+ 1164 0412 13       		.uleb128 0x13
+ 1165 0413 32060000 		.4byte	.LASF88
+ 1166 0417 01       		.byte	0x1
+ 1167 0418 0B01     		.2byte	0x10b
+ 1168 041a 6B000000 		.4byte	0x6b
+ 1169 041e 00000000 		.4byte	.LFB3
+ 1170 0422 6C000000 		.4byte	.LFE3-.LFB3
+ 1171 0426 01       		.uleb128 0x1
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 27
+
+
+ 1172 0427 9C       		.byte	0x9c
+ 1173 0428 69040000 		.4byte	0x469
+ 1174 042c 14       		.uleb128 0x14
+ 1175 042d A5020000 		.4byte	.LASF89
+ 1176 0431 01       		.byte	0x1
+ 1177 0432 0B01     		.2byte	0x10b
+ 1178 0434 6B000000 		.4byte	0x6b
+ 1179 0438 02       		.uleb128 0x2
+ 1180 0439 91       		.byte	0x91
+ 1181 043a 6F       		.sleb128 -17
+ 1182 043b 14       		.uleb128 0x14
+ 1183 043c F7010000 		.4byte	.LASF90
+ 1184 0440 01       		.byte	0x1
+ 1185 0441 0B01     		.2byte	0x10b
+ 1186 0443 A8000000 		.4byte	0xa8
+ 1187 0447 02       		.uleb128 0x2
+ 1188 0448 91       		.byte	0x91
+ 1189 0449 68       		.sleb128 -24
+ 1190 044a 15       		.uleb128 0x15
+ 1191 044b FF010000 		.4byte	.LASF80
+ 1192 044f 01       		.byte	0x1
+ 1193 0450 0D01     		.2byte	0x10d
+ 1194 0452 6B000000 		.4byte	0x6b
+ 1195 0456 02       		.uleb128 0x2
+ 1196 0457 91       		.byte	0x91
+ 1197 0458 77       		.sleb128 -9
+ 1198 0459 15       		.uleb128 0x15
+ 1199 045a F1040000 		.4byte	.LASF91
+ 1200 045e 01       		.byte	0x1
+ 1201 045f 0E01     		.2byte	0x10e
+ 1202 0461 C1020000 		.4byte	0x2c1
+ 1203 0465 02       		.uleb128 0x2
+ 1204 0466 91       		.byte	0x91
+ 1205 0467 70       		.sleb128 -16
+ 1206 0468 00       		.byte	0
+ 1207 0469 16       		.uleb128 0x16
+ 1208 046a 60060000 		.4byte	.LASF92
+ 1209 046e 01       		.byte	0x1
+ 1210 046f 2001     		.2byte	0x120
+ 1211 0471 6B000000 		.4byte	0x6b
+ 1212 0475 00000000 		.4byte	.LFB4
+ 1213 0479 48000000 		.4byte	.LFE4-.LFB4
+ 1214 047d 01       		.uleb128 0x1
+ 1215 047e 9C       		.byte	0x9c
+ 1216 047f B1040000 		.4byte	0x4b1
+ 1217 0483 14       		.uleb128 0x14
+ 1218 0484 A5020000 		.4byte	.LASF89
+ 1219 0488 01       		.byte	0x1
+ 1220 0489 2001     		.2byte	0x120
+ 1221 048b 6B000000 		.4byte	0x6b
+ 1222 048f 02       		.uleb128 0x2
+ 1223 0490 91       		.byte	0x91
+ 1224 0491 6F       		.sleb128 -17
+ 1225 0492 15       		.uleb128 0x15
+ 1226 0493 FF010000 		.4byte	.LASF80
+ 1227 0497 01       		.byte	0x1
+ 1228 0498 2201     		.2byte	0x122
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 28
+
+
+ 1229 049a 6B000000 		.4byte	0x6b
+ 1230 049e 02       		.uleb128 0x2
+ 1231 049f 91       		.byte	0x91
+ 1232 04a0 77       		.sleb128 -9
+ 1233 04a1 17       		.uleb128 0x17
+ 1234 04a2 70747200 		.ascii	"ptr\000"
+ 1235 04a6 01       		.byte	0x1
+ 1236 04a7 2301     		.2byte	0x123
+ 1237 04a9 35030000 		.4byte	0x335
+ 1238 04ad 02       		.uleb128 0x2
+ 1239 04ae 91       		.byte	0x91
+ 1240 04af 70       		.sleb128 -16
+ 1241 04b0 00       		.byte	0
+ 1242 04b1 18       		.uleb128 0x18
+ 1243 04b2 4D020000 		.4byte	0x24d
+ 1244 04b6 C1040000 		.4byte	0x4c1
+ 1245 04ba 19       		.uleb128 0x19
+ 1246 04bb 98000000 		.4byte	0x98
+ 1247 04bf 12       		.byte	0x12
+ 1248 04c0 00       		.byte	0
+ 1249 04c1 1A       		.uleb128 0x1a
+ 1250 04c2 9C040000 		.4byte	.LASF93
+ 1251 04c6 01       		.byte	0x1
+ 1252 04c7 2C       		.byte	0x2c
+ 1253 04c8 B1040000 		.4byte	0x4b1
+ 1254 04cc 05       		.uleb128 0x5
+ 1255 04cd 03       		.byte	0x3
+ 1256 04ce 00000000 		.4byte	_g_rfresolvers
+ 1257 04d2 18       		.uleb128 0x18
+ 1258 04d3 B6020000 		.4byte	0x2b6
+ 1259 04d7 E2040000 		.4byte	0x4e2
+ 1260 04db 19       		.uleb128 0x19
+ 1261 04dc 98000000 		.4byte	0x98
+ 1262 04e0 10       		.byte	0x10
+ 1263 04e1 00       		.byte	0
+ 1264 04e2 1A       		.uleb128 0x1a
+ 1265 04e3 03030000 		.4byte	.LASF94
+ 1266 04e7 01       		.byte	0x1
+ 1267 04e8 A4       		.byte	0xa4
+ 1268 04e9 D2040000 		.4byte	0x4d2
+ 1269 04ed 05       		.uleb128 0x5
+ 1270 04ee 03       		.byte	0x3
+ 1271 04ef 00000000 		.4byte	_g_rfreqpayloadmap
+ 1272 04f3 18       		.uleb128 0x18
+ 1273 04f4 2A030000 		.4byte	0x32a
+ 1274 04f8 03050000 		.4byte	0x503
+ 1275 04fc 19       		.uleb128 0x19
+ 1276 04fd 98000000 		.4byte	0x98
+ 1277 0501 07       		.byte	0x7
+ 1278 0502 00       		.byte	0
+ 1279 0503 1A       		.uleb128 0x1a
+ 1280 0504 93010000 		.4byte	.LASF95
+ 1281 0508 01       		.byte	0x1
+ 1282 0509 C3       		.byte	0xc3
+ 1283 050a F3040000 		.4byte	0x4f3
+ 1284 050e 05       		.uleb128 0x5
+ 1285 050f 03       		.byte	0x3
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 29
+
+
+ 1286 0510 00000000 		.4byte	_g_rfcommandstatemap
+ 1287 0514 00       		.byte	0
+ 1288              		.section	.debug_abbrev,"",%progbits
+ 1289              	.Ldebug_abbrev0:
+ 1290 0000 01       		.uleb128 0x1
+ 1291 0001 11       		.uleb128 0x11
+ 1292 0002 01       		.byte	0x1
+ 1293 0003 25       		.uleb128 0x25
+ 1294 0004 0E       		.uleb128 0xe
+ 1295 0005 13       		.uleb128 0x13
+ 1296 0006 0B       		.uleb128 0xb
+ 1297 0007 03       		.uleb128 0x3
+ 1298 0008 0E       		.uleb128 0xe
+ 1299 0009 1B       		.uleb128 0x1b
+ 1300 000a 0E       		.uleb128 0xe
+ 1301 000b 55       		.uleb128 0x55
+ 1302 000c 17       		.uleb128 0x17
+ 1303 000d 11       		.uleb128 0x11
+ 1304 000e 01       		.uleb128 0x1
+ 1305 000f 10       		.uleb128 0x10
+ 1306 0010 17       		.uleb128 0x17
+ 1307 0011 00       		.byte	0
+ 1308 0012 00       		.byte	0
+ 1309 0013 02       		.uleb128 0x2
+ 1310 0014 24       		.uleb128 0x24
+ 1311 0015 00       		.byte	0
+ 1312 0016 0B       		.uleb128 0xb
+ 1313 0017 0B       		.uleb128 0xb
+ 1314 0018 3E       		.uleb128 0x3e
+ 1315 0019 0B       		.uleb128 0xb
+ 1316 001a 03       		.uleb128 0x3
+ 1317 001b 0E       		.uleb128 0xe
+ 1318 001c 00       		.byte	0
+ 1319 001d 00       		.byte	0
+ 1320 001e 03       		.uleb128 0x3
+ 1321 001f 24       		.uleb128 0x24
+ 1322 0020 00       		.byte	0
+ 1323 0021 0B       		.uleb128 0xb
+ 1324 0022 0B       		.uleb128 0xb
+ 1325 0023 3E       		.uleb128 0x3e
+ 1326 0024 0B       		.uleb128 0xb
+ 1327 0025 03       		.uleb128 0x3
+ 1328 0026 08       		.uleb128 0x8
+ 1329 0027 00       		.byte	0
+ 1330 0028 00       		.byte	0
+ 1331 0029 04       		.uleb128 0x4
+ 1332 002a 16       		.uleb128 0x16
+ 1333 002b 00       		.byte	0
+ 1334 002c 03       		.uleb128 0x3
+ 1335 002d 0E       		.uleb128 0xe
+ 1336 002e 3A       		.uleb128 0x3a
+ 1337 002f 0B       		.uleb128 0xb
+ 1338 0030 3B       		.uleb128 0x3b
+ 1339 0031 05       		.uleb128 0x5
+ 1340 0032 49       		.uleb128 0x49
+ 1341 0033 13       		.uleb128 0x13
+ 1342 0034 00       		.byte	0
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 30
+
+
+ 1343 0035 00       		.byte	0
+ 1344 0036 05       		.uleb128 0x5
+ 1345 0037 0F       		.uleb128 0xf
+ 1346 0038 00       		.byte	0
+ 1347 0039 0B       		.uleb128 0xb
+ 1348 003a 0B       		.uleb128 0xb
+ 1349 003b 00       		.byte	0
+ 1350 003c 00       		.byte	0
+ 1351 003d 06       		.uleb128 0x6
+ 1352 003e 16       		.uleb128 0x16
+ 1353 003f 00       		.byte	0
+ 1354 0040 03       		.uleb128 0x3
+ 1355 0041 0E       		.uleb128 0xe
+ 1356 0042 3A       		.uleb128 0x3a
+ 1357 0043 0B       		.uleb128 0xb
+ 1358 0044 3B       		.uleb128 0x3b
+ 1359 0045 0B       		.uleb128 0xb
+ 1360 0046 49       		.uleb128 0x49
+ 1361 0047 13       		.uleb128 0x13
+ 1362 0048 00       		.byte	0
+ 1363 0049 00       		.byte	0
+ 1364 004a 07       		.uleb128 0x7
+ 1365 004b 0F       		.uleb128 0xf
+ 1366 004c 00       		.byte	0
+ 1367 004d 0B       		.uleb128 0xb
+ 1368 004e 0B       		.uleb128 0xb
+ 1369 004f 49       		.uleb128 0x49
+ 1370 0050 13       		.uleb128 0x13
+ 1371 0051 00       		.byte	0
+ 1372 0052 00       		.byte	0
+ 1373 0053 08       		.uleb128 0x8
+ 1374 0054 15       		.uleb128 0x15
+ 1375 0055 01       		.byte	0x1
+ 1376 0056 27       		.uleb128 0x27
+ 1377 0057 19       		.uleb128 0x19
+ 1378 0058 01       		.uleb128 0x1
+ 1379 0059 13       		.uleb128 0x13
+ 1380 005a 00       		.byte	0
+ 1381 005b 00       		.byte	0
+ 1382 005c 09       		.uleb128 0x9
+ 1383 005d 05       		.uleb128 0x5
+ 1384 005e 00       		.byte	0
+ 1385 005f 49       		.uleb128 0x49
+ 1386 0060 13       		.uleb128 0x13
+ 1387 0061 00       		.byte	0
+ 1388 0062 00       		.byte	0
+ 1389 0063 0A       		.uleb128 0xa
+ 1390 0064 04       		.uleb128 0x4
+ 1391 0065 01       		.byte	0x1
+ 1392 0066 0B       		.uleb128 0xb
+ 1393 0067 0B       		.uleb128 0xb
+ 1394 0068 3A       		.uleb128 0x3a
+ 1395 0069 0B       		.uleb128 0xb
+ 1396 006a 3B       		.uleb128 0x3b
+ 1397 006b 0B       		.uleb128 0xb
+ 1398 006c 01       		.uleb128 0x1
+ 1399 006d 13       		.uleb128 0x13
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 31
+
+
+ 1400 006e 00       		.byte	0
+ 1401 006f 00       		.byte	0
+ 1402 0070 0B       		.uleb128 0xb
+ 1403 0071 28       		.uleb128 0x28
+ 1404 0072 00       		.byte	0
+ 1405 0073 03       		.uleb128 0x3
+ 1406 0074 0E       		.uleb128 0xe
+ 1407 0075 1C       		.uleb128 0x1c
+ 1408 0076 0D       		.uleb128 0xd
+ 1409 0077 00       		.byte	0
+ 1410 0078 00       		.byte	0
+ 1411 0079 0C       		.uleb128 0xc
+ 1412 007a 15       		.uleb128 0x15
+ 1413 007b 01       		.byte	0x1
+ 1414 007c 27       		.uleb128 0x27
+ 1415 007d 19       		.uleb128 0x19
+ 1416 007e 49       		.uleb128 0x49
+ 1417 007f 13       		.uleb128 0x13
+ 1418 0080 01       		.uleb128 0x1
+ 1419 0081 13       		.uleb128 0x13
+ 1420 0082 00       		.byte	0
+ 1421 0083 00       		.byte	0
+ 1422 0084 0D       		.uleb128 0xd
+ 1423 0085 13       		.uleb128 0x13
+ 1424 0086 01       		.byte	0x1
+ 1425 0087 0B       		.uleb128 0xb
+ 1426 0088 0B       		.uleb128 0xb
+ 1427 0089 3A       		.uleb128 0x3a
+ 1428 008a 0B       		.uleb128 0xb
+ 1429 008b 3B       		.uleb128 0x3b
+ 1430 008c 0B       		.uleb128 0xb
+ 1431 008d 01       		.uleb128 0x1
+ 1432 008e 13       		.uleb128 0x13
+ 1433 008f 00       		.byte	0
+ 1434 0090 00       		.byte	0
+ 1435 0091 0E       		.uleb128 0xe
+ 1436 0092 0D       		.uleb128 0xd
+ 1437 0093 00       		.byte	0
+ 1438 0094 03       		.uleb128 0x3
+ 1439 0095 0E       		.uleb128 0xe
+ 1440 0096 3A       		.uleb128 0x3a
+ 1441 0097 0B       		.uleb128 0xb
+ 1442 0098 3B       		.uleb128 0x3b
+ 1443 0099 0B       		.uleb128 0xb
+ 1444 009a 49       		.uleb128 0x49
+ 1445 009b 13       		.uleb128 0x13
+ 1446 009c 38       		.uleb128 0x38
+ 1447 009d 0B       		.uleb128 0xb
+ 1448 009e 00       		.byte	0
+ 1449 009f 00       		.byte	0
+ 1450 00a0 0F       		.uleb128 0xf
+ 1451 00a1 04       		.uleb128 0x4
+ 1452 00a2 01       		.byte	0x1
+ 1453 00a3 03       		.uleb128 0x3
+ 1454 00a4 0E       		.uleb128 0xe
+ 1455 00a5 0B       		.uleb128 0xb
+ 1456 00a6 0B       		.uleb128 0xb
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 32
+
+
+ 1457 00a7 3A       		.uleb128 0x3a
+ 1458 00a8 0B       		.uleb128 0xb
+ 1459 00a9 3B       		.uleb128 0x3b
+ 1460 00aa 0B       		.uleb128 0xb
+ 1461 00ab 01       		.uleb128 0x1
+ 1462 00ac 13       		.uleb128 0x13
+ 1463 00ad 00       		.byte	0
+ 1464 00ae 00       		.byte	0
+ 1465 00af 10       		.uleb128 0x10
+ 1466 00b0 2E       		.uleb128 0x2e
+ 1467 00b1 01       		.byte	0x1
+ 1468 00b2 3F       		.uleb128 0x3f
+ 1469 00b3 19       		.uleb128 0x19
+ 1470 00b4 03       		.uleb128 0x3
+ 1471 00b5 0E       		.uleb128 0xe
+ 1472 00b6 3A       		.uleb128 0x3a
+ 1473 00b7 0B       		.uleb128 0xb
+ 1474 00b8 3B       		.uleb128 0x3b
+ 1475 00b9 0B       		.uleb128 0xb
+ 1476 00ba 27       		.uleb128 0x27
+ 1477 00bb 19       		.uleb128 0x19
+ 1478 00bc 49       		.uleb128 0x49
+ 1479 00bd 13       		.uleb128 0x13
+ 1480 00be 11       		.uleb128 0x11
+ 1481 00bf 01       		.uleb128 0x1
+ 1482 00c0 12       		.uleb128 0x12
+ 1483 00c1 06       		.uleb128 0x6
+ 1484 00c2 40       		.uleb128 0x40
+ 1485 00c3 18       		.uleb128 0x18
+ 1486 00c4 9742     		.uleb128 0x2117
+ 1487 00c6 19       		.uleb128 0x19
+ 1488 00c7 01       		.uleb128 0x1
+ 1489 00c8 13       		.uleb128 0x13
+ 1490 00c9 00       		.byte	0
+ 1491 00ca 00       		.byte	0
+ 1492 00cb 11       		.uleb128 0x11
+ 1493 00cc 05       		.uleb128 0x5
+ 1494 00cd 00       		.byte	0
+ 1495 00ce 03       		.uleb128 0x3
+ 1496 00cf 0E       		.uleb128 0xe
+ 1497 00d0 3A       		.uleb128 0x3a
+ 1498 00d1 0B       		.uleb128 0xb
+ 1499 00d2 3B       		.uleb128 0x3b
+ 1500 00d3 0B       		.uleb128 0xb
+ 1501 00d4 49       		.uleb128 0x49
+ 1502 00d5 13       		.uleb128 0x13
+ 1503 00d6 02       		.uleb128 0x2
+ 1504 00d7 18       		.uleb128 0x18
+ 1505 00d8 00       		.byte	0
+ 1506 00d9 00       		.byte	0
+ 1507 00da 12       		.uleb128 0x12
+ 1508 00db 34       		.uleb128 0x34
+ 1509 00dc 00       		.byte	0
+ 1510 00dd 03       		.uleb128 0x3
+ 1511 00de 0E       		.uleb128 0xe
+ 1512 00df 3A       		.uleb128 0x3a
+ 1513 00e0 0B       		.uleb128 0xb
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 33
+
+
+ 1514 00e1 3B       		.uleb128 0x3b
+ 1515 00e2 0B       		.uleb128 0xb
+ 1516 00e3 49       		.uleb128 0x49
+ 1517 00e4 13       		.uleb128 0x13
+ 1518 00e5 02       		.uleb128 0x2
+ 1519 00e6 18       		.uleb128 0x18
+ 1520 00e7 00       		.byte	0
+ 1521 00e8 00       		.byte	0
+ 1522 00e9 13       		.uleb128 0x13
+ 1523 00ea 2E       		.uleb128 0x2e
+ 1524 00eb 01       		.byte	0x1
+ 1525 00ec 3F       		.uleb128 0x3f
+ 1526 00ed 19       		.uleb128 0x19
+ 1527 00ee 03       		.uleb128 0x3
+ 1528 00ef 0E       		.uleb128 0xe
+ 1529 00f0 3A       		.uleb128 0x3a
+ 1530 00f1 0B       		.uleb128 0xb
+ 1531 00f2 3B       		.uleb128 0x3b
+ 1532 00f3 05       		.uleb128 0x5
+ 1533 00f4 27       		.uleb128 0x27
+ 1534 00f5 19       		.uleb128 0x19
+ 1535 00f6 49       		.uleb128 0x49
+ 1536 00f7 13       		.uleb128 0x13
+ 1537 00f8 11       		.uleb128 0x11
+ 1538 00f9 01       		.uleb128 0x1
+ 1539 00fa 12       		.uleb128 0x12
+ 1540 00fb 06       		.uleb128 0x6
+ 1541 00fc 40       		.uleb128 0x40
+ 1542 00fd 18       		.uleb128 0x18
+ 1543 00fe 9642     		.uleb128 0x2116
+ 1544 0100 19       		.uleb128 0x19
+ 1545 0101 01       		.uleb128 0x1
+ 1546 0102 13       		.uleb128 0x13
+ 1547 0103 00       		.byte	0
+ 1548 0104 00       		.byte	0
+ 1549 0105 14       		.uleb128 0x14
+ 1550 0106 05       		.uleb128 0x5
+ 1551 0107 00       		.byte	0
+ 1552 0108 03       		.uleb128 0x3
+ 1553 0109 0E       		.uleb128 0xe
+ 1554 010a 3A       		.uleb128 0x3a
+ 1555 010b 0B       		.uleb128 0xb
+ 1556 010c 3B       		.uleb128 0x3b
+ 1557 010d 05       		.uleb128 0x5
+ 1558 010e 49       		.uleb128 0x49
+ 1559 010f 13       		.uleb128 0x13
+ 1560 0110 02       		.uleb128 0x2
+ 1561 0111 18       		.uleb128 0x18
+ 1562 0112 00       		.byte	0
+ 1563 0113 00       		.byte	0
+ 1564 0114 15       		.uleb128 0x15
+ 1565 0115 34       		.uleb128 0x34
+ 1566 0116 00       		.byte	0
+ 1567 0117 03       		.uleb128 0x3
+ 1568 0118 0E       		.uleb128 0xe
+ 1569 0119 3A       		.uleb128 0x3a
+ 1570 011a 0B       		.uleb128 0xb
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 34
+
+
+ 1571 011b 3B       		.uleb128 0x3b
+ 1572 011c 05       		.uleb128 0x5
+ 1573 011d 49       		.uleb128 0x49
+ 1574 011e 13       		.uleb128 0x13
+ 1575 011f 02       		.uleb128 0x2
+ 1576 0120 18       		.uleb128 0x18
+ 1577 0121 00       		.byte	0
+ 1578 0122 00       		.byte	0
+ 1579 0123 16       		.uleb128 0x16
+ 1580 0124 2E       		.uleb128 0x2e
+ 1581 0125 01       		.byte	0x1
+ 1582 0126 3F       		.uleb128 0x3f
+ 1583 0127 19       		.uleb128 0x19
+ 1584 0128 03       		.uleb128 0x3
+ 1585 0129 0E       		.uleb128 0xe
+ 1586 012a 3A       		.uleb128 0x3a
+ 1587 012b 0B       		.uleb128 0xb
+ 1588 012c 3B       		.uleb128 0x3b
+ 1589 012d 05       		.uleb128 0x5
+ 1590 012e 27       		.uleb128 0x27
+ 1591 012f 19       		.uleb128 0x19
+ 1592 0130 49       		.uleb128 0x49
+ 1593 0131 13       		.uleb128 0x13
+ 1594 0132 11       		.uleb128 0x11
+ 1595 0133 01       		.uleb128 0x1
+ 1596 0134 12       		.uleb128 0x12
+ 1597 0135 06       		.uleb128 0x6
+ 1598 0136 40       		.uleb128 0x40
+ 1599 0137 18       		.uleb128 0x18
+ 1600 0138 9742     		.uleb128 0x2117
+ 1601 013a 19       		.uleb128 0x19
+ 1602 013b 01       		.uleb128 0x1
+ 1603 013c 13       		.uleb128 0x13
+ 1604 013d 00       		.byte	0
+ 1605 013e 00       		.byte	0
+ 1606 013f 17       		.uleb128 0x17
+ 1607 0140 34       		.uleb128 0x34
+ 1608 0141 00       		.byte	0
+ 1609 0142 03       		.uleb128 0x3
+ 1610 0143 08       		.uleb128 0x8
+ 1611 0144 3A       		.uleb128 0x3a
+ 1612 0145 0B       		.uleb128 0xb
+ 1613 0146 3B       		.uleb128 0x3b
+ 1614 0147 05       		.uleb128 0x5
+ 1615 0148 49       		.uleb128 0x49
+ 1616 0149 13       		.uleb128 0x13
+ 1617 014a 02       		.uleb128 0x2
+ 1618 014b 18       		.uleb128 0x18
+ 1619 014c 00       		.byte	0
+ 1620 014d 00       		.byte	0
+ 1621 014e 18       		.uleb128 0x18
+ 1622 014f 01       		.uleb128 0x1
+ 1623 0150 01       		.byte	0x1
+ 1624 0151 49       		.uleb128 0x49
+ 1625 0152 13       		.uleb128 0x13
+ 1626 0153 01       		.uleb128 0x1
+ 1627 0154 13       		.uleb128 0x13
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 35
+
+
+ 1628 0155 00       		.byte	0
+ 1629 0156 00       		.byte	0
+ 1630 0157 19       		.uleb128 0x19
+ 1631 0158 21       		.uleb128 0x21
+ 1632 0159 00       		.byte	0
+ 1633 015a 49       		.uleb128 0x49
+ 1634 015b 13       		.uleb128 0x13
+ 1635 015c 2F       		.uleb128 0x2f
+ 1636 015d 0B       		.uleb128 0xb
+ 1637 015e 00       		.byte	0
+ 1638 015f 00       		.byte	0
+ 1639 0160 1A       		.uleb128 0x1a
+ 1640 0161 34       		.uleb128 0x34
+ 1641 0162 00       		.byte	0
+ 1642 0163 03       		.uleb128 0x3
+ 1643 0164 0E       		.uleb128 0xe
+ 1644 0165 3A       		.uleb128 0x3a
+ 1645 0166 0B       		.uleb128 0xb
+ 1646 0167 3B       		.uleb128 0x3b
+ 1647 0168 0B       		.uleb128 0xb
+ 1648 0169 49       		.uleb128 0x49
+ 1649 016a 13       		.uleb128 0x13
+ 1650 016b 3F       		.uleb128 0x3f
+ 1651 016c 19       		.uleb128 0x19
+ 1652 016d 02       		.uleb128 0x2
+ 1653 016e 18       		.uleb128 0x18
+ 1654 016f 00       		.byte	0
+ 1655 0170 00       		.byte	0
+ 1656 0171 00       		.byte	0
+ 1657              		.section	.debug_aranges,"",%progbits
+ 1658 0000 3C000000 		.4byte	0x3c
+ 1659 0004 0200     		.2byte	0x2
+ 1660 0006 00000000 		.4byte	.Ldebug_info0
+ 1661 000a 04       		.byte	0x4
+ 1662 000b 00       		.byte	0
+ 1663 000c 0000     		.2byte	0
+ 1664 000e 0000     		.2byte	0
+ 1665 0010 00000000 		.4byte	.LFB0
+ 1666 0014 48000000 		.4byte	.LFE0-.LFB0
+ 1667 0018 00000000 		.4byte	.LFB1
+ 1668 001c 48000000 		.4byte	.LFE1-.LFB1
+ 1669 0020 00000000 		.4byte	.LFB2
+ 1670 0024 4C000000 		.4byte	.LFE2-.LFB2
+ 1671 0028 00000000 		.4byte	.LFB3
+ 1672 002c 6C000000 		.4byte	.LFE3-.LFB3
+ 1673 0030 00000000 		.4byte	.LFB4
+ 1674 0034 48000000 		.4byte	.LFE4-.LFB4
+ 1675 0038 00000000 		.4byte	0
+ 1676 003c 00000000 		.4byte	0
+ 1677              		.section	.debug_ranges,"",%progbits
+ 1678              	.Ldebug_ranges0:
+ 1679 0000 00000000 		.4byte	.LFB0
+ 1680 0004 48000000 		.4byte	.LFE0
+ 1681 0008 00000000 		.4byte	.LFB1
+ 1682 000c 48000000 		.4byte	.LFE1
+ 1683 0010 00000000 		.4byte	.LFB2
+ 1684 0014 4C000000 		.4byte	.LFE2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 36
+
+
+ 1685 0018 00000000 		.4byte	.LFB3
+ 1686 001c 6C000000 		.4byte	.LFE3
+ 1687 0020 00000000 		.4byte	.LFB4
+ 1688 0024 48000000 		.4byte	.LFE4
+ 1689 0028 00000000 		.4byte	0
+ 1690 002c 00000000 		.4byte	0
+ 1691              		.section	.debug_line,"",%progbits
+ 1692              	.Ldebug_line0:
+ 1693 0000 1C010000 		.section	.debug_str,"MS",%progbits,1
+ 1693      02007300 
+ 1693      00000201 
+ 1693      FB0E0D00 
+ 1693      01010101 
+ 1694              	.LASF52:
+ 1695 0000 52465F4D 		.ascii	"RF_MUX_ISLAND_ADMIN_REQUEST\000"
+ 1695      55585F49 
+ 1695      534C414E 
+ 1695      445F4144 
+ 1695      4D494E5F 
+ 1696              	.LASF28:
+ 1697 001c 52465F4D 		.ascii	"RF_MUX_CASH_SALE_END_REPORT_REQUEST\000"
+ 1697      55585F43 
+ 1697      4153485F 
+ 1697      53414C45 
+ 1697      5F454E44 
+ 1698              	.LASF54:
+ 1699 0040 52465F4D 		.ascii	"RF_MUX_NULL\000"
+ 1699      55585F4E 
+ 1699      554C4C00 
+ 1700              	.LASF76:
+ 1701 004c 5F737461 		.ascii	"_stateid\000"
+ 1701      74656964 
+ 1701      00
+ 1702              	.LASF96:
+ 1703 0055 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1703      4320342E 
+ 1703      392E3320 
+ 1703      32303135 
+ 1703      30333033 
+ 1704 0088 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1704      20726576 
+ 1704      6973696F 
+ 1704      6E203232 
+ 1704      31323230 
+ 1705 00bb 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1705      66756E63 
+ 1705      74696F6E 
+ 1705      2D736563 
+ 1705      74696F6E 
+ 1706              	.LASF67:
+ 1707 00e3 52465265 		.ascii	"RFRequestPayloadLengthMap\000"
+ 1707      71756573 
+ 1707      74506179 
+ 1707      6C6F6164 
+ 1707      4C656E67 
+ 1708              	.LASF48:
+ 1709 00fd 52465F4D 		.ascii	"RF_MUX_POSITION_CFG_REQUEST\000"
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 37
+
+
+ 1709      55585F50 
+ 1709      4F534954 
+ 1709      494F4E5F 
+ 1709      4346475F 
+ 1710              	.LASF2:
+ 1711 0119 73686F72 		.ascii	"short int\000"
+ 1711      7420696E 
+ 1711      7400
+ 1712              	.LASF40:
+ 1713 0123 52465F4D 		.ascii	"RF_MUX_CASH_SALE_PRINT_REQUEST\000"
+ 1713      55585F43 
+ 1713      4153485F 
+ 1713      53414C45 
+ 1713      5F505249 
+ 1714              	.LASF14:
+ 1715 0142 73697A65 		.ascii	"sizetype\000"
+ 1715      74797065 
+ 1715      00
+ 1716              	.LASF69:
+ 1717 014b 52465F49 		.ascii	"RF_IDLE\000"
+ 1717      444C4500 
+ 1718              	.LASF82:
+ 1719 0153 52464765 		.ascii	"RFGetPayloadLengthFromRequestCode\000"
+ 1719      74506179 
+ 1719      6C6F6164 
+ 1719      4C656E67 
+ 1719      74684672 
+ 1720              	.LASF99:
+ 1721 0175 5F52465F 		.ascii	"_RF_STATES_\000"
+ 1721      53544154 
+ 1721      45535F00 
+ 1722              	.LASF97:
+ 1723 0181 2E5C5246 		.ascii	".\\RFServerStack.c\000"
+ 1723      53657276 
+ 1723      65725374 
+ 1723      61636B2E 
+ 1723      6300
+ 1724              	.LASF95:
+ 1725 0193 5F675F72 		.ascii	"_g_rfcommandstatemap\000"
+ 1725      66636F6D 
+ 1725      6D616E64 
+ 1725      73746174 
+ 1725      656D6170 
+ 1726              	.LASF87:
+ 1727 01a8 70726571 		.ascii	"preqrespiterator\000"
+ 1727      72657370 
+ 1727      69746572 
+ 1727      61746F72 
+ 1727      00
+ 1728              	.LASF39:
+ 1729 01b9 52465F4D 		.ascii	"RF_MUX_CREDIT_SALE_PRINT_RESPONSE\000"
+ 1729      55585F43 
+ 1729      52454449 
+ 1729      545F5341 
+ 1729      4C455F50 
+ 1730              	.LASF34:
+ 1731 01db 52465F4D 		.ascii	"RF_MUX_PRICE_CHANGE_REQUEST\000"
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 38
+
+
+ 1731      55585F50 
+ 1731      52494345 
+ 1731      5F434841 
+ 1731      4E47455F 
+ 1732              	.LASF90:
+ 1733 01f7 70627566 		.ascii	"pbuffer\000"
+ 1733      66657200 
+ 1734              	.LASF80:
+ 1735 01ff 72657476 		.ascii	"retval\000"
+ 1735      616C00
+ 1736              	.LASF58:
+ 1737 0206 5F726573 		.ascii	"_responsecode\000"
+ 1737      706F6E73 
+ 1737      65636F64 
+ 1737      6500
+ 1738              	.LASF72:
+ 1739 0214 52465F43 		.ascii	"RF_CREDITSALEAUTH\000"
+ 1739      52454449 
+ 1739      5453414C 
+ 1739      45415554 
+ 1739      4800
+ 1740              	.LASF10:
+ 1741 0226 75696E74 		.ascii	"uint16\000"
+ 1741      313600
+ 1742              	.LASF78:
+ 1743 022d 5246436F 		.ascii	"RFCommandStateMap\000"
+ 1743      6D6D616E 
+ 1743      64537461 
+ 1743      74654D61 
+ 1743      7000
+ 1744              	.LASF23:
+ 1745 023f 52465F4D 		.ascii	"RF_MUX_CREDIT_PRESET_AUTHORIZATION_RESPONSE\000"
+ 1745      55585F43 
+ 1745      52454449 
+ 1745      545F5052 
+ 1745      45534554 
+ 1746              	.LASF84:
+ 1747 026b 72657163 		.ascii	"reqcode\000"
+ 1747      6F646500 
+ 1748              	.LASF65:
+ 1749 0273 5F726571 		.ascii	"_requestpayloadsize\000"
+ 1749      75657374 
+ 1749      7061796C 
+ 1749      6F616473 
+ 1749      697A6500 
+ 1750              	.LASF44:
+ 1751 0287 52465F4D 		.ascii	"RF_MUX_LAST_CASH_SALE_REQUEST\000"
+ 1751      55585F4C 
+ 1751      4153545F 
+ 1751      43415348 
+ 1751      5F53414C 
+ 1752              	.LASF89:
+ 1753 02a5 636F6D6D 		.ascii	"commandid\000"
+ 1753      616E6469 
+ 1753      6400
+ 1754              	.LASF70:
+ 1755 02af 52465F44 		.ascii	"RF_DELIVERING\000"
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 39
+
+
+ 1755      454C4956 
+ 1755      4552494E 
+ 1755      4700
+ 1756              	.LASF11:
+ 1757 02bd 666C6F61 		.ascii	"float\000"
+ 1757      7400
+ 1758              	.LASF18:
+ 1759 02c3 52465F4D 		.ascii	"RF_MUX_STATE_REQUEST\000"
+ 1759      55585F53 
+ 1759      54415445 
+ 1759      5F524551 
+ 1759      55455354 
+ 1760              	.LASF6:
+ 1761 02d8 6C6F6E67 		.ascii	"long long int\000"
+ 1761      206C6F6E 
+ 1761      6720696E 
+ 1761      7400
+ 1762              	.LASF46:
+ 1763 02e6 52465F4D 		.ascii	"RF_MUX_BROADCAST_CFG_REQUEST\000"
+ 1763      55585F42 
+ 1763      524F4144 
+ 1763      43415354 
+ 1763      5F434647 
+ 1764              	.LASF94:
+ 1765 0303 5F675F72 		.ascii	"_g_rfreqpayloadmap\000"
+ 1765      66726571 
+ 1765      7061796C 
+ 1765      6F61646D 
+ 1765      617000
+ 1766              	.LASF26:
+ 1767 0316 52465F4D 		.ascii	"RF_MUX_CASH_SALE_START_REQUEST\000"
+ 1767      55585F43 
+ 1767      4153485F 
+ 1767      53414C45 
+ 1767      5F535441 
+ 1768              	.LASF60:
+ 1769 0335 5F706572 		.ascii	"_perror\000"
+ 1769      726F7200 
+ 1770              	.LASF32:
+ 1771 033d 52465F4D 		.ascii	"RF_MUX_TOTALS_REPORT_REQUEST\000"
+ 1771      55585F54 
+ 1771      4F54414C 
+ 1771      535F5245 
+ 1771      504F5254 
+ 1772              	.LASF64:
+ 1773 035a 5061796C 		.ascii	"PayloadSizeResolver\000"
+ 1773      6F616453 
+ 1773      697A6552 
+ 1773      65736F6C 
+ 1773      76657200 
+ 1774              	.LASF83:
+ 1775 036e 52464765 		.ascii	"RFGetDynamicPayloadLengthFromRequestCode\000"
+ 1775      7444796E 
+ 1775      616D6963 
+ 1775      5061796C 
+ 1775      6F61644C 
+ 1776              	.LASF68:
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 40
+
+
+ 1777 0397 504E4541 		.ascii	"PNEAR_RFREQUESTPAYLOADLENGTHMAP\000"
+ 1777      525F5246 
+ 1777      52455155 
+ 1777      45535450 
+ 1777      41594C4F 
+ 1778              	.LASF50:
+ 1779 03b7 52465F4D 		.ascii	"RF_MUX_ISLAND_OPER_DATA_REQUEST\000"
+ 1779      55585F49 
+ 1779      534C414E 
+ 1779      445F4F50 
+ 1779      45525F44 
+ 1780              	.LASF24:
+ 1781 03d7 52465F4D 		.ascii	"RF_MUX_CREDIT_PRESET_NOTIFICATION_REQUEST\000"
+ 1781      55585F43 
+ 1781      52454449 
+ 1781      545F5052 
+ 1781      45534554 
+ 1782              	.LASF15:
+ 1783 0401 6C6F6E67 		.ascii	"long double\000"
+ 1783      20646F75 
+ 1783      626C6500 
+ 1784              	.LASF45:
+ 1785 040d 52465F4D 		.ascii	"RF_MUX_LAST_CASH_SALE_RESPONSE\000"
+ 1785      55585F4C 
+ 1785      4153545F 
+ 1785      43415348 
+ 1785      5F53414C 
+ 1786              	.LASF19:
+ 1787 042c 52465F4D 		.ascii	"RF_MUX_STATE_RESPONSE\000"
+ 1787      55585F53 
+ 1787      54415445 
+ 1787      5F524553 
+ 1787      504F4E53 
+ 1788              	.LASF1:
+ 1789 0442 756E7369 		.ascii	"unsigned char\000"
+ 1789      676E6564 
+ 1789      20636861 
+ 1789      7200
+ 1790              	.LASF81:
+ 1791 0450 70726571 		.ascii	"preqpaylliterator\000"
+ 1791      7061796C 
+ 1791      6C697465 
+ 1791      7261746F 
+ 1791      7200
+ 1792              	.LASF0:
+ 1793 0462 7369676E 		.ascii	"signed char\000"
+ 1793      65642063 
+ 1793      68617200 
+ 1794              	.LASF66:
+ 1795 046e 5F667050 		.ascii	"_fpPayloadSizeResolver\000"
+ 1795      61796C6F 
+ 1795      61645369 
+ 1795      7A655265 
+ 1795      736F6C76 
+ 1796              	.LASF7:
+ 1797 0485 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1797      206C6F6E 
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 41
+
+
+ 1797      6720756E 
+ 1797      7369676E 
+ 1797      65642069 
+ 1798              	.LASF93:
+ 1799 049c 5F675F72 		.ascii	"_g_rfresolvers\000"
+ 1799      66726573 
+ 1799      6F6C7665 
+ 1799      727300
+ 1800              	.LASF8:
+ 1801 04ab 756E7369 		.ascii	"unsigned int\000"
+ 1801      676E6564 
+ 1801      20696E74 
+ 1801      00
+ 1802              	.LASF75:
+ 1803 04b8 52465F45 		.ascii	"RF_ERROR\000"
+ 1803      52524F52 
+ 1803      00
+ 1804              	.LASF47:
+ 1805 04c1 52465F4D 		.ascii	"RF_MUX_BROADCAST_CFG_RESPONSE\000"
+ 1805      55585F42 
+ 1805      524F4144 
+ 1805      43415354 
+ 1805      5F434647 
+ 1806              	.LASF62:
+ 1807 04df 52465265 		.ascii	"RFRequestResponse\000"
+ 1807      71756573 
+ 1807      74526573 
+ 1807      706F6E73 
+ 1807      6500
+ 1808              	.LASF91:
+ 1809 04f1 70726571 		.ascii	"preqplliterator\000"
+ 1809      706C6C69 
+ 1809      74657261 
+ 1809      746F7200 
+ 1810              	.LASF59:
+ 1811 0501 5F707265 		.ascii	"_prequestresponse\000"
+ 1811      71756573 
+ 1811      74726573 
+ 1811      706F6E73 
+ 1811      6500
+ 1812              	.LASF3:
+ 1813 0513 73686F72 		.ascii	"short unsigned int\000"
+ 1813      7420756E 
+ 1813      7369676E 
+ 1813      65642069 
+ 1813      6E7400
+ 1814              	.LASF13:
+ 1815 0526 63686172 		.ascii	"char\000"
+ 1815      00
+ 1816              	.LASF4:
+ 1817 052b 6C6F6E67 		.ascii	"long int\000"
+ 1817      20696E74 
+ 1817      00
+ 1818              	.LASF85:
+ 1819 0534 70726574 		.ascii	"pretval\000"
+ 1819      76616C00 
+ 1820              	.LASF43:
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 42
+
+
+ 1821 053c 52465F4D 		.ascii	"RF_MUX_PENDING_CREDIT_SALE_RESPONSE\000"
+ 1821      55585F50 
+ 1821      454E4449 
+ 1821      4E475F43 
+ 1821      52454449 
+ 1822              	.LASF98:
+ 1823 0560 433A5C54 		.ascii	"C:\\TeamInsepet\\NSX-Prime\\Hardware\\CorEx-MUX-Ker"
+ 1823      65616D49 
+ 1823      6E736570 
+ 1823      65745C4E 
+ 1823      53582D50 
+ 1824 058f 6E656C2D 		.ascii	"nel-Enhanced\\Workspace01\\CorEx-Mux-Kernel.cydsn\000"
+ 1824      456E6861 
+ 1824      6E636564 
+ 1824      5C576F72 
+ 1824      6B737061 
+ 1825              	.LASF9:
+ 1826 05bf 75696E74 		.ascii	"uint8\000"
+ 1826      3800
+ 1827              	.LASF17:
+ 1828 05c5 5F426F6F 		.ascii	"_Bool\000"
+ 1828      6C00
+ 1829              	.LASF25:
+ 1830 05cb 52465F4D 		.ascii	"RF_MUX_CREDIT_PRESET_NOTIFICATION_RESPONSE\000"
+ 1830      55585F43 
+ 1830      52454449 
+ 1830      545F5052 
+ 1830      45534554 
+ 1831              	.LASF37:
+ 1832 05f6 52465F4D 		.ascii	"RF_MUX_GENERAL_PRINT_RESPONSE\000"
+ 1832      55585F47 
+ 1832      454E4552 
+ 1832      414C5F50 
+ 1832      52494E54 
+ 1833              	.LASF33:
+ 1834 0614 52465F4D 		.ascii	"RF_MUX_TOTALS_REPORT_RESPONSE\000"
+ 1834      55585F54 
+ 1834      4F54414C 
+ 1834      535F5245 
+ 1834      504F5254 
+ 1835              	.LASF88:
+ 1836 0632 52464765 		.ascii	"RFGetCRC\000"
+ 1836      74435243 
+ 1836      00
+ 1837              	.LASF29:
+ 1838 063b 52465F4D 		.ascii	"RF_MUX_CASH_SALE_END_REPORT_RESPONSE\000"
+ 1838      55585F43 
+ 1838      4153485F 
+ 1838      53414C45 
+ 1838      5F454E44 
+ 1839              	.LASF92:
+ 1840 0660 5246556E 		.ascii	"RFUnmapCommand2State\000"
+ 1840      6D617043 
+ 1840      6F6D6D61 
+ 1840      6E643253 
+ 1840      74617465 
+ 1841              	.LASF22:
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 43
+
+
+ 1842 0675 52465F4D 		.ascii	"RF_MUX_CREDIT_PRESET_AUTHORIZATION_REQUEST\000"
+ 1842      55585F43 
+ 1842      52454449 
+ 1842      545F5052 
+ 1842      45534554 
+ 1843              	.LASF5:
+ 1844 06a0 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1844      20756E73 
+ 1844      69676E65 
+ 1844      6420696E 
+ 1844      7400
+ 1845              	.LASF12:
+ 1846 06b2 646F7562 		.ascii	"double\000"
+ 1846      6C6500
+ 1847              	.LASF38:
+ 1848 06b9 52465F4D 		.ascii	"RF_MUX_CREDIT_SALE_PRINT_REQUEST\000"
+ 1848      55585F43 
+ 1848      52454449 
+ 1848      545F5341 
+ 1848      4C455F50 
+ 1849              	.LASF86:
+ 1850 06da 52464765 		.ascii	"RFGetRequestResponseServerHandler\000"
+ 1850      74526571 
+ 1850      75657374 
+ 1850      52657370 
+ 1850      6F6E7365 
+ 1851              	.LASF27:
+ 1852 06fc 52465F4D 		.ascii	"RF_MUX_CASH_SALE_START_RESPONSE\000"
+ 1852      55585F43 
+ 1852      4153485F 
+ 1852      53414C45 
+ 1852      5F535441 
+ 1853              	.LASF74:
+ 1854 071c 52465F43 		.ascii	"RF_CREDITSALEREPORT\000"
+ 1854      52454449 
+ 1854      5453414C 
+ 1854      45524550 
+ 1854      4F525400 
+ 1855              	.LASF42:
+ 1856 0730 52465F4D 		.ascii	"RF_MUX_PENDING_CREDIT_SALE_REQUEST\000"
+ 1856      55585F50 
+ 1856      454E4449 
+ 1856      4E475F43 
+ 1856      52454449 
+ 1857              	.LASF20:
+ 1858 0753 52465F4D 		.ascii	"RF_MUX_CREDIT_SERIAL_AUTH_REQUEST\000"
+ 1858      55585F43 
+ 1858      52454449 
+ 1858      545F5345 
+ 1858      5249414C 
+ 1859              	.LASF79:
+ 1860 0775 504E4541 		.ascii	"PNEAR_RFCOMMANDSTATEMAPPTR\000"
+ 1860      525F5246 
+ 1860      434F4D4D 
+ 1860      414E4453 
+ 1860      54415445 
+ 1861              	.LASF55:
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 44
+
+
+ 1862 0790 52465265 		.ascii	"RFReqRespFnPtr\000"
+ 1862      71526573 
+ 1862      70466E50 
+ 1862      747200
+ 1863              	.LASF77:
+ 1864 079f 5F636F6D 		.ascii	"_commandid\000"
+ 1864      6D616E64 
+ 1864      696400
+ 1865              	.LASF31:
+ 1866 07aa 52465F4D 		.ascii	"RF_MUX_TOTALS_RESPONSE\000"
+ 1866      55585F54 
+ 1866      4F54414C 
+ 1866      535F5245 
+ 1866      53504F4E 
+ 1867              	.LASF36:
+ 1868 07c1 52465F4D 		.ascii	"RF_MUX_GENERAL_PRINT_REQUEST\000"
+ 1868      55585F47 
+ 1868      454E4552 
+ 1868      414C5F50 
+ 1868      52494E54 
+ 1869              	.LASF49:
+ 1870 07de 52465F4D 		.ascii	"RF_MUX_POSITION_CFG_RESPONSE\000"
+ 1870      55585F50 
+ 1870      4F534954 
+ 1870      494F4E5F 
+ 1870      4346475F 
+ 1871              	.LASF16:
+ 1872 07fb 504E4541 		.ascii	"PNEAR_BYTE_PTR\000"
+ 1872      525F4259 
+ 1872      54455F50 
+ 1872      545200
+ 1873              	.LASF41:
+ 1874 080a 52465F4D 		.ascii	"RF_MUX_CASH_SALE_PRINT_RESPONSE\000"
+ 1874      55585F43 
+ 1874      4153485F 
+ 1874      53414C45 
+ 1874      5F505249 
+ 1875              	.LASF71:
+ 1876 082a 52465F43 		.ascii	"RF_CASHSALEREPORT\000"
+ 1876      41534853 
+ 1876      414C4552 
+ 1876      45504F52 
+ 1876      5400
+ 1877              	.LASF53:
+ 1878 083c 52465F4D 		.ascii	"RF_MUX_ISLAND_ADMIN_RESPONSE\000"
+ 1878      55585F49 
+ 1878      534C414E 
+ 1878      445F4144 
+ 1878      4D494E5F 
+ 1879              	.LASF21:
+ 1880 0859 52465F4D 		.ascii	"RF_MUX_CREDIT_SERIAL_AUTH_RESPONSE\000"
+ 1880      55585F43 
+ 1880      52454449 
+ 1880      545F5345 
+ 1880      5249414C 
+ 1881              	.LASF63:
+ 1882 087c 504E4541 		.ascii	"PNEAR_REQRESPTR\000"
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccgNLO5b.s 			page 45
+
+
+ 1882      525F5245 
+ 1882      51524553 
+ 1882      50545200 
+ 1883              	.LASF35:
+ 1884 088c 52465F4D 		.ascii	"RF_MUX_PRICE_CHANGE_RESPONSE\000"
+ 1884      55585F50 
+ 1884      52494345 
+ 1884      5F434841 
+ 1884      4E47455F 
+ 1885              	.LASF57:
+ 1886 08a9 5F726571 		.ascii	"_requestcode\000"
+ 1886      75657374 
+ 1886      636F6465 
+ 1886      00
+ 1887              	.LASF56:
+ 1888 08b6 4572726F 		.ascii	"ErrorHandlerFnPtr\000"
+ 1888      7248616E 
+ 1888      646C6572 
+ 1888      466E5074 
+ 1888      7200
+ 1889              	.LASF30:
+ 1890 08c8 52465F4D 		.ascii	"RF_MUX_TOTALS_REQUEST\000"
+ 1890      55585F54 
+ 1890      4F54414C 
+ 1890      535F5245 
+ 1890      51554553 
+ 1891              	.LASF73:
+ 1892 08de 52465F57 		.ascii	"RF_WORKSHIFTREQ\000"
+ 1892      4F524B53 
+ 1892      48494654 
+ 1892      52455100 
+ 1893              	.LASF61:
+ 1894 08ee 5F726573 		.ascii	"_responsetimeoutlimit\000"
+ 1894      706F6E73 
+ 1894      6574696D 
+ 1894      656F7574 
+ 1894      6C696D69 
+ 1895              	.LASF51:
+ 1896 0904 52465F4D 		.ascii	"RF_MUX_ISLAND_OPER_DATA_RESPONSE\000"
+ 1896      55585F49 
+ 1896      534C414E 
+ 1896      445F4F50 
+ 1896      45525F44 
+ 1897              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

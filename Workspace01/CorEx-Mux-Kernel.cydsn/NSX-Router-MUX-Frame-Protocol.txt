@@ -1,0 +1,52 @@
+
+///********************************************************************************************************
+/// Identificación y Enrutamiento de los MUX a través de identificador único
+
+
+Actualmente el modelo de "Round Robin" que realiza el NSX a través del "Router" o dispositivo de enrutamiento 
+(CDG), está basado en una característica o limitación del protocolo Gilbarco-Veeder-Root. Dicho protocolo establece
+que un controlador de surtidor puede gestionar un máximo de 16 bombas, lo cual nunca ocurre dado que una tarjeta 
+MUX hoy día gestiona un máximo de 4 bombas.
+
+Dicha limitación fue transferida sin necesidad al modelo de supervisión realizado por el software NSX.
+
+Dentro de la modificación propuesta para el protocolo, cada surtidor tendrá un Identificador Único de 8 bits.
+Esto permite que un solo Router (CDG) pueda gestionar hasta 238 controladoras MUX (ver notas de protocolo abajo). 
+Lo anterior exige un modelo de comunicación, procesamiento y transferencia de datos manejado eficientemente por software.
+
+La estructura de protocolo propuesta para el nuevo modelo cuenta con elementos de compatibilidad con el protocolo actual,
+y agrega otros elementos de la siguiente manera:
+
+- MASTER TO SLAVE PROTOCOL HEADER (3 BYTES) => [0xBC 0xBB 0xB8]
+- DISPENSER UNIQUE IDENTIFIER     (1 BYTE ) => { ARBITRARY VALUE BETWEEN 0x01 to 0xEF }
+Identificadores from 0xF0 to 0xFF SE RESERVAN PARA FUNCIONES ESPECIALES TIPO "BROADCAST", por ejemplo
+en caso de emergencia en la estación es posible detener TODAS LAS BOMBAS AL TIEMPO o realizar
+configuración masiva de parámetros generales (Hora, Fecha, Datos de la estación de servicio etc.) 
+
+HOY DÍA NO ES POSIBLE ENVIAR UNA INSTRUCCIÓN GENERAL (BROADCAST) A TODOS LOS MUX EN CASO DE EMERGENCIA O CONFIGURACIÓN GENERAL!!
+
+El identificador 0x00 se descarta para eliminar ambiguedades con valores nulos.
+- COMMAND IDENTIFIER              (1 BYTE ) => {IDENTIFICADOR ÚNICO PARA LA PETICIÓN}
+- PAYLOAD O DATOS ÚTILES DE LA TRAMA        => {DE TAMAÑO FIJO DEPENDIENTE DEL "COMMAND IDENTIFIER"}
+- CRC                             (1 BYTE ) => {CALCULADO SOBRE TODA LA TRAMA INCLUIDO EL ENCABEZADO}
+
+Si el comando enviado requiere identificación específica de la posición (bomba), esta va en el BYTE CERO 
+del PAYLOAD (payload[0]).
+
+RESUMEN DEL PROTOCOLO NSX => MUX
+
+[0xBC 0xBB 0xB8] [DISPENSER IDENTIFIER (1 BYTE)] [COMMAND IDENTIFIER (1 BYTE)] [PAYLOAD (FIXED LENGTH)] [CRC (1 BYTE)]
+
+PARA LAS RESPUESTAS DESDE EL MUX AL SISTEMA NSX EL PROTOCOLO ES IGUAL SOLO QUE EL ENCABEZADO CAMBIA Y EL IDENTIFICADOR
+DE COMANDO SIGUE SIENDO EL MISMO QUE EN EL "REQUEST". "NO EXISTE RAZÓN TÉCNICA PARA QUE ESTE SEA DIFERENTE ENTRE REQUEST Y RESPONSE".
+
+RESUMEN DEL PROTOCOLO MUX => NSX
+
+[0xB8 0xAD 0xAF] [DISPENSER IDENTIFIER (1 BYTE)] [COMMAND IDENTIFIER (1 BYTE)] [PAYLOAD (FIXED LENGTH)] [CRC (1 BYTE)]
+
+ES POSIBLE HACER QUE EL PROTOCOLO TENGA UN PAYLOAD DE LONGITUD VARIABLE. ESTO SE LOGRARÍA AGREGANDO UN BYTE DE LONGITUD
+ENTRE EL "COMMAND IDENTIFIER" Y EL "PAYLOAD". DE ESTE MODO SE AUMENTARÍA LA EFICIENCIA EN LA TRANSMISIÓN DADO QUE SOLO
+SE ENVIARÍA LA CANTIDAD DE BYTES NECESARIOS (UN MÁXIMO DE 256) Y SE ELIMINARÍAN LOS "PAD BYTES" DEL MODELO DE LONGITUD FIJA 
+CUANDO NO SE UTILIZAN TODOS LOS BYTES DISPONIBLES EN EL PAYLOAD. 
+ESTO NO SE AGREGÓ AL PROTOCOLO PARA NO AUMENTAR LA COMPLEJIDAD DE LOS CAMBIOS QUE ESTO IMPLICA EN EL LADO DEL ROUTER (CDG).
+

@@ -1,0 +1,1858 @@
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"ShiftReg_Security.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	ShiftReg_Security_initVar
+  19              		.bss
+  20              		.type	ShiftReg_Security_initVar, %object
+  21              		.size	ShiftReg_Security_initVar, 1
+  22              	ShiftReg_Security_initVar:
+  23 0000 00       		.space	1
+  24              		.section	.text.ShiftReg_Security_Start,"ax",%progbits
+  25              		.align	2
+  26              		.global	ShiftReg_Security_Start
+  27              		.thumb
+  28              		.thumb_func
+  29              		.type	ShiftReg_Security_Start, %function
+  30              	ShiftReg_Security_Start:
+  31              	.LFB0:
+  32              		.file 1 ".\\Generated_Source\\PSoC5\\ShiftReg_Security.c"
+   1:.\Generated_Source\PSoC5/ShiftReg_Security.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * File Name: ShiftReg_Security.c
+   3:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Version 2.30
+   4:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+   5:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Description:
+   6:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  This file provides the API source code for the Shift Register component.
+   7:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+   8:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Note: none
+   9:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+  10:.\Generated_Source\PSoC5/ShiftReg_Security.c **** ********************************************************************************
+  11:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Copyright 2008-2013, Cypress Semiconductor Corporation.  All rights reserved.
+  12:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * You may use this file only in accordance with the license, terms, conditions,
+  13:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  14:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * the software package with which this file was provided.
+  15:.\Generated_Source\PSoC5/ShiftReg_Security.c **** ********************************************************************************/
+  16:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+  17:.\Generated_Source\PSoC5/ShiftReg_Security.c **** #include "ShiftReg_Security.h"
+  18:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+  19:.\Generated_Source\PSoC5/ShiftReg_Security.c **** uint8 ShiftReg_Security_initVar = 0u;
+  20:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+  21:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+  22:.\Generated_Source\PSoC5/ShiftReg_Security.c **** /*******************************************************************************
+  23:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Function Name: ShiftReg_Security_Start
+  24:.\Generated_Source\PSoC5/ShiftReg_Security.c **** ********************************************************************************
+  25:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 2
+
+
+  26:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Summary:
+  27:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  Starts the Shift Register.
+  28:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+  29:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Parameters:
+  30:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  None.
+  31:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+  32:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Return:
+  33:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  None.
+  34:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+  35:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Global Variables:
+  36:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  ShiftReg_Security_initVar - used to check initial configuration, modified on
+  37:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  first function call.
+  38:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+  39:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Reentrant:
+  40:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  No.
+  41:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+  42:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *******************************************************************************/
+  43:.\Generated_Source\PSoC5/ShiftReg_Security.c **** void ShiftReg_Security_Start(void) 
+  44:.\Generated_Source\PSoC5/ShiftReg_Security.c **** {
+  33              		.loc 1 44 0
+  34              		.cfi_startproc
+  35              		@ args = 0, pretend = 0, frame = 0
+  36              		@ frame_needed = 1, uses_anonymous_args = 0
+  37 0000 80B5     		push	{r7, lr}
+  38              		.cfi_def_cfa_offset 8
+  39              		.cfi_offset 7, -8
+  40              		.cfi_offset 14, -4
+  41 0002 00AF     		add	r7, sp, #0
+  42              		.cfi_def_cfa_register 7
+  45:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     if(0u == ShiftReg_Security_initVar)
+  43              		.loc 1 45 0
+  44 0004 054B     		ldr	r3, .L3
+  45 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  46 0008 002B     		cmp	r3, #0
+  47 000a 04D1     		bne	.L2
+  46:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     {
+  47:.\Generated_Source\PSoC5/ShiftReg_Security.c ****         ShiftReg_Security_Init();
+  48              		.loc 1 47 0
+  49 000c FFF7FEFF 		bl	ShiftReg_Security_Init
+  48:.\Generated_Source\PSoC5/ShiftReg_Security.c ****         ShiftReg_Security_initVar = 1u; /* Component initialized */
+  50              		.loc 1 48 0
+  51 0010 024B     		ldr	r3, .L3
+  52 0012 0122     		movs	r2, #1
+  53 0014 1A70     		strb	r2, [r3]
+  54              	.L2:
+  49:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     }
+  50:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+  51:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     ShiftReg_Security_Enable();
+  55              		.loc 1 51 0
+  56 0016 FFF7FEFF 		bl	ShiftReg_Security_Enable
+  52:.\Generated_Source\PSoC5/ShiftReg_Security.c **** }
+  57              		.loc 1 52 0
+  58 001a 80BD     		pop	{r7, pc}
+  59              	.L4:
+  60              		.align	2
+  61              	.L3:
+  62 001c 00000000 		.word	ShiftReg_Security_initVar
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 3
+
+
+  63              		.cfi_endproc
+  64              	.LFE0:
+  65              		.size	ShiftReg_Security_Start, .-ShiftReg_Security_Start
+  66              		.section	.text.ShiftReg_Security_Enable,"ax",%progbits
+  67              		.align	2
+  68              		.global	ShiftReg_Security_Enable
+  69              		.thumb
+  70              		.thumb_func
+  71              		.type	ShiftReg_Security_Enable, %function
+  72              	ShiftReg_Security_Enable:
+  73              	.LFB1:
+  53:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+  54:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+  55:.\Generated_Source\PSoC5/ShiftReg_Security.c **** /*******************************************************************************
+  56:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Function Name: ShiftReg_Security_Enable
+  57:.\Generated_Source\PSoC5/ShiftReg_Security.c **** ********************************************************************************
+  58:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+  59:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Summary:
+  60:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  Enables the Shift Register.
+  61:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+  62:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Parameters:
+  63:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  void.
+  64:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+  65:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Return:
+  66:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  void.
+  67:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+  68:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *******************************************************************************/
+  69:.\Generated_Source\PSoC5/ShiftReg_Security.c **** void ShiftReg_Security_Enable(void) 
+  70:.\Generated_Source\PSoC5/ShiftReg_Security.c **** {
+  74              		.loc 1 70 0
+  75              		.cfi_startproc
+  76              		@ args = 0, pretend = 0, frame = 0
+  77              		@ frame_needed = 1, uses_anonymous_args = 0
+  78 0000 80B5     		push	{r7, lr}
+  79              		.cfi_def_cfa_offset 8
+  80              		.cfi_offset 7, -8
+  81              		.cfi_offset 14, -4
+  82 0002 00AF     		add	r7, sp, #0
+  83              		.cfi_def_cfa_register 7
+  71:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     /* Changing address in Datapath Control Store
+  72:.\Generated_Source\PSoC5/ShiftReg_Security.c ****        from NOP to component state machine commands space */
+  73:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     ShiftReg_Security_SR_CONTROL |= ShiftReg_Security_CLK_EN;
+  84              		.loc 1 73 0
+  85 0004 054A     		ldr	r2, .L6
+  86 0006 054B     		ldr	r3, .L6
+  87 0008 1B78     		ldrb	r3, [r3]
+  88 000a DBB2     		uxtb	r3, r3
+  89 000c 43F00103 		orr	r3, r3, #1
+  90 0010 DBB2     		uxtb	r3, r3
+  91 0012 1370     		strb	r3, [r2]
+  74:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+  75:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     ShiftReg_Security_EnableInt();
+  92              		.loc 1 75 0
+  93 0014 FFF7FEFF 		bl	ShiftReg_Security_EnableInt
+  76:.\Generated_Source\PSoC5/ShiftReg_Security.c **** }
+  94              		.loc 1 76 0
+  95 0018 80BD     		pop	{r7, pc}
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 4
+
+
+  96              	.L7:
+  97 001a 00BF     		.align	2
+  98              	.L6:
+  99 001c 7B650040 		.word	1073767803
+ 100              		.cfi_endproc
+ 101              	.LFE1:
+ 102              		.size	ShiftReg_Security_Enable, .-ShiftReg_Security_Enable
+ 103              		.section	.text.ShiftReg_Security_Init,"ax",%progbits
+ 104              		.align	2
+ 105              		.global	ShiftReg_Security_Init
+ 106              		.thumb
+ 107              		.thumb_func
+ 108              		.type	ShiftReg_Security_Init, %function
+ 109              	ShiftReg_Security_Init:
+ 110              	.LFB2:
+  77:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+  78:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+  79:.\Generated_Source\PSoC5/ShiftReg_Security.c **** /*******************************************************************************
+  80:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Function Name: ShiftReg_Security_Init
+  81:.\Generated_Source\PSoC5/ShiftReg_Security.c **** ********************************************************************************
+  82:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+  83:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Summary:
+  84:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  Initializes Tx and/or Rx interrupt sources with initial values.
+  85:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+  86:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Parameters:
+  87:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  void.
+  88:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+  89:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Return:
+  90:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  void.
+  91:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+  92:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *******************************************************************************/
+  93:.\Generated_Source\PSoC5/ShiftReg_Security.c **** void ShiftReg_Security_Init(void) 
+  94:.\Generated_Source\PSoC5/ShiftReg_Security.c **** {
+ 111              		.loc 1 94 0
+ 112              		.cfi_startproc
+ 113              		@ args = 0, pretend = 0, frame = 0
+ 114              		@ frame_needed = 1, uses_anonymous_args = 0
+ 115 0000 80B5     		push	{r7, lr}
+ 116              		.cfi_def_cfa_offset 8
+ 117              		.cfi_offset 7, -8
+ 118              		.cfi_offset 14, -4
+ 119 0002 00AF     		add	r7, sp, #0
+ 120              		.cfi_def_cfa_register 7
+  95:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     ShiftReg_Security_SetIntMode(ShiftReg_Security_INT_SRC);
+ 121              		.loc 1 95 0
+ 122 0004 0020     		movs	r0, #0
+ 123 0006 FFF7FEFF 		bl	ShiftReg_Security_SetIntMode
+  96:.\Generated_Source\PSoC5/ShiftReg_Security.c **** }
+ 124              		.loc 1 96 0
+ 125 000a 80BD     		pop	{r7, pc}
+ 126              		.cfi_endproc
+ 127              	.LFE2:
+ 128              		.size	ShiftReg_Security_Init, .-ShiftReg_Security_Init
+ 129              		.section	.text.ShiftReg_Security_Stop,"ax",%progbits
+ 130              		.align	2
+ 131              		.global	ShiftReg_Security_Stop
+ 132              		.thumb
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 5
+
+
+ 133              		.thumb_func
+ 134              		.type	ShiftReg_Security_Stop, %function
+ 135              	ShiftReg_Security_Stop:
+ 136              	.LFB3:
+  97:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+  98:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+  99:.\Generated_Source\PSoC5/ShiftReg_Security.c **** /*******************************************************************************
+ 100:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Function Name: ShiftReg_Security_Stop
+ 101:.\Generated_Source\PSoC5/ShiftReg_Security.c **** ********************************************************************************
+ 102:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 103:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Summary:
+ 104:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  Disables the Shift Register
+ 105:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 106:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Parameters:
+ 107:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  None.
+ 108:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 109:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Return:
+ 110:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  None.
+ 111:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 112:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *******************************************************************************/
+ 113:.\Generated_Source\PSoC5/ShiftReg_Security.c **** void ShiftReg_Security_Stop(void) 
+ 114:.\Generated_Source\PSoC5/ShiftReg_Security.c **** {
+ 137              		.loc 1 114 0
+ 138              		.cfi_startproc
+ 139              		@ args = 0, pretend = 0, frame = 0
+ 140              		@ frame_needed = 1, uses_anonymous_args = 0
+ 141 0000 80B5     		push	{r7, lr}
+ 142              		.cfi_def_cfa_offset 8
+ 143              		.cfi_offset 7, -8
+ 144              		.cfi_offset 14, -4
+ 145 0002 00AF     		add	r7, sp, #0
+ 146              		.cfi_def_cfa_register 7
+ 115:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     /*changing Datapath Control Store address to NOP space*/
+ 116:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     ShiftReg_Security_SR_CONTROL &= ((uint8) ~ShiftReg_Security_CLK_EN);
+ 147              		.loc 1 116 0
+ 148 0004 054A     		ldr	r2, .L10
+ 149 0006 054B     		ldr	r3, .L10
+ 150 0008 1B78     		ldrb	r3, [r3]
+ 151 000a DBB2     		uxtb	r3, r3
+ 152 000c 23F00103 		bic	r3, r3, #1
+ 153 0010 DBB2     		uxtb	r3, r3
+ 154 0012 1370     		strb	r3, [r2]
+ 117:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     ShiftReg_Security_DisableInt();
+ 155              		.loc 1 117 0
+ 156 0014 FFF7FEFF 		bl	ShiftReg_Security_DisableInt
+ 118:.\Generated_Source\PSoC5/ShiftReg_Security.c **** }
+ 157              		.loc 1 118 0
+ 158 0018 80BD     		pop	{r7, pc}
+ 159              	.L11:
+ 160 001a 00BF     		.align	2
+ 161              	.L10:
+ 162 001c 7B650040 		.word	1073767803
+ 163              		.cfi_endproc
+ 164              	.LFE3:
+ 165              		.size	ShiftReg_Security_Stop, .-ShiftReg_Security_Stop
+ 166              		.section	.text.ShiftReg_Security_EnableInt,"ax",%progbits
+ 167              		.align	2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 6
+
+
+ 168              		.global	ShiftReg_Security_EnableInt
+ 169              		.thumb
+ 170              		.thumb_func
+ 171              		.type	ShiftReg_Security_EnableInt, %function
+ 172              	ShiftReg_Security_EnableInt:
+ 173              	.LFB4:
+ 119:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 120:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 121:.\Generated_Source\PSoC5/ShiftReg_Security.c **** /*******************************************************************************
+ 122:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Function Name: ShiftReg_Security_EnableInt
+ 123:.\Generated_Source\PSoC5/ShiftReg_Security.c **** ********************************************************************************
+ 124:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 125:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Summary:
+ 126:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  Enables the Shift Register interrupt.
+ 127:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 128:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Parameters:
+ 129:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  None.
+ 130:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 131:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Return:
+ 132:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  None.
+ 133:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 134:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *******************************************************************************/
+ 135:.\Generated_Source\PSoC5/ShiftReg_Security.c **** void ShiftReg_Security_EnableInt(void) 
+ 136:.\Generated_Source\PSoC5/ShiftReg_Security.c **** {
+ 174              		.loc 1 136 0
+ 175              		.cfi_startproc
+ 176              		@ args = 0, pretend = 0, frame = 8
+ 177              		@ frame_needed = 1, uses_anonymous_args = 0
+ 178 0000 80B5     		push	{r7, lr}
+ 179              		.cfi_def_cfa_offset 8
+ 180              		.cfi_offset 7, -8
+ 181              		.cfi_offset 14, -4
+ 182 0002 82B0     		sub	sp, sp, #8
+ 183              		.cfi_def_cfa_offset 16
+ 184 0004 00AF     		add	r7, sp, #0
+ 185              		.cfi_def_cfa_register 7
+ 137:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     uint8 interruptState;
+ 138:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 139:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     interruptState = CyEnterCriticalSection();
+ 186              		.loc 1 139 0
+ 187 0006 FFF7FEFF 		bl	CyEnterCriticalSection
+ 188 000a 0346     		mov	r3, r0
+ 189 000c FB71     		strb	r3, [r7, #7]
+ 140:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     ShiftReg_Security_SR_AUX_CONTROL |= ShiftReg_Security_INTERRUPTS_ENABLE;
+ 190              		.loc 1 140 0
+ 191 000e 074A     		ldr	r2, .L13
+ 192 0010 064B     		ldr	r3, .L13
+ 193 0012 1B78     		ldrb	r3, [r3]
+ 194 0014 DBB2     		uxtb	r3, r3
+ 195 0016 43F01003 		orr	r3, r3, #16
+ 196 001a DBB2     		uxtb	r3, r3
+ 197 001c 1370     		strb	r3, [r2]
+ 141:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     CyExitCriticalSection(interruptState);
+ 198              		.loc 1 141 0
+ 199 001e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 200 0020 1846     		mov	r0, r3
+ 201 0022 FFF7FEFF 		bl	CyExitCriticalSection
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 7
+
+
+ 142:.\Generated_Source\PSoC5/ShiftReg_Security.c **** }
+ 202              		.loc 1 142 0
+ 203 0026 0837     		adds	r7, r7, #8
+ 204              		.cfi_def_cfa_offset 8
+ 205 0028 BD46     		mov	sp, r7
+ 206              		.cfi_def_cfa_register 13
+ 207              		@ sp needed
+ 208 002a 80BD     		pop	{r7, pc}
+ 209              	.L14:
+ 210              		.align	2
+ 211              	.L13:
+ 212 002c 9B650040 		.word	1073767835
+ 213              		.cfi_endproc
+ 214              	.LFE4:
+ 215              		.size	ShiftReg_Security_EnableInt, .-ShiftReg_Security_EnableInt
+ 216              		.section	.text.ShiftReg_Security_DisableInt,"ax",%progbits
+ 217              		.align	2
+ 218              		.global	ShiftReg_Security_DisableInt
+ 219              		.thumb
+ 220              		.thumb_func
+ 221              		.type	ShiftReg_Security_DisableInt, %function
+ 222              	ShiftReg_Security_DisableInt:
+ 223              	.LFB5:
+ 143:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 144:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 145:.\Generated_Source\PSoC5/ShiftReg_Security.c **** /*******************************************************************************
+ 146:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Function Name: ShiftReg_Security_DisableInt
+ 147:.\Generated_Source\PSoC5/ShiftReg_Security.c **** ********************************************************************************
+ 148:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 149:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Summary:
+ 150:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  Disables the Shift Register interrupt.
+ 151:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 152:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Parameters:
+ 153:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  None.
+ 154:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 155:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Return:
+ 156:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  None.
+ 157:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 158:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *******************************************************************************/
+ 159:.\Generated_Source\PSoC5/ShiftReg_Security.c **** void ShiftReg_Security_DisableInt(void) 
+ 160:.\Generated_Source\PSoC5/ShiftReg_Security.c **** {
+ 224              		.loc 1 160 0
+ 225              		.cfi_startproc
+ 226              		@ args = 0, pretend = 0, frame = 8
+ 227              		@ frame_needed = 1, uses_anonymous_args = 0
+ 228 0000 80B5     		push	{r7, lr}
+ 229              		.cfi_def_cfa_offset 8
+ 230              		.cfi_offset 7, -8
+ 231              		.cfi_offset 14, -4
+ 232 0002 82B0     		sub	sp, sp, #8
+ 233              		.cfi_def_cfa_offset 16
+ 234 0004 00AF     		add	r7, sp, #0
+ 235              		.cfi_def_cfa_register 7
+ 161:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     uint8 interruptState;
+ 162:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 163:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     interruptState = CyEnterCriticalSection();
+ 236              		.loc 1 163 0
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 8
+
+
+ 237 0006 FFF7FEFF 		bl	CyEnterCriticalSection
+ 238 000a 0346     		mov	r3, r0
+ 239 000c FB71     		strb	r3, [r7, #7]
+ 164:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     ShiftReg_Security_SR_AUX_CONTROL &= ((uint8) ~ShiftReg_Security_INTERRUPTS_ENABLE);
+ 240              		.loc 1 164 0
+ 241 000e 074A     		ldr	r2, .L16
+ 242 0010 064B     		ldr	r3, .L16
+ 243 0012 1B78     		ldrb	r3, [r3]
+ 244 0014 DBB2     		uxtb	r3, r3
+ 245 0016 23F01003 		bic	r3, r3, #16
+ 246 001a DBB2     		uxtb	r3, r3
+ 247 001c 1370     		strb	r3, [r2]
+ 165:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     CyExitCriticalSection(interruptState);
+ 248              		.loc 1 165 0
+ 249 001e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 250 0020 1846     		mov	r0, r3
+ 251 0022 FFF7FEFF 		bl	CyExitCriticalSection
+ 166:.\Generated_Source\PSoC5/ShiftReg_Security.c **** }
+ 252              		.loc 1 166 0
+ 253 0026 0837     		adds	r7, r7, #8
+ 254              		.cfi_def_cfa_offset 8
+ 255 0028 BD46     		mov	sp, r7
+ 256              		.cfi_def_cfa_register 13
+ 257              		@ sp needed
+ 258 002a 80BD     		pop	{r7, pc}
+ 259              	.L17:
+ 260              		.align	2
+ 261              	.L16:
+ 262 002c 9B650040 		.word	1073767835
+ 263              		.cfi_endproc
+ 264              	.LFE5:
+ 265              		.size	ShiftReg_Security_DisableInt, .-ShiftReg_Security_DisableInt
+ 266              		.section	.text.ShiftReg_Security_GetFIFOStatus,"ax",%progbits
+ 267              		.align	2
+ 268              		.global	ShiftReg_Security_GetFIFOStatus
+ 269              		.thumb
+ 270              		.thumb_func
+ 271              		.type	ShiftReg_Security_GetFIFOStatus, %function
+ 272              	ShiftReg_Security_GetFIFOStatus:
+ 273              	.LFB6:
+ 167:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 168:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 169:.\Generated_Source\PSoC5/ShiftReg_Security.c **** /*******************************************************************************
+ 170:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Function Name: ShiftReg_Security_GetFIFOStatus
+ 171:.\Generated_Source\PSoC5/ShiftReg_Security.c **** ********************************************************************************
+ 172:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 173:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Summary:
+ 174:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  Returns current status of input or output FIFO.
+ 175:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 176:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Parameters:
+ 177:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  fifoId.
+ 178:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 179:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Return:
+ 180:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  FIFO status.
+ 181:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 182:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *******************************************************************************/
+ 183:.\Generated_Source\PSoC5/ShiftReg_Security.c **** uint8 ShiftReg_Security_GetFIFOStatus(uint8 fifoId) 
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 9
+
+
+ 184:.\Generated_Source\PSoC5/ShiftReg_Security.c **** {
+ 274              		.loc 1 184 0
+ 275              		.cfi_startproc
+ 276              		@ args = 0, pretend = 0, frame = 16
+ 277              		@ frame_needed = 1, uses_anonymous_args = 0
+ 278              		@ link register save eliminated.
+ 279 0000 80B4     		push	{r7}
+ 280              		.cfi_def_cfa_offset 4
+ 281              		.cfi_offset 7, -4
+ 282 0002 85B0     		sub	sp, sp, #20
+ 283              		.cfi_def_cfa_offset 24
+ 284 0004 00AF     		add	r7, sp, #0
+ 285              		.cfi_def_cfa_register 7
+ 286 0006 0346     		mov	r3, r0
+ 287 0008 FB71     		strb	r3, [r7, #7]
+ 185:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     uint8 result;
+ 186:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 187:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     result = ShiftReg_Security_RET_FIFO_NOT_DEFINED;
+ 288              		.loc 1 187 0
+ 289 000a FE23     		movs	r3, #254
+ 290 000c FB73     		strb	r3, [r7, #15]
+ 188:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 189:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     #if(0u != ShiftReg_Security_USE_INPUT_FIFO)
+ 190:.\Generated_Source\PSoC5/ShiftReg_Security.c ****         if(ShiftReg_Security_IN_FIFO == fifoId)
+ 191:.\Generated_Source\PSoC5/ShiftReg_Security.c ****         {
+ 192:.\Generated_Source\PSoC5/ShiftReg_Security.c ****             switch(ShiftReg_Security_GET_IN_FIFO_STS)
+ 193:.\Generated_Source\PSoC5/ShiftReg_Security.c ****             {
+ 194:.\Generated_Source\PSoC5/ShiftReg_Security.c ****                 case ShiftReg_Security_IN_FIFO_FULL :
+ 195:.\Generated_Source\PSoC5/ShiftReg_Security.c ****                     result = ShiftReg_Security_RET_FIFO_FULL;
+ 196:.\Generated_Source\PSoC5/ShiftReg_Security.c ****                     break;
+ 197:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 198:.\Generated_Source\PSoC5/ShiftReg_Security.c ****                 case ShiftReg_Security_IN_FIFO_EMPTY :
+ 199:.\Generated_Source\PSoC5/ShiftReg_Security.c ****                     result = ShiftReg_Security_RET_FIFO_EMPTY;
+ 200:.\Generated_Source\PSoC5/ShiftReg_Security.c ****                     break;
+ 201:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 202:.\Generated_Source\PSoC5/ShiftReg_Security.c ****                 case ShiftReg_Security_IN_FIFO_PARTIAL:
+ 203:.\Generated_Source\PSoC5/ShiftReg_Security.c ****                     result = ShiftReg_Security_RET_FIFO_PARTIAL;
+ 204:.\Generated_Source\PSoC5/ShiftReg_Security.c ****                     break;
+ 205:.\Generated_Source\PSoC5/ShiftReg_Security.c ****                     
+ 206:.\Generated_Source\PSoC5/ShiftReg_Security.c ****                 default:
+ 207:.\Generated_Source\PSoC5/ShiftReg_Security.c ****                     /* Initial result value, while 
+ 208:.\Generated_Source\PSoC5/ShiftReg_Security.c ****                        IN_FIFO_EMPTY case is false 
+ 209:.\Generated_Source\PSoC5/ShiftReg_Security.c ****                      */
+ 210:.\Generated_Source\PSoC5/ShiftReg_Security.c ****                     result = ShiftReg_Security_RET_FIFO_EMPTY;
+ 211:.\Generated_Source\PSoC5/ShiftReg_Security.c ****                     break;
+ 212:.\Generated_Source\PSoC5/ShiftReg_Security.c ****             }   
+ 213:.\Generated_Source\PSoC5/ShiftReg_Security.c ****         }
+ 214:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     #endif /* (0u != ShiftReg_Security_USE_INPUT_FIFO) */
+ 215:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 216:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     if(ShiftReg_Security_OUT_FIFO == fifoId)
+ 291              		.loc 1 216 0
+ 292 000e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 293 0010 022B     		cmp	r3, #2
+ 294 0012 18D1     		bne	.L19
+ 217:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     {
+ 218:.\Generated_Source\PSoC5/ShiftReg_Security.c ****         switch(ShiftReg_Security_GET_OUT_FIFO_STS)
+ 295              		.loc 1 218 0
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 10
+
+
+ 296 0014 0F4B     		ldr	r3, .L26
+ 297 0016 1B78     		ldrb	r3, [r3]
+ 298 0018 DBB2     		uxtb	r3, r3
+ 299 001a 03F06003 		and	r3, r3, #96
+ 300 001e 5B09     		lsrs	r3, r3, #5
+ 301 0020 012B     		cmp	r3, #1
+ 302 0022 04D0     		beq	.L21
+ 303 0024 012B     		cmp	r3, #1
+ 304 0026 05D3     		bcc	.L22
+ 305 0028 022B     		cmp	r3, #2
+ 306 002a 06D0     		beq	.L23
+ 307 002c 08E0     		b	.L25
+ 308              	.L21:
+ 219:.\Generated_Source\PSoC5/ShiftReg_Security.c ****         {
+ 220:.\Generated_Source\PSoC5/ShiftReg_Security.c ****             case ShiftReg_Security_OUT_FIFO_FULL :
+ 221:.\Generated_Source\PSoC5/ShiftReg_Security.c ****                 result = ShiftReg_Security_RET_FIFO_FULL;
+ 309              		.loc 1 221 0
+ 310 002e 0023     		movs	r3, #0
+ 311 0030 FB73     		strb	r3, [r7, #15]
+ 222:.\Generated_Source\PSoC5/ShiftReg_Security.c ****                 break;
+ 312              		.loc 1 222 0
+ 313 0032 08E0     		b	.L19
+ 314              	.L22:
+ 223:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 224:.\Generated_Source\PSoC5/ShiftReg_Security.c ****             case ShiftReg_Security_OUT_FIFO_EMPTY :
+ 225:.\Generated_Source\PSoC5/ShiftReg_Security.c ****                 result = ShiftReg_Security_RET_FIFO_EMPTY;
+ 315              		.loc 1 225 0
+ 316 0034 0223     		movs	r3, #2
+ 317 0036 FB73     		strb	r3, [r7, #15]
+ 226:.\Generated_Source\PSoC5/ShiftReg_Security.c ****                 break;
+ 318              		.loc 1 226 0
+ 319 0038 05E0     		b	.L19
+ 320              	.L23:
+ 227:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 228:.\Generated_Source\PSoC5/ShiftReg_Security.c ****             case ShiftReg_Security_OUT_FIFO_PARTIAL :
+ 229:.\Generated_Source\PSoC5/ShiftReg_Security.c ****                 result = ShiftReg_Security_RET_FIFO_PARTIAL;
+ 321              		.loc 1 229 0
+ 322 003a 0123     		movs	r3, #1
+ 323 003c FB73     		strb	r3, [r7, #15]
+ 230:.\Generated_Source\PSoC5/ShiftReg_Security.c ****                 break;
+ 324              		.loc 1 230 0
+ 325 003e 02E0     		b	.L19
+ 326              	.L25:
+ 231:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 232:.\Generated_Source\PSoC5/ShiftReg_Security.c ****             default:
+ 233:.\Generated_Source\PSoC5/ShiftReg_Security.c ****                 /* Initial result value, while 
+ 234:.\Generated_Source\PSoC5/ShiftReg_Security.c ****                    OUT_FIFO_FULL case is false 
+ 235:.\Generated_Source\PSoC5/ShiftReg_Security.c ****                  */
+ 236:.\Generated_Source\PSoC5/ShiftReg_Security.c ****                 result = ShiftReg_Security_RET_FIFO_FULL;
+ 327              		.loc 1 236 0
+ 328 0040 0023     		movs	r3, #0
+ 329 0042 FB73     		strb	r3, [r7, #15]
+ 237:.\Generated_Source\PSoC5/ShiftReg_Security.c ****                 break;
+ 330              		.loc 1 237 0
+ 331 0044 00BF     		nop
+ 332              	.L19:
+ 238:.\Generated_Source\PSoC5/ShiftReg_Security.c ****         }
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 11
+
+
+ 239:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     }
+ 240:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 241:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     return(result);
+ 333              		.loc 1 241 0
+ 334 0046 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 242:.\Generated_Source\PSoC5/ShiftReg_Security.c **** }
+ 335              		.loc 1 242 0
+ 336 0048 1846     		mov	r0, r3
+ 337 004a 1437     		adds	r7, r7, #20
+ 338              		.cfi_def_cfa_offset 4
+ 339 004c BD46     		mov	sp, r7
+ 340              		.cfi_def_cfa_register 13
+ 341              		@ sp needed
+ 342 004e 5DF8047B 		ldr	r7, [sp], #4
+ 343              		.cfi_restore 7
+ 344              		.cfi_def_cfa_offset 0
+ 345 0052 7047     		bx	lr
+ 346              	.L27:
+ 347              		.align	2
+ 348              	.L26:
+ 349 0054 6B650040 		.word	1073767787
+ 350              		.cfi_endproc
+ 351              	.LFE6:
+ 352              		.size	ShiftReg_Security_GetFIFOStatus, .-ShiftReg_Security_GetFIFOStatus
+ 353              		.section	.text.ShiftReg_Security_SetIntMode,"ax",%progbits
+ 354              		.align	2
+ 355              		.global	ShiftReg_Security_SetIntMode
+ 356              		.thumb
+ 357              		.thumb_func
+ 358              		.type	ShiftReg_Security_SetIntMode, %function
+ 359              	ShiftReg_Security_SetIntMode:
+ 360              	.LFB7:
+ 243:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 244:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 245:.\Generated_Source\PSoC5/ShiftReg_Security.c **** /*******************************************************************************
+ 246:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Function Name: ShiftReg_Security_SetIntMode
+ 247:.\Generated_Source\PSoC5/ShiftReg_Security.c **** ********************************************************************************
+ 248:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 249:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Summary:
+ 250:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  Sets the Interrupt Source for the Shift Register interrupt. Multiple
+ 251:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  sources may be ORed together
+ 252:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 253:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Parameters:
+ 254:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  interruptSource: Byte containing the constant for the selected interrupt
+ 255:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  source/s.
+ 256:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 257:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Return:
+ 258:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  None.
+ 259:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 260:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *******************************************************************************/
+ 261:.\Generated_Source\PSoC5/ShiftReg_Security.c **** void ShiftReg_Security_SetIntMode(uint8 interruptSource) 
+ 262:.\Generated_Source\PSoC5/ShiftReg_Security.c **** {
+ 361              		.loc 1 262 0
+ 362              		.cfi_startproc
+ 363              		@ args = 0, pretend = 0, frame = 8
+ 364              		@ frame_needed = 1, uses_anonymous_args = 0
+ 365              		@ link register save eliminated.
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 12
+
+
+ 366 0000 80B4     		push	{r7}
+ 367              		.cfi_def_cfa_offset 4
+ 368              		.cfi_offset 7, -4
+ 369 0002 83B0     		sub	sp, sp, #12
+ 370              		.cfi_def_cfa_offset 16
+ 371 0004 00AF     		add	r7, sp, #0
+ 372              		.cfi_def_cfa_register 7
+ 373 0006 0346     		mov	r3, r0
+ 374 0008 FB71     		strb	r3, [r7, #7]
+ 263:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     ShiftReg_Security_SR_STATUS_MASK &= ((uint8) ~ShiftReg_Security_INTS_EN_MASK);          /* Clea
+ 375              		.loc 1 263 0
+ 376 000a 0C4A     		ldr	r2, .L29
+ 377 000c 0B4B     		ldr	r3, .L29
+ 378 000e 1B78     		ldrb	r3, [r3]
+ 379 0010 DBB2     		uxtb	r3, r3
+ 380 0012 23F00703 		bic	r3, r3, #7
+ 381 0016 DBB2     		uxtb	r3, r3
+ 382 0018 1370     		strb	r3, [r2]
+ 264:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     ShiftReg_Security_SR_STATUS_MASK |= (interruptSource & ShiftReg_Security_INTS_EN_MASK); /* Set 
+ 383              		.loc 1 264 0
+ 384 001a 0849     		ldr	r1, .L29
+ 385 001c 074B     		ldr	r3, .L29
+ 386 001e 1B78     		ldrb	r3, [r3]
+ 387 0020 DAB2     		uxtb	r2, r3
+ 388 0022 FB79     		ldrb	r3, [r7, #7]
+ 389 0024 03F00703 		and	r3, r3, #7
+ 390 0028 DBB2     		uxtb	r3, r3
+ 391 002a 1343     		orrs	r3, r3, r2
+ 392 002c DBB2     		uxtb	r3, r3
+ 393 002e 0B70     		strb	r3, [r1]
+ 265:.\Generated_Source\PSoC5/ShiftReg_Security.c **** }
+ 394              		.loc 1 265 0
+ 395 0030 0C37     		adds	r7, r7, #12
+ 396              		.cfi_def_cfa_offset 4
+ 397 0032 BD46     		mov	sp, r7
+ 398              		.cfi_def_cfa_register 13
+ 399              		@ sp needed
+ 400 0034 5DF8047B 		ldr	r7, [sp], #4
+ 401              		.cfi_restore 7
+ 402              		.cfi_def_cfa_offset 0
+ 403 0038 7047     		bx	lr
+ 404              	.L30:
+ 405 003a 00BF     		.align	2
+ 406              	.L29:
+ 407 003c 8B650040 		.word	1073767819
+ 408              		.cfi_endproc
+ 409              	.LFE7:
+ 410              		.size	ShiftReg_Security_SetIntMode, .-ShiftReg_Security_SetIntMode
+ 411              		.section	.text.ShiftReg_Security_GetIntStatus,"ax",%progbits
+ 412              		.align	2
+ 413              		.global	ShiftReg_Security_GetIntStatus
+ 414              		.thumb
+ 415              		.thumb_func
+ 416              		.type	ShiftReg_Security_GetIntStatus, %function
+ 417              	ShiftReg_Security_GetIntStatus:
+ 418              	.LFB8:
+ 266:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 13
+
+
+ 267:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 268:.\Generated_Source\PSoC5/ShiftReg_Security.c **** /*******************************************************************************
+ 269:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Function Name: ShiftReg_Security_GetIntStatus
+ 270:.\Generated_Source\PSoC5/ShiftReg_Security.c **** ********************************************************************************
+ 271:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 272:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Summary:
+ 273:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  Gets the Shift Register Interrupt status.
+ 274:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 275:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Parameters:
+ 276:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  None.
+ 277:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 278:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Return:
+ 279:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  Byte containing the constant for the selected interrupt source/s.
+ 280:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 281:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *******************************************************************************/
+ 282:.\Generated_Source\PSoC5/ShiftReg_Security.c **** uint8 ShiftReg_Security_GetIntStatus(void) 
+ 283:.\Generated_Source\PSoC5/ShiftReg_Security.c **** {
+ 419              		.loc 1 283 0
+ 420              		.cfi_startproc
+ 421              		@ args = 0, pretend = 0, frame = 0
+ 422              		@ frame_needed = 1, uses_anonymous_args = 0
+ 423              		@ link register save eliminated.
+ 424 0000 80B4     		push	{r7}
+ 425              		.cfi_def_cfa_offset 4
+ 426              		.cfi_offset 7, -4
+ 427 0002 00AF     		add	r7, sp, #0
+ 428              		.cfi_def_cfa_register 7
+ 284:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     return(ShiftReg_Security_SR_STATUS & ShiftReg_Security_INTS_EN_MASK);
+ 429              		.loc 1 284 0
+ 430 0004 054B     		ldr	r3, .L33
+ 431 0006 1B78     		ldrb	r3, [r3]
+ 432 0008 DBB2     		uxtb	r3, r3
+ 433 000a 03F00703 		and	r3, r3, #7
+ 434 000e DBB2     		uxtb	r3, r3
+ 285:.\Generated_Source\PSoC5/ShiftReg_Security.c **** }
+ 435              		.loc 1 285 0
+ 436 0010 1846     		mov	r0, r3
+ 437 0012 BD46     		mov	sp, r7
+ 438              		.cfi_def_cfa_register 13
+ 439              		@ sp needed
+ 440 0014 5DF8047B 		ldr	r7, [sp], #4
+ 441              		.cfi_restore 7
+ 442              		.cfi_def_cfa_offset 0
+ 443 0018 7047     		bx	lr
+ 444              	.L34:
+ 445 001a 00BF     		.align	2
+ 446              	.L33:
+ 447 001c 6B650040 		.word	1073767787
+ 448              		.cfi_endproc
+ 449              	.LFE8:
+ 450              		.size	ShiftReg_Security_GetIntStatus, .-ShiftReg_Security_GetIntStatus
+ 451              		.section	.text.ShiftReg_Security_WriteRegValue,"ax",%progbits
+ 452              		.align	2
+ 453              		.global	ShiftReg_Security_WriteRegValue
+ 454              		.thumb
+ 455              		.thumb_func
+ 456              		.type	ShiftReg_Security_WriteRegValue, %function
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 14
+
+
+ 457              	ShiftReg_Security_WriteRegValue:
+ 458              	.LFB9:
+ 286:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 287:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 288:.\Generated_Source\PSoC5/ShiftReg_Security.c **** /*******************************************************************************
+ 289:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Function Name: ShiftReg_Security_WriteRegValue
+ 290:.\Generated_Source\PSoC5/ShiftReg_Security.c **** ********************************************************************************
+ 291:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 292:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Summary:
+ 293:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  Send state directly to shift register
+ 294:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 295:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Parameters:
+ 296:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  shiftData: containing shift register state.
+ 297:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 298:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Return:
+ 299:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  None.
+ 300:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 301:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *******************************************************************************/
+ 302:.\Generated_Source\PSoC5/ShiftReg_Security.c **** void ShiftReg_Security_WriteRegValue(uint8 shiftData)
+ 303:.\Generated_Source\PSoC5/ShiftReg_Security.c ****                                                                      
+ 304:.\Generated_Source\PSoC5/ShiftReg_Security.c **** {
+ 459              		.loc 1 304 0
+ 460              		.cfi_startproc
+ 461              		@ args = 0, pretend = 0, frame = 8
+ 462              		@ frame_needed = 1, uses_anonymous_args = 0
+ 463              		@ link register save eliminated.
+ 464 0000 80B4     		push	{r7}
+ 465              		.cfi_def_cfa_offset 4
+ 466              		.cfi_offset 7, -4
+ 467 0002 83B0     		sub	sp, sp, #12
+ 468              		.cfi_def_cfa_offset 16
+ 469 0004 00AF     		add	r7, sp, #0
+ 470              		.cfi_def_cfa_register 7
+ 471 0006 0346     		mov	r3, r0
+ 472 0008 FB71     		strb	r3, [r7, #7]
+ 305:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     CY_SET_REG8(ShiftReg_Security_SHIFT_REG_LSB_PTR, shiftData);
+ 473              		.loc 1 305 0
+ 474 000a 044A     		ldr	r2, .L36
+ 475 000c FB79     		ldrb	r3, [r7, #7]
+ 476 000e 1370     		strb	r3, [r2]
+ 306:.\Generated_Source\PSoC5/ShiftReg_Security.c **** }
+ 477              		.loc 1 306 0
+ 478 0010 0C37     		adds	r7, r7, #12
+ 479              		.cfi_def_cfa_offset 4
+ 480 0012 BD46     		mov	sp, r7
+ 481              		.cfi_def_cfa_register 13
+ 482              		@ sp needed
+ 483 0014 5DF8047B 		ldr	r7, [sp], #4
+ 484              		.cfi_restore 7
+ 485              		.cfi_def_cfa_offset 0
+ 486 0018 7047     		bx	lr
+ 487              	.L37:
+ 488 001a 00BF     		.align	2
+ 489              	.L36:
+ 490 001c 07640040 		.word	1073767431
+ 491              		.cfi_endproc
+ 492              	.LFE9:
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 15
+
+
+ 493              		.size	ShiftReg_Security_WriteRegValue, .-ShiftReg_Security_WriteRegValue
+ 494              		.section	.text.ShiftReg_Security_ReadRegValue,"ax",%progbits
+ 495              		.align	2
+ 496              		.global	ShiftReg_Security_ReadRegValue
+ 497              		.thumb
+ 498              		.thumb_func
+ 499              		.type	ShiftReg_Security_ReadRegValue, %function
+ 500              	ShiftReg_Security_ReadRegValue:
+ 501              	.LFB10:
+ 307:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 308:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 309:.\Generated_Source\PSoC5/ShiftReg_Security.c **** #if(0u != ShiftReg_Security_USE_INPUT_FIFO)
+ 310:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     /*******************************************************************************
+ 311:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     * Function Name: ShiftReg_Security_WriteData
+ 312:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     ********************************************************************************
+ 313:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     *
+ 314:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     * Summary:
+ 315:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     *  Send state to FIFO for later transfer to shift register based on the Load
+ 316:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     *  input
+ 317:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     *
+ 318:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     * Parameters:
+ 319:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     *  shiftData: containing shift register state.
+ 320:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     *
+ 321:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     * Return:
+ 322:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     *  Indicates: successful execution of function
+ 323:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     *  when FIFO is empty; and error when FIFO is full.
+ 324:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     *
+ 325:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     * Reentrant:
+ 326:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     *  No.
+ 327:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     *
+ 328:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     *******************************************************************************/
+ 329:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     cystatus ShiftReg_Security_WriteData(uint8 shiftData)
+ 330:.\Generated_Source\PSoC5/ShiftReg_Security.c ****                                                                          
+ 331:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     {
+ 332:.\Generated_Source\PSoC5/ShiftReg_Security.c ****         cystatus result;
+ 333:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 334:.\Generated_Source\PSoC5/ShiftReg_Security.c ****         result = CYRET_INVALID_STATE;
+ 335:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 336:.\Generated_Source\PSoC5/ShiftReg_Security.c ****         /* Writes data into the input FIFO if it is not FULL */
+ 337:.\Generated_Source\PSoC5/ShiftReg_Security.c ****         if(ShiftReg_Security_RET_FIFO_FULL != (ShiftReg_Security_GetFIFOStatus(ShiftReg_Security_IN
+ 338:.\Generated_Source\PSoC5/ShiftReg_Security.c ****         {
+ 339:.\Generated_Source\PSoC5/ShiftReg_Security.c ****             CY_SET_REG8(ShiftReg_Security_IN_FIFO_VAL_LSB_PTR, shiftData);
+ 340:.\Generated_Source\PSoC5/ShiftReg_Security.c ****             result = CYRET_SUCCESS;
+ 341:.\Generated_Source\PSoC5/ShiftReg_Security.c ****         }
+ 342:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 343:.\Generated_Source\PSoC5/ShiftReg_Security.c ****         return(result);
+ 344:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     }
+ 345:.\Generated_Source\PSoC5/ShiftReg_Security.c **** #endif /* (0u != ShiftReg_Security_USE_INPUT_FIFO) */
+ 346:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 347:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 348:.\Generated_Source\PSoC5/ShiftReg_Security.c **** #if(0u != ShiftReg_Security_USE_OUTPUT_FIFO)
+ 349:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     /*******************************************************************************
+ 350:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     * Function Name: ShiftReg_Security_ReadData
+ 351:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     ********************************************************************************
+ 352:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     *
+ 353:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     * Summary:
+ 354:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     *  Returns state in FIFO due to Store input.
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 16
+
+
+ 355:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     *
+ 356:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     * Parameters:
+ 357:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     *  None.
+ 358:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     *
+ 359:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     * Return:
+ 360:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     *  Shift Register state
+ 361:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     *
+ 362:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     * Reentrant:
+ 363:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     *  No.
+ 364:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     *
+ 365:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     *******************************************************************************/
+ 366:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     uint8 ShiftReg_Security_ReadData(void) 
+ 367:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     {
+ 368:.\Generated_Source\PSoC5/ShiftReg_Security.c ****         return(CY_GET_REG8(ShiftReg_Security_OUT_FIFO_VAL_LSB_PTR));
+ 369:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     }
+ 370:.\Generated_Source\PSoC5/ShiftReg_Security.c **** #endif /* (0u != ShiftReg_Security_USE_OUTPUT_FIFO) */
+ 371:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 372:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 373:.\Generated_Source\PSoC5/ShiftReg_Security.c **** /*******************************************************************************
+ 374:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Function Name: ShiftReg_Security_ReadRegValue
+ 375:.\Generated_Source\PSoC5/ShiftReg_Security.c **** ********************************************************************************
+ 376:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 377:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Summary:
+ 378:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  Directly returns current state in shift register, not data in FIFO due
+ 379:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  to Store input.
+ 380:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 381:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Parameters:
+ 382:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  None.
+ 383:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 384:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Return:
+ 385:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  Shift Register state. Clears output FIFO.
+ 386:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 387:.\Generated_Source\PSoC5/ShiftReg_Security.c **** * Reentrant:
+ 388:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *  No.
+ 389:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *
+ 390:.\Generated_Source\PSoC5/ShiftReg_Security.c **** *******************************************************************************/
+ 391:.\Generated_Source\PSoC5/ShiftReg_Security.c **** uint8 ShiftReg_Security_ReadRegValue(void) 
+ 392:.\Generated_Source\PSoC5/ShiftReg_Security.c **** {
+ 502              		.loc 1 392 0
+ 503              		.cfi_startproc
+ 504              		@ args = 0, pretend = 0, frame = 8
+ 505              		@ frame_needed = 1, uses_anonymous_args = 0
+ 506 0000 80B5     		push	{r7, lr}
+ 507              		.cfi_def_cfa_offset 8
+ 508              		.cfi_offset 7, -8
+ 509              		.cfi_offset 14, -4
+ 510 0002 82B0     		sub	sp, sp, #8
+ 511              		.cfi_def_cfa_offset 16
+ 512 0004 00AF     		add	r7, sp, #0
+ 513              		.cfi_def_cfa_register 7
+ 393:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     uint8 result;
+ 394:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 395:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     /* Clear FIFO before software capture */
+ 396:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     while(ShiftReg_Security_RET_FIFO_EMPTY != ShiftReg_Security_GetFIFOStatus(ShiftReg_Security_OUT
+ 514              		.loc 1 396 0
+ 515 0006 01E0     		b	.L39
+ 516              	.L40:
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 17
+
+
+ 397:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     {
+ 398:.\Generated_Source\PSoC5/ShiftReg_Security.c ****         (void) CY_GET_REG8(ShiftReg_Security_OUT_FIFO_VAL_LSB_PTR);
+ 517              		.loc 1 398 0
+ 518 0008 084B     		ldr	r3, .L42
+ 519 000a 1B78     		ldrb	r3, [r3]
+ 520              	.L39:
+ 396:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     {
+ 521              		.loc 1 396 0
+ 522 000c 0220     		movs	r0, #2
+ 523 000e FFF7FEFF 		bl	ShiftReg_Security_GetFIFOStatus
+ 524 0012 0346     		mov	r3, r0
+ 525 0014 022B     		cmp	r3, #2
+ 526 0016 F7D1     		bne	.L40
+ 399:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     }
+ 400:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 401:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     /* Read of 8 bits from A1 causes capture to output FIFO */
+ 402:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     (void) CY_GET_REG8(ShiftReg_Security_SHIFT_REG_CAPTURE_PTR);
+ 527              		.loc 1 402 0
+ 528 0018 054B     		ldr	r3, .L42+4
+ 529 001a 1B78     		ldrb	r3, [r3]
+ 403:.\Generated_Source\PSoC5/ShiftReg_Security.c **** 
+ 404:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     /* Read output FIFO */
+ 405:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     result  = CY_GET_REG8(ShiftReg_Security_OUT_FIFO_VAL_LSB_PTR);
+ 530              		.loc 1 405 0
+ 531 001c 034B     		ldr	r3, .L42
+ 532 001e 1B78     		ldrb	r3, [r3]
+ 533 0020 FB71     		strb	r3, [r7, #7]
+ 406:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     
+ 407:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     #if(0u != (ShiftReg_Security_SR_SIZE % 8u))
+ 408:.\Generated_Source\PSoC5/ShiftReg_Security.c ****         result &= ((uint8) ShiftReg_Security_SR_MASK);
+ 409:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     #endif /* (0u != (ShiftReg_Security_SR_SIZE % 8u)) */
+ 410:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     
+ 411:.\Generated_Source\PSoC5/ShiftReg_Security.c ****     return(result);
+ 534              		.loc 1 411 0
+ 535 0022 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 412:.\Generated_Source\PSoC5/ShiftReg_Security.c **** }
+ 536              		.loc 1 412 0
+ 537 0024 1846     		mov	r0, r3
+ 538 0026 0837     		adds	r7, r7, #8
+ 539              		.cfi_def_cfa_offset 8
+ 540 0028 BD46     		mov	sp, r7
+ 541              		.cfi_def_cfa_register 13
+ 542              		@ sp needed
+ 543 002a 80BD     		pop	{r7, pc}
+ 544              	.L43:
+ 545              		.align	2
+ 546              	.L42:
+ 547 002c 57640040 		.word	1073767511
+ 548 0030 17640040 		.word	1073767447
+ 549              		.cfi_endproc
+ 550              	.LFE10:
+ 551              		.size	ShiftReg_Security_ReadRegValue, .-ShiftReg_Security_ReadRegValue
+ 552              		.text
+ 553              	.Letext0:
+ 554              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 555              		.section	.debug_info,"",%progbits
+ 556              	.Ldebug_info0:
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 18
+
+
+ 557 0000 00020000 		.4byte	0x200
+ 558 0004 0400     		.2byte	0x4
+ 559 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 560 000a 04       		.byte	0x4
+ 561 000b 01       		.uleb128 0x1
+ 562 000c 48010000 		.4byte	.LASF30
+ 563 0010 01       		.byte	0x1
+ 564 0011 77020000 		.4byte	.LASF31
+ 565 0015 75000000 		.4byte	.LASF32
+ 566 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 567 001d 00000000 		.4byte	0
+ 568 0021 00000000 		.4byte	.Ldebug_line0
+ 569 0025 02       		.uleb128 0x2
+ 570 0026 01       		.byte	0x1
+ 571 0027 06       		.byte	0x6
+ 572 0028 1F030000 		.4byte	.LASF0
+ 573 002c 02       		.uleb128 0x2
+ 574 002d 01       		.byte	0x1
+ 575 002e 08       		.byte	0x8
+ 576 002f D4000000 		.4byte	.LASF1
+ 577 0033 02       		.uleb128 0x2
+ 578 0034 02       		.byte	0x2
+ 579 0035 05       		.byte	0x5
+ 580 0036 D6020000 		.4byte	.LASF2
+ 581 003a 02       		.uleb128 0x2
+ 582 003b 02       		.byte	0x2
+ 583 003c 07       		.byte	0x7
+ 584 003d 5C000000 		.4byte	.LASF3
+ 585 0041 02       		.uleb128 0x2
+ 586 0042 04       		.byte	0x4
+ 587 0043 05       		.byte	0x5
+ 588 0044 FF020000 		.4byte	.LASF4
+ 589 0048 02       		.uleb128 0x2
+ 590 0049 04       		.byte	0x4
+ 591 004a 07       		.byte	0x7
+ 592 004b 10010000 		.4byte	.LASF5
+ 593 004f 02       		.uleb128 0x2
+ 594 0050 08       		.byte	0x8
+ 595 0051 05       		.byte	0x5
+ 596 0052 A4020000 		.4byte	.LASF6
+ 597 0056 02       		.uleb128 0x2
+ 598 0057 08       		.byte	0x8
+ 599 0058 07       		.byte	0x7
+ 600 0059 38020000 		.4byte	.LASF7
+ 601 005d 03       		.uleb128 0x3
+ 602 005e 04       		.byte	0x4
+ 603 005f 05       		.byte	0x5
+ 604 0060 696E7400 		.ascii	"int\000"
+ 605 0064 02       		.uleb128 0x2
+ 606 0065 04       		.byte	0x4
+ 607 0066 07       		.byte	0x7
+ 608 0067 2B020000 		.4byte	.LASF8
+ 609 006b 04       		.uleb128 0x4
+ 610 006c 22010000 		.4byte	.LASF12
+ 611 0070 02       		.byte	0x2
+ 612 0071 3801     		.2byte	0x138
+ 613 0073 2C000000 		.4byte	0x2c
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 19
+
+
+ 614 0077 02       		.uleb128 0x2
+ 615 0078 04       		.byte	0x4
+ 616 0079 04       		.byte	0x4
+ 617 007a 6F000000 		.4byte	.LASF9
+ 618 007e 02       		.uleb128 0x2
+ 619 007f 08       		.byte	0x8
+ 620 0080 04       		.byte	0x4
+ 621 0081 D6010000 		.4byte	.LASF10
+ 622 0085 02       		.uleb128 0x2
+ 623 0086 01       		.byte	0x1
+ 624 0087 08       		.byte	0x8
+ 625 0088 B2020000 		.4byte	.LASF11
+ 626 008c 04       		.uleb128 0x4
+ 627 008d FC000000 		.4byte	.LASF13
+ 628 0091 02       		.byte	0x2
+ 629 0092 E201     		.2byte	0x1e2
+ 630 0094 98000000 		.4byte	0x98
+ 631 0098 05       		.uleb128 0x5
+ 632 0099 6B000000 		.4byte	0x6b
+ 633 009d 02       		.uleb128 0x2
+ 634 009e 04       		.byte	0x4
+ 635 009f 07       		.byte	0x7
+ 636 00a0 6E020000 		.4byte	.LASF14
+ 637 00a4 06       		.uleb128 0x6
+ 638 00a5 56020000 		.4byte	.LASF15
+ 639 00a9 01       		.byte	0x1
+ 640 00aa 2B       		.byte	0x2b
+ 641 00ab 00000000 		.4byte	.LFB0
+ 642 00af 20000000 		.4byte	.LFE0-.LFB0
+ 643 00b3 01       		.uleb128 0x1
+ 644 00b4 9C       		.byte	0x9c
+ 645 00b5 06       		.uleb128 0x6
+ 646 00b6 28010000 		.4byte	.LASF16
+ 647 00ba 01       		.byte	0x1
+ 648 00bb 45       		.byte	0x45
+ 649 00bc 00000000 		.4byte	.LFB1
+ 650 00c0 20000000 		.4byte	.LFE1-.LFB1
+ 651 00c4 01       		.uleb128 0x1
+ 652 00c5 9C       		.byte	0x9c
+ 653 00c6 06       		.uleb128 0x6
+ 654 00c7 14020000 		.4byte	.LASF17
+ 655 00cb 01       		.byte	0x1
+ 656 00cc 5D       		.byte	0x5d
+ 657 00cd 00000000 		.4byte	.LFB2
+ 658 00d1 0C000000 		.4byte	.LFE2-.LFB2
+ 659 00d5 01       		.uleb128 0x1
+ 660 00d6 9C       		.byte	0x9c
+ 661 00d7 06       		.uleb128 0x6
+ 662 00d8 08030000 		.4byte	.LASF18
+ 663 00dc 01       		.byte	0x1
+ 664 00dd 71       		.byte	0x71
+ 665 00de 00000000 		.4byte	.LFB3
+ 666 00e2 20000000 		.4byte	.LFE3-.LFB3
+ 667 00e6 01       		.uleb128 0x1
+ 668 00e7 9C       		.byte	0x9c
+ 669 00e8 07       		.uleb128 0x7
+ 670 00e9 20000000 		.4byte	.LASF19
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 20
+
+
+ 671 00ed 01       		.byte	0x1
+ 672 00ee 87       		.byte	0x87
+ 673 00ef 00000000 		.4byte	.LFB4
+ 674 00f3 30000000 		.4byte	.LFE4-.LFB4
+ 675 00f7 01       		.uleb128 0x1
+ 676 00f8 9C       		.byte	0x9c
+ 677 00f9 0C010000 		.4byte	0x10c
+ 678 00fd 08       		.uleb128 0x8
+ 679 00fe 01010000 		.4byte	.LASF21
+ 680 0102 01       		.byte	0x1
+ 681 0103 89       		.byte	0x89
+ 682 0104 6B000000 		.4byte	0x6b
+ 683 0108 02       		.uleb128 0x2
+ 684 0109 91       		.byte	0x91
+ 685 010a 77       		.sleb128 -9
+ 686 010b 00       		.byte	0
+ 687 010c 07       		.uleb128 0x7
+ 688 010d 2B030000 		.4byte	.LASF20
+ 689 0111 01       		.byte	0x1
+ 690 0112 9F       		.byte	0x9f
+ 691 0113 00000000 		.4byte	.LFB5
+ 692 0117 30000000 		.4byte	.LFE5-.LFB5
+ 693 011b 01       		.uleb128 0x1
+ 694 011c 9C       		.byte	0x9c
+ 695 011d 30010000 		.4byte	0x130
+ 696 0121 08       		.uleb128 0x8
+ 697 0122 01010000 		.4byte	.LASF21
+ 698 0126 01       		.byte	0x1
+ 699 0127 A1       		.byte	0xa1
+ 700 0128 6B000000 		.4byte	0x6b
+ 701 012c 02       		.uleb128 0x2
+ 702 012d 91       		.byte	0x91
+ 703 012e 77       		.sleb128 -9
+ 704 012f 00       		.byte	0
+ 705 0130 09       		.uleb128 0x9
+ 706 0131 00000000 		.4byte	.LASF28
+ 707 0135 01       		.byte	0x1
+ 708 0136 B7       		.byte	0xb7
+ 709 0137 6B000000 		.4byte	0x6b
+ 710 013b 00000000 		.4byte	.LFB6
+ 711 013f 58000000 		.4byte	.LFE6-.LFB6
+ 712 0143 01       		.uleb128 0x1
+ 713 0144 9C       		.byte	0x9c
+ 714 0145 66010000 		.4byte	0x166
+ 715 0149 0A       		.uleb128 0xa
+ 716 014a 41010000 		.4byte	.LASF24
+ 717 014e 01       		.byte	0x1
+ 718 014f B7       		.byte	0xb7
+ 719 0150 6B000000 		.4byte	0x6b
+ 720 0154 02       		.uleb128 0x2
+ 721 0155 91       		.byte	0x91
+ 722 0156 6F       		.sleb128 -17
+ 723 0157 08       		.uleb128 0x8
+ 724 0158 4F020000 		.4byte	.LASF22
+ 725 015c 01       		.byte	0x1
+ 726 015d B9       		.byte	0xb9
+ 727 015e 6B000000 		.4byte	0x6b
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 21
+
+
+ 728 0162 02       		.uleb128 0x2
+ 729 0163 91       		.byte	0x91
+ 730 0164 77       		.sleb128 -9
+ 731 0165 00       		.byte	0
+ 732 0166 0B       		.uleb128 0xb
+ 733 0167 DD010000 		.4byte	.LASF23
+ 734 016b 01       		.byte	0x1
+ 735 016c 0501     		.2byte	0x105
+ 736 016e 00000000 		.4byte	.LFB7
+ 737 0172 40000000 		.4byte	.LFE7-.LFB7
+ 738 0176 01       		.uleb128 0x1
+ 739 0177 9C       		.byte	0x9c
+ 740 0178 8C010000 		.4byte	0x18c
+ 741 017c 0C       		.uleb128 0xc
+ 742 017d FA010000 		.4byte	.LASF25
+ 743 0181 01       		.byte	0x1
+ 744 0182 0501     		.2byte	0x105
+ 745 0184 6B000000 		.4byte	0x6b
+ 746 0188 02       		.uleb128 0x2
+ 747 0189 91       		.byte	0x91
+ 748 018a 77       		.sleb128 -9
+ 749 018b 00       		.byte	0
+ 750 018c 0D       		.uleb128 0xd
+ 751 018d B7020000 		.4byte	.LASF33
+ 752 0191 01       		.byte	0x1
+ 753 0192 1A01     		.2byte	0x11a
+ 754 0194 6B000000 		.4byte	0x6b
+ 755 0198 00000000 		.4byte	.LFB8
+ 756 019c 20000000 		.4byte	.LFE8-.LFB8
+ 757 01a0 01       		.uleb128 0x1
+ 758 01a1 9C       		.byte	0x9c
+ 759 01a2 0B       		.uleb128 0xb
+ 760 01a3 3C000000 		.4byte	.LASF26
+ 761 01a7 01       		.byte	0x1
+ 762 01a8 2E01     		.2byte	0x12e
+ 763 01aa 00000000 		.4byte	.LFB9
+ 764 01ae 20000000 		.4byte	.LFE9-.LFB9
+ 765 01b2 01       		.uleb128 0x1
+ 766 01b3 9C       		.byte	0x9c
+ 767 01b4 C8010000 		.4byte	0x1c8
+ 768 01b8 0C       		.uleb128 0xc
+ 769 01b9 0A020000 		.4byte	.LASF27
+ 770 01bd 01       		.byte	0x1
+ 771 01be 2E01     		.2byte	0x12e
+ 772 01c0 6B000000 		.4byte	0x6b
+ 773 01c4 02       		.uleb128 0x2
+ 774 01c5 91       		.byte	0x91
+ 775 01c6 77       		.sleb128 -9
+ 776 01c7 00       		.byte	0
+ 777 01c8 0E       		.uleb128 0xe
+ 778 01c9 E0020000 		.4byte	.LASF29
+ 779 01cd 01       		.byte	0x1
+ 780 01ce 8701     		.2byte	0x187
+ 781 01d0 6B000000 		.4byte	0x6b
+ 782 01d4 00000000 		.4byte	.LFB10
+ 783 01d8 34000000 		.4byte	.LFE10-.LFB10
+ 784 01dc 01       		.uleb128 0x1
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 22
+
+
+ 785 01dd 9C       		.byte	0x9c
+ 786 01de F2010000 		.4byte	0x1f2
+ 787 01e2 0F       		.uleb128 0xf
+ 788 01e3 4F020000 		.4byte	.LASF22
+ 789 01e7 01       		.byte	0x1
+ 790 01e8 8901     		.2byte	0x189
+ 791 01ea 6B000000 		.4byte	0x6b
+ 792 01ee 02       		.uleb128 0x2
+ 793 01ef 91       		.byte	0x91
+ 794 01f0 77       		.sleb128 -9
+ 795 01f1 00       		.byte	0
+ 796 01f2 10       		.uleb128 0x10
+ 797 01f3 E2000000 		.4byte	.LASF34
+ 798 01f7 01       		.byte	0x1
+ 799 01f8 13       		.byte	0x13
+ 800 01f9 6B000000 		.4byte	0x6b
+ 801 01fd 05       		.uleb128 0x5
+ 802 01fe 03       		.byte	0x3
+ 803 01ff 00000000 		.4byte	ShiftReg_Security_initVar
+ 804 0203 00       		.byte	0
+ 805              		.section	.debug_abbrev,"",%progbits
+ 806              	.Ldebug_abbrev0:
+ 807 0000 01       		.uleb128 0x1
+ 808 0001 11       		.uleb128 0x11
+ 809 0002 01       		.byte	0x1
+ 810 0003 25       		.uleb128 0x25
+ 811 0004 0E       		.uleb128 0xe
+ 812 0005 13       		.uleb128 0x13
+ 813 0006 0B       		.uleb128 0xb
+ 814 0007 03       		.uleb128 0x3
+ 815 0008 0E       		.uleb128 0xe
+ 816 0009 1B       		.uleb128 0x1b
+ 817 000a 0E       		.uleb128 0xe
+ 818 000b 55       		.uleb128 0x55
+ 819 000c 17       		.uleb128 0x17
+ 820 000d 11       		.uleb128 0x11
+ 821 000e 01       		.uleb128 0x1
+ 822 000f 10       		.uleb128 0x10
+ 823 0010 17       		.uleb128 0x17
+ 824 0011 00       		.byte	0
+ 825 0012 00       		.byte	0
+ 826 0013 02       		.uleb128 0x2
+ 827 0014 24       		.uleb128 0x24
+ 828 0015 00       		.byte	0
+ 829 0016 0B       		.uleb128 0xb
+ 830 0017 0B       		.uleb128 0xb
+ 831 0018 3E       		.uleb128 0x3e
+ 832 0019 0B       		.uleb128 0xb
+ 833 001a 03       		.uleb128 0x3
+ 834 001b 0E       		.uleb128 0xe
+ 835 001c 00       		.byte	0
+ 836 001d 00       		.byte	0
+ 837 001e 03       		.uleb128 0x3
+ 838 001f 24       		.uleb128 0x24
+ 839 0020 00       		.byte	0
+ 840 0021 0B       		.uleb128 0xb
+ 841 0022 0B       		.uleb128 0xb
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 23
+
+
+ 842 0023 3E       		.uleb128 0x3e
+ 843 0024 0B       		.uleb128 0xb
+ 844 0025 03       		.uleb128 0x3
+ 845 0026 08       		.uleb128 0x8
+ 846 0027 00       		.byte	0
+ 847 0028 00       		.byte	0
+ 848 0029 04       		.uleb128 0x4
+ 849 002a 16       		.uleb128 0x16
+ 850 002b 00       		.byte	0
+ 851 002c 03       		.uleb128 0x3
+ 852 002d 0E       		.uleb128 0xe
+ 853 002e 3A       		.uleb128 0x3a
+ 854 002f 0B       		.uleb128 0xb
+ 855 0030 3B       		.uleb128 0x3b
+ 856 0031 05       		.uleb128 0x5
+ 857 0032 49       		.uleb128 0x49
+ 858 0033 13       		.uleb128 0x13
+ 859 0034 00       		.byte	0
+ 860 0035 00       		.byte	0
+ 861 0036 05       		.uleb128 0x5
+ 862 0037 35       		.uleb128 0x35
+ 863 0038 00       		.byte	0
+ 864 0039 49       		.uleb128 0x49
+ 865 003a 13       		.uleb128 0x13
+ 866 003b 00       		.byte	0
+ 867 003c 00       		.byte	0
+ 868 003d 06       		.uleb128 0x6
+ 869 003e 2E       		.uleb128 0x2e
+ 870 003f 00       		.byte	0
+ 871 0040 3F       		.uleb128 0x3f
+ 872 0041 19       		.uleb128 0x19
+ 873 0042 03       		.uleb128 0x3
+ 874 0043 0E       		.uleb128 0xe
+ 875 0044 3A       		.uleb128 0x3a
+ 876 0045 0B       		.uleb128 0xb
+ 877 0046 3B       		.uleb128 0x3b
+ 878 0047 0B       		.uleb128 0xb
+ 879 0048 27       		.uleb128 0x27
+ 880 0049 19       		.uleb128 0x19
+ 881 004a 11       		.uleb128 0x11
+ 882 004b 01       		.uleb128 0x1
+ 883 004c 12       		.uleb128 0x12
+ 884 004d 06       		.uleb128 0x6
+ 885 004e 40       		.uleb128 0x40
+ 886 004f 18       		.uleb128 0x18
+ 887 0050 9642     		.uleb128 0x2116
+ 888 0052 19       		.uleb128 0x19
+ 889 0053 00       		.byte	0
+ 890 0054 00       		.byte	0
+ 891 0055 07       		.uleb128 0x7
+ 892 0056 2E       		.uleb128 0x2e
+ 893 0057 01       		.byte	0x1
+ 894 0058 3F       		.uleb128 0x3f
+ 895 0059 19       		.uleb128 0x19
+ 896 005a 03       		.uleb128 0x3
+ 897 005b 0E       		.uleb128 0xe
+ 898 005c 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 24
+
+
+ 899 005d 0B       		.uleb128 0xb
+ 900 005e 3B       		.uleb128 0x3b
+ 901 005f 0B       		.uleb128 0xb
+ 902 0060 27       		.uleb128 0x27
+ 903 0061 19       		.uleb128 0x19
+ 904 0062 11       		.uleb128 0x11
+ 905 0063 01       		.uleb128 0x1
+ 906 0064 12       		.uleb128 0x12
+ 907 0065 06       		.uleb128 0x6
+ 908 0066 40       		.uleb128 0x40
+ 909 0067 18       		.uleb128 0x18
+ 910 0068 9642     		.uleb128 0x2116
+ 911 006a 19       		.uleb128 0x19
+ 912 006b 01       		.uleb128 0x1
+ 913 006c 13       		.uleb128 0x13
+ 914 006d 00       		.byte	0
+ 915 006e 00       		.byte	0
+ 916 006f 08       		.uleb128 0x8
+ 917 0070 34       		.uleb128 0x34
+ 918 0071 00       		.byte	0
+ 919 0072 03       		.uleb128 0x3
+ 920 0073 0E       		.uleb128 0xe
+ 921 0074 3A       		.uleb128 0x3a
+ 922 0075 0B       		.uleb128 0xb
+ 923 0076 3B       		.uleb128 0x3b
+ 924 0077 0B       		.uleb128 0xb
+ 925 0078 49       		.uleb128 0x49
+ 926 0079 13       		.uleb128 0x13
+ 927 007a 02       		.uleb128 0x2
+ 928 007b 18       		.uleb128 0x18
+ 929 007c 00       		.byte	0
+ 930 007d 00       		.byte	0
+ 931 007e 09       		.uleb128 0x9
+ 932 007f 2E       		.uleb128 0x2e
+ 933 0080 01       		.byte	0x1
+ 934 0081 3F       		.uleb128 0x3f
+ 935 0082 19       		.uleb128 0x19
+ 936 0083 03       		.uleb128 0x3
+ 937 0084 0E       		.uleb128 0xe
+ 938 0085 3A       		.uleb128 0x3a
+ 939 0086 0B       		.uleb128 0xb
+ 940 0087 3B       		.uleb128 0x3b
+ 941 0088 0B       		.uleb128 0xb
+ 942 0089 27       		.uleb128 0x27
+ 943 008a 19       		.uleb128 0x19
+ 944 008b 49       		.uleb128 0x49
+ 945 008c 13       		.uleb128 0x13
+ 946 008d 11       		.uleb128 0x11
+ 947 008e 01       		.uleb128 0x1
+ 948 008f 12       		.uleb128 0x12
+ 949 0090 06       		.uleb128 0x6
+ 950 0091 40       		.uleb128 0x40
+ 951 0092 18       		.uleb128 0x18
+ 952 0093 9742     		.uleb128 0x2117
+ 953 0095 19       		.uleb128 0x19
+ 954 0096 01       		.uleb128 0x1
+ 955 0097 13       		.uleb128 0x13
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 25
+
+
+ 956 0098 00       		.byte	0
+ 957 0099 00       		.byte	0
+ 958 009a 0A       		.uleb128 0xa
+ 959 009b 05       		.uleb128 0x5
+ 960 009c 00       		.byte	0
+ 961 009d 03       		.uleb128 0x3
+ 962 009e 0E       		.uleb128 0xe
+ 963 009f 3A       		.uleb128 0x3a
+ 964 00a0 0B       		.uleb128 0xb
+ 965 00a1 3B       		.uleb128 0x3b
+ 966 00a2 0B       		.uleb128 0xb
+ 967 00a3 49       		.uleb128 0x49
+ 968 00a4 13       		.uleb128 0x13
+ 969 00a5 02       		.uleb128 0x2
+ 970 00a6 18       		.uleb128 0x18
+ 971 00a7 00       		.byte	0
+ 972 00a8 00       		.byte	0
+ 973 00a9 0B       		.uleb128 0xb
+ 974 00aa 2E       		.uleb128 0x2e
+ 975 00ab 01       		.byte	0x1
+ 976 00ac 3F       		.uleb128 0x3f
+ 977 00ad 19       		.uleb128 0x19
+ 978 00ae 03       		.uleb128 0x3
+ 979 00af 0E       		.uleb128 0xe
+ 980 00b0 3A       		.uleb128 0x3a
+ 981 00b1 0B       		.uleb128 0xb
+ 982 00b2 3B       		.uleb128 0x3b
+ 983 00b3 05       		.uleb128 0x5
+ 984 00b4 27       		.uleb128 0x27
+ 985 00b5 19       		.uleb128 0x19
+ 986 00b6 11       		.uleb128 0x11
+ 987 00b7 01       		.uleb128 0x1
+ 988 00b8 12       		.uleb128 0x12
+ 989 00b9 06       		.uleb128 0x6
+ 990 00ba 40       		.uleb128 0x40
+ 991 00bb 18       		.uleb128 0x18
+ 992 00bc 9742     		.uleb128 0x2117
+ 993 00be 19       		.uleb128 0x19
+ 994 00bf 01       		.uleb128 0x1
+ 995 00c0 13       		.uleb128 0x13
+ 996 00c1 00       		.byte	0
+ 997 00c2 00       		.byte	0
+ 998 00c3 0C       		.uleb128 0xc
+ 999 00c4 05       		.uleb128 0x5
+ 1000 00c5 00       		.byte	0
+ 1001 00c6 03       		.uleb128 0x3
+ 1002 00c7 0E       		.uleb128 0xe
+ 1003 00c8 3A       		.uleb128 0x3a
+ 1004 00c9 0B       		.uleb128 0xb
+ 1005 00ca 3B       		.uleb128 0x3b
+ 1006 00cb 05       		.uleb128 0x5
+ 1007 00cc 49       		.uleb128 0x49
+ 1008 00cd 13       		.uleb128 0x13
+ 1009 00ce 02       		.uleb128 0x2
+ 1010 00cf 18       		.uleb128 0x18
+ 1011 00d0 00       		.byte	0
+ 1012 00d1 00       		.byte	0
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 26
+
+
+ 1013 00d2 0D       		.uleb128 0xd
+ 1014 00d3 2E       		.uleb128 0x2e
+ 1015 00d4 00       		.byte	0
+ 1016 00d5 3F       		.uleb128 0x3f
+ 1017 00d6 19       		.uleb128 0x19
+ 1018 00d7 03       		.uleb128 0x3
+ 1019 00d8 0E       		.uleb128 0xe
+ 1020 00d9 3A       		.uleb128 0x3a
+ 1021 00da 0B       		.uleb128 0xb
+ 1022 00db 3B       		.uleb128 0x3b
+ 1023 00dc 05       		.uleb128 0x5
+ 1024 00dd 27       		.uleb128 0x27
+ 1025 00de 19       		.uleb128 0x19
+ 1026 00df 49       		.uleb128 0x49
+ 1027 00e0 13       		.uleb128 0x13
+ 1028 00e1 11       		.uleb128 0x11
+ 1029 00e2 01       		.uleb128 0x1
+ 1030 00e3 12       		.uleb128 0x12
+ 1031 00e4 06       		.uleb128 0x6
+ 1032 00e5 40       		.uleb128 0x40
+ 1033 00e6 18       		.uleb128 0x18
+ 1034 00e7 9742     		.uleb128 0x2117
+ 1035 00e9 19       		.uleb128 0x19
+ 1036 00ea 00       		.byte	0
+ 1037 00eb 00       		.byte	0
+ 1038 00ec 0E       		.uleb128 0xe
+ 1039 00ed 2E       		.uleb128 0x2e
+ 1040 00ee 01       		.byte	0x1
+ 1041 00ef 3F       		.uleb128 0x3f
+ 1042 00f0 19       		.uleb128 0x19
+ 1043 00f1 03       		.uleb128 0x3
+ 1044 00f2 0E       		.uleb128 0xe
+ 1045 00f3 3A       		.uleb128 0x3a
+ 1046 00f4 0B       		.uleb128 0xb
+ 1047 00f5 3B       		.uleb128 0x3b
+ 1048 00f6 05       		.uleb128 0x5
+ 1049 00f7 27       		.uleb128 0x27
+ 1050 00f8 19       		.uleb128 0x19
+ 1051 00f9 49       		.uleb128 0x49
+ 1052 00fa 13       		.uleb128 0x13
+ 1053 00fb 11       		.uleb128 0x11
+ 1054 00fc 01       		.uleb128 0x1
+ 1055 00fd 12       		.uleb128 0x12
+ 1056 00fe 06       		.uleb128 0x6
+ 1057 00ff 40       		.uleb128 0x40
+ 1058 0100 18       		.uleb128 0x18
+ 1059 0101 9642     		.uleb128 0x2116
+ 1060 0103 19       		.uleb128 0x19
+ 1061 0104 01       		.uleb128 0x1
+ 1062 0105 13       		.uleb128 0x13
+ 1063 0106 00       		.byte	0
+ 1064 0107 00       		.byte	0
+ 1065 0108 0F       		.uleb128 0xf
+ 1066 0109 34       		.uleb128 0x34
+ 1067 010a 00       		.byte	0
+ 1068 010b 03       		.uleb128 0x3
+ 1069 010c 0E       		.uleb128 0xe
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 27
+
+
+ 1070 010d 3A       		.uleb128 0x3a
+ 1071 010e 0B       		.uleb128 0xb
+ 1072 010f 3B       		.uleb128 0x3b
+ 1073 0110 05       		.uleb128 0x5
+ 1074 0111 49       		.uleb128 0x49
+ 1075 0112 13       		.uleb128 0x13
+ 1076 0113 02       		.uleb128 0x2
+ 1077 0114 18       		.uleb128 0x18
+ 1078 0115 00       		.byte	0
+ 1079 0116 00       		.byte	0
+ 1080 0117 10       		.uleb128 0x10
+ 1081 0118 34       		.uleb128 0x34
+ 1082 0119 00       		.byte	0
+ 1083 011a 03       		.uleb128 0x3
+ 1084 011b 0E       		.uleb128 0xe
+ 1085 011c 3A       		.uleb128 0x3a
+ 1086 011d 0B       		.uleb128 0xb
+ 1087 011e 3B       		.uleb128 0x3b
+ 1088 011f 0B       		.uleb128 0xb
+ 1089 0120 49       		.uleb128 0x49
+ 1090 0121 13       		.uleb128 0x13
+ 1091 0122 3F       		.uleb128 0x3f
+ 1092 0123 19       		.uleb128 0x19
+ 1093 0124 02       		.uleb128 0x2
+ 1094 0125 18       		.uleb128 0x18
+ 1095 0126 00       		.byte	0
+ 1096 0127 00       		.byte	0
+ 1097 0128 00       		.byte	0
+ 1098              		.section	.debug_aranges,"",%progbits
+ 1099 0000 6C000000 		.4byte	0x6c
+ 1100 0004 0200     		.2byte	0x2
+ 1101 0006 00000000 		.4byte	.Ldebug_info0
+ 1102 000a 04       		.byte	0x4
+ 1103 000b 00       		.byte	0
+ 1104 000c 0000     		.2byte	0
+ 1105 000e 0000     		.2byte	0
+ 1106 0010 00000000 		.4byte	.LFB0
+ 1107 0014 20000000 		.4byte	.LFE0-.LFB0
+ 1108 0018 00000000 		.4byte	.LFB1
+ 1109 001c 20000000 		.4byte	.LFE1-.LFB1
+ 1110 0020 00000000 		.4byte	.LFB2
+ 1111 0024 0C000000 		.4byte	.LFE2-.LFB2
+ 1112 0028 00000000 		.4byte	.LFB3
+ 1113 002c 20000000 		.4byte	.LFE3-.LFB3
+ 1114 0030 00000000 		.4byte	.LFB4
+ 1115 0034 30000000 		.4byte	.LFE4-.LFB4
+ 1116 0038 00000000 		.4byte	.LFB5
+ 1117 003c 30000000 		.4byte	.LFE5-.LFB5
+ 1118 0040 00000000 		.4byte	.LFB6
+ 1119 0044 58000000 		.4byte	.LFE6-.LFB6
+ 1120 0048 00000000 		.4byte	.LFB7
+ 1121 004c 40000000 		.4byte	.LFE7-.LFB7
+ 1122 0050 00000000 		.4byte	.LFB8
+ 1123 0054 20000000 		.4byte	.LFE8-.LFB8
+ 1124 0058 00000000 		.4byte	.LFB9
+ 1125 005c 20000000 		.4byte	.LFE9-.LFB9
+ 1126 0060 00000000 		.4byte	.LFB10
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 28
+
+
+ 1127 0064 34000000 		.4byte	.LFE10-.LFB10
+ 1128 0068 00000000 		.4byte	0
+ 1129 006c 00000000 		.4byte	0
+ 1130              		.section	.debug_ranges,"",%progbits
+ 1131              	.Ldebug_ranges0:
+ 1132 0000 00000000 		.4byte	.LFB0
+ 1133 0004 20000000 		.4byte	.LFE0
+ 1134 0008 00000000 		.4byte	.LFB1
+ 1135 000c 20000000 		.4byte	.LFE1
+ 1136 0010 00000000 		.4byte	.LFB2
+ 1137 0014 0C000000 		.4byte	.LFE2
+ 1138 0018 00000000 		.4byte	.LFB3
+ 1139 001c 20000000 		.4byte	.LFE3
+ 1140 0020 00000000 		.4byte	.LFB4
+ 1141 0024 30000000 		.4byte	.LFE4
+ 1142 0028 00000000 		.4byte	.LFB5
+ 1143 002c 30000000 		.4byte	.LFE5
+ 1144 0030 00000000 		.4byte	.LFB6
+ 1145 0034 58000000 		.4byte	.LFE6
+ 1146 0038 00000000 		.4byte	.LFB7
+ 1147 003c 40000000 		.4byte	.LFE7
+ 1148 0040 00000000 		.4byte	.LFB8
+ 1149 0044 20000000 		.4byte	.LFE8
+ 1150 0048 00000000 		.4byte	.LFB9
+ 1151 004c 20000000 		.4byte	.LFE9
+ 1152 0050 00000000 		.4byte	.LFB10
+ 1153 0054 34000000 		.4byte	.LFE10
+ 1154 0058 00000000 		.4byte	0
+ 1155 005c 00000000 		.4byte	0
+ 1156              		.section	.debug_line,"",%progbits
+ 1157              	.Ldebug_line0:
+ 1158 0000 37010000 		.section	.debug_str,"MS",%progbits,1
+ 1158      02005000 
+ 1158      00000201 
+ 1158      FB0E0D00 
+ 1158      01010101 
+ 1159              	.LASF28:
+ 1160 0000 53686966 		.ascii	"ShiftReg_Security_GetFIFOStatus\000"
+ 1160      74526567 
+ 1160      5F536563 
+ 1160      75726974 
+ 1160      795F4765 
+ 1161              	.LASF19:
+ 1162 0020 53686966 		.ascii	"ShiftReg_Security_EnableInt\000"
+ 1162      74526567 
+ 1162      5F536563 
+ 1162      75726974 
+ 1162      795F456E 
+ 1163              	.LASF26:
+ 1164 003c 53686966 		.ascii	"ShiftReg_Security_WriteRegValue\000"
+ 1164      74526567 
+ 1164      5F536563 
+ 1164      75726974 
+ 1164      795F5772 
+ 1165              	.LASF3:
+ 1166 005c 73686F72 		.ascii	"short unsigned int\000"
+ 1166      7420756E 
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 29
+
+
+ 1166      7369676E 
+ 1166      65642069 
+ 1166      6E7400
+ 1167              	.LASF9:
+ 1168 006f 666C6F61 		.ascii	"float\000"
+ 1168      7400
+ 1169              	.LASF32:
+ 1170 0075 433A5C54 		.ascii	"C:\\TeamInsepet\\NSX-Prime\\Hardware\\CorEx-MUX-Ker"
+ 1170      65616D49 
+ 1170      6E736570 
+ 1170      65745C4E 
+ 1170      53582D50 
+ 1171 00a4 6E656C2D 		.ascii	"nel-Enhanced\\Workspace01\\CorEx-Mux-Kernel.cydsn\000"
+ 1171      456E6861 
+ 1171      6E636564 
+ 1171      5C576F72 
+ 1171      6B737061 
+ 1172              	.LASF1:
+ 1173 00d4 756E7369 		.ascii	"unsigned char\000"
+ 1173      676E6564 
+ 1173      20636861 
+ 1173      7200
+ 1174              	.LASF34:
+ 1175 00e2 53686966 		.ascii	"ShiftReg_Security_initVar\000"
+ 1175      74526567 
+ 1175      5F536563 
+ 1175      75726974 
+ 1175      795F696E 
+ 1176              	.LASF13:
+ 1177 00fc 72656738 		.ascii	"reg8\000"
+ 1177      00
+ 1178              	.LASF21:
+ 1179 0101 696E7465 		.ascii	"interruptState\000"
+ 1179      72727570 
+ 1179      74537461 
+ 1179      746500
+ 1180              	.LASF5:
+ 1181 0110 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1181      20756E73 
+ 1181      69676E65 
+ 1181      6420696E 
+ 1181      7400
+ 1182              	.LASF12:
+ 1183 0122 75696E74 		.ascii	"uint8\000"
+ 1183      3800
+ 1184              	.LASF16:
+ 1185 0128 53686966 		.ascii	"ShiftReg_Security_Enable\000"
+ 1185      74526567 
+ 1185      5F536563 
+ 1185      75726974 
+ 1185      795F456E 
+ 1186              	.LASF24:
+ 1187 0141 6669666F 		.ascii	"fifoId\000"
+ 1187      496400
+ 1188              	.LASF30:
+ 1189 0148 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1189      4320342E 
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 30
+
+
+ 1189      392E3320 
+ 1189      32303135 
+ 1189      30333033 
+ 1190 017b 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1190      20726576 
+ 1190      6973696F 
+ 1190      6E203232 
+ 1190      31323230 
+ 1191 01ae 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1191      66756E63 
+ 1191      74696F6E 
+ 1191      2D736563 
+ 1191      74696F6E 
+ 1192              	.LASF10:
+ 1193 01d6 646F7562 		.ascii	"double\000"
+ 1193      6C6500
+ 1194              	.LASF23:
+ 1195 01dd 53686966 		.ascii	"ShiftReg_Security_SetIntMode\000"
+ 1195      74526567 
+ 1195      5F536563 
+ 1195      75726974 
+ 1195      795F5365 
+ 1196              	.LASF25:
+ 1197 01fa 696E7465 		.ascii	"interruptSource\000"
+ 1197      72727570 
+ 1197      74536F75 
+ 1197      72636500 
+ 1198              	.LASF27:
+ 1199 020a 73686966 		.ascii	"shiftData\000"
+ 1199      74446174 
+ 1199      6100
+ 1200              	.LASF17:
+ 1201 0214 53686966 		.ascii	"ShiftReg_Security_Init\000"
+ 1201      74526567 
+ 1201      5F536563 
+ 1201      75726974 
+ 1201      795F496E 
+ 1202              	.LASF8:
+ 1203 022b 756E7369 		.ascii	"unsigned int\000"
+ 1203      676E6564 
+ 1203      20696E74 
+ 1203      00
+ 1204              	.LASF7:
+ 1205 0238 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1205      206C6F6E 
+ 1205      6720756E 
+ 1205      7369676E 
+ 1205      65642069 
+ 1206              	.LASF22:
+ 1207 024f 72657375 		.ascii	"result\000"
+ 1207      6C7400
+ 1208              	.LASF15:
+ 1209 0256 53686966 		.ascii	"ShiftReg_Security_Start\000"
+ 1209      74526567 
+ 1209      5F536563 
+ 1209      75726974 
+ 1209      795F5374 
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccV8PtYg.s 			page 31
+
+
+ 1210              	.LASF14:
+ 1211 026e 73697A65 		.ascii	"sizetype\000"
+ 1211      74797065 
+ 1211      00
+ 1212              	.LASF31:
+ 1213 0277 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\ShiftReg_Security.c\000"
+ 1213      6E657261 
+ 1213      7465645F 
+ 1213      536F7572 
+ 1213      63655C50 
+ 1214              	.LASF6:
+ 1215 02a4 6C6F6E67 		.ascii	"long long int\000"
+ 1215      206C6F6E 
+ 1215      6720696E 
+ 1215      7400
+ 1216              	.LASF11:
+ 1217 02b2 63686172 		.ascii	"char\000"
+ 1217      00
+ 1218              	.LASF33:
+ 1219 02b7 53686966 		.ascii	"ShiftReg_Security_GetIntStatus\000"
+ 1219      74526567 
+ 1219      5F536563 
+ 1219      75726974 
+ 1219      795F4765 
+ 1220              	.LASF2:
+ 1221 02d6 73686F72 		.ascii	"short int\000"
+ 1221      7420696E 
+ 1221      7400
+ 1222              	.LASF29:
+ 1223 02e0 53686966 		.ascii	"ShiftReg_Security_ReadRegValue\000"
+ 1223      74526567 
+ 1223      5F536563 
+ 1223      75726974 
+ 1223      795F5265 
+ 1224              	.LASF4:
+ 1225 02ff 6C6F6E67 		.ascii	"long int\000"
+ 1225      20696E74 
+ 1225      00
+ 1226              	.LASF18:
+ 1227 0308 53686966 		.ascii	"ShiftReg_Security_Stop\000"
+ 1227      74526567 
+ 1227      5F536563 
+ 1227      75726974 
+ 1227      795F5374 
+ 1228              	.LASF0:
+ 1229 031f 7369676E 		.ascii	"signed char\000"
+ 1229      65642063 
+ 1229      68617200 
+ 1230              	.LASF20:
+ 1231 032b 53686966 		.ascii	"ShiftReg_Security_DisableInt\000"
+ 1231      74526567 
+ 1231      5F536563 
+ 1231      75726974 
+ 1231      795F4469 
+ 1232              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

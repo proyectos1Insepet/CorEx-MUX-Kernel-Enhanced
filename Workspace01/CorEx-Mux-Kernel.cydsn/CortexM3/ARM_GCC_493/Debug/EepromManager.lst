@@ -1,0 +1,1309 @@
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cckvJNZP.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"EepromManager.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	_g_i2cbuslock
+  19              		.bss
+  20              		.type	_g_i2cbuslock, %object
+  21              		.size	_g_i2cbuslock, 1
+  22              	_g_i2cbuslock:
+  23 0000 00       		.space	1
+  24              		.comm	_g_eeprom,66,4
+  25              		.section	.text.GetEepromBuffer,"ax",%progbits
+  26              		.align	2
+  27              		.global	GetEepromBuffer
+  28              		.thumb
+  29              		.thumb_func
+  30              		.type	GetEepromBuffer, %function
+  31              	GetEepromBuffer:
+  32              	.LFB63:
+  33              		.file 1 ".\\EepromManager.c"
+   1:.\EepromManager.c **** /* ========================================
+   2:.\EepromManager.c ****  *
+   3:.\EepromManager.c ****  * Copyright INSEPET SISTEMAS, 2016
+   4:.\EepromManager.c ****  * All Rights Reserved
+   5:.\EepromManager.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\EepromManager.c ****  *
+   7:.\EepromManager.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\EepromManager.c ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\EepromManager.c ****  *
+  10:.\EepromManager.c ****  * ========================================
+  11:.\EepromManager.c **** @Created by: HIJH
+  12:.\EepromManager.c **** @Date: Septembre 2 de 2016
+  13:.\EepromManager.c **** */
+  14:.\EepromManager.c **** 
+  15:.\EepromManager.c **** #include <project.h>
+  16:.\EepromManager.c **** #include "GlobalDefinitions.h"
+  17:.\EepromManager.c **** #include "Eeprom.h"
+  18:.\EepromManager.c **** 
+  19:.\EepromManager.c **** volatile bool _g_i2cbuslock = false;
+  20:.\EepromManager.c **** 
+  21:.\EepromManager.c **** uint8 _g_eeprom[_EEPROM_PAGE_RAWSIZE_];
+  22:.\EepromManager.c **** 
+  23:.\EepromManager.c **** //@Created By: HIJH
+  24:.\EepromManager.c **** //@Septembre de 2016
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cckvJNZP.s 			page 2
+
+
+  25:.\EepromManager.c **** uint8* GetEepromBuffer()
+  26:.\EepromManager.c **** {
+  34              		.loc 1 26 0
+  35              		.cfi_startproc
+  36              		@ args = 0, pretend = 0, frame = 0
+  37              		@ frame_needed = 1, uses_anonymous_args = 0
+  38              		@ link register save eliminated.
+  39 0000 80B4     		push	{r7}
+  40              		.cfi_def_cfa_offset 4
+  41              		.cfi_offset 7, -4
+  42 0002 00AF     		add	r7, sp, #0
+  43              		.cfi_def_cfa_register 7
+  27:.\EepromManager.c ****     return &_g_eeprom[2];
+  44              		.loc 1 27 0
+  45 0004 024B     		ldr	r3, .L3
+  28:.\EepromManager.c **** }
+  46              		.loc 1 28 0
+  47 0006 1846     		mov	r0, r3
+  48 0008 BD46     		mov	sp, r7
+  49              		.cfi_def_cfa_register 13
+  50              		@ sp needed
+  51 000a 5DF8047B 		ldr	r7, [sp], #4
+  52              		.cfi_restore 7
+  53              		.cfi_def_cfa_offset 0
+  54 000e 7047     		bx	lr
+  55              	.L4:
+  56              		.align	2
+  57              	.L3:
+  58 0010 02000000 		.word	_g_eeprom+2
+  59              		.cfi_endproc
+  60              	.LFE63:
+  61              		.size	GetEepromBuffer, .-GetEepromBuffer
+  62              		.section	.text.ClearEepromBuffer,"ax",%progbits
+  63              		.align	2
+  64              		.global	ClearEepromBuffer
+  65              		.thumb
+  66              		.thumb_func
+  67              		.type	ClearEepromBuffer, %function
+  68              	ClearEepromBuffer:
+  69              	.LFB64:
+  29:.\EepromManager.c **** 
+  30:.\EepromManager.c **** //@Created By: HIJH
+  31:.\EepromManager.c **** //@Septembre de 2016
+  32:.\EepromManager.c **** void ClearEepromBuffer()
+  33:.\EepromManager.c **** {
+  70              		.loc 1 33 0
+  71              		.cfi_startproc
+  72              		@ args = 0, pretend = 0, frame = 0
+  73              		@ frame_needed = 1, uses_anonymous_args = 0
+  74 0000 80B5     		push	{r7, lr}
+  75              		.cfi_def_cfa_offset 8
+  76              		.cfi_offset 7, -8
+  77              		.cfi_offset 14, -4
+  78 0002 00AF     		add	r7, sp, #0
+  79              		.cfi_def_cfa_register 7
+  34:.\EepromManager.c ****     memset(_g_eeprom, 0x00, _EEPROM_PAGE_RAWSIZE_);
+  80              		.loc 1 34 0
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cckvJNZP.s 			page 3
+
+
+  81 0004 0248     		ldr	r0, .L6
+  82 0006 0021     		movs	r1, #0
+  83 0008 4222     		movs	r2, #66
+  84 000a FFF7FEFF 		bl	memset
+  35:.\EepromManager.c **** }
+  85              		.loc 1 35 0
+  86 000e 80BD     		pop	{r7, pc}
+  87              	.L7:
+  88              		.align	2
+  89              	.L6:
+  90 0010 00000000 		.word	_g_eeprom
+  91              		.cfi_endproc
+  92              	.LFE64:
+  93              		.size	ClearEepromBuffer, .-ClearEepromBuffer
+  94              		.section	.text.I2CBusLock,"ax",%progbits
+  95              		.align	2
+  96              		.global	I2CBusLock
+  97              		.thumb
+  98              		.thumb_func
+  99              		.type	I2CBusLock, %function
+ 100              	I2CBusLock:
+ 101              	.LFB65:
+  36:.\EepromManager.c **** 
+  37:.\EepromManager.c **** //@Created by: HIJH
+  38:.\EepromManager.c **** //@Date: Octobre de 2016
+  39:.\EepromManager.c **** //This function provides exclusive access to the I2C bus by blocking 
+  40:.\EepromManager.c **** //the signaling a flag. It attempts to "Desynchronize"
+  41:.\EepromManager.c **** void I2CBusLock()
+  42:.\EepromManager.c **** {
+ 102              		.loc 1 42 0
+ 103              		.cfi_startproc
+ 104              		@ args = 0, pretend = 0, frame = 0
+ 105              		@ frame_needed = 1, uses_anonymous_args = 0
+ 106              		@ link register save eliminated.
+ 107 0000 80B4     		push	{r7}
+ 108              		.cfi_def_cfa_offset 4
+ 109              		.cfi_offset 7, -4
+ 110 0002 00AF     		add	r7, sp, #0
+ 111              		.cfi_def_cfa_register 7
+  43:.\EepromManager.c ****     //I2C Bus Lock REMOVE DUE TO A WEIRD BEHAVIOR
+  44:.\EepromManager.c ****     _g_i2cbuslock = true;
+ 112              		.loc 1 44 0
+ 113 0004 034B     		ldr	r3, .L9
+ 114 0006 0122     		movs	r2, #1
+ 115 0008 1A70     		strb	r2, [r3]
+  45:.\EepromManager.c **** }
+ 116              		.loc 1 45 0
+ 117 000a BD46     		mov	sp, r7
+ 118              		.cfi_def_cfa_register 13
+ 119              		@ sp needed
+ 120 000c 5DF8047B 		ldr	r7, [sp], #4
+ 121              		.cfi_restore 7
+ 122              		.cfi_def_cfa_offset 0
+ 123 0010 7047     		bx	lr
+ 124              	.L10:
+ 125 0012 00BF     		.align	2
+ 126              	.L9:
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cckvJNZP.s 			page 4
+
+
+ 127 0014 00000000 		.word	_g_i2cbuslock
+ 128              		.cfi_endproc
+ 129              	.LFE65:
+ 130              		.size	I2CBusLock, .-I2CBusLock
+ 131              		.section	.text.I2CBusUnlock,"ax",%progbits
+ 132              		.align	2
+ 133              		.global	I2CBusUnlock
+ 134              		.thumb
+ 135              		.thumb_func
+ 136              		.type	I2CBusUnlock, %function
+ 137              	I2CBusUnlock:
+ 138              	.LFB66:
+  46:.\EepromManager.c **** 
+  47:.\EepromManager.c **** void I2CBusUnlock()
+  48:.\EepromManager.c **** {
+ 139              		.loc 1 48 0
+ 140              		.cfi_startproc
+ 141              		@ args = 0, pretend = 0, frame = 0
+ 142              		@ frame_needed = 1, uses_anonymous_args = 0
+ 143              		@ link register save eliminated.
+ 144 0000 80B4     		push	{r7}
+ 145              		.cfi_def_cfa_offset 4
+ 146              		.cfi_offset 7, -4
+ 147 0002 00AF     		add	r7, sp, #0
+ 148              		.cfi_def_cfa_register 7
+  49:.\EepromManager.c ****     //I2C Bus Lock to avoid concurrent access to the bus    
+  50:.\EepromManager.c ****     _g_i2cbuslock = false;
+ 149              		.loc 1 50 0
+ 150 0004 034B     		ldr	r3, .L12
+ 151 0006 0022     		movs	r2, #0
+ 152 0008 1A70     		strb	r2, [r3]
+  51:.\EepromManager.c **** }
+ 153              		.loc 1 51 0
+ 154 000a BD46     		mov	sp, r7
+ 155              		.cfi_def_cfa_register 13
+ 156              		@ sp needed
+ 157 000c 5DF8047B 		ldr	r7, [sp], #4
+ 158              		.cfi_restore 7
+ 159              		.cfi_def_cfa_offset 0
+ 160 0010 7047     		bx	lr
+ 161              	.L13:
+ 162 0012 00BF     		.align	2
+ 163              	.L12:
+ 164 0014 00000000 		.word	_g_i2cbuslock
+ 165              		.cfi_endproc
+ 166              	.LFE66:
+ 167              		.size	I2CBusUnlock, .-I2CBusUnlock
+ 168              		.section	.text.LoadEepromPage,"ax",%progbits
+ 169              		.align	2
+ 170              		.global	LoadEepromPage
+ 171              		.thumb
+ 172              		.thumb_func
+ 173              		.type	LoadEepromPage, %function
+ 174              	LoadEepromPage:
+ 175              	.LFB67:
+  52:.\EepromManager.c **** 
+  53:.\EepromManager.c **** 
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cckvJNZP.s 			page 5
+
+
+  54:.\EepromManager.c **** //@Created By: HIJH
+  55:.\EepromManager.c **** //@Septembre de 2016
+  56:.\EepromManager.c **** void LoadEepromPage(uint16 page)
+  57:.\EepromManager.c **** {
+ 176              		.loc 1 57 0
+ 177              		.cfi_startproc
+ 178              		@ args = 0, pretend = 0, frame = 16
+ 179              		@ frame_needed = 1, uses_anonymous_args = 0
+ 180 0000 90B5     		push	{r4, r7, lr}
+ 181              		.cfi_def_cfa_offset 12
+ 182              		.cfi_offset 4, -12
+ 183              		.cfi_offset 7, -8
+ 184              		.cfi_offset 14, -4
+ 185 0002 85B0     		sub	sp, sp, #20
+ 186              		.cfi_def_cfa_offset 32
+ 187 0004 00AF     		add	r7, sp, #0
+ 188              		.cfi_def_cfa_register 7
+ 189 0006 0346     		mov	r3, r0
+ 190 0008 FB80     		strh	r3, [r7, #6]	@ movhi
+  58:.\EepromManager.c ****     //I2C_Bus_MasterStatus();
+  59:.\EepromManager.c ****     
+  60:.\EepromManager.c ****     I2C_Bus_MasterClearStatus();    
+ 191              		.loc 1 60 0
+ 192 000a FFF7FEFF 		bl	I2C_Bus_MasterClearStatus
+  61:.\EepromManager.c ****     _g_eeprom[0] = (page >> 8) & 0xFF; _g_eeprom[1] = page & 0xFF;
+ 193              		.loc 1 61 0
+ 194 000e FB88     		ldrh	r3, [r7, #6]
+ 195 0010 1B0A     		lsrs	r3, r3, #8
+ 196 0012 9BB2     		uxth	r3, r3
+ 197 0014 DAB2     		uxtb	r2, r3
+ 198 0016 1E4B     		ldr	r3, .L21
+ 199 0018 1A70     		strb	r2, [r3]
+ 200 001a FB88     		ldrh	r3, [r7, #6]	@ movhi
+ 201 001c DAB2     		uxtb	r2, r3
+ 202 001e 1C4B     		ldr	r3, .L21
+ 203 0020 5A70     		strb	r2, [r3, #1]
+  62:.\EepromManager.c ****     uint16 status = I2C_Bus_MasterSendStart(_EEPROM_SLAVE_ADDRESS_BY_MEMARRAY_, I2C_Bus_WRITE_XFER_
+ 204              		.loc 1 62 0
+ 205 0022 5420     		movs	r0, #84
+ 206 0024 0021     		movs	r1, #0
+ 207 0026 FFF7FEFF 		bl	I2C_Bus_MasterSendStart
+ 208 002a 0346     		mov	r3, r0
+ 209 002c BB81     		strh	r3, [r7, #12]	@ movhi
+  63:.\EepromManager.c ****     if(I2C_Bus_MSTR_NO_ERROR == status)
+ 210              		.loc 1 63 0
+ 211 002e BB89     		ldrh	r3, [r7, #12]
+ 212 0030 002B     		cmp	r3, #0
+ 213 0032 2AD1     		bne	.L14
+ 214              	.LBB2:
+  64:.\EepromManager.c ****     {
+  65:.\EepromManager.c ****         FOR(uint8 index = 0, index < 2, index++)
+ 215              		.loc 1 65 0
+ 216 0034 0023     		movs	r3, #0
+ 217 0036 FB73     		strb	r3, [r7, #15]
+ 218 0038 08E0     		b	.L16
+ 219              	.L17:
+  66:.\EepromManager.c ****             I2C_Bus_MasterWriteByte(_g_eeprom[index]);
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cckvJNZP.s 			page 6
+
+
+ 220              		.loc 1 66 0 discriminator 3
+ 221 003a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 222 003c 144A     		ldr	r2, .L21
+ 223 003e D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 224 0040 1846     		mov	r0, r3
+ 225 0042 FFF7FEFF 		bl	I2C_Bus_MasterWriteByte
+  65:.\EepromManager.c ****             I2C_Bus_MasterWriteByte(_g_eeprom[index]);
+ 226              		.loc 1 65 0 discriminator 3
+ 227 0046 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 228 0048 0133     		adds	r3, r3, #1
+ 229 004a FB73     		strb	r3, [r7, #15]
+ 230              	.L16:
+  65:.\EepromManager.c ****             I2C_Bus_MasterWriteByte(_g_eeprom[index]);
+ 231              		.loc 1 65 0 is_stmt 0 discriminator 1
+ 232 004c FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 233 004e 012B     		cmp	r3, #1
+ 234 0050 F3D9     		bls	.L17
+  67:.\EepromManager.c ****             
+  68:.\EepromManager.c ****         status = I2C_Bus_MasterSendRestart(_EEPROM_SLAVE_ADDRESS_BY_MEMARRAY_, I2C_Bus_READ_XFER_MO
+ 235              		.loc 1 68 0 is_stmt 1
+ 236 0052 5420     		movs	r0, #84
+ 237 0054 0121     		movs	r1, #1
+ 238 0056 FFF7FEFF 		bl	I2C_Bus_MasterSendRestart
+ 239 005a 0346     		mov	r3, r0
+ 240 005c BB81     		strh	r3, [r7, #12]	@ movhi
+  69:.\EepromManager.c ****         if(I2C_Bus_MSTR_NO_ERROR == status)
+ 241              		.loc 1 69 0
+ 242 005e BB89     		ldrh	r3, [r7, #12]
+ 243 0060 002B     		cmp	r3, #0
+ 244 0062 10D1     		bne	.L18
+  70:.\EepromManager.c ****         {
+  71:.\EepromManager.c ****             FOR(index = 2, index < _EEPROM_PAGE_RAWSIZE_, index++)
+ 245              		.loc 1 71 0
+ 246 0064 0223     		movs	r3, #2
+ 247 0066 FB73     		strb	r3, [r7, #15]
+ 248 0068 0AE0     		b	.L19
+ 249              	.L20:
+  72:.\EepromManager.c ****                 _g_eeprom[index] = I2C_Bus_MasterReadByte(I2C_Bus_ACK_DATA);
+ 250              		.loc 1 72 0 discriminator 3
+ 251 006a FC7B     		ldrb	r4, [r7, #15]	@ zero_extendqisi2
+ 252 006c 0120     		movs	r0, #1
+ 253 006e FFF7FEFF 		bl	I2C_Bus_MasterReadByte
+ 254 0072 0346     		mov	r3, r0
+ 255 0074 1A46     		mov	r2, r3
+ 256 0076 064B     		ldr	r3, .L21
+ 257 0078 1A55     		strb	r2, [r3, r4]
+  71:.\EepromManager.c ****                 _g_eeprom[index] = I2C_Bus_MasterReadByte(I2C_Bus_ACK_DATA);
+ 258              		.loc 1 71 0 discriminator 3
+ 259 007a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 260 007c 0133     		adds	r3, r3, #1
+ 261 007e FB73     		strb	r3, [r7, #15]
+ 262              	.L19:
+  71:.\EepromManager.c ****                 _g_eeprom[index] = I2C_Bus_MasterReadByte(I2C_Bus_ACK_DATA);
+ 263              		.loc 1 71 0 is_stmt 0 discriminator 1
+ 264 0080 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 265 0082 412B     		cmp	r3, #65
+ 266 0084 F1D9     		bls	.L20
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cckvJNZP.s 			page 7
+
+
+ 267              	.L18:
+  73:.\EepromManager.c ****                 
+  74:.\EepromManager.c ****         }
+  75:.\EepromManager.c ****         I2C_Bus_MasterSendStop();
+ 268              		.loc 1 75 0 is_stmt 1
+ 269 0086 FFF7FEFF 		bl	I2C_Bus_MasterSendStop
+ 270              	.L14:
+ 271              	.LBE2:
+  76:.\EepromManager.c ****     }
+  77:.\EepromManager.c **** }
+ 272              		.loc 1 77 0
+ 273 008a 1437     		adds	r7, r7, #20
+ 274              		.cfi_def_cfa_offset 12
+ 275 008c BD46     		mov	sp, r7
+ 276              		.cfi_def_cfa_register 13
+ 277              		@ sp needed
+ 278 008e 90BD     		pop	{r4, r7, pc}
+ 279              	.L22:
+ 280              		.align	2
+ 281              	.L21:
+ 282 0090 00000000 		.word	_g_eeprom
+ 283              		.cfi_endproc
+ 284              	.LFE67:
+ 285              		.size	LoadEepromPage, .-LoadEepromPage
+ 286              		.section	.text.StoreEepromPage,"ax",%progbits
+ 287              		.align	2
+ 288              		.global	StoreEepromPage
+ 289              		.thumb
+ 290              		.thumb_func
+ 291              		.type	StoreEepromPage, %function
+ 292              	StoreEepromPage:
+ 293              	.LFB68:
+  78:.\EepromManager.c **** 
+  79:.\EepromManager.c **** //@Created By: HIJH
+  80:.\EepromManager.c **** //@Septembre de 2016
+  81:.\EepromManager.c **** void StoreEepromPage(uint16 page)
+  82:.\EepromManager.c **** {    
+ 294              		.loc 1 82 0
+ 295              		.cfi_startproc
+ 296              		@ args = 0, pretend = 0, frame = 16
+ 297              		@ frame_needed = 1, uses_anonymous_args = 0
+ 298 0000 80B5     		push	{r7, lr}
+ 299              		.cfi_def_cfa_offset 8
+ 300              		.cfi_offset 7, -8
+ 301              		.cfi_offset 14, -4
+ 302 0002 84B0     		sub	sp, sp, #16
+ 303              		.cfi_def_cfa_offset 24
+ 304 0004 00AF     		add	r7, sp, #0
+ 305              		.cfi_def_cfa_register 7
+ 306 0006 0346     		mov	r3, r0
+ 307 0008 FB80     		strh	r3, [r7, #6]	@ movhi
+  83:.\EepromManager.c ****     uint8 retries = 0x00;
+ 308              		.loc 1 83 0
+ 309 000a 0023     		movs	r3, #0
+ 310 000c FB73     		strb	r3, [r7, #15]
+  84:.\EepromManager.c ****     //The WP signal must be LOW to allow the writting op
+  85:.\EepromManager.c ****     //Write protection enabled
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cckvJNZP.s 			page 8
+
+
+  86:.\EepromManager.c ****     eepromWP_Write(0x00);
+ 311              		.loc 1 86 0
+ 312 000e 0020     		movs	r0, #0
+ 313 0010 FFF7FEFF 		bl	eepromWP_Write
+  87:.\EepromManager.c ****     uint16 status = 0x00;
+ 314              		.loc 1 87 0
+ 315 0014 0023     		movs	r3, #0
+ 316 0016 BB81     		strh	r3, [r7, #12]	@ movhi
+ 317              	.L28:
+  88:.\EepromManager.c ****     do
+  89:.\EepromManager.c ****     {
+  90:.\EepromManager.c ****         I2C_Bus_MasterClearStatus();    
+ 318              		.loc 1 90 0
+ 319 0018 FFF7FEFF 		bl	I2C_Bus_MasterClearStatus
+  91:.\EepromManager.c ****         _g_eeprom[0] = (page >> 8) & 0xFF; _g_eeprom[1] = page & 0xFF;  
+ 320              		.loc 1 91 0
+ 321 001c FB88     		ldrh	r3, [r7, #6]
+ 322 001e 1B0A     		lsrs	r3, r3, #8
+ 323 0020 9BB2     		uxth	r3, r3
+ 324 0022 DAB2     		uxtb	r2, r3
+ 325 0024 184B     		ldr	r3, .L29
+ 326 0026 1A70     		strb	r2, [r3]
+ 327 0028 FB88     		ldrh	r3, [r7, #6]	@ movhi
+ 328 002a DAB2     		uxtb	r2, r3
+ 329 002c 164B     		ldr	r3, .L29
+ 330 002e 5A70     		strb	r2, [r3, #1]
+  92:.\EepromManager.c ****         status = I2C_Bus_MasterSendStart(_EEPROM_SLAVE_ADDRESS_BY_MEMARRAY_, I2C_Bus_WRITE_XFER_MOD
+ 331              		.loc 1 92 0
+ 332 0030 5420     		movs	r0, #84
+ 333 0032 0021     		movs	r1, #0
+ 334 0034 FFF7FEFF 		bl	I2C_Bus_MasterSendStart
+ 335 0038 0346     		mov	r3, r0
+ 336 003a BB81     		strh	r3, [r7, #12]	@ movhi
+  93:.\EepromManager.c ****         if(I2C_Bus_MSTR_NO_ERROR == status)
+ 337              		.loc 1 93 0
+ 338 003c BB89     		ldrh	r3, [r7, #12]
+ 339 003e 002B     		cmp	r3, #0
+ 340 0040 13D1     		bne	.L24
+ 341              	.LBB3:
+  94:.\EepromManager.c ****         {
+  95:.\EepromManager.c ****             FOR(uint8 index = 0, index < _EEPROM_PAGE_RAWSIZE_, index++)
+ 342              		.loc 1 95 0
+ 343 0042 0023     		movs	r3, #0
+ 344 0044 BB73     		strb	r3, [r7, #14]
+ 345 0046 08E0     		b	.L25
+ 346              	.L26:
+  96:.\EepromManager.c ****                 I2C_Bus_MasterWriteByte(_g_eeprom[index]);
+ 347              		.loc 1 96 0 discriminator 3
+ 348 0048 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 349 004a 0F4A     		ldr	r2, .L29
+ 350 004c D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 351 004e 1846     		mov	r0, r3
+ 352 0050 FFF7FEFF 		bl	I2C_Bus_MasterWriteByte
+  95:.\EepromManager.c ****                 I2C_Bus_MasterWriteByte(_g_eeprom[index]);
+ 353              		.loc 1 95 0 discriminator 3
+ 354 0054 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 355 0056 0133     		adds	r3, r3, #1
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cckvJNZP.s 			page 9
+
+
+ 356 0058 BB73     		strb	r3, [r7, #14]
+ 357              	.L25:
+  95:.\EepromManager.c ****                 I2C_Bus_MasterWriteByte(_g_eeprom[index]);
+ 358              		.loc 1 95 0 is_stmt 0 discriminator 1
+ 359 005a BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 360 005c 412B     		cmp	r3, #65
+ 361 005e F3D9     		bls	.L26
+  97:.\EepromManager.c **** 
+  98:.\EepromManager.c ****             I2C_Bus_MasterSendStop();
+ 362              		.loc 1 98 0 is_stmt 1
+ 363 0060 FFF7FEFF 		bl	I2C_Bus_MasterSendStop
+  99:.\EepromManager.c ****             CyDelay(5);
+ 364              		.loc 1 99 0
+ 365 0064 0520     		movs	r0, #5
+ 366 0066 FFF7FEFF 		bl	CyDelay
+ 367              	.L24:
+ 368              	.LBE3:
+ 100:.\EepromManager.c ****         }
+ 101:.\EepromManager.c ****     }while(I2C_Bus_MSTR_NO_ERROR != status && retries++ < 10);
+ 369              		.loc 1 101 0
+ 370 006a BB89     		ldrh	r3, [r7, #12]
+ 371 006c 002B     		cmp	r3, #0
+ 372 006e 04D0     		beq	.L27
+ 373              		.loc 1 101 0 is_stmt 0 discriminator 1
+ 374 0070 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 375 0072 5A1C     		adds	r2, r3, #1
+ 376 0074 FA73     		strb	r2, [r7, #15]
+ 377 0076 092B     		cmp	r3, #9
+ 378 0078 CED9     		bls	.L28
+ 379              	.L27:
+ 102:.\EepromManager.c ****     //Write protection disabled
+ 103:.\EepromManager.c ****     eepromWP_Write(0x01);
+ 380              		.loc 1 103 0 is_stmt 1
+ 381 007a 0120     		movs	r0, #1
+ 382 007c FFF7FEFF 		bl	eepromWP_Write
+ 104:.\EepromManager.c **** }
+ 383              		.loc 1 104 0
+ 384 0080 1037     		adds	r7, r7, #16
+ 385              		.cfi_def_cfa_offset 8
+ 386 0082 BD46     		mov	sp, r7
+ 387              		.cfi_def_cfa_register 13
+ 388              		@ sp needed
+ 389 0084 80BD     		pop	{r7, pc}
+ 390              	.L30:
+ 391 0086 00BF     		.align	2
+ 392              	.L29:
+ 393 0088 00000000 		.word	_g_eeprom
+ 394              		.cfi_endproc
+ 395              	.LFE68:
+ 396              		.size	StoreEepromPage, .-StoreEepromPage
+ 397              		.text
+ 398              	.Letext0:
+ 399              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 400              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 401              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 402              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 403              		.section	.debug_info,"",%progbits
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cckvJNZP.s 			page 10
+
+
+ 404              	.Ldebug_info0:
+ 405 0000 F8010000 		.4byte	0x1f8
+ 406 0004 0400     		.2byte	0x4
+ 407 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 408 000a 04       		.byte	0x4
+ 409 000b 01       		.uleb128 0x1
+ 410 000c 0F000000 		.4byte	.LASF31
+ 411 0010 01       		.byte	0x1
+ 412 0011 F3010000 		.4byte	.LASF32
+ 413 0015 B0000000 		.4byte	.LASF33
+ 414 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 415 001d 00000000 		.4byte	0
+ 416 0021 00000000 		.4byte	.Ldebug_line0
+ 417 0025 02       		.uleb128 0x2
+ 418 0026 01       		.byte	0x1
+ 419 0027 06       		.byte	0x6
+ 420 0028 33020000 		.4byte	.LASF0
+ 421 002c 02       		.uleb128 0x2
+ 422 002d 01       		.byte	0x1
+ 423 002e 08       		.byte	0x8
+ 424 002f 0F010000 		.4byte	.LASF1
+ 425 0033 02       		.uleb128 0x2
+ 426 0034 02       		.byte	0x2
+ 427 0035 05       		.byte	0x5
+ 428 0036 E9010000 		.4byte	.LASF2
+ 429 003a 02       		.uleb128 0x2
+ 430 003b 02       		.byte	0x2
+ 431 003c 07       		.byte	0x7
+ 432 003d 37010000 		.4byte	.LASF3
+ 433 0041 03       		.uleb128 0x3
+ 434 0042 05000000 		.4byte	.LASF9
+ 435 0046 02       		.byte	0x2
+ 436 0047 3F       		.byte	0x3f
+ 437 0048 4C000000 		.4byte	0x4c
+ 438 004c 02       		.uleb128 0x2
+ 439 004d 04       		.byte	0x4
+ 440 004e 05       		.byte	0x5
+ 441 004f 0F020000 		.4byte	.LASF4
+ 442 0053 02       		.uleb128 0x2
+ 443 0054 04       		.byte	0x4
+ 444 0055 07       		.byte	0x7
+ 445 0056 25010000 		.4byte	.LASF5
+ 446 005a 02       		.uleb128 0x2
+ 447 005b 08       		.byte	0x8
+ 448 005c 05       		.byte	0x5
+ 449 005d D0010000 		.4byte	.LASF6
+ 450 0061 02       		.uleb128 0x2
+ 451 0062 08       		.byte	0x8
+ 452 0063 07       		.byte	0x7
+ 453 0064 8F010000 		.4byte	.LASF7
+ 454 0068 04       		.uleb128 0x4
+ 455 0069 04       		.byte	0x4
+ 456 006a 05       		.byte	0x5
+ 457 006b 696E7400 		.ascii	"int\000"
+ 458 006f 02       		.uleb128 0x2
+ 459 0070 04       		.byte	0x4
+ 460 0071 07       		.byte	0x7
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cckvJNZP.s 			page 11
+
+
+ 461 0072 75010000 		.4byte	.LASF8
+ 462 0076 03       		.uleb128 0x3
+ 463 0077 BF010000 		.4byte	.LASF10
+ 464 007b 03       		.byte	0x3
+ 465 007c 2C       		.byte	0x2c
+ 466 007d 41000000 		.4byte	0x41
+ 467 0081 05       		.uleb128 0x5
+ 468 0082 AA000000 		.4byte	.LASF11
+ 469 0086 04       		.byte	0x4
+ 470 0087 3801     		.2byte	0x138
+ 471 0089 2C000000 		.4byte	0x2c
+ 472 008d 05       		.uleb128 0x5
+ 473 008e 5E010000 		.4byte	.LASF12
+ 474 0092 04       		.byte	0x4
+ 475 0093 3901     		.2byte	0x139
+ 476 0095 3A000000 		.4byte	0x3a
+ 477 0099 02       		.uleb128 0x2
+ 478 009a 04       		.byte	0x4
+ 479 009b 04       		.byte	0x4
+ 480 009c A4000000 		.4byte	.LASF13
+ 481 00a0 02       		.uleb128 0x2
+ 482 00a1 08       		.byte	0x8
+ 483 00a2 04       		.byte	0x4
+ 484 00a3 57010000 		.4byte	.LASF14
+ 485 00a7 02       		.uleb128 0x2
+ 486 00a8 01       		.byte	0x1
+ 487 00a9 08       		.byte	0x8
+ 488 00aa DE010000 		.4byte	.LASF15
+ 489 00ae 02       		.uleb128 0x2
+ 490 00af 04       		.byte	0x4
+ 491 00b0 07       		.byte	0x7
+ 492 00b1 C7010000 		.4byte	.LASF16
+ 493 00b5 02       		.uleb128 0x2
+ 494 00b6 08       		.byte	0x8
+ 495 00b7 04       		.byte	0x4
+ 496 00b8 27020000 		.4byte	.LASF17
+ 497 00bc 06       		.uleb128 0x6
+ 498 00bd 04       		.byte	0x4
+ 499 00be 81000000 		.4byte	0x81
+ 500 00c2 07       		.uleb128 0x7
+ 501 00c3 3F020000 		.4byte	.LASF34
+ 502 00c7 01       		.byte	0x1
+ 503 00c8 19       		.byte	0x19
+ 504 00c9 BC000000 		.4byte	0xbc
+ 505 00cd 00000000 		.4byte	.LFB63
+ 506 00d1 14000000 		.4byte	.LFE63-.LFB63
+ 507 00d5 01       		.uleb128 0x1
+ 508 00d6 9C       		.byte	0x9c
+ 509 00d7 08       		.uleb128 0x8
+ 510 00d8 55020000 		.4byte	.LASF18
+ 511 00dc 01       		.byte	0x1
+ 512 00dd 20       		.byte	0x20
+ 513 00de 00000000 		.4byte	.LFB64
+ 514 00e2 14000000 		.4byte	.LFE64-.LFB64
+ 515 00e6 01       		.uleb128 0x1
+ 516 00e7 9C       		.byte	0x9c
+ 517 00e8 09       		.uleb128 0x9
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cckvJNZP.s 			page 12
+
+
+ 518 00e9 B4010000 		.4byte	.LASF19
+ 519 00ed 01       		.byte	0x1
+ 520 00ee 29       		.byte	0x29
+ 521 00ef 00000000 		.4byte	.LFB65
+ 522 00f3 18000000 		.4byte	.LFE65-.LFB65
+ 523 00f7 01       		.uleb128 0x1
+ 524 00f8 9C       		.byte	0x9c
+ 525 00f9 09       		.uleb128 0x9
+ 526 00fa 82010000 		.4byte	.LASF20
+ 527 00fe 01       		.byte	0x1
+ 528 00ff 2F       		.byte	0x2f
+ 529 0100 00000000 		.4byte	.LFB66
+ 530 0104 18000000 		.4byte	.LFE66-.LFB66
+ 531 0108 01       		.uleb128 0x1
+ 532 0109 9C       		.byte	0x9c
+ 533 010a 0A       		.uleb128 0xa
+ 534 010b 18020000 		.4byte	.LASF23
+ 535 010f 01       		.byte	0x1
+ 536 0110 38       		.byte	0x38
+ 537 0111 00000000 		.4byte	.LFB67
+ 538 0115 94000000 		.4byte	.LFE67-.LFB67
+ 539 0119 01       		.uleb128 0x1
+ 540 011a 9C       		.byte	0x9c
+ 541 011b 54010000 		.4byte	0x154
+ 542 011f 0B       		.uleb128 0xb
+ 543 0120 00000000 		.4byte	.LASF25
+ 544 0124 01       		.byte	0x1
+ 545 0125 38       		.byte	0x38
+ 546 0126 8D000000 		.4byte	0x8d
+ 547 012a 02       		.uleb128 0x2
+ 548 012b 91       		.byte	0x91
+ 549 012c 66       		.sleb128 -26
+ 550 012d 0C       		.uleb128 0xc
+ 551 012e 9D000000 		.4byte	.LASF21
+ 552 0132 01       		.byte	0x1
+ 553 0133 3E       		.byte	0x3e
+ 554 0134 8D000000 		.4byte	0x8d
+ 555 0138 02       		.uleb128 0x2
+ 556 0139 91       		.byte	0x91
+ 557 013a 6C       		.sleb128 -20
+ 558 013b 0D       		.uleb128 0xd
+ 559 013c 34000000 		.4byte	.LBB2
+ 560 0140 56000000 		.4byte	.LBE2-.LBB2
+ 561 0144 0C       		.uleb128 0xc
+ 562 0145 E3010000 		.4byte	.LASF22
+ 563 0149 01       		.byte	0x1
+ 564 014a 41       		.byte	0x41
+ 565 014b 81000000 		.4byte	0x81
+ 566 014f 02       		.uleb128 0x2
+ 567 0150 91       		.byte	0x91
+ 568 0151 6F       		.sleb128 -17
+ 569 0152 00       		.byte	0
+ 570 0153 00       		.byte	0
+ 571 0154 0A       		.uleb128 0xa
+ 572 0155 65010000 		.4byte	.LASF24
+ 573 0159 01       		.byte	0x1
+ 574 015a 51       		.byte	0x51
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cckvJNZP.s 			page 13
+
+
+ 575 015b 00000000 		.4byte	.LFB68
+ 576 015f 8C000000 		.4byte	.LFE68-.LFB68
+ 577 0163 01       		.uleb128 0x1
+ 578 0164 9C       		.byte	0x9c
+ 579 0165 AC010000 		.4byte	0x1ac
+ 580 0169 0B       		.uleb128 0xb
+ 581 016a 00000000 		.4byte	.LASF25
+ 582 016e 01       		.byte	0x1
+ 583 016f 51       		.byte	0x51
+ 584 0170 8D000000 		.4byte	0x8d
+ 585 0174 02       		.uleb128 0x2
+ 586 0175 91       		.byte	0x91
+ 587 0176 6E       		.sleb128 -18
+ 588 0177 0C       		.uleb128 0xc
+ 589 0178 1D010000 		.4byte	.LASF26
+ 590 017c 01       		.byte	0x1
+ 591 017d 53       		.byte	0x53
+ 592 017e 81000000 		.4byte	0x81
+ 593 0182 02       		.uleb128 0x2
+ 594 0183 91       		.byte	0x91
+ 595 0184 77       		.sleb128 -9
+ 596 0185 0C       		.uleb128 0xc
+ 597 0186 9D000000 		.4byte	.LASF21
+ 598 018a 01       		.byte	0x1
+ 599 018b 57       		.byte	0x57
+ 600 018c 8D000000 		.4byte	0x8d
+ 601 0190 02       		.uleb128 0x2
+ 602 0191 91       		.byte	0x91
+ 603 0192 74       		.sleb128 -12
+ 604 0193 0D       		.uleb128 0xd
+ 605 0194 42000000 		.4byte	.LBB3
+ 606 0198 28000000 		.4byte	.LBE3-.LBB3
+ 607 019c 0C       		.uleb128 0xc
+ 608 019d E3010000 		.4byte	.LASF22
+ 609 01a1 01       		.byte	0x1
+ 610 01a2 5F       		.byte	0x5f
+ 611 01a3 81000000 		.4byte	0x81
+ 612 01a7 02       		.uleb128 0x2
+ 613 01a8 91       		.byte	0x91
+ 614 01a9 76       		.sleb128 -10
+ 615 01aa 00       		.byte	0
+ 616 01ab 00       		.byte	0
+ 617 01ac 0E       		.uleb128 0xe
+ 618 01ad 4A010000 		.4byte	.LASF27
+ 619 01b1 05       		.byte	0x5
+ 620 01b2 5506     		.2byte	0x655
+ 621 01b4 B8010000 		.4byte	0x1b8
+ 622 01b8 0F       		.uleb128 0xf
+ 623 01b9 76000000 		.4byte	0x76
+ 624 01bd 10       		.uleb128 0x10
+ 625 01be A6010000 		.4byte	.LASF28
+ 626 01c2 01       		.byte	0x1
+ 627 01c3 13       		.byte	0x13
+ 628 01c4 CE010000 		.4byte	0x1ce
+ 629 01c8 05       		.uleb128 0x5
+ 630 01c9 03       		.byte	0x3
+ 631 01ca 00000000 		.4byte	_g_i2cbuslock
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cckvJNZP.s 			page 14
+
+
+ 632 01ce 0F       		.uleb128 0xf
+ 633 01cf D3010000 		.4byte	0x1d3
+ 634 01d3 02       		.uleb128 0x2
+ 635 01d4 01       		.byte	0x1
+ 636 01d5 02       		.byte	0x2
+ 637 01d6 4F020000 		.4byte	.LASF29
+ 638 01da 11       		.uleb128 0x11
+ 639 01db 81000000 		.4byte	0x81
+ 640 01df EA010000 		.4byte	0x1ea
+ 641 01e3 12       		.uleb128 0x12
+ 642 01e4 AE000000 		.4byte	0xae
+ 643 01e8 41       		.byte	0x41
+ 644 01e9 00       		.byte	0
+ 645 01ea 10       		.uleb128 0x10
+ 646 01eb 05020000 		.4byte	.LASF30
+ 647 01ef 01       		.byte	0x1
+ 648 01f0 15       		.byte	0x15
+ 649 01f1 DA010000 		.4byte	0x1da
+ 650 01f5 05       		.uleb128 0x5
+ 651 01f6 03       		.byte	0x3
+ 652 01f7 00000000 		.4byte	_g_eeprom
+ 653 01fb 00       		.byte	0
+ 654              		.section	.debug_abbrev,"",%progbits
+ 655              	.Ldebug_abbrev0:
+ 656 0000 01       		.uleb128 0x1
+ 657 0001 11       		.uleb128 0x11
+ 658 0002 01       		.byte	0x1
+ 659 0003 25       		.uleb128 0x25
+ 660 0004 0E       		.uleb128 0xe
+ 661 0005 13       		.uleb128 0x13
+ 662 0006 0B       		.uleb128 0xb
+ 663 0007 03       		.uleb128 0x3
+ 664 0008 0E       		.uleb128 0xe
+ 665 0009 1B       		.uleb128 0x1b
+ 666 000a 0E       		.uleb128 0xe
+ 667 000b 55       		.uleb128 0x55
+ 668 000c 17       		.uleb128 0x17
+ 669 000d 11       		.uleb128 0x11
+ 670 000e 01       		.uleb128 0x1
+ 671 000f 10       		.uleb128 0x10
+ 672 0010 17       		.uleb128 0x17
+ 673 0011 00       		.byte	0
+ 674 0012 00       		.byte	0
+ 675 0013 02       		.uleb128 0x2
+ 676 0014 24       		.uleb128 0x24
+ 677 0015 00       		.byte	0
+ 678 0016 0B       		.uleb128 0xb
+ 679 0017 0B       		.uleb128 0xb
+ 680 0018 3E       		.uleb128 0x3e
+ 681 0019 0B       		.uleb128 0xb
+ 682 001a 03       		.uleb128 0x3
+ 683 001b 0E       		.uleb128 0xe
+ 684 001c 00       		.byte	0
+ 685 001d 00       		.byte	0
+ 686 001e 03       		.uleb128 0x3
+ 687 001f 16       		.uleb128 0x16
+ 688 0020 00       		.byte	0
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cckvJNZP.s 			page 15
+
+
+ 689 0021 03       		.uleb128 0x3
+ 690 0022 0E       		.uleb128 0xe
+ 691 0023 3A       		.uleb128 0x3a
+ 692 0024 0B       		.uleb128 0xb
+ 693 0025 3B       		.uleb128 0x3b
+ 694 0026 0B       		.uleb128 0xb
+ 695 0027 49       		.uleb128 0x49
+ 696 0028 13       		.uleb128 0x13
+ 697 0029 00       		.byte	0
+ 698 002a 00       		.byte	0
+ 699 002b 04       		.uleb128 0x4
+ 700 002c 24       		.uleb128 0x24
+ 701 002d 00       		.byte	0
+ 702 002e 0B       		.uleb128 0xb
+ 703 002f 0B       		.uleb128 0xb
+ 704 0030 3E       		.uleb128 0x3e
+ 705 0031 0B       		.uleb128 0xb
+ 706 0032 03       		.uleb128 0x3
+ 707 0033 08       		.uleb128 0x8
+ 708 0034 00       		.byte	0
+ 709 0035 00       		.byte	0
+ 710 0036 05       		.uleb128 0x5
+ 711 0037 16       		.uleb128 0x16
+ 712 0038 00       		.byte	0
+ 713 0039 03       		.uleb128 0x3
+ 714 003a 0E       		.uleb128 0xe
+ 715 003b 3A       		.uleb128 0x3a
+ 716 003c 0B       		.uleb128 0xb
+ 717 003d 3B       		.uleb128 0x3b
+ 718 003e 05       		.uleb128 0x5
+ 719 003f 49       		.uleb128 0x49
+ 720 0040 13       		.uleb128 0x13
+ 721 0041 00       		.byte	0
+ 722 0042 00       		.byte	0
+ 723 0043 06       		.uleb128 0x6
+ 724 0044 0F       		.uleb128 0xf
+ 725 0045 00       		.byte	0
+ 726 0046 0B       		.uleb128 0xb
+ 727 0047 0B       		.uleb128 0xb
+ 728 0048 49       		.uleb128 0x49
+ 729 0049 13       		.uleb128 0x13
+ 730 004a 00       		.byte	0
+ 731 004b 00       		.byte	0
+ 732 004c 07       		.uleb128 0x7
+ 733 004d 2E       		.uleb128 0x2e
+ 734 004e 00       		.byte	0
+ 735 004f 3F       		.uleb128 0x3f
+ 736 0050 19       		.uleb128 0x19
+ 737 0051 03       		.uleb128 0x3
+ 738 0052 0E       		.uleb128 0xe
+ 739 0053 3A       		.uleb128 0x3a
+ 740 0054 0B       		.uleb128 0xb
+ 741 0055 3B       		.uleb128 0x3b
+ 742 0056 0B       		.uleb128 0xb
+ 743 0057 49       		.uleb128 0x49
+ 744 0058 13       		.uleb128 0x13
+ 745 0059 11       		.uleb128 0x11
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cckvJNZP.s 			page 16
+
+
+ 746 005a 01       		.uleb128 0x1
+ 747 005b 12       		.uleb128 0x12
+ 748 005c 06       		.uleb128 0x6
+ 749 005d 40       		.uleb128 0x40
+ 750 005e 18       		.uleb128 0x18
+ 751 005f 9742     		.uleb128 0x2117
+ 752 0061 19       		.uleb128 0x19
+ 753 0062 00       		.byte	0
+ 754 0063 00       		.byte	0
+ 755 0064 08       		.uleb128 0x8
+ 756 0065 2E       		.uleb128 0x2e
+ 757 0066 00       		.byte	0
+ 758 0067 3F       		.uleb128 0x3f
+ 759 0068 19       		.uleb128 0x19
+ 760 0069 03       		.uleb128 0x3
+ 761 006a 0E       		.uleb128 0xe
+ 762 006b 3A       		.uleb128 0x3a
+ 763 006c 0B       		.uleb128 0xb
+ 764 006d 3B       		.uleb128 0x3b
+ 765 006e 0B       		.uleb128 0xb
+ 766 006f 11       		.uleb128 0x11
+ 767 0070 01       		.uleb128 0x1
+ 768 0071 12       		.uleb128 0x12
+ 769 0072 06       		.uleb128 0x6
+ 770 0073 40       		.uleb128 0x40
+ 771 0074 18       		.uleb128 0x18
+ 772 0075 9642     		.uleb128 0x2116
+ 773 0077 19       		.uleb128 0x19
+ 774 0078 00       		.byte	0
+ 775 0079 00       		.byte	0
+ 776 007a 09       		.uleb128 0x9
+ 777 007b 2E       		.uleb128 0x2e
+ 778 007c 00       		.byte	0
+ 779 007d 3F       		.uleb128 0x3f
+ 780 007e 19       		.uleb128 0x19
+ 781 007f 03       		.uleb128 0x3
+ 782 0080 0E       		.uleb128 0xe
+ 783 0081 3A       		.uleb128 0x3a
+ 784 0082 0B       		.uleb128 0xb
+ 785 0083 3B       		.uleb128 0x3b
+ 786 0084 0B       		.uleb128 0xb
+ 787 0085 11       		.uleb128 0x11
+ 788 0086 01       		.uleb128 0x1
+ 789 0087 12       		.uleb128 0x12
+ 790 0088 06       		.uleb128 0x6
+ 791 0089 40       		.uleb128 0x40
+ 792 008a 18       		.uleb128 0x18
+ 793 008b 9742     		.uleb128 0x2117
+ 794 008d 19       		.uleb128 0x19
+ 795 008e 00       		.byte	0
+ 796 008f 00       		.byte	0
+ 797 0090 0A       		.uleb128 0xa
+ 798 0091 2E       		.uleb128 0x2e
+ 799 0092 01       		.byte	0x1
+ 800 0093 3F       		.uleb128 0x3f
+ 801 0094 19       		.uleb128 0x19
+ 802 0095 03       		.uleb128 0x3
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cckvJNZP.s 			page 17
+
+
+ 803 0096 0E       		.uleb128 0xe
+ 804 0097 3A       		.uleb128 0x3a
+ 805 0098 0B       		.uleb128 0xb
+ 806 0099 3B       		.uleb128 0x3b
+ 807 009a 0B       		.uleb128 0xb
+ 808 009b 27       		.uleb128 0x27
+ 809 009c 19       		.uleb128 0x19
+ 810 009d 11       		.uleb128 0x11
+ 811 009e 01       		.uleb128 0x1
+ 812 009f 12       		.uleb128 0x12
+ 813 00a0 06       		.uleb128 0x6
+ 814 00a1 40       		.uleb128 0x40
+ 815 00a2 18       		.uleb128 0x18
+ 816 00a3 9642     		.uleb128 0x2116
+ 817 00a5 19       		.uleb128 0x19
+ 818 00a6 01       		.uleb128 0x1
+ 819 00a7 13       		.uleb128 0x13
+ 820 00a8 00       		.byte	0
+ 821 00a9 00       		.byte	0
+ 822 00aa 0B       		.uleb128 0xb
+ 823 00ab 05       		.uleb128 0x5
+ 824 00ac 00       		.byte	0
+ 825 00ad 03       		.uleb128 0x3
+ 826 00ae 0E       		.uleb128 0xe
+ 827 00af 3A       		.uleb128 0x3a
+ 828 00b0 0B       		.uleb128 0xb
+ 829 00b1 3B       		.uleb128 0x3b
+ 830 00b2 0B       		.uleb128 0xb
+ 831 00b3 49       		.uleb128 0x49
+ 832 00b4 13       		.uleb128 0x13
+ 833 00b5 02       		.uleb128 0x2
+ 834 00b6 18       		.uleb128 0x18
+ 835 00b7 00       		.byte	0
+ 836 00b8 00       		.byte	0
+ 837 00b9 0C       		.uleb128 0xc
+ 838 00ba 34       		.uleb128 0x34
+ 839 00bb 00       		.byte	0
+ 840 00bc 03       		.uleb128 0x3
+ 841 00bd 0E       		.uleb128 0xe
+ 842 00be 3A       		.uleb128 0x3a
+ 843 00bf 0B       		.uleb128 0xb
+ 844 00c0 3B       		.uleb128 0x3b
+ 845 00c1 0B       		.uleb128 0xb
+ 846 00c2 49       		.uleb128 0x49
+ 847 00c3 13       		.uleb128 0x13
+ 848 00c4 02       		.uleb128 0x2
+ 849 00c5 18       		.uleb128 0x18
+ 850 00c6 00       		.byte	0
+ 851 00c7 00       		.byte	0
+ 852 00c8 0D       		.uleb128 0xd
+ 853 00c9 0B       		.uleb128 0xb
+ 854 00ca 01       		.byte	0x1
+ 855 00cb 11       		.uleb128 0x11
+ 856 00cc 01       		.uleb128 0x1
+ 857 00cd 12       		.uleb128 0x12
+ 858 00ce 06       		.uleb128 0x6
+ 859 00cf 00       		.byte	0
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cckvJNZP.s 			page 18
+
+
+ 860 00d0 00       		.byte	0
+ 861 00d1 0E       		.uleb128 0xe
+ 862 00d2 34       		.uleb128 0x34
+ 863 00d3 00       		.byte	0
+ 864 00d4 03       		.uleb128 0x3
+ 865 00d5 0E       		.uleb128 0xe
+ 866 00d6 3A       		.uleb128 0x3a
+ 867 00d7 0B       		.uleb128 0xb
+ 868 00d8 3B       		.uleb128 0x3b
+ 869 00d9 05       		.uleb128 0x5
+ 870 00da 49       		.uleb128 0x49
+ 871 00db 13       		.uleb128 0x13
+ 872 00dc 3F       		.uleb128 0x3f
+ 873 00dd 19       		.uleb128 0x19
+ 874 00de 3C       		.uleb128 0x3c
+ 875 00df 19       		.uleb128 0x19
+ 876 00e0 00       		.byte	0
+ 877 00e1 00       		.byte	0
+ 878 00e2 0F       		.uleb128 0xf
+ 879 00e3 35       		.uleb128 0x35
+ 880 00e4 00       		.byte	0
+ 881 00e5 49       		.uleb128 0x49
+ 882 00e6 13       		.uleb128 0x13
+ 883 00e7 00       		.byte	0
+ 884 00e8 00       		.byte	0
+ 885 00e9 10       		.uleb128 0x10
+ 886 00ea 34       		.uleb128 0x34
+ 887 00eb 00       		.byte	0
+ 888 00ec 03       		.uleb128 0x3
+ 889 00ed 0E       		.uleb128 0xe
+ 890 00ee 3A       		.uleb128 0x3a
+ 891 00ef 0B       		.uleb128 0xb
+ 892 00f0 3B       		.uleb128 0x3b
+ 893 00f1 0B       		.uleb128 0xb
+ 894 00f2 49       		.uleb128 0x49
+ 895 00f3 13       		.uleb128 0x13
+ 896 00f4 3F       		.uleb128 0x3f
+ 897 00f5 19       		.uleb128 0x19
+ 898 00f6 02       		.uleb128 0x2
+ 899 00f7 18       		.uleb128 0x18
+ 900 00f8 00       		.byte	0
+ 901 00f9 00       		.byte	0
+ 902 00fa 11       		.uleb128 0x11
+ 903 00fb 01       		.uleb128 0x1
+ 904 00fc 01       		.byte	0x1
+ 905 00fd 49       		.uleb128 0x49
+ 906 00fe 13       		.uleb128 0x13
+ 907 00ff 01       		.uleb128 0x1
+ 908 0100 13       		.uleb128 0x13
+ 909 0101 00       		.byte	0
+ 910 0102 00       		.byte	0
+ 911 0103 12       		.uleb128 0x12
+ 912 0104 21       		.uleb128 0x21
+ 913 0105 00       		.byte	0
+ 914 0106 49       		.uleb128 0x49
+ 915 0107 13       		.uleb128 0x13
+ 916 0108 2F       		.uleb128 0x2f
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cckvJNZP.s 			page 19
+
+
+ 917 0109 0B       		.uleb128 0xb
+ 918 010a 00       		.byte	0
+ 919 010b 00       		.byte	0
+ 920 010c 00       		.byte	0
+ 921              		.section	.debug_aranges,"",%progbits
+ 922 0000 44000000 		.4byte	0x44
+ 923 0004 0200     		.2byte	0x2
+ 924 0006 00000000 		.4byte	.Ldebug_info0
+ 925 000a 04       		.byte	0x4
+ 926 000b 00       		.byte	0
+ 927 000c 0000     		.2byte	0
+ 928 000e 0000     		.2byte	0
+ 929 0010 00000000 		.4byte	.LFB63
+ 930 0014 14000000 		.4byte	.LFE63-.LFB63
+ 931 0018 00000000 		.4byte	.LFB64
+ 932 001c 14000000 		.4byte	.LFE64-.LFB64
+ 933 0020 00000000 		.4byte	.LFB65
+ 934 0024 18000000 		.4byte	.LFE65-.LFB65
+ 935 0028 00000000 		.4byte	.LFB66
+ 936 002c 18000000 		.4byte	.LFE66-.LFB66
+ 937 0030 00000000 		.4byte	.LFB67
+ 938 0034 94000000 		.4byte	.LFE67-.LFB67
+ 939 0038 00000000 		.4byte	.LFB68
+ 940 003c 8C000000 		.4byte	.LFE68-.LFB68
+ 941 0040 00000000 		.4byte	0
+ 942 0044 00000000 		.4byte	0
+ 943              		.section	.debug_ranges,"",%progbits
+ 944              	.Ldebug_ranges0:
+ 945 0000 00000000 		.4byte	.LFB63
+ 946 0004 14000000 		.4byte	.LFE63
+ 947 0008 00000000 		.4byte	.LFB64
+ 948 000c 14000000 		.4byte	.LFE64
+ 949 0010 00000000 		.4byte	.LFB65
+ 950 0014 18000000 		.4byte	.LFE65
+ 951 0018 00000000 		.4byte	.LFB66
+ 952 001c 18000000 		.4byte	.LFE66
+ 953 0020 00000000 		.4byte	.LFB67
+ 954 0024 94000000 		.4byte	.LFE67
+ 955 0028 00000000 		.4byte	.LFB68
+ 956 002c 8C000000 		.4byte	.LFE68
+ 957 0030 00000000 		.4byte	0
+ 958 0034 00000000 		.4byte	0
+ 959              		.section	.debug_line,"",%progbits
+ 960              	.Ldebug_line0:
+ 961 0000 0C020000 		.section	.debug_str,"MS",%progbits,1
+ 961      02005201 
+ 961      00000201 
+ 961      FB0E0D00 
+ 961      01010101 
+ 962              	.LASF25:
+ 963 0000 70616765 		.ascii	"page\000"
+ 963      00
+ 964              	.LASF9:
+ 965 0005 5F5F696E 		.ascii	"__int32_t\000"
+ 965      7433325F 
+ 965      7400
+ 966              	.LASF31:
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cckvJNZP.s 			page 20
+
+
+ 967 000f 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 967      4320342E 
+ 967      392E3320 
+ 967      32303135 
+ 967      30333033 
+ 968 0042 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 968      20726576 
+ 968      6973696F 
+ 968      6E203232 
+ 968      31323230 
+ 969 0075 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 969      66756E63 
+ 969      74696F6E 
+ 969      2D736563 
+ 969      74696F6E 
+ 970              	.LASF21:
+ 971 009d 73746174 		.ascii	"status\000"
+ 971      757300
+ 972              	.LASF13:
+ 973 00a4 666C6F61 		.ascii	"float\000"
+ 973      7400
+ 974              	.LASF11:
+ 975 00aa 75696E74 		.ascii	"uint8\000"
+ 975      3800
+ 976              	.LASF33:
+ 977 00b0 433A5C54 		.ascii	"C:\\TeamInsepet\\NSX-Prime\\Hardware\\CorEx-MUX-Ker"
+ 977      65616D49 
+ 977      6E736570 
+ 977      65745C4E 
+ 977      53582D50 
+ 978 00df 6E656C2D 		.ascii	"nel-Enhanced\\Workspace01\\CorEx-Mux-Kernel.cydsn\000"
+ 978      456E6861 
+ 978      6E636564 
+ 978      5C576F72 
+ 978      6B737061 
+ 979              	.LASF1:
+ 980 010f 756E7369 		.ascii	"unsigned char\000"
+ 980      676E6564 
+ 980      20636861 
+ 980      7200
+ 981              	.LASF26:
+ 982 011d 72657472 		.ascii	"retries\000"
+ 982      69657300 
+ 983              	.LASF5:
+ 984 0125 6C6F6E67 		.ascii	"long unsigned int\000"
+ 984      20756E73 
+ 984      69676E65 
+ 984      6420696E 
+ 984      7400
+ 985              	.LASF3:
+ 986 0137 73686F72 		.ascii	"short unsigned int\000"
+ 986      7420756E 
+ 986      7369676E 
+ 986      65642069 
+ 986      6E7400
+ 987              	.LASF27:
+ 988 014a 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cckvJNZP.s 			page 21
+
+
+ 988      52784275 
+ 988      66666572 
+ 988      00
+ 989              	.LASF14:
+ 990 0157 646F7562 		.ascii	"double\000"
+ 990      6C6500
+ 991              	.LASF12:
+ 992 015e 75696E74 		.ascii	"uint16\000"
+ 992      313600
+ 993              	.LASF24:
+ 994 0165 53746F72 		.ascii	"StoreEepromPage\000"
+ 994      65456570 
+ 994      726F6D50 
+ 994      61676500 
+ 995              	.LASF8:
+ 996 0175 756E7369 		.ascii	"unsigned int\000"
+ 996      676E6564 
+ 996      20696E74 
+ 996      00
+ 997              	.LASF20:
+ 998 0182 49324342 		.ascii	"I2CBusUnlock\000"
+ 998      7573556E 
+ 998      6C6F636B 
+ 998      00
+ 999              	.LASF7:
+ 1000 018f 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1000      206C6F6E 
+ 1000      6720756E 
+ 1000      7369676E 
+ 1000      65642069 
+ 1001              	.LASF28:
+ 1002 01a6 5F675F69 		.ascii	"_g_i2cbuslock\000"
+ 1002      32636275 
+ 1002      736C6F63 
+ 1002      6B00
+ 1003              	.LASF19:
+ 1004 01b4 49324342 		.ascii	"I2CBusLock\000"
+ 1004      75734C6F 
+ 1004      636B00
+ 1005              	.LASF10:
+ 1006 01bf 696E7433 		.ascii	"int32_t\000"
+ 1006      325F7400 
+ 1007              	.LASF16:
+ 1008 01c7 73697A65 		.ascii	"sizetype\000"
+ 1008      74797065 
+ 1008      00
+ 1009              	.LASF6:
+ 1010 01d0 6C6F6E67 		.ascii	"long long int\000"
+ 1010      206C6F6E 
+ 1010      6720696E 
+ 1010      7400
+ 1011              	.LASF15:
+ 1012 01de 63686172 		.ascii	"char\000"
+ 1012      00
+ 1013              	.LASF22:
+ 1014 01e3 696E6465 		.ascii	"index\000"
+ 1014      7800
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cckvJNZP.s 			page 22
+
+
+ 1015              	.LASF2:
+ 1016 01e9 73686F72 		.ascii	"short int\000"
+ 1016      7420696E 
+ 1016      7400
+ 1017              	.LASF32:
+ 1018 01f3 2E5C4565 		.ascii	".\\EepromManager.c\000"
+ 1018      70726F6D 
+ 1018      4D616E61 
+ 1018      6765722E 
+ 1018      6300
+ 1019              	.LASF30:
+ 1020 0205 5F675F65 		.ascii	"_g_eeprom\000"
+ 1020      6570726F 
+ 1020      6D00
+ 1021              	.LASF4:
+ 1022 020f 6C6F6E67 		.ascii	"long int\000"
+ 1022      20696E74 
+ 1022      00
+ 1023              	.LASF23:
+ 1024 0218 4C6F6164 		.ascii	"LoadEepromPage\000"
+ 1024      45657072 
+ 1024      6F6D5061 
+ 1024      676500
+ 1025              	.LASF17:
+ 1026 0227 6C6F6E67 		.ascii	"long double\000"
+ 1026      20646F75 
+ 1026      626C6500 
+ 1027              	.LASF0:
+ 1028 0233 7369676E 		.ascii	"signed char\000"
+ 1028      65642063 
+ 1028      68617200 
+ 1029              	.LASF34:
+ 1030 023f 47657445 		.ascii	"GetEepromBuffer\000"
+ 1030      6570726F 
+ 1030      6D427566 
+ 1030      66657200 
+ 1031              	.LASF29:
+ 1032 024f 5F426F6F 		.ascii	"_Bool\000"
+ 1032      6C00
+ 1033              	.LASF18:
+ 1034 0255 436C6561 		.ascii	"ClearEepromBuffer\000"
+ 1034      72456570 
+ 1034      726F6D42 
+ 1034      75666665 
+ 1034      7200
+ 1035              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

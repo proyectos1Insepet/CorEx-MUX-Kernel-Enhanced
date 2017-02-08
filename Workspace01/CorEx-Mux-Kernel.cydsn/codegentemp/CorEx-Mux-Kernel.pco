@@ -1,0 +1,222 @@
+# CorEx-Mux-Kernel
+# 2017-02-08 12:30:17Z
+
+# IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
+dont_use_io iocell 1 0
+# IO_1@[IOP=(1)][IoId=(1)] is reserved: SWDDebugEnabled
+dont_use_io iocell 1 1
+# IO_3@[IOP=(1)][IoId=(3)] is reserved: SWDDebugEnabled
+dont_use_io iocell 1 3
+set_location "ClockBlock" clockblockcell -1 -1 0
+set_io "Rx_RF(0)" iocell 6 1
+set_io "Tx_RF(0)" iocell 6 0
+set_io "Rx_Print(0)" iocell 6 6
+set_io "Tx_Print(0)" iocell 6 7
+set_io "Rx_Pump(0)" iocell 2 2
+set_io "Tx_Pump(0)" iocell 2 1
+set_io "Rx_Disp1(0)" iocell 1 6
+set_io "Tx_Disp1(0)" iocell 1 7
+set_io "Rx_Disp2(0)" iocell 5 4
+set_io "Tx_Disp2(0)" iocell 5 5
+set_io "SDA_Bus(0)" iocell 12 5
+set_io "SCL_Bus(0)" iocell 12 4
+set_io "iButton1(0)" iocell 5 6
+set_io "iButton2(0)" iocell 5 7
+set_io "eepromWP(0)" iocell 6 4
+set_location "Net_2" 0 1 0 1
+set_location "\RF_Physical:BUART:counter_load_not\" 0 3 1 1
+set_location "\RF_Physical:BUART:tx_status_0\" 0 2 1 2
+set_location "\RF_Physical:BUART:tx_status_2\" 1 1 0 2
+set_location "\RF_Physical:BUART:rx_counter_load\" 3 3 0 1
+set_location "\RF_Physical:BUART:rx_postpoll\" 3 3 0 2
+set_location "\RF_Physical:BUART:rx_status_4\" 3 4 0 0
+set_location "\RF_Physical:BUART:rx_status_5\" 2 4 0 2
+set_location "\Timer_DispenserState:TimerUDB:status_tc\" 2 1 1 3
+set_location "\CRC_Security:si\" 3 2 0 2
+set_location "Net_152" 2 2 0 1
+set_location "Net_87" 2 3 1 2
+set_location "Net_358" 1 0 1 2
+set_location "\Printer:BUART:counter_load_not\" 0 0 0 2
+set_location "\Printer:BUART:tx_status_0\" 1 0 0 3
+set_location "\Printer:BUART:tx_status_2\" 1 2 1 1
+set_location "\Printer:BUART:rx_counter_load\" 1 3 1 3
+set_location "\Printer:BUART:rx_postpoll\" 1 2 0 1
+set_location "\Printer:BUART:rx_status_4\" 1 2 1 0
+set_location "\Printer:BUART:rx_status_5\" 1 2 1 2
+set_location "Net_392" 2 4 1 3
+set_location "\Dispenser:BUART:counter_load_not\" 2 5 0 0
+set_location "\Dispenser:BUART:tx_status_0\" 2 5 0 2
+set_location "\Dispenser:BUART:tx_status_2\" 3 5 1 3
+set_location "\Dispenser:BUART:rx_counter_load\" 3 5 0 0
+set_location "\Dispenser:BUART:rx_postpoll\" 3 2 1 2
+set_location "\Dispenser:BUART:rx_status_4\" 3 5 0 2
+set_location "\Dispenser:BUART:rx_status_5\" 3 2 0 3
+set_location "Net_444" 2 1 1 2
+set_location "\Display1:BUART:counter_load_not\" 1 1 1 2
+set_location "\Display1:BUART:tx_status_0\" 2 2 1 1
+set_location "\Display1:BUART:tx_status_2\" 2 3 1 1
+set_location "\Display1:BUART:rx_counter_load\" 2 0 0 3
+set_location "\Display1:BUART:rx_postpoll\" 2 1 0 2
+set_location "\Display1:BUART:rx_status_4\" 3 0 0 2
+set_location "\Display1:BUART:rx_status_5\" 3 0 1 1
+set_location "Net_499" 0 1 1 2
+set_location "\Display2:BUART:counter_load_not\" 0 1 1 1
+set_location "\Display2:BUART:tx_status_0\" 0 0 1 2
+set_location "\Display2:BUART:tx_status_2\" 0 0 0 3
+set_location "\Display2:BUART:rx_counter_load\" 1 4 1 3
+set_location "\Display2:BUART:rx_postpoll\" 0 4 0 2
+set_location "\Display2:BUART:rx_status_4\" 0 4 1 0
+set_location "\Display2:BUART:rx_status_5\" 0 4 1 1
+set_location "\RF_Physical:RXInternalInterrupt\" interrupt -1 -1 4
+set_location "\RF_Physical:BUART:sTX:TxShifter:u0\" 1 1 2
+set_location "\RF_Physical:BUART:sTX:sCLOCK:TxBitClkGen\" 0 3 2
+set_location "\RF_Physical:BUART:sTX:TxSts\" 0 1 4
+set_location "\RF_Physical:BUART:sRX:RxShifter:u0\" 3 3 2
+set_location "\RF_Physical:BUART:sRX:RxBitCounter\" 3 1 7
+set_location "\RF_Physical:BUART:sRX:RxSts\" 2 4 4
+set_location "\Reset_DispenserTimer:Sync:ctrl_reg\" 3 0 6
+set_location "DispenserStateTimeout_ISR" interrupt -1 -1 0
+set_location "\Timer_DispenserState:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\" 2 0 6
+set_location "\Timer_DispenserState:TimerUDB:rstSts:stsreg\" 2 0 4
+set_location "\Timer_DispenserState:TimerUDB:sT16:timerdp:u0\" 2 0 2
+set_location "\Timer_DispenserState:TimerUDB:sT16:timerdp:u1\" 3 0 2
+set_location "\ShiftReg_iButtonCRC4LSB:bSR:SyncCtl:CtrlReg\" 2 2 6
+set_location "\ShiftReg_iButtonCRC4LSB:bSR:StsReg\" 2 2 4
+set_location "\ShiftReg_iButtonCRC4LSB:bSR:sC8:BShiftRegDp:u0\" 2 3 2
+set_location "\Input_iButton:Sync:ctrl_reg\" 2 3 6
+set_location "\Clock_iButton:Sync:ctrl_reg\" 2 5 6
+set_location "\CRC_Security:SyncCtrl:CtrlReg\" 3 2 6
+set_location "\CRC_Security:sC8:CRCdp:u0\" 3 2 2
+set_location "\ShiftReg_Security:bSR:SyncCtl:CtrlReg\" 1 0 6
+set_location "\ShiftReg_Security:bSR:StsReg\" 1 0 4
+set_location "\ShiftReg_Security:bSR:sC8:BShiftRegDp:u0\" 2 2 2
+set_location "\Clock_CRC:Sync:ctrl_reg\" 1 2 6
+set_location "\Reset_CRC:Sync:ctrl_reg\" 2 1 6
+set_location "\Reset_iButton:Sync:ctrl_reg\" 2 4 6
+set_location "\Printer:BUART:sTX:TxShifter:u0\" 1 0 2
+set_location "\Printer:BUART:sTX:sCLOCK:TxBitClkGen\" 0 0 2
+set_location "\Printer:BUART:sTX:TxSts\" 1 2 4
+set_location "\Printer:BUART:sRX:RxShifter:u0\" 1 2 2
+set_location "\Printer:BUART:sRX:RxBitCounter\" 1 3 7
+set_location "\Printer:BUART:sRX:RxSts\" 0 2 4
+set_location "\Dispenser:RXInternalInterrupt\" interrupt -1 -1 1
+set_location "\Dispenser:BUART:sTX:TxShifter:u0\" 3 5 2
+set_location "\Dispenser:BUART:sTX:sCLOCK:TxBitClkGen\" 2 5 2
+set_location "\Dispenser:BUART:sTX:TxSts\" 3 5 4
+set_location "\Dispenser:BUART:sRX:RxShifter:u0\" 3 4 2
+set_location "\Dispenser:BUART:sRX:RxBitCounter\" 3 3 7
+set_location "\Dispenser:BUART:sRX:RxSts\" 3 2 4
+set_location "\Display1:RXInternalInterrupt\" interrupt -1 -1 2
+set_location "\Display1:BUART:sTX:TxShifter:u0\" 2 1 2
+set_location "\Display1:BUART:sTX:sCLOCK:TxBitClkGen\" 1 3 2
+set_location "\Display1:BUART:sTX:TxSts\" 2 3 4
+set_location "\Display1:BUART:sRX:RxShifter:u0\" 3 1 2
+set_location "\Display1:BUART:sRX:RxBitCounter\" 1 1 7
+set_location "\Display1:BUART:sRX:RxSts\" 3 0 4
+set_location "\Display2:RXInternalInterrupt\" interrupt -1 -1 3
+set_location "\Display2:BUART:sTX:TxShifter:u0\" 0 1 2
+set_location "\Display2:BUART:sTX:sCLOCK:TxBitClkGen\" 0 2 2
+set_location "\Display2:BUART:sTX:TxSts\" 0 0 4
+set_location "\Display2:BUART:sRX:RxShifter:u0\" 0 4 2
+set_location "\Display2:BUART:sRX:RxBitCounter\" 1 4 7
+set_location "\Display2:BUART:sRX:RxSts\" 0 4 4
+set_location "Counter_ISR" interrupt -1 -1 17
+set_location "\I2C_Bus:I2C_IRQ\" interrupt -1 -1 15
+set_location "\I2C_Bus:I2C_FF\" i2ccell -1 -1 0
+set_location "\Timer_Tick:TimerHW\" timercell -1 -1 0
+set_location "__ONE__" 1 4 0 3
+set_location "\ShiftReg_iButtonCRC3MSB:bSR:SyncCtl:CtrlReg\" 3 4 6
+set_location "\ShiftReg_iButtonCRC3MSB:bSR:StsReg\" 2 5 4
+set_location "\ShiftReg_iButtonCRC3MSB:bSR:sC8:BShiftRegDp:u0\" 2 4 2
+set_location "\StatusReg_iButton5thCRCBit:sts:sts_reg\" 3 4 3
+set_location "\RF_Physical:BUART:txn\" 0 2 0 0
+set_location "\RF_Physical:BUART:tx_state_1\" 0 2 0 1
+set_location "\RF_Physical:BUART:tx_state_0\" 0 2 1 0
+set_location "\RF_Physical:BUART:tx_state_2\" 0 3 1 3
+set_location "\RF_Physical:BUART:tx_bitclk\" 0 2 1 1
+set_location "\RF_Physical:BUART:tx_ctrl_mark_last\" 3 4 0 2
+set_location "\RF_Physical:BUART:rx_state_0\" 3 3 0 0
+set_location "\RF_Physical:BUART:rx_load_fifo\" 3 4 1 2
+set_location "\RF_Physical:BUART:rx_state_3\" 3 3 0 3
+set_location "\RF_Physical:BUART:rx_state_2\" 3 4 1 1
+set_location "\RF_Physical:BUART:rx_bitclk_enable\" 3 0 0 1
+set_location "\RF_Physical:BUART:rx_state_stop1_reg\" 3 4 0 3
+set_location "MODIN1_1" 3 0 0 0
+set_location "MODIN1_0" 3 2 0 1
+set_location "\RF_Physical:BUART:rx_status_3\" 3 4 1 0
+set_location "\RF_Physical:BUART:rx_last\" 3 2 0 0
+set_location "\Printer:BUART:txn\" 1 0 1 0
+set_location "\Printer:BUART:tx_state_1\" 0 0 0 1
+set_location "\Printer:BUART:tx_state_0\" 1 0 0 0
+set_location "\Printer:BUART:tx_state_2\" 0 0 0 0
+set_location "\Printer:BUART:tx_bitclk\" 1 0 1 1
+set_location "\Printer:BUART:tx_ctrl_mark_last\" 1 3 0 3
+set_location "\Printer:BUART:rx_state_0\" 1 3 0 0
+set_location "\Printer:BUART:rx_load_fifo\" 1 3 1 2
+set_location "\Printer:BUART:rx_state_3\" 1 3 0 2
+set_location "\Printer:BUART:rx_state_2\" 1 3 0 1
+set_location "\Printer:BUART:rx_bitclk_enable\" 1 2 0 0
+set_location "\Printer:BUART:rx_state_stop1_reg\" 1 3 1 1
+set_location "MODIN5_1" 1 2 0 3
+set_location "MODIN5_0" 1 2 0 2
+set_location "\Printer:BUART:rx_status_3\" 1 3 1 0
+set_location "\Printer:BUART:rx_last\" 2 3 0 1
+set_location "\Dispenser:BUART:txn\" 2 4 0 0
+set_location "\Dispenser:BUART:tx_state_1\" 2 5 1 2
+set_location "\Dispenser:BUART:tx_state_0\" 2 5 1 3
+set_location "\Dispenser:BUART:tx_state_2\" 2 5 0 1
+set_location "\Dispenser:BUART:tx_bitclk\" 2 5 0 3
+set_location "\Dispenser:BUART:tx_ctrl_mark_last\" 3 5 1 0
+set_location "\Dispenser:BUART:tx_parity_bit\" 2 5 1 0
+set_location "\Dispenser:BUART:rx_state_0\" 3 1 0 0
+set_location "\Dispenser:BUART:rx_load_fifo\" 3 5 0 3
+set_location "\Dispenser:BUART:rx_state_3\" 3 1 0 1
+set_location "\Dispenser:BUART:rx_state_2\" 3 3 1 2
+set_location "\Dispenser:BUART:rx_bitclk_enable\" 3 2 1 3
+set_location "\Dispenser:BUART:rx_state_stop1_reg\" 3 1 1 3
+set_location "MODIN9_1" 3 2 1 0
+set_location "MODIN9_0" 3 2 1 1
+set_location "\Dispenser:BUART:rx_status_2\" 3 3 1 1
+set_location "\Dispenser:BUART:rx_status_3\" 3 1 0 3
+set_location "\Dispenser:BUART:rx_parity_error_pre\" 3 3 1 0
+set_location "\Dispenser:BUART:rx_last\" 3 3 1 3
+set_location "\Dispenser:BUART:rx_parity_bit\" 3 1 0 2
+set_location "\Display1:BUART:txn\" 2 1 1 0
+set_location "\Display1:BUART:tx_state_1\" 1 1 1 1
+set_location "\Display1:BUART:tx_state_0\" 2 2 1 0
+set_location "\Display1:BUART:tx_state_2\" 1 1 1 0
+set_location "\Display1:BUART:tx_bitclk\" 2 2 1 2
+set_location "\Display1:BUART:tx_ctrl_mark_last\" 2 2 0 2
+set_location "\Display1:BUART:rx_state_0\" 2 0 0 0
+set_location "\Display1:BUART:rx_load_fifo\" 2 0 1 2
+set_location "\Display1:BUART:rx_state_3\" 2 0 1 3
+set_location "\Display1:BUART:rx_state_2\" 2 0 1 1
+set_location "\Display1:BUART:rx_bitclk_enable\" 1 1 1 3
+set_location "\Display1:BUART:rx_state_stop1_reg\" 2 0 0 2
+set_location "MODIN13_1" 2 1 0 0
+set_location "MODIN13_0" 2 1 0 1
+set_location "\Display1:BUART:rx_status_3\" 2 0 0 1
+set_location "SCL_Bus(0)_SYNC" 0 3 5 2
+set_location "SDA_Bus(0)_SYNC" 0 3 5 1
+set_location "\Display1:BUART:rx_last\" 2 0 1 0
+set_location "\Display2:BUART:txn\" 0 1 0 0
+set_location "\Display2:BUART:tx_state_1\" 0 1 1 3
+set_location "\Display2:BUART:tx_state_0\" 0 0 1 1
+set_location "\Display2:BUART:tx_state_2\" 0 1 1 0
+set_location "Rx_Disp2(0)_SYNC" 0 3 5 0
+set_location "\Display2:BUART:tx_bitclk\" 0 0 1 0
+set_location "\Display2:BUART:tx_ctrl_mark_last\" 0 3 0 1
+set_location "\Display2:BUART:rx_state_0\" 1 4 0 0
+set_location "\Display2:BUART:rx_load_fifo\" 1 4 1 2
+set_location "\Display2:BUART:rx_state_3\" 1 4 0 2
+set_location "\Display2:BUART:rx_state_2\" 1 4 0 1
+set_location "\Display2:BUART:rx_bitclk_enable\" 0 4 0 3
+set_location "\Display2:BUART:rx_state_stop1_reg\" 1 4 1 1
+set_location "\Display2:BUART:pollcount_1\" 0 4 0 0
+set_location "\Display2:BUART:pollcount_0\" 0 4 0 1
+set_location "Rx_Disp1(0)_SYNC" 2 1 5 1
+set_location "\Display2:BUART:rx_status_3\" 1 4 1 0
+set_location "Rx_Pump(0)_SYNC" 2 1 5 3
+set_location "Rx_Print(0)_SYNC" 2 1 5 2
+set_location "\Display2:BUART:rx_last\" 1 2 1 3
+set_location "Rx_RF(0)_SYNC" 2 1 5 0

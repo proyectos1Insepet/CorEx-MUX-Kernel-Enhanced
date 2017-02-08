@@ -1,0 +1,370 @@
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccqXUfIE.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"UARTManagerSink.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.UARTSinkRegistration,"ax",%progbits
+  19              		.align	2
+  20              		.global	UARTSinkRegistration
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	UARTSinkRegistration, %function
+  24              	UARTSinkRegistration:
+  25              	.LFB0:
+  26              		.file 1 ".\\UARTManagerSink.c"
+   1:.\UARTManagerSink.c **** /* ========================================
+   2:.\UARTManagerSink.c ****  *
+   3:.\UARTManagerSink.c ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\UARTManagerSink.c ****  * All Rights Reserved
+   5:.\UARTManagerSink.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\UARTManagerSink.c ****  *
+   7:.\UARTManagerSink.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\UARTManagerSink.c ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\UARTManagerSink.c ****  *
+  10:.\UARTManagerSink.c ****  * ========================================
+  11:.\UARTManagerSink.c **** */
+  12:.\UARTManagerSink.c **** #include "SinkManager.h"
+  13:.\UARTManagerSink.c **** #include "SinkObservables.h"
+  14:.\UARTManagerSink.c **** 
+  15:.\UARTManagerSink.c **** void UARTSinkRegistration()
+  16:.\UARTManagerSink.c **** {
+  27              		.loc 1 16 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 80B4     		push	{r7}
+  33              		.cfi_def_cfa_offset 4
+  34              		.cfi_offset 7, -4
+  35 0002 00AF     		add	r7, sp, #0
+  36              		.cfi_def_cfa_register 7
+  17:.\UARTManagerSink.c ****     //RESERVED FOR FUTURE USE
+  18:.\UARTManagerSink.c **** }
+  37              		.loc 1 18 0
+  38 0004 BD46     		mov	sp, r7
+  39              		.cfi_def_cfa_register 13
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccqXUfIE.s 			page 2
+
+
+  40              		@ sp needed
+  41 0006 5DF8047B 		ldr	r7, [sp], #4
+  42              		.cfi_restore 7
+  43              		.cfi_def_cfa_offset 0
+  44 000a 7047     		bx	lr
+  45              		.cfi_endproc
+  46              	.LFE0:
+  47              		.size	UARTSinkRegistration, .-UARTSinkRegistration
+  48              		.text
+  49              	.Letext0:
+  50              		.section	.debug_info,"",%progbits
+  51              	.Ldebug_info0:
+  52 0000 A3000000 		.4byte	0xa3
+  53 0004 0400     		.2byte	0x4
+  54 0006 00000000 		.4byte	.Ldebug_abbrev0
+  55 000a 04       		.byte	0x4
+  56 000b 01       		.uleb128 0x1
+  57 000c 80000000 		.4byte	.LASF15
+  58 0010 01       		.byte	0x1
+  59 0011 29000000 		.4byte	.LASF16
+  60 0015 34010000 		.4byte	.LASF17
+  61 0019 00000000 		.4byte	.Ldebug_ranges0+0
+  62 001d 00000000 		.4byte	0
+  63 0021 00000000 		.4byte	.Ldebug_line0
+  64 0025 02       		.uleb128 0x2
+  65 0026 01       		.byte	0x1
+  66 0027 06       		.byte	0x6
+  67 0028 28010000 		.4byte	.LASF0
+  68 002c 02       		.uleb128 0x2
+  69 002d 01       		.byte	0x1
+  70 002e 08       		.byte	0x8
+  71 002f 1B000000 		.4byte	.LASF1
+  72 0033 02       		.uleb128 0x2
+  73 0034 02       		.byte	0x2
+  74 0035 05       		.byte	0x5
+  75 0036 9F010000 		.4byte	.LASF2
+  76 003a 02       		.uleb128 0x2
+  77 003b 02       		.byte	0x2
+  78 003c 07       		.byte	0x7
+  79 003d 15010000 		.4byte	.LASF3
+  80 0041 02       		.uleb128 0x2
+  81 0042 04       		.byte	0x4
+  82 0043 05       		.byte	0x5
+  83 0044 77000000 		.4byte	.LASF4
+  84 0048 02       		.uleb128 0x2
+  85 0049 04       		.byte	0x4
+  86 004a 07       		.byte	0x7
+  87 004b 3D000000 		.4byte	.LASF5
+  88 004f 02       		.uleb128 0x2
+  89 0050 08       		.byte	0x8
+  90 0051 05       		.byte	0x5
+  91 0052 00000000 		.4byte	.LASF6
+  92 0056 02       		.uleb128 0x2
+  93 0057 08       		.byte	0x8
+  94 0058 07       		.byte	0x7
+  95 0059 4F000000 		.4byte	.LASF7
+  96 005d 03       		.uleb128 0x3
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccqXUfIE.s 			page 3
+
+
+  97 005e 04       		.byte	0x4
+  98 005f 05       		.byte	0x5
+  99 0060 696E7400 		.ascii	"int\000"
+ 100 0064 02       		.uleb128 0x2
+ 101 0065 04       		.byte	0x4
+ 102 0066 07       		.byte	0x7
+ 103 0067 0E000000 		.4byte	.LASF8
+ 104 006b 02       		.uleb128 0x2
+ 105 006c 04       		.byte	0x4
+ 106 006d 04       		.byte	0x4
+ 107 006e 66000000 		.4byte	.LASF9
+ 108 0072 02       		.uleb128 0x2
+ 109 0073 08       		.byte	0x8
+ 110 0074 04       		.byte	0x4
+ 111 0075 0E010000 		.4byte	.LASF10
+ 112 0079 02       		.uleb128 0x2
+ 113 007a 01       		.byte	0x1
+ 114 007b 08       		.byte	0x8
+ 115 007c 72000000 		.4byte	.LASF11
+ 116 0080 02       		.uleb128 0x2
+ 117 0081 04       		.byte	0x4
+ 118 0082 07       		.byte	0x7
+ 119 0083 BE010000 		.4byte	.LASF12
+ 120 0087 02       		.uleb128 0x2
+ 121 0088 08       		.byte	0x8
+ 122 0089 04       		.byte	0x4
+ 123 008a 93010000 		.4byte	.LASF13
+ 124 008e 02       		.uleb128 0x2
+ 125 008f 01       		.byte	0x1
+ 126 0090 02       		.byte	0x2
+ 127 0091 6C000000 		.4byte	.LASF14
+ 128 0095 04       		.uleb128 0x4
+ 129 0096 A9010000 		.4byte	.LASF18
+ 130 009a 01       		.byte	0x1
+ 131 009b 0F       		.byte	0xf
+ 132 009c 00000000 		.4byte	.LFB0
+ 133 00a0 0C000000 		.4byte	.LFE0-.LFB0
+ 134 00a4 01       		.uleb128 0x1
+ 135 00a5 9C       		.byte	0x9c
+ 136 00a6 00       		.byte	0
+ 137              		.section	.debug_abbrev,"",%progbits
+ 138              	.Ldebug_abbrev0:
+ 139 0000 01       		.uleb128 0x1
+ 140 0001 11       		.uleb128 0x11
+ 141 0002 01       		.byte	0x1
+ 142 0003 25       		.uleb128 0x25
+ 143 0004 0E       		.uleb128 0xe
+ 144 0005 13       		.uleb128 0x13
+ 145 0006 0B       		.uleb128 0xb
+ 146 0007 03       		.uleb128 0x3
+ 147 0008 0E       		.uleb128 0xe
+ 148 0009 1B       		.uleb128 0x1b
+ 149 000a 0E       		.uleb128 0xe
+ 150 000b 55       		.uleb128 0x55
+ 151 000c 17       		.uleb128 0x17
+ 152 000d 11       		.uleb128 0x11
+ 153 000e 01       		.uleb128 0x1
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccqXUfIE.s 			page 4
+
+
+ 154 000f 10       		.uleb128 0x10
+ 155 0010 17       		.uleb128 0x17
+ 156 0011 00       		.byte	0
+ 157 0012 00       		.byte	0
+ 158 0013 02       		.uleb128 0x2
+ 159 0014 24       		.uleb128 0x24
+ 160 0015 00       		.byte	0
+ 161 0016 0B       		.uleb128 0xb
+ 162 0017 0B       		.uleb128 0xb
+ 163 0018 3E       		.uleb128 0x3e
+ 164 0019 0B       		.uleb128 0xb
+ 165 001a 03       		.uleb128 0x3
+ 166 001b 0E       		.uleb128 0xe
+ 167 001c 00       		.byte	0
+ 168 001d 00       		.byte	0
+ 169 001e 03       		.uleb128 0x3
+ 170 001f 24       		.uleb128 0x24
+ 171 0020 00       		.byte	0
+ 172 0021 0B       		.uleb128 0xb
+ 173 0022 0B       		.uleb128 0xb
+ 174 0023 3E       		.uleb128 0x3e
+ 175 0024 0B       		.uleb128 0xb
+ 176 0025 03       		.uleb128 0x3
+ 177 0026 08       		.uleb128 0x8
+ 178 0027 00       		.byte	0
+ 179 0028 00       		.byte	0
+ 180 0029 04       		.uleb128 0x4
+ 181 002a 2E       		.uleb128 0x2e
+ 182 002b 00       		.byte	0
+ 183 002c 3F       		.uleb128 0x3f
+ 184 002d 19       		.uleb128 0x19
+ 185 002e 03       		.uleb128 0x3
+ 186 002f 0E       		.uleb128 0xe
+ 187 0030 3A       		.uleb128 0x3a
+ 188 0031 0B       		.uleb128 0xb
+ 189 0032 3B       		.uleb128 0x3b
+ 190 0033 0B       		.uleb128 0xb
+ 191 0034 11       		.uleb128 0x11
+ 192 0035 01       		.uleb128 0x1
+ 193 0036 12       		.uleb128 0x12
+ 194 0037 06       		.uleb128 0x6
+ 195 0038 40       		.uleb128 0x40
+ 196 0039 18       		.uleb128 0x18
+ 197 003a 9742     		.uleb128 0x2117
+ 198 003c 19       		.uleb128 0x19
+ 199 003d 00       		.byte	0
+ 200 003e 00       		.byte	0
+ 201 003f 00       		.byte	0
+ 202              		.section	.debug_aranges,"",%progbits
+ 203 0000 1C000000 		.4byte	0x1c
+ 204 0004 0200     		.2byte	0x2
+ 205 0006 00000000 		.4byte	.Ldebug_info0
+ 206 000a 04       		.byte	0x4
+ 207 000b 00       		.byte	0
+ 208 000c 0000     		.2byte	0
+ 209 000e 0000     		.2byte	0
+ 210 0010 00000000 		.4byte	.LFB0
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccqXUfIE.s 			page 5
+
+
+ 211 0014 0C000000 		.4byte	.LFE0-.LFB0
+ 212 0018 00000000 		.4byte	0
+ 213 001c 00000000 		.4byte	0
+ 214              		.section	.debug_ranges,"",%progbits
+ 215              	.Ldebug_ranges0:
+ 216 0000 00000000 		.4byte	.LFB0
+ 217 0004 0C000000 		.4byte	.LFE0
+ 218 0008 00000000 		.4byte	0
+ 219 000c 00000000 		.4byte	0
+ 220              		.section	.debug_line,"",%progbits
+ 221              	.Ldebug_line0:
+ 222 0000 40000000 		.section	.debug_str,"MS",%progbits,1
+ 222      02002A00 
+ 222      00000201 
+ 222      FB0E0D00 
+ 222      01010101 
+ 223              	.LASF6:
+ 224 0000 6C6F6E67 		.ascii	"long long int\000"
+ 224      206C6F6E 
+ 224      6720696E 
+ 224      7400
+ 225              	.LASF8:
+ 226 000e 756E7369 		.ascii	"unsigned int\000"
+ 226      676E6564 
+ 226      20696E74 
+ 226      00
+ 227              	.LASF1:
+ 228 001b 756E7369 		.ascii	"unsigned char\000"
+ 228      676E6564 
+ 228      20636861 
+ 228      7200
+ 229              	.LASF16:
+ 230 0029 2E5C5541 		.ascii	".\\UARTManagerSink.c\000"
+ 230      52544D61 
+ 230      6E616765 
+ 230      7253696E 
+ 230      6B2E6300 
+ 231              	.LASF5:
+ 232 003d 6C6F6E67 		.ascii	"long unsigned int\000"
+ 232      20756E73 
+ 232      69676E65 
+ 232      6420696E 
+ 232      7400
+ 233              	.LASF7:
+ 234 004f 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 234      206C6F6E 
+ 234      6720756E 
+ 234      7369676E 
+ 234      65642069 
+ 235              	.LASF9:
+ 236 0066 666C6F61 		.ascii	"float\000"
+ 236      7400
+ 237              	.LASF14:
+ 238 006c 5F426F6F 		.ascii	"_Bool\000"
+ 238      6C00
+ 239              	.LASF11:
+ 240 0072 63686172 		.ascii	"char\000"
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccqXUfIE.s 			page 6
+
+
+ 240      00
+ 241              	.LASF4:
+ 242 0077 6C6F6E67 		.ascii	"long int\000"
+ 242      20696E74 
+ 242      00
+ 243              	.LASF15:
+ 244 0080 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 244      4320342E 
+ 244      392E3320 
+ 244      32303135 
+ 244      30333033 
+ 245 00b3 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 245      20726576 
+ 245      6973696F 
+ 245      6E203232 
+ 245      31323230 
+ 246 00e6 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 246      66756E63 
+ 246      74696F6E 
+ 246      2D736563 
+ 246      74696F6E 
+ 247              	.LASF10:
+ 248 010e 646F7562 		.ascii	"double\000"
+ 248      6C6500
+ 249              	.LASF3:
+ 250 0115 73686F72 		.ascii	"short unsigned int\000"
+ 250      7420756E 
+ 250      7369676E 
+ 250      65642069 
+ 250      6E7400
+ 251              	.LASF0:
+ 252 0128 7369676E 		.ascii	"signed char\000"
+ 252      65642063 
+ 252      68617200 
+ 253              	.LASF17:
+ 254 0134 433A5C54 		.ascii	"C:\\TeamInsepet\\NSX-Prime\\Hardware\\CorEx-MUX-Ker"
+ 254      65616D49 
+ 254      6E736570 
+ 254      65745C4E 
+ 254      53582D50 
+ 255 0163 6E656C2D 		.ascii	"nel-Enhanced\\Workspace01\\CorEx-Mux-Kernel.cydsn\000"
+ 255      456E6861 
+ 255      6E636564 
+ 255      5C576F72 
+ 255      6B737061 
+ 256              	.LASF13:
+ 257 0193 6C6F6E67 		.ascii	"long double\000"
+ 257      20646F75 
+ 257      626C6500 
+ 258              	.LASF2:
+ 259 019f 73686F72 		.ascii	"short int\000"
+ 259      7420696E 
+ 259      7400
+ 260              	.LASF18:
+ 261 01a9 55415254 		.ascii	"UARTSinkRegistration\000"
+ 261      53696E6B 
+ 261      52656769 
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccqXUfIE.s 			page 7
+
+
+ 261      73747261 
+ 261      74696F6E 
+ 262              	.LASF12:
+ 263 01be 73697A65 		.ascii	"sizetype\000"
+ 263      74797065 
+ 263      00
+ 264              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

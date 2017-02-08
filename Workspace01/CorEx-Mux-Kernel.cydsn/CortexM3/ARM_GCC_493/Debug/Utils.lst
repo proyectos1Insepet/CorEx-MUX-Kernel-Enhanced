@@ -1,0 +1,2384 @@
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"Utils.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	__aeabi_ui2d
+  19              		.global	__aeabi_i2d
+  20              		.global	__aeabi_dmul
+  21              		.global	__aeabi_ul2d
+  22              		.global	__aeabi_dadd
+  23              		.global	__aeabi_d2ulz
+  24              		.section	.text.BCDPositiveValueToUInt,"ax",%progbits
+  25              		.align	2
+  26              		.global	BCDPositiveValueToUInt
+  27              		.thumb
+  28              		.thumb_func
+  29              		.type	BCDPositiveValueToUInt, %function
+  30              	BCDPositiveValueToUInt:
+  31              	.LFB0:
+  32              		.file 1 ".\\Utils.c"
+   1:.\Utils.c     **** /* ========================================
+   2:.\Utils.c     ****  *
+   3:.\Utils.c     ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\Utils.c     ****  * All Rights Reserved
+   5:.\Utils.c     ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\Utils.c     ****  *
+   7:.\Utils.c     ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\Utils.c     ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\Utils.c     ****  *
+  10:.\Utils.c     ****  * ========================================
+  11:.\Utils.c     **** */
+  12:.\Utils.c     **** 
+  13:.\Utils.c     **** #include "GlobalDefinitions.h"
+  14:.\Utils.c     **** 
+  15:.\Utils.c     **** uint64 BCDPositiveValueToUInt(uint8 *pbuffer, uint8 buffersize, uint8 mask)
+  16:.\Utils.c     **** {
+  33              		.loc 1 16 0
+  34              		.cfi_startproc
+  35              		@ args = 0, pretend = 0, frame = 24
+  36              		@ frame_needed = 1, uses_anonymous_args = 0
+  37 0000 B0B5     		push	{r4, r5, r7, lr}
+  38              		.cfi_def_cfa_offset 16
+  39              		.cfi_offset 4, -16
+  40              		.cfi_offset 5, -12
+  41              		.cfi_offset 7, -8
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 2
+
+
+  42              		.cfi_offset 14, -4
+  43 0002 86B0     		sub	sp, sp, #24
+  44              		.cfi_def_cfa_offset 40
+  45 0004 00AF     		add	r7, sp, #0
+  46              		.cfi_def_cfa_register 7
+  47 0006 7860     		str	r0, [r7, #4]
+  48 0008 0B46     		mov	r3, r1
+  49 000a FB70     		strb	r3, [r7, #3]
+  50 000c 1346     		mov	r3, r2
+  51 000e BB70     		strb	r3, [r7, #2]
+  17:.\Utils.c     ****     uint64 retval = 0;
+  52              		.loc 1 17 0
+  53 0010 4FF00002 		mov	r2, #0
+  54 0014 4FF00003 		mov	r3, #0
+  55 0018 C7E90423 		strd	r2, [r7, #16]
+  18:.\Utils.c     ****     FOR(uint8 index = 0, index < buffersize, index++)
+  56              		.loc 1 18 0
+  57 001c 0023     		movs	r3, #0
+  58 001e FB73     		strb	r3, [r7, #15]
+  59 0020 48E0     		b	.L2
+  60              	.L5:
+  19:.\Utils.c     ****     {
+  20:.\Utils.c     ****         retval += pow10(index)*(pbuffer[index] & mask);
+  61              		.loc 1 20 0
+  62 0022 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+  63 0024 1846     		mov	r0, r3
+  64 0026 FFF7FEFF 		bl	__aeabi_ui2d
+  65 002a 0246     		mov	r2, r0
+  66 002c 0B46     		mov	r3, r1
+  67 002e 1046     		mov	r0, r2
+  68 0030 1946     		mov	r1, r3
+  69 0032 FFF7FEFF 		bl	pow10
+  70 0036 0446     		mov	r4, r0
+  71 0038 0D46     		mov	r5, r1
+  72 003a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+  73 003c 7A68     		ldr	r2, [r7, #4]
+  74 003e 1344     		add	r3, r3, r2
+  75 0040 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+  76 0042 BB78     		ldrb	r3, [r7, #2]
+  77 0044 1340     		ands	r3, r3, r2
+  78 0046 DBB2     		uxtb	r3, r3
+  79 0048 1846     		mov	r0, r3
+  80 004a FFF7FEFF 		bl	__aeabi_i2d
+  81 004e 0246     		mov	r2, r0
+  82 0050 0B46     		mov	r3, r1
+  83 0052 2046     		mov	r0, r4
+  84 0054 2946     		mov	r1, r5
+  85 0056 FFF7FEFF 		bl	__aeabi_dmul
+  86 005a 0246     		mov	r2, r0
+  87 005c 0B46     		mov	r3, r1
+  88 005e 1446     		mov	r4, r2
+  89 0060 1D46     		mov	r5, r3
+  90 0062 D7E90401 		ldrd	r0, [r7, #16]
+  91 0066 FFF7FEFF 		bl	__aeabi_ul2d
+  92 006a 0246     		mov	r2, r0
+  93 006c 0B46     		mov	r3, r1
+  94 006e 1046     		mov	r0, r2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 3
+
+
+  95 0070 1946     		mov	r1, r3
+  96 0072 2246     		mov	r2, r4
+  97 0074 2B46     		mov	r3, r5
+  98 0076 FFF7FEFF 		bl	__aeabi_dadd
+  99 007a 0246     		mov	r2, r0
+ 100 007c 0B46     		mov	r3, r1
+ 101 007e 1046     		mov	r0, r2
+ 102 0080 1946     		mov	r1, r3
+ 103 0082 FFF7FEFF 		bl	__aeabi_d2ulz
+ 104 0086 0246     		mov	r2, r0
+ 105 0088 0B46     		mov	r3, r1
+ 106 008a C7E90423 		strd	r2, [r7, #16]
+  21:.\Utils.c     ****         //Not a BCD formatted value
+  22:.\Utils.c     ****         if((pbuffer[index] & mask) > 0x09)
+ 107              		.loc 1 22 0
+ 108 008e FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 109 0090 7A68     		ldr	r2, [r7, #4]
+ 110 0092 1344     		add	r3, r3, r2
+ 111 0094 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 112 0096 BB78     		ldrb	r3, [r7, #2]
+ 113 0098 1340     		ands	r3, r3, r2
+ 114 009a DBB2     		uxtb	r3, r3
+ 115 009c 092B     		cmp	r3, #9
+ 116 009e 06D9     		bls	.L3
+  23:.\Utils.c     ****         {
+  24:.\Utils.c     ****             retval = 0;
+ 117              		.loc 1 24 0
+ 118 00a0 4FF00002 		mov	r2, #0
+ 119 00a4 4FF00003 		mov	r3, #0
+ 120 00a8 C7E90423 		strd	r2, [r7, #16]
+  25:.\Utils.c     ****             break;
+ 121              		.loc 1 25 0
+ 122 00ac 06E0     		b	.L4
+ 123              	.L3:
+  18:.\Utils.c     ****     {
+ 124              		.loc 1 18 0 discriminator 2
+ 125 00ae FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 126 00b0 0133     		adds	r3, r3, #1
+ 127 00b2 FB73     		strb	r3, [r7, #15]
+ 128              	.L2:
+  18:.\Utils.c     ****     {
+ 129              		.loc 1 18 0 is_stmt 0 discriminator 1
+ 130 00b4 FA7B     		ldrb	r2, [r7, #15]	@ zero_extendqisi2
+ 131 00b6 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 132 00b8 9A42     		cmp	r2, r3
+ 133 00ba B2D3     		bcc	.L5
+ 134              	.L4:
+  26:.\Utils.c     ****         }
+  27:.\Utils.c     ****     }
+  28:.\Utils.c     ****     return retval;
+ 135              		.loc 1 28 0 is_stmt 1
+ 136 00bc D7E90423 		ldrd	r2, [r7, #16]
+  29:.\Utils.c     **** }
+ 137              		.loc 1 29 0
+ 138 00c0 1046     		mov	r0, r2
+ 139 00c2 1946     		mov	r1, r3
+ 140 00c4 1837     		adds	r7, r7, #24
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 4
+
+
+ 141              		.cfi_def_cfa_offset 16
+ 142 00c6 BD46     		mov	sp, r7
+ 143              		.cfi_def_cfa_register 13
+ 144              		@ sp needed
+ 145 00c8 B0BD     		pop	{r4, r5, r7, pc}
+ 146              		.cfi_endproc
+ 147              	.LFE0:
+ 148              		.size	BCDPositiveValueToUInt, .-BCDPositiveValueToUInt
+ 149              		.global	__aeabi_d2uiz
+ 150              		.global	__aeabi_uldivmod
+ 151 00ca 00BF     		.section	.text.B78AD90CF552D9B30A,"ax",%progbits
+ 152              		.align	2
+ 153              		.global	B78AD90CF552D9B30A
+ 154              		.thumb
+ 155              		.thumb_func
+ 156              		.type	B78AD90CF552D9B30A, %function
+ 157              	B78AD90CF552D9B30A:
+ 158              	.LFB1:
+  30:.\Utils.c     **** 
+  31:.\Utils.c     **** void B78AD90CF552D9B30A(uint64 number, uint8 *pbuffer)
+  32:.\Utils.c     **** {
+ 159              		.loc 1 32 0
+ 160              		.cfi_startproc
+ 161              		@ args = 0, pretend = 0, frame = 24
+ 162              		@ frame_needed = 1, uses_anonymous_args = 0
+ 163 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 164              		.cfi_def_cfa_offset 20
+ 165              		.cfi_offset 4, -20
+ 166              		.cfi_offset 5, -16
+ 167              		.cfi_offset 6, -12
+ 168              		.cfi_offset 7, -8
+ 169              		.cfi_offset 14, -4
+ 170 0002 87B0     		sub	sp, sp, #28
+ 171              		.cfi_def_cfa_offset 48
+ 172 0004 00AF     		add	r7, sp, #0
+ 173              		.cfi_def_cfa_register 7
+ 174 0006 C7E90201 		strd	r0, [r7, #8]
+ 175 000a 7A60     		str	r2, [r7, #4]
+  33:.\Utils.c     ****     uint8 index = 1;
+ 176              		.loc 1 33 0
+ 177 000c 0123     		movs	r3, #1
+ 178 000e FB75     		strb	r3, [r7, #23]
+  34:.\Utils.c     ****     while(number != (number % (uint32)pow(10, index)))
+ 179              		.loc 1 34 0
+ 180 0010 5FE0     		b	.L8
+ 181              	.L9:
+  35:.\Utils.c     ****     {
+  36:.\Utils.c     ****         pbuffer[index - 1] = (char8)(((number % (uint32)pow(10, index)) - (number % (uint32)pow(10,
+ 182              		.loc 1 36 0
+ 183 0012 FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 184 0014 013B     		subs	r3, r3, #1
+ 185 0016 7A68     		ldr	r2, [r7, #4]
+ 186 0018 D618     		adds	r6, r2, r3
+ 187 001a FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 188 001c 1846     		mov	r0, r3
+ 189 001e FFF7FEFF 		bl	__aeabi_ui2d
+ 190 0022 0246     		mov	r2, r0
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 5
+
+
+ 191 0024 0B46     		mov	r3, r1
+ 192 0026 4FF00000 		mov	r0, #0
+ 193 002a 6B49     		ldr	r1, .L10
+ 194 002c FFF7FEFF 		bl	pow
+ 195 0030 0246     		mov	r2, r0
+ 196 0032 0B46     		mov	r3, r1
+ 197 0034 1046     		mov	r0, r2
+ 198 0036 1946     		mov	r1, r3
+ 199 0038 FFF7FEFF 		bl	__aeabi_d2uiz
+ 200 003c 0346     		mov	r3, r0
+ 201 003e 1A46     		mov	r2, r3
+ 202 0040 4FF00003 		mov	r3, #0
+ 203 0044 D7E90201 		ldrd	r0, [r7, #8]
+ 204 0048 FFF7FEFF 		bl	__aeabi_uldivmod
+ 205 004c 1446     		mov	r4, r2
+ 206 004e 1D46     		mov	r5, r3
+ 207 0050 FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 208 0052 013B     		subs	r3, r3, #1
+ 209 0054 1846     		mov	r0, r3
+ 210 0056 FFF7FEFF 		bl	__aeabi_i2d
+ 211 005a 0246     		mov	r2, r0
+ 212 005c 0B46     		mov	r3, r1
+ 213 005e 4FF00000 		mov	r0, #0
+ 214 0062 5D49     		ldr	r1, .L10
+ 215 0064 FFF7FEFF 		bl	pow
+ 216 0068 0246     		mov	r2, r0
+ 217 006a 0B46     		mov	r3, r1
+ 218 006c 1046     		mov	r0, r2
+ 219 006e 1946     		mov	r1, r3
+ 220 0070 FFF7FEFF 		bl	__aeabi_d2uiz
+ 221 0074 0346     		mov	r3, r0
+ 222 0076 1A46     		mov	r2, r3
+ 223 0078 4FF00003 		mov	r3, #0
+ 224 007c D7E90201 		ldrd	r0, [r7, #8]
+ 225 0080 FFF7FEFF 		bl	__aeabi_uldivmod
+ 226 0084 A41A     		subs	r4, r4, r2
+ 227 0086 65EB0305 		sbc	r5, r5, r3
+ 228 008a FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 229 008c 013B     		subs	r3, r3, #1
+ 230 008e 1846     		mov	r0, r3
+ 231 0090 FFF7FEFF 		bl	__aeabi_i2d
+ 232 0094 0246     		mov	r2, r0
+ 233 0096 0B46     		mov	r3, r1
+ 234 0098 4FF00000 		mov	r0, #0
+ 235 009c 4E49     		ldr	r1, .L10
+ 236 009e FFF7FEFF 		bl	pow
+ 237 00a2 0246     		mov	r2, r0
+ 238 00a4 0B46     		mov	r3, r1
+ 239 00a6 1046     		mov	r0, r2
+ 240 00a8 1946     		mov	r1, r3
+ 241 00aa FFF7FEFF 		bl	__aeabi_d2uiz
+ 242 00ae 0346     		mov	r3, r0
+ 243 00b0 1A46     		mov	r2, r3
+ 244 00b2 4FF00003 		mov	r3, #0
+ 245 00b6 2046     		mov	r0, r4
+ 246 00b8 2946     		mov	r1, r5
+ 247 00ba FFF7FEFF 		bl	__aeabi_uldivmod
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 6
+
+
+ 248 00be 0246     		mov	r2, r0
+ 249 00c0 0B46     		mov	r3, r1
+ 250 00c2 D3B2     		uxtb	r3, r2
+ 251 00c4 43F03003 		orr	r3, r3, #48
+ 252 00c8 DBB2     		uxtb	r3, r3
+ 253 00ca 3370     		strb	r3, [r6]
+  37:.\Utils.c     ****         index++;
+ 254              		.loc 1 37 0
+ 255 00cc FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 256 00ce 0133     		adds	r3, r3, #1
+ 257 00d0 FB75     		strb	r3, [r7, #23]
+ 258              	.L8:
+  34:.\Utils.c     ****     while(number != (number % (uint32)pow(10, index)))
+ 259              		.loc 1 34 0
+ 260 00d2 FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 261 00d4 1846     		mov	r0, r3
+ 262 00d6 FFF7FEFF 		bl	__aeabi_ui2d
+ 263 00da 0246     		mov	r2, r0
+ 264 00dc 0B46     		mov	r3, r1
+ 265 00de 4FF00000 		mov	r0, #0
+ 266 00e2 3D49     		ldr	r1, .L10
+ 267 00e4 FFF7FEFF 		bl	pow
+ 268 00e8 0246     		mov	r2, r0
+ 269 00ea 0B46     		mov	r3, r1
+ 270 00ec 1046     		mov	r0, r2
+ 271 00ee 1946     		mov	r1, r3
+ 272 00f0 FFF7FEFF 		bl	__aeabi_d2uiz
+ 273 00f4 0346     		mov	r3, r0
+ 274 00f6 1A46     		mov	r2, r3
+ 275 00f8 4FF00003 		mov	r3, #0
+ 276 00fc D7E90201 		ldrd	r0, [r7, #8]
+ 277 0100 FFF7FEFF 		bl	__aeabi_uldivmod
+ 278 0104 1046     		mov	r0, r2
+ 279 0106 1946     		mov	r1, r3
+ 280 0108 D7E90223 		ldrd	r2, [r7, #8]
+ 281 010c 9942     		cmp	r1, r3
+ 282 010e 08BF     		it	eq
+ 283 0110 9042     		cmpeq	r0, r2
+ 284 0112 7FF47EAF 		bne	.L9
+  38:.\Utils.c     ****     }
+  39:.\Utils.c     ****     pbuffer[index - 1] = (char8)(((number % (uint32)pow(10, index)) - (number % (uint32)pow(10, ind
+ 285              		.loc 1 39 0
+ 286 0116 FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 287 0118 013B     		subs	r3, r3, #1
+ 288 011a 7A68     		ldr	r2, [r7, #4]
+ 289 011c D618     		adds	r6, r2, r3
+ 290 011e FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 291 0120 1846     		mov	r0, r3
+ 292 0122 FFF7FEFF 		bl	__aeabi_ui2d
+ 293 0126 0246     		mov	r2, r0
+ 294 0128 0B46     		mov	r3, r1
+ 295 012a 4FF00000 		mov	r0, #0
+ 296 012e 2A49     		ldr	r1, .L10
+ 297 0130 FFF7FEFF 		bl	pow
+ 298 0134 0246     		mov	r2, r0
+ 299 0136 0B46     		mov	r3, r1
+ 300 0138 1046     		mov	r0, r2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 7
+
+
+ 301 013a 1946     		mov	r1, r3
+ 302 013c FFF7FEFF 		bl	__aeabi_d2uiz
+ 303 0140 0346     		mov	r3, r0
+ 304 0142 1A46     		mov	r2, r3
+ 305 0144 4FF00003 		mov	r3, #0
+ 306 0148 D7E90201 		ldrd	r0, [r7, #8]
+ 307 014c FFF7FEFF 		bl	__aeabi_uldivmod
+ 308 0150 1446     		mov	r4, r2
+ 309 0152 1D46     		mov	r5, r3
+ 310 0154 FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 311 0156 013B     		subs	r3, r3, #1
+ 312 0158 1846     		mov	r0, r3
+ 313 015a FFF7FEFF 		bl	__aeabi_i2d
+ 314 015e 0246     		mov	r2, r0
+ 315 0160 0B46     		mov	r3, r1
+ 316 0162 4FF00000 		mov	r0, #0
+ 317 0166 1C49     		ldr	r1, .L10
+ 318 0168 FFF7FEFF 		bl	pow
+ 319 016c 0246     		mov	r2, r0
+ 320 016e 0B46     		mov	r3, r1
+ 321 0170 1046     		mov	r0, r2
+ 322 0172 1946     		mov	r1, r3
+ 323 0174 FFF7FEFF 		bl	__aeabi_d2uiz
+ 324 0178 0346     		mov	r3, r0
+ 325 017a 1A46     		mov	r2, r3
+ 326 017c 4FF00003 		mov	r3, #0
+ 327 0180 D7E90201 		ldrd	r0, [r7, #8]
+ 328 0184 FFF7FEFF 		bl	__aeabi_uldivmod
+ 329 0188 A41A     		subs	r4, r4, r2
+ 330 018a 65EB0305 		sbc	r5, r5, r3
+ 331 018e FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 332 0190 013B     		subs	r3, r3, #1
+ 333 0192 1846     		mov	r0, r3
+ 334 0194 FFF7FEFF 		bl	__aeabi_i2d
+ 335 0198 0246     		mov	r2, r0
+ 336 019a 0B46     		mov	r3, r1
+ 337 019c 4FF00000 		mov	r0, #0
+ 338 01a0 0D49     		ldr	r1, .L10
+ 339 01a2 FFF7FEFF 		bl	pow
+ 340 01a6 0246     		mov	r2, r0
+ 341 01a8 0B46     		mov	r3, r1
+ 342 01aa 1046     		mov	r0, r2
+ 343 01ac 1946     		mov	r1, r3
+ 344 01ae FFF7FEFF 		bl	__aeabi_d2uiz
+ 345 01b2 0346     		mov	r3, r0
+ 346 01b4 1A46     		mov	r2, r3
+ 347 01b6 4FF00003 		mov	r3, #0
+ 348 01ba 2046     		mov	r0, r4
+ 349 01bc 2946     		mov	r1, r5
+ 350 01be FFF7FEFF 		bl	__aeabi_uldivmod
+ 351 01c2 0246     		mov	r2, r0
+ 352 01c4 0B46     		mov	r3, r1
+ 353 01c6 D3B2     		uxtb	r3, r2
+ 354 01c8 43F03003 		orr	r3, r3, #48
+ 355 01cc DBB2     		uxtb	r3, r3
+ 356 01ce 3370     		strb	r3, [r6]
+  40:.\Utils.c     **** }
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 8
+
+
+ 357              		.loc 1 40 0
+ 358 01d0 1C37     		adds	r7, r7, #28
+ 359              		.cfi_def_cfa_offset 20
+ 360 01d2 BD46     		mov	sp, r7
+ 361              		.cfi_def_cfa_register 13
+ 362              		@ sp needed
+ 363 01d4 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 364              	.L11:
+ 365 01d6 00BF     		.align	2
+ 366              	.L10:
+ 367 01d8 00002440 		.word	1076101120
+ 368              		.cfi_endproc
+ 369              	.LFE1:
+ 370              		.size	B78AD90CF552D9B30A, .-B78AD90CF552D9B30A
+ 371              		.section	.text.PSTRBUFFTOGG,"ax",%progbits
+ 372              		.align	2
+ 373              		.global	PSTRBUFFTOGG
+ 374              		.thumb
+ 375              		.thumb_func
+ 376              		.type	PSTRBUFFTOGG, %function
+ 377              	PSTRBUFFTOGG:
+ 378              	.LFB2:
+  41:.\Utils.c     **** 
+  42:.\Utils.c     **** void PSTRBUFFTOGG(uint8 *pbuffer, uint8 buffersize)
+  43:.\Utils.c     **** {
+ 379              		.loc 1 43 0
+ 380              		.cfi_startproc
+ 381              		@ args = 0, pretend = 0, frame = 16
+ 382              		@ frame_needed = 1, uses_anonymous_args = 0
+ 383              		@ link register save eliminated.
+ 384 0000 80B4     		push	{r7}
+ 385              		.cfi_def_cfa_offset 4
+ 386              		.cfi_offset 7, -4
+ 387 0002 85B0     		sub	sp, sp, #20
+ 388              		.cfi_def_cfa_offset 24
+ 389 0004 00AF     		add	r7, sp, #0
+ 390              		.cfi_def_cfa_register 7
+ 391 0006 7860     		str	r0, [r7, #4]
+ 392 0008 0B46     		mov	r3, r1
+ 393 000a FB70     		strb	r3, [r7, #3]
+  44:.\Utils.c     ****     uint8 valndx = 0x00;
+ 394              		.loc 1 44 0
+ 395 000c 0023     		movs	r3, #0
+ 396 000e 7B73     		strb	r3, [r7, #13]
+  45:.\Utils.c     ****     FOR(uint8 index0 = 0, index0 < (buffersize - 1), index0++)
+ 397              		.loc 1 45 0
+ 398 0010 0023     		movs	r3, #0
+ 399 0012 FB73     		strb	r3, [r7, #15]
+ 400 0014 27E0     		b	.L13
+ 401              	.L16:
+ 402              	.LBB2:
+  46:.\Utils.c     ****     {
+  47:.\Utils.c     ****         valndx = pbuffer[buffersize - 1];
+ 403              		.loc 1 47 0
+ 404 0016 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 405 0018 013B     		subs	r3, r3, #1
+ 406 001a 7A68     		ldr	r2, [r7, #4]
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 9
+
+
+ 407 001c 1344     		add	r3, r3, r2
+ 408 001e 1B78     		ldrb	r3, [r3]
+ 409 0020 7B73     		strb	r3, [r7, #13]
+  48:.\Utils.c     ****         FOR(int8 index1 = (buffersize - 2), index1 >= index0, index1--)
+ 410              		.loc 1 48 0
+ 411 0022 FB78     		ldrb	r3, [r7, #3]
+ 412 0024 023B     		subs	r3, r3, #2
+ 413 0026 DBB2     		uxtb	r3, r3
+ 414 0028 BB73     		strb	r3, [r7, #14]
+ 415 002a 0FE0     		b	.L14
+ 416              	.L15:
+  49:.\Utils.c     ****             pbuffer[index1 + 1] = pbuffer[index1];
+ 417              		.loc 1 49 0 discriminator 3
+ 418 002c 97F90E30 		ldrsb	r3, [r7, #14]
+ 419 0030 0133     		adds	r3, r3, #1
+ 420 0032 7A68     		ldr	r2, [r7, #4]
+ 421 0034 1344     		add	r3, r3, r2
+ 422 0036 97F90E20 		ldrsb	r2, [r7, #14]
+ 423 003a 7968     		ldr	r1, [r7, #4]
+ 424 003c 0A44     		add	r2, r2, r1
+ 425 003e 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 426 0040 1A70     		strb	r2, [r3]
+  48:.\Utils.c     ****         FOR(int8 index1 = (buffersize - 2), index1 >= index0, index1--)
+ 427              		.loc 1 48 0 discriminator 3
+ 428 0042 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 429 0044 DBB2     		uxtb	r3, r3
+ 430 0046 013B     		subs	r3, r3, #1
+ 431 0048 DBB2     		uxtb	r3, r3
+ 432 004a BB73     		strb	r3, [r7, #14]
+ 433              	.L14:
+  48:.\Utils.c     ****         FOR(int8 index1 = (buffersize - 2), index1 >= index0, index1--)
+ 434              		.loc 1 48 0 is_stmt 0 discriminator 1
+ 435 004c 97F90E20 		ldrsb	r2, [r7, #14]
+ 436 0050 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 437 0052 9A42     		cmp	r2, r3
+ 438 0054 EADA     		bge	.L15
+  50:.\Utils.c     **** 
+  51:.\Utils.c     ****         pbuffer[index0] = valndx;
+ 439              		.loc 1 51 0 is_stmt 1 discriminator 2
+ 440 0056 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 441 0058 7A68     		ldr	r2, [r7, #4]
+ 442 005a 1344     		add	r3, r3, r2
+ 443 005c 7A7B     		ldrb	r2, [r7, #13]
+ 444 005e 1A70     		strb	r2, [r3]
+ 445              	.LBE2:
+  45:.\Utils.c     ****     {
+ 446              		.loc 1 45 0 discriminator 2
+ 447 0060 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 448 0062 0133     		adds	r3, r3, #1
+ 449 0064 FB73     		strb	r3, [r7, #15]
+ 450              	.L13:
+  45:.\Utils.c     ****     {
+ 451              		.loc 1 45 0 is_stmt 0 discriminator 1
+ 452 0066 FA7B     		ldrb	r2, [r7, #15]	@ zero_extendqisi2
+ 453 0068 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 454 006a 013B     		subs	r3, r3, #1
+ 455 006c 9A42     		cmp	r2, r3
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 10
+
+
+ 456 006e D2DB     		blt	.L16
+  52:.\Utils.c     ****     }
+  53:.\Utils.c     **** }
+ 457              		.loc 1 53 0 is_stmt 1
+ 458 0070 1437     		adds	r7, r7, #20
+ 459              		.cfi_def_cfa_offset 4
+ 460 0072 BD46     		mov	sp, r7
+ 461              		.cfi_def_cfa_register 13
+ 462              		@ sp needed
+ 463 0074 5DF8047B 		ldr	r7, [sp], #4
+ 464              		.cfi_restore 7
+ 465              		.cfi_def_cfa_offset 0
+ 466 0078 7047     		bx	lr
+ 467              		.cfi_endproc
+ 468              	.LFE2:
+ 469              		.size	PSTRBUFFTOGG, .-PSTRBUFFTOGG
+ 470 007a 00BF     		.section	.text.DLSDBCDBUFF2HEX,"ax",%progbits
+ 471              		.align	2
+ 472              		.global	DLSDBCDBUFF2HEX
+ 473              		.thumb
+ 474              		.thumb_func
+ 475              		.type	DLSDBCDBUFF2HEX, %function
+ 476              	DLSDBCDBUFF2HEX:
+ 477              	.LFB3:
+  54:.\Utils.c     **** 
+  55:.\Utils.c     **** double DLSDBCDBUFF2HEX(PNEAR_BYTE_PTR pbuffer, uint16 buffersize)
+  56:.\Utils.c     **** {
+ 478              		.loc 1 56 0
+ 479              		.cfi_startproc
+ 480              		@ args = 0, pretend = 0, frame = 24
+ 481              		@ frame_needed = 1, uses_anonymous_args = 0
+ 482 0000 B0B5     		push	{r4, r5, r7, lr}
+ 483              		.cfi_def_cfa_offset 16
+ 484              		.cfi_offset 4, -16
+ 485              		.cfi_offset 5, -12
+ 486              		.cfi_offset 7, -8
+ 487              		.cfi_offset 14, -4
+ 488 0002 86B0     		sub	sp, sp, #24
+ 489              		.cfi_def_cfa_offset 40
+ 490 0004 00AF     		add	r7, sp, #0
+ 491              		.cfi_def_cfa_register 7
+ 492 0006 7860     		str	r0, [r7, #4]
+ 493 0008 0B46     		mov	r3, r1
+ 494 000a 7B80     		strh	r3, [r7, #2]	@ movhi
+  57:.\Utils.c     ****     double retval = 0.0;
+ 495              		.loc 1 57 0
+ 496 000c 4FF00002 		mov	r2, #0
+ 497 0010 4FF00003 		mov	r3, #0
+ 498 0014 C7E90423 		strd	r2, [r7, #16]
+  58:.\Utils.c     ****     FOR(uint8 index = 0, index < buffersize, index++)
+ 499              		.loc 1 58 0
+ 500 0018 0023     		movs	r3, #0
+ 501 001a FB73     		strb	r3, [r7, #15]
+ 502 001c 27E0     		b	.L18
+ 503              	.L19:
+  59:.\Utils.c     ****         retval += pow10(index)*(pbuffer[index] & 0x0F);
+ 504              		.loc 1 59 0 discriminator 3
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 11
+
+
+ 505 001e FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 506 0020 1846     		mov	r0, r3
+ 507 0022 FFF7FEFF 		bl	__aeabi_ui2d
+ 508 0026 0246     		mov	r2, r0
+ 509 0028 0B46     		mov	r3, r1
+ 510 002a 1046     		mov	r0, r2
+ 511 002c 1946     		mov	r1, r3
+ 512 002e FFF7FEFF 		bl	pow10
+ 513 0032 0446     		mov	r4, r0
+ 514 0034 0D46     		mov	r5, r1
+ 515 0036 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 516 0038 7A68     		ldr	r2, [r7, #4]
+ 517 003a 1344     		add	r3, r3, r2
+ 518 003c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 519 003e 03F00F03 		and	r3, r3, #15
+ 520 0042 1846     		mov	r0, r3
+ 521 0044 FFF7FEFF 		bl	__aeabi_i2d
+ 522 0048 0246     		mov	r2, r0
+ 523 004a 0B46     		mov	r3, r1
+ 524 004c 2046     		mov	r0, r4
+ 525 004e 2946     		mov	r1, r5
+ 526 0050 FFF7FEFF 		bl	__aeabi_dmul
+ 527 0054 0246     		mov	r2, r0
+ 528 0056 0B46     		mov	r3, r1
+ 529 0058 D7E90401 		ldrd	r0, [r7, #16]
+ 530 005c FFF7FEFF 		bl	__aeabi_dadd
+ 531 0060 0246     		mov	r2, r0
+ 532 0062 0B46     		mov	r3, r1
+ 533 0064 C7E90423 		strd	r2, [r7, #16]
+  58:.\Utils.c     ****     FOR(uint8 index = 0, index < buffersize, index++)
+ 534              		.loc 1 58 0 discriminator 3
+ 535 0068 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 536 006a 0133     		adds	r3, r3, #1
+ 537 006c FB73     		strb	r3, [r7, #15]
+ 538              	.L18:
+  58:.\Utils.c     ****     FOR(uint8 index = 0, index < buffersize, index++)
+ 539              		.loc 1 58 0 is_stmt 0 discriminator 1
+ 540 006e FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 541 0070 9BB2     		uxth	r3, r3
+ 542 0072 7A88     		ldrh	r2, [r7, #2]
+ 543 0074 9A42     		cmp	r2, r3
+ 544 0076 D2D8     		bhi	.L19
+  60:.\Utils.c     ****         
+  61:.\Utils.c     ****     return retval;
+ 545              		.loc 1 61 0 is_stmt 1
+ 546 0078 D7E90423 		ldrd	r2, [r7, #16]
+  62:.\Utils.c     **** }
+ 547              		.loc 1 62 0
+ 548 007c 1046     		mov	r0, r2
+ 549 007e 1946     		mov	r1, r3
+ 550 0080 1837     		adds	r7, r7, #24
+ 551              		.cfi_def_cfa_offset 16
+ 552 0082 BD46     		mov	sp, r7
+ 553              		.cfi_def_cfa_register 13
+ 554              		@ sp needed
+ 555 0084 B0BD     		pop	{r4, r5, r7, pc}
+ 556              		.cfi_endproc
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 12
+
+
+ 557              	.LFE3:
+ 558              		.size	DLSDBCDBUFF2HEX, .-DLSDBCDBUFF2HEX
+ 559 0086 00BF     		.section	.text.LSDBCDBUFF2HEX,"ax",%progbits
+ 560              		.align	2
+ 561              		.global	LSDBCDBUFF2HEX
+ 562              		.thumb
+ 563              		.thumb_func
+ 564              		.type	LSDBCDBUFF2HEX, %function
+ 565              	LSDBCDBUFF2HEX:
+ 566              	.LFB4:
+  63:.\Utils.c     **** 
+  64:.\Utils.c     **** uint32 LSDBCDBUFF2HEX(PNEAR_BYTE_PTR pbuffer, uint16 buffersize)
+  65:.\Utils.c     **** {
+ 567              		.loc 1 65 0
+ 568              		.cfi_startproc
+ 569              		@ args = 0, pretend = 0, frame = 16
+ 570              		@ frame_needed = 1, uses_anonymous_args = 0
+ 571 0000 B0B5     		push	{r4, r5, r7, lr}
+ 572              		.cfi_def_cfa_offset 16
+ 573              		.cfi_offset 4, -16
+ 574              		.cfi_offset 5, -12
+ 575              		.cfi_offset 7, -8
+ 576              		.cfi_offset 14, -4
+ 577 0002 84B0     		sub	sp, sp, #16
+ 578              		.cfi_def_cfa_offset 32
+ 579 0004 00AF     		add	r7, sp, #0
+ 580              		.cfi_def_cfa_register 7
+ 581 0006 7860     		str	r0, [r7, #4]
+ 582 0008 0B46     		mov	r3, r1
+ 583 000a 7B80     		strh	r3, [r7, #2]	@ movhi
+  66:.\Utils.c     ****     uint32 retval = 0x00000000;
+ 584              		.loc 1 66 0
+ 585 000c 0023     		movs	r3, #0
+ 586 000e FB60     		str	r3, [r7, #12]
+  67:.\Utils.c     ****     FOR(uint8 index = 0, index < buffersize, index++)
+ 587              		.loc 1 67 0
+ 588 0010 0023     		movs	r3, #0
+ 589 0012 FB72     		strb	r3, [r7, #11]
+ 590 0014 34E0     		b	.L22
+ 591              	.L23:
+  68:.\Utils.c     ****         retval += pow10(index)*(pbuffer[index] & 0x0F);
+ 592              		.loc 1 68 0 discriminator 3
+ 593 0016 FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
+ 594 0018 1846     		mov	r0, r3
+ 595 001a FFF7FEFF 		bl	__aeabi_ui2d
+ 596 001e 0246     		mov	r2, r0
+ 597 0020 0B46     		mov	r3, r1
+ 598 0022 1046     		mov	r0, r2
+ 599 0024 1946     		mov	r1, r3
+ 600 0026 FFF7FEFF 		bl	pow10
+ 601 002a 0446     		mov	r4, r0
+ 602 002c 0D46     		mov	r5, r1
+ 603 002e FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
+ 604 0030 7A68     		ldr	r2, [r7, #4]
+ 605 0032 1344     		add	r3, r3, r2
+ 606 0034 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 607 0036 03F00F03 		and	r3, r3, #15
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 13
+
+
+ 608 003a 1846     		mov	r0, r3
+ 609 003c FFF7FEFF 		bl	__aeabi_i2d
+ 610 0040 0246     		mov	r2, r0
+ 611 0042 0B46     		mov	r3, r1
+ 612 0044 2046     		mov	r0, r4
+ 613 0046 2946     		mov	r1, r5
+ 614 0048 FFF7FEFF 		bl	__aeabi_dmul
+ 615 004c 0246     		mov	r2, r0
+ 616 004e 0B46     		mov	r3, r1
+ 617 0050 1446     		mov	r4, r2
+ 618 0052 1D46     		mov	r5, r3
+ 619 0054 F868     		ldr	r0, [r7, #12]
+ 620 0056 FFF7FEFF 		bl	__aeabi_ui2d
+ 621 005a 0246     		mov	r2, r0
+ 622 005c 0B46     		mov	r3, r1
+ 623 005e 1046     		mov	r0, r2
+ 624 0060 1946     		mov	r1, r3
+ 625 0062 2246     		mov	r2, r4
+ 626 0064 2B46     		mov	r3, r5
+ 627 0066 FFF7FEFF 		bl	__aeabi_dadd
+ 628 006a 0246     		mov	r2, r0
+ 629 006c 0B46     		mov	r3, r1
+ 630 006e 1046     		mov	r0, r2
+ 631 0070 1946     		mov	r1, r3
+ 632 0072 FFF7FEFF 		bl	__aeabi_d2uiz
+ 633 0076 0346     		mov	r3, r0
+ 634 0078 FB60     		str	r3, [r7, #12]
+  67:.\Utils.c     ****     FOR(uint8 index = 0, index < buffersize, index++)
+ 635              		.loc 1 67 0 discriminator 3
+ 636 007a FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
+ 637 007c 0133     		adds	r3, r3, #1
+ 638 007e FB72     		strb	r3, [r7, #11]
+ 639              	.L22:
+  67:.\Utils.c     ****     FOR(uint8 index = 0, index < buffersize, index++)
+ 640              		.loc 1 67 0 is_stmt 0 discriminator 1
+ 641 0080 FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
+ 642 0082 9BB2     		uxth	r3, r3
+ 643 0084 7A88     		ldrh	r2, [r7, #2]
+ 644 0086 9A42     		cmp	r2, r3
+ 645 0088 C5D8     		bhi	.L23
+  69:.\Utils.c     ****         
+  70:.\Utils.c     ****     return retval;
+ 646              		.loc 1 70 0 is_stmt 1
+ 647 008a FB68     		ldr	r3, [r7, #12]
+  71:.\Utils.c     **** }
+ 648              		.loc 1 71 0
+ 649 008c 1846     		mov	r0, r3
+ 650 008e 1037     		adds	r7, r7, #16
+ 651              		.cfi_def_cfa_offset 16
+ 652 0090 BD46     		mov	sp, r7
+ 653              		.cfi_def_cfa_register 13
+ 654              		@ sp needed
+ 655 0092 B0BD     		pop	{r4, r5, r7, pc}
+ 656              		.cfi_endproc
+ 657              	.LFE4:
+ 658              		.size	LSDBCDBUFF2HEX, .-LSDBCDBUFF2HEX
+ 659              		.section	.text.MSDBCDBUFF2HEX,"ax",%progbits
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 14
+
+
+ 660              		.align	2
+ 661              		.global	MSDBCDBUFF2HEX
+ 662              		.thumb
+ 663              		.thumb_func
+ 664              		.type	MSDBCDBUFF2HEX, %function
+ 665              	MSDBCDBUFF2HEX:
+ 666              	.LFB5:
+  72:.\Utils.c     **** 
+  73:.\Utils.c     **** uint32 MSDBCDBUFF2HEX(PNEAR_BYTE_PTR pbuffer, uint16 buffersize)
+  74:.\Utils.c     **** {
+ 667              		.loc 1 74 0
+ 668              		.cfi_startproc
+ 669              		@ args = 0, pretend = 0, frame = 16
+ 670              		@ frame_needed = 1, uses_anonymous_args = 0
+ 671 0000 B0B5     		push	{r4, r5, r7, lr}
+ 672              		.cfi_def_cfa_offset 16
+ 673              		.cfi_offset 4, -16
+ 674              		.cfi_offset 5, -12
+ 675              		.cfi_offset 7, -8
+ 676              		.cfi_offset 14, -4
+ 677 0002 84B0     		sub	sp, sp, #16
+ 678              		.cfi_def_cfa_offset 32
+ 679 0004 00AF     		add	r7, sp, #0
+ 680              		.cfi_def_cfa_register 7
+ 681 0006 7860     		str	r0, [r7, #4]
+ 682 0008 0B46     		mov	r3, r1
+ 683 000a 7B80     		strh	r3, [r7, #2]	@ movhi
+  75:.\Utils.c     ****     uint32 retval = 0x00000000;
+ 684              		.loc 1 75 0
+ 685 000c 0023     		movs	r3, #0
+ 686 000e FB60     		str	r3, [r7, #12]
+  76:.\Utils.c     ****     FOR(int8 index = (buffersize - 1), index >= 0, index--)
+ 687              		.loc 1 76 0
+ 688 0010 7B88     		ldrh	r3, [r7, #2]	@ movhi
+ 689 0012 DBB2     		uxtb	r3, r3
+ 690 0014 013B     		subs	r3, r3, #1
+ 691 0016 DBB2     		uxtb	r3, r3
+ 692 0018 FB72     		strb	r3, [r7, #11]
+ 693 001a 38E0     		b	.L26
+ 694              	.L27:
+  77:.\Utils.c     ****         retval += pow10(index)*(pbuffer[index] & 0x0F);
+ 695              		.loc 1 77 0 discriminator 3
+ 696 001c 97F90B30 		ldrsb	r3, [r7, #11]
+ 697 0020 1846     		mov	r0, r3
+ 698 0022 FFF7FEFF 		bl	__aeabi_i2d
+ 699 0026 0246     		mov	r2, r0
+ 700 0028 0B46     		mov	r3, r1
+ 701 002a 1046     		mov	r0, r2
+ 702 002c 1946     		mov	r1, r3
+ 703 002e FFF7FEFF 		bl	pow10
+ 704 0032 0446     		mov	r4, r0
+ 705 0034 0D46     		mov	r5, r1
+ 706 0036 97F90B30 		ldrsb	r3, [r7, #11]
+ 707 003a 7A68     		ldr	r2, [r7, #4]
+ 708 003c 1344     		add	r3, r3, r2
+ 709 003e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 710 0040 03F00F03 		and	r3, r3, #15
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 15
+
+
+ 711 0044 1846     		mov	r0, r3
+ 712 0046 FFF7FEFF 		bl	__aeabi_i2d
+ 713 004a 0246     		mov	r2, r0
+ 714 004c 0B46     		mov	r3, r1
+ 715 004e 2046     		mov	r0, r4
+ 716 0050 2946     		mov	r1, r5
+ 717 0052 FFF7FEFF 		bl	__aeabi_dmul
+ 718 0056 0246     		mov	r2, r0
+ 719 0058 0B46     		mov	r3, r1
+ 720 005a 1446     		mov	r4, r2
+ 721 005c 1D46     		mov	r5, r3
+ 722 005e F868     		ldr	r0, [r7, #12]
+ 723 0060 FFF7FEFF 		bl	__aeabi_ui2d
+ 724 0064 0246     		mov	r2, r0
+ 725 0066 0B46     		mov	r3, r1
+ 726 0068 1046     		mov	r0, r2
+ 727 006a 1946     		mov	r1, r3
+ 728 006c 2246     		mov	r2, r4
+ 729 006e 2B46     		mov	r3, r5
+ 730 0070 FFF7FEFF 		bl	__aeabi_dadd
+ 731 0074 0246     		mov	r2, r0
+ 732 0076 0B46     		mov	r3, r1
+ 733 0078 1046     		mov	r0, r2
+ 734 007a 1946     		mov	r1, r3
+ 735 007c FFF7FEFF 		bl	__aeabi_d2uiz
+ 736 0080 0346     		mov	r3, r0
+ 737 0082 FB60     		str	r3, [r7, #12]
+  76:.\Utils.c     ****     FOR(int8 index = (buffersize - 1), index >= 0, index--)
+ 738              		.loc 1 76 0 discriminator 3
+ 739 0084 FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
+ 740 0086 DBB2     		uxtb	r3, r3
+ 741 0088 013B     		subs	r3, r3, #1
+ 742 008a DBB2     		uxtb	r3, r3
+ 743 008c FB72     		strb	r3, [r7, #11]
+ 744              	.L26:
+  76:.\Utils.c     ****     FOR(int8 index = (buffersize - 1), index >= 0, index--)
+ 745              		.loc 1 76 0 is_stmt 0 discriminator 1
+ 746 008e 97F90B30 		ldrsb	r3, [r7, #11]
+ 747 0092 002B     		cmp	r3, #0
+ 748 0094 C2DA     		bge	.L27
+  78:.\Utils.c     ****         
+  79:.\Utils.c     ****     return retval;
+ 749              		.loc 1 79 0 is_stmt 1
+ 750 0096 FB68     		ldr	r3, [r7, #12]
+  80:.\Utils.c     **** }
+ 751              		.loc 1 80 0
+ 752 0098 1846     		mov	r0, r3
+ 753 009a 1037     		adds	r7, r7, #16
+ 754              		.cfi_def_cfa_offset 16
+ 755 009c BD46     		mov	sp, r7
+ 756              		.cfi_def_cfa_register 13
+ 757              		@ sp needed
+ 758 009e B0BD     		pop	{r4, r5, r7, pc}
+ 759              		.cfi_endproc
+ 760              	.LFE5:
+ 761              		.size	MSDBCDBUFF2HEX, .-MSDBCDBUFF2HEX
+ 762              		.section	.text.ISVALIDBCD,"ax",%progbits
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 16
+
+
+ 763              		.align	2
+ 764              		.global	ISVALIDBCD
+ 765              		.thumb
+ 766              		.thumb_func
+ 767              		.type	ISVALIDBCD, %function
+ 768              	ISVALIDBCD:
+ 769              	.LFB6:
+  81:.\Utils.c     **** 
+  82:.\Utils.c     **** bool ISVALIDBCD(PNEAR_BYTE_PTR pbuffer, uint16 buffersize)
+  83:.\Utils.c     **** {
+ 770              		.loc 1 83 0
+ 771              		.cfi_startproc
+ 772              		@ args = 0, pretend = 0, frame = 16
+ 773              		@ frame_needed = 1, uses_anonymous_args = 0
+ 774              		@ link register save eliminated.
+ 775 0000 80B4     		push	{r7}
+ 776              		.cfi_def_cfa_offset 4
+ 777              		.cfi_offset 7, -4
+ 778 0002 85B0     		sub	sp, sp, #20
+ 779              		.cfi_def_cfa_offset 24
+ 780 0004 00AF     		add	r7, sp, #0
+ 781              		.cfi_def_cfa_register 7
+ 782 0006 7860     		str	r0, [r7, #4]
+ 783 0008 0B46     		mov	r3, r1
+ 784 000a 7B80     		strh	r3, [r7, #2]	@ movhi
+  84:.\Utils.c     ****     bool retval = true;
+ 785              		.loc 1 84 0
+ 786 000c 0123     		movs	r3, #1
+ 787 000e FB73     		strb	r3, [r7, #15]
+  85:.\Utils.c     ****     FOR(uint8 index = 0, index < buffersize, index++)
+ 788              		.loc 1 85 0
+ 789 0010 0023     		movs	r3, #0
+ 790 0012 BB73     		strb	r3, [r7, #14]
+ 791 0014 0DE0     		b	.L30
+ 792              	.L33:
+  86:.\Utils.c     ****     {
+  87:.\Utils.c     ****         if((pbuffer[index] & 0x0F) > 0x09 || (pbuffer[index] & 0x0F) < 0x00)
+ 793              		.loc 1 87 0
+ 794 0016 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 795 0018 7A68     		ldr	r2, [r7, #4]
+ 796 001a 1344     		add	r3, r3, r2
+ 797 001c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 798 001e 03F00F03 		and	r3, r3, #15
+ 799 0022 092B     		cmp	r3, #9
+ 800 0024 02DD     		ble	.L31
+  88:.\Utils.c     ****         {
+  89:.\Utils.c     ****             retval = false;
+ 801              		.loc 1 89 0
+ 802 0026 0023     		movs	r3, #0
+ 803 0028 FB73     		strb	r3, [r7, #15]
+  90:.\Utils.c     ****             break;
+ 804              		.loc 1 90 0
+ 805 002a 07E0     		b	.L32
+ 806              	.L31:
+  85:.\Utils.c     ****     {
+ 807              		.loc 1 85 0 discriminator 2
+ 808 002c BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 17
+
+
+ 809 002e 0133     		adds	r3, r3, #1
+ 810 0030 BB73     		strb	r3, [r7, #14]
+ 811              	.L30:
+  85:.\Utils.c     ****     {
+ 812              		.loc 1 85 0 is_stmt 0 discriminator 1
+ 813 0032 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 814 0034 9BB2     		uxth	r3, r3
+ 815 0036 7A88     		ldrh	r2, [r7, #2]
+ 816 0038 9A42     		cmp	r2, r3
+ 817 003a ECD8     		bhi	.L33
+ 818              	.L32:
+  91:.\Utils.c     ****         }
+  92:.\Utils.c     ****     }
+  93:.\Utils.c     ****     return retval;
+ 819              		.loc 1 93 0 is_stmt 1
+ 820 003c FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+  94:.\Utils.c     **** }
+ 821              		.loc 1 94 0
+ 822 003e 1846     		mov	r0, r3
+ 823 0040 1437     		adds	r7, r7, #20
+ 824              		.cfi_def_cfa_offset 4
+ 825 0042 BD46     		mov	sp, r7
+ 826              		.cfi_def_cfa_register 13
+ 827              		@ sp needed
+ 828 0044 5DF8047B 		ldr	r7, [sp], #4
+ 829              		.cfi_restore 7
+ 830              		.cfi_def_cfa_offset 0
+ 831 0048 7047     		bx	lr
+ 832              		.cfi_endproc
+ 833              	.LFE6:
+ 834              		.size	ISVALIDBCD, .-ISVALIDBCD
+ 835              		.global	__aeabi_d2iz
+ 836              		.global	__aeabi_dsub
+ 837              		.global	__aeabi_dcmplt
+ 838 004a 00BF     		.section	.text.Ceil,"ax",%progbits
+ 839              		.align	2
+ 840              		.global	Ceil
+ 841              		.thumb
+ 842              		.thumb_func
+ 843              		.type	Ceil, %function
+ 844              	Ceil:
+ 845              	.LFB7:
+  95:.\Utils.c     **** 
+  96:.\Utils.c     **** double Ceil(double val)
+  97:.\Utils.c     **** {
+ 846              		.loc 1 97 0
+ 847              		.cfi_startproc
+ 848              		@ args = 0, pretend = 0, frame = 16
+ 849              		@ frame_needed = 1, uses_anonymous_args = 0
+ 850 0000 80B5     		push	{r7, lr}
+ 851              		.cfi_def_cfa_offset 8
+ 852              		.cfi_offset 7, -8
+ 853              		.cfi_offset 14, -4
+ 854 0002 84B0     		sub	sp, sp, #16
+ 855              		.cfi_def_cfa_offset 24
+ 856 0004 00AF     		add	r7, sp, #0
+ 857              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 18
+
+
+ 858 0006 C7E90001 		strd	r0, [r7]
+  98:.\Utils.c     ****     int32 retval = (int32)val;
+ 859              		.loc 1 98 0
+ 860 000a D7E90001 		ldrd	r0, [r7]
+ 861 000e FFF7FEFF 		bl	__aeabi_d2iz
+ 862 0012 0346     		mov	r3, r0
+ 863 0014 FB60     		str	r3, [r7, #12]
+  99:.\Utils.c     ****     return ((retval - val) < 0)? (retval + 1): retval;
+ 864              		.loc 1 99 0
+ 865 0016 F868     		ldr	r0, [r7, #12]
+ 866 0018 FFF7FEFF 		bl	__aeabi_i2d
+ 867 001c 0246     		mov	r2, r0
+ 868 001e 0B46     		mov	r3, r1
+ 869 0020 1046     		mov	r0, r2
+ 870 0022 1946     		mov	r1, r3
+ 871 0024 D7E90023 		ldrd	r2, [r7]
+ 872 0028 FFF7FEFF 		bl	__aeabi_dsub
+ 873 002c 0246     		mov	r2, r0
+ 874 002e 0B46     		mov	r3, r1
+ 875 0030 1046     		mov	r0, r2
+ 876 0032 1946     		mov	r1, r3
+ 877 0034 4FF00002 		mov	r2, #0
+ 878 0038 4FF00003 		mov	r3, #0
+ 879 003c FFF7FEFF 		bl	__aeabi_dcmplt
+ 880 0040 0346     		mov	r3, r0
+ 881 0042 002B     		cmp	r3, #0
+ 882 0044 07D0     		beq	.L41
+ 883              		.loc 1 99 0 is_stmt 0 discriminator 1
+ 884 0046 FB68     		ldr	r3, [r7, #12]
+ 885 0048 0133     		adds	r3, r3, #1
+ 886 004a 1846     		mov	r0, r3
+ 887 004c FFF7FEFF 		bl	__aeabi_i2d
+ 888 0050 0246     		mov	r2, r0
+ 889 0052 0B46     		mov	r3, r1
+ 890 0054 04E0     		b	.L38
+ 891              	.L41:
+ 892              		.loc 1 99 0 discriminator 2
+ 893 0056 F868     		ldr	r0, [r7, #12]
+ 894 0058 FFF7FEFF 		bl	__aeabi_i2d
+ 895 005c 0246     		mov	r2, r0
+ 896 005e 0B46     		mov	r3, r1
+ 897              	.L38:
+ 100:.\Utils.c     **** }
+ 898              		.loc 1 100 0 is_stmt 1 discriminator 4
+ 899 0060 1046     		mov	r0, r2
+ 900 0062 1946     		mov	r1, r3
+ 901 0064 1037     		adds	r7, r7, #16
+ 902              		.cfi_def_cfa_offset 8
+ 903 0066 BD46     		mov	sp, r7
+ 904              		.cfi_def_cfa_register 13
+ 905              		@ sp needed
+ 906 0068 80BD     		pop	{r7, pc}
+ 907              		.cfi_endproc
+ 908              	.LFE7:
+ 909              		.size	Ceil, .-Ceil
+ 910 006a 00BF     		.section	.text.RGB216BITS,"ax",%progbits
+ 911              		.align	2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 19
+
+
+ 912              		.global	RGB216BITS
+ 913              		.thumb
+ 914              		.thumb_func
+ 915              		.type	RGB216BITS, %function
+ 916              	RGB216BITS:
+ 917              	.LFB8:
+ 101:.\Utils.c     **** 
+ 102:.\Utils.c     **** uint16 RGB216BITS(uint8 r, uint8 g, uint8 b)
+ 103:.\Utils.c     **** {
+ 918              		.loc 1 103 0
+ 919              		.cfi_startproc
+ 920              		@ args = 0, pretend = 0, frame = 16
+ 921              		@ frame_needed = 1, uses_anonymous_args = 0
+ 922              		@ link register save eliminated.
+ 923 0000 80B4     		push	{r7}
+ 924              		.cfi_def_cfa_offset 4
+ 925              		.cfi_offset 7, -4
+ 926 0002 85B0     		sub	sp, sp, #20
+ 927              		.cfi_def_cfa_offset 24
+ 928 0004 00AF     		add	r7, sp, #0
+ 929              		.cfi_def_cfa_register 7
+ 930 0006 0346     		mov	r3, r0
+ 931 0008 FB71     		strb	r3, [r7, #7]
+ 932 000a 0B46     		mov	r3, r1
+ 933 000c BB71     		strb	r3, [r7, #6]
+ 934 000e 1346     		mov	r3, r2
+ 935 0010 7B71     		strb	r3, [r7, #5]
+ 104:.\Utils.c     ****     uint16 code = 0x0000;
+ 936              		.loc 1 104 0
+ 937 0012 0023     		movs	r3, #0
+ 938 0014 FB81     		strh	r3, [r7, #14]	@ movhi
+ 105:.\Utils.c     ****     
+ 106:.\Utils.c     ****     code = (r & 0x1f) << 11;
+ 939              		.loc 1 106 0
+ 940 0016 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 941 0018 DB02     		lsls	r3, r3, #11
+ 942 001a FB81     		strh	r3, [r7, #14]	@ movhi
+ 107:.\Utils.c     ****     code |= (g & 0x3f) << 5;
+ 943              		.loc 1 107 0
+ 944 001c BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 945 001e 03F03F03 		and	r3, r3, #63
+ 946 0022 5B01     		lsls	r3, r3, #5
+ 947 0024 9AB2     		uxth	r2, r3
+ 948 0026 FB89     		ldrh	r3, [r7, #14]
+ 949 0028 1343     		orrs	r3, r3, r2
+ 950 002a 9BB2     		uxth	r3, r3
+ 951 002c FB81     		strh	r3, [r7, #14]	@ movhi
+ 108:.\Utils.c     ****     code |= (b & 0x1f) << 0;
+ 952              		.loc 1 108 0
+ 953 002e 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+ 954 0030 9BB2     		uxth	r3, r3
+ 955 0032 03F01F03 		and	r3, r3, #31
+ 956 0036 9AB2     		uxth	r2, r3
+ 957 0038 FB89     		ldrh	r3, [r7, #14]
+ 958 003a 1343     		orrs	r3, r3, r2
+ 959 003c 9BB2     		uxth	r3, r3
+ 960 003e FB81     		strh	r3, [r7, #14]	@ movhi
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 20
+
+
+ 109:.\Utils.c     ****     
+ 110:.\Utils.c     ****     return code;
+ 961              		.loc 1 110 0
+ 962 0040 FB89     		ldrh	r3, [r7, #14]
+ 111:.\Utils.c     **** }
+ 963              		.loc 1 111 0
+ 964 0042 1846     		mov	r0, r3
+ 965 0044 1437     		adds	r7, r7, #20
+ 966              		.cfi_def_cfa_offset 4
+ 967 0046 BD46     		mov	sp, r7
+ 968              		.cfi_def_cfa_register 13
+ 969              		@ sp needed
+ 970 0048 5DF8047B 		ldr	r7, [sp], #4
+ 971              		.cfi_restore 7
+ 972              		.cfi_def_cfa_offset 0
+ 973 004c 7047     		bx	lr
+ 974              		.cfi_endproc
+ 975              	.LFE8:
+ 976              		.size	RGB216BITS, .-RGB216BITS
+ 977 004e 00BF     		.section	.text.ISASCIIPRNBLE,"ax",%progbits
+ 978              		.align	2
+ 979              		.global	ISASCIIPRNBLE
+ 980              		.thumb
+ 981              		.thumb_func
+ 982              		.type	ISASCIIPRNBLE, %function
+ 983              	ISASCIIPRNBLE:
+ 984              	.LFB9:
+ 112:.\Utils.c     **** 
+ 113:.\Utils.c     **** bool ISASCIIPRNBLE(PNEAR_BYTE_PTR pbuffer, uint8 buffersize)
+ 114:.\Utils.c     **** {
+ 985              		.loc 1 114 0
+ 986              		.cfi_startproc
+ 987              		@ args = 0, pretend = 0, frame = 16
+ 988              		@ frame_needed = 1, uses_anonymous_args = 0
+ 989              		@ link register save eliminated.
+ 990 0000 80B4     		push	{r7}
+ 991              		.cfi_def_cfa_offset 4
+ 992              		.cfi_offset 7, -4
+ 993 0002 85B0     		sub	sp, sp, #20
+ 994              		.cfi_def_cfa_offset 24
+ 995 0004 00AF     		add	r7, sp, #0
+ 996              		.cfi_def_cfa_register 7
+ 997 0006 7860     		str	r0, [r7, #4]
+ 998 0008 0B46     		mov	r3, r1
+ 999 000a FB70     		strb	r3, [r7, #3]
+ 115:.\Utils.c     ****     bool retval = true;
+ 1000              		.loc 1 115 0
+ 1001 000c 0123     		movs	r3, #1
+ 1002 000e FB73     		strb	r3, [r7, #15]
+ 116:.\Utils.c     ****     FOR(uint8 index = 0, index < buffersize, index++)
+ 1003              		.loc 1 116 0
+ 1004 0010 0023     		movs	r3, #0
+ 1005 0012 BB73     		strb	r3, [r7, #14]
+ 1006 0014 0BE0     		b	.L45
+ 1007              	.L48:
+ 117:.\Utils.c     ****     {
+ 118:.\Utils.c     ****         //This is approximately the range of printable ASCII characters that we require
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 21
+
+
+ 119:.\Utils.c     ****         if(pbuffer[index] < 0x20)        
+ 1008              		.loc 1 119 0
+ 1009 0016 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 1010 0018 7A68     		ldr	r2, [r7, #4]
+ 1011 001a 1344     		add	r3, r3, r2
+ 1012 001c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1013 001e 1F2B     		cmp	r3, #31
+ 1014 0020 02D8     		bhi	.L46
+ 120:.\Utils.c     ****         {
+ 121:.\Utils.c     ****             retval = false;
+ 1015              		.loc 1 121 0
+ 1016 0022 0023     		movs	r3, #0
+ 1017 0024 FB73     		strb	r3, [r7, #15]
+ 122:.\Utils.c     ****             break;
+ 1018              		.loc 1 122 0
+ 1019 0026 06E0     		b	.L47
+ 1020              	.L46:
+ 116:.\Utils.c     ****     {
+ 1021              		.loc 1 116 0 discriminator 2
+ 1022 0028 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 1023 002a 0133     		adds	r3, r3, #1
+ 1024 002c BB73     		strb	r3, [r7, #14]
+ 1025              	.L45:
+ 116:.\Utils.c     ****     {
+ 1026              		.loc 1 116 0 is_stmt 0 discriminator 1
+ 1027 002e BA7B     		ldrb	r2, [r7, #14]	@ zero_extendqisi2
+ 1028 0030 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 1029 0032 9A42     		cmp	r2, r3
+ 1030 0034 EFD3     		bcc	.L48
+ 1031              	.L47:
+ 123:.\Utils.c     ****         }
+ 124:.\Utils.c     ****     }
+ 125:.\Utils.c     ****     return retval;
+ 1032              		.loc 1 125 0 is_stmt 1
+ 1033 0036 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 126:.\Utils.c     **** }
+ 1034              		.loc 1 126 0
+ 1035 0038 1846     		mov	r0, r3
+ 1036 003a 1437     		adds	r7, r7, #20
+ 1037              		.cfi_def_cfa_offset 4
+ 1038 003c BD46     		mov	sp, r7
+ 1039              		.cfi_def_cfa_register 13
+ 1040              		@ sp needed
+ 1041 003e 5DF8047B 		ldr	r7, [sp], #4
+ 1042              		.cfi_restore 7
+ 1043              		.cfi_def_cfa_offset 0
+ 1044 0042 7047     		bx	lr
+ 1045              		.cfi_endproc
+ 1046              	.LFE9:
+ 1047              		.size	ISASCIIPRNBLE, .-ISASCIIPRNBLE
+ 1048              		.text
+ 1049              	.Letext0:
+ 1050              		.file 2 "Generated_Source\\PSoC5/cytypes.h"
+ 1051              		.file 3 ".\\GlobalDefinitions.h"
+ 1052              		.section	.debug_info,"",%progbits
+ 1053              	.Ldebug_info0:
+ 1054 0000 15040000 		.4byte	0x415
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 22
+
+
+ 1055 0004 0400     		.2byte	0x4
+ 1056 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 1057 000a 04       		.byte	0x4
+ 1058 000b 01       		.uleb128 0x1
+ 1059 000c 22010000 		.4byte	.LASF43
+ 1060 0010 01       		.byte	0x1
+ 1061 0011 96020000 		.4byte	.LASF44
+ 1062 0015 82000000 		.4byte	.LASF45
+ 1063 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 1064 001d 00000000 		.4byte	0
+ 1065 0021 00000000 		.4byte	.Ldebug_line0
+ 1066 0025 02       		.uleb128 0x2
+ 1067 0026 01       		.byte	0x1
+ 1068 0027 06       		.byte	0x6
+ 1069 0028 A0020000 		.4byte	.LASF0
+ 1070 002c 02       		.uleb128 0x2
+ 1071 002d 01       		.byte	0x1
+ 1072 002e 08       		.byte	0x8
+ 1073 002f 14010000 		.4byte	.LASF1
+ 1074 0033 02       		.uleb128 0x2
+ 1075 0034 02       		.byte	0x2
+ 1076 0035 05       		.byte	0x5
+ 1077 0036 61020000 		.4byte	.LASF2
+ 1078 003a 02       		.uleb128 0x2
+ 1079 003b 02       		.byte	0x2
+ 1080 003c 07       		.byte	0x7
+ 1081 003d 4A000000 		.4byte	.LASF3
+ 1082 0041 02       		.uleb128 0x2
+ 1083 0042 04       		.byte	0x4
+ 1084 0043 05       		.byte	0x5
+ 1085 0044 88020000 		.4byte	.LASF4
+ 1086 0048 02       		.uleb128 0x2
+ 1087 0049 04       		.byte	0x4
+ 1088 004a 07       		.byte	0x7
+ 1089 004b FC000000 		.4byte	.LASF5
+ 1090 004f 02       		.uleb128 0x2
+ 1091 0050 08       		.byte	0x8
+ 1092 0051 05       		.byte	0x5
+ 1093 0052 38020000 		.4byte	.LASF6
+ 1094 0056 02       		.uleb128 0x2
+ 1095 0057 08       		.byte	0x8
+ 1096 0058 07       		.byte	0x7
+ 1097 0059 02020000 		.4byte	.LASF7
+ 1098 005d 03       		.uleb128 0x3
+ 1099 005e 04       		.byte	0x4
+ 1100 005f 05       		.byte	0x5
+ 1101 0060 696E7400 		.ascii	"int\000"
+ 1102 0064 02       		.uleb128 0x2
+ 1103 0065 04       		.byte	0x4
+ 1104 0066 07       		.byte	0x7
+ 1105 0067 EA010000 		.4byte	.LASF8
+ 1106 006b 04       		.uleb128 0x4
+ 1107 006c 6B020000 		.4byte	.LASF9
+ 1108 0070 02       		.byte	0x2
+ 1109 0071 3801     		.2byte	0x138
+ 1110 0073 2C000000 		.4byte	0x2c
+ 1111 0077 04       		.uleb128 0x4
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 23
+
+
+ 1112 0078 C8010000 		.4byte	.LASF10
+ 1113 007c 02       		.byte	0x2
+ 1114 007d 3901     		.2byte	0x139
+ 1115 007f 3A000000 		.4byte	0x3a
+ 1116 0083 04       		.uleb128 0x4
+ 1117 0084 E3010000 		.4byte	.LASF11
+ 1118 0088 02       		.byte	0x2
+ 1119 0089 3A01     		.2byte	0x13a
+ 1120 008b 48000000 		.4byte	0x48
+ 1121 008f 04       		.uleb128 0x4
+ 1122 0090 CF010000 		.4byte	.LASF12
+ 1123 0094 02       		.byte	0x2
+ 1124 0095 3B01     		.2byte	0x13b
+ 1125 0097 25000000 		.4byte	0x25
+ 1126 009b 04       		.uleb128 0x4
+ 1127 009c 0E010000 		.4byte	.LASF13
+ 1128 00a0 02       		.byte	0x2
+ 1129 00a1 3D01     		.2byte	0x13d
+ 1130 00a3 41000000 		.4byte	0x41
+ 1131 00a7 02       		.uleb128 0x2
+ 1132 00a8 04       		.byte	0x4
+ 1133 00a9 04       		.byte	0x4
+ 1134 00aa 77000000 		.4byte	.LASF14
+ 1135 00ae 02       		.uleb128 0x2
+ 1136 00af 08       		.byte	0x8
+ 1137 00b0 04       		.byte	0x4
+ 1138 00b1 B0010000 		.4byte	.LASF15
+ 1139 00b5 04       		.uleb128 0x4
+ 1140 00b6 43000000 		.4byte	.LASF16
+ 1141 00ba 02       		.byte	0x2
+ 1142 00bb 4401     		.2byte	0x144
+ 1143 00bd 56000000 		.4byte	0x56
+ 1144 00c1 04       		.uleb128 0x4
+ 1145 00c2 F6000000 		.4byte	.LASF17
+ 1146 00c6 02       		.byte	0x2
+ 1147 00c7 4901     		.2byte	0x149
+ 1148 00c9 CD000000 		.4byte	0xcd
+ 1149 00cd 02       		.uleb128 0x2
+ 1150 00ce 01       		.byte	0x1
+ 1151 00cf 08       		.byte	0x8
+ 1152 00d0 91020000 		.4byte	.LASF18
+ 1153 00d4 02       		.uleb128 0x2
+ 1154 00d5 04       		.byte	0x4
+ 1155 00d6 07       		.byte	0x7
+ 1156 00d7 2F020000 		.4byte	.LASF19
+ 1157 00db 02       		.uleb128 0x2
+ 1158 00dc 08       		.byte	0x8
+ 1159 00dd 04       		.byte	0x4
+ 1160 00de B7010000 		.4byte	.LASF20
+ 1161 00e2 05       		.uleb128 0x5
+ 1162 00e3 D4010000 		.4byte	.LASF21
+ 1163 00e7 03       		.byte	0x3
+ 1164 00e8 50       		.byte	0x50
+ 1165 00e9 ED000000 		.4byte	0xed
+ 1166 00ed 06       		.uleb128 0x6
+ 1167 00ee 04       		.byte	0x4
+ 1168 00ef 6B000000 		.4byte	0x6b
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 24
+
+
+ 1169 00f3 07       		.uleb128 0x7
+ 1170 00f4 2C000000 		.4byte	.LASF33
+ 1171 00f8 01       		.byte	0x1
+ 1172 00f9 0F       		.byte	0xf
+ 1173 00fa B5000000 		.4byte	0xb5
+ 1174 00fe 00000000 		.4byte	.LFB0
+ 1175 0102 CA000000 		.4byte	.LFE0-.LFB0
+ 1176 0106 01       		.uleb128 0x1
+ 1177 0107 9C       		.byte	0x9c
+ 1178 0108 53010000 		.4byte	0x153
+ 1179 010c 08       		.uleb128 0x8
+ 1180 010d 46020000 		.4byte	.LASF22
+ 1181 0111 01       		.byte	0x1
+ 1182 0112 0F       		.byte	0xf
+ 1183 0113 ED000000 		.4byte	0xed
+ 1184 0117 02       		.uleb128 0x2
+ 1185 0118 91       		.byte	0x91
+ 1186 0119 5C       		.sleb128 -36
+ 1187 011a 08       		.uleb128 0x8
+ 1188 011b F7010000 		.4byte	.LASF23
+ 1189 011f 01       		.byte	0x1
+ 1190 0120 0F       		.byte	0xf
+ 1191 0121 6B000000 		.4byte	0x6b
+ 1192 0125 02       		.uleb128 0x2
+ 1193 0126 91       		.byte	0x91
+ 1194 0127 5B       		.sleb128 -37
+ 1195 0128 08       		.uleb128 0x8
+ 1196 0129 7D000000 		.4byte	.LASF24
+ 1197 012d 01       		.byte	0x1
+ 1198 012e 0F       		.byte	0xf
+ 1199 012f 6B000000 		.4byte	0x6b
+ 1200 0133 02       		.uleb128 0x2
+ 1201 0134 91       		.byte	0x91
+ 1202 0135 5A       		.sleb128 -38
+ 1203 0136 09       		.uleb128 0x9
+ 1204 0137 EF000000 		.4byte	.LASF25
+ 1205 013b 01       		.byte	0x1
+ 1206 013c 11       		.byte	0x11
+ 1207 013d B5000000 		.4byte	0xb5
+ 1208 0141 02       		.uleb128 0x2
+ 1209 0142 91       		.byte	0x91
+ 1210 0143 68       		.sleb128 -24
+ 1211 0144 09       		.uleb128 0x9
+ 1212 0145 5B020000 		.4byte	.LASF26
+ 1213 0149 01       		.byte	0x1
+ 1214 014a 12       		.byte	0x12
+ 1215 014b 6B000000 		.4byte	0x6b
+ 1216 014f 02       		.uleb128 0x2
+ 1217 0150 91       		.byte	0x91
+ 1218 0151 67       		.sleb128 -25
+ 1219 0152 00       		.byte	0
+ 1220 0153 0A       		.uleb128 0xa
+ 1221 0154 00000000 		.4byte	.LASF28
+ 1222 0158 01       		.byte	0x1
+ 1223 0159 1F       		.byte	0x1f
+ 1224 015a 00000000 		.4byte	.LFB1
+ 1225 015e DC010000 		.4byte	.LFE1-.LFB1
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 25
+
+
+ 1226 0162 01       		.uleb128 0x1
+ 1227 0163 9C       		.byte	0x9c
+ 1228 0164 93010000 		.4byte	0x193
+ 1229 0168 08       		.uleb128 0x8
+ 1230 0169 19020000 		.4byte	.LASF27
+ 1231 016d 01       		.byte	0x1
+ 1232 016e 1F       		.byte	0x1f
+ 1233 016f B5000000 		.4byte	0xb5
+ 1234 0173 02       		.uleb128 0x2
+ 1235 0174 91       		.byte	0x91
+ 1236 0175 58       		.sleb128 -40
+ 1237 0176 08       		.uleb128 0x8
+ 1238 0177 46020000 		.4byte	.LASF22
+ 1239 017b 01       		.byte	0x1
+ 1240 017c 1F       		.byte	0x1f
+ 1241 017d ED000000 		.4byte	0xed
+ 1242 0181 02       		.uleb128 0x2
+ 1243 0182 91       		.byte	0x91
+ 1244 0183 54       		.sleb128 -44
+ 1245 0184 09       		.uleb128 0x9
+ 1246 0185 5B020000 		.4byte	.LASF26
+ 1247 0189 01       		.byte	0x1
+ 1248 018a 21       		.byte	0x21
+ 1249 018b 6B000000 		.4byte	0x6b
+ 1250 018f 02       		.uleb128 0x2
+ 1251 0190 91       		.byte	0x91
+ 1252 0191 67       		.sleb128 -25
+ 1253 0192 00       		.byte	0
+ 1254 0193 0B       		.uleb128 0xb
+ 1255 0194 4E020000 		.4byte	.LASF29
+ 1256 0198 01       		.byte	0x1
+ 1257 0199 2A       		.byte	0x2a
+ 1258 019a 00000000 		.4byte	.LFB2
+ 1259 019e 7A000000 		.4byte	.LFE2-.LFB2
+ 1260 01a2 01       		.uleb128 0x1
+ 1261 01a3 9C       		.byte	0x9c
+ 1262 01a4 F9010000 		.4byte	0x1f9
+ 1263 01a8 08       		.uleb128 0x8
+ 1264 01a9 46020000 		.4byte	.LASF22
+ 1265 01ad 01       		.byte	0x1
+ 1266 01ae 2A       		.byte	0x2a
+ 1267 01af ED000000 		.4byte	0xed
+ 1268 01b3 02       		.uleb128 0x2
+ 1269 01b4 91       		.byte	0x91
+ 1270 01b5 6C       		.sleb128 -20
+ 1271 01b6 08       		.uleb128 0x8
+ 1272 01b7 F7010000 		.4byte	.LASF23
+ 1273 01bb 01       		.byte	0x1
+ 1274 01bc 2A       		.byte	0x2a
+ 1275 01bd 6B000000 		.4byte	0x6b
+ 1276 01c1 02       		.uleb128 0x2
+ 1277 01c2 91       		.byte	0x91
+ 1278 01c3 6B       		.sleb128 -21
+ 1279 01c4 09       		.uleb128 0x9
+ 1280 01c5 71020000 		.4byte	.LASF30
+ 1281 01c9 01       		.byte	0x1
+ 1282 01ca 2C       		.byte	0x2c
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 26
+
+
+ 1283 01cb 6B000000 		.4byte	0x6b
+ 1284 01cf 02       		.uleb128 0x2
+ 1285 01d0 91       		.byte	0x91
+ 1286 01d1 75       		.sleb128 -11
+ 1287 01d2 09       		.uleb128 0x9
+ 1288 01d3 13000000 		.4byte	.LASF31
+ 1289 01d7 01       		.byte	0x1
+ 1290 01d8 2D       		.byte	0x2d
+ 1291 01d9 6B000000 		.4byte	0x6b
+ 1292 01dd 02       		.uleb128 0x2
+ 1293 01de 91       		.byte	0x91
+ 1294 01df 77       		.sleb128 -9
+ 1295 01e0 0C       		.uleb128 0xc
+ 1296 01e1 16000000 		.4byte	.LBB2
+ 1297 01e5 4A000000 		.4byte	.LBE2-.LBB2
+ 1298 01e9 09       		.uleb128 0x9
+ 1299 01ea 1A000000 		.4byte	.LASF32
+ 1300 01ee 01       		.byte	0x1
+ 1301 01ef 30       		.byte	0x30
+ 1302 01f0 8F000000 		.4byte	0x8f
+ 1303 01f4 02       		.uleb128 0x2
+ 1304 01f5 91       		.byte	0x91
+ 1305 01f6 76       		.sleb128 -10
+ 1306 01f7 00       		.byte	0
+ 1307 01f8 00       		.byte	0
+ 1308 01f9 07       		.uleb128 0x7
+ 1309 01fa 78020000 		.4byte	.LASF34
+ 1310 01fe 01       		.byte	0x1
+ 1311 01ff 37       		.byte	0x37
+ 1312 0200 AE000000 		.4byte	0xae
+ 1313 0204 00000000 		.4byte	.LFB3
+ 1314 0208 86000000 		.4byte	.LFE3-.LFB3
+ 1315 020c 01       		.uleb128 0x1
+ 1316 020d 9C       		.byte	0x9c
+ 1317 020e 4B020000 		.4byte	0x24b
+ 1318 0212 08       		.uleb128 0x8
+ 1319 0213 46020000 		.4byte	.LASF22
+ 1320 0217 01       		.byte	0x1
+ 1321 0218 37       		.byte	0x37
+ 1322 0219 E2000000 		.4byte	0xe2
+ 1323 021d 02       		.uleb128 0x2
+ 1324 021e 91       		.byte	0x91
+ 1325 021f 5C       		.sleb128 -36
+ 1326 0220 08       		.uleb128 0x8
+ 1327 0221 F7010000 		.4byte	.LASF23
+ 1328 0225 01       		.byte	0x1
+ 1329 0226 37       		.byte	0x37
+ 1330 0227 77000000 		.4byte	0x77
+ 1331 022b 02       		.uleb128 0x2
+ 1332 022c 91       		.byte	0x91
+ 1333 022d 5A       		.sleb128 -38
+ 1334 022e 09       		.uleb128 0x9
+ 1335 022f EF000000 		.4byte	.LASF25
+ 1336 0233 01       		.byte	0x1
+ 1337 0234 39       		.byte	0x39
+ 1338 0235 AE000000 		.4byte	0xae
+ 1339 0239 02       		.uleb128 0x2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 27
+
+
+ 1340 023a 91       		.byte	0x91
+ 1341 023b 68       		.sleb128 -24
+ 1342 023c 09       		.uleb128 0x9
+ 1343 023d 5B020000 		.4byte	.LASF26
+ 1344 0241 01       		.byte	0x1
+ 1345 0242 3A       		.byte	0x3a
+ 1346 0243 6B000000 		.4byte	0x6b
+ 1347 0247 02       		.uleb128 0x2
+ 1348 0248 91       		.byte	0x91
+ 1349 0249 67       		.sleb128 -25
+ 1350 024a 00       		.byte	0
+ 1351 024b 07       		.uleb128 0x7
+ 1352 024c 20020000 		.4byte	.LASF35
+ 1353 0250 01       		.byte	0x1
+ 1354 0251 40       		.byte	0x40
+ 1355 0252 83000000 		.4byte	0x83
+ 1356 0256 00000000 		.4byte	.LFB4
+ 1357 025a 94000000 		.4byte	.LFE4-.LFB4
+ 1358 025e 01       		.uleb128 0x1
+ 1359 025f 9C       		.byte	0x9c
+ 1360 0260 9D020000 		.4byte	0x29d
+ 1361 0264 08       		.uleb128 0x8
+ 1362 0265 46020000 		.4byte	.LASF22
+ 1363 0269 01       		.byte	0x1
+ 1364 026a 40       		.byte	0x40
+ 1365 026b E2000000 		.4byte	0xe2
+ 1366 026f 02       		.uleb128 0x2
+ 1367 0270 91       		.byte	0x91
+ 1368 0271 64       		.sleb128 -28
+ 1369 0272 08       		.uleb128 0x8
+ 1370 0273 F7010000 		.4byte	.LASF23
+ 1371 0277 01       		.byte	0x1
+ 1372 0278 40       		.byte	0x40
+ 1373 0279 77000000 		.4byte	0x77
+ 1374 027d 02       		.uleb128 0x2
+ 1375 027e 91       		.byte	0x91
+ 1376 027f 62       		.sleb128 -30
+ 1377 0280 09       		.uleb128 0x9
+ 1378 0281 EF000000 		.4byte	.LASF25
+ 1379 0285 01       		.byte	0x1
+ 1380 0286 42       		.byte	0x42
+ 1381 0287 83000000 		.4byte	0x83
+ 1382 028b 02       		.uleb128 0x2
+ 1383 028c 91       		.byte	0x91
+ 1384 028d 6C       		.sleb128 -20
+ 1385 028e 09       		.uleb128 0x9
+ 1386 028f 5B020000 		.4byte	.LASF26
+ 1387 0293 01       		.byte	0x1
+ 1388 0294 43       		.byte	0x43
+ 1389 0295 6B000000 		.4byte	0x6b
+ 1390 0299 02       		.uleb128 0x2
+ 1391 029a 91       		.byte	0x91
+ 1392 029b 6B       		.sleb128 -21
+ 1393 029c 00       		.byte	0
+ 1394 029d 07       		.uleb128 0x7
+ 1395 029e 5D000000 		.4byte	.LASF36
+ 1396 02a2 01       		.byte	0x1
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 28
+
+
+ 1397 02a3 49       		.byte	0x49
+ 1398 02a4 83000000 		.4byte	0x83
+ 1399 02a8 00000000 		.4byte	.LFB5
+ 1400 02ac A0000000 		.4byte	.LFE5-.LFB5
+ 1401 02b0 01       		.uleb128 0x1
+ 1402 02b1 9C       		.byte	0x9c
+ 1403 02b2 EF020000 		.4byte	0x2ef
+ 1404 02b6 08       		.uleb128 0x8
+ 1405 02b7 46020000 		.4byte	.LASF22
+ 1406 02bb 01       		.byte	0x1
+ 1407 02bc 49       		.byte	0x49
+ 1408 02bd E2000000 		.4byte	0xe2
+ 1409 02c1 02       		.uleb128 0x2
+ 1410 02c2 91       		.byte	0x91
+ 1411 02c3 64       		.sleb128 -28
+ 1412 02c4 08       		.uleb128 0x8
+ 1413 02c5 F7010000 		.4byte	.LASF23
+ 1414 02c9 01       		.byte	0x1
+ 1415 02ca 49       		.byte	0x49
+ 1416 02cb 77000000 		.4byte	0x77
+ 1417 02cf 02       		.uleb128 0x2
+ 1418 02d0 91       		.byte	0x91
+ 1419 02d1 62       		.sleb128 -30
+ 1420 02d2 09       		.uleb128 0x9
+ 1421 02d3 EF000000 		.4byte	.LASF25
+ 1422 02d7 01       		.byte	0x1
+ 1423 02d8 4B       		.byte	0x4b
+ 1424 02d9 83000000 		.4byte	0x83
+ 1425 02dd 02       		.uleb128 0x2
+ 1426 02de 91       		.byte	0x91
+ 1427 02df 6C       		.sleb128 -20
+ 1428 02e0 09       		.uleb128 0x9
+ 1429 02e1 5B020000 		.4byte	.LASF26
+ 1430 02e5 01       		.byte	0x1
+ 1431 02e6 4C       		.byte	0x4c
+ 1432 02e7 8F000000 		.4byte	0x8f
+ 1433 02eb 02       		.uleb128 0x2
+ 1434 02ec 91       		.byte	0x91
+ 1435 02ed 6B       		.sleb128 -21
+ 1436 02ee 00       		.byte	0
+ 1437 02ef 0D       		.uleb128 0xd
+ 1438 02f0 21000000 		.4byte	.LASF37
+ 1439 02f4 01       		.byte	0x1
+ 1440 02f5 52       		.byte	0x52
+ 1441 02f6 41030000 		.4byte	0x341
+ 1442 02fa 00000000 		.4byte	.LFB6
+ 1443 02fe 4A000000 		.4byte	.LFE6-.LFB6
+ 1444 0302 01       		.uleb128 0x1
+ 1445 0303 9C       		.byte	0x9c
+ 1446 0304 41030000 		.4byte	0x341
+ 1447 0308 08       		.uleb128 0x8
+ 1448 0309 46020000 		.4byte	.LASF22
+ 1449 030d 01       		.byte	0x1
+ 1450 030e 52       		.byte	0x52
+ 1451 030f E2000000 		.4byte	0xe2
+ 1452 0313 02       		.uleb128 0x2
+ 1453 0314 91       		.byte	0x91
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 29
+
+
+ 1454 0315 6C       		.sleb128 -20
+ 1455 0316 08       		.uleb128 0x8
+ 1456 0317 F7010000 		.4byte	.LASF23
+ 1457 031b 01       		.byte	0x1
+ 1458 031c 52       		.byte	0x52
+ 1459 031d 77000000 		.4byte	0x77
+ 1460 0321 02       		.uleb128 0x2
+ 1461 0322 91       		.byte	0x91
+ 1462 0323 6A       		.sleb128 -22
+ 1463 0324 09       		.uleb128 0x9
+ 1464 0325 EF000000 		.4byte	.LASF25
+ 1465 0329 01       		.byte	0x1
+ 1466 032a 54       		.byte	0x54
+ 1467 032b 41030000 		.4byte	0x341
+ 1468 032f 02       		.uleb128 0x2
+ 1469 0330 91       		.byte	0x91
+ 1470 0331 77       		.sleb128 -9
+ 1471 0332 09       		.uleb128 0x9
+ 1472 0333 5B020000 		.4byte	.LASF26
+ 1473 0337 01       		.byte	0x1
+ 1474 0338 55       		.byte	0x55
+ 1475 0339 6B000000 		.4byte	0x6b
+ 1476 033d 02       		.uleb128 0x2
+ 1477 033e 91       		.byte	0x91
+ 1478 033f 76       		.sleb128 -10
+ 1479 0340 00       		.byte	0
+ 1480 0341 02       		.uleb128 0x2
+ 1481 0342 01       		.byte	0x1
+ 1482 0343 02       		.byte	0x2
+ 1483 0344 B1020000 		.4byte	.LASF38
+ 1484 0348 07       		.uleb128 0x7
+ 1485 0349 AC020000 		.4byte	.LASF39
+ 1486 034d 01       		.byte	0x1
+ 1487 034e 60       		.byte	0x60
+ 1488 034f AE000000 		.4byte	0xae
+ 1489 0353 00000000 		.4byte	.LFB7
+ 1490 0357 6A000000 		.4byte	.LFE7-.LFB7
+ 1491 035b 01       		.uleb128 0x1
+ 1492 035c 9C       		.byte	0x9c
+ 1493 035d 7E030000 		.4byte	0x37e
+ 1494 0361 0E       		.uleb128 0xe
+ 1495 0362 76616C00 		.ascii	"val\000"
+ 1496 0366 01       		.byte	0x1
+ 1497 0367 60       		.byte	0x60
+ 1498 0368 AE000000 		.4byte	0xae
+ 1499 036c 02       		.uleb128 0x2
+ 1500 036d 91       		.byte	0x91
+ 1501 036e 68       		.sleb128 -24
+ 1502 036f 09       		.uleb128 0x9
+ 1503 0370 EF000000 		.4byte	.LASF25
+ 1504 0374 01       		.byte	0x1
+ 1505 0375 62       		.byte	0x62
+ 1506 0376 9B000000 		.4byte	0x9b
+ 1507 037a 02       		.uleb128 0x2
+ 1508 037b 91       		.byte	0x91
+ 1509 037c 74       		.sleb128 -12
+ 1510 037d 00       		.byte	0
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 30
+
+
+ 1511 037e 0D       		.uleb128 0xd
+ 1512 037f 6C000000 		.4byte	.LASF40
+ 1513 0383 01       		.byte	0x1
+ 1514 0384 66       		.byte	0x66
+ 1515 0385 77000000 		.4byte	0x77
+ 1516 0389 00000000 		.4byte	.LFB8
+ 1517 038d 4E000000 		.4byte	.LFE8-.LFB8
+ 1518 0391 01       		.uleb128 0x1
+ 1519 0392 9C       		.byte	0x9c
+ 1520 0393 CA030000 		.4byte	0x3ca
+ 1521 0397 0E       		.uleb128 0xe
+ 1522 0398 7200     		.ascii	"r\000"
+ 1523 039a 01       		.byte	0x1
+ 1524 039b 66       		.byte	0x66
+ 1525 039c 6B000000 		.4byte	0x6b
+ 1526 03a0 02       		.uleb128 0x2
+ 1527 03a1 91       		.byte	0x91
+ 1528 03a2 6F       		.sleb128 -17
+ 1529 03a3 0E       		.uleb128 0xe
+ 1530 03a4 6700     		.ascii	"g\000"
+ 1531 03a6 01       		.byte	0x1
+ 1532 03a7 66       		.byte	0x66
+ 1533 03a8 6B000000 		.4byte	0x6b
+ 1534 03ac 02       		.uleb128 0x2
+ 1535 03ad 91       		.byte	0x91
+ 1536 03ae 6E       		.sleb128 -18
+ 1537 03af 0E       		.uleb128 0xe
+ 1538 03b0 6200     		.ascii	"b\000"
+ 1539 03b2 01       		.byte	0x1
+ 1540 03b3 66       		.byte	0x66
+ 1541 03b4 6B000000 		.4byte	0x6b
+ 1542 03b8 02       		.uleb128 0x2
+ 1543 03b9 91       		.byte	0x91
+ 1544 03ba 6D       		.sleb128 -19
+ 1545 03bb 09       		.uleb128 0x9
+ 1546 03bc C3010000 		.4byte	.LASF41
+ 1547 03c0 01       		.byte	0x1
+ 1548 03c1 68       		.byte	0x68
+ 1549 03c2 77000000 		.4byte	0x77
+ 1550 03c6 02       		.uleb128 0x2
+ 1551 03c7 91       		.byte	0x91
+ 1552 03c8 76       		.sleb128 -10
+ 1553 03c9 00       		.byte	0
+ 1554 03ca 0F       		.uleb128 0xf
+ 1555 03cb E1000000 		.4byte	.LASF42
+ 1556 03cf 01       		.byte	0x1
+ 1557 03d0 71       		.byte	0x71
+ 1558 03d1 41030000 		.4byte	0x341
+ 1559 03d5 00000000 		.4byte	.LFB9
+ 1560 03d9 44000000 		.4byte	.LFE9-.LFB9
+ 1561 03dd 01       		.uleb128 0x1
+ 1562 03de 9C       		.byte	0x9c
+ 1563 03df 08       		.uleb128 0x8
+ 1564 03e0 46020000 		.4byte	.LASF22
+ 1565 03e4 01       		.byte	0x1
+ 1566 03e5 71       		.byte	0x71
+ 1567 03e6 E2000000 		.4byte	0xe2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 31
+
+
+ 1568 03ea 02       		.uleb128 0x2
+ 1569 03eb 91       		.byte	0x91
+ 1570 03ec 6C       		.sleb128 -20
+ 1571 03ed 08       		.uleb128 0x8
+ 1572 03ee F7010000 		.4byte	.LASF23
+ 1573 03f2 01       		.byte	0x1
+ 1574 03f3 71       		.byte	0x71
+ 1575 03f4 6B000000 		.4byte	0x6b
+ 1576 03f8 02       		.uleb128 0x2
+ 1577 03f9 91       		.byte	0x91
+ 1578 03fa 6B       		.sleb128 -21
+ 1579 03fb 09       		.uleb128 0x9
+ 1580 03fc EF000000 		.4byte	.LASF25
+ 1581 0400 01       		.byte	0x1
+ 1582 0401 73       		.byte	0x73
+ 1583 0402 41030000 		.4byte	0x341
+ 1584 0406 02       		.uleb128 0x2
+ 1585 0407 91       		.byte	0x91
+ 1586 0408 77       		.sleb128 -9
+ 1587 0409 09       		.uleb128 0x9
+ 1588 040a 5B020000 		.4byte	.LASF26
+ 1589 040e 01       		.byte	0x1
+ 1590 040f 74       		.byte	0x74
+ 1591 0410 6B000000 		.4byte	0x6b
+ 1592 0414 02       		.uleb128 0x2
+ 1593 0415 91       		.byte	0x91
+ 1594 0416 76       		.sleb128 -10
+ 1595 0417 00       		.byte	0
+ 1596 0418 00       		.byte	0
+ 1597              		.section	.debug_abbrev,"",%progbits
+ 1598              	.Ldebug_abbrev0:
+ 1599 0000 01       		.uleb128 0x1
+ 1600 0001 11       		.uleb128 0x11
+ 1601 0002 01       		.byte	0x1
+ 1602 0003 25       		.uleb128 0x25
+ 1603 0004 0E       		.uleb128 0xe
+ 1604 0005 13       		.uleb128 0x13
+ 1605 0006 0B       		.uleb128 0xb
+ 1606 0007 03       		.uleb128 0x3
+ 1607 0008 0E       		.uleb128 0xe
+ 1608 0009 1B       		.uleb128 0x1b
+ 1609 000a 0E       		.uleb128 0xe
+ 1610 000b 55       		.uleb128 0x55
+ 1611 000c 17       		.uleb128 0x17
+ 1612 000d 11       		.uleb128 0x11
+ 1613 000e 01       		.uleb128 0x1
+ 1614 000f 10       		.uleb128 0x10
+ 1615 0010 17       		.uleb128 0x17
+ 1616 0011 00       		.byte	0
+ 1617 0012 00       		.byte	0
+ 1618 0013 02       		.uleb128 0x2
+ 1619 0014 24       		.uleb128 0x24
+ 1620 0015 00       		.byte	0
+ 1621 0016 0B       		.uleb128 0xb
+ 1622 0017 0B       		.uleb128 0xb
+ 1623 0018 3E       		.uleb128 0x3e
+ 1624 0019 0B       		.uleb128 0xb
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 32
+
+
+ 1625 001a 03       		.uleb128 0x3
+ 1626 001b 0E       		.uleb128 0xe
+ 1627 001c 00       		.byte	0
+ 1628 001d 00       		.byte	0
+ 1629 001e 03       		.uleb128 0x3
+ 1630 001f 24       		.uleb128 0x24
+ 1631 0020 00       		.byte	0
+ 1632 0021 0B       		.uleb128 0xb
+ 1633 0022 0B       		.uleb128 0xb
+ 1634 0023 3E       		.uleb128 0x3e
+ 1635 0024 0B       		.uleb128 0xb
+ 1636 0025 03       		.uleb128 0x3
+ 1637 0026 08       		.uleb128 0x8
+ 1638 0027 00       		.byte	0
+ 1639 0028 00       		.byte	0
+ 1640 0029 04       		.uleb128 0x4
+ 1641 002a 16       		.uleb128 0x16
+ 1642 002b 00       		.byte	0
+ 1643 002c 03       		.uleb128 0x3
+ 1644 002d 0E       		.uleb128 0xe
+ 1645 002e 3A       		.uleb128 0x3a
+ 1646 002f 0B       		.uleb128 0xb
+ 1647 0030 3B       		.uleb128 0x3b
+ 1648 0031 05       		.uleb128 0x5
+ 1649 0032 49       		.uleb128 0x49
+ 1650 0033 13       		.uleb128 0x13
+ 1651 0034 00       		.byte	0
+ 1652 0035 00       		.byte	0
+ 1653 0036 05       		.uleb128 0x5
+ 1654 0037 16       		.uleb128 0x16
+ 1655 0038 00       		.byte	0
+ 1656 0039 03       		.uleb128 0x3
+ 1657 003a 0E       		.uleb128 0xe
+ 1658 003b 3A       		.uleb128 0x3a
+ 1659 003c 0B       		.uleb128 0xb
+ 1660 003d 3B       		.uleb128 0x3b
+ 1661 003e 0B       		.uleb128 0xb
+ 1662 003f 49       		.uleb128 0x49
+ 1663 0040 13       		.uleb128 0x13
+ 1664 0041 00       		.byte	0
+ 1665 0042 00       		.byte	0
+ 1666 0043 06       		.uleb128 0x6
+ 1667 0044 0F       		.uleb128 0xf
+ 1668 0045 00       		.byte	0
+ 1669 0046 0B       		.uleb128 0xb
+ 1670 0047 0B       		.uleb128 0xb
+ 1671 0048 49       		.uleb128 0x49
+ 1672 0049 13       		.uleb128 0x13
+ 1673 004a 00       		.byte	0
+ 1674 004b 00       		.byte	0
+ 1675 004c 07       		.uleb128 0x7
+ 1676 004d 2E       		.uleb128 0x2e
+ 1677 004e 01       		.byte	0x1
+ 1678 004f 3F       		.uleb128 0x3f
+ 1679 0050 19       		.uleb128 0x19
+ 1680 0051 03       		.uleb128 0x3
+ 1681 0052 0E       		.uleb128 0xe
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 33
+
+
+ 1682 0053 3A       		.uleb128 0x3a
+ 1683 0054 0B       		.uleb128 0xb
+ 1684 0055 3B       		.uleb128 0x3b
+ 1685 0056 0B       		.uleb128 0xb
+ 1686 0057 27       		.uleb128 0x27
+ 1687 0058 19       		.uleb128 0x19
+ 1688 0059 49       		.uleb128 0x49
+ 1689 005a 13       		.uleb128 0x13
+ 1690 005b 11       		.uleb128 0x11
+ 1691 005c 01       		.uleb128 0x1
+ 1692 005d 12       		.uleb128 0x12
+ 1693 005e 06       		.uleb128 0x6
+ 1694 005f 40       		.uleb128 0x40
+ 1695 0060 18       		.uleb128 0x18
+ 1696 0061 9642     		.uleb128 0x2116
+ 1697 0063 19       		.uleb128 0x19
+ 1698 0064 01       		.uleb128 0x1
+ 1699 0065 13       		.uleb128 0x13
+ 1700 0066 00       		.byte	0
+ 1701 0067 00       		.byte	0
+ 1702 0068 08       		.uleb128 0x8
+ 1703 0069 05       		.uleb128 0x5
+ 1704 006a 00       		.byte	0
+ 1705 006b 03       		.uleb128 0x3
+ 1706 006c 0E       		.uleb128 0xe
+ 1707 006d 3A       		.uleb128 0x3a
+ 1708 006e 0B       		.uleb128 0xb
+ 1709 006f 3B       		.uleb128 0x3b
+ 1710 0070 0B       		.uleb128 0xb
+ 1711 0071 49       		.uleb128 0x49
+ 1712 0072 13       		.uleb128 0x13
+ 1713 0073 02       		.uleb128 0x2
+ 1714 0074 18       		.uleb128 0x18
+ 1715 0075 00       		.byte	0
+ 1716 0076 00       		.byte	0
+ 1717 0077 09       		.uleb128 0x9
+ 1718 0078 34       		.uleb128 0x34
+ 1719 0079 00       		.byte	0
+ 1720 007a 03       		.uleb128 0x3
+ 1721 007b 0E       		.uleb128 0xe
+ 1722 007c 3A       		.uleb128 0x3a
+ 1723 007d 0B       		.uleb128 0xb
+ 1724 007e 3B       		.uleb128 0x3b
+ 1725 007f 0B       		.uleb128 0xb
+ 1726 0080 49       		.uleb128 0x49
+ 1727 0081 13       		.uleb128 0x13
+ 1728 0082 02       		.uleb128 0x2
+ 1729 0083 18       		.uleb128 0x18
+ 1730 0084 00       		.byte	0
+ 1731 0085 00       		.byte	0
+ 1732 0086 0A       		.uleb128 0xa
+ 1733 0087 2E       		.uleb128 0x2e
+ 1734 0088 01       		.byte	0x1
+ 1735 0089 3F       		.uleb128 0x3f
+ 1736 008a 19       		.uleb128 0x19
+ 1737 008b 03       		.uleb128 0x3
+ 1738 008c 0E       		.uleb128 0xe
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 34
+
+
+ 1739 008d 3A       		.uleb128 0x3a
+ 1740 008e 0B       		.uleb128 0xb
+ 1741 008f 3B       		.uleb128 0x3b
+ 1742 0090 0B       		.uleb128 0xb
+ 1743 0091 27       		.uleb128 0x27
+ 1744 0092 19       		.uleb128 0x19
+ 1745 0093 11       		.uleb128 0x11
+ 1746 0094 01       		.uleb128 0x1
+ 1747 0095 12       		.uleb128 0x12
+ 1748 0096 06       		.uleb128 0x6
+ 1749 0097 40       		.uleb128 0x40
+ 1750 0098 18       		.uleb128 0x18
+ 1751 0099 9642     		.uleb128 0x2116
+ 1752 009b 19       		.uleb128 0x19
+ 1753 009c 01       		.uleb128 0x1
+ 1754 009d 13       		.uleb128 0x13
+ 1755 009e 00       		.byte	0
+ 1756 009f 00       		.byte	0
+ 1757 00a0 0B       		.uleb128 0xb
+ 1758 00a1 2E       		.uleb128 0x2e
+ 1759 00a2 01       		.byte	0x1
+ 1760 00a3 3F       		.uleb128 0x3f
+ 1761 00a4 19       		.uleb128 0x19
+ 1762 00a5 03       		.uleb128 0x3
+ 1763 00a6 0E       		.uleb128 0xe
+ 1764 00a7 3A       		.uleb128 0x3a
+ 1765 00a8 0B       		.uleb128 0xb
+ 1766 00a9 3B       		.uleb128 0x3b
+ 1767 00aa 0B       		.uleb128 0xb
+ 1768 00ab 27       		.uleb128 0x27
+ 1769 00ac 19       		.uleb128 0x19
+ 1770 00ad 11       		.uleb128 0x11
+ 1771 00ae 01       		.uleb128 0x1
+ 1772 00af 12       		.uleb128 0x12
+ 1773 00b0 06       		.uleb128 0x6
+ 1774 00b1 40       		.uleb128 0x40
+ 1775 00b2 18       		.uleb128 0x18
+ 1776 00b3 9742     		.uleb128 0x2117
+ 1777 00b5 19       		.uleb128 0x19
+ 1778 00b6 01       		.uleb128 0x1
+ 1779 00b7 13       		.uleb128 0x13
+ 1780 00b8 00       		.byte	0
+ 1781 00b9 00       		.byte	0
+ 1782 00ba 0C       		.uleb128 0xc
+ 1783 00bb 0B       		.uleb128 0xb
+ 1784 00bc 01       		.byte	0x1
+ 1785 00bd 11       		.uleb128 0x11
+ 1786 00be 01       		.uleb128 0x1
+ 1787 00bf 12       		.uleb128 0x12
+ 1788 00c0 06       		.uleb128 0x6
+ 1789 00c1 00       		.byte	0
+ 1790 00c2 00       		.byte	0
+ 1791 00c3 0D       		.uleb128 0xd
+ 1792 00c4 2E       		.uleb128 0x2e
+ 1793 00c5 01       		.byte	0x1
+ 1794 00c6 3F       		.uleb128 0x3f
+ 1795 00c7 19       		.uleb128 0x19
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 35
+
+
+ 1796 00c8 03       		.uleb128 0x3
+ 1797 00c9 0E       		.uleb128 0xe
+ 1798 00ca 3A       		.uleb128 0x3a
+ 1799 00cb 0B       		.uleb128 0xb
+ 1800 00cc 3B       		.uleb128 0x3b
+ 1801 00cd 0B       		.uleb128 0xb
+ 1802 00ce 27       		.uleb128 0x27
+ 1803 00cf 19       		.uleb128 0x19
+ 1804 00d0 49       		.uleb128 0x49
+ 1805 00d1 13       		.uleb128 0x13
+ 1806 00d2 11       		.uleb128 0x11
+ 1807 00d3 01       		.uleb128 0x1
+ 1808 00d4 12       		.uleb128 0x12
+ 1809 00d5 06       		.uleb128 0x6
+ 1810 00d6 40       		.uleb128 0x40
+ 1811 00d7 18       		.uleb128 0x18
+ 1812 00d8 9742     		.uleb128 0x2117
+ 1813 00da 19       		.uleb128 0x19
+ 1814 00db 01       		.uleb128 0x1
+ 1815 00dc 13       		.uleb128 0x13
+ 1816 00dd 00       		.byte	0
+ 1817 00de 00       		.byte	0
+ 1818 00df 0E       		.uleb128 0xe
+ 1819 00e0 05       		.uleb128 0x5
+ 1820 00e1 00       		.byte	0
+ 1821 00e2 03       		.uleb128 0x3
+ 1822 00e3 08       		.uleb128 0x8
+ 1823 00e4 3A       		.uleb128 0x3a
+ 1824 00e5 0B       		.uleb128 0xb
+ 1825 00e6 3B       		.uleb128 0x3b
+ 1826 00e7 0B       		.uleb128 0xb
+ 1827 00e8 49       		.uleb128 0x49
+ 1828 00e9 13       		.uleb128 0x13
+ 1829 00ea 02       		.uleb128 0x2
+ 1830 00eb 18       		.uleb128 0x18
+ 1831 00ec 00       		.byte	0
+ 1832 00ed 00       		.byte	0
+ 1833 00ee 0F       		.uleb128 0xf
+ 1834 00ef 2E       		.uleb128 0x2e
+ 1835 00f0 01       		.byte	0x1
+ 1836 00f1 3F       		.uleb128 0x3f
+ 1837 00f2 19       		.uleb128 0x19
+ 1838 00f3 03       		.uleb128 0x3
+ 1839 00f4 0E       		.uleb128 0xe
+ 1840 00f5 3A       		.uleb128 0x3a
+ 1841 00f6 0B       		.uleb128 0xb
+ 1842 00f7 3B       		.uleb128 0x3b
+ 1843 00f8 0B       		.uleb128 0xb
+ 1844 00f9 27       		.uleb128 0x27
+ 1845 00fa 19       		.uleb128 0x19
+ 1846 00fb 49       		.uleb128 0x49
+ 1847 00fc 13       		.uleb128 0x13
+ 1848 00fd 11       		.uleb128 0x11
+ 1849 00fe 01       		.uleb128 0x1
+ 1850 00ff 12       		.uleb128 0x12
+ 1851 0100 06       		.uleb128 0x6
+ 1852 0101 40       		.uleb128 0x40
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 36
+
+
+ 1853 0102 18       		.uleb128 0x18
+ 1854 0103 9742     		.uleb128 0x2117
+ 1855 0105 19       		.uleb128 0x19
+ 1856 0106 00       		.byte	0
+ 1857 0107 00       		.byte	0
+ 1858 0108 00       		.byte	0
+ 1859              		.section	.debug_aranges,"",%progbits
+ 1860 0000 64000000 		.4byte	0x64
+ 1861 0004 0200     		.2byte	0x2
+ 1862 0006 00000000 		.4byte	.Ldebug_info0
+ 1863 000a 04       		.byte	0x4
+ 1864 000b 00       		.byte	0
+ 1865 000c 0000     		.2byte	0
+ 1866 000e 0000     		.2byte	0
+ 1867 0010 00000000 		.4byte	.LFB0
+ 1868 0014 CA000000 		.4byte	.LFE0-.LFB0
+ 1869 0018 00000000 		.4byte	.LFB1
+ 1870 001c DC010000 		.4byte	.LFE1-.LFB1
+ 1871 0020 00000000 		.4byte	.LFB2
+ 1872 0024 7A000000 		.4byte	.LFE2-.LFB2
+ 1873 0028 00000000 		.4byte	.LFB3
+ 1874 002c 86000000 		.4byte	.LFE3-.LFB3
+ 1875 0030 00000000 		.4byte	.LFB4
+ 1876 0034 94000000 		.4byte	.LFE4-.LFB4
+ 1877 0038 00000000 		.4byte	.LFB5
+ 1878 003c A0000000 		.4byte	.LFE5-.LFB5
+ 1879 0040 00000000 		.4byte	.LFB6
+ 1880 0044 4A000000 		.4byte	.LFE6-.LFB6
+ 1881 0048 00000000 		.4byte	.LFB7
+ 1882 004c 6A000000 		.4byte	.LFE7-.LFB7
+ 1883 0050 00000000 		.4byte	.LFB8
+ 1884 0054 4E000000 		.4byte	.LFE8-.LFB8
+ 1885 0058 00000000 		.4byte	.LFB9
+ 1886 005c 44000000 		.4byte	.LFE9-.LFB9
+ 1887 0060 00000000 		.4byte	0
+ 1888 0064 00000000 		.4byte	0
+ 1889              		.section	.debug_ranges,"",%progbits
+ 1890              	.Ldebug_ranges0:
+ 1891 0000 00000000 		.4byte	.LFB0
+ 1892 0004 CA000000 		.4byte	.LFE0
+ 1893 0008 00000000 		.4byte	.LFB1
+ 1894 000c DC010000 		.4byte	.LFE1
+ 1895 0010 00000000 		.4byte	.LFB2
+ 1896 0014 7A000000 		.4byte	.LFE2
+ 1897 0018 00000000 		.4byte	.LFB3
+ 1898 001c 86000000 		.4byte	.LFE3
+ 1899 0020 00000000 		.4byte	.LFB4
+ 1900 0024 94000000 		.4byte	.LFE4
+ 1901 0028 00000000 		.4byte	.LFB5
+ 1902 002c A0000000 		.4byte	.LFE5
+ 1903 0030 00000000 		.4byte	.LFB6
+ 1904 0034 4A000000 		.4byte	.LFE6
+ 1905 0038 00000000 		.4byte	.LFB7
+ 1906 003c 6A000000 		.4byte	.LFE7
+ 1907 0040 00000000 		.4byte	.LFB8
+ 1908 0044 4E000000 		.4byte	.LFE8
+ 1909 0048 00000000 		.4byte	.LFB9
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 37
+
+
+ 1910 004c 44000000 		.4byte	.LFE9
+ 1911 0050 00000000 		.4byte	0
+ 1912 0054 00000000 		.4byte	0
+ 1913              		.section	.debug_line,"",%progbits
+ 1914              	.Ldebug_line0:
+ 1915 0000 D8010000 		.section	.debug_str,"MS",%progbits,1
+ 1915      02005D00 
+ 1915      00000201 
+ 1915      FB0E0D00 
+ 1915      01010101 
+ 1916              	.LASF28:
+ 1917 0000 42373841 		.ascii	"B78AD90CF552D9B30A\000"
+ 1917      44393043 
+ 1917      46353532 
+ 1917      44394233 
+ 1917      304100
+ 1918              	.LASF31:
+ 1919 0013 696E6465 		.ascii	"index0\000"
+ 1919      783000
+ 1920              	.LASF32:
+ 1921 001a 696E6465 		.ascii	"index1\000"
+ 1921      783100
+ 1922              	.LASF37:
+ 1923 0021 49535641 		.ascii	"ISVALIDBCD\000"
+ 1923      4C494442 
+ 1923      434400
+ 1924              	.LASF33:
+ 1925 002c 42434450 		.ascii	"BCDPositiveValueToUInt\000"
+ 1925      6F736974 
+ 1925      69766556 
+ 1925      616C7565 
+ 1925      546F5549 
+ 1926              	.LASF16:
+ 1927 0043 75696E74 		.ascii	"uint64\000"
+ 1927      363400
+ 1928              	.LASF3:
+ 1929 004a 73686F72 		.ascii	"short unsigned int\000"
+ 1929      7420756E 
+ 1929      7369676E 
+ 1929      65642069 
+ 1929      6E7400
+ 1930              	.LASF36:
+ 1931 005d 4D534442 		.ascii	"MSDBCDBUFF2HEX\000"
+ 1931      43444255 
+ 1931      46463248 
+ 1931      455800
+ 1932              	.LASF40:
+ 1933 006c 52474232 		.ascii	"RGB216BITS\000"
+ 1933      31364249 
+ 1933      545300
+ 1934              	.LASF14:
+ 1935 0077 666C6F61 		.ascii	"float\000"
+ 1935      7400
+ 1936              	.LASF24:
+ 1937 007d 6D61736B 		.ascii	"mask\000"
+ 1937      00
+ 1938              	.LASF45:
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 38
+
+
+ 1939 0082 433A5C54 		.ascii	"C:\\TeamInsepet\\NSX-Prime\\Hardware\\CorEx-MUX-Ker"
+ 1939      65616D49 
+ 1939      6E736570 
+ 1939      65745C4E 
+ 1939      53582D50 
+ 1940 00b1 6E656C2D 		.ascii	"nel-Enhanced\\Workspace01\\CorEx-Mux-Kernel.cydsn\000"
+ 1940      456E6861 
+ 1940      6E636564 
+ 1940      5C576F72 
+ 1940      6B737061 
+ 1941              	.LASF42:
+ 1942 00e1 49534153 		.ascii	"ISASCIIPRNBLE\000"
+ 1942      43494950 
+ 1942      524E424C 
+ 1942      4500
+ 1943              	.LASF25:
+ 1944 00ef 72657476 		.ascii	"retval\000"
+ 1944      616C00
+ 1945              	.LASF17:
+ 1946 00f6 63686172 		.ascii	"char8\000"
+ 1946      3800
+ 1947              	.LASF5:
+ 1948 00fc 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1948      20756E73 
+ 1948      69676E65 
+ 1948      6420696E 
+ 1948      7400
+ 1949              	.LASF13:
+ 1950 010e 696E7433 		.ascii	"int32\000"
+ 1950      3200
+ 1951              	.LASF1:
+ 1952 0114 756E7369 		.ascii	"unsigned char\000"
+ 1952      676E6564 
+ 1952      20636861 
+ 1952      7200
+ 1953              	.LASF43:
+ 1954 0122 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1954      4320342E 
+ 1954      392E3320 
+ 1954      32303135 
+ 1954      30333033 
+ 1955 0155 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1955      20726576 
+ 1955      6973696F 
+ 1955      6E203232 
+ 1955      31323230 
+ 1956 0188 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1956      66756E63 
+ 1956      74696F6E 
+ 1956      2D736563 
+ 1956      74696F6E 
+ 1957              	.LASF15:
+ 1958 01b0 646F7562 		.ascii	"double\000"
+ 1958      6C6500
+ 1959              	.LASF20:
+ 1960 01b7 6C6F6E67 		.ascii	"long double\000"
+ 1960      20646F75 
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 39
+
+
+ 1960      626C6500 
+ 1961              	.LASF41:
+ 1962 01c3 636F6465 		.ascii	"code\000"
+ 1962      00
+ 1963              	.LASF10:
+ 1964 01c8 75696E74 		.ascii	"uint16\000"
+ 1964      313600
+ 1965              	.LASF12:
+ 1966 01cf 696E7438 		.ascii	"int8\000"
+ 1966      00
+ 1967              	.LASF21:
+ 1968 01d4 504E4541 		.ascii	"PNEAR_BYTE_PTR\000"
+ 1968      525F4259 
+ 1968      54455F50 
+ 1968      545200
+ 1969              	.LASF11:
+ 1970 01e3 75696E74 		.ascii	"uint32\000"
+ 1970      333200
+ 1971              	.LASF8:
+ 1972 01ea 756E7369 		.ascii	"unsigned int\000"
+ 1972      676E6564 
+ 1972      20696E74 
+ 1972      00
+ 1973              	.LASF23:
+ 1974 01f7 62756666 		.ascii	"buffersize\000"
+ 1974      65727369 
+ 1974      7A6500
+ 1975              	.LASF7:
+ 1976 0202 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1976      206C6F6E 
+ 1976      6720756E 
+ 1976      7369676E 
+ 1976      65642069 
+ 1977              	.LASF27:
+ 1978 0219 6E756D62 		.ascii	"number\000"
+ 1978      657200
+ 1979              	.LASF35:
+ 1980 0220 4C534442 		.ascii	"LSDBCDBUFF2HEX\000"
+ 1980      43444255 
+ 1980      46463248 
+ 1980      455800
+ 1981              	.LASF19:
+ 1982 022f 73697A65 		.ascii	"sizetype\000"
+ 1982      74797065 
+ 1982      00
+ 1983              	.LASF6:
+ 1984 0238 6C6F6E67 		.ascii	"long long int\000"
+ 1984      206C6F6E 
+ 1984      6720696E 
+ 1984      7400
+ 1985              	.LASF22:
+ 1986 0246 70627566 		.ascii	"pbuffer\000"
+ 1986      66657200 
+ 1987              	.LASF29:
+ 1988 024e 50535452 		.ascii	"PSTRBUFFTOGG\000"
+ 1988      42554646 
+ 1988      544F4747 
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc8pI6SV.s 			page 40
+
+
+ 1988      00
+ 1989              	.LASF26:
+ 1990 025b 696E6465 		.ascii	"index\000"
+ 1990      7800
+ 1991              	.LASF2:
+ 1992 0261 73686F72 		.ascii	"short int\000"
+ 1992      7420696E 
+ 1992      7400
+ 1993              	.LASF9:
+ 1994 026b 75696E74 		.ascii	"uint8\000"
+ 1994      3800
+ 1995              	.LASF30:
+ 1996 0271 76616C6E 		.ascii	"valndx\000"
+ 1996      647800
+ 1997              	.LASF34:
+ 1998 0278 444C5344 		.ascii	"DLSDBCDBUFF2HEX\000"
+ 1998      42434442 
+ 1998      55464632 
+ 1998      48455800 
+ 1999              	.LASF4:
+ 2000 0288 6C6F6E67 		.ascii	"long int\000"
+ 2000      20696E74 
+ 2000      00
+ 2001              	.LASF18:
+ 2002 0291 63686172 		.ascii	"char\000"
+ 2002      00
+ 2003              	.LASF44:
+ 2004 0296 2E5C5574 		.ascii	".\\Utils.c\000"
+ 2004      696C732E 
+ 2004      6300
+ 2005              	.LASF0:
+ 2006 02a0 7369676E 		.ascii	"signed char\000"
+ 2006      65642063 
+ 2006      68617200 
+ 2007              	.LASF39:
+ 2008 02ac 4365696C 		.ascii	"Ceil\000"
+ 2008      00
+ 2009              	.LASF38:
+ 2010 02b1 5F426F6F 		.ascii	"_Bool\000"
+ 2010      6C00
+ 2011              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
