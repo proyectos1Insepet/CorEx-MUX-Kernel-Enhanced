@@ -538,7 +538,7 @@ DisplayFlow _g_displayflow1[] =
         DISPLAY_TIMEOUT_NOTIMEOUT, //timeout limit (seconds)
         DISPLAY_NULL, //display id to be thrown on timeout
         { 0x46, 0x55, 0x94, 0x7E, 0xFF, 0xFF },
-        { DISPLAY_OPCION_TURNO, DISPLAY_INGRESE_PASSWORD, DISPLAY_OPERACION_CANCELADA, DISPLAY_INICIO0, 0xFF, 0xFF }, 
+        { DISPLAY_OPCION_TURNO, DISPLAY_INGRESE_PASSWORD, DISPLAY_DESEA_IMPRIMIR_RECIBO,DISPLAY_OPERACION_CANCELADA, DISPLAY_INICIO0, 0xFF }, 
         { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
         { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
         PNEAR_NULLPTR,
