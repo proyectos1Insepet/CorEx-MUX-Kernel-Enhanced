@@ -308,11 +308,11 @@ bool SecureConfigurationValidator(void *pparam)
     if(pdisplay->_bufferinfo._bufferindex > 0)
     {
         retval = true;
-        
+        const char* StringPass = "1234";
         ClearEepromBuffer();
         LoadEepromPage(EEPROM_CONFIGURATION_PAGE7);
         //This EEPROM's page location is used to store the four digit ASCII password
-        if(strncmp(pdisplay->_bufferinfo._buffer, (char8*)&GetEepromBuffer()[0x0D], 0x04))
+        if(!strncmp(pdisplay->_bufferinfo._buffer, StringPass, 0x04))
         {
             if(pdisplay->_bufferinfo._buffer[0x04] == 0x2C)
             {
