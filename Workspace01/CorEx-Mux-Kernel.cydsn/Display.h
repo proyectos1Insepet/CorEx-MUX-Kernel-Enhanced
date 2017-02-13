@@ -65,10 +65,11 @@ enum _AVAILABLE_DISPLAYS_
     DISPLAY_INTRODUZCA_CEDULA = 0x24,
     DISPLAY_INTRODUZCA_VOLUMEN = 0x0D,
     DISPLAY_INTRODUZCA_KILOMETRAJE = 0x0E,
-    DISPLAY_OPERACIONES     = 0x83,//0x22 sin copia recibo
-    DISPLAY_COPIA_RECIBO    = 0x31, //imprimir copia
+    DISPLAY_OPERACIONES     = 0x83, //antes 0x22
     DISPLAY_CONFIGURACIONES = 0x5A,
-
+    DISPLAY_COPIA_RECIBO = 0x31,    
+    DISPLAY_IMPRIMIENDO_RECIBO = 0x35,
+    
     DISPLAY_SELECCIONE_POSICION = 0x2E,
     DISPLAY_OPERACION_CANCELADA = 0x8C,
     DISPLAY_ESPERANDO_AUTORIZACION = 0x96,
@@ -304,6 +305,7 @@ bool ValidatePumpAvailability4Positions(void *pparam);
 bool ValidatePumpAvailability21Positions(void *pparam);
 void GetPumpsAvailability(void *pparam, uint8 *pvalues);
 void GetPumpsPrintState(void *pparam, bool *pvalues);
+void PrintLastP1(void *pparam); ///Para incluir impresion
 
 #define DISPLAY_TIMEOUT_NOTIMEOUT     0
 #define DISPLAY_TIMEOUT_100MSECS      100

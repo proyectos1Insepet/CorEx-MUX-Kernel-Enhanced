@@ -78,7 +78,7 @@ DisplayFlow _g_displayflow1[] =
     { DISPLAY_INICIO0, 0xFF, 0xFF,
         DISPLAY_TIMEOUT_NOTIMEOUT, //timeout limit (seconds)
         DISPLAY_NULL, //display id to be thrown on timeout
-        { 0x3A, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
+        { 0x3A, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },//touch
         { DISPLAY_SELECCIONE_POSICION, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }, 
         { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }, //No state change data defined
         { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }, //No state change data defined
@@ -537,8 +537,8 @@ DisplayFlow _g_displayflow1[] =
     { DISPLAY_OPERACIONES, DISPLAY_FORMA_PAGO_DESEADA, 0xFF,
         DISPLAY_TIMEOUT_NOTIMEOUT, //timeout limit (seconds)
         DISPLAY_NULL, //display id to be thrown on timeout
-        { 0x46, 0x55, 0x94, 0x7E, 0xFF, 0xFF },
-        { DISPLAY_OPCION_TURNO, DISPLAY_INGRESE_PASSWORD, DISPLAY_DESEA_IMPRIMIR_RECIBO,DISPLAY_OPERACION_CANCELADA, DISPLAY_INICIO0, 0xFF }, 
+        { 0x46, 0x55, 0x94, 0x7E, 0xB5, 0xFF },
+        { DISPLAY_OPCION_TURNO, DISPLAY_INGRESE_PASSWORD, DISPLAY_OPERACION_CANCELADA, DISPLAY_INICIO0, DISPLAY_COPIA_RECIBO, 0xFF }, 
         { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
         { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
         PNEAR_NULLPTR,
@@ -809,6 +809,37 @@ DisplayFlow _g_displayflow1[] =
         { 0x0000, 0x0000, 0x00, {} },
         PNEAR_NULLPTR,
         EitherPrinterWorking
+    },
+    //////////////////////////////////////////////////////////////////////////////
+    /////////////// COPIA DE RECIBO//////////////////////////////////////////////
+    { DISPLAY_COPIA_RECIBO, DISPLAY_OPERACIONES, 0xFF,
+        DISPLAY_TIMEOUT_10SECS, //timeout limit (seconds)
+        DISPLAY_INICIO0, //display id to be thrown on timeout
+        { 0x0A, 0x0B, 0x7E, 0xFF, 0xFF, 0xFF },
+        { DISPLAY_IMPRIMIENDO_RECIBO, DISPLAY_INICIO0, 0xFF, 0xFF, 0xFF, 0xFF }, 
+        { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
+        { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
+        PNEAR_NULLPTR,
+        PNEAR_NULLPTR,
+        PNEAR_NULLPTR,
+        { 0x0000, 0x0000, 0x00, {} },
+        PNEAR_NULLPTR,
+        PNEAR_NULLPTR,
+    },
+    { DISPLAY_IMPRIMIENDO_RECIBO, DISPLAY_COPIA_RECIBO, 0xFF,
+        DISPLAY_TIMEOUT_5SECS, //timeout limit (seconds)
+        DISPLAY_INICIO0, //display id to be thrown on timeout
+        { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
+        { DISPLAY_INICIO0, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }, 
+        { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
+        { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
+        //Printer11Callback,
+        PNEAR_NULLPTR,
+        PNEAR_NULLPTR,
+        PNEAR_NULLPTR,
+        { 0x0000, 0x0000, 0x00, {} },
+        PNEAR_NULLPTR,
+        PNEAR_NULLPTR,
     },
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //EO THE DISPLAY FLOW
@@ -1571,6 +1602,22 @@ DisplayFlow _g_displayflow2[] =
         { 0x0000, 0x0000, 0x00, {} },
         PNEAR_NULLPTR,
         EitherPrinterWorking
+    },
+      //////////////////////////////////////////////////////////////////////////////
+    /////////////// COPIA DE RECIBO//////////////////////////////////////////////
+    { DISPLAY_COPIA_RECIBO, DISPLAY_OPERACIONES, 0xFF,
+        DISPLAY_TIMEOUT_NOTIMEOUT, //timeout limit (seconds)
+        DISPLAY_NULL, //display id to be thrown on timeout
+        { 0x0A, 0x0B, 0x7E, 0xFF, 0xFF, 0xFF },
+        { DISPLAY_INICIO0, DISPLAY_IMPRESORA_NO_FUNCIONANDO, 0xFF, 0xFF, 0xFF, 0xFF }, 
+        { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
+        { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
+        PNEAR_NULLPTR,
+        PNEAR_NULLPTR,
+        PNEAR_NULLPTR,
+        { 0x0000, 0x0000, 0x00, {} },
+        PNEAR_NULLPTR,
+        PrintersWorking
     },
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //EO THE DISPLAY FLOW

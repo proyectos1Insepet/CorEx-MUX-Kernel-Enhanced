@@ -140,7 +140,8 @@ enum _RF_STATES_
     RF_CREDITSALEAUTH = 0x03,
     RF_WORKSHIFTREQ = 0x05,
     RF_CREDITSALEREPORT = 0x06,
-    RF_ERROR = 0x04
+    RF_ERROR = 0x04,
+    RF_COPY_RECEIPT = 0x0B
 };
 
 typedef struct

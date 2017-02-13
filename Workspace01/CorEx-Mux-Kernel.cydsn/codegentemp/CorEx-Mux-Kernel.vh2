@@ -2,7 +2,7 @@
 --	Conversion of CorEx-Mux-Kernel.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Wed Feb 08 07:30:12 2017
+--	Thu Feb 09 11:51:10 2017
 --
 
 USE cypress.cypress.all;
@@ -995,9 +995,9 @@ SIGNAL \Printer:BUART:reset_sr\ : bit;
 SIGNAL \Printer:BUART:HalfDuplexSend_last\ : bit;
 SIGNAL Net_358 : bit;
 SIGNAL \Printer:BUART:txn\ : bit;
-SIGNAL Net_1072 : bit;
+SIGNAL Net_471 : bit;
 SIGNAL \Printer:BUART:tx_interrupt_out\ : bit;
-SIGNAL Net_1073 : bit;
+SIGNAL Net_472 : bit;
 SIGNAL \Printer:BUART:rx_interrupt_out\ : bit;
 SIGNAL \Printer:BUART:tx_state_1\ : bit;
 SIGNAL \Printer:BUART:tx_state_0\ : bit;
@@ -1083,7 +1083,7 @@ SIGNAL \Printer:BUART:tx_status_0\ : bit;
 SIGNAL \Printer:BUART:tx_status_1\ : bit;
 SIGNAL \Printer:BUART:tx_status_2\ : bit;
 SIGNAL \Printer:BUART:tx_status_3\ : bit;
-SIGNAL Net_1071 : bit;
+SIGNAL Net_469 : bit;
 SIGNAL \Printer:BUART:tx_bitclk\ : bit;
 SIGNAL \Printer:BUART:tx_ctrl_mark_last\ : bit;
 SIGNAL \Printer:BUART:tx_mark\ : bit;
@@ -1227,7 +1227,7 @@ SIGNAL \Printer:BUART:rx_status_4\ : bit;
 SIGNAL \Printer:BUART:rx_status_5\ : bit;
 SIGNAL \Printer:BUART:rx_status_6\ : bit;
 SIGNAL \Printer:BUART:rx_addr_match_status\ : bit;
-SIGNAL Net_1070 : bit;
+SIGNAL Net_468 : bit;
 SIGNAL \Printer:BUART:rx_markspace_pre\ : bit;
 SIGNAL \Printer:BUART:rx_parity_error_pre\ : bit;
 SIGNAL \Printer:BUART:rx_break_status\ : bit;
@@ -2569,7 +2569,7 @@ SIGNAL \Printer:BUART:txn\\D\ : bit;
 SIGNAL \Printer:BUART:tx_state_1\\D\ : bit;
 SIGNAL \Printer:BUART:tx_state_0\\D\ : bit;
 SIGNAL \Printer:BUART:tx_state_2\\D\ : bit;
-SIGNAL Net_1071D : bit;
+SIGNAL Net_469D : bit;
 SIGNAL \Printer:BUART:tx_bitclk\\D\ : bit;
 SIGNAL \Printer:BUART:tx_ctrl_mark_last\\D\ : bit;
 SIGNAL \Printer:BUART:tx_mark\\D\ : bit;
@@ -6752,10 +6752,10 @@ Net_27:cy_dff
 	PORT MAP(d=>\Printer:BUART:tx_state_2\\D\,
 		clk=>\Printer:BUART:clock_op\,
 		q=>\Printer:BUART:tx_state_2\);
-Net_1071:cy_dff
+Net_469:cy_dff
 	PORT MAP(d=>Net_29,
 		clk=>\Printer:BUART:clock_op\,
-		q=>Net_1071);
+		q=>Net_469);
 \Printer:BUART:tx_bitclk\:cy_dff
 	PORT MAP(d=>\Printer:BUART:tx_bitclk\\D\,
 		clk=>\Printer:BUART:clock_op\,

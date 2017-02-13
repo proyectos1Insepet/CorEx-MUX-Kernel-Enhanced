@@ -1,13 +1,13 @@
-Loading plugins phase: Elapsed time ==> 0s.265ms
+Loading plugins phase: Elapsed time ==> 0s.218ms
 Initializing data phase: Elapsed time ==> 0s.000ms
 <CYPRESSTAG name="CyDsfit arguments...">
 cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\TeamInsepet\NSX-Prime\Hardware\CorEx-MUX-Kernel-Enhanced\Workspace01\CorEx-Mux-Kernel.cydsn\CorEx-Mux-Kernel.cyprj -d CY8C5868AXI-LP035 -s C:\TeamInsepet\NSX-Prime\Hardware\CorEx-MUX-Kernel-Enhanced\Workspace01\CorEx-Mux-Kernel.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE</CYPRESSTAG>
 <CYPRESSTAG name="Design elaboration results...">
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 2s.118ms
+Elaboration phase: Elapsed time ==> 2s.121ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.083ms
+HDL generation phase: Elapsed time ==> 0s.093ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -41,7 +41,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\TeamInsepet
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Wed Feb 08 07:30:10 2017
+Thu Feb 09 11:51:08 2017
 
 
 ======================================================================
@@ -51,7 +51,7 @@ Options  :    -yv2 -q10 CorEx-Mux-Kernel.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Wed Feb 08 07:30:10 2017
+Thu Feb 09 11:51:08 2017
 
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_UART_v2_50\B_UART_v2_50.v'
@@ -111,7 +111,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\TeamInsepet
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Wed Feb 08 07:30:10 2017
+Thu Feb 09 11:51:09 2017
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -153,7 +153,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\TeamInsepet
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Wed Feb 08 07:30:11 2017
+Thu Feb 09 11:51:10 2017
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -283,13 +283,13 @@ Detecting unused logic.
 	Net_333
 	Net_334
 	\Printer:BUART:reset_sr\
-	Net_1072
-	Net_1073
+	Net_471
+	Net_472
 	\Printer:BUART:sRX:s23Poll:MODULE_6:g2:a0:b_1\
 	\Printer:BUART:sRX:s23Poll:MODULE_6:g2:a0:b_0\
 	\Printer:BUART:sRX:s23Poll:MODULE_7:g2:a0:gta_0\
 	\Printer:BUART:sRX:s23Poll:MODULE_8:g2:a0:gta_0\
-	Net_1070
+	Net_468
 	\Printer:BUART:sRX:MODULE_9:g2:a0:gta_0\
 	\Printer:BUART:sRX:MODULE_10:g1:a0:gx:u0:albi_1\
 	\Printer:BUART:sRX:MODULE_10:g1:a0:gx:u0:agbi_1\
@@ -647,7 +647,7 @@ Aliasing \Timer_DispenserState:TimerUDB:hwEnable_reg\\D\ to \Timer_DispenserStat
 Aliasing \Timer_DispenserState:TimerUDB:capture_out_reg_i\\D\ to \Timer_DispenserState:TimerUDB:capt_fifo_load_int\
 Aliasing \ShiftReg_iButtonCRC4LSB:bSR:load_reg\\D\ to Net_29
 Aliasing \ShiftReg_Security:bSR:load_reg\\D\ to Net_29
-Aliasing Net_1071D to Net_29
+Aliasing Net_469D to Net_29
 Aliasing \Printer:BUART:rx_break_status\\D\ to Net_29
 Aliasing Net_479D to Net_29
 Aliasing \Dispenser:BUART:rx_break_status\\D\ to Net_29
@@ -1278,7 +1278,7 @@ Removing Lhs of wire \Timer_DispenserState:TimerUDB:capture_out_reg_i\\D\[2180] 
 Removing Lhs of wire \ShiftReg_iButtonCRC4LSB:bSR:load_reg\\D\[2181] = Net_29[9]
 Removing Lhs of wire \ShiftReg_Security:bSR:load_reg\\D\[2182] = Net_29[9]
 Removing Lhs of wire \Printer:BUART:reset_reg\\D\[2183] = Net_29[9]
-Removing Lhs of wire Net_1071D[2188] = Net_29[9]
+Removing Lhs of wire Net_469D[2188] = Net_29[9]
 Removing Lhs of wire \Printer:BUART:rx_bitclk\\D\[2198] = \Printer:BUART:rx_bitclk_pre\[927]
 Removing Lhs of wire \Printer:BUART:rx_parity_error_pre\\D\[2207] = \Printer:BUART:rx_parity_error_pre\[1004]
 Removing Lhs of wire \Printer:BUART:rx_break_status\\D\[2208] = Net_29[9]
@@ -1993,14 +1993,14 @@ CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\wa
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\bin/warp.exe
 Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\TeamInsepet\NSX-Prime\Hardware\CorEx-MUX-Kernel-Enhanced\Workspace01\CorEx-Mux-Kernel.cydsn\CorEx-Mux-Kernel.cyprj -dcpsoc3 CorEx-Mux-Kernel.v -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 2s.660ms
+Warp synthesis phase: Elapsed time ==> 2s.542ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V3.3.0.7343, Family: PSoC3, Started at: Wednesday, 08 February 2017 07:30:12
+cyp3fit: V3.3.0.7343, Family: PSoC3, Started at: Thursday, 09 February 2017 11:51:10
 Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\TeamInsepet\NSX-Prime\Hardware\CorEx-MUX-Kernel-Enhanced\Workspace01\CorEx-Mux-Kernel.cydsn\CorEx-Mux-Kernel.cyprj -d CY8C5868AXI-LP035 CorEx-Mux-Kernel.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
-Design parsing phase: Elapsed time ==> 0s.052ms
+Design parsing phase: Elapsed time ==> 0s.046ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Tech mapping">
 <CYPRESSTAG name="Initial Mapping" icon="FILE_RPT_TECHM">
@@ -2015,7 +2015,7 @@ Design parsing phase: Elapsed time ==> 0s.052ms
     Converted constant MacroCell: \ShiftReg_iButtonCRC4LSB:bSR:load_reg\ from registered to combinatorial
     Converted constant MacroCell: \ShiftReg_Security:bSR:load_reg\ from registered to combinatorial
     Converted constant MacroCell: \Printer:BUART:reset_reg\ from registered to combinatorial
-    Converted constant MacroCell: Net_1071 from registered to combinatorial
+    Converted constant MacroCell: Net_469 from registered to combinatorial
     Converted constant MacroCell: \Printer:BUART:rx_markspace_status\ from registered to combinatorial
     Converted constant MacroCell: \Printer:BUART:rx_status_2\ from registered to combinatorial
     Converted constant MacroCell: \Printer:BUART:rx_addr_match_status\ from registered to combinatorial
@@ -6766,8 +6766,8 @@ Analog (SC/CT) Blocks         :    0 :    4 :    4 :  0.00 %
 DAC                           :      :      :      :        
   VIDAC                       :    0 :    4 :    4 :  0.00 %
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.146ms
-Tech mapping phase: Elapsed time ==> 0s.215ms
+Technology Mapping: Elapsed time ==> 0s.156ms
+Tech mapping phase: Elapsed time ==> 0s.218ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
 Initial Analog Placement Results:
@@ -6786,7 +6786,7 @@ IO_0@[IOP=(6)][IoId=(0)] : Tx_RF(0) (fixed)
 IO_4@[IOP=(6)][IoId=(4)] : eepromWP(0) (fixed)
 IO_6@[IOP=(5)][IoId=(6)] : iButton1(0) (fixed)
 IO_7@[IOP=(5)][IoId=(7)] : iButton2(0) (fixed)
-Analog Placement phase: Elapsed time ==> 0s.033ms
+Analog Placement phase: Elapsed time ==> 0s.031ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
 Analog Routing phase: Elapsed time ==> 0s.000ms
@@ -6804,7 +6804,7 @@ Dump of CyP35AnalogRoutingResultsDB
 IsVddaHalfUsedForComp = False
 IsVddaHalfUsedForSar0 = False
 IsVddaHalfUsedForSar1 = False
-Analog Code Generation phase: Elapsed time ==> 0s.365ms
+Analog Code Generation phase: Elapsed time ==> 0s.358ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="Detailed placement messages">
@@ -6832,17 +6832,17 @@ PLD Packing Summary
 <CYPRESSTAG name="Packed PLD Contents">
 Packed PLD Contents not displayed at this verbose level.</CYPRESSTAG>
 </CYPRESSTAG>
-PLD Packing: Elapsed time ==> 0s.005ms
+PLD Packing: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Partitioning">
 <CYPRESSTAG name="Initial Partitioning Summary">
 Initial Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
 <CYPRESSTAG name="Final Partitioning Summary">
 Final Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
-Partitioning: Elapsed time ==> 0s.277ms
+Partitioning: Elapsed time ==> 0s.280ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Simulated Annealing">
-Annealing: Elapsed time ==> 0s.002ms
+Annealing: Elapsed time ==> 0s.000ms
 <CYPRESSTAG name="Simulated Annealing Results">
 The seed used for moves was 114161200.
 Inital cost was 1280, final cost is 1280 (0.00% improvement).</CYPRESSTAG>
@@ -11763,15 +11763,15 @@ Port | Pin | Fixed |      Type |       Drive Mode |        Name | Connections
 </CYPRESSTAG>
 </CYPRESSTAG>
 </CYPRESSTAG>
-Digital component placer commit/Report: Elapsed time ==> 0s.005ms
-Digital Placement phase: Elapsed time ==> 3s.987ms
+Digital component placer commit/Report: Elapsed time ==> 0s.000ms
+Digital Placement phase: Elapsed time ==> 4s.056ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 Routing successful.
-Digital Routing phase: Elapsed time ==> 5s.009ms
+Digital Routing phase: Elapsed time ==> 4s.992ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream and API generation">
-Bitstream and API generation phase: Elapsed time ==> 0s.208ms
+Bitstream and API generation phase: Elapsed time ==> 0s.234ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream verification">
 Bitstream verification phase: Elapsed time ==> 0s.046ms
@@ -11780,17 +11780,17 @@ Bitstream verification phase: Elapsed time ==> 0s.046ms
 Warning: sta.M0019: CorEx-Mux-Kernel_timing.html: Warning-1366: Setup time violation found in a path from clock ( CyBUS_CLK ) to clock ( CyBUS_CLK ). (File=C:\TeamInsepet\NSX-Prime\Hardware\CorEx-MUX-Kernel-Enhanced\Workspace01\CorEx-Mux-Kernel.cydsn\CorEx-Mux-Kernel_timing.html)
 Warning: sta.M0019: CorEx-Mux-Kernel_timing.html: Warning-1366: Setup time violation found in a path from clock ( CyBUS_CLK ) to clock ( Clock_Printer ). (File=C:\TeamInsepet\NSX-Prime\Hardware\CorEx-MUX-Kernel-Enhanced\Workspace01\CorEx-Mux-Kernel.cydsn\CorEx-Mux-Kernel_timing.html)
 Timing report is in CorEx-Mux-Kernel_timing.html.
-Static timing analysis phase: Elapsed time ==> 0s.868ms
+Static timing analysis phase: Elapsed time ==> 0s.936ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Data reporting">
 Data reporting phase: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.312ms
+Design database save phase: Elapsed time ==> 0s.296ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 11s.110ms
+cydsfit: Elapsed time ==> 11s.232ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 11s.169ms
-API generation phase: Elapsed time ==> 1s.795ms
-Dependency generation phase: Elapsed time ==> 0s.020ms
-Cleanup phase: Elapsed time ==> 0s.002ms
+Fitter phase: Elapsed time ==> 11s.294ms
+API generation phase: Elapsed time ==> 1s.981ms
+Dependency generation phase: Elapsed time ==> 0s.015ms
+Cleanup phase: Elapsed time ==> 0s.000ms

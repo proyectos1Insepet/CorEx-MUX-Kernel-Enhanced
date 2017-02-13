@@ -1,6 +1,6 @@
 // ======================================================================
 // CorEx-Mux-Kernel.v generated from TopDesign.cysch
-// 02/08/2017 at 07:30
+// 02/09/2017 at 11:51
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -1268,17 +1268,17 @@ module top ;
           wire  Net_478;
           wire  Net_392;
           wire  Net_477;
-          wire  Net_1077;
-          wire  Net_1076;
-          wire  Net_1075;
-          wire  Net_1074;
-          wire  Net_1073;
-          wire  Net_1072;
+          wire  Net_476;
+          wire  Net_475;
+          wire  Net_474;
+          wire  Net_473;
+          wire  Net_472;
+          wire  Net_471;
           wire  Net_363;
-          wire  Net_1071;
-          wire  Net_1070;
+          wire  Net_469;
+          wire  Net_468;
           wire  Net_358;
-          wire  Net_1069;
+          wire  Net_467;
           wire  Net_336;
           wire  Net_335;
           wire  Net_334;
@@ -1786,17 +1786,17 @@ module top ;
     UART_v2_50_4 Printer (
         .cts_n(1'b0),
         .tx(Net_358),
-        .rts_n(Net_1070),
-        .tx_en(Net_1071),
+        .rts_n(Net_468),
+        .tx_en(Net_469),
         .clock(Net_470),
         .reset(Net_362),
         .rx(Net_363),
-        .tx_interrupt(Net_1072),
-        .rx_interrupt(Net_1073),
-        .tx_data(Net_1074),
-        .tx_clk(Net_1075),
-        .rx_data(Net_1076),
-        .rx_clk(Net_1077));
+        .tx_interrupt(Net_471),
+        .rx_interrupt(Net_472),
+        .tx_data(Net_473),
+        .tx_clk(Net_474),
+        .rx_data(Net_475),
+        .rx_clk(Net_476));
     defparam Printer.Address1 = 0;
     defparam Printer.Address2 = 0;
     defparam Printer.EnIntRXInterrupt = 0;
