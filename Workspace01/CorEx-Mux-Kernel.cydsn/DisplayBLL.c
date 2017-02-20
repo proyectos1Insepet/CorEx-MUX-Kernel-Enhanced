@@ -795,7 +795,6 @@ void SendAuthorizationRequest4Credit(LPVOID pparam)
     //BE REPORTED TO THE REMOTE PEER.
     PNEAR_PUMPPTR ppumpptr = &_g_pumps[GetPumpIndexFromDisplay(pdisplay)];
     
-    #ifndef _ALLOW_CREDIT_SALE_TESTING_
     ppumpptr->PumpTransQueueLock(ppumpptr);
     PNEAR_PUMPTRANSACTIONALSTATEPTR pts = ppumpptr->PumpTransQueueAllocate(ppumpptr);
     ppumpptr->PumpTransQueueUnlock(ppumpptr);
@@ -852,29 +851,6 @@ void SendAuthorizationRequest4Credit(LPVOID pparam)
         ppumpptr->PumpTransQueueEnqueue(ppumpptr, pts);
         ppumpptr->PumpTransQueueUnlock(ppumpptr);
     }
-    #endif
-    
-    #ifdef _ALLOW_CREDIT_SALE_TESTING_
-    //Authorization information
-    ppumpptr->_authorizationinfo._authorized = true;
-
-    //See the protocol description file to understand the applied indexes 
-    ppumpptr->_authorizationinfo._presettype = 0x02;
-    ppumpptr->_authorizationinfo._presetamount  = 0x3DB8;
-    ppumpptr->_authorizationinfo._hoseid = ((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer[GetBufferIndexFromDisplayID(DISPLAY_SUBA_MANIJA)];
-    
-    uint16 price = 9550;
-    if(_g_dispenserlayoutinfo._moneydecimals == 0x03 && _g_dispenserlayoutinfo._ppudecimals == 0x02)
-        ppumpptr->_authorizationinfo._price = price / 10;
-    else
-        ppumpptr->_authorizationinfo._price = price;
-                    
-    if(pdisplay)
-    {
-        if(ppumpptr->_authorizationinfo._authorized)
-            pdisplay->_currentstate = DISPLAY_CREDIT_AUTHORIZATION_ACCEPTED;
-    }
-    #endif
 }
 
 void ValidateAuthorizationResponse4Credit(LPVOID pparam)
@@ -912,7 +888,6 @@ void HoseValidationCallback(LPVOID pparam)
     }
 }
 
-/*DEPRECATED
 void ValidateHosePositionState(LPVOID pparam)
 {
     PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
@@ -949,7 +924,6 @@ void ValidateHosePositionState(LPVOID pparam)
         }
     }
 }
-*/
 
 void KillHosePositionStateValidation(LPVOID pparam)
 {

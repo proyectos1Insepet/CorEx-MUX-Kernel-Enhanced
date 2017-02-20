@@ -29,7 +29,7 @@
 There is a global loop handler that invokes all of the handled methods in the order they where pushed 
 onto the Loop Queue. Take this into account in order to avoid weird behaviors.
 
-As an example on how to push a method that will be running in the loop, one would make the following call:
+As an example on how to push a method that will running in the loop, one would make the following call:
 
 GLOBAL_LOOP_PUSH(YourMethodName);
 
@@ -59,7 +59,7 @@ int main()
     GlobalInitializer();
     //Second initialization delay
     INITITALIZATION_DELAY1;
-    //Infinite loop over the whole registered handlers
+    //Infinite loop over the whole registerd handlers
     LOOP_FOREVER;
 }
 

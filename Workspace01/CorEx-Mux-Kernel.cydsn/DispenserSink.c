@@ -43,10 +43,7 @@ void DispenserConfigurePrices(LPVOID pparam);
 void DispenserConfigureSinglePrice(LPVOID pparam);
 void DispenserAcquireTotals(LPVOID pparam);
 void DispenserDaylyRestart(LPVOID pparam);
-void DispenserHoseActiveState(LPVOID pparam);
-void DispenserExecuteCreditTransaction(LPVOID pparam);
-void DispenserExecuteCashTransaction(LPVOID pparam);
-void DispenserBeepWarning(LPVOID pparam);
+
 void DispenserSinkRegistration()
 {
     InitProtocol();
@@ -74,17 +71,6 @@ void DispenserSinkRegistration()
         psubscriber->_arrmsgid[index] = DISPENSER_LOAD_EEPROM_SETTINGS;
         psubscriber->Callback[index++] = DispenserLoadEEPROMSettings;
 
-        #ifdef PRIME_PROTOCOL
-        psubscriber->_arrmsgid[index] = DISPENSER_ACQUIRE_PUMP_HOSE;
-        psubscriber->Callback[index++] = DispenserHoseActiveState;
-
-        psubscriber->_arrmsgid[index] = DISPENSER_EXECUTE_CASH_TRANSACTION;
-        psubscriber->Callback[index++] = DispenserExecuteCashTransaction;
-
-        psubscriber->_arrmsgid[index] = DISPENSER_EXECUTE_CREDIT_TRANSACTION;
-        psubscriber->Callback[index++] = DispenserExecuteCreditTransaction;
-        #endif
-        
     }
 
     psubscriber = AllocateSubscriberSlot();
@@ -112,9 +98,6 @@ void DispenserSinkRegistration()
         
         psubscriber->_arrmsgid[index] = DISPENSER_PUMP_HANDLER;
         psubscriber->Callback[index++] = DispenserHandler;
-
-        psubscriber->_arrmsgid[index] = DISPENSER_PUMP_BEEP_WARNING;
-        psubscriber->Callback[index++] = DispenserBeepWarning;
     }    
     //This perpetual call is in charge of updating the global pump state array
     //so the different modules could inquiry on those states
@@ -245,12 +228,11 @@ void DispenserHandler()
             {
                 //If the precondition is marked as "One Shot", it will be evaluated only once
                 preconditions = true;
-                
                 if(!oneshot)
                     oneshot = pjob->_prequest->_oneshotpreconditions[index];
                     
                 //If the condition is met then execute the Request
-                if(pjob->_ppump->_pumpstate == pjob->_prequest->_preconditions[index])
+                if(pjob->_ppump->_pumpstate == pjob->_prequest->_preconditions[index])                
                 {
                     if(pjob->_prequest->Initialization)
                         pjob->_prequest->Initialization(pjob->_ppump);                    
@@ -434,7 +416,6 @@ void DispenserDataReceptionHandler()
                     }else{
                         pjob->_prequest = pjob->_presponse;
                         pjob->_presponse = NULL;
-                        _g_pumpjobqueue.Rotate(&_g_pumpjobqueue);
                     }
                     postcondexecuted = true;
                     break;

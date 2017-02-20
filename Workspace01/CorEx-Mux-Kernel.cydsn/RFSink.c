@@ -113,7 +113,7 @@ void RFSinkRegistration()
 //Upon this condition the unit works just with a few options available.
 void RFServerAutonomousMonitor(LPVOID pparam)
 {
-    //PSINKMESSAGEPTR psinkmsg = (PSINKMESSAGEPTR)pparam;
+    PSINKMESSAGEPTR psinkmsg = (PSINKMESSAGEPTR)pparam;
     
     uint16 rolloverref = _g_rfautorun._toautonomoustimetoken;
     _g_rfautorun._toautonomoustimetoken++;

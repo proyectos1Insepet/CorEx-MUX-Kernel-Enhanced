@@ -552,6 +552,7 @@ bool RFTotalsDataReqResp(void *pparam)
                     PSINKMESSAGEPTR psinkmsg = AllocateMessageSlot(DISPENSER_ACQUIRE_TOTALS);
                     psinkmsg->_messageid = DISPENSER_ACQUIRE_TOTALS;
                     psinkmsg->_messagetype = FIRSTFOUND;
+                    memcpy(psinkmsg->_buffer, (const void*)NULL, 0x00);
                     psinkmsg->_buffer[0x00] = (pmsg->_buffer[_RF_STREAM_POSITION_INDEX_] - _g_dispenserlayoutinfo._positionoffset);
                     psinkmsg->_buffersize = 0x01;
                     
@@ -882,7 +883,10 @@ bool RFGeneralPrintReqResp(void *pparam)
         _ALLOCATE_SINKMESSAGE_SLOT(psinkmsg);
         if(psinkmsg)
         {
+            uint8 index = 0;
+            
             psinkmsg->_messagetype = FIRSTFOUND;
+            memcpy(psinkmsg->_buffer, (const void*)NULL, 0x00);
             PDISPLAYLAYOUTPTR pdisplay = GetDisplayFromPumpID(pmsg->_buffer[_RF_STREAM_POSITION_INDEX_] - _g_dispenserlayoutinfo._positionoffset);
             if(pdisplay)
             {
@@ -2374,6 +2378,7 @@ bool RFPositionConfigurationReqResp(void *pparam)
     PSINKMESSAGEPTR pmsg = (PSINKMESSAGEPTR)pparam;
     if(pmsg)
     {
+        uint8 index = 0;
         //Checking the CRC first to proceed
         //CRC must be located at this position for this message (See the protocol description file)
         uint8 crc = RawCRCCheck(pmsg->_buffer, pmsg->_buffersize - 1);

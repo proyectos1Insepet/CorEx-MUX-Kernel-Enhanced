@@ -52,8 +52,8 @@ typedef uint8 *LPRAWPTR;
 //High Nibble is the current state while the Low Nibble is the PUMP ID
 #define STATE_FROM_PUMPSTATE(ps)   (uint8)((ps >> 4) & 0x0F)
 
-#define _PUMP_RX_BUFFER_SIZE_               360
-#define _PUMP_TRANSACTION_BUFFER_SIZE_      360
+#define _PUMP_RX_BUFFER_SIZE_               384
+#define _PUMP_TRANSACTION_BUFFER_SIZE_      384
 
 //It is recommended that it should be at least 5 retries.
 #define _MAX_RETRIES_               20 
@@ -62,7 +62,7 @@ typedef uint8 *LPRAWPTR;
 #define _MIN_REPUSH_TIMEOUT_        30000 //Max milliseconds allowed for a transactional job to repush over (long running jobs)
 //No-response timer should be at least 68 msec.
 #define _MAX_RESPONSE_TIMEOUT_        80 //Max milliseconds allowed to receive the response from the PUMP
-#define _EXT_RESPONSE_TIMEOUT_        500 //Max milliseconds allowed to receive the response from the PUMP
+#define _EXT_RESPONSE_TIMEOUT_        100 //Max milliseconds allowed to receive the response from the PUMP
 #define _MAX_TRANSACTION_RESPONSE_TIMEOUT_  500
 #define _MAX_TOTALS_RESPONSE_TIMEOUT_       1000
 #define _NO_TIMEOUT_                0x0000
@@ -83,7 +83,7 @@ typedef uint8 *LPRAWPTR;
 #define _CONTROL_WORD_MASK_     0xF0
 
 #define _MAX_NUMBER_OF_PUMPS_        4
-#define _PUMP_JOB_QUEUE_SIZE_        46
+#define _PUMP_JOB_QUEUE_SIZE_        48
 
 #define _VOLUME_PRESET_MULTIPLIER       1000
 
@@ -164,7 +164,6 @@ enum _PUMP_STATES_
     PUMP_STOPPED    = 0x0C,
     //SPECIAL PUMP STATE
     PUMP_SEND_DATA  = 0x0D,
-
     ///Set upon initialization
     PUMP_UNKNOWN    = 0xFF
 };
@@ -255,19 +254,17 @@ enum _TRANSACTION_NAMES_
     _PUMP_FILL_BY_VOLUME_ = 0x10,//This code is raised from the screen for the type of programming
     _PUMP_FILL_FULL_ = 0x43,//This code is raised from the screen for the type of programming
     _PUMP_FILL_CREDIT_,//This code is raised from the screen for the type of sale
-    _PUMP_FILL_CREDIT_COMPLEMENTARY_,
     _PUMP_PPU_CHANGE_,
     _PUMP_RESTORE_PRICE_,
     _PUMP_TOTALS_,
     _PUMP_STATE_,
-    _PUMP_ACTIVE_HOSE_,
     _PUMP_EOT_,
-    _PUMP_EOT_STARUP_,
     _PUMP_NETWORK_ENUMERATOR_,
     _PUMP_PROGRAM_MODE_,
     _PUMP_STOP_,
     _PUMP_STOPALL_,
     _PUMP_COMPLETE_CONFIGURATION_,
+    _PUMP_ACTIVE_HOSE_,
 };
 
 enum _PUMP_TRANS_STATE_
@@ -359,8 +356,6 @@ typedef struct _PUMP_LAYOUT_
     volatile uint8 _hoseactivestate;
     volatile bool _acquiringstate;
     
-    volatile uint8 _sinktransaction; //These are the pump states coming from the protocol
-    volatile uint8 _pendingtransaction; //These are the pump states coming from the protocol
     //THIS AUTHORIZATION REFERS TO THE PUMP'S TRANSACTIONAL AUTHORIZATION BEFORE DELIVERING FUEL (AUTHORIZED => BUSY => EOT)
     volatile bool _authorized;//AUTHORIZED: true, NON AUTHORIZED: false
     volatile bool _restoreprice;
@@ -577,7 +572,6 @@ void AcquireDatatoPumpResponse(void *pparam);
 void ProcessPumpTransactionData(void *pparam);
 void ProcessPumpRTMoneyRequest(void *pparam);
 void ProcessPumpRTHoseVolumeRequest(void *pparam);
-void ProcessPumpRTHoseVolumeRequestGlobal(void *pparam);
 void ProcessPumpTransactionDataRestore(void *pparam);
 void ProcessPumpTotalsDataStart(void *pparam);
 void ProcessPumpTotalsDataEnd(void *pparam);

@@ -749,9 +749,9 @@ PumpTransaction _g_standardtransactions[] =
                 AcquireDatatoPumpResponse, //Response pointer
                 PumpJobTimeout, //Timeout pointer
                 PNEAR_NULLPTR,
-                _MAX_RESPONSE_TIMEOUT_, 
-                _NO_TIMEOUT_,
-                PUMP_DATA_TO_PUMP_RESPONSE_SIZE,
+                _NO_TIMEOUT_,//NO TIMEOUT VALUE MEANS FOREVER!! - Timeout Limit (msecs)
+                _NO_TIMEOUT_, //Max repush timeout since this is a LRJ
+                PUMP_DATA_TO_PUMP_RESPONSE_SIZE,//ONE BYTE OF RESPONSE (0xDp = READY TO RECEIVE DATA)
                 //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
                 _REPUSH_ACTIVATED_,
                 //Precondition Codes: Validated before executing the main Request.
@@ -889,68 +889,6 @@ PumpTransaction _g_standardtransactions[] =
     },
     { _PUMP_STATE_, 
         {
-            /////////////////////////////////////////////////////////////////////////
-            //ACQUIRE PUMPSTATE TO KICK OFF THE TRANSACTION
-            /////////////////////////////////////////////////////////////////////////
-            {
-                PumpStateRequest, //Request pointer
-                AcquirePumpStateResponse, //Response pointer
-                PumpStateJobTimeout, //Timeout pointer
-                PNEAR_NULLPTR,
-                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-                _NO_REPUSH_,
-                PUMP_STATE_RESPONSE_SIZE,//ONE BYTE OF RESPONSE
-                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-                _REPUSH_ACTIVATED_,
-                //Precondition Codes: Validated before executing the main Request.
-                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-                { false, false, false, false },
-                { 0xFF, 0xFF, 0xFF, 0xFF },
-                //Poscondition Codes:  Validated before executing the Callback.
-                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-                { false, false, false, false },
-                { 0xFF, 0xFF, 0xFF, 0xFF },
-                PNEAR_NULLPTR,
-                PNEAR_NULLPTR
-            },
-            {
-                PNEAR_NULLPTR, PNEAR_NULLPTR, PNEAR_NULLPTR, PNEAR_NULLPTR, 0x00, 0x00, 0x00, false, {}, {}, {}, {},
-                PNEAR_NULLPTR,
-                PNEAR_NULLPTR
-            }
-        }
-    },
-    { _PUMP_EOT_STARTUP_,  //The same as _PUMP_EOT_ but gives a chance for extra processing at startup
-        {
-            /////////////////////////////////////////////////////////////////////////
-            //RETRIEVE TRANSACTION DATA (CHANGES STATE FROM EOT TO IDLE)
-            /////////////////////////////////////////////////////////////////////////
-            {
-                PumpTransactionDataRequest, //Request Pointer
-                ProcessPumpTransactionData, 
-                PumpJobTimeout,
-                AcquirePumpTransactionDataResponseResolver,
-                #ifdef ADVANTAGE_PROTOCOL
-                _MAX_TRANSACTION_RESPONSE_TIMEOUT_EX_,//Timeout Limit (msecs)
-                #endif
-                #ifndef ADVANTAGE_PROTOCOL
-                _MAX_TRANSACTION_RESPONSE_TIMEOUT_,//Timeout Limit (msecs)
-                #endif
-                _NO_TIMEOUT_, //Max repush timeout since this is a LRJ
-                PUMP_NO_RESPONSE_SIZE,
-                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-                _REPUSH_ACTIVATED_,
-                //Precondition Codes: Validated before executing the main Request.
-                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-                { false, false, false, false },
-                { 0xFF, 0xFF, 0xFF, 0xFF },
-                //Poscondition Codes:  Validated before executing the Callback.
-                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-                { false, false, false, false },
-                { 0xFF, 0xFF, 0xFF, 0xFF },
-                PNEAR_NULLPTR,
-                TerminateTransactionAndPrint
-            },
             /////////////////////////////////////////////////////////////////////////
             //ACQUIRE PUMPSTATE TO KICK OFF THE TRANSACTION
             /////////////////////////////////////////////////////////////////////////

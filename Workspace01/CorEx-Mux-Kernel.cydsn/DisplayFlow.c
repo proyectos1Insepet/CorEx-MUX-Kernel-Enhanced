@@ -70,7 +70,7 @@ void PrintcopyReceipt(void *pparam);
 The "DisplayFlow" structure allows to create a sophisticated "Screen Flow" for all of the
 defined screens provided that the processed codes are consistent across all of the screens.
 The structure manages multiple flow paths, timeouts, decorators, input capturers, input validators,
-font, caret data etc.
+font and caret data etc.
 */
 DisplayFlow _g_displayflow1[] = 
 {

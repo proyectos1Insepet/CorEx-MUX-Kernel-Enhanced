@@ -35,9 +35,9 @@
 #undef _ALLOW_CREDIT_SALE_TESTING_
 ////////////////////////////////////////////////////////////////////////////////
 //PROTOCOL SELECTION
-#define  PRIME_PROTOCOL
+//#define  PRIME_PROTOCOL
 //#define  ENCORE_PROTOCOL
-//#define  ADVANTAGE_PROTOCOL
+#define  ADVANTAGE_PROTOCOL
 //#define  ADVANTAGE_PROTOCOL_SLOWSTARTUP
 ////////////////////////////////////////////////////////////////////////////////
 //THIS DEFINITION IS FOR TESTING PURPOSES ONLY SINCE IT ALLOWS FOR FAST STARTUP!!!
@@ -48,12 +48,9 @@
 #define  _PRESET_HOSE_
 //#define  _PRESET_NO_HOSE_
 
-#define _FDBD65F5_2FFE_4AA7_9C5F_F70414D772FF_//PRIME RT
 //This to enable/disable the hose request on credit sales (ONLY FOR PRIME DISPENSERS)
 #define PRIME_CREDIT_SALE_NOHOSE
 //#undef PRIME_CREDIT_SALE_NOHOSE
-#define PRIME_CASH_SALE_NOHOSE
-//#undef PRIME_CASH_SALE_NOHOSE
 
 //This is to enable/disable the pump/position lock after a credit sale (since credit sales change the fuel price)
 //#define CREDIT_SALE_PUMP_LOCK
@@ -67,10 +64,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 //MULTIPLE PRESET (ONLY FOR PRIME DISPENSERS)
 #undef PRIME_MULTIPLE_PRESET
-
-////////////////////////////////////////////////////////////////////////////////
-//PPU TRIALS WITHOUT THE REMOTE PEER
-//#define PPU_X_10_TRIALS
 
 ////////////////////////////////////////////////////////////////////////////////
 //TIME TO WAIT AT STARTUP (PRIME AND ADVANTAGE ARE FAST STARTUP / ENCORE IS SLOW STARTUP)
@@ -97,7 +90,6 @@
 #define SLOW_STARTUP
 #endif
 
-
 #ifdef PRIME_PROTOCOL
     #include "Prime.h"
 #endif
@@ -107,7 +99,6 @@
 #ifdef ADVANTAGE_PROTOCOL
     #include "Advantage.h"
 #endif
-
 
 #define SIDE1     1
 #define SIDE2     2

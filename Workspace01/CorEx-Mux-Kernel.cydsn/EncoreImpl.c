@@ -942,8 +942,8 @@ void PumpCreditPresetHose(void *pparam)
                 FOR(uint8 buffndx = 0, buffndx < 0x08, buffndx++)
                     puartdisp->_messagetx[index++] = (0xE0 | (ptr[buffndx] & 0x0F)); //Translate from ASCII to BCD ==> LSD first!
             }
-            
             ppump->_presetdone = true;
+            
             puartdisp->_messagetx[index++] = LRCn; //LRC next
             puartdisp->_messagetx[index++] = GetLRC(puartdisp->_messagetx);
             puartdisp->_messagetx[index++] = EOM;
@@ -1046,6 +1046,7 @@ void PumpPresetHose(void *pparam)
                     puartdisp->_messagetx[index++] = (0xE0 | (ptr[7 - buffndx] & 0x0F)); //Translate from ASCII to BCD ==> LSD first!
             }
             ppump->_presetdone = true;
+            
             puartdisp->_messagetx[index++] = LRCn; //LRC next
             puartdisp->_messagetx[index++] = GetLRC(puartdisp->_messagetx);
             puartdisp->_messagetx[index++] = EOM;
@@ -1135,6 +1136,7 @@ void PumpPresetNoHose(void *pparam)
                     puartdisp->_messagetx[index++] = (0xE0 | (ptr[7 - buffndx] & 0x0F)); //Translate from ASCII to BCD ==> LSD first!
             }
             ppump->_presetdone = true;
+
             puartdisp->_messagetx[index++] = LRCn; //LRC next
             puartdisp->_messagetx[index++] = GetLRC(puartdisp->_messagetx);
             puartdisp->_messagetx[index++] = EOM;
@@ -1306,6 +1308,7 @@ void PumpFullPresetHose(void *pparam)
                     
             }
             ppump->_presetdone = true;
+
             puartdisp->_messagetx[index++] = LRCn; //LRC next
             puartdisp->_messagetx[index++] = GetLRC(puartdisp->_messagetx);
             puartdisp->_messagetx[index++] = EOM;
@@ -1396,6 +1399,7 @@ void PumpFullPresetNoHose(void *pparam)
                     puartdisp->_messagetx[index++] = (0xE0 | (ptr[7 - buffndx] & 0x0F)); //Translate from ASCII to BCD ==> LSD first!
             }
             ppump->_presetdone = true;
+
             puartdisp->_messagetx[index++] = 0xFB; //LRC next
             puartdisp->_messagetx[index++] = GetLRC(puartdisp->_messagetx);
             puartdisp->_messagetx[index++] = EOM;

@@ -1,6 +1,6 @@
 /* ========================================
  *
- * Copyright INSEPET SISTEMAS, 2016
+ * Copyright YOUR COMPANY, THE YEAR
  * All Rights Reserved
  * UNPUBLISHED, LICENSED SOFTWARE.
  *
@@ -8,8 +8,6 @@
  * WHICH IS THE PROPERTY OF your company.
  *
  * ========================================
-@Created By: HIJH
-@Date: Septembre de 2016
 */
 #include "GlobalDefinitions.h"
 #include "Display.h"
