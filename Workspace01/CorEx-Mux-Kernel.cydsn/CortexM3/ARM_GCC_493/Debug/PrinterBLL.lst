@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
   55              	.LFB0:
   56              		.file 1 ".\\PrinterBLL.c"
    1:.\PrinterBLL.c **** /* ========================================
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 2
 
 
    2:.\PrinterBLL.c ****  *
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
   62              		.cfi_def_cfa_offset 8
   63              		.cfi_offset 7, -8
   64              		.cfi_offset 14, -4
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 3
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 3
 
 
   65 0002 82B0     		sub	sp, sp, #8
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
   59:.\PrinterBLL.c **** //fine adjustments on the print layout between printers independenly.
   60:.\PrinterBLL.c **** void Printer11Callback(void *pdata)
   61:.\PrinterBLL.c **** {
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 4
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 4
 
 
  111              		.loc 1 61 0
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  151 0038 0121     		movs	r1, #1
  152 003a FFF7FEFF 		bl	Print
   70:.\PrinterBLL.c ****     {
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 5
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 5
 
 
  153              		.loc 1 70 0 discriminator 3
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  195 0008 7B68     		ldr	r3, [r7, #4]
  196 000a 3B61     		str	r3, [r7, #16]
   87:.\PrinterBLL.c **** 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 6
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 6
 
 
   88:.\PrinterBLL.c ****     I2CBusLock();
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  235              		.cfi_def_cfa_offset 8
  236 004e BD46     		mov	sp, r7
  237              		.cfi_def_cfa_register 13
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 7
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 7
 
 
  238              		@ sp needed
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  278 0024 FB73     		strb	r3, [r7, #15]
  116:.\PrinterBLL.c ****     I2CBusUnlock();
  279              		.loc 1 116 0
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 8
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 8
 
 
  280 0026 FFF7FEFF 		bl	I2CBusUnlock
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  128:.\PrinterBLL.c **** //@Date: Octobre 2 de 2016
  129:.\PrinterBLL.c **** //Printer spooler for the printer on port J17 (TTL)
  130:.\PrinterBLL.c **** //Printer ports have been separated to give the chance for 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 9
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 9
 
 
  131:.\PrinterBLL.c **** //fine adjustments on the print layout between printers independenly.
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  147:.\PrinterBLL.c ****         Print(pmsg, PRINTER_PORT2_SIDE2);
  359              		.loc 1 147 0 discriminator 3
  360 0036 3869     		ldr	r0, [r7, #16]
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 10
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 10
 
 
  361 0038 0421     		movs	r1, #4
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  403 0006 7860     		str	r0, [r7, #4]
  158:.\PrinterBLL.c ****     PSINKMESSAGEPTR pmsg = (PSINKMESSAGEPTR)pdata;
  404              		.loc 1 158 0
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 11
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 11
 
 
  405 0008 7B68     		ldr	r3, [r7, #4]
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  451              		.cfi_def_cfa_offset 8
  452 0016 BD46     		mov	sp, r7
  453              		.cfi_def_cfa_register 13
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 12
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 12
 
 
  454              		@ sp needed
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  497 001e 02D0     		beq	.L20
  175:.\PrinterBLL.c ****     while((ptrbuffer[retval] !=  _EOS_) && (retval < _MAX_PRINTER_LINE_WIDTH_))
  498              		.loc 1 175 0 is_stmt 0 discriminator 1
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 13
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 13
 
 
  499 0020 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  543 000c C3F11F03 		rsb	r3, r3, #31
  544 0010 DA0F     		lsrs	r2, r3, #31
  545 0012 1344     		add	r3, r3, r2
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 14
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 14
 
 
  546 0014 5B10     		asrs	r3, r3, #1
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  593 001c FFF7FEFF 		bl	GetEepromBuffer
  594 0020 0346     		mov	r3, r0
  595 0022 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 15
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 15
 
 
  596 0024 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  206:.\PrinterBLL.c ****             break;
  638              		.loc 1 206 0
  639 006e 05E0     		b	.L27
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 16
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 16
 
 
  640              	.L32:
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  680 00ba FFF7FEFF 		bl	GetEepromBuffer
  681 00be 0346     		mov	r3, r0
  682 00c0 1033     		adds	r3, r3, #16
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 17
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 17
 
 
  683 00c2 3868     		ldr	r0, [r7]
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  724 010a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
  725 010c FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
  726 010e 9A42     		cmp	r2, r3
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 18
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 18
 
 
  727 0110 66D1     		bne	.L40
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  768 0156 05E0     		b	.L41
  769              	.L46:
  247:.\PrinterBLL.c ****             case 0x03:
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 19
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 19
 
 
  248:.\PrinterBLL.c ****             memid = GetEepromBuffer()[0x04];
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  811 01a8 1033     		adds	r3, r3, #16
  812 01aa 3868     		ldr	r0, [r7]
  813 01ac 1946     		mov	r1, r3
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 20
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 20
 
 
  814 01ae 1022     		movs	r2, #16
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  855 01f6 9A42     		cmp	r2, r3
  856 01f8 66D1     		bne	.L53
  857              	.LBB4:
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 21
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 21
 
 
  274:.\PrinterBLL.c ****     {
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  287:.\PrinterBLL.c ****             case 0x03:
  288:.\PrinterBLL.c ****             memid = GetEepromBuffer()[0x04];
  899              		.loc 1 288 0
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 22
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 22
 
 
  900 0240 FFF7FEFF 		bl	GetEepromBuffer
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  942 0294 1946     		mov	r1, r3
  943 0296 1022     		movs	r2, #16
  944 0298 FFF7FEFF 		bl	memcpy
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 23
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 23
 
 
  301:.\PrinterBLL.c ****             break;
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  986              	.LBB5:
  314:.\PrinterBLL.c ****     {
  315:.\PrinterBLL.c ****         uint8 memid = 0x00;
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 24
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 24
 
 
  987              		.loc 1 315 0
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  1028              		.loc 1 328 0
  1029 0328 FFF7FEFF 		bl	GetEepromBuffer
  1030 032c 0346     		mov	r3, r0
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 25
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 25
 
 
  1031 032e 1B79     		ldrb	r3, [r3, #4]
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  1073 0380 FFF7FEFF 		bl	memcpy
  341:.\PrinterBLL.c ****             break;
  1074              		.loc 1 341 0
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 26
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 26
 
 
  1075 0384 13E0     		b	.L72
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  1118 03ba 00BF     		nop
  1119 03bc 00E0     		b	.L25
  1120              	.L81:
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 27
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 27
 
 
  1121              	.LBE8:
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  1169 001c FFF7FEFF 		bl	memcpy
  356:.\PrinterBLL.c ****     //Apply the decimal separator character only if it has decimal places
  357:.\PrinterBLL.c ****     if(decimals > 0)
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 28
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 28
 
 
  1170              		.loc 1 357 0
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  362:.\PrinterBLL.c ****         PNEAR_BYTE_PTR pref = poutput;
  1220              		.loc 1 362 0 discriminator 4
  1221 0076 7B68     		ldr	r3, [r7, #4]
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 29
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 29
 
 
  1222 0078 7B61     		str	r3, [r7, #20]
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  371:.\PrinterBLL.c ****     while(poutput[(inputsize - 1)] == 0x0)
  1264              		.loc 1 371 0
  1265 00b4 31E0     		b	.L90
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 30
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 30
 
 
  1266              	.L95:
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  1313 0106 00E0     		b	.L97
  1314              	.L92:
  379:.\PrinterBLL.c ****             }else
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 31
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 31
 
 
  380:.\PrinterBLL.c ****                 break;
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  1358              		.cfi_endproc
  1359              	.LFE10:
  1360              		.size	FormatNumberLSDFirst, .-FormatNumberLSDFirst
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 32
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 32
 
 
  1361              		.section	.text.Print,"ax",%progbits
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  401:.\PrinterBLL.c ****     
  402:.\PrinterBLL.c ****     ClearEepromBuffer();
  1402              		.loc 1 402 0
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 33
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 33
 
 
  1403 0028 FFF7FEFF 		bl	ClearEepromBuffer
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  416:.\PrinterBLL.c ****     //SECOND HEADING SECTION
  417:.\PrinterBLL.c ****     bufferlength = MeasurePrinterASCIIBufferLength(&GetEepromBuffer()[_EEPROM_PAGE_SECOND32START_])
  1444              		.loc 1 417 0
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 34
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 34
 
 
  1445 0080 FFF7FEFF 		bl	GetEepromBuffer
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  429:.\PrinterBLL.c ****     bufferlength = MeasurePrinterASCIIBufferLength(&GetEepromBuffer()[_EEPROM_PAGE_FIRST32START_]);
  1488              		.loc 1 429 0
  1489 00de FFF7FEFF 		bl	GetEepromBuffer
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 35
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 35
 
 
  1490 00e2 0346     		mov	r3, r0
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  441:.\PrinterBLL.c ****     padspaces = PadSpacesToCenter(bufferlength);
  1533              		.loc 1 441 0
  1534 013e 3B7D     		ldrb	r3, [r7, #20]	@ zero_extendqisi2
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 36
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 36
 
 
  1535 0140 1846     		mov	r0, r3
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  1577 019a 3B7D     		ldrb	r3, [r7, #20]	@ zero_extendqisi2
  1578 019c 1846     		mov	r0, r3
  1579 019e FFF7FEFF 		bl	PadSpacesToCenter
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 37
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 37
 
 
  1580 01a2 0346     		mov	r3, r0
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  466:.\PrinterBLL.c ****     #endif
  467:.\PrinterBLL.c ****    
  468:.\PrinterBLL.c ****     PSTR prefstr = GetPrinterTemplateLine(PRN_DATE);
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 38
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 38
 
 
  1622              		.loc 1 468 0
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  1667 0258 5A1C     		adds	r2, r3, #1
  1668 025a FA77     		strb	r2, [r7, #31]
  1669 025c 1C46     		mov	r4, r3
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 39
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 39
 
 
  1670 025e FFF7FEFF 		bl	GetRtcBuffer
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  1721 02ce 43F03003 		orr	r3, r3, #48
  1722 02d2 DBB2     		uxtb	r3, r3
  1723 02d4 DAB2     		uxtb	r2, r3
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 40
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 40
 
 
  1724 02d6 1C4B     		ldr	r3, .L125+12
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  1773 0334 0346     		mov	r3, r0
  1774 0336 0633     		adds	r3, r3, #6
  1775 0338 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 41
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 41
 
 
  1776 033a 07E0     		b	.L126
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  1817              		.loc 1 498 0
  1818 0390 B869     		ldr	r0, [r7, #24]
  1819 0392 FFF7FEFF 		bl	strlen
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 42
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 42
 
 
  1820 0396 0346     		mov	r3, r0
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  507:.\PrinterBLL.c ****         _g_auxprinterbuffer[index++] = (GetRtcBuffer()[RTC_HOUR] & 0x0F) | 0x30;
  1866              		.loc 1 507 0
  1867 03f2 FB7F     		ldrb	r3, [r7, #31]	@ zero_extendqisi2
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 43
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 43
 
 
  1868 03f4 5A1C     		adds	r2, r3, #1
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  1918 0460 03F00F03 		and	r3, r3, #15
  1919 0464 DBB2     		uxtb	r3, r3
  1920 0466 43F03003 		orr	r3, r3, #48
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 44
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 44
 
 
  1921 046a DBB2     		uxtb	r3, r3
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  1970              		.loc 1 516 0
  1971 04d0 FB7F     		ldrb	r3, [r7, #31]	@ zero_extendqisi2
  1972 04d2 5A1C     		adds	r2, r3, #1
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 45
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 45
 
 
  1973 04d4 FA77     		strb	r2, [r7, #31]
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  2022 053a 2021     		movs	r1, #32
  2023 053c 9954     		strb	r1, [r3, r2]
  522:.\PrinterBLL.c ****         _g_auxprinterbuffer[index++] = (ampm)? 0x41: 0x50;
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 46
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 46
 
 
  2024              		.loc 1 522 0
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  2071 058c FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
  2072 058e B148     		ldr	r0, .L130+8
  2073 0590 1F21     		movs	r1, #31
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 47
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 47
 
 
  2074 0592 1A46     		mov	r2, r3
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  2118 05f0 FFF7FEFF 		bl	B78AD90CF552D9B30A
  540:.\PrinterBLL.c ****     PSTRBUFFTOGG(_g_auxprinterbuffer, strlen(PSTRCAST(_g_auxprinterbuffer)));
  2119              		.loc 1 540 0
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 48
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 48
 
 
  2120 05f4 9548     		ldr	r0, .L130
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  552:.\PrinterBLL.c ****     WriteAuxPSoC((PNEAR_BYTE_PTR)&pmsg->_buffer[0x20], 0x0A, printerport);
  2163              		.loc 1 552 0
  2164 0652 7B68     		ldr	r3, [r7, #4]
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 49
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 49
 
 
  2165 0654 03F12C02 		add	r2, r3, #44
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  2206 06aa 5B7B     		ldrb	r3, [r3, #13]	@ zero_extendqisi2
  2207 06ac 1046     		mov	r0, r2
  2208 06ae 1946     		mov	r1, r3
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 50
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 50
 
 
  2209 06b0 664A     		ldr	r2, .L130
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  2249 0700 1F22     		movs	r2, #31
  2250 0702 FFF7FEFF 		bl	memset
  580:.\PrinterBLL.c ****     //Byte #2 holds the length of the upcoming buffer that starts at position #3
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 51
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 51
 
 
  581:.\PrinterBLL.c ****     uint8 bufferpos = FormatNumberLSDFirst((PNEAR_BYTE_PTR)&pmsg->_buffer[index + 1], pmsg->_buffer
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  2296              		.loc 1 589 0
  2297 0762 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
  2298 0764 3A48     		ldr	r0, .L130+4
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 52
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 52
 
 
  2299 0766 0121     		movs	r1, #1
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  2342 07bc 1344     		add	r3, r3, r2
  2343 07be 191D     		adds	r1, r3, #4
  2344 07c0 FB7F     		ldrb	r3, [r7, #31]	@ zero_extendqisi2
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 53
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 53
 
 
  2345 07c2 7A68     		ldr	r2, [r7, #4]
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  2389              		.loc 1 610 0
  2390 081e FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
  2391 0820 0D48     		ldr	r0, .L130+12
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 54
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 54
 
 
  2392 0822 0121     		movs	r1, #1
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  2437 0880 0833     		adds	r3, r3, #8
  2438 0882 7A68     		ldr	r2, [r7, #4]
  2439 0884 1344     		add	r3, r3, r2
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 55
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 55
 
 
  2440 0886 191D     		adds	r1, r3, #4
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  2483 08e0 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
  2484 08e2 7B68     		ldr	r3, [r7, #4]
  2485 08e4 1B7B     		ldrb	r3, [r3, #12]	@ zero_extendqisi2
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 56
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 56
 
 
  2486 08e6 9A42     		cmp	r2, r3
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  646:.\PrinterBLL.c ****                 LoadEepromPage(EEPROM_DISPENSER_PUMP21_TRANSACTION_PAGE);
  2525              		.loc 1 646 0
  2526 0936 4FF4E060 		mov	r0, #1792
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 57
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 57
 
 
  2527 093a FFF7FEFF 		bl	LoadEepromPage
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  663:.\PrinterBLL.c ****             else
  664:.\PrinterBLL.c ****             {
  665:.\PrinterBLL.c ****                 ClearEepromBuffer();
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 58
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 58
 
 
  2565              		.loc 1 665 0
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  2601 09ce 0A20     		movs	r0, #10
  2602 09d0 FFF7FEFF 		bl	GetBufferLengthFromDisplayID
  2603 09d4 0346     		mov	r3, r0
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 59
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 59
 
 
  2604 09d6 BB74     		strb	r3, [r7, #18]
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  2647              		.loc 1 694 0
  2648 0a30 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
  2649 0a32 1F48     		ldr	r0, .L133+4
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 60
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 60
 
 
  2650 0a34 0121     		movs	r1, #1
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  2691 0a8a 0346     		mov	r3, r0
  2692 0a8c 9AB2     		uxth	r2, r3
  2693 0a8e FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 61
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 61
 
 
  2694 0a90 B869     		ldr	r0, [r7, #24]
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  2736              		.loc 1 719 0
  2737 0ae2 FFF7FEFF 		bl	GetEepromBuffer
  2738 0ae6 0246     		mov	r2, r0
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 62
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 62
 
 
  2739 0ae8 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  729:.\PrinterBLL.c ****         PRINTER_INDENTLINE(_LEFT_MARGIN_, printerport);
  2784              		.loc 1 729 0
  2785 0b4a FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 63
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 63
 
 
  2786 0b4c A648     		ldr	r0, .L135+12
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  2825 0b9a FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
  2826 0b9c 9248     		ldr	r0, .L135+12
  2827 0b9e 0121     		movs	r1, #1
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 64
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 64
 
 
  2828 0ba0 1A46     		mov	r2, r3
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  2870 0bf4 FFF7FEFF 		bl	WriteAuxPSoC
  757:.\PrinterBLL.c ****         #endif
  758:.\PrinterBLL.c ****         index += 0x0A;
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 65
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 65
 
 
  2871              		.loc 1 758 0
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  2913 0c4a FB7F     		ldrb	r3, [r7, #31]
  2914 0c4c 1433     		adds	r3, r3, #20
  2915 0c4e FB77     		strb	r3, [r7, #31]
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 66
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 66
 
 
  771:.\PrinterBLL.c **** 
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  784:.\PrinterBLL.c ****         //Daily Visits (1 byte)
  785:.\PrinterBLL.c ****         prefstr = GetPrinterTemplateLine(PRN_VISITSDAY);
  2957              		.loc 1 785 0
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 67
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 67
 
 
  2958 0ca2 0B20     		movs	r0, #11
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  3004 0d02 FFF7FEFF 		bl	WriteAuxPSoC
  794:.\PrinterBLL.c ****         //line feed 
  795:.\PrinterBLL.c ****         PRINTER_LINEFEED(printerport);
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 68
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 68
 
 
  3005              		.loc 1 795 0
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  3047 0d5a 1046     		mov	r0, r2
  3048 0d5c 1946     		mov	r1, r3
  3049 0d5e 1F4A     		ldr	r2, .L135
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 69
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 69
 
 
  3050 0d60 FFF7FEFF 		bl	B78AD90CF552D9B30A
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  3090 0dae B869     		ldr	r0, [r7, #24]
  3091 0db0 FFF7FEFF 		bl	strlen
  3092 0db4 0346     		mov	r3, r0
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 70
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 70
 
 
  3093 0db6 9AB2     		uxth	r2, r3
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  3141 0e1a FFF7FEFF 		bl	WriteAuxPSoC
  828:.\PrinterBLL.c ****         //line feed 
  829:.\PrinterBLL.c ****         PRINTER_LINEFEED(printerport);
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 71
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 71
 
 
  3142              		.loc 1 829 0
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  842:.\PrinterBLL.c ****         WriteAuxPSoC((PNEAR_BYTE_PTR)&pmsg->_buffer[index], 0x07, printerport);
  3184              		.loc 1 842 0
  3185 0e6e FB7F     		ldrb	r3, [r7, #31]	@ zero_extendqisi2
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 72
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 72
 
 
  3186 0e70 0833     		adds	r3, r3, #8
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  856:.\PrinterBLL.c ****         //output data left aligned
  857:.\PrinterBLL.c ****         WriteAuxPSoC((PNEAR_BYTE_PTR)prefstr, strlen(prefstr), printerport);
  3227              		.loc 1 857 0
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 73
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 73
 
 
  3228 0ebe B869     		ldr	r0, [r7, #24]
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  3271 0f14 FFF7FEFF 		bl	GetPrinterTemplateLine
  3272 0f18 B861     		str	r0, [r7, #24]
  3273 0f1a 09E0     		b	.L124
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 74
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 74
 
 
  3274              	.L139:
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  3318 0f70 FFF7FEFF 		bl	WriteAuxPSoC
  879:.\PrinterBLL.c ****         #endif
  880:.\PrinterBLL.c ****         index += 0x07;
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 75
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 75
 
 
  3319              		.loc 1 880 0
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  3361 0fc6 FB7F     		ldrb	r3, [r7, #31]
  3362 0fc8 0F33     		adds	r3, r3, #15
  3363 0fca FB77     		strb	r3, [r7, #31]
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 76
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 76
 
 
  3364              	.L118:
@@ -4558,7 +4558,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  3405 101e 4348     		ldr	r0, .L140+4
  3406 1020 1146     		mov	r1, r2
  3407 1022 1A46     		mov	r2, r3
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 77
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 77
 
 
  3408 1024 FFF7FEFF 		bl	WriteAuxPSoC
@@ -4618,7 +4618,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  3450 107e 1A46     		mov	r2, r3
  3451 1080 FFF7FEFF 		bl	WriteAuxPSoC
  918:.\PrinterBLL.c ****     //output text
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 78
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 78
 
 
  919:.\PrinterBLL.c ****     WriteAuxPSoC(&GetEepromBuffer()[_EEPROM_PAGE_FIRST32START_], bufferlength, printerport);
@@ -4678,7 +4678,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  3496 10e2 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
  3497 10e4 0846     		mov	r0, r1
  3498 10e6 1146     		mov	r1, r2
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 79
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 79
 
 
  3499 10e8 1A46     		mov	r2, r3
@@ -4738,7 +4738,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  3535              		.align	2
  3536              	.L140:
  3537 1128 00000000 		.word	_g_linefeed
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 80
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 80
 
 
  3538 112c 00000000 		.word	_g_padcharacters
@@ -4798,7 +4798,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  3583 0030 1A46     		mov	r2, r3
  3584 0032 FFF7FEFF 		bl	WriteAuxPSoC
  956:.\PrinterBLL.c ****     
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 81
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 81
 
 
  957:.\PrinterBLL.c **** //    //line feed 
@@ -4858,7 +4858,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  3622 0019 60000000 		.4byte	.Ldebug_ranges0+0x60
  3623 001d 00000000 		.4byte	0
  3624 0021 00000000 		.4byte	.Ldebug_line0
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 82
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 82
 
 
  3625 0025 02       		.uleb128 0x2
@@ -4918,7 +4918,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  3679 008a 02       		.uleb128 0x2
  3680 008b 08       		.byte	0x8
  3681 008c 04       		.byte	0x4
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 83
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 83
 
 
  3682 008d B4120000 		.4byte	.LASF12
@@ -4978,7 +4978,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  3736 00fb 56       		.byte	0x56
  3737 00fc A4000000 		.4byte	0xa4
  3738 0100 03       		.byte	0x3
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 84
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 84
 
 
  3739 0101 09       		.uleb128 0x9
@@ -5038,7 +5038,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  3793 016d 0E0D0000 		.4byte	.LASF29
  3794 0171 0B       		.uleb128 0xb
  3795 0172 91000000 		.4byte	0x91
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 85
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 85
 
 
  3796 0176 82010000 		.4byte	0x182
@@ -5098,7 +5098,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  3850 01ea 04       		.byte	0x4
  3851 01eb FD01     		.2byte	0x1fd
  3852 01ed 6B000000 		.4byte	0x6b
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 86
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 86
 
 
  3853 01f1 03       		.byte	0x3
@@ -5158,7 +5158,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  3907 0266 0E       		.byte	0xe
  3908 0267 11       		.uleb128 0x11
  3909 0268 FE010000 		.4byte	.LASF45
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 87
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 87
 
 
  3910 026c 04       		.byte	0x4
@@ -5218,7 +5218,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  3964 02da 06       		.sleb128 6
  3965 02db 14       		.uleb128 0x14
  3966 02dc F5090000 		.4byte	.LASF55
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 88
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 88
 
 
  3967 02e0 0F       		.sleb128 15
@@ -5278,7 +5278,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  4021 034f 24       		.sleb128 36
  4022 0350 14       		.uleb128 0x14
  4023 0351 5D090000 		.4byte	.LASF74
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 89
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 89
 
 
  4024 0355 0D       		.sleb128 13
@@ -5338,7 +5338,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  4078 03c9 2B       		.sleb128 43
  4079 03ca 14       		.uleb128 0x14
  4080 03cb AE040000 		.4byte	.LASF93
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 90
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 90
 
 
  4081 03cf 3C       		.sleb128 60
@@ -5398,7 +5398,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  4135 0447 14       		.uleb128 0x14
  4136 0448 47020000 		.4byte	.LASF109
  4137 044c 8001     		.sleb128 128
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 91
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 91
 
 
  4138 044e 14       		.uleb128 0x14
@@ -5458,7 +5458,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  4192 04cc 14       		.uleb128 0x14
  4193 04cd 380A0000 		.4byte	.LASF128
  4194 04d1 C00A     		.sleb128 1344
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 92
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 92
 
 
  4195 04d3 14       		.uleb128 0x14
@@ -5518,7 +5518,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  4249 0551 00       		.byte	0
  4250 0552 13       		.uleb128 0x13
  4251 0553 10070000 		.4byte	.LASF147
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 93
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 93
 
 
  4252 0557 01       		.byte	0x1
@@ -5578,7 +5578,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  4306 05c0 1A0F0000 		.4byte	.LASF163
  4307 05c4 0B       		.sleb128 11
  4308 05c5 14       		.uleb128 0x14
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 94
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 94
 
 
  4309 05c6 BA0A0000 		.4byte	.LASF164
@@ -5638,7 +5638,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  4363 0632 63120000 		.4byte	.LASF180
  4364 0636 01       		.sleb128 1
  4365 0637 14       		.uleb128 0x14
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 95
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 95
 
 
  4366 0638 B6010000 		.4byte	.LASF181
@@ -5698,7 +5698,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  4420 06a4 70       		.sleb128 -16
  4421 06a5 18       		.uleb128 0x18
  4422 06a6 E8010000 		.4byte	.LASF190
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 96
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 96
 
 
  4423 06aa 01       		.byte	0x1
@@ -5758,7 +5758,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  4477 070d 91       		.byte	0x91
  4478 070e 77       		.sleb128 -9
  4479 070f 00       		.byte	0
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 97
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 97
 
 
  4480 0710 16       		.uleb128 0x16
@@ -5818,7 +5818,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  4534 0779 84       		.byte	0x84
  4535 077a B5000000 		.4byte	0xb5
  4536 077e 02       		.uleb128 0x2
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 98
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 98
 
 
  4537 077f 91       		.byte	0x91
@@ -5878,7 +5878,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  4591 07df 34120000 		.4byte	.LASF196
  4592 07e3 01       		.byte	0x1
  4593 07e4 A2       		.byte	0xa2
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 99
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 99
 
 
  4594 07e5 00000000 		.4byte	.LFB6
@@ -5938,7 +5938,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  4648 0851 00000000 		.4byte	.LFB8
  4649 0855 24000000 		.4byte	.LFE8-.LFB8
  4650 0859 01       		.uleb128 0x1
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 100
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 100
 
 
  4651 085a 9C       		.byte	0x9c
@@ -5998,7 +5998,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  4705 08c3 77       		.sleb128 -9
  4706 08c4 00       		.byte	0
  4707 08c5 1A       		.uleb128 0x1a
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 101
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 101
 
 
  4708 08c6 18000000 		.4byte	.Ldebug_ranges0+0x18
@@ -6058,7 +6058,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  4762 0936 CC0F0000 		.4byte	.LASF209
  4763 093a 01       		.byte	0x1
  4764 093b 6101     		.2byte	0x161
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 102
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 102
 
 
  4765 093d 6B000000 		.4byte	0x6b
@@ -6118,7 +6118,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  4819 09ab 9A0A0000 		.4byte	0xa9a
  4820 09af 1E       		.uleb128 0x1e
  4821 09b0 510F0000 		.4byte	.LASF189
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 103
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 103
 
 
  4822 09b4 01       		.byte	0x1
@@ -6178,7 +6178,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  4876 0a18 1B       		.uleb128 0x1b
  4877 0a19 E3010000 		.4byte	.LASF218
  4878 0a1d 01       		.byte	0x1
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 104
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 104
 
 
  4879 0a1e F601     		.2byte	0x1f6
@@ -6238,7 +6238,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  4933 0a8a 6D0D0000 		.4byte	.LASF222
  4934 0a8e 01       		.byte	0x1
  4935 0a8f 1703     		.2byte	0x317
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 105
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 105
 
 
  4936 0a91 6B000000 		.4byte	0x6b
@@ -6298,7 +6298,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  4990 0b01 0C0B0000 		.4byte	0xb0c
  4991 0b05 15       		.uleb128 0x15
  4992 0b06 AE000000 		.4byte	0xae
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 106
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 106
 
 
  4993 0b0a 1E       		.byte	0x1e
@@ -6358,7 +6358,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  5047 0b7c 24       		.uleb128 0x24
  5048 0b7d 11120000 		.4byte	.LASF232
  5049 0b81 01       		.byte	0x1
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 107
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 107
 
 
  5050 0b82 2F       		.byte	0x2f
@@ -6418,7 +6418,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  5104 0031 05       		.uleb128 0x5
  5105 0032 49       		.uleb128 0x49
  5106 0033 13       		.uleb128 0x13
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 108
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 108
 
 
  5107 0034 00       		.byte	0
@@ -6478,7 +6478,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  5161 006a 00       		.byte	0
  5162 006b 0A       		.uleb128 0xa
  5163 006c 0D       		.uleb128 0xd
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 109
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 109
 
 
  5164 006d 00       		.byte	0
@@ -6538,7 +6538,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  5218 00a3 3B       		.uleb128 0x3b
  5219 00a4 0B       		.uleb128 0xb
  5220 00a5 49       		.uleb128 0x49
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 110
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 110
 
 
  5221 00a6 13       		.uleb128 0x13
@@ -6598,7 +6598,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  5275 00dc 01       		.byte	0x1
  5276 00dd 03       		.uleb128 0x3
  5277 00de 0E       		.uleb128 0xe
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 111
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 111
 
 
  5278 00df 0B       		.uleb128 0xb
@@ -6658,7 +6658,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  5332 0116 05       		.uleb128 0x5
  5333 0117 00       		.byte	0
  5334 0118 03       		.uleb128 0x3
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 112
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 112
 
 
  5335 0119 0E       		.uleb128 0xe
@@ -6718,7 +6718,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  5389 0150 0B       		.uleb128 0xb
  5390 0151 01       		.byte	0x1
  5391 0152 55       		.uleb128 0x55
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 113
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 113
 
 
  5392 0153 17       		.uleb128 0x17
@@ -6778,7 +6778,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  5446 018a 1E       		.uleb128 0x1e
  5447 018b 05       		.uleb128 0x5
  5448 018c 00       		.byte	0
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 114
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 114
 
 
  5449 018d 03       		.uleb128 0x3
@@ -6838,7 +6838,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  5503 01c4 13       		.uleb128 0x13
  5504 01c5 00       		.byte	0
  5505 01c6 00       		.byte	0
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 115
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 115
 
 
  5506 01c7 22       		.uleb128 0x22
@@ -6898,7 +6898,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  5560 0004 0200     		.2byte	0x2
  5561 0006 00000000 		.4byte	.Ldebug_info0
  5562 000a 04       		.byte	0x4
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 116
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 116
 
 
  5563 000b 00       		.byte	0
@@ -6958,7 +6958,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  5617 0054 C0030000 		.4byte	.LBE9
  5618 0058 00000000 		.4byte	0
  5619 005c 00000000 		.4byte	0
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 117
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 117
 
 
  5620 0060 00000000 		.4byte	.LFB0
@@ -7018,7 +7018,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  5660      74657231 
  5660      3243616C 
  5660      6C626163 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 118
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 118
 
 
  5660      6B00
@@ -7078,7 +7078,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  5682      45534552 
  5683              	.LASF46:
  5684 0118 5F707265 		.ascii	"_presetdigits\000"
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 119
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 119
 
 
  5684      73657464 
@@ -7138,7 +7138,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  5706      6E677468 
  5706      00
  5707              	.LASF218:
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 120
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 120
 
 
  5708 01e3 74663132 		.ascii	"tf12\000"
@@ -7198,7 +7198,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  5726      47555241 
  5726      54494F4E 
  5727              	.LASF114:
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 121
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 121
 
 
  5728 02ce 45455052 		.ascii	"EEPROM_CONFIGURATION_PAGE7\000"
@@ -7258,7 +7258,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  5746      6F6E3200 
  5747              	.LASF145:
  5748 03f4 45455052 		.ascii	"EEPROM_DISPENSER_PUMP43_TRANSACTION_PAGE\000"
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 122
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 122
 
 
  5748      4F4D5F44 
@@ -7318,7 +7318,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  5770      73616765 
  5770      74696D65 
  5770      6F75746C 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 123
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 123
 
 
  5770      696D6974 
@@ -7378,7 +7378,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  5792 05b6 4D656173 		.ascii	"MeasurePrinterASCIIBufferLength\000"
  5792      75726550 
  5792      72696E74 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 124
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 124
 
 
  5792      65724153 
@@ -7438,7 +7438,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  5814 06aa 6C6F6E67 		.ascii	"long unsigned int\000"
  5814      20756E73 
  5814      69676E65 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 125
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 125
 
 
  5814      6420696E 
@@ -7498,7 +7498,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  5836      7369676E 
  5836      65642069 
  5836      6E7400
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 126
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 126
 
 
  5837              	.LASF6:
@@ -7558,7 +7558,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  5858      4F4D5F44 
  5858      49535045 
  5858      4E534552 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 127
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 127
 
 
  5858      5F50554D 
@@ -7618,7 +7618,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  5880 08fb 44495350 		.ascii	"DISPLAY_SELECCIONE_POSICION\000"
  5880      4C41595F 
  5880      53454C45 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 128
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 128
 
 
  5880      4343494F 
@@ -7678,7 +7678,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  5900      4C455F44 
  5900      4953504C 
  5900      4159535F 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 129
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 129
 
 
  5901              	.LASF55:
@@ -7738,7 +7738,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  5922 0ac9 44495350 		.ascii	"DISPLAY_ID_RECONOCIDO\000"
  5922      4C41595F 
  5922      49445F52 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 130
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 130
 
 
  5922      45434F4E 
@@ -7798,7 +7798,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  5942      757400
  5943              	.LASF11:
  5944 0bef 666C6F61 		.ascii	"float\000"
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 131
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 131
 
 
  5944      7400
@@ -7858,7 +7858,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  5965      49535045 
  5965      4E534552 
  5965      5F50554D 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 132
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 132
 
 
  5966              	.LASF29:
@@ -7918,7 +7918,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  5991 0dcc 6D656D69 		.ascii	"memid\000"
  5991      6400
  5992              	.LASF44:
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 133
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 133
 
 
  5993 0dd2 5F6D696E 		.ascii	"_minvolumevalue\000"
@@ -7978,7 +7978,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  6013      4C41595F 
  6013      4944454E 
  6013      54494649 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 134
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 134
 
 
  6013      4341444F 
@@ -8038,7 +8038,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  6037 0f56 45455052 		.ascii	"EEPROM_DISPENSER_PUMP32_TRANSACTION_PAGE\000"
  6037      4F4D5F44 
  6037      49535045 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 135
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 135
 
 
  6037      4E534552 
@@ -8098,7 +8098,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  6060              	.LASF76:
  6061 1049 44495350 		.ascii	"DISPLAY_OPERACIONES\000"
  6061      4C41595F 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 136
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 136
 
 
  6061      4F504552 
@@ -8158,7 +8158,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  6081      41434841 
  6081      4E444F00 
  6082              	.LASF134:
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 137
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 137
 
 
  6083 1115 45455052 		.ascii	"EEPROM_DISPENSER_PUMP14_TRANSACTION_PAGE\000"
@@ -8218,7 +8218,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  6103      4C41595F 
  6103      464F524D 
  6103      415F5041 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 138
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 138
 
 
  6103      474F5F44 
@@ -8278,7 +8278,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 1
  6124              	.LASF33:
  6125 12d9 5F637572 		.ascii	"_currentloopopen\000"
  6125      72656E74 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccSp0tep.s 			page 139
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccUh2VWB.s 			page 139
 
 
  6125      6C6F6F70 

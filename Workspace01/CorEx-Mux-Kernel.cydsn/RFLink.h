@@ -90,6 +90,9 @@ typedef enum
     RF_MUX_ISLAND_ADMIN_REQUEST   = 0xE4,
     RF_MUX_ISLAND_ADMIN_RESPONSE  = 0xE4,
     
+    RF_MUX_COPY_REQUEST   = 0xE6,
+    RF_MUX_COPY_REQUEST_RESPONSE  = 0xE6,
+    
     ////////////////////////////////////////////////
     //RESERVED FOR FUTURE USE
     ////////////////////////////////////////////////

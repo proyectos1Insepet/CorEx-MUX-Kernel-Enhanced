@@ -61,6 +61,7 @@ void DisplayPumpIDOffsetStore(void *pparam);
 void DisplayPumpIDOffsetDecorator(void *pparam);
 void PrintersWorking(void *pparam);
 void EitherPrinterWorking(void *pparam);
+void PrintcopyReceipt(void *pparam);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
@@ -838,7 +839,7 @@ DisplayFlow _g_displayflow1[] =
         PNEAR_NULLPTR,
         PNEAR_NULLPTR,
         { 0x0000, 0x0000, 0x00, {} },
-        PNEAR_NULLPTR,
+        PrintcopyReceipt,
         PNEAR_NULLPTR,
     },
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1330,8 +1331,8 @@ DisplayFlow _g_displayflow2[] =
     { DISPLAY_OPERACIONES, DISPLAY_FORMA_PAGO_DESEADA, 0xFF,
         DISPLAY_TIMEOUT_NOTIMEOUT, //timeout limit (seconds)
         DISPLAY_NULL, //display id to be thrown on timeout
-        { 0x46, 0x55, 0x94, 0x7E, 0xFF, 0xFF },
-        { DISPLAY_OPCION_TURNO, DISPLAY_INGRESE_PASSWORD, DISPLAY_OPERACION_CANCELADA, DISPLAY_INICIO0, 0xFF, 0xFF }, 
+        { 0x46, 0x55, 0x94, 0x7E, 0xB5, 0xFF },
+        { DISPLAY_OPCION_TURNO, DISPLAY_INGRESE_PASSWORD, DISPLAY_OPERACION_CANCELADA, DISPLAY_INICIO0, DISPLAY_COPIA_RECIBO, 0xFF }, 
         { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
         { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
         PNEAR_NULLPTR,
@@ -1603,13 +1604,13 @@ DisplayFlow _g_displayflow2[] =
         PNEAR_NULLPTR,
         EitherPrinterWorking
     },
-      //////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////
     /////////////// COPIA DE RECIBO//////////////////////////////////////////////
     { DISPLAY_COPIA_RECIBO, DISPLAY_OPERACIONES, 0xFF,
-        DISPLAY_TIMEOUT_NOTIMEOUT, //timeout limit (seconds)
-        DISPLAY_NULL, //display id to be thrown on timeout
+        DISPLAY_TIMEOUT_10SECS, //timeout limit (seconds)
+        DISPLAY_INICIO0, //display id to be thrown on timeout
         { 0x0A, 0x0B, 0x7E, 0xFF, 0xFF, 0xFF },
-        { DISPLAY_INICIO0, DISPLAY_IMPRESORA_NO_FUNCIONANDO, 0xFF, 0xFF, 0xFF, 0xFF }, 
+        { DISPLAY_IMPRIMIENDO_RECIBO, DISPLAY_INICIO0, 0xFF, 0xFF, 0xFF, 0xFF }, 
         { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
         { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
         PNEAR_NULLPTR,
@@ -1617,7 +1618,22 @@ DisplayFlow _g_displayflow2[] =
         PNEAR_NULLPTR,
         { 0x0000, 0x0000, 0x00, {} },
         PNEAR_NULLPTR,
-        PrintersWorking
+        PNEAR_NULLPTR,
+    },
+    { DISPLAY_IMPRIMIENDO_RECIBO, DISPLAY_COPIA_RECIBO, 0xFF,
+        DISPLAY_TIMEOUT_5SECS, //timeout limit (seconds)
+        DISPLAY_INICIO0, //display id to be thrown on timeout
+        { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
+        { DISPLAY_INICIO0, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }, 
+        { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
+        { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
+        //Printer11Callback,
+        PNEAR_NULLPTR,
+        PNEAR_NULLPTR,
+        PNEAR_NULLPTR,
+        { 0x0000, 0x0000, 0x00, {} },
+        PrintcopyReceipt,
+        PNEAR_NULLPTR,
     },
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //EO THE DISPLAY FLOW
@@ -1637,6 +1653,7 @@ DisplayFlow _g_displayflow2[] =
         PNEAR_NULLPTR
     }
 };
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -1967,6 +1967,31 @@ void DisplayUpdateHomeAnimation(void *pparam)
     }
     
 }
+void PrintcopyReceipt(void *pparam)
+{
+    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
+    //HERE WE ATTEMPT TO PUSH THE TRANSACTION INTO THE PUMP'S TRANSACTIONAL QUEUE.
+    //THIS IS DONE ONLY IF THERE IS ROOM IN THE QUEUE, OTHERWISE THIS STATE WON'T
+    //BE REPORTED TO THE REMOTE PEER.
+    PNEAR_PUMPPTR ppumpptr = &_g_pumps[GetPumpIndexFromDisplay(pdisplay)];
+    if(ppumpptr)
+    {
+        ppumpptr->PumpTransQueueLock(ppumpptr);
+        PNEAR_PUMPTRANSACTIONALSTATEPTR pts = ppumpptr->PumpTransQueueAllocate(ppumpptr);
+        ppumpptr->PumpTransQueueUnlock(ppumpptr);
+        if(pts)
+        {
+            uint8 index = 0;
+            pts->_transtate = RF_MUX_COPY_REQUEST;
+            pts->_buffer[index++] = ppumpptr->_pumpid;
+            pts->_buffersize = index;
+            ppumpptr->PumpTransQueueLock(ppumpptr);
+            ppumpptr->PumpTransQueueEnqueue(ppumpptr, pts);
+            ppumpptr->PumpTransQueueUnlock(ppumpptr);
+        }
+    }
+}
+
 
 void PrintersWorking(void *pparam)
 {

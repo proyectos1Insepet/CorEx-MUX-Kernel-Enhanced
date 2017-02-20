@@ -934,6 +934,90 @@ bool RFGeneralPrintReqResp(void *pparam)
     return retval;
 }
 
+bool RFCopyPrintReqResp(void *pparam)
+{
+    bool retval = false;
+    PSINKMESSAGEPTR pmsg = (PSINKMESSAGEPTR)pparam;
+    if(pmsg)
+    {
+        //Checking the CRC first to proceed
+        //CRC must be located at this position for this message (See the protocol description file)
+        uint8 crc = RawCRCCheck(pmsg->_buffer, pmsg->_buffersize - 1);
+        if(crc != RFGetCRC(pmsg->_buffer[_RF_STREAM_COMMAND_INDEX_], PBYTECAST(pmsg->_buffer)))//If there is a mismatch then return immediately and send a Nack back
+        {
+            PUARTMESSAGEPTR puartdisp = GetUARTMessageSlot(UART_RF);
+            if(puartdisp)
+            {
+                puartdisp->_messagelength = 0;
+                memset(puartdisp->_messagetx, 0x00, sizeof(puartdisp->_messagetx));
+                memcpy(puartdisp->_messagetx, _g_rfslaveheader, 0x03); //Explicit buffer length to avoid wasting CPU cycles in sizeof!
+                puartdisp->_messagelength += 0x03;
+                puartdisp->_messagetx[puartdisp->_messagelength++] = (uint8)(_g_stationidentifier & 0xFF);
+                puartdisp->_messagetx[puartdisp->_messagelength++] = (uint8)((_g_stationidentifier >> 8) & 0xFF);
+                puartdisp->_messagetx[puartdisp->_messagelength++] = pmsg->_buffer[_RF_STREAM_POSITION_INDEX_];
+                puartdisp->_messagetx[puartdisp->_messagelength++] = pmsg->_buffer[_RF_STREAM_COMMAND_INDEX_];
+                puartdisp->_messagetx[puartdisp->_messagelength++] = _RF_NACK_;
+                puartdisp->_messagetx[puartdisp->_messagelength] = RawCRCCheck((PSTR)puartdisp->_messagetx, puartdisp->_messagelength - 1);
+                puartdisp->_messagelength++;
+
+                puartdisp->_messagestate = PENDING;
+            }
+            return retval;
+        }
+                
+        _ALLOCATE_SINKMESSAGE_SLOT(psinkmsg);
+        if(psinkmsg)
+        {
+            uint8 index = 0;
+            
+            psinkmsg->_messagetype = FIRSTFOUND;
+            memcpy(psinkmsg->_buffer, (const void*)NULL, 0x00);
+            PDISPLAYLAYOUTPTR pdisplay = GetDisplayFromPumpID(pmsg->_buffer[_RF_STREAM_POSITION_INDEX_] - _g_dispenserlayoutinfo._positionoffset);
+            if(pdisplay)
+            {
+                if(pdisplay->_dispid == DISPLAY1)
+                {
+                    psinkmsg->_messageid = PRINTER1_GENERIC_JOB;
+                    if(_g_printerlayout._printerportside1 != PRINTER11_JOB)
+                        psinkmsg->_messageid = PRINTER2_GENERIC_JOB;
+                }
+                else
+                {
+                    psinkmsg->_messageid = PRINTER2_GENERIC_JOB;
+                    if(_g_printerlayout._printerportside2 != PRINTER21_JOB)
+                        psinkmsg->_messageid = PRINTER1_GENERIC_JOB;                
+                }
+            }
+                            
+            memcpy(&psinkmsg->_buffer[0x01], &pmsg->_buffer[0x09], pmsg->_buffer[0x08]);
+            psinkmsg->_buffersize = pmsg->_buffer[0x08];
+            
+            psinkmsg->_messagestate = SINK_BUSY;
+        }
+        //If there wasn't any pending transactional state in the pointed pump position, just
+        //return the Ack response in IDLE state
+        PUARTMESSAGEPTR puartdisp = GetUARTMessageSlot(UART_RF);
+        if(puartdisp)
+        {
+            puartdisp->_messagelength = 0;
+            memset(puartdisp->_messagetx, 0x00, sizeof(puartdisp->_messagetx));
+            memcpy(puartdisp->_messagetx, _g_rfslaveheader, 0x03); //Explicit buffer length to avoid wasting CPU cycles in sizeof!
+            puartdisp->_messagelength += 0x03;
+            puartdisp->_messagetx[puartdisp->_messagelength++] = (uint8)(_g_stationidentifier & 0xFF);
+            puartdisp->_messagetx[puartdisp->_messagelength++] = (uint8)((_g_stationidentifier >> 8) & 0xFF);
+            puartdisp->_messagetx[puartdisp->_messagelength++] = pmsg->_buffer[_RF_STREAM_POSITION_INDEX_];
+            puartdisp->_messagetx[puartdisp->_messagelength++] = pmsg->_buffer[_RF_STREAM_COMMAND_INDEX_];
+            puartdisp->_messagetx[puartdisp->_messagelength++] = _RF_ACK_;
+            puartdisp->_messagetx[puartdisp->_messagelength] = RawCRCCheck((PSTR)puartdisp->_messagetx, puartdisp->_messagelength);
+            puartdisp->_messagelength++;
+
+            puartdisp->_messagestate = PENDING;
+            retval = true;
+        }
+    }
+    return retval;
+}
+
 //@Created By: HIJH
 //@Septembre de 2016
 bool RFCreditSalePrintReqResp(void *pparam)
