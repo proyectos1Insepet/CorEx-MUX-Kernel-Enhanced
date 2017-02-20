@@ -1553,7 +1553,7 @@
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\rtlpkg.vif</v>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif</v>
 </warp_dep>
-<deps_time v="131286639131847819" />
+<deps_time v="131302147814029626" />
 <top_block v="TopDesign" />
 <last_generation v="0" />
 </CyGuid_925cc1e1-309e-4e08-b0a1-09a83c35b157>
@@ -3762,51 +3762,169 @@
 <dep name=".\Prime.h" />
 </file>
 <file name=".\Generated_Source\PSoC5\Dispenser_PM.c" />
-<file name=".\CortexM3\ARM_GCC_493\Debug\ClientDefinitions.o">
+<file name=".\PrimAdvantage.h" />
+<file name=".\CortexM3\ARM_GCC_493\Debug\PrimAdvantage.o">
+<dep name=".\Generated_Source\PSoC5\CRC_Security.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_CRC.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_Printer.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_Pump.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_iButton.h" />
+<dep name=".\Generated_Source\PSoC5\Counter_ISR.h" />
+<dep name=".\Generated_Source\PSoC5\CyDmac.h" />
 <dep name=".\Generated_Source\PSoC5\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC5\CyLib.h" />
 <dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\DispenserStateTimeout_ISR.h" />
+<dep name=".\Generated_Source\PSoC5\Display1.h" />
+<dep name=".\Generated_Source\PSoC5\Display1_IntClock.h" />
+<dep name=".\Generated_Source\PSoC5\Display2.h" />
+<dep name=".\Generated_Source\PSoC5\Display2_IntClock.h" />
+<dep name=".\Generated_Source\PSoC5\EEPROM_Internal.h" />
+<dep name=".\Generated_Source\PSoC5\I2C_Bus.h" />
+<dep name=".\Generated_Source\PSoC5\I2C_Bus_PVT.h" />
+<dep name=".\Generated_Source\PSoC5\Input_iButton.h" />
+<dep name=".\Generated_Source\PSoC5\RF_Physical.h" />
+<dep name=".\Generated_Source\PSoC5\RF_Physical_IntClock.h" />
+<dep name=".\Generated_Source\PSoC5\Reset_CRC.h" />
+<dep name=".\Generated_Source\PSoC5\Reset_DispenserTimer.h" />
+<dep name=".\Generated_Source\PSoC5\Reset_iButton.h" />
+<dep name=".\Generated_Source\PSoC5\SCL_Bus.h" />
+<dep name=".\Generated_Source\PSoC5\SCL_Bus_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\SDA_Bus.h" />
+<dep name=".\Generated_Source\PSoC5\SDA_Bus_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\ShiftReg_Security.h" />
+<dep name=".\Generated_Source\PSoC5\ShiftReg_iButtonCRC3MSB.h" />
+<dep name=".\Generated_Source\PSoC5\ShiftReg_iButtonCRC4LSB.h" />
+<dep name=".\Generated_Source\PSoC5\StatusReg_iButton5thCRCBit.h" />
+<dep name=".\Generated_Source\PSoC5\Timer_DispenserState.h" />
+<dep name=".\Generated_Source\PSoC5\Timer_Tick.h" />
+<dep name=".\Generated_Source\PSoC5\cmsis_armcc.h" />
+<dep name=".\Generated_Source\PSoC5\cmsis_gcc.h" />
+<dep name=".\Generated_Source\PSoC5\core_cm3.h" />
+<dep name=".\Generated_Source\PSoC5\core_cm3_psoc5.h" />
+<dep name=".\Generated_Source\PSoC5\core_cmFunc.h" />
+<dep name=".\Generated_Source\PSoC5\core_cmInstr.h" />
 <dep name=".\Generated_Source\PSoC5\cyPm.h" />
 <dep name=".\Generated_Source\PSoC5\cydevice.h" />
 <dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cydisabledsheets.h" />
 <dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter_cfg.h" />
+<dep name=".\Generated_Source\PSoC5\cypins.h" />
 <dep name=".\Generated_Source\PSoC5\cytypes.h" />
-<dep name=".\ClientDefinitions.c" />
-<dep name=".\Configuration.h" />
+<dep name=".\Generated_Source\PSoC5\eepromWP.h" />
+<dep name=".\Generated_Source\PSoC5\eepromWP_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\iButton1.h" />
+<dep name=".\Generated_Source\PSoC5\iButton1_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\iButton2.h" />
+<dep name=".\Generated_Source\PSoC5\iButton2_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\project.h" />
+<dep name=".\Generated_Source\PSoC5\timer_clock.h" />
+<dep name=".\Generated_Source\PSoC5\timer_clock_1.h" />
+<dep name=".\Advantage.h" />
+<dep name=".\Dispenser.h" />
+<dep name=".\Encore.h" />
 <dep name=".\GlobalDefinitions.h" />
-</file>
-<file name=".\ClientDefinitions.c" />
-<file name=".\CortexM3\ARM_GCC_493\Debug\RFServerStack.o">
-<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
-<dep name=".\Generated_Source\PSoC5\CyLib.h" />
-<dep name=".\Generated_Source\PSoC5\CySpc.h" />
-<dep name=".\Generated_Source\PSoC5\cyPm.h" />
-<dep name=".\Generated_Source\PSoC5\cydevice.h" />
-<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
-<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
-<dep name=".\Generated_Source\PSoC5\cytypes.h" />
-<dep name=".\GlobalDefinitions.h" />
-<dep name=".\RFLink.h" />
-<dep name=".\RFServerStack.c" />
-<dep name=".\UARTManager.h" />
-</file>
-<file name=".\RFServerStack.c" />
-<file name=".\CortexM3\ARM_GCC_493\Debug\PrinterSink.o">
-<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
-<dep name=".\Generated_Source\PSoC5\CyLib.h" />
-<dep name=".\Generated_Source\PSoC5\CySpc.h" />
-<dep name=".\Generated_Source\PSoC5\cyPm.h" />
-<dep name=".\Generated_Source\PSoC5\cydevice.h" />
-<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
-<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
-<dep name=".\Generated_Source\PSoC5\cytypes.h" />
-<dep name=".\Eeprom.h" />
+<dep name=".\PrimAdvantage.c" />
+<dep name=".\PrimAdvantage.h" />
+<dep name=".\Prime.h" />
 <dep name=".\Printer.h" />
-<dep name=".\PrinterSink.c" />
+<dep name=".\RFLink.h" />
+</file>
+<file name=".\PrimAdvantage.c" />
+<file name=".\CortexM3\ARM_GCC_493\Debug\PrimAdvantageFlow.o">
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\Advantage.h" />
+<dep name=".\Dispenser.h" />
+<dep name=".\Encore.h" />
+<dep name=".\GlobalDefinitions.h" />
+<dep name=".\PrimAdvantage.h" />
+<dep name=".\PrimAdvantageFlow.c" />
+<dep name=".\Prime.h" />
+</file>
+<file name=".\PrimAdvantageFlow.c" />
+<file name=".\CortexM3\ARM_GCC_493\Debug\PrimAdvantageImpl.o">
+<dep name=".\Generated_Source\PSoC5\CRC_Security.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_CRC.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_Printer.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_Pump.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_iButton.h" />
+<dep name=".\Generated_Source\PSoC5\Counter_ISR.h" />
+<dep name=".\Generated_Source\PSoC5\CyDmac.h" />
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\DispenserStateTimeout_ISR.h" />
+<dep name=".\Generated_Source\PSoC5\Display1.h" />
+<dep name=".\Generated_Source\PSoC5\Display1_IntClock.h" />
+<dep name=".\Generated_Source\PSoC5\Display2.h" />
+<dep name=".\Generated_Source\PSoC5\Display2_IntClock.h" />
+<dep name=".\Generated_Source\PSoC5\EEPROM_Internal.h" />
+<dep name=".\Generated_Source\PSoC5\I2C_Bus.h" />
+<dep name=".\Generated_Source\PSoC5\I2C_Bus_PVT.h" />
+<dep name=".\Generated_Source\PSoC5\Input_iButton.h" />
+<dep name=".\Generated_Source\PSoC5\RF_Physical.h" />
+<dep name=".\Generated_Source\PSoC5\RF_Physical_IntClock.h" />
+<dep name=".\Generated_Source\PSoC5\Reset_CRC.h" />
+<dep name=".\Generated_Source\PSoC5\Reset_DispenserTimer.h" />
+<dep name=".\Generated_Source\PSoC5\Reset_iButton.h" />
+<dep name=".\Generated_Source\PSoC5\SCL_Bus.h" />
+<dep name=".\Generated_Source\PSoC5\SCL_Bus_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\SDA_Bus.h" />
+<dep name=".\Generated_Source\PSoC5\SDA_Bus_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\ShiftReg_Security.h" />
+<dep name=".\Generated_Source\PSoC5\ShiftReg_iButtonCRC3MSB.h" />
+<dep name=".\Generated_Source\PSoC5\ShiftReg_iButtonCRC4LSB.h" />
+<dep name=".\Generated_Source\PSoC5\StatusReg_iButton5thCRCBit.h" />
+<dep name=".\Generated_Source\PSoC5\Timer_DispenserState.h" />
+<dep name=".\Generated_Source\PSoC5\Timer_Tick.h" />
+<dep name=".\Generated_Source\PSoC5\cmsis_armcc.h" />
+<dep name=".\Generated_Source\PSoC5\cmsis_gcc.h" />
+<dep name=".\Generated_Source\PSoC5\core_cm3.h" />
+<dep name=".\Generated_Source\PSoC5\core_cm3_psoc5.h" />
+<dep name=".\Generated_Source\PSoC5\core_cmFunc.h" />
+<dep name=".\Generated_Source\PSoC5\core_cmInstr.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cydisabledsheets.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter_cfg.h" />
+<dep name=".\Generated_Source\PSoC5\cypins.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\Generated_Source\PSoC5\eepromWP.h" />
+<dep name=".\Generated_Source\PSoC5\eepromWP_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\iButton1.h" />
+<dep name=".\Generated_Source\PSoC5\iButton1_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\iButton2.h" />
+<dep name=".\Generated_Source\PSoC5\iButton2_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\project.h" />
+<dep name=".\Generated_Source\PSoC5\timer_clock.h" />
+<dep name=".\Generated_Source\PSoC5\timer_clock_1.h" />
+<dep name=".\Advantage.h" />
+<dep name=".\Dispenser.h" />
+<dep name=".\Display.h" />
+<dep name=".\Eeprom.h" />
+<dep name=".\Encore.h" />
+<dep name=".\GlobalDefinitions.h" />
+<dep name=".\PrimAdvantage.h" />
+<dep name=".\PrimAdvantageImpl.c" />
+<dep name=".\Prime.h" />
+<dep name=".\Printer.h" />
+<dep name=".\RFLink.h" />
+<dep name=".\Rtc.h" />
 <dep name=".\SinkManager.h" />
 <dep name=".\SinkObservables.h" />
+<dep name=".\UARTManager.h" />
 </file>
-<file name=".\PrinterSink.c" />
+<file name=".\PrimAdvantageImpl.c" />
 <file name=".\CortexM3\ARM_GCC_493\Debug\DisplaySink.o">
 <dep name=".\Generated_Source\PSoC5\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC5\CyLib.h" />
@@ -3824,6 +3942,22 @@
 <dep name=".\UARTManager.h" />
 </file>
 <file name=".\DisplaySink.c" />
+<file name=".\CortexM3\ARM_GCC_493\Debug\PrinterSink.o">
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\Eeprom.h" />
+<dep name=".\Printer.h" />
+<dep name=".\PrinterSink.c" />
+<dep name=".\SinkManager.h" />
+<dep name=".\SinkObservables.h" />
+</file>
+<file name=".\PrinterSink.c" />
 <file name=".\CortexM3\ARM_GCC_493\Debug\UARTManagerSink.o">
 <dep name=".\Generated_Source\PSoC5\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC5\CyLib.h" />
@@ -3857,6 +3991,48 @@
 <dep name=".\cyapicallbacks.h" />
 </file>
 <file name=".\Generated_Source\PSoC5\Counter_ISR.c" />
+<file name=".\CortexM3\ARM_GCC_493\Debug\Utils.o">
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\GlobalDefinitions.h" />
+<dep name=".\Utils.c" />
+</file>
+<file name=".\Utils.c" />
+<file name=".\CortexM3\ARM_GCC_493\Debug\ClientDefinitions.o">
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\ClientDefinitions.c" />
+<dep name=".\Configuration.h" />
+<dep name=".\GlobalDefinitions.h" />
+</file>
+<file name=".\ClientDefinitions.c" />
+<file name=".\CortexM3\ARM_GCC_493\Debug\RFServerStack.o">
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\GlobalDefinitions.h" />
+<dep name=".\RFLink.h" />
+<dep name=".\RFServerStack.c" />
+<dep name=".\UARTManager.h" />
+</file>
+<file name=".\RFServerStack.c" />
 <file name=".\CortexM3\ARM_GCC_493\Debug\DisplayBufferScreenMap.o">
 <dep name=".\Generated_Source\PSoC5\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC5\CyLib.h" />
@@ -3940,19 +4116,6 @@
 <dep name=".\UARTResolver.c" />
 </file>
 <file name=".\UARTResolver.c" />
-<file name=".\CortexM3\ARM_GCC_493\Debug\Utils.o">
-<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
-<dep name=".\Generated_Source\PSoC5\CyLib.h" />
-<dep name=".\Generated_Source\PSoC5\CySpc.h" />
-<dep name=".\Generated_Source\PSoC5\cyPm.h" />
-<dep name=".\Generated_Source\PSoC5\cydevice.h" />
-<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
-<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
-<dep name=".\Generated_Source\PSoC5\cytypes.h" />
-<dep name=".\GlobalDefinitions.h" />
-<dep name=".\Utils.c" />
-</file>
-<file name=".\Utils.c" />
 <file name=".\CortexM3\ARM_GCC_493\Debug\CRC_Security.o">
 <dep name=".\Generated_Source\PSoC5\CRC_Security.c" />
 <dep name=".\Generated_Source\PSoC5\CRC_Security.h" />
@@ -8444,6 +8607,9 @@
 <name_val_pair name=".\AdvantageFlow.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -O0 -ffat-lto-objects" />
 <name_val_pair name=".\AdvantageImpl.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -O0 -ffat-lto-objects" />
 <name_val_pair name=".\WatchDogReset.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -O0 -ffat-lto-objects" />
+<name_val_pair name=".\PrimAdvantage.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -O0 -ffat-lto-objects" />
+<name_val_pair name=".\PrimAdvantageFlow.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -O0 -ffat-lto-objects" />
+<name_val_pair name=".\PrimAdvantageImpl.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -O0 -ffat-lto-objects" />
 </name>
 <name v="c9323d49-d323-40b8-9b59-cc008d68a989@Release@CortexM3">
 <name_val_pair name=".\UARTManager.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects" />
@@ -8577,12 +8743,14 @@
 </dataGuid>
 <dataGuid v="769d31ea-68b1-4f0c-b90a-7c10a43ee563">
 <CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563 type_name="CyDesigner.Common.ProjMgmt.Model.CyLinkCustomData" version="1">
-<deps_time v="131298250530714769" />
+<deps_time v="131308702947988540" />
 </CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563>
 </dataGuid>
 <dataGuid v="504337dd-7d07-4bc7-9057-90e60cf6c469">
 <CyGuid_504337dd-7d07-4bc7-9057-90e60cf6c469 type_name="CyDesigner.Common.Debugger.CyBreakpointList" version="1">
-<debugger_breakpoint_list />
+<debugger_breakpoint_list>
+<CyGuid_76464711-0ae1-4583-b869-f07a0403fc6e type_name="CyDesigner.Common.Debugger.CyFileLineBreakpoint" version="1" hitcount="0" condition="" enabled="True" hardware="True" temparary="False" filename=".\PrimeImpl.c" linenumber="1353" />
+</debugger_breakpoint_list>
 </CyGuid_504337dd-7d07-4bc7-9057-90e60cf6c469>
 </dataGuid>
 <dataGuid v="718b6b01-68ba-4a17-b632-d38dc61ebb3b">

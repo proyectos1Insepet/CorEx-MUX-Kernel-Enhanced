@@ -578,7 +578,7 @@ void Print(PSINKMESSAGEPTR pmsg, uint8 printerport)
     index = 2;
     memset(_g_auxprinterbuffer, 0x00, _MAX_PRINTER_LINE_WIDTH_);
     //Byte #2 holds the length of the upcoming buffer that starts at position #3
-    uint8 bufferpos = FormatNumberLSDFirst((PNEAR_BYTE_PTR)&pmsg->_buffer[index + 1], pmsg->_buffer[index], _g_auxprinterbuffer, 0);//_g_dispenserlayoutinfo._ppudecimals);
+    FormatNumberLSDFirst((PNEAR_BYTE_PTR)&pmsg->_buffer[index + 1], pmsg->_buffer[index], _g_auxprinterbuffer, 0);//_g_dispenserlayoutinfo._ppudecimals);
     //output data
     WriteAuxPSoC(&_g_auxprinterbuffer[0x00], (uint8)pmsg->_buffer[index], printerport);
     
@@ -597,7 +597,7 @@ void Print(PSINKMESSAGEPTR pmsg, uint8 printerport)
     //PRODUCT VOLUME
     index += (pmsg->_buffer[index] + 1);
     memset(_g_auxprinterbuffer, 0x00, _MAX_PRINTER_LINE_WIDTH_);
-    bufferpos = FormatNumberLSDFirst((PNEAR_BYTE_PTR)&pmsg->_buffer[index + 1], pmsg->_buffer[index], _g_auxprinterbuffer, _g_dispenserlayoutinfo._volumedecimals);
+    FormatNumberLSDFirst((PNEAR_BYTE_PTR)&pmsg->_buffer[index + 1], pmsg->_buffer[index], _g_auxprinterbuffer, _g_dispenserlayoutinfo._volumedecimals);
     //output data
     WriteAuxPSoC(&_g_auxprinterbuffer[0x00], (uint8)pmsg->_buffer[index], printerport);
     
@@ -616,7 +616,7 @@ void Print(PSINKMESSAGEPTR pmsg, uint8 printerport)
     //PRODUCT TOTAL MONEY
     index += (pmsg->_buffer[index] + 1);
     memset(_g_auxprinterbuffer, 0x00, _MAX_PRINTER_LINE_WIDTH_);
-    bufferpos = FormatNumberLSDFirst((PNEAR_BYTE_PTR)&pmsg->_buffer[index + 1], pmsg->_buffer[index], _g_auxprinterbuffer, 0);//_g_dispenserlayoutinfo._moneydecimals);
+    FormatNumberLSDFirst((PNEAR_BYTE_PTR)&pmsg->_buffer[index + 1], pmsg->_buffer[index], _g_auxprinterbuffer, 0);//_g_dispenserlayoutinfo._moneydecimals);
     //output data
     WriteAuxPSoC(&_g_auxprinterbuffer[0x00], (uint8)pmsg->_buffer[index], printerport);
     //line feed 
@@ -954,16 +954,7 @@ void PrintGeneric(PSINKMESSAGEPTR pmsg, uint8 printerport)
     I2CBusLock();
     WriteAuxPSoC((PNEAR_BYTE_PTR)&pmsg->_buffer[0x01], pmsg->_buffersize, printerport);    
     
-//    //line feed 
-//    PRINTER_LINEFEED(printerport);
-//    //line feed 
-//    PRINTER_LINEFEED(printerport);
-//    //line feed 
-//    PRINTER_LINEFEED(printerport);
-//    //line feed 
-//    PRINTER_LINEFEED(printerport);
-    
-    #ifdef PRINTER_TYPE_KIOSK
+    #ifdef PRINTER_KIOSK_AUTOCUT
         //Auto cut command
         PRINTER_AUTOCUT(printerport);
         CyDelay(500);//To allow for the cutter to work

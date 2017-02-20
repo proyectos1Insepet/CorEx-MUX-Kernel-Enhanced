@@ -43,8 +43,6 @@ PNEARDISPENSERACTIVATEPROGRAMMING _g_ptractprogramming = PNEAR_NULLPTR;
 //This method handles all of the incoming data that has been capture on the Display.
 //All codes come from the assigned button event codes. By convention the first byte
 //For more information to grasph the mapping convention, see the file "DisplayBufferScreenMap"
-//THIS MODEL IS NOT FLEXIBLE ENOUGHT SINCE THERE ARE OTHER TRANSACTIONS NOT RELATED WITH
-//PRESET THAT MUST BE MET!!! REQUIRES FIXING!!
 void DispenserSide1Listener(void *pparam)
 {
     PSINKMESSAGEPTR pmsg = (PSINKMESSAGEPTR)pparam;
@@ -70,11 +68,30 @@ void DispenserSide1Listener(void *pparam)
         if(paymentmethod == 0x0D)
         {        
             uint8 transactionname = pmsg->_buffer[GetBufferIndexFromDisplayID(DISPLAY_FORMA_PROGRAMACION)];
+            #ifndef PRIME_PROTOCOL
             ppump->_pcurrtransaction = GetTransactionByName(transactionname);
+            #endif
+            #ifdef PRIME_PROTOCOL
+                #ifdef _PRESET_HOSE_
+                    ppump->_pcurrtransaction = GetTransactionByName(_PUMP_ACTIVE_HOSE_);
+                    ppump->_sinktransaction = DISPENSER_EXECUTE_CASH_TRANSACTION;
+                    ppump->_pendingtransaction = transactionname;
+                    ppump->_authorizationinfo._hoseid = (0x0F & ppump->_trasactionbuffer[GetBufferIndexFromDisplayID(DISPLAY_SUBA_MANIJA)]);
+                #endif
+                #ifndef _PRESET_HOSE_
+                    ppump->_pcurrtransaction = GetTransactionByName(transactionname);
+                #endif
+            #endif
         }
         else if(paymentmethod == 0x0E)
         {
+            #ifndef PRIME_PROTOCOL
             ppump->_pcurrtransaction = GetTransactionByName(_PUMP_FILL_CREDIT_);
+            #endif
+            #ifdef PRIME_PROTOCOL
+            ppump->_pcurrtransaction = GetTransactionByName(_PUMP_ACTIVE_HOSE_);
+            ppump->_sinktransaction = DISPENSER_EXECUTE_CREDIT_TRANSACTION;
+            #endif
         }
         
         ppump->_presetdone = false;
@@ -103,8 +120,6 @@ void DispenserSide1Listener(void *pparam)
 //This method handles all of the incoming data that has been capture on the Display.
 //All codes come from the assigned button event codes. By convention the first byte
 //For more information to grasph the mapping convention, see the file "DisplayBufferScreenMap"
-//THIS MODEL IS NOT FLEXIBLE ENOUGHT SINCE THERE ARE OTHER TRANSACTIONS NOT RELATED WITH
-//PRESET THAT MUST BE MET!!! REQUIRES FIXING!!
 void DispenserSide2Listener(void *pparam)
 {
     PSINKMESSAGEPTR pmsg = (PSINKMESSAGEPTR)pparam;
@@ -131,11 +146,30 @@ void DispenserSide2Listener(void *pparam)
         if(paymentmethod == 0x0D)
         {        
             uint8 transactionname = pmsg->_buffer[GetBufferIndexFromDisplayID(DISPLAY_FORMA_PROGRAMACION)];
+            #ifndef PRIME_PROTOCOL
             ppump->_pcurrtransaction = GetTransactionByName(transactionname);
+            #endif
+            #ifdef PRIME_PROTOCOL
+                #ifdef _PRESET_HOSE_
+                    ppump->_pcurrtransaction = GetTransactionByName(_PUMP_ACTIVE_HOSE_);
+                    ppump->_sinktransaction = DISPENSER_EXECUTE_CASH_TRANSACTION;
+                    ppump->_pendingtransaction = transactionname;
+                    ppump->_authorizationinfo._hoseid = (0x0F & ppump->_trasactionbuffer[GetBufferIndexFromDisplayID(DISPLAY_SUBA_MANIJA)]);
+                #endif
+                #ifndef _PRESET_HOSE_
+                    ppump->_pcurrtransaction = GetTransactionByName(transactionname);
+                #endif
+            #endif
         }
         else if(paymentmethod == 0x0E)
         {
+            #ifndef PRIME_PROTOCOL
             ppump->_pcurrtransaction = GetTransactionByName(_PUMP_FILL_CREDIT_);
+            #endif
+            #ifdef PRIME_PROTOCOL
+            ppump->_pcurrtransaction = GetTransactionByName(_PUMP_ACTIVE_HOSE_);
+            ppump->_sinktransaction = DISPENSER_EXECUTE_CREDIT_TRANSACTION;
+            #endif
         }
         
         ppump->_presetdone = false;
@@ -155,6 +189,108 @@ void DispenserSide2Listener(void *pparam)
                 }
                 ptrjob++;
             }
+        }
+    }
+}
+
+#ifdef PRIME_PROTOCOL
+void DispenserHoseActiveState(LPVOID pparam)
+{
+    PSINKMESSAGEPTR pmsg = (PSINKMESSAGEPTR)pparam;
+    PNEAR_PUMPPTR ppump = (PNEAR_PUMPPTR)pmsg->_pdata;
+    ppump->_pcurrtransaction = GetTransactionByName(_PUMP_ACTIVE_HOSE_);
+    PumpTransactionJob *ptrjob = &((PumpTransaction*)ppump->_pcurrtransaction)->_jobs[0];
+    if(ptrjob)
+    {
+        while(ptrjob->Request != NULL)
+        {
+            PPUMPTRANSACTIONJOBCONTEXTPTR pjobcntr = _g_pumpjobqueue.Allocate(&_g_pumpjobqueue);
+            if(pjobcntr)
+            {
+                pjobcntr->_reenqueue = false;
+                pjobcntr->_prequest = ptrjob;
+                pjobcntr->_presponse = NULL;
+                pjobcntr->_ppump = ppump;
+                pjobcntr->_ppump->CleanUp(pjobcntr->_ppump);
+                _g_pumpjobqueue.Enqueue(&_g_pumpjobqueue, pjobcntr);
+            }
+            ptrjob++;
+        }
+    }
+}
+
+void DispenserExecuteCreditTransaction(LPVOID pparam)
+{
+    PSINKMESSAGEPTR pmsg = (PSINKMESSAGEPTR)pparam;
+    PNEAR_PUMPPTR ppump = (PNEAR_PUMPPTR)pmsg->_pdata;
+    ppump->_pcurrtransaction = GetTransactionByName(_PUMP_FILL_CREDIT_);
+    PumpTransactionJob *ptrjob = &((PumpTransaction*)ppump->_pcurrtransaction)->_jobs[0];
+    if(ptrjob)
+    {
+        while(ptrjob->Request != NULL)
+        {
+            PPUMPTRANSACTIONJOBCONTEXTPTR pjobcntr = _g_pumpjobqueue.Allocate(&_g_pumpjobqueue);
+            if(pjobcntr)
+            {
+                pjobcntr->_reenqueue = false;
+                pjobcntr->_prequest = ptrjob;
+                pjobcntr->_presponse = NULL;
+                pjobcntr->_ppump = ppump;
+                pjobcntr->_ppump->CleanUp(pjobcntr->_ppump);
+                _g_pumpjobqueue.Enqueue(&_g_pumpjobqueue, pjobcntr);
+            }
+            ptrjob++;
+        }
+    }
+}
+
+void DispenserExecuteCashTransaction(LPVOID pparam)
+{
+    PSINKMESSAGEPTR pmsg = (PSINKMESSAGEPTR)pparam;
+    PNEAR_PUMPPTR ppump = (PNEAR_PUMPPTR)pmsg->_pdata;
+    ppump->_pcurrtransaction = GetTransactionByName(pmsg->_buffer[0x00]);
+    PumpTransactionJob *ptrjob = &((PumpTransaction*)ppump->_pcurrtransaction)->_jobs[0];
+    if(ptrjob)
+    {
+        while(ptrjob->Request != NULL)
+        {
+            PPUMPTRANSACTIONJOBCONTEXTPTR pjobcntr = _g_pumpjobqueue.Allocate(&_g_pumpjobqueue);
+            if(pjobcntr)
+            {
+                pjobcntr->_reenqueue = false;
+                pjobcntr->_prequest = ptrjob;
+                pjobcntr->_presponse = NULL;
+                pjobcntr->_ppump = ppump;
+                pjobcntr->_ppump->CleanUp(pjobcntr->_ppump);
+                _g_pumpjobqueue.Enqueue(&_g_pumpjobqueue, pjobcntr);
+            }
+            ptrjob++;
+        }
+    }
+}
+#endif
+
+void DispenserBeepWarning(LPVOID pparam)
+{
+    PSINKMESSAGEPTR pmsg = (PSINKMESSAGEPTR)pparam;
+    PNEAR_PUMPPTR ppump = (PNEAR_PUMPPTR)pmsg->_pdata;
+    ppump->_pcurrtransaction = GetTransactionByName(_PUMP_PROGRAM_MODE_);
+    PumpTransactionJob *ptrjob = &((PumpTransaction*)ppump->_pcurrtransaction)->_jobs[0];
+    if(ptrjob)
+    {
+        while(ptrjob->Request != NULL)
+        {
+            PPUMPTRANSACTIONJOBCONTEXTPTR pjobcntr = _g_pumpjobqueue.Allocate(&_g_pumpjobqueue);
+            if(pjobcntr)
+            {
+                pjobcntr->_reenqueue = false;
+                pjobcntr->_prequest = ptrjob;
+                pjobcntr->_presponse = NULL;
+                pjobcntr->_ppump = ppump;
+                pjobcntr->_ppump->CleanUp(pjobcntr->_ppump);
+                _g_pumpjobqueue.Enqueue(&_g_pumpjobqueue, pjobcntr);
+            }
+            ptrjob++;
         }
     }
 }
@@ -182,7 +318,7 @@ void DispenserUpdatePumpState(void *pparam)
     }
 
     if(ppump)
-    {
+    {        
         ppump->_acquiringstate = true;
         ppump->_pcurrtransaction = GetTransactionByName(_PUMP_STATE_);
         PumpTransactionJob *ptrjob = &((PumpTransaction*)ppump->_pcurrtransaction)->_jobs[0];
@@ -237,10 +373,6 @@ void DispenserUnlockPumpsOnEOT(LPVOID pparam)
                     pjobcntr->_presponse = NULL;
                     pjobcntr->_ppump = ppump;
                     pjobcntr->_ppump->CleanUp(pjobcntr->_ppump);
-                    //This callback will be invoked upon response (if exists)
-                    //pjobcntr->Callback = pmsg->Callback;
-                    //pjobcntr->_pdata = pmsg;
-                    
                     _g_pumpjobqueue.Enqueue(&_g_pumpjobqueue, pjobcntr);
                 }
                 ptrjob++;
@@ -249,13 +381,39 @@ void DispenserUnlockPumpsOnEOT(LPVOID pparam)
         PSINKMESSAGEPTR psinkmsg = AllocateMessageSlot(DISPENSER_ACQUIRE_TOTALS);
         psinkmsg->_messageid = DISPENSER_ACQUIRE_TOTALS;
         psinkmsg->_messagetype = FIRSTFOUND;
-        memcpy(psinkmsg->_buffer, (const void*)NULL, 0x00);
         psinkmsg->_buffer[0x00] = ppump->_pumpid;
         psinkmsg->_buffersize = 0x01;
-        
         psinkmsg->_messagestate = SINK_BUSY;
         
         ppump->_authorized = false;
+    }
+}
+
+void DispenserUnlockPumpsOnEOTStartup(LPVOID pparam)
+{
+    PNEAR_PUMPPTR ppump = (PNEAR_PUMPPTR)pparam;
+    //The PUMP must be locked by EOT and without any current transaction
+    if((ppump->_pumpstate == PUMP_FEOT) || (ppump->_pumpstate == PUMP_PEOT))
+    {
+        ppump->_pcurrtransaction = GetTransactionByName(_PUMP_EOT_STARUP_);
+        PumpTransactionJob *ptrjob = &((PumpTransaction*)ppump->_pcurrtransaction)->_jobs[0];
+        if(ptrjob)
+        {
+            while(ptrjob->Request != NULL)
+            {
+                PPUMPTRANSACTIONJOBCONTEXTPTR pjobcntr = _g_pumpjobqueue.Allocate(&_g_pumpjobqueue);
+                if(pjobcntr)
+                {
+                    pjobcntr->_reenqueue = false;
+                    pjobcntr->_prequest = ptrjob;
+                    pjobcntr->_presponse = NULL;
+                    pjobcntr->_ppump = ppump;
+                    pjobcntr->_ppump->CleanUp(pjobcntr->_ppump);
+                    _g_pumpjobqueue.Enqueue(&_g_pumpjobqueue, pjobcntr);
+                }
+                ptrjob++;
+            }
+        }
     }
 }
 
@@ -279,10 +437,6 @@ void DispenserRestorePrices(LPVOID pparam)
                     pjobcntr->_presponse = NULL;
                     pjobcntr->_ppump = ppump;
                     pjobcntr->_ppump->CleanUp(pjobcntr->_ppump);
-                    //This callback will be invoked upon response (if exists)
-                    //pjobcntr->Callback = pmsg->Callback;
-                    //pjobcntr->_pdata = pmsg;
-                    
                     _g_pumpjobqueue.Enqueue(&_g_pumpjobqueue, pjobcntr);
                 }
                 ptrjob++;
@@ -303,39 +457,41 @@ void DispenserAcquireConfiguration(LPVOID pparam)
     if(_g_dispenserlayoutinfo._numpositions == 0x00)
         _g_dispenserlayoutinfo._currentloopopen = true;
 
+    bool executed = false;
     FOR(uint8 index = 0, index < _g_dispenserlayoutinfo._numpositions, index++)
     {
         Pump *ppump = &_g_pumps[index];
         //Pass the buffered data to the pump structure
         if(ppump)
         {
-            ppump->_authorized = true;
-            DispenserUnlockPumpsOnEOT(ppump);
-            ppump->_authorized = false;
+            DispenserUnlockPumpsOnEOTStartup(ppump);
 
-            memcpy(ppump->_trasactionbuffer, pmsg->_buffer, _MESSAGE_LENGTH_);
-            ppump->_pcurrtransaction = GetTransactionByName(_PUMP_COMPLETE_CONFIGURATION_);
-            
-            PumpTransactionJob *ptrjob = &((PumpTransaction*)ppump->_pcurrtransaction)->_jobs[0];
-            if(ptrjob)
+            if(!executed)
             {
-                while(ptrjob->Request != NULL)
+                memcpy(ppump->_trasactionbuffer, pmsg->_buffer, _MESSAGE_LENGTH_);
+                ppump->_pcurrtransaction = GetTransactionByName(_PUMP_COMPLETE_CONFIGURATION_);
+                
+                PumpTransactionJob *ptrjob = &((PumpTransaction*)ppump->_pcurrtransaction)->_jobs[0];
+                if(ptrjob)
                 {
-                    PPUMPTRANSACTIONJOBCONTEXTPTR pjobcntr = _g_pumpjobqueue.Allocate(&_g_pumpjobqueue);
-                    if(pjobcntr)
+                    while(ptrjob->Request != NULL)
                     {
-                        pjobcntr->_reenqueue = false;
-                        pjobcntr->_prequest = ptrjob;
-                        pjobcntr->_presponse = NULL;
-                        pjobcntr->_ppump = ppump;
-                        pjobcntr->_ppump->CleanUp(pjobcntr->_ppump);
-                        _g_pumpjobqueue.Enqueue(&_g_pumpjobqueue, pjobcntr);
+                        PPUMPTRANSACTIONJOBCONTEXTPTR pjobcntr = _g_pumpjobqueue.Allocate(&_g_pumpjobqueue);
+                        if(pjobcntr)
+                        {
+                            pjobcntr->_reenqueue = false;
+                            pjobcntr->_prequest = ptrjob;
+                            pjobcntr->_presponse = NULL;
+                            pjobcntr->_ppump = ppump;
+                            pjobcntr->_ppump->CleanUp(pjobcntr->_ppump);
+                            _g_pumpjobqueue.Enqueue(&_g_pumpjobqueue, pjobcntr);
+                        }
+                        ptrjob++;
                     }
-                    ptrjob++;
                 }
+                executed = true;
             }
         }
-        break;
     }
     
     if(_g_ptractprogramming)
@@ -573,7 +729,7 @@ void DispenserEnumeratePumps(LPVOID pparam)
     
     _g_dispenserlayoutinfo._numpositions = 0;
     
-    Pump *ppump = &_g_pumps[0];
+    Pump *ppump = &_g_pumps[0x00];
     //Pass the buffered data to the pump structure
     if(ppump)
     {

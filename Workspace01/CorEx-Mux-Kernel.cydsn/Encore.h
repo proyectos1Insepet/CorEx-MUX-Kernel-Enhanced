@@ -1,6 +1,6 @@
 /* ========================================
  *
- * Copyright YOUR COMPANY, THE YEAR
+ * Copyright INSEPET SISTEMAS, 2016
  * All Rights Reserved
  * UNPUBLISHED, LICENSED SOFTWARE.
  *
@@ -8,6 +8,8 @@
  * WHICH IS THE PROPERTY OF your company.
  *
  * ========================================
+@Created By: HIJH
+@Date: Septembre de 2016
 */
 #include "cytypes.h"
 #include "cyfitter.h"
@@ -161,6 +163,7 @@ enum _PUMP_STATES_
     PUMP_STOPPED    = 0x0C,
     //SPECIAL PUMP STATE
     PUMP_SEND_DATA  = 0x0D,
+
     ///Set upon initialization
     PUMP_UNKNOWN    = 0xFF
 };
@@ -244,6 +247,7 @@ enum _TRANSACTION_NAMES_
     _PUMP_TOTALS_,
     _PUMP_STATE_,
     _PUMP_EOT_,
+    _PUMP_EOT_STARUP_,
     _PUMP_NETWORK_ENUMERATOR_,
     _PUMP_STOP_,
     _PUMP_STOPALL_,
@@ -297,7 +301,7 @@ typedef struct
     volatile uint32 _var4;
     volatile uint32 _var5;
 
-    //This 64 bit variables are mainly used to store the pump totals per hose in a QUATTRO dispenser
+    //These 64 bit variables are mainly used to store the pump totals per hose in a QUATTRO dispenser
     //since there are maximum 2 hoses per position/pump
     //In an Encore Dispenser the number of variables should be duplicated since there could be 4 hoses per position/pump
     volatile uint64 _var6;

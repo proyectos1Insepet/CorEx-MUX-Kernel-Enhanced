@@ -59,15 +59,19 @@
 //#define  _CLIENT_GULF_
 //#define  _CLIENT_MINEROIL_
 //#define  _CLIENT_MOBIL_
-#define  _CLIENT_PETROBAS_
+//#define  _CLIENT_PETROBAS_
 //#define  _CLIENT_PLUS_
-//#define  _CLIENT_TERPEL_
+#define  _CLIENT_TERPEL_
 //#define  _CLIENT_TEXACO_
 //#define  _CLIENT_ZEUS_
 //#define  _CLIENT_PETROMIL_
 //#define  _CLIENT_TREBOL_
 //#define  _CLIENT_PUMA_
 //#define _NO_LOGO_
+
+#ifdef _NO_LOGO_
+    #define  _CLIENT_TERPEL_
+#endif
 
 //This is the activated logo array based on the CLIENT DEFINITION
 extern uint16 _g_stationidentifier;

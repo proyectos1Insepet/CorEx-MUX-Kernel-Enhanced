@@ -12,6 +12,8 @@
 
 #include "GlobalDefinitions.h"
 
+//@Created By: HIJH
+//@Date: Septembre de 2016
 uint64 BCDPositiveValueToUInt(uint8 *pbuffer, uint8 buffersize, uint8 mask)
 {
     uint64 retval = 0;
@@ -28,6 +30,8 @@ uint64 BCDPositiveValueToUInt(uint8 *pbuffer, uint8 buffersize, uint8 mask)
     return retval;
 }
 
+//@Created By: HIJH
+//@Date: Septembre de 2016
 void B78AD90CF552D9B30A(uint64 number, uint8 *pbuffer)
 {
     uint8 index = 1;
@@ -39,6 +43,8 @@ void B78AD90CF552D9B30A(uint64 number, uint8 *pbuffer)
     pbuffer[index - 1] = (char8)(((number % (uint32)pow(10, index)) - (number % (uint32)pow(10, index - 1)))/(uint32)pow(10, index - 1)) | 0x30;
 }
 
+//@Created By: HIJH
+//@Date: Septembre de 2016
 void PSTRBUFFTOGG(uint8 *pbuffer, uint8 buffersize)
 {
     uint8 valndx = 0x00;
@@ -52,6 +58,8 @@ void PSTRBUFFTOGG(uint8 *pbuffer, uint8 buffersize)
     }
 }
 
+//@Created By: HIJH
+//@Date: Septembre de 2016
 double DLSDBCDBUFF2HEX(PNEAR_BYTE_PTR pbuffer, uint16 buffersize)
 {
     double retval = 0.0;
@@ -61,6 +69,8 @@ double DLSDBCDBUFF2HEX(PNEAR_BYTE_PTR pbuffer, uint16 buffersize)
     return retval;
 }
 
+//@Created By: HIJH
+//@Date: Septembre de 2016
 uint32 LSDBCDBUFF2HEX(PNEAR_BYTE_PTR pbuffer, uint16 buffersize)
 {
     uint32 retval = 0x00000000;
@@ -70,6 +80,8 @@ uint32 LSDBCDBUFF2HEX(PNEAR_BYTE_PTR pbuffer, uint16 buffersize)
     return retval;
 }
 
+//@Created By: HIJH
+//@Date: Septembre de 2016
 uint32 MSDBCDBUFF2HEX(PNEAR_BYTE_PTR pbuffer, uint16 buffersize)
 {
     uint32 retval = 0x00000000;
@@ -79,6 +91,8 @@ uint32 MSDBCDBUFF2HEX(PNEAR_BYTE_PTR pbuffer, uint16 buffersize)
     return retval;
 }
 
+//@Created By: HIJH
+//@Date: Septembre de 2016
 bool ISVALIDBCD(PNEAR_BYTE_PTR pbuffer, uint16 buffersize)
 {
     bool retval = true;
@@ -110,6 +124,8 @@ uint16 RGB216BITS(uint8 r, uint8 g, uint8 b)
     return code;
 }
 
+//@Created By: HIJH
+//@Date: Septembre de 2016
 bool ISASCIIPRNBLE(PNEAR_BYTE_PTR pbuffer, uint8 buffersize)
 {
     bool retval = true;
