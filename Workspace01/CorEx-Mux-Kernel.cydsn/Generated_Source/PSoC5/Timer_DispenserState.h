@@ -168,7 +168,7 @@ void Timer_DispenserState_Wakeup(void)        ;
 *    Initialial Parameter Constants
 ***************************************/
 
-#define Timer_DispenserState_INIT_PERIOD             999u
+#define Timer_DispenserState_INIT_PERIOD             1499u
 #define Timer_DispenserState_INIT_CAPTURE_MODE       ((uint8)((uint8)0u << Timer_DispenserState_CTRL_CAP_MODE_SHIFT))
 #define Timer_DispenserState_INIT_TRIGGER_MODE       ((uint8)((uint8)0u << Timer_DispenserState_CTRL_TRIG_MODE_SHIFT))
 #if (Timer_DispenserState_UsingFixedFunction)

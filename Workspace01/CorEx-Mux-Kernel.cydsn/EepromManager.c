@@ -16,6 +16,7 @@
 #include "GlobalDefinitions.h"
 #include "Eeprom.h"
 
+volatile bool _g_i2cstart = true;
 volatile bool _g_i2cbuslock = false;
 
 uint8 _g_eeprom[_EEPROM_PAGE_RAWSIZE_];
@@ -24,29 +25,14 @@ uint8 _g_eeprom[_EEPROM_PAGE_RAWSIZE_];
 //@Septembre de 2016
 uint8* GetEepromBuffer()
 {
-    return &_g_eeprom[2];
+    return &(_g_eeprom[0x02]);
 }
 
-//@Created By: HIJH
-//@Septembre de 2016
-void ClearEepromBuffer()
-{
-    memset(_g_eeprom, 0x00, _EEPROM_PAGE_RAWSIZE_);
-}
-
-//@Created by: HIJH
-//@Date: Octobre de 2016
-//This function provides exclusive access to the I2C bus by blocking 
-//the signaling a flag. It attempts to "Desynchronize"
-void I2CBusLock()
-{
-    //I2C Bus Lock REMOVE DUE TO A WEIRD BEHAVIOR
-    _g_i2cbuslock = true;
-}
 
 void I2CBusUnlock()
 {
-    //I2C Bus Lock to avoid concurrent access to the bus    
+    //I2C Bus Unlock
+    I2C_Bus_MasterClearStatus();
     _g_i2cbuslock = false;
 }
 
@@ -76,6 +62,34 @@ void LoadEepromPage(uint16 page)
     }
 }
 
+//@Created by: HIJH
+//@Date: Octobre de 2016
+//This function provides exclusive access to the I2C bus by blocking 
+//the signaling flag. It attempts to "Desynchronize" concurrent access if any.
+ void I2CBusLock()
+{
+    #ifdef DEBUG
+    if(_g_i2cstart)
+    {
+        I2C_Bus_MasterClearStatus();
+        _g_i2cstart = false;
+    }
+    //I2C Bus Lock
+    do
+    {
+        uint16 limit[0x01] = { ((uint16)(1000*(double)rand()/(double)RAND_MAX) + 100) };
+        FOR(uint16 ndx = 0, ndx < *((uint16*)limit), ndx++);
+        if((((*(reg8 *) 0x400049d9u) & 0x10u) == 0x00u) && !_g_i2cbuslock)
+            _g_i2cbuslock = true;
+
+    }
+    while(!_g_i2cbuslock);
+    #endif
+    #ifdef NDEBUG
+        _g_i2cbuslock = true;
+    #endif
+}
+
 //@Created By: HIJH
 //@Septembre de 2016
 void StoreEepromPage(uint16 page)
@@ -101,6 +115,13 @@ void StoreEepromPage(uint16 page)
     }while(I2C_Bus_MSTR_NO_ERROR != status && retries++ < 10);
     //Write protection disabled
     eepromWP_Write(0x01);
+}
+
+//@Created By: HIJH
+//@Septembre de 2016
+void ClearEepromBuffer()
+{
+    memset(_g_eeprom, 0x00, _EEPROM_PAGE_RAWSIZE_);
 }
 
 /* [] END OF FILE */

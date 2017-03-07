@@ -25,16 +25,22 @@
 #include "Eeprom.h"
 #include "Rtc.h"
 
+uint8 _g_dispvalcodes[] = { 0x94, 0x7E, 0xFF };
+
 void CastCreditVolumeValue(char8 *pbuffer, uint8 buffersize);
 bool DisplayGenericValidator(LPVOID pparam);
 
-uint8 _g_dispvalcodes[] = { 0x94, 0x7E, 0xFF };
-
 bool _g_configured[] = { false, false };
 //Screen #1 Handler (for further information on its initialization parameters, see its definition in "Display.h")
-DisplayLayout _g_display1 = { DISPLAY1, DISPLAY1_MESSAGE, 0x00, 0x00, 0x00, 0x00, 0, 0, 0x00, 0, 0, true, &_g_displayflow1[0], _g_displayflow1, { 0x0000, 0x0000, 0x00, {} }, NULL, NULL, DisplayGenericValidator };
+DisplayLayout _g_display1 = { DISPLAY1, DISPLAY1_MESSAGE, 0x00, 0x00, 0x00, 0x00, 0, 0, 0x00, 0, 0, true, &_g_displayflow[0], _g_displayflow, { 0x0000, 0x0000, 0x00, {} }, NULL, NULL, DisplayGenericValidator };
 //Screen #2 Handler  (for further information on its initialization parameters, see its definition in "Display.h")
-DisplayLayout _g_display2 = { DISPLAY2, DISPLAY2_MESSAGE, 0x00, 0x00, 0x00, 0x00, 0, 0, 0x00, 0, 0, true, &_g_displayflow2[0], _g_displayflow2, { 0x0000, 0x0000, 0x00, {} }, NULL, NULL, DisplayGenericValidator };
+DisplayLayout _g_display2 = { DISPLAY2, DISPLAY2_MESSAGE, 0x00, 0x00, 0x00, 0x00, 0, 0, 0x00, 0, 0, true, &_g_displayflow[0], _g_displayflow, { 0x0000, 0x0000, 0x00, {} }, NULL, NULL, DisplayGenericValidator };
+
+DisplayHomeAnimation _g_homeanimarray[] =
+{
+    { 0x00, true, 0x00, { 0x5C, 0x7C, 0x2F, 0x2D } },//Display #1
+    { 0x00, true, 0x00, { 0x5C, 0x7C, 0x2F, 0x2D } },//Display #2
+};
 
 uint16 _g_productscreenpos[][2] =
 {
@@ -45,199 +51,135 @@ uint16 _g_productscreenpos[][2] =
     { 0x0000, 0x0000 },
 };
 
-DisplayHomeAnimation _g_homeanimarray[] =
-{
-    { 0x00, true, 0x00, { 0x5C, 0x7C, 0x2F, 0x2D } },//Display #1
-    { 0x00, true, 0x00, { 0x5C, 0x7C, 0x2F, 0x2D } },//Display #2
-};
-
-//@Created By: HIJH
-//@Septembre de 2016
-void Display1Logic(void *pdata)
-{
-    PSINKMESSAGEPTR pmsg = (PSINKMESSAGEPTR)pdata;
-    
-    ///////////////////////////////////////////////////////
-    //TEMPORARILY DISABLED TO ALLOW FOR THE TESTS!!
-    if(_g_dispenserlayoutinfo._inconfiguration)
-        goto CLOSEDISPLAY1;
-    ///////////////////////////////////////////////////////
-    
-    _g_display1._starting = false;
-
-    _g_display1._currscrcode = ParseDisplayStream(pmsg->_buffer, pmsg->_buffersize);
-    ParseDisplayFlow(&_g_display1);
-    if(_g_display1._nextscrid != DISPLAY_NULL || 
-        _g_display1._statechangescrid != DISPLAY_NULL ||
-        _g_display1._timeoutscrid != DISPLAY_NULL)
-    {
-        //Here comes the validation for the state of the work shift 
-        if(_g_display1.DisplayValidator)
-            _g_display1.DisplayValidator(&_g_display1);
-        
-        bool validate = true;
-        PNEAR_BYTE_PTR piterptr = &_g_dispvalcodes[0x00];
-        while(*piterptr != 0xFF)
-        {
-            if(*piterptr == _g_display1._currscrcode)
-            {
-                validate = false;
-                break;
-            }
-            piterptr++;
-        }
-        
-        if(validate)
-        {
-            FPTRINPUTVALIDATOR fptrvalidator = DisplayFlowInputValidator(&_g_display1);
-            if(fptrvalidator)
-                if(!fptrvalidator(&_g_display1))
-                {
-                    _g_display1._timeoutscrid = _g_display1._statechangescrid = _g_display1._nextscrid = DISPLAY_NULL;
-                    goto CLOSEDISPLAY1;
-                }
-                
-        }
-
-        //////////////////////////////////////////////////////////////////////////////////////////////////////
-        //TODO: HERE WE NEED TO POST OR PROCESS THE INPUT BUFFER (CAPTURED THROUGH THE INPUT BOX IF EXISTS)
-        //SINCE IT WILL BE CLEANED UP IN THE NEXT LINE
-        //IT MUST BE POSTED THROUGH THE MESSAGE SINK TO THE BLL RELATED COMPONENT
-        StoreTransactionData(&_g_display1);
-        
-        FPTRFINALIZER fptrfinalizer = DisplayFinalizer(&_g_display1);
-        if(fptrfinalizer)
-            fptrfinalizer(&_g_display1);
-        
-        PrepareDisplayStructure(&_g_display1);
-        
-        FPTRINITIALIZER fptrinitializer = DisplayInitializer(&_g_display1);
-        if(fptrinitializer)
-            fptrinitializer(&_g_display1);
-        
-        //This is a static structure for the display screen selection command
-        char8 pbuffer[] = { 0xAA, 0x70, (_g_display1._pcurrflow->_scrid >> 8) & 0xFF, _g_display1._pcurrflow->_scrid & 0xFF, 0xCC, 0x33, 0xC3, 0x3C };
-        PUARTMESSAGEPTR puartdisp = GetUARTMessageSlot(UART_DISPLAY1);
-        if(puartdisp)
-        {
-            puartdisp->_messagelength = sizeof(pbuffer) / sizeof(pbuffer[0]);
-            memcpy(puartdisp->_messagetx, pbuffer, puartdisp->_messagelength);
-            puartdisp->_messagestate = PENDING;
-        }
-        
-        FPTRDECORATOR fptrdecorator = DisplayFlowDecorator(&_g_display1);
-        if(fptrdecorator)
-            fptrdecorator(&_g_display1);
-
-    }
-    else
-    {
-        //Input capture processing here for all of the displays that allow data input
-        FPTRINPUTHANDLER fptrhandler = DisplayFlowInputHandler(&_g_display1);
-        if(fptrhandler)
-            fptrhandler(&_g_display1);
-    }
-    
-    CLOSEDISPLAY1:
-    Display1_ClearRxBuffer();
-    Display1_Enable();
-    return;
-}
-
-//@Created By: HIJH
-//@Septembre de 2016
-void Display2Logic(void *pdata)
-{
-    PSINKMESSAGEPTR pmsg = (PSINKMESSAGEPTR)pdata;
-
-    ///////////////////////////////////////////////////////
-    //TEMPORARILY DISABLED TO ALLOW TESTING OTHER FEATURES!!
-    if(_g_dispenserlayoutinfo._inconfiguration)
-        goto CLOSEDISPLAY2;
-    ///////////////////////////////////////////////////////
-    
-    _g_display2._starting = false;
-    
-    _g_display2._currscrcode = ParseDisplayStream(pmsg->_buffer, pmsg->_buffersize);
-    ParseDisplayFlow(&_g_display2);
-    if(_g_display2._nextscrid != DISPLAY_NULL || 
-        _g_display2._statechangescrid != DISPLAY_NULL ||
-        _g_display2._timeoutscrid != DISPLAY_NULL)
-    {
-        //Here comes the validation for the state of the work shift 
-        if(_g_display2.DisplayValidator)
-            _g_display2.DisplayValidator(&_g_display2);
-        
-        bool validate = true;
-        PNEAR_BYTE_PTR piterptr = &_g_dispvalcodes[0x00];
-        while(*piterptr != 0xFF)
-        {
-            if(*piterptr == _g_display2._currscrcode)
-            {
-                validate = false;
-                break;
-            }
-            piterptr++;
-        }
-        
-        if(validate)
-        {
-            FPTRINPUTVALIDATOR fptrvalidator = DisplayFlowInputValidator(&_g_display2);
-            if(fptrvalidator)
-                if(!fptrvalidator(&_g_display2))
-                {
-                    _g_display2._timeoutscrid = _g_display2._statechangescrid = _g_display2._nextscrid = DISPLAY_NULL;
-                    goto CLOSEDISPLAY2;
-                }
-        }
-
-        //////////////////////////////////////////////////////////////////////////////////////////////////////
-        //TODO: HERE WE NEED TO POST OR PROCESS THE INPUT BUFFER (CAPTURED THROUGH THE INPUT BOX IF EXISTS)
-        //SINCE IT WILL BE CLEANED UP IN THE NEXT LINE
-        //IT MUST BE POSTED THROUGH THE MESSAGE SINK TO THE BLL RELATED COMPONENT
-        StoreTransactionData(&_g_display2);
-
-        FPTRFINALIZER fptrfinalizer = DisplayFinalizer(&_g_display2);
-        if(fptrfinalizer)
-            fptrfinalizer(&_g_display2);
-        
-        PrepareDisplayStructure(&_g_display2);
-
-        FPTRINITIALIZER fptrinitializer = DisplayInitializer(&_g_display2);
-        if(fptrinitializer)
-            fptrinitializer(&_g_display2);
-        
-        //This is a static structure for the display screen selection command
-        char8 pbuffer[] = { 0xAA, 0x70, (_g_display2._pcurrflow->_scrid >> 8) & 0xFF, _g_display2._pcurrflow->_scrid & 0xFF, 0xCC, 0x33, 0xC3, 0x3C };
-        PUARTMESSAGEPTR puartdisp = GetUARTMessageSlot(UART_DISPLAY2);
-        if(puartdisp)
-        {
-            puartdisp->_messagelength = sizeof(pbuffer) / sizeof(pbuffer[0]);
-            memcpy(puartdisp->_messagetx, pbuffer, puartdisp->_messagelength);
-            puartdisp->_messagestate = PENDING;
-        }
-        
-        FPTRDECORATOR fptrdecorator = DisplayFlowDecorator(&_g_display2);
-        if(fptrdecorator)
-            fptrdecorator(&_g_display2);
-
-    }
-    else
-    {
-        //Input capture processing here for all of the displays that allow data input
-        FPTRINPUTHANDLER fptrhandler = DisplayFlowInputHandler(&_g_display2);
-        if(fptrhandler)
-            fptrhandler(&_g_display2);
-    }
-    CLOSEDISPLAY2:
-    Display2_ClearRxBuffer();
-    Display2_Enable();
-    return;
-}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // *********************************************  PURE BLL FUNCTIONS NEXT
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void WorkShiftDecorator(void *pparam)
+{
+    FontData fontdata;
+    fontdata._size = 0x03;
+    fontdata._backcolor = 0xFFFF;
+    fontdata._forecolor = 0x0000;
+    fontdata._opaquebackground = DISP_TEXT_OPAQUE;
+    //MOVE ALL OF THESE TEXTS TO THE EEPROM
+    char8 *pmessage = "Validando turno, por favor espere...";
+    DisplayLayout *pdisplay = (DisplayLayout*)pparam;
+    if(pdisplay->_dispid == DISPLAY1)
+    {
+        UARTMessage *puartdisp = GetUARTMessageSlot(UART_DISPLAY1);
+        if(puartdisp)
+        {
+            puartdisp->_messagelength = DisplayOutputString(0x0020, 0x00EA, puartdisp->_messagetx, pmessage, strlen(pmessage), fontdata);
+            puartdisp->_messagestate = PENDING;
+        }
+    }
+    else
+    {
+        UARTMessage *puartdisp = GetUARTMessageSlot(UART_DISPLAY2);
+        if(puartdisp)
+        {
+            puartdisp->_messagelength = DisplayOutputString(0x0020, 0x00EA, puartdisp->_messagetx, pmessage, strlen(pmessage), fontdata);
+            puartdisp->_messagestate = PENDING;
+        }
+    }
+}
+
+void InitiateWorkShiftValidation(void *pparam)
+{
+    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
+    if(pdisplay->_dispid == DISPLAY1)
+    {
+        if(((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer[GetBufferIndexFromDisplayID(DISPLAY_SELECCIONE_POSICION)] == POSITIONA)
+        {
+            I2CBusLock();
+            ClearEepromBuffer();
+            LoadEepromPage(EEPROM_DISPENSER_PUMP1_LAYOUT_PAGE);
+            uint8 wsvalue = GetEepromBuffer()[0x05];
+            I2CBusUnlock();
+            if(wsvalue == 0x00)
+                pdisplay->_currentstate = DISPLAY_OPEN_WORK_SHIFT;
+            else
+                pdisplay->_currentstate = DISPLAY_CLOSE_WORK_SHIFT;
+        }
+        else if(((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer[GetBufferIndexFromDisplayID(DISPLAY_SELECCIONE_POSICION)] == POSITIONB)
+        {
+            I2CBusLock();
+            ClearEepromBuffer();
+            LoadEepromPage(EEPROM_DISPENSER_PUMP3_LAYOUT_PAGE);
+            uint8 wsvalue = GetEepromBuffer()[0x05];
+            I2CBusUnlock();
+            if(wsvalue == 0x00)
+                pdisplay->_currentstate = DISPLAY_OPEN_WORK_SHIFT;
+            else
+                pdisplay->_currentstate = DISPLAY_CLOSE_WORK_SHIFT;
+        }
+    }
+    else if(pdisplay->_dispid == DISPLAY2)
+    {
+        if(((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer[GetBufferIndexFromDisplayID(DISPLAY_SELECCIONE_POSICION)] == POSITIONA)
+        {
+            I2CBusLock();
+            ClearEepromBuffer();
+            LoadEepromPage(EEPROM_DISPENSER_PUMP4_LAYOUT_PAGE);
+            uint8 wsvalue = GetEepromBuffer()[0x05];
+            I2CBusUnlock();
+            if(wsvalue == 0x00)
+                pdisplay->_currentstate = DISPLAY_OPEN_WORK_SHIFT;
+            else
+                pdisplay->_currentstate = DISPLAY_CLOSE_WORK_SHIFT;
+        }
+        else if(((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer[GetBufferIndexFromDisplayID(DISPLAY_SELECCIONE_POSICION)] == POSITIONB)
+        {
+            I2CBusLock();
+            ClearEepromBuffer();
+            LoadEepromPage(EEPROM_DISPENSER_PUMP2_LAYOUT_PAGE);
+            uint8 wsvalue = GetEepromBuffer()[0x05];
+            I2CBusUnlock();
+            if(wsvalue == 0x00)
+                pdisplay->_currentstate = DISPLAY_OPEN_WORK_SHIFT;
+            else
+                pdisplay->_currentstate = DISPLAY_CLOSE_WORK_SHIFT;
+        }
+    }
+}
+
+void RequestWorkShiftOperAuthorization(void *pparam)
+{
+    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
+    //HERE WE ATTEMPT TO PUSH THE TRANSACTION INTO THE PUMP'S TRANSACTIONAL QUEUE.
+    //THIS IS DONE ONLY IF THERE IS ROOM IN THE QUEUE, OTHERWISE THIS STATE WON'T
+    //BE REPORTED TO THE REMOTE PEER.
+    PNEAR_PUMPPTR ppumpptr = &_g_pumps[GetPumpIndexFromDisplay(pdisplay)];
+    if(ppumpptr)
+    {
+        ppumpptr->PumpTransQueueLock(ppumpptr);
+        PNEAR_PUMPTRANSACTIONALSTATEPTR pts = ppumpptr->PumpTransQueueAllocate(ppumpptr);
+        ppumpptr->PumpTransQueueUnlock(ppumpptr);
+        if(pts)
+        {
+            uint8 index = 0;
+            pts->_transtate = RF_MUX_ISLAND_OPER_DATA_REQUEST;
+            //Pump ID always comes in the first position (0x00)
+            pts->_buffer[index++] = ppumpptr->_pumpid;
+            
+            memcpy(&pts->_buffer[index], &((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer[GetBufferIndexFromDisplayID(DISPLAY_INTRODUZCA_CEDULA)], GetBufferLengthFromDisplayID(DISPLAY_INTRODUZCA_CEDULA));
+            //PSTRBUFFTOGG((PNEAR_BYTE_PTR)&pts->_buffer[index], GetBufferLengthFromDisplayID(DISPLAY_INTRODUZCA_CEDULA));
+            index += GetBufferLengthFromDisplayID(DISPLAY_INTRODUZCA_CEDULA);
+            
+            memcpy(&pts->_buffer[index], &((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer[GetBufferIndexFromDisplayID(DISPLAY_INGRESE_PASSWORD)], GetBufferLengthFromDisplayID(DISPLAY_INGRESE_PASSWORD));
+            PSTRBUFFTOGG((PNEAR_BYTE_PTR)&pts->_buffer[index], strlen(&pts->_buffer[index]));
+            index += GetBufferLengthFromDisplayID(DISPLAY_INGRESE_PASSWORD);
+            
+            pts->_buffersize = index;
+
+            ppumpptr->PumpTransQueueLock(ppumpptr);
+            ppumpptr->PumpTransQueueEnqueue(ppumpptr, pts);
+            ppumpptr->PumpTransQueueUnlock(ppumpptr);
+        }
+    }
+}
 
 void DrawNumberOfCopies(void *pparam)
 {
@@ -362,131 +304,6 @@ void MaskoutOptionDecorator(void *pparam)
             puartdisp->_messagelength = sizeof(buff);
             puartdisp->_messagestate = PENDING;
         }    
-    }
-}
-
-void WorkShiftDecorator(void *pparam)
-{
-    FontData fontdata;
-    fontdata._size = 0x03;
-    fontdata._backcolor = 0xFFFF;
-    fontdata._forecolor = 0x0000;
-    fontdata._opaquebackground = DISP_TEXT_OPAQUE;
-    //MOVE ALL OF THESE TEXTS TO THE EEPROM
-    char8 *pmessage = "Validando turno, por favor espere...";
-    DisplayLayout *pdisplay = (DisplayLayout*)pparam;
-    if(pdisplay->_dispid == DISPLAY1)
-    {
-        UARTMessage *puartdisp = GetUARTMessageSlot(UART_DISPLAY1);
-        if(puartdisp)
-        {
-            puartdisp->_messagelength = DisplayOutputString(0x0020, 0x00EA, puartdisp->_messagetx, pmessage, strlen(pmessage), fontdata);
-            puartdisp->_messagestate = PENDING;
-        }
-    }
-    else
-    {
-        UARTMessage *puartdisp = GetUARTMessageSlot(UART_DISPLAY2);
-        if(puartdisp)
-        {
-            puartdisp->_messagelength = DisplayOutputString(0x0020, 0x00EA, puartdisp->_messagetx, pmessage, strlen(pmessage), fontdata);
-            puartdisp->_messagestate = PENDING;
-        }
-    }
-}
-
-void InitiateWorkShiftValidation(void *pparam)
-{
-    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
-    if(pdisplay->_dispid == DISPLAY1)
-    {
-        if(((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer[GetBufferIndexFromDisplayID(DISPLAY_SELECCIONE_POSICION)] == POSITIONA)
-        {
-            I2CBusLock();
-            ClearEepromBuffer();
-            LoadEepromPage(EEPROM_DISPENSER_PUMP1_LAYOUT_PAGE);
-            uint8 wsvalue = GetEepromBuffer()[0x05];
-            I2CBusUnlock();
-            if(wsvalue == 0x00)
-                pdisplay->_currentstate = DISPLAY_OPEN_WORK_SHIFT;
-            else
-                pdisplay->_currentstate = DISPLAY_CLOSE_WORK_SHIFT;
-        }
-        else if(((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer[GetBufferIndexFromDisplayID(DISPLAY_SELECCIONE_POSICION)] == POSITIONB)
-        {
-            I2CBusLock();
-            ClearEepromBuffer();
-            LoadEepromPage(EEPROM_DISPENSER_PUMP3_LAYOUT_PAGE);
-            uint8 wsvalue = GetEepromBuffer()[0x05];
-            I2CBusUnlock();
-            if(wsvalue == 0x00)
-                pdisplay->_currentstate = DISPLAY_OPEN_WORK_SHIFT;
-            else
-                pdisplay->_currentstate = DISPLAY_CLOSE_WORK_SHIFT;
-        }
-    }
-    else if(pdisplay->_dispid == DISPLAY2)
-    {
-        if(((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer[GetBufferIndexFromDisplayID(DISPLAY_SELECCIONE_POSICION)] == POSITIONA)
-        {
-            I2CBusLock();
-            ClearEepromBuffer();
-            LoadEepromPage(EEPROM_DISPENSER_PUMP4_LAYOUT_PAGE);
-            uint8 wsvalue = GetEepromBuffer()[0x05];
-            I2CBusUnlock();
-            if(wsvalue == 0x00)
-                pdisplay->_currentstate = DISPLAY_OPEN_WORK_SHIFT;
-            else
-                pdisplay->_currentstate = DISPLAY_CLOSE_WORK_SHIFT;
-        }
-        else if(((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer[GetBufferIndexFromDisplayID(DISPLAY_SELECCIONE_POSICION)] == POSITIONB)
-        {
-            I2CBusLock();
-            ClearEepromBuffer();
-            LoadEepromPage(EEPROM_DISPENSER_PUMP2_LAYOUT_PAGE);
-            uint8 wsvalue = GetEepromBuffer()[0x05];
-            I2CBusUnlock();
-            if(wsvalue == 0x00)
-                pdisplay->_currentstate = DISPLAY_OPEN_WORK_SHIFT;
-            else
-                pdisplay->_currentstate = DISPLAY_CLOSE_WORK_SHIFT;
-        }
-    }
-}
-
-void RequestWorkShiftOperAuthorization(void *pparam)
-{
-    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
-    //HERE WE ATTEMPT TO PUSH THE TRANSACTION INTO THE PUMP'S TRANSACTIONAL QUEUE.
-    //THIS IS DONE ONLY IF THERE IS ROOM IN THE QUEUE, OTHERWISE THIS STATE WON'T
-    //BE REPORTED TO THE REMOTE PEER.
-    PNEAR_PUMPPTR ppumpptr = &_g_pumps[GetPumpIndexFromDisplay(pdisplay)];
-    if(ppumpptr)
-    {
-        ppumpptr->PumpTransQueueLock(ppumpptr);
-        PNEAR_PUMPTRANSACTIONALSTATEPTR pts = ppumpptr->PumpTransQueueAllocate(ppumpptr);
-        ppumpptr->PumpTransQueueUnlock(ppumpptr);
-        if(pts)
-        {
-            uint8 index = 0;
-            pts->_transtate = RF_MUX_ISLAND_OPER_DATA_REQUEST;
-            //Pump ID always comes in the first position (0x00)
-            pts->_buffer[index++] = ppumpptr->_pumpid;
-            
-            memcpy(&pts->_buffer[index], &((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer[GetBufferIndexFromDisplayID(DISPLAY_INTRODUZCA_CEDULA)], GetBufferLengthFromDisplayID(DISPLAY_INTRODUZCA_CEDULA));
-            //PSTRBUFFTOGG((PNEAR_BYTE_PTR)&pts->_buffer[index], GetBufferLengthFromDisplayID(DISPLAY_INTRODUZCA_CEDULA));
-            index += GetBufferLengthFromDisplayID(DISPLAY_INTRODUZCA_CEDULA);
-            
-            memcpy(&pts->_buffer[index], &((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer[GetBufferIndexFromDisplayID(DISPLAY_INGRESE_PASSWORD)], GetBufferLengthFromDisplayID(DISPLAY_INGRESE_PASSWORD));
-            PSTRBUFFTOGG((PNEAR_BYTE_PTR)&pts->_buffer[index], strlen(&pts->_buffer[index]));
-            index += GetBufferLengthFromDisplayID(DISPLAY_INGRESE_PASSWORD);
-            
-            pts->_buffersize = index;
-
-            ppumpptr->PumpTransQueueLock(ppumpptr);
-            ppumpptr->PumpTransQueueEnqueue(ppumpptr, pts);
-            ppumpptr->PumpTransQueueUnlock(ppumpptr);
-        }
     }
 }
 
@@ -627,7 +444,7 @@ void ProductNameSelectionDecorator(LPVOID pparam)
         I2CBusLock();
         ClearEepromBuffer();
         LoadEepromPage(eepromcardpage);
-        memcpy(cardinals, &GetEepromBuffer()[0x01], 0x04);
+        memcpy(cardinals, &(GetEepromBuffer()[0x01]), 0x04);
         I2CBusUnlock();
         
         I2CBusLock();
@@ -681,7 +498,7 @@ void ProductNameSelectionDecorator(LPVOID pparam)
         }
         I2CBusUnlock();
     }
-    else
+    else if(pdisplay->_dispid == DISPLAY2)
     {
         uint8 cardinals[0x04];
         
@@ -787,6 +604,25 @@ void RejectedAuthorizationMessageDecorator(LPVOID pparam)
     }
 }
 
+void ValidateAuthorizationResponse4Credit(LPVOID pparam)
+{
+    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
+    PNEAR_PUMPPTR ppumpptr = &_g_pumps[GetPumpIndexFromDisplay(pdisplay)];
+    if(ppumpptr->_authorizationinfo._authorized)
+    {
+        //THE AUTHORIZATION INFORMATION IS READY IN THE "PUMPAUTHORIZATIONINFO" STRUCTURE
+        //SO HERE WE ONLY NEED TO CONTINUE THE "DISPLAY FLOW" TO ITS END AND THEN POST THE
+        //INFORMATION TO THE "PRIME FLOW".        
+        ppumpptr->_authorizationinfo._authorized = false;
+        //Select printing the default number of copies        
+        memset(&((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer[GetBufferIndexFromDisplayID(DISPLAY_DESEA_IMPRIMIR_RECIBO)], 0x00, GetBufferLengthFromDisplayID(DISPLAY_DESEA_IMPRIMIR_RECIBO));
+        ((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer[GetBufferIndexFromDisplayID(DISPLAY_DESEA_IMPRIMIR_RECIBO)] = 0x39;//This value means printing request at the end
+        ((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer[GetBufferIndexFromDisplayID(DISPLAY_FORMA_PROGRAMACION)] = _PUMP_FILL_CREDIT_;//This value means printing request at the end
+        
+    }else//If no authorization has been acquired, then return to IDLE state
+        ppumpptr->_pumprftransstate = RF_IDLE;
+}
+
 void SendAuthorizationRequest4Credit(LPVOID pparam)
 {
     PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
@@ -795,6 +631,7 @@ void SendAuthorizationRequest4Credit(LPVOID pparam)
     //BE REPORTED TO THE REMOTE PEER.
     PNEAR_PUMPPTR ppumpptr = &_g_pumps[GetPumpIndexFromDisplay(pdisplay)];
     
+    #ifndef _ALLOW_CREDIT_SALE_TESTING_
     ppumpptr->PumpTransQueueLock(ppumpptr);
     PNEAR_PUMPTRANSACTIONALSTATEPTR pts = ppumpptr->PumpTransQueueAllocate(ppumpptr);
     ppumpptr->PumpTransQueueUnlock(ppumpptr);
@@ -851,78 +688,29 @@ void SendAuthorizationRequest4Credit(LPVOID pparam)
         ppumpptr->PumpTransQueueEnqueue(ppumpptr, pts);
         ppumpptr->PumpTransQueueUnlock(ppumpptr);
     }
-}
+    #endif
+    
+    #ifdef _ALLOW_CREDIT_SALE_TESTING_
+    //Authorization information
+    ppumpptr->_authorizationinfo._authorized = true;
 
-void ValidateAuthorizationResponse4Credit(LPVOID pparam)
-{
-    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
-    PNEAR_PUMPPTR ppumpptr = &_g_pumps[GetPumpIndexFromDisplay(pdisplay)];
-    if(ppumpptr->_authorizationinfo._authorized)
-    {
-        //THE AUTHORIZATION INFORMATION IS READY IN THE "PUMPAUTHORIZATIONINFO" STRUCTURE
-        //SO HERE WE ONLY NEED TO CONTINUE THE "DISPLAY FLOW" TO ITS END AND THEN POST THE
-        //INFORMATION TO THE "PRIME FLOW".        
-        ppumpptr->_authorizationinfo._authorized = false;
-        //Select printing the default number of copies        
-        memset(&((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer[GetBufferIndexFromDisplayID(DISPLAY_DESEA_IMPRIMIR_RECIBO)], 0x00, GetBufferLengthFromDisplayID(DISPLAY_DESEA_IMPRIMIR_RECIBO));
-        ((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer[GetBufferIndexFromDisplayID(DISPLAY_DESEA_IMPRIMIR_RECIBO)] = 0x39;//This value means printing request at the end
-        ((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer[GetBufferIndexFromDisplayID(DISPLAY_FORMA_PROGRAMACION)] = _PUMP_FILL_CREDIT_;//This value means printing request at the end
-        
-    }else//If no authorization has been acquired, then return to IDLE state
-        ppumpptr->_pumprftransstate = RF_IDLE;
-}
-
-void HoseValidationCallback(LPVOID pparam)
-{
-    PSINKMESSAGEPTR pmsg = (PSINKMESSAGEPTR)pparam;
-    DisplayLayout *pdisplay = (DisplayLayout*)pmsg->_pdata;
-    uint8 pumpindex = GetPumpIndexFromDisplay(pmsg->_pdata);
-    if(_g_pumps[pumpindex]._hoseactivestate)
-    {
-        //The assigned hose identifier is the Pump's Hose identifier. It must be mapped to the remote (NSX) hose identifier
-        ((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer[GetBufferIndexFromDisplayID(DISPLAY_SUBA_MANIJA)] = DispenserLocalHoseID2RemoteHoseID(pumpindex, _g_pumps[GetPumpIndexFromDisplay(pmsg->_pdata)]._currenthose);
-        
-        _g_pumps[GetPumpIndexFromDisplay(pmsg->_pdata)]._hoseactivestate = 0x00;
-        pdisplay->_currentstate = DISPLAY_HOSE_ACTIVATED;
-        pmsg->_selfkill = true;
-    }
-}
-
-void ValidateHosePositionState(LPVOID pparam)
-{
-    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
-    if(pdisplay->_dispid == DISPLAY1)
-    {
-        uint8 currpos = GetPumpIndexFromDisplay(pdisplay);
-        _ALLOCATE_SINKMESSAGE_SLOT(psinkmsg);
-        if(psinkmsg)
-        {
-            pdisplay->_pdata = psinkmsg;
-            psinkmsg->_pdata = pdisplay;
-            psinkmsg->_buffer[0] = currpos;
-            psinkmsg->_messageid = DISPENSER_UPDATE_STATE1;
-            psinkmsg->_messagetimeoutlimit = _SINK_TIMEOUT_500MS_;
-            psinkmsg->Callback = HoseValidationCallback;
-            psinkmsg->_messagetype = FIRSTFOUNDFOREVER;
-            psinkmsg->_messagestate = SINK_BUSY;
-        }
-    }
+    //See the protocol description file to understand the applied indexes 
+    ppumpptr->_authorizationinfo._presettype = 0x02;
+    ppumpptr->_authorizationinfo._presetamount  = 0x3DB8;
+    ppumpptr->_authorizationinfo._hoseid = ((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer[GetBufferIndexFromDisplayID(DISPLAY_SUBA_MANIJA)];
+    
+    uint16 price = 0x3232;
+    if(_g_dispenserlayoutinfo._moneydecimals == 0x03 && _g_dispenserlayoutinfo._ppudecimals == 0x02)
+        ppumpptr->_authorizationinfo._price = price / 10;
     else
+        ppumpptr->_authorizationinfo._price = price;
+                    
+    if(pdisplay)
     {
-        uint8 currpos = GetPumpIndexFromDisplay(pdisplay);
-        _ALLOCATE_SINKMESSAGE_SLOT(psinkmsg);
-        if(psinkmsg)
-        {
-            pdisplay->_pdata = psinkmsg;
-            psinkmsg->_pdata = pdisplay;
-            psinkmsg->_buffer[0] = currpos;
-            psinkmsg->_messageid = DISPENSER_UPDATE_STATE2;
-            psinkmsg->_messagetimeoutlimit = _SINK_TIMEOUT_100MS_;
-            psinkmsg->Callback = HoseValidationCallback;
-            psinkmsg->_messagetype = FIRSTFOUNDFOREVER;
-            psinkmsg->_messagestate = SINK_BUSY;        
-        }
+        if(ppumpptr->_authorizationinfo._authorized)
+            pdisplay->_currentstate = DISPLAY_CREDIT_AUTHORIZATION_ACCEPTED;
     }
+    #endif
 }
 
 void KillHosePositionStateValidation(LPVOID pparam)
@@ -932,27 +720,6 @@ void KillHosePositionStateValidation(LPVOID pparam)
     {
         ((PSINKMESSAGEPTR)pdisplay->_pdata)->_selfkill = true;
         pdisplay->_pdata = PNEAR_NULLPTR;
-    }
-}
-
-void DisplayStationIDLoad(void *pparam)
-{
-    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
-    if(pdisplay)
-    {
-        //CAREFUL WITH RETURNS BETWEEN THE LOCK/UNLOCK CALLS
-        //AND RECURSIVE CALLS THAT WOULD DEADLOCK!
-        I2CBusLock();
-        ClearEepromBuffer();
-        
-        LoadEepromPage(EEPROM_CONFIGURATION_PAGE5);
-        uint16 stationid = (((uint16)GetEepromBuffer()[0x01] << 8) & 0xFF00) | ((uint16)GetEepromBuffer()[0x00]);
-        I2CBusUnlock();
-        
-        memset(pdisplay->_bufferinfo._buffer, 0x00, _DISPLAY_BUFFER_SIZE_);
-        B78AD90CF552D9B30A(stationid, PBYTECAST(pdisplay->_bufferinfo._buffer));
-        pdisplay->_bufferinfo._bufferindex = strlen(pdisplay->_bufferinfo._buffer);
-        PSTRBUFFTOGG(PBYTECAST(pdisplay->_bufferinfo._buffer), pdisplay->_bufferinfo._bufferindex);
     }
 }
 
@@ -1007,6 +774,27 @@ void DisplayStationIDStore(void *pparam)
         
         I2CBusUnlock();
         
+    }
+}
+
+void DisplayStationIDLoad(void *pparam)
+{
+    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
+    if(pdisplay)
+    {
+        //CAREFUL WITH RETURNS BETWEEN THE LOCK/UNLOCK CALLS
+        //AND RECURSIVE CALLS THAT WOULD DEADLOCK!
+        I2CBusLock();
+        ClearEepromBuffer();
+        
+        LoadEepromPage(EEPROM_CONFIGURATION_PAGE5);
+        uint16 stationid = (((uint16)GetEepromBuffer()[0x01] << 8) & 0xFF00) | ((uint16)GetEepromBuffer()[0x00]);
+        I2CBusUnlock();
+        
+        memset(pdisplay->_bufferinfo._buffer, 0x00, _DISPLAY_BUFFER_SIZE_);
+        B78AD90CF552D9B30A(stationid, PBYTECAST(pdisplay->_bufferinfo._buffer));
+        pdisplay->_bufferinfo._bufferindex = strlen(pdisplay->_bufferinfo._buffer);
+        PSTRBUFFTOGG(PBYTECAST(pdisplay->_bufferinfo._buffer), pdisplay->_bufferinfo._bufferindex);
     }
 }
 
@@ -1086,6 +874,52 @@ void DisplayPumpIDOffsetStore(void *pparam)
 
 //@Created By: HIJH
 //@Septembre de 2016
+void iButtonScreenNotification(LPVOID pparam)
+{
+    PSINKMESSAGEPTR pmsg = (PSINKMESSAGEPTR)pparam;
+    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pmsg->_pdata;
+    if(pdisplay)
+    {
+        pdisplay->_timeoutscrid = DISPLAY_ID_RECONOCIDO;
+        //Here we are storing the serial identifier read from the iButton device
+        memcpy(pdisplay->_bufferinfo._buffer, pmsg->_buffer, _IBUTTON_PAYLOAD_LENGTH_);
+        pdisplay->_bufferinfo._bufferindex = _IBUTTON_PAYLOAD_LENGTH_;
+        
+        _ALLOCATE_SINKMESSAGE_SLOT(psinkmsg);
+        if(psinkmsg)
+        {
+            
+            char8 pdummybuffer[] = { 0xAA, 0x00, 0x00, 0xFF, 0xCC, 0x33, 0xC3, 0x3C };
+            if(pdisplay->_dispid == DISPLAY1)
+                psinkmsg->_messageid = DISPLAY1_RECEPTION;
+            else
+                psinkmsg->_messageid = DISPLAY2_RECEPTION;
+            
+            psinkmsg->_messagetype = FIRSTFOUND;
+            memcpy(psinkmsg->_buffer, (const void*)pdummybuffer, sizeof(pdummybuffer));
+            psinkmsg->_buffersize = sizeof(pdummybuffer);
+            psinkmsg->_messagestate = SINK_BUSY;
+            
+        }
+    }
+}
+
+//@Created By: HIJH
+//@Septembre de 2016
+void TerminateiButtonScan(void *pparam)
+{
+    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
+    if(pdisplay->_pdata)
+    {
+        if((PSINKMESSAGEPTR)pdisplay->_pdata)
+            ((PSINKMESSAGEPTR)pdisplay->_pdata)->_selfkill = true;
+            
+        pdisplay->_pdata = PNEAR_NULLPTR;
+    }
+}
+
+//@Created By: HIJH
+//@Septembre de 2016
 void InitiateiButtonScan(void *pparam)
 {
     PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
@@ -1121,51 +955,6 @@ void InitiateiButtonScan(void *pparam)
     }
 }
 
-//@Created By: HIJH
-//@Septembre de 2016
-void TerminateiButtonScan(void *pparam)
-{
-    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
-    if(pdisplay->_pdata)
-    {
-        if((PSINKMESSAGEPTR)pdisplay->_pdata)
-            ((PSINKMESSAGEPTR)pdisplay->_pdata)->_selfkill = true;
-            
-        pdisplay->_pdata = PNEAR_NULLPTR;
-    }
-}
-
-//@Created By: HIJH
-//@Septembre de 2016
-void iButtonScreenNotification(LPVOID pparam)
-{
-    PSINKMESSAGEPTR pmsg = (PSINKMESSAGEPTR)pparam;
-    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pmsg->_pdata;
-    if(pdisplay)
-    {
-        pdisplay->_timeoutscrid = DISPLAY_ID_RECONOCIDO;
-        //Here we are storing the serial identifier read from the iButton device
-        memcpy(pdisplay->_bufferinfo._buffer, pmsg->_buffer, _IBUTTON_PAYLOAD_LENGTH_);
-        pdisplay->_bufferinfo._bufferindex = _IBUTTON_PAYLOAD_LENGTH_;
-        
-        _ALLOCATE_SINKMESSAGE_SLOT(psinkmsg);
-        if(psinkmsg)
-        {
-            
-            char8 pdummybuffer[] = { 0xAA, 0x00, 0x00, 0xFF, 0xCC, 0x33, 0xC3, 0x3C };
-            if(pdisplay->_dispid == DISPLAY1)
-                psinkmsg->_messageid = DISPLAY1_RECEPTION;
-            else
-                psinkmsg->_messageid = DISPLAY2_RECEPTION;
-            
-            psinkmsg->_messagetype = FIRSTFOUND;
-            memcpy(psinkmsg->_buffer, (const void*)pdummybuffer, sizeof(pdummybuffer));
-            psinkmsg->_buffersize = sizeof(pdummybuffer);
-            psinkmsg->_messagestate = SINK_BUSY;
-            
-        }
-    }
-}
 
 void DrawDateTime(void *pparam)
 {
@@ -1304,118 +1093,6 @@ void DrawDateTime(void *pparam)
             puartdisp->_messagelength = DisplayOutputString(0x0C9, 0x12A, puartdisp->_messagetx, buffer, index, fontdata);
             puartdisp->_messagestate = PENDING;
         }
-    }
-}
-
-void InitiateUpdateDateTime(void *pparam)
-{
-    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
-    if(pdisplay->_dispid == DISPLAY1)
-    {
-        PSINKMESSAGEPTR psinkmsg = AllocateMessageSlotConditional(DISPLAY1_UPDATE_DATETIME);
-        if(psinkmsg)
-        {
-            pdisplay->_pdata = psinkmsg;
-            psinkmsg->_pdata = pdisplay;
-            psinkmsg->Callback = DrawDateTime;
-            psinkmsg->_messageid = DISPLAY1_UPDATE_DATETIME;
-            psinkmsg->_messagetype = FIRSTFOUNDFOREVER;
-            psinkmsg->_messagetimeoutlimit = _SINK_TIMEOUT_1S_;
-            psinkmsg->_messagestate = SINK_BUSY;
-        }
-    }
-    else if(pdisplay->_dispid == DISPLAY2)
-    {
-        PSINKMESSAGEPTR psinkmsg = AllocateMessageSlotConditional(DISPLAY2_UPDATE_DATETIME);
-        if(psinkmsg)
-        {
-            pdisplay->_pdata = psinkmsg;
-            psinkmsg->_pdata = pdisplay;
-            psinkmsg->Callback = DrawDateTime;
-            psinkmsg->_messageid = DISPLAY2_UPDATE_DATETIME;
-            psinkmsg->_messagetype = FIRSTFOUNDFOREVER;
-            psinkmsg->_messagetimeoutlimit = _SINK_TIMEOUT_1S_;
-            psinkmsg->_messagestate = SINK_BUSY;
-        }
-    }
-}
-
-void TerminateUpdateDateTime(void *pparam)
-{
-    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
-    if(pdisplay->_dispid == DISPLAY1)
-    {
-        PSINKMESSAGEPTR psinkmsg = (PSINKMESSAGEPTR)pdisplay->_pdata;
-        if(psinkmsg)
-            psinkmsg->_selfkill = true;
-    }
-    else if(pdisplay->_dispid == DISPLAY2)
-    {
-        PSINKMESSAGEPTR psinkmsg = (PSINKMESSAGEPTR)pdisplay->_pdata;
-        if(psinkmsg)
-            psinkmsg->_selfkill = true;
-    }
-}
-
-void DisplayUpdateDateTime(void *pparam)
-{
-    PSINKMESSAGEPTR psinkmsg = (PSINKMESSAGEPTR)pparam;
-    if(psinkmsg->Callback)
-        psinkmsg->Callback(psinkmsg->_pdata);
-}
-
-void InitiateHomeAnimation(void *pparam)
-{
-    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
-    if(pdisplay->_dispid == DISPLAY1)
-    {
-        PSINKMESSAGEPTR psinkmsg = AllocateMessageSlotConditional(DISPLAY1_ANIMATE_HOME);
-        if(psinkmsg)
-        {
-            _g_homeanimarray[DISPLAY1]._timeoutmultiplier = 0;
-            
-            pdisplay->_pdata = psinkmsg;
-            psinkmsg->_pdata = pdisplay;
-            psinkmsg->_messageid = DISPLAY1_ANIMATE_HOME;
-            psinkmsg->_messagetype = FIRSTFOUNDFOREVER;
-            psinkmsg->_messagetimeoutlimit = _SINK_TIMEOUT_100MS_;
-            psinkmsg->_messagestate = SINK_BUSY;
-            
-        }
-    }
-    else if(pdisplay->_dispid == DISPLAY2)
-    {
-        PSINKMESSAGEPTR psinkmsg = AllocateMessageSlotConditional(DISPLAY2_ANIMATE_HOME);
-        if(psinkmsg)
-        {
-            _g_homeanimarray[DISPLAY2]._timeoutmultiplier = 0;
-            
-            pdisplay->_pdata = psinkmsg;
-            psinkmsg->_pdata = pdisplay;
-            psinkmsg->_messageid = DISPLAY2_ANIMATE_HOME;
-            psinkmsg->_messagetype = FIRSTFOUNDFOREVER;
-            psinkmsg->_messagetimeoutlimit = _SINK_TIMEOUT_100MS_;
-            psinkmsg->_messagestate = SINK_BUSY;
-
-        }
-    }
-    //DrawHomeDateTime(pdisplay);
-}
-
-void TerminateHomeAnimation(void *pparam)
-{
-    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
-    if(pdisplay->_dispid == DISPLAY1)
-    {
-        PSINKMESSAGEPTR psinkmsg = (PSINKMESSAGEPTR)pdisplay->_pdata;
-        if(psinkmsg)
-            psinkmsg->_selfkill = true;
-    }
-    else if(pdisplay->_dispid == DISPLAY2)
-    {
-        PSINKMESSAGEPTR psinkmsg = (PSINKMESSAGEPTR)pdisplay->_pdata;
-        if(psinkmsg)
-            psinkmsg->_selfkill = true;
     }
 }
 
@@ -1697,16 +1374,6 @@ void DisplayUpdateHomeAnimation(void *pparam)
             DrawHomeDateTime(pdisplay);
             _g_homeanimarray[DISPLAY1]._timeoutmultiplier = 0;
             _g_homeanimarray[DISPLAY1]._colontoggler = !_g_homeanimarray[DISPLAY1]._colontoggler;
-            char8 *pmessage = "MUX Ver. 17";   
-            fontdata._size = 0x01;
-            DisplayLayout *pdisplay = (DisplayLayout*)pparam;            
-            UARTMessage *puartdisp = GetUARTMessageSlot(UART_DISPLAY1);
-            if(puartdisp)
-            {
-                puartdisp->_messagelength = DisplayOutputString(0x000F, 0x000E, puartdisp->_messagetx, pmessage, strlen(pmessage), fontdata);
-                puartdisp->_messagestate = PENDING;
-            } 
-            
         }else
             _g_homeanimarray[DISPLAY1]._timeoutmultiplier++;
             
@@ -1771,7 +1438,7 @@ void DisplayUpdateHomeAnimation(void *pparam)
                 puartdisp->_messagelength = DisplayOutputString(0x0A0, 0x1D0, puartdisp->_messagetx, txtbuffer, strlen(txtbuffer), fontdata);
                 puartdisp->_messagestate = PENDING;
             }
-            _g_configured[0x00] = true;            
+            _g_configured[0x00] = true;
             
         }
         
@@ -1967,82 +1634,117 @@ void DisplayUpdateHomeAnimation(void *pparam)
     }
     
 }
-void PrintcopyReceipt(void *pparam)
+
+void InitiateUpdateDateTime(void *pparam)
 {
     PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
-    //HERE WE ATTEMPT TO PUSH THE TRANSACTION INTO THE PUMP'S TRANSACTIONAL QUEUE.
-    //THIS IS DONE ONLY IF THERE IS ROOM IN THE QUEUE, OTHERWISE THIS STATE WON'T
-    //BE REPORTED TO THE REMOTE PEER.
-    PNEAR_PUMPPTR ppumpptr = &_g_pumps[GetPumpIndexFromDisplay(pdisplay)];
-    if(ppumpptr)
+    if(pdisplay->_dispid == DISPLAY1)
     {
-        ppumpptr->PumpTransQueueLock(ppumpptr);
-        PNEAR_PUMPTRANSACTIONALSTATEPTR pts = ppumpptr->PumpTransQueueAllocate(ppumpptr);
-        ppumpptr->PumpTransQueueUnlock(ppumpptr);
-        if(pts)
+        PSINKMESSAGEPTR psinkmsg = AllocateMessageSlotConditional(DISPLAY1_UPDATE_DATETIME);
+        if(psinkmsg)
         {
-            uint8 index = 0;
-            pts->_transtate = RF_MUX_COPY_REQUEST;
-            pts->_buffer[index++] = ppumpptr->_pumpid;
-            pts->_buffersize = index;
-            ppumpptr->PumpTransQueueLock(ppumpptr);
-            ppumpptr->PumpTransQueueEnqueue(ppumpptr, pts);
-            ppumpptr->PumpTransQueueUnlock(ppumpptr);
+            pdisplay->_pdata = psinkmsg;
+            psinkmsg->_pdata = pdisplay;
+            psinkmsg->Callback = DrawDateTime;
+            psinkmsg->_messageid = DISPLAY1_UPDATE_DATETIME;
+            psinkmsg->_messagetype = FIRSTFOUNDFOREVER;
+            psinkmsg->_messagetimeoutlimit = _SINK_TIMEOUT_1S_;
+            psinkmsg->_messagestate = SINK_BUSY;
+        }
+    }
+    else if(pdisplay->_dispid == DISPLAY2)
+    {
+        PSINKMESSAGEPTR psinkmsg = AllocateMessageSlotConditional(DISPLAY2_UPDATE_DATETIME);
+        if(psinkmsg)
+        {
+            pdisplay->_pdata = psinkmsg;
+            psinkmsg->_pdata = pdisplay;
+            psinkmsg->Callback = DrawDateTime;
+            psinkmsg->_messageid = DISPLAY2_UPDATE_DATETIME;
+            psinkmsg->_messagetype = FIRSTFOUNDFOREVER;
+            psinkmsg->_messagetimeoutlimit = _SINK_TIMEOUT_1S_;
+            psinkmsg->_messagestate = SINK_BUSY;
         }
     }
 }
 
-
-void PrintersWorking(void *pparam)
+void TerminateUpdateDateTime(void *pparam)
 {
     PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
-    //Entering here means that both printers are ok
-    if(pdisplay->_currscrcode == 0x39)
+    if(pdisplay->_dispid == DISPLAY1)
     {
-        //This is the default printer port allocation
-        _g_printerlayout._printerportside1 = PRINTER11_JOB;
-        _g_printerlayout._printerportside2 = PRINTER21_JOB;
-        
-        ClearEepromBuffer();
-        LoadEepromPage(EEPROM_CONFIGURATION_PAGE7);
-        //Dispenser Pumps Offset is stored at position 0x09 in this memory area (see Eeprom.h)
-        //Printer port #1
-        GetEepromBuffer()[0x0B] = _g_printerlayout._printerportside1;
-        //Printer port #2
-        GetEepromBuffer()[0x0C] = _g_printerlayout._printerportside2;
-
-        StoreEepromPage(EEPROM_CONFIGURATION_PAGE7);
-                
+        PSINKMESSAGEPTR psinkmsg = (PSINKMESSAGEPTR)pdisplay->_pdata;
+        if(psinkmsg)
+            psinkmsg->_selfkill = true;
+    }
+    else if(pdisplay->_dispid == DISPLAY2)
+    {
+        PSINKMESSAGEPTR psinkmsg = (PSINKMESSAGEPTR)pdisplay->_pdata;
+        if(psinkmsg)
+            psinkmsg->_selfkill = true;
     }
 }
 
-void EitherPrinterWorking(void *pparam)
+void InitiateHomeAnimation(void *pparam)
 {
     PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
-    switch(pdisplay->_currscrcode)
+    if(pdisplay->_dispid == DISPLAY1)
     {
-        case 0x8C://Printer #1 not working, then redirect printer jobs to printer #2
+        PSINKMESSAGEPTR psinkmsg = AllocateMessageSlotConditional(DISPLAY1_ANIMATE_HOME);
+        if(psinkmsg)
         {
-            _g_printerlayout._printerportside1 = PRINTER21_JOB;
-            _g_printerlayout._printerportside2 = PRINTER21_JOB;
-            break;
-        }
-        case 0x8D://Printer #2 not working, then redirect printer jobs to printer #1
-        {
-            _g_printerlayout._printerportside1 = PRINTER11_JOB;
-            _g_printerlayout._printerportside2 = PRINTER11_JOB;
-            break;
+            _g_homeanimarray[DISPLAY1]._timeoutmultiplier = 0;
+            
+            pdisplay->_pdata = psinkmsg;
+            psinkmsg->_pdata = pdisplay;
+            psinkmsg->_messageid = DISPLAY1_ANIMATE_HOME;
+            psinkmsg->_messagetype = FIRSTFOUNDFOREVER;
+            psinkmsg->_messagetimeoutlimit = _SINK_TIMEOUT_100MS_;
+            psinkmsg->_messagestate = SINK_BUSY;
+            
         }
     }
-    ClearEepromBuffer();
-    LoadEepromPage(EEPROM_CONFIGURATION_PAGE7);
-    //Dispenser Pumps Offset is stored at position 0x09 in this memory area (see Eeprom.h)
-    //Printer port #1
-    GetEepromBuffer()[0x0B] = _g_printerlayout._printerportside1;
-    //Printer port #2
-    GetEepromBuffer()[0x0C] = _g_printerlayout._printerportside2;
+    else if(pdisplay->_dispid == DISPLAY2)
+    {
+        PSINKMESSAGEPTR psinkmsg = AllocateMessageSlotConditional(DISPLAY2_ANIMATE_HOME);
+        if(psinkmsg)
+        {
+            _g_homeanimarray[DISPLAY2]._timeoutmultiplier = 0;
+            
+            pdisplay->_pdata = psinkmsg;
+            psinkmsg->_pdata = pdisplay;
+            psinkmsg->_messageid = DISPLAY2_ANIMATE_HOME;
+            psinkmsg->_messagetype = FIRSTFOUNDFOREVER;
+            psinkmsg->_messagetimeoutlimit = _SINK_TIMEOUT_100MS_;
+            psinkmsg->_messagestate = SINK_BUSY;
 
-    StoreEepromPage(EEPROM_CONFIGURATION_PAGE7);
+        }
+    }
+    //DrawHomeDateTime(pdisplay);
+}
+
+void DisplayUpdateDateTime(void *pparam)
+{
+    PSINKMESSAGEPTR psinkmsg = (PSINKMESSAGEPTR)pparam;
+    if(psinkmsg->Callback)
+        psinkmsg->Callback(psinkmsg->_pdata);
+}
+
+void TerminateHomeAnimation(void *pparam)
+{
+    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
+    if(pdisplay->_dispid == DISPLAY1)
+    {
+        PSINKMESSAGEPTR psinkmsg = (PSINKMESSAGEPTR)pdisplay->_pdata;
+        if(psinkmsg)
+            psinkmsg->_selfkill = true;
+    }
+    else if(pdisplay->_dispid == DISPLAY2)
+    {
+        PSINKMESSAGEPTR psinkmsg = (PSINKMESSAGEPTR)pdisplay->_pdata;
+        if(psinkmsg)
+            psinkmsg->_selfkill = true;
+    }
 }
 
 bool DisplayGenericValidator(LPVOID pparam)
@@ -2102,6 +1804,59 @@ bool DisplayGenericValidator(LPVOID pparam)
     
 }
 
+void PrintersWorking(void *pparam)
+{
+    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
+    //Entering here means that both printers are ok
+    if(pdisplay->_currscrcode == 0x39)
+    {
+        //This is the default printer port allocation
+        _g_printerlayout._printerportside1 = PRINTER11_JOB;
+        _g_printerlayout._printerportside2 = PRINTER21_JOB;
+        
+        I2CBusLock();
+        ClearEepromBuffer();
+        LoadEepromPage(EEPROM_CONFIGURATION_PAGE7);
+        //Dispenser Pumps Offset is stored at position 0x09 in this memory area (see Eeprom.h)
+        //Printer port #1
+        GetEepromBuffer()[0x0B] = _g_printerlayout._printerportside1;
+        //Printer port #2
+        GetEepromBuffer()[0x0C] = _g_printerlayout._printerportside2;
+        StoreEepromPage(EEPROM_CONFIGURATION_PAGE7);
+        I2CBusUnlock();
+    }
+}
+
+void EitherPrinterWorking(void *pparam)
+{
+    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
+    switch(pdisplay->_currscrcode)
+    {
+        case 0x8C://Printer #1 not working, then redirect printer jobs to printer #2
+        {
+            _g_printerlayout._printerportside1 = PRINTER21_JOB;
+            _g_printerlayout._printerportside2 = PRINTER21_JOB;
+            break;
+        }
+        case 0x8D://Printer #2 not working, then redirect printer jobs to printer #1
+        {
+            _g_printerlayout._printerportside1 = PRINTER11_JOB;
+            _g_printerlayout._printerportside2 = PRINTER11_JOB;
+            break;
+        }
+    }
+    I2CBusLock();
+    ClearEepromBuffer();
+    LoadEepromPage(EEPROM_CONFIGURATION_PAGE7);
+    //Dispenser Pumps Offset is stored at position 0x09 in this memory area (see Eeprom.h)
+    //Printer port #1
+    GetEepromBuffer()[0x0B] = _g_printerlayout._printerportside1;
+    //Printer port #2
+    GetEepromBuffer()[0x0C] = _g_printerlayout._printerportside2;
+    StoreEepromPage(EEPROM_CONFIGURATION_PAGE7);
+    I2CBusUnlock();
+}
+
 void CastCreditVolumeValue(char8 *pbuffer, uint8 buffersize)
 {
     uint8 delimiterindex = 0x00;
@@ -2153,6 +1908,253 @@ void CastCreditVolumeValue(char8 *pbuffer, uint8 buffersize)
             shiftcount++;
         }
     }
+}
+
+void SaveSelectedPosition(void *pparam)
+{
+    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
+    
+    memset(&((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer[GetBufferIndexFromDisplayID(DISPLAY_SELECCIONE_POSICION)], 0x00, GetBufferLengthFromDisplayID(DISPLAY_SELECCIONE_POSICION));
+    ((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer[GetBufferIndexFromDisplayID(DISPLAY_SELECCIONE_POSICION)] = pdisplay->_currscrcode;
+    ((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer[GetBufferIndexFromDisplayID(DISPLAY_SIDE_DUMMY_DISPLAY)] = pdisplay->_dispid;
+}
+
+//@Created By: HIJH
+//@Septembre de 2016
+void Display1Logic(void *pdata)
+{
+    PSINKMESSAGEPTR pmsg = (PSINKMESSAGEPTR)pdata;
+    
+    ///////////////////////////////////////////////////////
+    //TEMPORARILY DISABLED TO ALLOW FOR THE TESTS!!
+    if(_g_dispenserlayoutinfo._inconfiguration)
+        goto CLOSEDISPLAY1;
+    ///////////////////////////////////////////////////////
+    
+    _g_display1._starting = false;
+
+    _g_display1._currscrcode = ParseDisplayStream(pmsg->_buffer, pmsg->_buffersize);
+    ParseDisplayFlow(&_g_display1);
+    if(_g_display1._nextscrid != DISPLAY_NULL || 
+        _g_display1._statechangescrid != DISPLAY_NULL ||
+        _g_display1._timeoutscrid != DISPLAY_NULL)
+    {
+        //Here comes the validation for the state of the work shift 
+        if(_g_display1.DisplayValidator)
+            _g_display1.DisplayValidator(&_g_display1);
+        
+        bool validate = true;
+        PNEAR_BYTE_PTR piterptr = &_g_dispvalcodes[0x00];
+        while(*piterptr != 0xFF)
+        {
+            if(*piterptr == _g_display1._currscrcode)
+            {
+                validate = false;
+                break;
+            }
+            piterptr++;
+        }
+        
+        if(validate)
+        {
+            FPTRINPUTVALIDATOR fptrvalidator = DisplayFlowInputValidator(&_g_display1);
+            if(fptrvalidator)
+                if(!fptrvalidator(&_g_display1))
+                {
+                    _g_display1._timeoutscrid = _g_display1._statechangescrid = _g_display1._nextscrid = DISPLAY_NULL;
+                    goto CLOSEDISPLAY1;
+                }
+                
+        }
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////
+        //TODO: HERE WE NEED TO POST OR PROCESS THE INPUT BUFFER (CAPTURED THROUGH THE INPUT BOX IF EXISTS)
+        //SINCE IT WILL BE CLEANED UP IN THE NEXT LINE
+        //IT MUST BE POSTED THROUGH THE MESSAGE SINK TO THE BLL RELATED COMPONENT
+        StoreTransactionData(&_g_display1);
+        
+        FPTRFINALIZER fptrfinalizer = DisplayFinalizer(&_g_display1);
+        if(fptrfinalizer)
+            fptrfinalizer(&_g_display1);
+        
+        PrepareDisplayStructure(&_g_display1);
+        
+        FPTRINITIALIZER fptrinitializer = DisplayInitializer(&_g_display1);
+        if(fptrinitializer)
+            fptrinitializer(&_g_display1);
+        
+        //This is a static structure for the display screen selection command
+        char8 pbuffer[] = { 0xAA, 0x70, (_g_display1._pcurrflow->_scrid >> 8) & 0xFF, _g_display1._pcurrflow->_scrid & 0xFF, 0xCC, 0x33, 0xC3, 0x3C };
+        PUARTMESSAGEPTR puartdisp = GetUARTMessageSlot(UART_DISPLAY1);
+        if(puartdisp)
+        {
+            puartdisp->_messagelength = sizeof(pbuffer) / sizeof(pbuffer[0]);
+            memcpy(puartdisp->_messagetx, pbuffer, puartdisp->_messagelength);
+            puartdisp->_messagestate = PENDING;
+        }
+        
+        FPTRDECORATOR fptrdecorator = DisplayFlowDecorator(&_g_display1);
+        if(fptrdecorator)
+            fptrdecorator(&_g_display1);
+
+    }
+    else
+    {
+        //Input capture processing here for all of the displays that allow data input
+        FPTRINPUTHANDLER fptrhandler = DisplayFlowInputHandler(&_g_display1);
+        if(fptrhandler)
+            fptrhandler(&_g_display1);
+    }
+    
+    CLOSEDISPLAY1:
+    Display1_ClearRxBuffer();
+    Display1_Enable();
+    return;
+}
+void PrintcopyReceipt(void *pparam)
+{
+    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
+    //HERE WE ATTEMPT TO PUSH THE TRANSACTION INTO THE PUMP'S TRANSACTIONAL QUEUE.
+    //THIS IS DONE ONLY IF THERE IS ROOM IN THE QUEUE, OTHERWISE THIS STATE WON'T
+    //BE REPORTED TO THE REMOTE PEER.
+    PNEAR_PUMPPTR ppumpptr = &_g_pumps[GetPumpIndexFromDisplay(pdisplay)];
+    if(ppumpptr)
+    {
+        ppumpptr->PumpTransQueueLock(ppumpptr);
+        PNEAR_PUMPTRANSACTIONALSTATEPTR pts = ppumpptr->PumpTransQueueAllocate(ppumpptr);
+        ppumpptr->PumpTransQueueUnlock(ppumpptr);
+        if(pts)
+        {
+            uint8 index = 0;
+            pts->_transtate = RF_MUX_COPY_REQUEST;
+            //Pump ID always comes in the first position (0x00)
+            pts->_buffer[index++] = ppumpptr->_pumpid;
+      
+            pts->_buffersize = index;
+
+            ppumpptr->PumpTransQueueLock(ppumpptr);
+            ppumpptr->PumpTransQueueEnqueue(ppumpptr, pts);
+            ppumpptr->PumpTransQueueUnlock(ppumpptr);            
+        }
+    }        
+}
+
+void PrintcopyReceiptResponse(void *pparam)
+{
+    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
+    //HERE WE ATTEMPT TO PUSH THE TRANSACTION INTO THE PUMP'S TRANSACTIONAL QUEUE.
+    //THIS IS DONE ONLY IF THERE IS ROOM IN THE QUEUE, OTHERWISE THIS STATE WON'T
+    //BE REPORTED TO THE REMOTE PEER.
+    PNEAR_PUMPPTR ppumpptr = &_g_pumps[GetPumpIndexFromDisplay(pdisplay)];
+    if(ppumpptr)
+    {
+        ppumpptr->PumpTransQueueLock(ppumpptr);
+        PNEAR_PUMPTRANSACTIONALSTATEPTR pts = ppumpptr->PumpTransQueueAllocate(ppumpptr);
+        ppumpptr->PumpTransQueueUnlock(ppumpptr);
+        if(pts)
+        {
+            uint8 index = 0;
+            pts->_transtate = 0x00;
+            //Pump ID always comes in the first position (0x00)
+            pts->_buffer[index++] = ppumpptr->_pumpid;
+      
+            pts->_buffersize = index;
+
+            ppumpptr->PumpTransQueueLock(ppumpptr);
+            ppumpptr->PumpTransQueueEnqueue(ppumpptr, pts);
+            ppumpptr->PumpTransQueueUnlock(ppumpptr);            
+        }
+    }        
+}
+//@Created By: HIJH
+//@Septembre de 2016
+void Display2Logic(void *pdata)
+{
+    PSINKMESSAGEPTR pmsg = (PSINKMESSAGEPTR)pdata;
+
+    ///////////////////////////////////////////////////////
+    //TEMPORARILY DISABLED TO ALLOW TESTING OTHER FEATURES!!
+    if(_g_dispenserlayoutinfo._inconfiguration)
+        goto CLOSEDISPLAY2;
+    ///////////////////////////////////////////////////////
+    
+    _g_display2._starting = false;
+    
+    _g_display2._currscrcode = ParseDisplayStream(pmsg->_buffer, pmsg->_buffersize);
+    ParseDisplayFlow(&_g_display2);
+    if(_g_display2._nextscrid != DISPLAY_NULL || 
+        _g_display2._statechangescrid != DISPLAY_NULL ||
+        _g_display2._timeoutscrid != DISPLAY_NULL)
+    {
+        //Here comes the validation for the state of the work shift 
+        if(_g_display2.DisplayValidator)
+            _g_display2.DisplayValidator(&_g_display2);
+        
+        bool validate = true;
+        PNEAR_BYTE_PTR piterptr = &_g_dispvalcodes[0x00];
+        while(*piterptr != 0xFF)
+        {
+            if(*piterptr == _g_display2._currscrcode)
+            {
+                validate = false;
+                break;
+            }
+            piterptr++;
+        }
+        
+        if(validate)
+        {
+            FPTRINPUTVALIDATOR fptrvalidator = DisplayFlowInputValidator(&_g_display2);
+            if(fptrvalidator)
+                if(!fptrvalidator(&_g_display2))
+                {
+                    _g_display2._timeoutscrid = _g_display2._statechangescrid = _g_display2._nextscrid = DISPLAY_NULL;
+                    goto CLOSEDISPLAY2;
+                }
+        }
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////
+        //TODO: HERE WE NEED TO POST OR PROCESS THE INPUT BUFFER (CAPTURED THROUGH THE INPUT BOX IF EXISTS)
+        //SINCE IT WILL BE CLEANED UP IN THE NEXT LINE
+        //IT MUST BE POSTED THROUGH THE MESSAGE SINK TO THE BLL RELATED COMPONENT
+        StoreTransactionData(&_g_display2);
+
+        FPTRFINALIZER fptrfinalizer = DisplayFinalizer(&_g_display2);
+        if(fptrfinalizer)
+            fptrfinalizer(&_g_display2);
+        
+        PrepareDisplayStructure(&_g_display2);
+
+        FPTRINITIALIZER fptrinitializer = DisplayInitializer(&_g_display2);
+        if(fptrinitializer)
+            fptrinitializer(&_g_display2);
+        
+        //This is a static structure for the display screen selection command
+        char8 pbuffer[] = { 0xAA, 0x70, (_g_display2._pcurrflow->_scrid >> 8) & 0xFF, _g_display2._pcurrflow->_scrid & 0xFF, 0xCC, 0x33, 0xC3, 0x3C };
+        PUARTMESSAGEPTR puartdisp = GetUARTMessageSlot(UART_DISPLAY2);
+        if(puartdisp)
+        {
+            puartdisp->_messagelength = sizeof(pbuffer) / sizeof(pbuffer[0]);
+            memcpy(puartdisp->_messagetx, pbuffer, puartdisp->_messagelength);
+            puartdisp->_messagestate = PENDING;
+        }
+        
+        FPTRDECORATOR fptrdecorator = DisplayFlowDecorator(&_g_display2);
+        if(fptrdecorator)
+            fptrdecorator(&_g_display2);
+
+    }
+    else
+    {
+        //Input capture processing here for all of the displays that allow data input
+        FPTRINPUTHANDLER fptrhandler = DisplayFlowInputHandler(&_g_display2);
+        if(fptrhandler)
+            fptrhandler(&_g_display2);
+    }
+    CLOSEDISPLAY2:
+    Display2_ClearRxBuffer();
+    Display2_Enable();
+    return;
 }
 
 /* [] END OF FILE */

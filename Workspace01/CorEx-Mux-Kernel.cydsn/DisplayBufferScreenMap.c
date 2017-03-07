@@ -81,27 +81,39 @@ uint8 GetPumpIndexFromDisplay(LPVOID pparam)
 {
     uint8 retval = 0;
     PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
-    switch(((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer[GetBufferIndexFromDisplayID(DISPLAY_SELECCIONE_POSICION)])
+    if(pdisplay->_dispid == DISPLAY1)
     {
-        case POSITIONA:
+        switch((uint8)((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer[GetBufferIndexFromDisplayID(DISPLAY_SELECCIONE_POSICION)])
         {
-            if(pdisplay->_dispid == DISPLAY1)
+            case POSITIONA:
+            {
                 retval = 0x00;
-            else
-                retval = 0x03;
-            
-            break;
-        }
-        case POSITIONB:
-        {
-            if(pdisplay->_dispid == DISPLAY1)
+                break;
+            }
+            case POSITIONB:
+            {
                 retval = 0x02;
-            else
-                retval = 0x01;
-            
-            break;
+                break;
+            }
         }
     }
+    else if(pdisplay->_dispid == DISPLAY2)
+    {
+        switch((uint8)((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer[GetBufferIndexFromDisplayID(DISPLAY_SELECCIONE_POSICION)])
+        {
+            case POSITIONA:
+            {
+                retval = 0x03;
+                break;
+            }
+            case POSITIONB:
+            {
+                retval = 0x01;
+                break;
+            }
+        }
+    }
+    
     return retval;
 }
 

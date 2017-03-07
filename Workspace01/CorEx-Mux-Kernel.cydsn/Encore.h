@@ -1,6 +1,6 @@
 /* ========================================
  *
- * Copyright YOUR COMPANY, THE YEAR
+ * Copyright INSEPET SISTEMAS, 2016
  * All Rights Reserved
  * UNPUBLISHED, LICENSED SOFTWARE.
  *
@@ -8,6 +8,8 @@
  * WHICH IS THE PROPERTY OF your company.
  *
  * ========================================
+@Created By: HIJH
+@Date: Septembre de 2016
 */
 #include "cytypes.h"
 #include "cyfitter.h"
@@ -70,30 +72,30 @@ typedef uint8 *LPRAWPTR;
 #define _REPUSH_ACTIVATED_          false
 #define _RETRY_ACTIVATED_           true
 
-//Milliseconds to wait after a command has been posted to the PUMP
-#define _INTERWORD_WAIT_         CyDelay(1)
-#define _INTERFRAME_WAIT_        CyDelay(50)
-
 //The MSN is always E for Data Words
 #define _DATA_WORD_MASK_        0xE0
 //The MSN is always F for Control Words
 #define _CONTROL_WORD_MASK_     0xF0
 
+//Milliseconds to wait after a command has been posted to the PUMP
+#define _INTERWORD_WAIT_         CyDelay(1)
+#define _INTERFRAME_WAIT_        CyDelay(50)
+
 #define _MAX_NUMBER_OF_PUMPS_        4
 #define _PUMP_JOB_QUEUE_SIZE_        48
-
-#define _VOLUME_PRESET_MULTIPLIER       1000
-
-#define _PUMP_MAX_QUEUE_TRANSTATES_  6
-#define _PUMP_TRANSTATE_BUFFER_SIZE_ 256
-
-#define _PUMP_MAXIMUM_PRESET_GALLONS_       500
 
 //MAXIMUM AMOUNTS FOR MONEY PRESETS
 #define _PUMP_MAXIMUM_PRESET_7_DIGITS_      9990000
 #define _PUMP_MAXIMUM_PRESET_6_DIGITS_      990000
 #define _PUMP_MAXIMUM_PRESET_5_DIGITS_      99000
 #define _PUMP_MAXIMUM_PRESET_4_DIGITS_      9900
+
+#define _VOLUME_PRESET_MULTIPLIER       1000
+
+#define _PUMP_MAXIMUM_PRESET_GALLONS_       500
+
+#define _PUMP_MAX_QUEUE_TRANSTATES_ 8
+#define _PUMP_TRANSTATE_BUFFER_SIZE_ 256
 
 enum _DECIMAL_SEPARATOR_
 {
@@ -161,6 +163,7 @@ enum _PUMP_STATES_
     PUMP_STOPPED    = 0x0C,
     //SPECIAL PUMP STATE
     PUMP_SEND_DATA  = 0x0D,
+
     ///Set upon initialization
     PUMP_UNKNOWN    = 0xFF
 };
@@ -244,6 +247,7 @@ enum _TRANSACTION_NAMES_
     _PUMP_TOTALS_,
     _PUMP_STATE_,
     _PUMP_EOT_,
+    _PUMP_EOT_STARTUP_,
     _PUMP_NETWORK_ENUMERATOR_,
     _PUMP_STOP_,
     _PUMP_STOPALL_,
@@ -297,7 +301,7 @@ typedef struct
     volatile uint32 _var4;
     volatile uint32 _var5;
 
-    //This 64 bit variables are mainly used to store the pump totals per hose in a QUATTRO dispenser
+    //These 64 bit variables are mainly used to store the pump totals per hose in a QUATTRO dispenser
     //since there are maximum 2 hoses per position/pump
     //In an Encore Dispenser the number of variables should be duplicated since there could be 4 hoses per position/pump
     volatile uint64 _var6;

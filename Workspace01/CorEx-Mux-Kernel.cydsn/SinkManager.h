@@ -17,10 +17,12 @@
 #include "cyfitter.h"
 #include "CyLib.h"
 
+
 // system includes
 #include <math.h>
 #include <stdint.h>
 #include <stdbool.h>
+
 
 ///*****************************************************************************************
 ///GLOBAL CONSTANTS FOR SOME TIMEOUT DEFINITIONS TO APPLY TO THE MESSAGES
@@ -51,12 +53,12 @@
 #define _SINK_TIMEOUT_80S_          80000
 #define _SINK_TIMEOUT_90S_          90000
 
-#define _TIMEOUT_BASE_TIME_             1000
-
-#define     _MESSAGE_QUEUE_DEPTH_       46
+#define     _MESSAGE_QUEUE_DEPTH_       48
 #define     _SUBSCRIBER_QUEUE_DEPTH_    16
 #define     _MESSAGE_LENGTH_            384
 #define     _OBSERVED_IDENTIFIERS_      8
+
+#define _TIMEOUT_BASE_TIME_             1000
 
 typedef enum _MESSAGE_TYPE_
 {
@@ -115,10 +117,6 @@ PSINKMESSAGEPTR a = AllocateMessageSlotConditional(b)
 #define _REALLOCATE_SINKMESSAGE_SLOT_CONDITIONAL(a,b)     \
 a = AllocateMessageSlotConditional(b)
 
-
-extern SinkMessage _g_sinkmessagequeue[_MESSAGE_QUEUE_DEPTH_];
-extern SinkSubscriber _g_sinksubscriberqueue[_SUBSCRIBER_QUEUE_DEPTH_];
-
 void SinkManagerRegistration();
 PSINKMESSAGEPTR AllocateMessageSlot();
 PSINKMESSAGEPTR AllocateMessageSlotConditional(uint8 messageid);
@@ -129,5 +127,8 @@ void ReleaseSinkMessageByID(uint8 messageid);
 bool FindSinkMessage(uint8 messageid);
 
 extern PSINKMESSAGEPTR _g_pretval[0x04];
+extern SinkMessage _g_sinkmessagequeue[_MESSAGE_QUEUE_DEPTH_];
+extern SinkSubscriber _g_sinksubscriberqueue[_SUBSCRIBER_QUEUE_DEPTH_];
+
 
 /* [] END OF FILE */

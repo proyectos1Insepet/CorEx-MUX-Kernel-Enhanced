@@ -179,7 +179,7 @@
         /* User code required at end of ISR (Optional) */
         /* `#START Dispenser_RXISR_END` */
 
-        if(InvokeResolver(UART_DISPENSER, (char8*)Dispenser_rxBuffer, Dispenser_GetRxBufferSize()))
+        if(InvokeResolver(UART_DISPENSER, (uint8*)Dispenser_rxBuffer, Dispenser_GetRxBufferSize()))
             Dispenser_ClearRxBuffer();
         
         /* `#END` */

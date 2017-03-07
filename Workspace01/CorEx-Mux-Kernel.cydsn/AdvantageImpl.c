@@ -398,7 +398,7 @@ void ProcessPumpTransactionData(void *pparam)
                 ClearRtcBuffer();
                 ReadRTC();
                 //CAREFUL WITH RETURNS BETWEEN THE LOCK/UNLOCK CALLS
-                //AND RECURSIVE CALLS THAT WOULD DEADLOCK!
+                //AND RECURSIVE CALLS THAT WOULD DEAD LOCK!
                 I2CBusLock();
             
                 ClearEepromBuffer();

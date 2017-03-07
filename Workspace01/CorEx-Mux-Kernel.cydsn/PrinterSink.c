@@ -20,6 +20,8 @@ void Printer21Callback(void *pdata);
 void Printer22Callback(void *pdata);
 void Printer1GenericCallback(void *pdata);
 void Printer2GenericCallback(void *pdata);
+void Printer1GenericCallbacklogo(void *pdata);
+void Printer2GenericCallbacklogo(void *pdata);
 
 PrinterLayout _g_printerlayout;
 
@@ -52,6 +54,12 @@ void PrinterSinkRegistration()
 
         psubscriber->_arrmsgid[index] = PRINTER2_GENERIC_JOB;
         psubscriber->Callback[index++] = Printer2GenericCallback;
+        
+        psubscriber->_arrmsgid[index] = PRINTER1_GENERIC_JOB_LOGO;
+        psubscriber->Callback[index++] = Printer1GenericCallbacklogo;
+
+        psubscriber->_arrmsgid[index] = PRINTER2_GENERIC_JOB_LOGO;
+        psubscriber->Callback[index++] = Printer2GenericCallbacklogo;
     }
     
     //This is the default printer port allocation

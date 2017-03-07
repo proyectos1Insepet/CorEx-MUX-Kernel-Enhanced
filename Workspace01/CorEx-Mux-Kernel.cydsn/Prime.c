@@ -261,7 +261,7 @@ PNEAR_PUMPTRANSACTIONALSTATEPTR PumpTransactionalStateDequeue(LPVOID pvthis)
 //@Septembre de 2016
 void PumpTransactionalStateEnqueue(LPVOID pvthis, PNEAR_PUMPTRANSACTIONALSTATEPTR pts)
 {
-    PNEAR_PUMPPTR pthispump = (PNEAR_PUMPPTR)pvthis;
+    //PNEAR_PUMPPTR pthispump = (PNEAR_PUMPPTR)pvthis;
     pts->_state = _PUMP_TRANSTATE_BUSY_;    
 }
 
@@ -270,7 +270,6 @@ void PumpTransactionalStateEnqueue(LPVOID pvthis, PNEAR_PUMPTRANSACTIONALSTATEPT
 void PumpTransactionalStateDeallocate(LPVOID pvthis, PNEAR_PUMPTRANSACTIONALSTATEPTR pts)
 {
     PNEAR_PUMPPTR pthispump = (PNEAR_PUMPPTR)pvthis;
-    
     pts->_state = _PUMP_TRANSTATE_FREE_;
     
     FOR(uint8 index = 0, index < (_PUMP_MAX_QUEUE_TRANSTATES_ - 1), index++)

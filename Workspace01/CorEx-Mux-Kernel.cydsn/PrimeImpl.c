@@ -29,6 +29,7 @@
 uint8_t FindLRC(char8 *_pbuffer);
 uint8_t GetLRC(char8 *_pbuffer);
 
+void ComplementaryCreditTransactionOnHose(LPVOID pparam);
 void PrimeActivateProgramming(LPVOID pparam);
 extern PNEARDISPENSERACTIVATEPROGRAMMING _g_ptractprogramming;
 
@@ -54,8 +55,10 @@ void AcquirePumpStateResponse(void *pparam)
             pjob->_ppump->_pumpstate = prevstate;
         }
         
+        #ifdef CREDIT_SALE_PUMP_LOCK
         if(pjob->_ppump->_pumpstate == PUMP_CALLING)
             pjob->_ppump->_pumplocked = false;
+        #endif
         
         if((pjob->_ppump->_pumpstate == PUMP_IDLE || pjob->_ppump->_pumpstate == PUMP_CALLING) && 
             (prevstate == PUMP_FEOT || prevstate == PUMP_PEOT || prevstate == PUMP_BUSY || prevstate == PUMP_AUTHORIZED))
@@ -113,6 +116,22 @@ void ProcessPumpRTHoseVolumeRequest(void *pparam)
         pjob->_ppump->_rxbuffer[0x07] = (pjob->_ppump->_rxbuffer[0x07] & 0x0F);
         pjob->_ppump->_rxbuffer[0x08] = (pjob->_ppump->_rxbuffer[0x08] & 0x0F);
         pjob->_ppump->_rtvolumeamount = LSDBCDBUFF2HEX(PBYTECAST(&pjob->_ppump->_rxbuffer[0x01]), 0x08);
+    }
+}
+
+void ProcessPumpRTHoseVolumeRequestGlobal(void *pparam)
+{
+    PPUMPTRANSACTIONJOBCONTEXTPTR pjob = (PPUMPTRANSACTIONJOBCONTEXTPTR)pparam;
+    if(pjob)
+    {
+        pjob->_ppump->_currenthose = (pjob->_ppump->_rxbuffer[0x00] & 0x0F);//Real Time Hose Data
+        
+        if(pjob->_ppump->_authorizationinfo._hoseid != pjob->_ppump->_currenthose)
+        {
+            pjob->_reenqueue = false;
+            ComplementaryCreditTransactionOnHose(pjob->_ppump);
+        }else
+            pjob->_reenqueue = true;
     }
 }
 
@@ -176,12 +195,12 @@ void ProcessPumpTransactionData(void *pparam)
                 pjob->_ppump->_rxbuffer[0x11] = (pjob->_ppump->_rxbuffer[0x11] & 0x0F);
             }
             
-
+            #ifdef _FDBD65F5_2FFE_4AA7_9C5F_F70414D772FF_
             memset(&pjob->_ppump->_rxbuffer[0x13], 0x00, 0x08);
             B78AD90CF552D9B30A(pjob->_ppump->_rtvolumeamount, (PNEAR_BYTE_PTR)&pjob->_ppump->_rxbuffer[0x13]);
-            
             memset(&pjob->_ppump->_rxbuffer[0x1C], 0x00, 0x08);
             B78AD90CF552D9B30A(pjob->_ppump->_rtmoneyamount, (PNEAR_BYTE_PTR)&pjob->_ppump->_rxbuffer[0x1D]);            
+            #endif
 
             //Bytes from index 19 to 26 are the digits for the fuel volume delivered in the transaction
             //Digits are in BCD format
@@ -219,11 +238,11 @@ void ProcessPumpTransactionData(void *pparam)
             else
                 pjob->_ppump->_authorizationinfo._presetamount = LSDBCDBUFF2HEX(PBYTECAST(&pjob->_ppump->_rxbuffer[0x1C]), 0x08);
                 
-            ClearRtcBuffer();
-            ReadRTC();
             //CAREFUL WITH RETURNS BETWEEN THE LOCK/UNLOCK CALLS
             //AND RECURSIVE CALLS THAT WOULD DEADLOCK!
             I2CBusLock();
+            ClearRtcBuffer();
+            ReadRTC();
         
             ClearEepromBuffer();
             //In this position is located the payment type (CREDIT: 0x0E , CASH:0x0D)
@@ -836,16 +855,25 @@ void PumpPresetHose(void *pparam)
         {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
             puartdisp->_messagetx[index++] = SOM;
+            
+            #ifndef PRIME_CASH_SALE_NOHOSE
             puartdisp->_messagetx[index++] = 0xE1;
+            #endif
+            #ifdef PRIME_CASH_SALE_NOHOSE
+            puartdisp->_messagetx[index++] = 0xE3;
+            #endif
+            
             ///THIS IS AN APPLIED CONVENTION ===>> 0x0004 INDEX POSITION WITHIN THE PUMP'S BUFFER POINTS TO THE TYPE OF PRESET
             ///THESE CODES MUST BE MATCHED OTHERWISE THE LOGIC WILL BREAKUP THE CODE!
             uint8 transtype = (0xF0 | ((ppump->_trasactionbuffer[0x0004] == 0x0F)? 0x02: 0x01));//preset type (0xF2 = Money, 0xF1 = Volume)
             puartdisp->_messagetx[index++] = transtype;
             
+            #ifndef PRIME_CASH_SALE_NOHOSE
             puartdisp->_messagetx[index++] = 0xF6; //Hose Data next
             ///THIS IS AN APPLIED CONVENTION ===>> 0x0006 INDEX POSITION WITHIN THE PUMP'S BUFFER POINTS TO THE PRODUCT TYPE
             ///THESE CODES MUST BE MATCHED OTHERWISE THE LOGIC WILL BREAKUP THE CODE!
             puartdisp->_messagetx[index++] = (0xE0 | (0x0F & ppump->_trasactionbuffer[GetBufferIndexFromDisplayID(DISPLAY_SUBA_MANIJA)]));
+            #endif
             
             puartdisp->_messagetx[index++] = 0xF8; //Preset Data next
             //Here we copy the remaining 8 bytes for the preset value
@@ -1098,16 +1126,25 @@ void PumpFullPresetHose(void *pparam)
         {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
             puartdisp->_messagetx[index++] = SOM;
-            puartdisp->_messagetx[index++] = 0xE1; //Data Length (n = 1 if F4/F5 is not included)
+            
+            #ifndef PRIME_CASH_SALE_NOHOSE
+            puartdisp->_messagetx[index++] = 0xE1;
+            #endif
+            #ifdef PRIME_CASH_SALE_NOHOSE
+            puartdisp->_messagetx[index++] = 0xE3;
+            #endif
+            
             ///THIS IS AN APPLIED CONVENTION ===>> 0x0004 INDEX POSITION WITHIN THE PUMP'S BUFFER POINTS TO THE TYPE OF PRESET
             ///THESE CODES MUST BE MATCHED OTHERWISE THE LOGIC WILL BREAKUP THE CODE!
-            uint8 transtype = 0xF2;
+            uint8 transtype = 0xF1;
             puartdisp->_messagetx[index++] = transtype;//preset type (0xF2 = Money, 0xF1 = Volume)
 
+            #ifndef PRIME_CASH_SALE_NOHOSE
             puartdisp->_messagetx[index++] = 0xF6; //Hose Data next
             ///THIS IS AN APPLIED CONVENTION ===>> 0x0006 INDEX POSITION WITHIN THE PUMP'S BUFFER POINTS TO THE PRODUCT TYPE
             ///THESE CODES MUST BE MATCHED OTHERWISE THE LOGIC WILL BREAKUP THE CODE!
             puartdisp->_messagetx[index++] = (0xE0 | (0x0F & ppump->_trasactionbuffer[GetBufferIndexFromDisplayID(DISPLAY_SUBA_MANIJA)]));
+            #endif
             
             puartdisp->_messagetx[index++] = 0xF8; //Preset Data next
             //Here we copy the remaining 8 bytes for the preset value
@@ -1115,16 +1152,20 @@ void PumpFullPresetHose(void *pparam)
             ///THESE CODES MUST BE MATCHED OTHERWISE THE LOGIC WILL BREAKUP THE CODE!
             char8 *ptr = &ppump->_trasactionbuffer[0x0008];
             if(_g_dispenserlayoutinfo._presetdigits & 0x01)
-                //B78AD90CF552D9B30A(_PUMP_MAXIMUM_PRESET_7_DIGITS_, (LPRAWPTR)ptr);
-                B78AD90CF552D9B30A(_PUMP_MAXIMUM_PRESET_6_DIGITS_, (LPRAWPTR)ptr);
+                B78AD90CF552D9B30A(_PUMP_MAXIMUM_PRESET_GALLONS_, (LPRAWPTR)ptr);
             else
-                B78AD90CF552D9B30A(_PUMP_MAXIMUM_PRESET_6_DIGITS_, (LPRAWPTR)ptr);
+                B78AD90CF552D9B30A(_PUMP_MAXIMUM_PRESET_GALLONS_, (LPRAWPTR)ptr);
 
             PSTRBUFFTOGG(PBYTECAST(&ppump->_trasactionbuffer[0x0008]), 0x08);
-            if(transtype == 0xF1) //Volume PRESET, then multiply by 1000
-                CastVolumeValue(ptr, 0x08);
-            else
-                CastMoneyValue(ptr, 0x08);
+            //THIS IS ONLY FOR VOLUME PRESETS
+            if(!ppump->_presetdone)
+            {
+                if(transtype == 0xF1) //Volume PRESET, then multiply by 1000
+                    CastVolumeValue(ptr, 0x08);
+                else
+                    CastMoneyValue(ptr, 0x08);
+                    
+            }
                 
             FOR(uint8 buffndx = 0, buffndx < 8, buffndx++)
                 puartdisp->_messagetx[index++] = (0xE0 | (0x0F & ptr[7 - buffndx])); //Translate from ASCII to BCD ==> LSD first!
@@ -1280,7 +1321,7 @@ void PumpPpuChange(void *pparam)
             for(; buffndx < 6; buffndx++)
                 puartdisp->_messagetx[index++] = (0xE0 | (0x0F & ptr[buffndx])); //Translate from ASCII to BCD ==> LSD first!
 
-            memset(&ppump->_trasactionbuffer[GetBufferIndexFromDisplayID(DISPLAY_PRECIO_POR_UNIDAD)], 0x00, GetBufferLengthFromDisplayID(DISPLAY_PRECIO_POR_UNIDAD));
+            memset(&ppump->_trasactionbuffer[GetBufferIndexFromDisplayID(DISPLAY_PRECIO_POR_UNIDAD)], 0x00, bufferlength);
             puartdisp->_messagetx[index++] = 0xFB; //LRC next
             puartdisp->_messagetx[index++] = GetLRC(puartdisp->_messagetx);
             puartdisp->_messagetx[index++] = EOM;
@@ -1528,7 +1569,6 @@ void PumpHoseActiveState(LPVOID pparam)
         PUARTMESSAGEPTR puartdisp = GetUARTMessageSlot(UART_DISPENSER);
         if(puartdisp)
         {
-            ppump->_currenthose = 0x00;
             ppump->_hoseactivestate = 0x00;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
             puartdisp->_messagetx[index++] = SOM;//Start Of Message
@@ -1554,29 +1594,81 @@ void AcquirePumpHoseActiveState(void *pparam)
     if(pjob)    
     {
         if(pjob->_ppump->_rxbuffer[0x00] == 0xBA)
-        {            
-            switch(pjob->_ppump->_rxbuffer[0x0E] & 0x0F)
+        {
+            if((pjob->_ppump->_rxbuffer[0x0C] & 0x0F) == 0x01){
+                switch(pjob->_ppump->_rxbuffer[0x0E] & 0x0F)
+                {
+                    case 0x01://Hose A active
+                        //Pump-Handle/Nozzle
+                        pjob->_ppump->_hoseactivestate = 0x01;//ON/OFF state
+                        break;
+                    case 0x02://Hose B active
+                        //Pump-Handle/Nozzle
+                        pjob->_ppump->_hoseactivestate = 0x11;//ON/OFF state
+                        break;
+                    case 0x03://Hose C active
+                        //Pump-Handle/Nozzle
+                        pjob->_ppump->_hoseactivestate = 0x21;//ON/OFF state
+                        break;
+                    case 0x04://Hose D active
+                        //Pump-Handle/Nozzle
+                        pjob->_ppump->_hoseactivestate = 0x31;//ON/OFF state
+                        break;
+                }
+            }
+            
+            if((pjob->_ppump->_hoseactivestate & 0x0F) == 0x00)
             {
-                case 0x01://Hose A active
-                    pjob->_ppump->_currenthose = 0x00;
-                    //Pump-Handle/Nozzle
-                    pjob->_ppump->_hoseactivestate = 0x01;//ON/OFF state
-                    break;
-                case 0x02://Hose B active
-                    pjob->_ppump->_currenthose = 0x01;
-                    //Pump-Handle/Nozzle
-                    pjob->_ppump->_hoseactivestate = 0x01;//ON/OFF state
-                    break;
-                case 0x03://Hose C active
-                    pjob->_ppump->_currenthose = 0x02;
-                    //Pump-Handle/Nozzle
-                    pjob->_ppump->_hoseactivestate = 0x01;//ON/OFF state
-                    break;
-                case 0x04://Hose D active
-                    pjob->_ppump->_currenthose = 0x03;
-                    //Pump-Handle/Nozzle
-                    pjob->_ppump->_hoseactivestate = 0x01;//ON/OFF state
-                    break;
+                _ALLOCATE_SINKMESSAGE_SLOT(psinkmsg);
+                if(psinkmsg)
+                {
+                    psinkmsg->_messageid = DISPENSER_ACQUIRE_PUMP_HOSE;
+                    psinkmsg->_messagedelay = _SINK_TIMEOUT_500MS_;
+                    psinkmsg->_messagetype = DELAYEDALLINTERESTED;
+                    psinkmsg->_pdata = pjob->_ppump;
+                    psinkmsg->_messagestate = SINK_BUSY;
+                    pjob->_ppump->_pumplocked = true;
+                }
+                                
+            }
+            else
+            {
+                if(((pjob->_ppump->_hoseactivestate & 0xF0) >> 4) != pjob->_ppump->_authorizationinfo._hoseid)
+                {
+                    _ALLOCATE_SINKMESSAGE_SLOT(psinkmsg);
+                    if(psinkmsg)
+                    {
+                        psinkmsg->_messageid = DISPENSER_ACQUIRE_PUMP_HOSE;
+                        psinkmsg->_messagedelay = _SINK_TIMEOUT_500MS_;
+                        psinkmsg->_messagetype = DELAYEDALLINTERESTED;
+                        psinkmsg->_pdata = pjob->_ppump;
+                        psinkmsg->_messagestate = SINK_BUSY;
+                        pjob->_ppump->_pumplocked = true;
+                    }
+                    
+                    _REALLOCATE_SINKMESSAGE_SLOT(psinkmsg);
+                    if(psinkmsg)
+                    {
+                        psinkmsg->_messageid = DISPENSER_PUMP_BEEP_WARNING;
+                        psinkmsg->_messagetype = FIRSTFOUND;
+                        psinkmsg->_pdata = pjob->_ppump;
+                        psinkmsg->_messagestate = SINK_BUSY;
+                    }
+                }
+                else
+                {
+                    pjob->_ppump->_pumplocked = false;
+                    _ALLOCATE_SINKMESSAGE_SLOT(psinkmsg);
+                    if(psinkmsg)
+                    {
+                        psinkmsg->_messageid = pjob->_ppump->_sinktransaction;
+                        psinkmsg->_messagedelay = _SINK_TIMEOUT_1S_;
+                        psinkmsg->_messagetype = DELAYEDALLINTERESTED;
+                        psinkmsg->_buffer[0x00] = pjob->_ppump->_pendingtransaction;
+                        psinkmsg->_pdata = pjob->_ppump;
+                        psinkmsg->_messagestate = SINK_BUSY;
+                    }
+                }
             }
         }
     }
@@ -1593,7 +1685,7 @@ void AcquirePumpCompleteConfiguration(void *pparam)
         uint8 index = 0;
         //NOT USED!! JUST FOR DEBUGGING PURPOSES!
         //The "index" variable has been kept in some lines of code just for reference.
-        uint8 remblocks = (TranslateSpecialFuncionDigit(pjob->_ppump->_rxbuffer[7 + 45*index]) << 0x04) | TranslateSpecialFuncionDigit(pjob->_ppump->_rxbuffer[8 + 45*index]);
+        //uint8 remblocks = (TranslateSpecialFuncionDigit(pjob->_ppump->_rxbuffer[7 + 45*index]) << 0x04) | TranslateSpecialFuncionDigit(pjob->_ppump->_rxbuffer[8 + 45*index]);
         //HERE WE ACQUIRE THE MISCELLANEOUS PUMP CONFIGURATION INFORMATION AND STORE IT INTO
         //THE PERSISTENT FILE SYSTEM (EEPROM)        
         if(pjob->_ppump->_rxbuffer[0 + 45*index] == 0xBA)
@@ -1636,7 +1728,8 @@ void AcquirePumpCompleteConfiguration(void *pparam)
             LPRAWPTR ptreeprom = &(GetEepromBuffer()[16]);
             
             uint8 blkindex = 0;
-            uint8 msglength = (TranslateSpecialFuncionDigit(pjob->_ppump->_rxbuffer[1 + 45*index]) << 0x04) | TranslateSpecialFuncionDigit(pjob->_ppump->_rxbuffer[2 + 45*index]);
+            //NOT YET REQUIRED
+            //uint8 msglength = (TranslateSpecialFuncionDigit(pjob->_ppump->_rxbuffer[1 + 45*index]) << 0x04) | TranslateSpecialFuncionDigit(pjob->_ppump->_rxbuffer[2 + 45*index]);
             
             //0
             //Pump Type
@@ -2018,7 +2111,7 @@ bool AcquirePumpSpecialFunctionResponseResolver(void *pparam, void *pbuffer, uin
 {
     bool retval = false;
     static uint8 index = 0;
-    PNEAR_PUMPPTR ppump = (PNEAR_PUMPPTR)pparam;
+    //PNEAR_PUMPPTR ppump = (PNEAR_PUMPPTR)pparam;
     //Since after the third byte we can start inquiry for the message length in words (this is according to the protocol)    
     //that is  the reason for the number "3"
     if((PSTRCAST(pbuffer)[0 + 45*index] == 0xBA) && buffersize >= 3)
@@ -2269,6 +2362,35 @@ void PrimeActivateProgramming(LPVOID pparam)
     }
 }
 
+void ComplementaryCreditTransactionOnHose(LPVOID pparam)
+{
+    PNEAR_PUMPPTR ppump = (PNEAR_PUMPPTR)pparam;
+    ppump->_pcurrtransaction = GetTransactionByName(_PUMP_FILL_CREDIT_COMPLEMENTARY_);
+    PumpTransactionJob *ptrjob = &((PumpTransaction*)ppump->_pcurrtransaction)->_jobs[0];
+    if(ptrjob)
+    {
+        while(ptrjob->Request != NULL)
+        {
+            PPUMPTRANSACTIONJOBCONTEXTPTR pjobcntr = _g_pumpjobqueue.Allocate(&_g_pumpjobqueue);
+            if(pjobcntr)
+            {
+                pjobcntr->_reenqueue = false;
+                pjobcntr->_prequest = ptrjob;
+                pjobcntr->_presponse = NULL;
+                pjobcntr->_ppump = ppump;
+                pjobcntr->_ppump->CleanUp(pjobcntr->_ppump);
+                //This callback will be invoked upon response (if exists)
+                //pjobcntr->Callback = pmsg->Callback;
+                //pjobcntr->_pdata = pmsg;
+                
+                _g_pumpjobqueue.Enqueue(&_g_pumpjobqueue, pjobcntr);
+            }
+            ptrjob++;
+        }
+    }
+}
+
+
 //@Created By: HIJH
 //@Septembre de 2016
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2289,7 +2411,6 @@ uint8_t GetLRC(char8 *_pbuffer)
 
 uint8_t FindLRC(char8 *_pbuffer)
 {
-    uint8_t lrc = 0;
     while(*_pbuffer != 0xFB)
     {
         _pbuffer++;

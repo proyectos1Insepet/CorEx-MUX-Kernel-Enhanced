@@ -22,8 +22,6 @@
 #include "Eeprom.h"
 #include "Rtc.h"
 
-bool _g_displaystarting = true;
-
 DisplayCharacterMap _g_productbuttonmap[] = 
 {
     { 0x80, 0x00 },
@@ -32,6 +30,8 @@ DisplayCharacterMap _g_productbuttonmap[] =
     { 0xB8, 0x03 },
     { 0x00, 0x00 }
 };
+
+bool _g_displaystarting = true;
 
 //@Created By: HIJH
 //@Septembre de 2016
@@ -108,28 +108,6 @@ void ParseDisplayFlow(void *pparam)
 
 //@Created by: HIJH
 //@Date: Septembre de 2016
-//This validator checks whether data has been entered into the InpupBox
-FPTRINPUTVALIDATOR DisplayFlowInputValidator(void *pparam)
-{
-    FPTRINPUTVALIDATOR pretval = NULL;
-    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
-    PDISPLAYFLOWPTR pdispflow = pdisplay->_preferenceflow;
-    while(pdispflow->_scrid != DISPLAY_NULL)
-    {
-        if(pdispflow->_scrid == pdisplay->_pcurrflow->_scrid && 
-            pdispflow->_parentscrid == pdisplay->_pcurrflow->_parentscrid && 
-            pdispflow->_parentcode == pdisplay->_pcurrflow->_parentcode)
-        {
-            pretval = pdispflow->_inputvalidator;
-            break;
-        }
-        pdispflow++;
-    }
-    return pretval;
-}
-
-//@Created by: HIJH
-//@Date: Septembre de 2016
 //This is the core handler for the input processing. It manages all the incoming codes from the screen
 //and map them to the valid ASCII. It also validates the inputbox size and manages the cleanup.
 FPTRINPUTHANDLER DisplayFlowInputHandler(void *pparam)
@@ -153,10 +131,10 @@ FPTRINPUTHANDLER DisplayFlowInputHandler(void *pparam)
 
 //@Created by: HIJH
 //@Date: Septembre de 2016
-//Retrieves the Decorator for the currently selected screen
-FPTRDECORATOR DisplayFlowDecorator(void *pparam)
+//This validator checks whether data has been entered into the InpupBox
+FPTRINPUTVALIDATOR DisplayFlowInputValidator(void *pparam)
 {
-    FPTRDECORATOR pretval = NULL;
+    FPTRINPUTVALIDATOR pretval = NULL;
     PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
     PDISPLAYFLOWPTR pdispflow = pdisplay->_preferenceflow;
     while(pdispflow->_scrid != DISPLAY_NULL)
@@ -165,7 +143,7 @@ FPTRDECORATOR DisplayFlowDecorator(void *pparam)
             pdispflow->_parentscrid == pdisplay->_pcurrflow->_parentscrid && 
             pdispflow->_parentcode == pdisplay->_pcurrflow->_parentcode)
         {
-            pretval = pdispflow->_decorator;
+            pretval = pdispflow->_inputvalidator;
             break;
         }
         pdispflow++;
@@ -188,6 +166,28 @@ FPTRINITIALIZER DisplayInitializer(void *pparam)
             pdispflow->_parentcode == pdisplay->_pcurrflow->_parentcode)
         {
             pretval = pdispflow->_initializer;
+            break;
+        }
+        pdispflow++;
+    }
+    return pretval;
+}
+
+//@Created by: HIJH
+//@Date: Septembre de 2016
+//Retrieves the Decorator for the currently selected screen
+FPTRDECORATOR DisplayFlowDecorator(void *pparam)
+{
+    FPTRDECORATOR pretval = NULL;
+    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
+    PDISPLAYFLOWPTR pdispflow = pdisplay->_preferenceflow;
+    while(pdispflow->_scrid != DISPLAY_NULL)
+    {
+        if(pdispflow->_scrid == pdisplay->_pcurrflow->_scrid && 
+            pdispflow->_parentscrid == pdisplay->_pcurrflow->_parentscrid && 
+            pdispflow->_parentcode == pdisplay->_pcurrflow->_parentcode)
+        {
+            pretval = pdispflow->_decorator;
             break;
         }
         pdispflow++;
@@ -308,11 +308,11 @@ bool SecureConfigurationValidator(void *pparam)
     if(pdisplay->_bufferinfo._bufferindex > 0)
     {
         retval = true;
-        const char* StringPass = "1234";
+        
         ClearEepromBuffer();
         LoadEepromPage(EEPROM_CONFIGURATION_PAGE7);
         //This EEPROM's page location is used to store the four digit ASCII password
-        if(!strncmp(pdisplay->_bufferinfo._buffer, StringPass, 0x04))
+        if(!strncmp(pdisplay->_bufferinfo._buffer, (char8*)&GetEepromBuffer()[0x0D], 0x04))
         {
             if(pdisplay->_bufferinfo._buffer[0x04] == 0x2C)
             {
@@ -341,432 +341,6 @@ void SaveNewPassword(void *pparam)
         LoadEepromPage(EEPROM_CONFIGURATION_PAGE7);
         memcpy(&GetEepromBuffer()[0x0D], pdisplay->_bufferinfo._buffer, 0x04);
         StoreEepromPage(EEPROM_CONFIGURATION_PAGE7);
-    }
-}
-
-//@Created by: HIJH
-//@Date: Septembre de 2016
-//This method validates that the capture buffer for the current display
-//has received the required information and is not empty
-bool NonEmptyMoneyValidator(void *pparam)
-{
-    bool retval = false;
-    char8 tempbuffer[_DISPLAY_BUFFER_SIZE_];
-    DisplayLayout *pdisplay = (DisplayLayout*)pparam;
-    
-    if(pdisplay->_bufferinfo._bufferindex > 0)
-        retval = true;
-    else
-        retval = false;    
-    
-    if(retval)
-    {
-        uint8 remplaces = _DISPLAY_BUFFER_SIZE_ - pdisplay->_bufferinfo._bufferindex;
-        memcpy(tempbuffer, pdisplay->_bufferinfo._buffer, _DISPLAY_BUFFER_SIZE_);
-        FOR(int8 index = pdisplay->_bufferinfo._bufferindex, index < _DISPLAY_BUFFER_SIZE_, index++)
-            tempbuffer[index] = 0x00;
-        
-        FOR(index = (pdisplay->_bufferinfo._bufferindex - 1), index >= 0, index--)
-        {
-            tempbuffer[index + remplaces] = tempbuffer[index] & 0x0F;
-            tempbuffer[index] = 0x00;
-        }    
-        CastMoneyValue(tempbuffer, _DISPLAY_BUFFER_SIZE_);
-        PSTRBUFFTOGG((PNEAR_BYTE_PTR)tempbuffer, _DISPLAY_BUFFER_SIZE_);
-        uint32 datavalue = LSDBCDBUFF2HEX((PNEAR_BYTE_PTR)tempbuffer, _DISPLAY_BUFFER_SIZE_);
-        
-        I2CBusLock();
-        ClearEepromBuffer();
-        LoadEepromPage(EEPROM_CONFIGURATION_PAGE5);
-        uint32 refvalue = LSDBCDBUFF2HEX((PNEAR_BYTE_PTR)&GetEepromBuffer()[0x02], 0x10);                
-        I2CBusUnlock();
-        
-        if(datavalue < refvalue)
-            retval = false;
-    }
-        
-    return retval;
-}
-
-//@Created by: HIJH
-//@Date: Septembre de 2016
-//This method validates that the capture buffer for the current display
-//has received the required information and is not empty
-bool NonEmptyVolumeValidator(void *pparam)
-{
-    bool retval = false;
-    char8 tempbuffer[_DISPLAY_BUFFER_SIZE_];
-    DisplayLayout *pdisplay = (DisplayLayout*)pparam;
-    
-    if(pdisplay->_bufferinfo._bufferindex > 0)
-        retval = true;
-    else
-        retval = false;    
-    
-    if(retval)
-    {
-        uint8 remplaces = _DISPLAY_BUFFER_SIZE_ - pdisplay->_bufferinfo._bufferindex;
-        memcpy(tempbuffer, pdisplay->_bufferinfo._buffer, _DISPLAY_BUFFER_SIZE_);
-        FOR(int8 index = pdisplay->_bufferinfo._bufferindex, index < _DISPLAY_BUFFER_SIZE_, index++)
-            tempbuffer[index] = 0x00;
-        
-        FOR(index = (pdisplay->_bufferinfo._bufferindex - 1), index >= 0, index--)
-        {
-            tempbuffer[index + remplaces] = tempbuffer[index] & 0x0F;
-            tempbuffer[index] = 0x00;
-        }    
-        CastVolumeValue(tempbuffer, _DISPLAY_BUFFER_SIZE_);
-        PSTRBUFFTOGG((PNEAR_BYTE_PTR)tempbuffer, _DISPLAY_BUFFER_SIZE_);
-        uint32 datavalue = LSDBCDBUFF2HEX((PNEAR_BYTE_PTR)tempbuffer, _DISPLAY_BUFFER_SIZE_);
-        
-        I2CBusLock();
-        ClearEepromBuffer();
-        LoadEepromPage(EEPROM_CONFIGURATION_PAGE6);
-        uint32 refvalue = LSDBCDBUFF2HEX((PNEAR_BYTE_PTR)&GetEepromBuffer()[0x00], 0x10);                
-        I2CBusUnlock();
-        
-        if(datavalue < refvalue)
-            retval = false;
-    }
-    
-    return retval;
-}
-
-//@Created by: HIJH
-//@Date: Septembre de 2016
-//This method validates that the capture buffer for the current display
-//has received a fifteen modulo value
-bool NonEmpty15ModuloValidator(void *pparam)
-{
-    bool retval = false;
-    char8 tempbuffer[_DISPLAY_BUFFER_SIZE_];
-    DisplayLayout *pdisplay = (DisplayLayout*)pparam;
-    
-    if(pdisplay->_bufferinfo._bufferindex > 0)
-        retval = true;
-    else
-        retval = false;    
-    
-    if(retval)
-    {
-        uint8 remplaces = _DISPLAY_BUFFER_SIZE_ - pdisplay->_bufferinfo._bufferindex;
-        memcpy(tempbuffer, pdisplay->_bufferinfo._buffer, _DISPLAY_BUFFER_SIZE_);
-        FOR(int8 index = pdisplay->_bufferinfo._bufferindex, index < _DISPLAY_BUFFER_SIZE_, index++)
-            tempbuffer[index] = 0x00;
-        
-        FOR(index = (pdisplay->_bufferinfo._bufferindex - 1), index >= 0, index--)
-        {
-            tempbuffer[index + remplaces] = tempbuffer[index] & 0x0F;
-            tempbuffer[index] = 0x00;
-        }    
-        PSTRBUFFTOGG((PNEAR_BYTE_PTR)tempbuffer, _DISPLAY_BUFFER_SIZE_);
-        uint32 datavalue = LSDBCDBUFF2HEX((PNEAR_BYTE_PTR)tempbuffer, _DISPLAY_BUFFER_SIZE_);
-                
-        if((datavalue % 15) != 0)
-            retval = false;
-    }
-        
-    return retval;
-}
-
-bool ValidatePumpAvailability4Positions(void *pparam)
-{
-    bool retval = true;
-    DisplayLayout *pdisplay = (DisplayLayout*)pparam;
-    if(_g_dispenserlayoutinfo._numpositions == 0x04)
-    {
-        if(pdisplay->_dispid == DISPLAY1)
-        {
-            switch(pdisplay->_currscrcode)
-            {
-                case POSITIONA://PUMP #1
-                retval = (((_g_pumps[0x00]._pumpstate == PUMP_IDLE) || (_g_pumps[0x00]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x00]._pumplocked);
-                break;
-                case POSITIONB://PUMP #3
-                retval = (((_g_pumps[0x02]._pumpstate == PUMP_IDLE) || (_g_pumps[0x02]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x02]._pumplocked);
-                break;
-            }
-            
-            retval &= !FindSinkMessage(_g_printerlayout._printerportside1);
-        }
-        else if(pdisplay->_dispid == DISPLAY2)
-        {
-            switch(pdisplay->_currscrcode)
-            {
-                case POSITIONA://PUMP #4
-                retval = (((_g_pumps[0x03]._pumpstate == PUMP_IDLE) || (_g_pumps[0x03]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x03]._pumplocked);
-                break;
-                case POSITIONB://PUMP #2
-                retval = (((_g_pumps[0x01]._pumpstate == PUMP_IDLE) || (_g_pumps[0x01]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x01]._pumplocked);
-                break;
-            }
-            
-            retval &= !FindSinkMessage(_g_printerlayout._printerportside2);
-        }
-    }
-    
-    return retval;
-}
-
-bool ValidatePumpAvailability21Positions(void *pparam)
-{
-    bool retval = true;
-    DisplayLayout *pdisplay = (DisplayLayout*)pparam;
-    if(_g_dispenserlayoutinfo._numpositions == 0x02)
-    {
-        if(pdisplay->_dispid == DISPLAY1)
-        {
-            retval = (((_g_pumps[0x00]._pumpstate == PUMP_IDLE) || (_g_pumps[0x00]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x00]._pumplocked);
-            retval &= !FindSinkMessage(_g_printerlayout._printerportside1);
-        }
-        else if(pdisplay->_dispid == DISPLAY2)
-        {
-            retval = (((_g_pumps[0x01]._pumpstate == PUMP_IDLE) || (_g_pumps[0x01]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x01]._pumplocked);
-            retval &= !FindSinkMessage(_g_printerlayout._printerportside2);
-        }
-    }
-    else if(_g_dispenserlayoutinfo._numpositions == 0x01)
-    {
-        if(pdisplay->_dispid == DISPLAY1)
-        {
-            retval = (((_g_pumps[0x00]._pumpstate == PUMP_IDLE) || (_g_pumps[0x00]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x00]._pumplocked);
-            retval &= !FindSinkMessage(_g_printerlayout._printerportside1);
-        }
-    }
-    
-    return retval;
-}
-
-void GetPumpsAvailability(void *pparam, uint8 *pvalues)
-{
-    DisplayLayout *pdisplay = (DisplayLayout*)pparam;
-    if(_g_dispenserlayoutinfo._numpositions == 0x04)
-    {
-        if(pdisplay->_dispid == DISPLAY1)
-        {
-            pvalues[0x00] = (((_g_pumps[0x00]._pumpstate == PUMP_IDLE) || (_g_pumps[0x00]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x00]._pumplocked);
-            pvalues[0x01] = (((_g_pumps[0x02]._pumpstate == PUMP_IDLE) || (_g_pumps[0x02]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x02]._pumplocked);
-            
-        }
-        else if(pdisplay->_dispid == DISPLAY2)
-        {
-            pvalues[0x00] = (((_g_pumps[0x03]._pumpstate == PUMP_IDLE) || (_g_pumps[0x03]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x03]._pumplocked);
-            pvalues[0x01] = (((_g_pumps[0x01]._pumpstate == PUMP_IDLE) || (_g_pumps[0x01]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x01]._pumplocked);
-            
-        }
-    }
-    else if(_g_dispenserlayoutinfo._numpositions == 0x02)
-    {
-        if(pdisplay->_dispid == DISPLAY1)
-        {
-            pvalues[0x00] = (((_g_pumps[0x00]._pumpstate == PUMP_IDLE) || (_g_pumps[0x00]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x00]._pumplocked);
-            pvalues[0x01] = (((_g_pumps[0x00]._pumpstate == PUMP_IDLE) || (_g_pumps[0x00]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x00]._pumplocked);
-            
-        }
-        else if(pdisplay->_dispid == DISPLAY2)
-        {
-            pvalues[0x00] = (((_g_pumps[0x01]._pumpstate == PUMP_IDLE) || (_g_pumps[0x01]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x01]._pumplocked);
-            pvalues[0x01] = (((_g_pumps[0x01]._pumpstate == PUMP_IDLE) || (_g_pumps[0x01]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x01]._pumplocked);
-            
-        }
-    }
-    else if(_g_dispenserlayoutinfo._numpositions == 0x01)
-    {
-        if(pdisplay->_dispid == DISPLAY1)
-        {
-            pvalues[0x00] = (((_g_pumps[0x00]._pumpstate == PUMP_IDLE) || (_g_pumps[0x00]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x00]._pumplocked);
-            pvalues[0x01] = (((_g_pumps[0x00]._pumpstate == PUMP_IDLE) || (_g_pumps[0x00]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x00]._pumplocked);
-            
-        }
-    }
-}
-
-void GetPumpsPrintState(void *pparam, bool *pvalues)
-{
-    DisplayLayout *pdisplay = (DisplayLayout*)pparam;
-    if(_g_dispenserlayoutinfo._numpositions == 0x04)
-    {
-        if(pdisplay->_dispid == DISPLAY1)
-        {
-            pvalues[0x00] = _g_pumps[0x00]._print;
-            pvalues[0x01] = _g_pumps[0x02]._print;
-            
-        }
-        else if(pdisplay->_dispid == DISPLAY2)
-        {
-            pvalues[0x00] = _g_pumps[0x03]._print;
-            pvalues[0x01] = _g_pumps[0x01]._print;
-            
-        }
-    }
-    else if(_g_dispenserlayoutinfo._numpositions == 0x02)
-    {
-        if(pdisplay->_dispid == DISPLAY1)
-        {
-            pvalues[0x00] = _g_pumps[0x00]._print;
-            pvalues[0x01] = _g_pumps[0x00]._print;
-            
-        }
-        else if(pdisplay->_dispid == DISPLAY2)
-        {
-            pvalues[0x00] = _g_pumps[0x01]._print;
-            pvalues[0x01] = _g_pumps[0x01]._print;
-            
-        }
-    }
-    else if(_g_dispenserlayoutinfo._numpositions == 0x01)
-    {
-        if(pdisplay->_dispid == DISPLAY1)
-        {
-            pvalues[0x00] = _g_pumps[0x00]._print;
-            pvalues[0x01] = _g_pumps[0x00]._print;
-            
-        }
-    }
-}
-
-//@Created by: HIJH
-//@Date: Septembre de 2016
-//This method handles the selected product on a credit sale
-void DisplayProductSelectionInputHandler(void *pparam)
-{
-    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
-    if(pdisplay)
-    {
-        uint8  numhoses = 0x00;
-        PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
-        switch(GetPumpIndexFromDisplay(pdisplay))
-        {
-            case 0x00:
-                numhoses = _g_dispenserlayoutinfo._hosesposition1;
-                break;
-            case 0x01:
-                numhoses = _g_dispenserlayoutinfo._hosesposition2;
-                break;
-            case 0x02:
-                numhoses = _g_dispenserlayoutinfo._hosesposition3;
-                break;
-            case 0x03:
-                numhoses = _g_dispenserlayoutinfo._hosesposition4;
-                break;
-        }    
-        DisplayCharacterMap *pdispcharmap = _g_productbuttonmap;
-        while(pdispcharmap->_refchar != 0x00)
-        {
-            if((pdispcharmap->_refchar == pdisplay->_currscrcode) && ((pdispcharmap->_mappedto + 1) <= numhoses))
-            {
-                ((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer[GetBufferIndexFromDisplayID(DISPLAY_SUBA_MANIJA)] = pdispcharmap->_mappedto;
-                pdisplay->_currentstate = DISPLAY_HOSE_ACTIVATED;
-                break;
-            }
-            pdispcharmap++;
-        }
-    }
-}
-
-//@Created by: HIJH
-//@Date: Septembre de 2016
-//This method handles the input data typed 
-//in the screen
-void DisplayInputHandler(void *pparam)
-{
-    DisplayLayout *pdisplay = (DisplayLayout*)pparam;
-    if(pdisplay)
-    {
-        char8 mappedchar = 0x00;
-        //This is since 0x0B has been defined as "Cancel" in the keypad
-        if(pdisplay->_currscrcode == 0x0B)
-            pdisplay->_bufferinfo._bufferindex = 0;
-        else
-            mappedchar = UnmapCode(pdisplay->_currscrcode);
-        
-        if(pdisplay->_bufferinfo._bufferindex == 0)
-        {
-            pdisplay->_bufferinfo._xpos = pdisplay->_pcurrflow->_inputboxinfo._xdefpos;
-            pdisplay->_bufferinfo._ypos = pdisplay->_pcurrflow->_inputboxinfo._ydefpos;
-            memset(pdisplay->_bufferinfo._buffer, ' ', _DISPLAY_BUFFER_SIZE_);
-        }
-        //The InputBox is already filled up!
-        if(pdisplay->_bufferinfo._bufferindex >= pdisplay->_pcurrflow->_inputboxinfo._maxchars)
-            return;
-        
-        //There's nothing new to show up since the unmapper didn't find anything to map to
-        if(mappedchar != 0x00)
-            pdisplay->_bufferinfo._buffer[pdisplay->_bufferinfo._bufferindex++] = mappedchar;
-        
-        if(pdisplay->_dispid == DISPLAY1)
-        {
-            UARTMessage *puartdisp = GetUARTMessageSlot(UART_DISPLAY1);
-            if(puartdisp)
-            {
-                puartdisp->_messagelength = DisplayOutputString(pdisplay->_bufferinfo._xpos, pdisplay->_bufferinfo._ypos, puartdisp->_messagetx, pdisplay->_bufferinfo._buffer, pdisplay->_pcurrflow->_inputboxinfo._maxchars, pdisplay->_pcurrflow->_inputboxinfo._font);
-                puartdisp->_messagestate = PENDING;
-            }
-        }
-        else
-        {
-            UARTMessage *puartdisp = GetUARTMessageSlot(UART_DISPLAY2);
-            if(puartdisp)
-            {
-                puartdisp->_messagelength = DisplayOutputString(pdisplay->_bufferinfo._xpos, pdisplay->_bufferinfo._ypos, puartdisp->_messagetx, pdisplay->_bufferinfo._buffer, pdisplay->_pcurrflow->_inputboxinfo._maxchars, pdisplay->_pcurrflow->_inputboxinfo._font);
-                puartdisp->_messagestate = PENDING;
-            }
-        }
-        
-    }
-}
-
-void DisplayIDInputHandler(void *pparam)
-{
-    DisplayLayout *pdisplay = (DisplayLayout*)pparam;
-    if(pdisplay)
-    {
-        char8 mappedchar = 0x00;
-        //This is since 0x0B has been defined as "Cancel" in the keypad
-        if(pdisplay->_currscrcode == 0x0B)
-            pdisplay->_bufferinfo._bufferindex = 0;
-        else
-        {
-            mappedchar = UnmapCode(pdisplay->_currscrcode);
-            
-            //No zeros allowed as left most significant digits
-            if((mappedchar < 0x30 || mappedchar > 0x39) && (pdisplay->_bufferinfo._bufferindex == 0))
-                return;
-        }
-        
-        if(pdisplay->_bufferinfo._bufferindex == 0)
-        {
-            pdisplay->_bufferinfo._xpos = pdisplay->_pcurrflow->_inputboxinfo._xdefpos;
-            pdisplay->_bufferinfo._ypos = pdisplay->_pcurrflow->_inputboxinfo._ydefpos;
-            memset(pdisplay->_bufferinfo._buffer, ' ', _DISPLAY_BUFFER_SIZE_);
-        }
-        //The InputBox is already filled up!
-        if(pdisplay->_bufferinfo._bufferindex >= pdisplay->_pcurrflow->_inputboxinfo._maxchars)
-            return;
-        
-        //There's nothing new to show up since the unmapper didn't find anything to map to
-        if(mappedchar != 0x00)
-            pdisplay->_bufferinfo._buffer[pdisplay->_bufferinfo._bufferindex++] = mappedchar;
-        
-        if(pdisplay->_dispid == DISPLAY1)
-        {
-            UARTMessage *puartdisp = GetUARTMessageSlot(UART_DISPLAY1);
-            if(puartdisp)
-            {
-                puartdisp->_messagelength = DisplayOutputString(pdisplay->_bufferinfo._xpos, pdisplay->_bufferinfo._ypos, puartdisp->_messagetx, pdisplay->_bufferinfo._buffer, pdisplay->_pcurrflow->_inputboxinfo._maxchars, pdisplay->_pcurrflow->_inputboxinfo._font);
-                puartdisp->_messagestate = PENDING;
-            }
-        }
-        else
-        {
-            UARTMessage *puartdisp = GetUARTMessageSlot(UART_DISPLAY2);
-            if(puartdisp)
-            {
-                puartdisp->_messagelength = DisplayOutputString(pdisplay->_bufferinfo._xpos, pdisplay->_bufferinfo._ypos, puartdisp->_messagetx, pdisplay->_bufferinfo._buffer, pdisplay->_pcurrflow->_inputboxinfo._maxchars, pdisplay->_pcurrflow->_inputboxinfo._font);
-                puartdisp->_messagestate = PENDING;
-            }
-        }
-        
     }
 }
 
@@ -1065,6 +639,393 @@ void DisplayVolumeInputHandler(void *pparam)
 
 //@Created by: HIJH
 //@Date: Septembre de 2016
+//This method validates that the capture buffer for the current display
+//has received the required information and is not empty
+bool NonEmptyMoneyValidator(void *pparam)
+{
+    bool retval = false;
+    char8 tempbuffer[_DISPLAY_BUFFER_SIZE_];
+    DisplayLayout *pdisplay = (DisplayLayout*)pparam;
+    
+    if(pdisplay->_bufferinfo._bufferindex > 0)
+        retval = true;
+    else
+        retval = false;    
+    
+    if(retval)
+    {
+        uint8 remplaces = _DISPLAY_BUFFER_SIZE_ - pdisplay->_bufferinfo._bufferindex;
+        memcpy(tempbuffer, pdisplay->_bufferinfo._buffer, _DISPLAY_BUFFER_SIZE_);
+        FOR(int8 index = pdisplay->_bufferinfo._bufferindex, index < _DISPLAY_BUFFER_SIZE_, index++)
+            tempbuffer[index] = 0x00;
+        
+        FOR(index = (pdisplay->_bufferinfo._bufferindex - 1), index >= 0, index--)
+        {
+            tempbuffer[index + remplaces] = tempbuffer[index] & 0x0F;
+            tempbuffer[index] = 0x00;
+        }    
+        CastMoneyValue(tempbuffer, _DISPLAY_BUFFER_SIZE_);
+        PSTRBUFFTOGG((PNEAR_BYTE_PTR)tempbuffer, _DISPLAY_BUFFER_SIZE_);
+        uint32 datavalue = LSDBCDBUFF2HEX((PNEAR_BYTE_PTR)tempbuffer, _DISPLAY_BUFFER_SIZE_);
+        
+        I2CBusLock();
+        ClearEepromBuffer();
+        LoadEepromPage(EEPROM_CONFIGURATION_PAGE5);
+        uint32 refvalue = LSDBCDBUFF2HEX((PNEAR_BYTE_PTR)&GetEepromBuffer()[0x02], 0x10);                
+        I2CBusUnlock();
+        
+        if(datavalue < refvalue)
+            retval = false;
+    }
+        
+    return retval;
+}
+
+//@Created by: HIJH
+//@Date: Septembre de 2016
+//This method validates that the capture buffer for the current display
+//has received the required information and is not empty
+bool NonEmptyVolumeValidator(void *pparam)
+{
+    bool retval = false;
+    char8 tempbuffer[_DISPLAY_BUFFER_SIZE_];
+    DisplayLayout *pdisplay = (DisplayLayout*)pparam;
+    
+    if(pdisplay->_bufferinfo._bufferindex > 0)
+        retval = true;
+    else
+        retval = false;    
+    
+    if(retval)
+    {
+        uint8 remplaces = _DISPLAY_BUFFER_SIZE_ - pdisplay->_bufferinfo._bufferindex;
+        memcpy(tempbuffer, pdisplay->_bufferinfo._buffer, _DISPLAY_BUFFER_SIZE_);
+        FOR(int8 index = pdisplay->_bufferinfo._bufferindex, index < _DISPLAY_BUFFER_SIZE_, index++)
+            tempbuffer[index] = 0x00;
+        
+        FOR(index = (pdisplay->_bufferinfo._bufferindex - 1), index >= 0, index--)
+        {
+            tempbuffer[index + remplaces] = tempbuffer[index] & 0x0F;
+            tempbuffer[index] = 0x00;
+        }    
+        CastVolumeValue(tempbuffer, _DISPLAY_BUFFER_SIZE_);
+        PSTRBUFFTOGG((PNEAR_BYTE_PTR)tempbuffer, _DISPLAY_BUFFER_SIZE_);
+        uint32 datavalue = LSDBCDBUFF2HEX((PNEAR_BYTE_PTR)tempbuffer, _DISPLAY_BUFFER_SIZE_);
+        
+        I2CBusLock();
+        ClearEepromBuffer();
+        LoadEepromPage(EEPROM_CONFIGURATION_PAGE6);
+        uint32 refvalue = LSDBCDBUFF2HEX((PNEAR_BYTE_PTR)&GetEepromBuffer()[0x00], 0x10);                
+        I2CBusUnlock();
+        
+        if(datavalue < refvalue)
+            retval = false;
+    }
+    
+    return retval;
+}
+
+//@Created by: HIJH
+//@Date: Septembre de 2016
+//This method validates that the capture buffer for the current display
+//has received a fifteen modulo value
+bool NonEmpty15ModuloValidator(void *pparam)
+{
+    bool retval = false;
+    char8 tempbuffer[_DISPLAY_BUFFER_SIZE_];
+    DisplayLayout *pdisplay = (DisplayLayout*)pparam;
+    
+    if(pdisplay->_bufferinfo._bufferindex > 0)
+        retval = true;
+    else
+        retval = false;    
+    
+    if(retval)
+    {
+        uint8 remplaces = _DISPLAY_BUFFER_SIZE_ - pdisplay->_bufferinfo._bufferindex;
+        memcpy(tempbuffer, pdisplay->_bufferinfo._buffer, _DISPLAY_BUFFER_SIZE_);
+        FOR(int8 index = pdisplay->_bufferinfo._bufferindex, index < _DISPLAY_BUFFER_SIZE_, index++)
+            tempbuffer[index] = 0x00;
+        
+        FOR(index = (pdisplay->_bufferinfo._bufferindex - 1), index >= 0, index--)
+        {
+            tempbuffer[index + remplaces] = tempbuffer[index] & 0x0F;
+            tempbuffer[index] = 0x00;
+        }    
+        PSTRBUFFTOGG((PNEAR_BYTE_PTR)tempbuffer, _DISPLAY_BUFFER_SIZE_);
+        uint32 datavalue = LSDBCDBUFF2HEX((PNEAR_BYTE_PTR)tempbuffer, _DISPLAY_BUFFER_SIZE_);
+                
+        if((datavalue % 15) != 0)
+            retval = false;
+    }
+        
+    return retval;
+}
+
+bool ValidatePumpAvailability4Positions(void *pparam)
+{
+    bool retval = true;
+    DisplayLayout *pdisplay = (DisplayLayout*)pparam;
+    if(_g_dispenserlayoutinfo._numpositions == 0x04)
+    {
+        if(pdisplay->_dispid == DISPLAY1)
+        {
+            switch(pdisplay->_currscrcode)
+            {
+                case POSITIONA://PUMP #1
+                retval = (((_g_pumps[0x00]._pumpstate == PUMP_IDLE) || (_g_pumps[0x00]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x00]._pumplocked);
+                break;
+                case POSITIONB://PUMP #3
+                retval = (((_g_pumps[0x02]._pumpstate == PUMP_IDLE) || (_g_pumps[0x02]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x02]._pumplocked);
+                break;
+            }
+            
+            retval &= !FindSinkMessage(_g_printerlayout._printerportside1);
+        }
+        else if(pdisplay->_dispid == DISPLAY2)
+        {
+            switch(pdisplay->_currscrcode)
+            {
+                case POSITIONA://PUMP #4
+                retval = (((_g_pumps[0x03]._pumpstate == PUMP_IDLE) || (_g_pumps[0x03]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x03]._pumplocked);
+                break;
+                case POSITIONB://PUMP #2
+                retval = (((_g_pumps[0x01]._pumpstate == PUMP_IDLE) || (_g_pumps[0x01]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x01]._pumplocked);
+                break;
+            }
+            
+            retval &= !FindSinkMessage(_g_printerlayout._printerportside2);
+        }
+    }
+    
+    return retval;
+}
+
+bool ValidatePumpAvailability21Positions(void *pparam)
+{
+    bool retval = true;
+    DisplayLayout *pdisplay = (DisplayLayout*)pparam;
+    if(_g_dispenserlayoutinfo._numpositions == 0x02)
+    {
+        if(pdisplay->_dispid == DISPLAY1)
+        {
+            retval = (((_g_pumps[0x00]._pumpstate == PUMP_IDLE) || (_g_pumps[0x00]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x00]._pumplocked);
+            retval &= !FindSinkMessage(_g_printerlayout._printerportside1);
+        }
+        else if(pdisplay->_dispid == DISPLAY2)
+        {
+            retval = (((_g_pumps[0x01]._pumpstate == PUMP_IDLE) || (_g_pumps[0x01]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x01]._pumplocked);
+            retval &= !FindSinkMessage(_g_printerlayout._printerportside2);
+        }
+    }
+    else if(_g_dispenserlayoutinfo._numpositions == 0x01)
+    {
+        if(pdisplay->_dispid == DISPLAY1)
+        {
+            retval = (((_g_pumps[0x00]._pumpstate == PUMP_IDLE) || (_g_pumps[0x00]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x00]._pumplocked);
+            retval &= !FindSinkMessage(_g_printerlayout._printerportside1);
+        }
+    }
+    
+    return retval;
+}
+
+void GetPumpsAvailability(void *pparam, uint8 *pvalues)
+{
+    DisplayLayout *pdisplay = (DisplayLayout*)pparam;
+    if(_g_dispenserlayoutinfo._numpositions == 0x04)
+    {
+        if(pdisplay->_dispid == DISPLAY1)
+        {
+            pvalues[0x00] = (((_g_pumps[0x00]._pumpstate == PUMP_IDLE) || (_g_pumps[0x00]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x00]._pumplocked);
+            pvalues[0x01] = (((_g_pumps[0x02]._pumpstate == PUMP_IDLE) || (_g_pumps[0x02]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x02]._pumplocked);
+            
+        }
+        else if(pdisplay->_dispid == DISPLAY2)
+        {
+            pvalues[0x00] = (((_g_pumps[0x03]._pumpstate == PUMP_IDLE) || (_g_pumps[0x03]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x03]._pumplocked);
+            pvalues[0x01] = (((_g_pumps[0x01]._pumpstate == PUMP_IDLE) || (_g_pumps[0x01]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x01]._pumplocked);
+            
+        }
+    }
+    else if(_g_dispenserlayoutinfo._numpositions == 0x02)
+    {
+        if(pdisplay->_dispid == DISPLAY1)
+        {
+            pvalues[0x00] = (((_g_pumps[0x00]._pumpstate == PUMP_IDLE) || (_g_pumps[0x00]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x00]._pumplocked);
+            pvalues[0x01] = (((_g_pumps[0x00]._pumpstate == PUMP_IDLE) || (_g_pumps[0x00]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x00]._pumplocked);
+            
+        }
+        else if(pdisplay->_dispid == DISPLAY2)
+        {
+            pvalues[0x00] = (((_g_pumps[0x01]._pumpstate == PUMP_IDLE) || (_g_pumps[0x01]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x01]._pumplocked);
+            pvalues[0x01] = (((_g_pumps[0x01]._pumpstate == PUMP_IDLE) || (_g_pumps[0x01]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x01]._pumplocked);
+            
+        }
+    }
+    else if(_g_dispenserlayoutinfo._numpositions == 0x01)
+    {
+        if(pdisplay->_dispid == DISPLAY1)
+        {
+            pvalues[0x00] = (((_g_pumps[0x00]._pumpstate == PUMP_IDLE) || (_g_pumps[0x00]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x00]._pumplocked);
+            pvalues[0x01] = (((_g_pumps[0x00]._pumpstate == PUMP_IDLE) || (_g_pumps[0x00]._pumpstate == PUMP_CALLING)) && !_g_pumps[0x00]._pumplocked);
+            
+        }
+    }
+}
+
+void GetPumpsPrintState(void *pparam, bool *pvalues)
+{
+    DisplayLayout *pdisplay = (DisplayLayout*)pparam;
+    if(_g_dispenserlayoutinfo._numpositions == 0x04)
+    {
+        if(pdisplay->_dispid == DISPLAY1)
+        {
+            pvalues[0x00] = _g_pumps[0x00]._print;
+            pvalues[0x01] = _g_pumps[0x02]._print;
+            
+        }
+        else if(pdisplay->_dispid == DISPLAY2)
+        {
+            pvalues[0x00] = _g_pumps[0x03]._print;
+            pvalues[0x01] = _g_pumps[0x01]._print;
+            
+        }
+    }
+    else if(_g_dispenserlayoutinfo._numpositions == 0x02)
+    {
+        if(pdisplay->_dispid == DISPLAY1)
+        {
+            pvalues[0x00] = _g_pumps[0x00]._print;
+            pvalues[0x01] = _g_pumps[0x00]._print;
+            
+        }
+        else if(pdisplay->_dispid == DISPLAY2)
+        {
+            pvalues[0x00] = _g_pumps[0x01]._print;
+            pvalues[0x01] = _g_pumps[0x01]._print;
+            
+        }
+    }
+    else if(_g_dispenserlayoutinfo._numpositions == 0x01)
+    {
+        if(pdisplay->_dispid == DISPLAY1)
+        {
+            pvalues[0x00] = _g_pumps[0x00]._print;
+            pvalues[0x01] = _g_pumps[0x00]._print;
+            
+        }
+    }
+}
+
+//@Created by: HIJH
+//@Date: Septembre de 2016
+//This method handles the input data typed 
+//in the screen
+void DisplayInputHandler(void *pparam)
+{
+    DisplayLayout *pdisplay = (DisplayLayout*)pparam;
+    if(pdisplay)
+    {
+        char8 mappedchar = 0x00;
+        //This is since 0x0B has been defined as "Cancel" in the keypad
+        if(pdisplay->_currscrcode == 0x0B)
+            pdisplay->_bufferinfo._bufferindex = 0;
+        else
+            mappedchar = UnmapCode(pdisplay->_currscrcode);
+        
+        if(pdisplay->_bufferinfo._bufferindex == 0)
+        {
+            pdisplay->_bufferinfo._xpos = pdisplay->_pcurrflow->_inputboxinfo._xdefpos;
+            pdisplay->_bufferinfo._ypos = pdisplay->_pcurrflow->_inputboxinfo._ydefpos;
+            memset(pdisplay->_bufferinfo._buffer, ' ', _DISPLAY_BUFFER_SIZE_);
+        }
+        //The InputBox is already filled up!
+        if(pdisplay->_bufferinfo._bufferindex >= pdisplay->_pcurrflow->_inputboxinfo._maxchars)
+            return;
+        
+        //There's nothing new to show up since the unmapper didn't find anything to map to
+        if(mappedchar != 0x00)
+            pdisplay->_bufferinfo._buffer[pdisplay->_bufferinfo._bufferindex++] = mappedchar;
+        
+        if(pdisplay->_dispid == DISPLAY1)
+        {
+            UARTMessage *puartdisp = GetUARTMessageSlot(UART_DISPLAY1);
+            if(puartdisp)
+            {
+                puartdisp->_messagelength = DisplayOutputString(pdisplay->_bufferinfo._xpos, pdisplay->_bufferinfo._ypos, puartdisp->_messagetx, pdisplay->_bufferinfo._buffer, pdisplay->_pcurrflow->_inputboxinfo._maxchars, pdisplay->_pcurrflow->_inputboxinfo._font);
+                puartdisp->_messagestate = PENDING;
+            }
+        }
+        else
+        {
+            UARTMessage *puartdisp = GetUARTMessageSlot(UART_DISPLAY2);
+            if(puartdisp)
+            {
+                puartdisp->_messagelength = DisplayOutputString(pdisplay->_bufferinfo._xpos, pdisplay->_bufferinfo._ypos, puartdisp->_messagetx, pdisplay->_bufferinfo._buffer, pdisplay->_pcurrflow->_inputboxinfo._maxchars, pdisplay->_pcurrflow->_inputboxinfo._font);
+                puartdisp->_messagestate = PENDING;
+            }
+        }
+        
+    }
+}
+
+void DisplayIDInputHandler(void *pparam)
+{
+    DisplayLayout *pdisplay = (DisplayLayout*)pparam;
+    if(pdisplay)
+    {
+        char8 mappedchar = 0x00;
+        //This is since 0x0B has been defined as "Cancel" in the keypad
+        if(pdisplay->_currscrcode == 0x0B)
+            pdisplay->_bufferinfo._bufferindex = 0;
+        else
+        {
+            mappedchar = UnmapCode(pdisplay->_currscrcode);
+            
+            //No zeros allowed as left most significant digits
+            if((mappedchar < 0x30 || mappedchar > 0x39) && (pdisplay->_bufferinfo._bufferindex == 0))
+                return;
+        }
+        
+        if(pdisplay->_bufferinfo._bufferindex == 0)
+        {
+            pdisplay->_bufferinfo._xpos = pdisplay->_pcurrflow->_inputboxinfo._xdefpos;
+            pdisplay->_bufferinfo._ypos = pdisplay->_pcurrflow->_inputboxinfo._ydefpos;
+            memset(pdisplay->_bufferinfo._buffer, ' ', _DISPLAY_BUFFER_SIZE_);
+        }
+        //The InputBox is already filled up!
+        if(pdisplay->_bufferinfo._bufferindex >= pdisplay->_pcurrflow->_inputboxinfo._maxchars)
+            return;
+        
+        //There's nothing new to show up since the unmapper didn't find anything to map to
+        if(mappedchar != 0x00)
+            pdisplay->_bufferinfo._buffer[pdisplay->_bufferinfo._bufferindex++] = mappedchar;
+        
+        if(pdisplay->_dispid == DISPLAY1)
+        {
+            UARTMessage *puartdisp = GetUARTMessageSlot(UART_DISPLAY1);
+            if(puartdisp)
+            {
+                puartdisp->_messagelength = DisplayOutputString(pdisplay->_bufferinfo._xpos, pdisplay->_bufferinfo._ypos, puartdisp->_messagetx, pdisplay->_bufferinfo._buffer, pdisplay->_pcurrflow->_inputboxinfo._maxchars, pdisplay->_pcurrflow->_inputboxinfo._font);
+                puartdisp->_messagestate = PENDING;
+            }
+        }
+        else
+        {
+            UARTMessage *puartdisp = GetUARTMessageSlot(UART_DISPLAY2);
+            if(puartdisp)
+            {
+                puartdisp->_messagelength = DisplayOutputString(pdisplay->_bufferinfo._xpos, pdisplay->_bufferinfo._ypos, puartdisp->_messagetx, pdisplay->_bufferinfo._buffer, pdisplay->_pcurrflow->_inputboxinfo._maxchars, pdisplay->_pcurrflow->_inputboxinfo._font);
+                puartdisp->_messagestate = PENDING;
+            }
+        }
+        
+    }
+}
+
+//@Created by: HIJH
+//@Date: Septembre de 2016
 //This method handles the input data typed in the inputbox. 
 //It masks the output so it allows for writting passwords.
 void DisplayInputPasswordHandler(void *pparam)
@@ -1121,6 +1082,95 @@ void DisplayInputPasswordHandler(void *pparam)
 }
 
 //@Created by: HIJH
+//@Date: Octobre de 2016
+//Retrieves the right display depending on the pump identifier. This is done by taking into account the
+//dispenser layaou (NORMAL / QUATTRO)
+PDISPLAYLAYOUTPTR GetDisplayFromPumpID(uint8 pumpid)
+{
+    PDISPLAYLAYOUTPTR retval = PNEAR_NULLPTR;
+    switch(_g_dispenserlayoutinfo._numpositions)
+    {
+        case 0x02:
+        {
+            if(_g_pumps[0x00]._pumpid == pumpid)
+                retval = &_g_display1;
+            else if(_g_pumps[0x01]._pumpid == pumpid)
+                retval = &_g_display2;
+            
+            break;
+        }
+        case 0x04:
+        {
+            if(_g_pumps[0x00]._pumpid == pumpid)
+                retval = &_g_display1;
+            else if(_g_pumps[0x01]._pumpid == pumpid)
+                retval = &_g_display2;
+            else if(_g_pumps[0x02]._pumpid == pumpid)
+                retval = &_g_display1;
+            else if(_g_pumps[0x03]._pumpid == pumpid)
+                retval = &_g_display2;
+            
+            break;
+        }
+    }
+    return retval;
+}
+
+//@Created by: HIJH
+//@Date: Septembre de 2016
+//This method handles the selected product on a credit sale
+void DisplayProductSelectionInputHandler(void *pparam)
+{
+    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
+    if(pdisplay)
+    {
+        uint8  numhoses = 0x00;
+        PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
+        switch(GetPumpIndexFromDisplay(pdisplay))
+        {
+            case 0x00:
+                numhoses = _g_dispenserlayoutinfo._hosesposition1;
+                break;
+            case 0x01:
+                numhoses = _g_dispenserlayoutinfo._hosesposition2;
+                break;
+            case 0x02:
+                numhoses = _g_dispenserlayoutinfo._hosesposition3;
+                break;
+            case 0x03:
+                numhoses = _g_dispenserlayoutinfo._hosesposition4;
+                break;
+        }    
+        DisplayCharacterMap *pdispcharmap = _g_productbuttonmap;
+        while(pdispcharmap->_refchar != 0x00)
+        {
+            if((pdispcharmap->_refchar == pdisplay->_currscrcode) && ((pdispcharmap->_mappedto + 1) <= numhoses))
+            {
+                ((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer[GetBufferIndexFromDisplayID(DISPLAY_SUBA_MANIJA)] = pdispcharmap->_mappedto;
+                pdisplay->_currentstate = DISPLAY_HOSE_ACTIVATED;
+                break;
+            }
+            pdispcharmap++;
+        }
+    }
+}
+
+//@Created by: HIJH
+//@Date: Septembre de 2016
+//Cleans the sink message that has been allocated to store the transacion data
+void CleanMessageSink(void *pparam)
+{
+    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
+    if(pdisplay)
+    {
+        if(pdisplay->_psequesteredmessagesink)
+            memset(&((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer, 0x00, _MESSAGE_LENGTH_);
+        
+        memset(pdisplay->_bufferinfo._buffer, 0x00, _DISPLAY_BUFFER_SIZE_);
+    }
+}
+
+//@Created by: HIJH
 //@Date: Septembre de 2016
 //Allocates and stores a sink message to store the transacion data
 void SequesterMessageSink(void *pparam)
@@ -1129,15 +1179,19 @@ void SequesterMessageSink(void *pparam)
     if(pdisplay)
     {
         if(pdisplay->_psequesteredmessagesink)
-            ReleaseSinkMessage((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink);
-
-        pdisplay->_psequesteredmessagesink = AllocateMessageSlot();
-        if(pdisplay->_dispid == DISPLAY1)
-            ((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_messageid = DISPLAY1_MESSAGE;
+        {
+            memset(&((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_buffer, 0x00, _MESSAGE_LENGTH_);
+        }
         else
-            ((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_messageid = DISPLAY2_MESSAGE;            
-            
-        ((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_messagetype = FIRSTFOUND;
+        {
+            pdisplay->_psequesteredmessagesink = AllocateMessageSlot();
+            if(pdisplay->_dispid == DISPLAY1)
+                ((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_messageid = DISPLAY1_MESSAGE;
+            else
+                ((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_messageid = DISPLAY2_MESSAGE;            
+                
+            ((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink)->_messagetype = FIRSTFOUND;
+        }
         
         memset(pdisplay->_bufferinfo._buffer, 0x00, _DISPLAY_BUFFER_SIZE_);
         
@@ -1173,21 +1227,6 @@ void SequesterMessageSink(void *pparam)
             }
             pdisplay->_currentstate = DISPLAY_LESS_THAN_FOUR_POSITIONS;
         }
-    }
-}
-
-//@Created by: HIJH
-//@Date: Septembre de 2016
-//Cleans the sink message that has been allocated to store the transacion data
-void CleanMessageSink(void *pparam)
-{
-    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
-    if(pdisplay)
-    {
-        if(pdisplay->_psequesteredmessagesink)
-            ReleaseSinkMessage((PSINKMESSAGEPTR)pdisplay->_psequesteredmessagesink);
-        
-        memset(pdisplay->_bufferinfo._buffer, 0x00, _DISPLAY_BUFFER_SIZE_);
     }
 }
 
@@ -1262,11 +1301,15 @@ void ReleaseMessageSink(void *pparam)
             }
             I2CBusUnlock();
             
+            PSINKMESSAGEPTR pnewsinkmsg = AllocateMessageSlot();
+            pnewsinkmsg->_messageid = psinkmsg->_messageid;
+            pnewsinkmsg->_messagetype = psinkmsg->_messagetype;
+            memcpy(&pnewsinkmsg->_buffer, &psinkmsg->_buffer, _MESSAGE_LENGTH_);
+            
             //////////////////////////////////////////////////////////////////////////////////
             //THIS MUST BE SET TO "SINK_BUSY" TO ALLOW FOR ITS PROCESSING!!! KEEP THIS!!!
-            psinkmsg->_messagestate = SINK_BUSY;
+            pnewsinkmsg->_messagestate = SINK_BUSY;
             //////////////////////////////////////////////////////////////////////////////////
-            pdisplay->_psequesteredmessagesink = NULL;
         }
     }
 }
@@ -1367,41 +1410,6 @@ void StoreTransactionData(void *pparam)
             }
         }
 
-}
-
-//@Created by: HIJH
-//@Date: Octobre de 2016
-//Retrieves the right display depending on the pump identifier. This is done by taking into account the
-//dispenser layaou (NORMAL / QUATTRO)
-PDISPLAYLAYOUTPTR GetDisplayFromPumpID(uint8 pumpid)
-{
-    PDISPLAYLAYOUTPTR retval = PNEAR_NULLPTR;
-    switch(_g_dispenserlayoutinfo._numpositions)
-    {
-        case 0x02:
-        {
-            if(_g_pumps[0x00]._pumpid == pumpid)
-                retval = &_g_display1;
-            else if(_g_pumps[0x01]._pumpid == pumpid)
-                retval = &_g_display2;
-            
-            break;
-        }
-        case 0x04:
-        {
-            if(_g_pumps[0x00]._pumpid == pumpid)
-                retval = &_g_display1;
-            else if(_g_pumps[0x01]._pumpid == pumpid)
-                retval = &_g_display2;
-            else if(_g_pumps[0x02]._pumpid == pumpid)
-                retval = &_g_display1;
-            else if(_g_pumps[0x03]._pumpid == pumpid)
-                retval = &_g_display2;
-            
-            break;
-        }
-    }
-    return retval;
 }
 
 /* [] END OF FILE */

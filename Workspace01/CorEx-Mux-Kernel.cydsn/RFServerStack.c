@@ -25,7 +25,6 @@ bool RFTotalsDataReqResp(void *pparam);
 bool RFTotalsDataReportReqResp(void *pparam);
 bool RFPriceChangeReqResp(void *pparam);
 bool RFGeneralPrintReqResp(void *pparam);
-bool RFCopyPrintReqResp(void *pparam);
 bool RFCreditSalePrintReqResp(void *pparam);
 bool RFCashSalePrintReqResp(void *pparam);
 bool RFPendingCreditSaleReqResp(void *pparam);
@@ -36,6 +35,7 @@ bool RFPositionConfigurationReqResp(void *pparam);
 bool RFIslandOperDataReqResp(void *pparam);
 bool RFIslandAdminReqResp(void *pparam);
 uint16 GeneralPrintRequestPayloadSizeResolver(LPVOID pbuffer);
+bool RFCopyPrintReqResp(void *pparam);
 
 void RFErrorHandler(void *pparam);
 
@@ -109,18 +109,6 @@ RFRequestResponse _g_rfresolvers[] =
         RFGeneralPrintReqResp,
         RFErrorHandler,
         _RF_MAX_TIMEOUT_LIMIT_
-    }, 
-    { 
-        RF_MUX_COPY_REQUEST, RF_MUX_COPY_REQUEST_RESPONSE,
-        RFCopyPrintReqResp,
-        RFErrorHandler,
-        _RF_MAX_TIMEOUT_LIMIT_
-    },
-    { 
-        RF_MUX_COPY_REQUEST, RF_MUX_COPY_REQUEST_RESPONSE,
-        RFCopyPrintReqResp,
-        RFErrorHandler,
-        _RF_MAX_TIMEOUT_LIMIT_
     },
     { 
         RF_MUX_CREDIT_SALE_PRINT_REQUEST, RF_MUX_CREDIT_SALE_PRINT_RESPONSE,
@@ -164,6 +152,12 @@ RFRequestResponse _g_rfresolvers[] =
         RFErrorHandler,
         _RF_MAX_TIMEOUT_LIMIT_
     },
+    { 
+        RF_MUX_COPY_REQUEST, RF_MUX_COPY_REQUEST_RESPONSE,
+        RFCopyPrintReqResp,
+        RFErrorHandler,
+        _RF_MAX_TIMEOUT_LIMIT_
+    },
     {
         RF_MUX_NULL, RF_MUX_NULL,
         NULL, NULL, _RF_NO_TIMEOUT_
@@ -189,7 +183,7 @@ RFRequestPayloadLengthMap _g_rfreqpayloadmap[] =
     { RF_MUX_TOTALS_REQUEST,                        8u,   NULL },
     { RF_MUX_PRICE_CHANGE_REQUEST,                  15u,  NULL },
     { RF_MUX_GENERAL_PRINT_REQUEST,                 0u,   GeneralPrintRequestPayloadSizeResolver },
-    { RF_MUX_COPY_REQUEST,                          0u,   GeneralPrintRequestPayloadSizeResolver },
+    { RF_MUX_COPY_REQUEST,                          7u,   NULL },
     { RF_MUX_CREDIT_SALE_PRINT_REQUEST,             118u, NULL },
     { RF_MUX_CASH_SALE_PRINT_REQUEST,               19u,  NULL },
     { RF_MUX_BROADCAST_CFG_REQUEST,                 338u, NULL },
@@ -212,7 +206,7 @@ RFCommandStateMap _g_rfcommandstatemap[] =
     { RF_DELIVERING,        RF_MUX_CASH_SALE_START_REQUEST },
     { RF_DELIVERING,        RF_MUX_CREDIT_PRESET_NOTIFICATION_REQUEST },
     { RF_CASHSALEREPORT,    RF_MUX_CASH_SALE_END_REPORT_REQUEST },
-    { RF_CREDITSALEAUTH,    RF_MUX_CREDIT_PRESET_AUTHORIZATION_RESPONSE },
+    { RF_CREDITSALEAUTH,    RF_MUX_CREDIT_SERIAL_AUTH_RESPONSE },
     { RF_WORKSHIFTREQ,      RF_MUX_ISLAND_OPER_DATA_REQUEST },
     { RF_CREDITSALEREPORT,  RF_MUX_PENDING_CREDIT_SALE_REQUEST },
     { RF_COPY_RECEIPT,      RF_MUX_COPY_REQUEST  },

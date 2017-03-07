@@ -552,7 +552,6 @@ bool RFTotalsDataReqResp(void *pparam)
                     PSINKMESSAGEPTR psinkmsg = AllocateMessageSlot(DISPENSER_ACQUIRE_TOTALS);
                     psinkmsg->_messageid = DISPENSER_ACQUIRE_TOTALS;
                     psinkmsg->_messagetype = FIRSTFOUND;
-                    memcpy(psinkmsg->_buffer, (const void*)NULL, 0x00);
                     psinkmsg->_buffer[0x00] = (pmsg->_buffer[_RF_STREAM_POSITION_INDEX_] - _g_dispenserlayoutinfo._positionoffset);
                     psinkmsg->_buffersize = 0x01;
                     
@@ -883,10 +882,7 @@ bool RFGeneralPrintReqResp(void *pparam)
         _ALLOCATE_SINKMESSAGE_SLOT(psinkmsg);
         if(psinkmsg)
         {
-            uint8 index = 0;
-            
             psinkmsg->_messagetype = FIRSTFOUND;
-            memcpy(psinkmsg->_buffer, (const void*)NULL, 0x00);
             PDISPLAYLAYOUTPTR pdisplay = GetDisplayFromPumpID(pmsg->_buffer[_RF_STREAM_POSITION_INDEX_] - _g_dispenserlayoutinfo._positionoffset);
             if(pdisplay)
             {
@@ -910,90 +906,6 @@ bool RFGeneralPrintReqResp(void *pparam)
             psinkmsg->_messagestate = SINK_BUSY;
         }
         
-        //If there wasn't any pending transactional state in the pointed pump position, just
-        //return the Ack response in IDLE state
-        PUARTMESSAGEPTR puartdisp = GetUARTMessageSlot(UART_RF);
-        if(puartdisp)
-        {
-            puartdisp->_messagelength = 0;
-            memset(puartdisp->_messagetx, 0x00, sizeof(puartdisp->_messagetx));
-            memcpy(puartdisp->_messagetx, _g_rfslaveheader, 0x03); //Explicit buffer length to avoid wasting CPU cycles in sizeof!
-            puartdisp->_messagelength += 0x03;
-            puartdisp->_messagetx[puartdisp->_messagelength++] = (uint8)(_g_stationidentifier & 0xFF);
-            puartdisp->_messagetx[puartdisp->_messagelength++] = (uint8)((_g_stationidentifier >> 8) & 0xFF);
-            puartdisp->_messagetx[puartdisp->_messagelength++] = pmsg->_buffer[_RF_STREAM_POSITION_INDEX_];
-            puartdisp->_messagetx[puartdisp->_messagelength++] = pmsg->_buffer[_RF_STREAM_COMMAND_INDEX_];
-            puartdisp->_messagetx[puartdisp->_messagelength++] = _RF_ACK_;
-            puartdisp->_messagetx[puartdisp->_messagelength] = RawCRCCheck((PSTR)puartdisp->_messagetx, puartdisp->_messagelength);
-            puartdisp->_messagelength++;
-
-            puartdisp->_messagestate = PENDING;
-            retval = true;
-        }
-    }
-    return retval;
-}
-
-bool RFCopyPrintReqResp(void *pparam)
-{
-    bool retval = false;
-    PSINKMESSAGEPTR pmsg = (PSINKMESSAGEPTR)pparam;
-    if(pmsg)
-    {
-        //Checking the CRC first to proceed
-        //CRC must be located at this position for this message (See the protocol description file)
-        uint8 crc = RawCRCCheck(pmsg->_buffer, pmsg->_buffersize - 1);
-        if(crc != RFGetCRC(pmsg->_buffer[_RF_STREAM_COMMAND_INDEX_], PBYTECAST(pmsg->_buffer)))//If there is a mismatch then return immediately and send a Nack back
-        {
-            PUARTMESSAGEPTR puartdisp = GetUARTMessageSlot(UART_RF);
-            if(puartdisp)
-            {
-                puartdisp->_messagelength = 0;
-                memset(puartdisp->_messagetx, 0x00, sizeof(puartdisp->_messagetx));
-                memcpy(puartdisp->_messagetx, _g_rfslaveheader, 0x03); //Explicit buffer length to avoid wasting CPU cycles in sizeof!
-                puartdisp->_messagelength += 0x03;
-                puartdisp->_messagetx[puartdisp->_messagelength++] = (uint8)(_g_stationidentifier & 0xFF);
-                puartdisp->_messagetx[puartdisp->_messagelength++] = (uint8)((_g_stationidentifier >> 8) & 0xFF);
-                puartdisp->_messagetx[puartdisp->_messagelength++] = pmsg->_buffer[_RF_STREAM_POSITION_INDEX_];
-                puartdisp->_messagetx[puartdisp->_messagelength++] = pmsg->_buffer[_RF_STREAM_COMMAND_INDEX_];
-                puartdisp->_messagetx[puartdisp->_messagelength++] = _RF_NACK_;
-                puartdisp->_messagetx[puartdisp->_messagelength] = RawCRCCheck((PSTR)puartdisp->_messagetx, puartdisp->_messagelength - 1);
-                puartdisp->_messagelength++;
-
-                puartdisp->_messagestate = PENDING;
-            }
-            return retval;
-        }
-                
-        _ALLOCATE_SINKMESSAGE_SLOT(psinkmsg);
-        if(psinkmsg)
-        {
-            uint8 index = 0;
-            
-            psinkmsg->_messagetype = FIRSTFOUND;
-            memcpy(psinkmsg->_buffer, (const void*)NULL, 0x00);
-            PDISPLAYLAYOUTPTR pdisplay = GetDisplayFromPumpID(pmsg->_buffer[_RF_STREAM_POSITION_INDEX_] - _g_dispenserlayoutinfo._positionoffset);
-            if(pdisplay)
-            {
-                if(pdisplay->_dispid == DISPLAY1)
-                {
-                    psinkmsg->_messageid = PRINTER1_GENERIC_JOB;
-                    if(_g_printerlayout._printerportside1 != PRINTER11_JOB)
-                        psinkmsg->_messageid = PRINTER2_GENERIC_JOB;
-                }
-                else
-                {
-                    psinkmsg->_messageid = PRINTER2_GENERIC_JOB;
-                    if(_g_printerlayout._printerportside2 != PRINTER21_JOB)
-                        psinkmsg->_messageid = PRINTER1_GENERIC_JOB;                
-                }
-            }
-                            
-            memcpy(&psinkmsg->_buffer[0x01], &pmsg->_buffer[0x09], pmsg->_buffer[0x08]);
-            psinkmsg->_buffersize = pmsg->_buffer[0x08];
-            
-            psinkmsg->_messagestate = SINK_BUSY;
-        }
         //If there wasn't any pending transactional state in the pointed pump position, just
         //return the Ack response in IDLE state
         PUARTMESSAGEPTR puartdisp = GetUARTMessageSlot(UART_RF);
@@ -2354,7 +2266,9 @@ bool RFBroadcastConfigurationReqResp(void *pparam)
         //Copying the fourth product name (16 bytes)
         memcpy(&GetEepromBuffer()[_EEPROM_PAGE_FOURTH16START_], &pmsg->_buffer[0x131], 0x10);
         StoreEepromPage(EEPROM_DISPENSER_PUMP4_PRODUCT_NAMES_PAGE);
-                
+        
+        I2CBusUnlock();
+        
         _ALLOCATE_SINKMESSAGE_SLOT(psinkmsg);
         if(psinkmsg)
         {
@@ -2378,7 +2292,6 @@ bool RFPositionConfigurationReqResp(void *pparam)
     PSINKMESSAGEPTR pmsg = (PSINKMESSAGEPTR)pparam;
     if(pmsg)
     {
-        uint8 index = 0;
         //Checking the CRC first to proceed
         //CRC must be located at this position for this message (See the protocol description file)
         uint8 crc = RawCRCCheck(pmsg->_buffer, pmsg->_buffersize - 1);
@@ -2404,8 +2317,9 @@ bool RFPositionConfigurationReqResp(void *pparam)
             return retval;
         }
         
+        I2CBusLock();
         uint8 realposition = (uint8)pmsg->_buffer[0x05] - _g_dispenserlayoutinfo._positionoffset;
-        //This is the Product Code / Hose Mapping. This block is critical since with these mappings
+        //This is the Product Code / Hose Mapping. This block is critical since with these mappings,
         //the device (MUX) will be able to resolve which hose code must send to the PRESET when it 
         //receives the PRESET data for a requested Authorization (ie: Credit Payment)
         ClearEepromBuffer();
@@ -2463,6 +2377,7 @@ bool RFPositionConfigurationReqResp(void *pparam)
                 }
             }
         }
+        I2CBusUnlock();
         retval = true;
     }
     return retval;
@@ -2733,5 +2648,75 @@ void RFSpeedReport(uint8 command, uint8 position)
         }
     }
 }
+/////////////////////////
+bool RFCopyPrintReqResp(void *pparam)
+{
+    bool retval = false;
+    PSINKMESSAGEPTR pmsg = (PSINKMESSAGEPTR)pparam;
+    if(pmsg)
+    {
+        FOR(uint8 index = 0x00, index < _g_dispenserlayoutinfo._numpositions, index++)
+        {
+            PNEAR_PUMPPTR ppump = GetPumpFromRemotePositionID(_g_pumps[index]._pumpid);
+            if(_g_pumps[index]._pumpid  == (pmsg->_buffer[_RF_STREAM_POSITION_INDEX_] - _g_dispenserlayoutinfo._positionoffset))
+            {
+                //We always pick the top most item from the Pump Transactional Queue
+                _g_pumps[index].PumpTransQueueLock(&_g_pumps[index]);
+                PNEAR_PUMPTRANSACTIONALSTATEPTR pumptrans = _g_pumps[index].PumpTransQueueDequeue(&_g_pumps[index]);
+                //USED ONLY FOR TRANSACTIONAL STATE CONSISTENCY
+                PUARTMESSAGEPTR puartdisp = GetUARTMessageSlot(UART_RF);
+                
+                if(puartdisp)
+                {
+                    puartdisp->_messagelength = 0;
+                    memset(puartdisp->_messagetx, 0x00, sizeof(puartdisp->_messagetx));
+                    memcpy(puartdisp->_messagetx, _g_rfslaveheader, 0x03); //Explicit buffer length to avoid wasting CPU cycles in sizeof!
+                    puartdisp->_messagelength += 0x03;
+                    puartdisp->_messagetx[puartdisp->_messagelength++] = (uint8)(_g_stationidentifier & 0xFF);
+                    puartdisp->_messagetx[puartdisp->_messagelength++] = (uint8)((_g_stationidentifier >> 8) & 0xFF);
+                    puartdisp->_messagetx[puartdisp->_messagelength++] = pmsg->_buffer[_RF_STREAM_POSITION_INDEX_];
+                    puartdisp->_messagetx[puartdisp->_messagelength++] = RF_MUX_COPY_REQUEST_RESPONSE;
+                    puartdisp->_messagetx[puartdisp->_messagelength++] = 0x0B;//_g_pumps[index]._pumpid;
+                    puartdisp->_messagetx[puartdisp->_messagelength] = RawCRCCheck((PSTR)puartdisp->_messagetx, puartdisp->_messagelength - 1);
+                    puartdisp->_messagelength++;
+
+                    puartdisp->_messagestate = PENDING;
+                }
+                _g_pumps[index].PumpTransQueueDeallocate(&_g_pumps[index], pumptrans);
+                _g_pumps[index].PumpTransQueueUnlock(&_g_pumps[index]);                 
+            }
+             if(ppump)
+                    ppump->_pumprftransstate = RF_IDLE;            
+        }
+        _ALLOCATE_SINKMESSAGE_SLOT(psinkmsg);
+    	if(psinkmsg)
+    	{
+    		psinkmsg->_messagetype = FIRSTFOUND;
+    		PDISPLAYLAYOUTPTR pdisplay = GetDisplayFromPumpID(pmsg->_buffer[_RF_STREAM_POSITION_INDEX_] - _g_dispenserlayoutinfo._positionoffset);
+    		if(pdisplay)
+    		{
+    			if(pdisplay->_dispid == DISPLAY1)
+                {
+                    psinkmsg->_messageid = PRINTER1_GENERIC_JOB_LOGO;
+                    if(_g_printerlayout._printerportside1 != PRINTER11_JOB)
+                        psinkmsg->_messageid = PRINTER2_GENERIC_JOB_LOGO;
+                }
+                else
+                {
+                    psinkmsg->_messageid = PRINTER2_GENERIC_JOB_LOGO;
+                    if(_g_printerlayout._printerportside2 != PRINTER21_JOB)
+                        psinkmsg->_messageid = PRINTER1_GENERIC_JOB_LOGO;                
+                }
+    		}
+    						
+    		memcpy(&psinkmsg->_buffer[0x01], &pmsg->_buffer[0x09], pmsg->_buffer[0x08]);
+    		psinkmsg->_buffersize = pmsg->_buffer[0x08];
+    		
+    		psinkmsg->_messagestate = SINK_BUSY;
+    	}
+    }
+    return retval;    
+}
+
 
 /* [] END OF FILE */

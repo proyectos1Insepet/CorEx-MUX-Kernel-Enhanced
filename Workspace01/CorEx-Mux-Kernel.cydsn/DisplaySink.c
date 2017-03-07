@@ -189,7 +189,7 @@ void InitDisplays()
 //This callback function will be invoked every 10 milliseconds
 void DisplayRaiseTimeoutsAndStateChanges(void *pparam)
 {
-    PDISPLAYFLOWPTR pdispflowiterator = _g_displayflow1;
+    PDISPLAYFLOWPTR pdispflowiterator = _g_displayflow;
     while(pdispflowiterator->_scrid != DISPLAY_NULL)
     {
         if(_g_display1._pcurrflow->_scrid == pdispflowiterator->_scrid)
@@ -248,7 +248,7 @@ void DisplayRaiseTimeoutsAndStateChanges(void *pparam)
         }        
         pdispflowiterator++;
     }    
-    pdispflowiterator = _g_displayflow2;
+    pdispflowiterator = _g_displayflow;
     while(pdispflowiterator->_scrid != DISPLAY_NULL)
     {
         if(_g_display2._pcurrflow->_scrid == pdispflowiterator->_scrid)

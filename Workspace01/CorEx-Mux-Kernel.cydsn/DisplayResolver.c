@@ -42,7 +42,7 @@ bool Display1BufferResolver(char8* pbuffer, uint16 buffersize)
     if(sinkmsg)
     {
         sinkmsg->_messageid = DISPLAY1_RECEPTION;
-        sinkmsg->_messagetype = DELAYEDALLINTERESTED;
+        sinkmsg->_messagetype = FIRSTFOUND;
         memcpy(sinkmsg->_buffer, (const void*)pbuffer, 0x08);
         sinkmsg->_buffersize = buffersize;
         sinkmsg->_messagestate = SINK_BUSY;
@@ -78,7 +78,7 @@ bool Display2BufferResolver(char8* pbuffer, uint16 buffersize)
     if(sinkmsg)
     {
         sinkmsg->_messageid = DISPLAY2_RECEPTION;
-        sinkmsg->_messagetype = DELAYEDALLINTERESTED;
+        sinkmsg->_messagetype = FIRSTFOUND;
         memcpy(sinkmsg->_buffer, (const void*)pbuffer, 0x08);
         sinkmsg->_buffersize = buffersize;
         sinkmsg->_messagestate = SINK_BUSY;

@@ -29,9 +29,10 @@ void StartSecurityLayer()
 //*******************************************************************************************
 //@Created by: HIJH
 //@Septembre 1 de 2016
+//@Comments: RESERVED FOR FUTURE USE
 //This set of numbers have been discretionarily but carefully chosen for the Scramble/Unscramble procedure.
-//This procedure has the purpose of giving some sort of encryption of the data over the air.
-uint8 _primenumberset[] = { 0x0b, 0x07, 0x11, 0x17, 0x03 };
+//This procedure has the purpose of giving some sort of encryption OTA.
+//uint8 _primenumberset[] = { 0x0b, 0x07, 0x11, 0x17, 0x03 };
 //*******************************************************************************************
 
 void ClockCRC()
