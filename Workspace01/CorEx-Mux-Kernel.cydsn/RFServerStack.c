@@ -109,6 +109,12 @@ RFRequestResponse _g_rfresolvers[] =
         RFGeneralPrintReqResp,
         RFErrorHandler,
         _RF_MAX_TIMEOUT_LIMIT_
+    }, 
+    { 
+        RF_MUX_COPY_REQUEST, RF_MUX_COPY_REQUEST_RESPONSE,
+        RFCopyPrintReqResp,
+        RFErrorHandler,
+        _RF_MAX_TIMEOUT_LIMIT_
     },
     { 
         RF_MUX_COPY_REQUEST, RF_MUX_COPY_REQUEST_RESPONSE,

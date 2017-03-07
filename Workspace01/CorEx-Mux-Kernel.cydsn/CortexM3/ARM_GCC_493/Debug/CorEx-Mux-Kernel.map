@@ -1349,7 +1349,7 @@ END GROUP
                 0x00000040                CY_METADATA_SIZE = 0x40
                 0x00000000                CY_APPL_LOADABLE = 0x0
                 0x00000000                CY_CHECKSUM_EXCLUDE_SIZE = ALIGN (0x0, CY_FLASH_ROW_SIZE)
-                0x200071e0                PROVIDE (__cy_heap_start, _end)
+                0x200071f0                PROVIDE (__cy_heap_start, _end)
                 0x00000001                PROVIDE (__cy_region_num, ((__cy_regions_end - __cy_regions) / 0x10))
                 0x20008000                PROVIDE (__cy_stack, (ORIGIN (ram) + 0x10000))
                 0x20007800                PROVIDE (__cy_heap_end, (__cy_stack - 0x800))
@@ -2881,7 +2881,7 @@ END GROUP
                 0x0001dc54                __cy_regions = .
                 0x0001dc54        0x4 LONG 0x1dc68 __cy_region_init_ram
                 0x0001dc58        0x4 LONG 0x1fff8108 __cy_region_start_data
-                0x0001dc5c        0x4 LONG 0x5970 __cy_region_init_size_ram
+                0x0001dc5c        0x4 LONG 0x5980 __cy_region_init_size_ram
                 0x0001dc60        0x4 LONG 0x9768 __cy_region_zero_size_ram
                 0x0001dc64                __cy_regions_end = .
                 0x0001dc68                . = ALIGN (0x8)
@@ -2904,7 +2904,7 @@ END GROUP
  .noinit        0x1fff8104        0x1 .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(CyLib.o)
                 0x1fff8104                CyResetStatus
 
-.data           0x1fff8108     0x5970 load address 0x0001dc68
+.data           0x1fff8108     0x5980 load address 0x0001dc68
                 0x1fff8108                __cy_region_start_data = .
  *(.jcr)
  .jcr           0x1fff8108        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
@@ -2947,176 +2947,176 @@ END GROUP
                 0x1fffa0cc                _g_standardtransactions
  .data          0x1fffd7e0       0x20 .\CortexM3\ARM_GCC_493\Debug\AdvantageImpl.o
                 0x1fffd7e0                _g_sfcharmap
- .data          0x1fffd800      0x1e4 .\CortexM3\ARM_GCC_493\Debug\RFServerStack.o
+ .data          0x1fffd800      0x1f4 .\CortexM3\ARM_GCC_493\Debug\RFServerStack.o
                 0x1fffd800                _g_rfresolvers
-                0x1fffd940                _g_rfreqpayloadmap
-                0x1fffd9d0                _g_rfcommandstatemap
- .data          0x1fffd9e4        0xc .\CortexM3\ARM_GCC_493\Debug\RFServerStackImpl.o
-                0x1fffd9e4                _g_rfslaveheader
-                0x1fffd9e8                _g_rfmasterheader
-                0x1fffd9ec                _g_rfmasterfooter
- .data          0x1fffd9f0        0x8 .\CortexM3\ARM_GCC_493\Debug\ClientDefinitions.o
-                0x1fffd9f0                _g_stationidentifier
-                0x1fffd9f2                _g_logosize
-                0x1fffd9f4                _g_ptrlogo
- .data          0x1fffd9f8        0x4 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
- .data          0x1fffd9fc       0x10 .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(CyLib.o)
-                0x1fffd9fc                cydelay_freq_hz
-                0x1fffda00                cydelay_freq_khz
-                0x1fffda04                cydelay_freq_mhz
-                0x1fffda08                cydelay_32k_ms
+                0x1fffd950                _g_rfreqpayloadmap
+                0x1fffd9e0                _g_rfcommandstatemap
+ .data          0x1fffd9f4        0xc .\CortexM3\ARM_GCC_493\Debug\RFServerStackImpl.o
+                0x1fffd9f4                _g_rfslaveheader
+                0x1fffd9f8                _g_rfmasterheader
+                0x1fffd9fc                _g_rfmasterfooter
+ .data          0x1fffda00        0x8 .\CortexM3\ARM_GCC_493\Debug\ClientDefinitions.o
+                0x1fffda00                _g_stationidentifier
+                0x1fffda02                _g_logosize
+                0x1fffda04                _g_ptrlogo
+ .data          0x1fffda08        0x4 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
+ .data          0x1fffda0c       0x10 .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(CyLib.o)
+                0x1fffda0c                cydelay_freq_hz
+                0x1fffda10                cydelay_freq_khz
+                0x1fffda14                cydelay_freq_mhz
+                0x1fffda18                cydelay_32k_ms
  .data.__fdlib_version
-                0x1fffda0c        0x1 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-s_lib_ver.o)
-                0x1fffda0c                __fdlib_version
- *fill*         0x1fffda0d        0x3 
+                0x1fffda1c        0x1 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-s_lib_ver.o)
+                0x1fffda1c                __fdlib_version
+ *fill*         0x1fffda1d        0x3 
  .data.impure_data
-                0x1fffda10       0x60 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                0x1fffda20       0x60 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
  .data._impure_ptr
-                0x1fffda70        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
-                0x1fffda70                _impure_ptr
-                0x1fffda78                . = ALIGN (0x8)
- *fill*         0x1fffda74        0x4 
+                0x1fffda80        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                0x1fffda80                _impure_ptr
+                0x1fffda88                . = ALIGN (0x8)
+ *fill*         0x1fffda84        0x4 
  *(.ram)
-                0x1fffda78                _edata = .
+                0x1fffda88                _edata = .
 
-.igot.plt       0x1fffda78        0x0 load address 0x000235d8
+.igot.plt       0x1fffda88        0x0 load address 0x000235e8
  .igot.plt      0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
 
-.bss            0x1fffda78     0x9768 load address 0x000235d8
-                0x1fffda78                PROVIDE (__bss_start__, .)
+.bss            0x1fffda88     0x9768 load address 0x000235e8
+                0x1fffda88                PROVIDE (__bss_start__, .)
  *(.shbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
- .bss           0x1fffda78       0x1c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
- .bss           0x1fffda94        0x1 .\CortexM3\ARM_GCC_493\Debug\EepromManager.o
-                0x1fffda94                _g_i2cbuslock
- .bss           0x1fffda95        0x1 .\CortexM3\ARM_GCC_493\Debug\WatchDogReset.o
-                0x1fffda95                _g_wdtstarted
- *fill*         0x1fffda96        0x2 
- .bss           0x1fffda98        0x4 .\CortexM3\ARM_GCC_493\Debug\DispenserBLL.o
-                0x1fffda98                _g_ptractprogramming
- .bss           0x1fffda9c        0x4 .\CortexM3\ARM_GCC_493\Debug\DispenserSink.o
-                0x1fffda9c                _g_dispenserupdatetimeout
-                0x1fffda9e                _g_dispenserupdatetimeoutmultiplier
- .bss           0x1fffdaa0        0x4 .\CortexM3\ARM_GCC_493\Debug\DisplayBLL.o
-                0x1fffdaa0                _g_configured
- .bss           0x1fffdaa4        0x1 .\CortexM3\ARM_GCC_493\Debug\AdvantageImpl.o
- *fill*         0x1fffdaa5        0x1 
- .bss           0x1fffdaa6        0xa .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(RF_Physical.o)
-                0x1fffdaa6                RF_Physical_initVar
-                0x1fffdaa7                RF_Physical_errorStatus
-                0x1fffdaa8                RF_Physical_rxBufferRead
-                0x1fffdaaa                RF_Physical_rxBufferWrite
-                0x1fffdaac                RF_Physical_rxBufferLoopDetect
-                0x1fffdaad                RF_Physical_rxBufferOverflow
- .bss           0x1fffdab0        0x2 .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(Printer.o)
-                0x1fffdab0                Printer_initVar
- .bss           0x1fffdab2        0xa .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(Dispenser.o)
-                0x1fffdab2                Dispenser_initVar
-                0x1fffdab3                Dispenser_errorStatus
-                0x1fffdab4                Dispenser_rxBufferRead
-                0x1fffdab6                Dispenser_rxBufferWrite
-                0x1fffdab8                Dispenser_rxBufferLoopDetect
-                0x1fffdab9                Dispenser_rxBufferOverflow
- .bss           0x1fffdabc        0x7 .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(Display1.o)
-                0x1fffdabc                Display1_initVar
-                0x1fffdabd                Display1_errorStatus
-                0x1fffdabe                Display1_rxBufferRead
-                0x1fffdabf                Display1_rxBufferWrite
-                0x1fffdac0                Display1_rxBufferLoopDetect
-                0x1fffdac1                Display1_rxBufferOverflow
- .bss           0x1fffdac3        0x7 .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(Display2.o)
-                0x1fffdac3                Display2_initVar
-                0x1fffdac4                Display2_errorStatus
-                0x1fffdac5                Display2_rxBufferRead
-                0x1fffdac6                Display2_rxBufferWrite
-                0x1fffdac7                Display2_rxBufferLoopDetect
-                0x1fffdac8                Display2_rxBufferOverflow
- .bss           0x1fffdaca        0x1 .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(I2C_Bus.o)
-                0x1fffdaca                I2C_Bus_initVar
- .bss           0x1fffdacb        0x1 .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(Timer_DispenserState.o)
-                0x1fffdacb                Timer_DispenserState_initVar
- .bss           0x1fffdacc        0x1 .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(Timer_Tick.o)
-                0x1fffdacc                Timer_Tick_initVar
- *fill*         0x1fffdacd        0x3 
+ .bss           0x1fffda88       0x1c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
+ .bss           0x1fffdaa4        0x1 .\CortexM3\ARM_GCC_493\Debug\EepromManager.o
+                0x1fffdaa4                _g_i2cbuslock
+ .bss           0x1fffdaa5        0x1 .\CortexM3\ARM_GCC_493\Debug\WatchDogReset.o
+                0x1fffdaa5                _g_wdtstarted
+ *fill*         0x1fffdaa6        0x2 
+ .bss           0x1fffdaa8        0x4 .\CortexM3\ARM_GCC_493\Debug\DispenserBLL.o
+                0x1fffdaa8                _g_ptractprogramming
+ .bss           0x1fffdaac        0x4 .\CortexM3\ARM_GCC_493\Debug\DispenserSink.o
+                0x1fffdaac                _g_dispenserupdatetimeout
+                0x1fffdaae                _g_dispenserupdatetimeoutmultiplier
+ .bss           0x1fffdab0        0x4 .\CortexM3\ARM_GCC_493\Debug\DisplayBLL.o
+                0x1fffdab0                _g_configured
+ .bss           0x1fffdab4        0x1 .\CortexM3\ARM_GCC_493\Debug\AdvantageImpl.o
+ *fill*         0x1fffdab5        0x1 
+ .bss           0x1fffdab6        0xa .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(RF_Physical.o)
+                0x1fffdab6                RF_Physical_initVar
+                0x1fffdab7                RF_Physical_errorStatus
+                0x1fffdab8                RF_Physical_rxBufferRead
+                0x1fffdaba                RF_Physical_rxBufferWrite
+                0x1fffdabc                RF_Physical_rxBufferLoopDetect
+                0x1fffdabd                RF_Physical_rxBufferOverflow
+ .bss           0x1fffdac0        0x2 .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(Printer.o)
+                0x1fffdac0                Printer_initVar
+ .bss           0x1fffdac2        0xa .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(Dispenser.o)
+                0x1fffdac2                Dispenser_initVar
+                0x1fffdac3                Dispenser_errorStatus
+                0x1fffdac4                Dispenser_rxBufferRead
+                0x1fffdac6                Dispenser_rxBufferWrite
+                0x1fffdac8                Dispenser_rxBufferLoopDetect
+                0x1fffdac9                Dispenser_rxBufferOverflow
+ .bss           0x1fffdacc        0x7 .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(Display1.o)
+                0x1fffdacc                Display1_initVar
+                0x1fffdacd                Display1_errorStatus
+                0x1fffdace                Display1_rxBufferRead
+                0x1fffdacf                Display1_rxBufferWrite
+                0x1fffdad0                Display1_rxBufferLoopDetect
+                0x1fffdad1                Display1_rxBufferOverflow
+ .bss           0x1fffdad3        0x7 .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(Display2.o)
+                0x1fffdad3                Display2_initVar
+                0x1fffdad4                Display2_errorStatus
+                0x1fffdad5                Display2_rxBufferRead
+                0x1fffdad6                Display2_rxBufferWrite
+                0x1fffdad7                Display2_rxBufferLoopDetect
+                0x1fffdad8                Display2_rxBufferOverflow
+ .bss           0x1fffdada        0x1 .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(I2C_Bus.o)
+                0x1fffdada                I2C_Bus_initVar
+ .bss           0x1fffdadb        0x1 .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(Timer_DispenserState.o)
+                0x1fffdadb                Timer_DispenserState_initVar
+ .bss           0x1fffdadc        0x1 .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(Timer_Tick.o)
+                0x1fffdadc                Timer_Tick_initVar
+ *fill*         0x1fffdadd        0x3 
  .bss.__malloc_sbrk_start
-                0x1fffdad0        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
-                0x1fffdad0                __malloc_sbrk_start
+                0x1fffdae0        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x1fffdae0                __malloc_sbrk_start
  .bss.__malloc_free_list
-                0x1fffdad4        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
-                0x1fffdad4                __malloc_free_list
+                0x1fffdae4        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x1fffdae4                __malloc_free_list
  *(COMMON)
- COMMON         0x1fffdad8     0x14f0 .\CortexM3\ARM_GCC_493\Debug\UARTManager.o
-                0x1fffdad8                _g_uartmessages
- COMMON         0x1fffefc8       0x48 .\CortexM3\ARM_GCC_493\Debug\PseudoRTOS.o
-                0x1fffefc8                _g_loop_container
-                0x1ffff00c                _g_ptr_LOOP
- COMMON         0x1ffff010     0x4c20 .\CortexM3\ARM_GCC_493\Debug\SinkManager.o
-                0x1ffff010                _g_pretval
-                0x1ffff020                _g_sinkmessagequeue
-                0x20003970                _g_sinksubscriberqueue
- COMMON         0x20003c30       0x42 .\CortexM3\ARM_GCC_493\Debug\EepromManager.o
-                0x20003c30                _g_eeprom
- *fill*         0x20003c72        0x2 
- COMMON         0x20003c74       0x10 .\CortexM3\ARM_GCC_493\Debug\RtcManager.o
-                0x20003c74                _g_rtc
- COMMON         0x20003c84      0x20c .\CortexM3\ARM_GCC_493\Debug\DispenserResolver.o
-                0x20003c84                _g_respctxt
- COMMON         0x20003e90       0x5f .\CortexM3\ARM_GCC_493\Debug\PrinterBLL.o
-                0x20003e90                _g_padcharacters
-                0x20003eb0                _g_auxprinterbuffer
-                0x20003ed0                _g_separator
- *fill*         0x20003eef        0x1 
- COMMON         0x20003ef0        0x2 .\CortexM3\ARM_GCC_493\Debug\PrinterSink.o
-                0x20003ef0                _g_printerlayout
- *fill*         0x20003ef2        0x6 
- COMMON         0x20003ef8     0x2f70 .\CortexM3\ARM_GCC_493\Debug\Advantage.o
-                0x20003ef8                _g_pumps
-                0x200065f8                _g_dispenserlayoutinfo
-                0x2000660c                _g_pumpjobqueue
- COMMON         0x20006e68        0xa .\CortexM3\ARM_GCC_493\Debug\RFSink.o
-                0x20006e68                _g_rfautorun
- *fill*         0x20006e72        0x2 
- COMMON         0x20006e74        0xc .\CortexM3\ARM_GCC_493\Debug\RFResolver.o
-                0x20006e74                _g_rfrx
- COMMON         0x20006e80      0x200 .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(RF_Physical.o)
-                0x20006e80                RF_Physical_rxBuffer
- COMMON         0x20007080      0x100 .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(Dispenser.o)
-                0x20007080                Dispenser_rxBuffer
- COMMON         0x20007180       0x20 .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(Display1.o)
-                0x20007180                Display1_rxBuffer
- COMMON         0x200071a0       0x20 .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(Display2.o)
-                0x200071a0                Display2_rxBuffer
- COMMON         0x200071c0        0x1 .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(I2C_Bus.o)
-                0x200071c0                I2C_Bus_state
- *fill*         0x200071c1        0x3 
- COMMON         0x200071c4       0x11 .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(I2C_Bus_MASTER.o)
-                0x200071c4                I2C_Bus_mstrWrBufSize
-                0x200071c5                I2C_Bus_mstrControl
-                0x200071c6                I2C_Bus_mstrRdBufSize
-                0x200071c8                I2C_Bus_mstrRdBufPtr
-                0x200071cc                I2C_Bus_mstrStatus
-                0x200071cd                I2C_Bus_mstrWrBufIndex
-                0x200071d0                I2C_Bus_mstrWrBufPtr
-                0x200071d4                I2C_Bus_mstrRdBufIndex
- *fill*         0x200071d5        0x3 
- COMMON         0x200071d8        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-reent.o)
-                0x200071d8                errno
-                0x200071e0                . = ALIGN (0x8)
- *fill*         0x200071dc        0x4 
+ COMMON         0x1fffdae8     0x14f0 .\CortexM3\ARM_GCC_493\Debug\UARTManager.o
+                0x1fffdae8                _g_uartmessages
+ COMMON         0x1fffefd8       0x48 .\CortexM3\ARM_GCC_493\Debug\PseudoRTOS.o
+                0x1fffefd8                _g_loop_container
+                0x1ffff01c                _g_ptr_LOOP
+ COMMON         0x1ffff020     0x4c20 .\CortexM3\ARM_GCC_493\Debug\SinkManager.o
+                0x1ffff020                _g_pretval
+                0x1ffff030                _g_sinkmessagequeue
+                0x20003980                _g_sinksubscriberqueue
+ COMMON         0x20003c40       0x42 .\CortexM3\ARM_GCC_493\Debug\EepromManager.o
+                0x20003c40                _g_eeprom
+ *fill*         0x20003c82        0x2 
+ COMMON         0x20003c84       0x10 .\CortexM3\ARM_GCC_493\Debug\RtcManager.o
+                0x20003c84                _g_rtc
+ COMMON         0x20003c94      0x20c .\CortexM3\ARM_GCC_493\Debug\DispenserResolver.o
+                0x20003c94                _g_respctxt
+ COMMON         0x20003ea0       0x5f .\CortexM3\ARM_GCC_493\Debug\PrinterBLL.o
+                0x20003ea0                _g_padcharacters
+                0x20003ec0                _g_auxprinterbuffer
+                0x20003ee0                _g_separator
+ *fill*         0x20003eff        0x1 
+ COMMON         0x20003f00        0x2 .\CortexM3\ARM_GCC_493\Debug\PrinterSink.o
+                0x20003f00                _g_printerlayout
+ *fill*         0x20003f02        0x6 
+ COMMON         0x20003f08     0x2f70 .\CortexM3\ARM_GCC_493\Debug\Advantage.o
+                0x20003f08                _g_pumps
+                0x20006608                _g_dispenserlayoutinfo
+                0x2000661c                _g_pumpjobqueue
+ COMMON         0x20006e78        0xa .\CortexM3\ARM_GCC_493\Debug\RFSink.o
+                0x20006e78                _g_rfautorun
+ *fill*         0x20006e82        0x2 
+ COMMON         0x20006e84        0xc .\CortexM3\ARM_GCC_493\Debug\RFResolver.o
+                0x20006e84                _g_rfrx
+ COMMON         0x20006e90      0x200 .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(RF_Physical.o)
+                0x20006e90                RF_Physical_rxBuffer
+ COMMON         0x20007090      0x100 .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(Dispenser.o)
+                0x20007090                Dispenser_rxBuffer
+ COMMON         0x20007190       0x20 .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(Display1.o)
+                0x20007190                Display1_rxBuffer
+ COMMON         0x200071b0       0x20 .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(Display2.o)
+                0x200071b0                Display2_rxBuffer
+ COMMON         0x200071d0        0x1 .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(I2C_Bus.o)
+                0x200071d0                I2C_Bus_state
+ *fill*         0x200071d1        0x3 
+ COMMON         0x200071d4       0x11 .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a(I2C_Bus_MASTER.o)
+                0x200071d4                I2C_Bus_mstrWrBufSize
+                0x200071d5                I2C_Bus_mstrControl
+                0x200071d6                I2C_Bus_mstrRdBufSize
+                0x200071d8                I2C_Bus_mstrRdBufPtr
+                0x200071dc                I2C_Bus_mstrStatus
+                0x200071dd                I2C_Bus_mstrWrBufIndex
+                0x200071e0                I2C_Bus_mstrWrBufPtr
+                0x200071e4                I2C_Bus_mstrRdBufIndex
+ *fill*         0x200071e5        0x3 
+ COMMON         0x200071e8        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-reent.o)
+                0x200071e8                errno
+                0x200071f0                . = ALIGN (0x8)
+ *fill*         0x200071ec        0x4 
  *(.ram.b)
-                0x200071e0                _end = .
-                0x200071e0                __end = .
-                0x200071e0                PROVIDE (end, .)
-                0x200071e0                PROVIDE (__bss_end__, .)
+                0x200071f0                _end = .
+                0x200071f0                __end = .
+                0x200071f0                PROVIDE (end, .)
+                0x200071f0                PROVIDE (__bss_end__, .)
                 0x0001dc68                __cy_region_init_ram = LOADADDR (.data)
-                0x00005970                __cy_region_init_size_ram = (_edata - ADDR (.data))
+                0x00005980                __cy_region_init_size_ram = (_edata - ADDR (.data))
                 0x00009768                __cy_region_zero_size_ram = (_end - _edata)
 
-.heap           0x200071e0       0x80 load address 0x000235d8
-                0x200071e0                . = _end
-                0x20007260                . = (. + 0x80)
- *fill*         0x200071e0       0x80 
-                0x20007260                __cy_heap_limit = .
+.heap           0x200071f0       0x80 load address 0x000235e8
+                0x200071f0                . = _end
+                0x20007270                . = (. + 0x80)
+ *fill*         0x200071f0       0x80 
+                0x20007270                __cy_heap_limit = .
 
 .stack          0x20007800      0x800
                 0x20007800                __cy_stack_limit = .
@@ -3163,7 +3163,7 @@ END GROUP
  .cymeta        0x90500000        0xc .\CortexM3\ARM_GCC_493\Debug\cymetadata.o
                 0x90500000                cy_metadata
 
-.rel.dyn        0x000235d8        0x0 load address 0x9050000c
+.rel.dyn        0x000235e8        0x0 load address 0x9050000c
  .rel.iplt      0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
 
 .stab
