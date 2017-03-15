@@ -1374,6 +1374,14 @@ void DisplayUpdateHomeAnimation(void *pparam)
             DrawHomeDateTime(pdisplay);
             _g_homeanimarray[DISPLAY1]._timeoutmultiplier = 0;
             _g_homeanimarray[DISPLAY1]._colontoggler = !_g_homeanimarray[DISPLAY1]._colontoggler;
+            char8 *pmessage = "MUX Ver. 18.3";
+            fontdata._size = 0x01;
+            UARTMessage *puartdisp = GetUARTMessageSlot(UART_DISPLAY1);
+            if(puartdisp)
+    		{
+    			puartdisp->_messagelength = DisplayOutputString(0x000F, 0x000E, puartdisp->_messagetx, pmessage, strlen(pmessage), fontdata);
+    			puartdisp->_messagestate = PENDING;
+    		}
         }else
             _g_homeanimarray[DISPLAY1]._timeoutmultiplier++;
             
@@ -2039,33 +2047,6 @@ void PrintcopyReceipt(void *pparam)
     }        
 }
 
-void PrintcopyReceiptResponse(void *pparam)
-{
-    PDISPLAYLAYOUTPTR pdisplay = (PDISPLAYLAYOUTPTR)pparam;
-    //HERE WE ATTEMPT TO PUSH THE TRANSACTION INTO THE PUMP'S TRANSACTIONAL QUEUE.
-    //THIS IS DONE ONLY IF THERE IS ROOM IN THE QUEUE, OTHERWISE THIS STATE WON'T
-    //BE REPORTED TO THE REMOTE PEER.
-    PNEAR_PUMPPTR ppumpptr = &_g_pumps[GetPumpIndexFromDisplay(pdisplay)];
-    if(ppumpptr)
-    {
-        ppumpptr->PumpTransQueueLock(ppumpptr);
-        PNEAR_PUMPTRANSACTIONALSTATEPTR pts = ppumpptr->PumpTransQueueAllocate(ppumpptr);
-        ppumpptr->PumpTransQueueUnlock(ppumpptr);
-        if(pts)
-        {
-            uint8 index = 0;
-            pts->_transtate = 0x00;
-            //Pump ID always comes in the first position (0x00)
-            pts->_buffer[index++] = ppumpptr->_pumpid;
-      
-            pts->_buffersize = index;
-
-            ppumpptr->PumpTransQueueLock(ppumpptr);
-            ppumpptr->PumpTransQueueEnqueue(ppumpptr, pts);
-            ppumpptr->PumpTransQueueUnlock(ppumpptr);            
-        }
-    }        
-}
 //@Created By: HIJH
 //@Septembre de 2016
 void Display2Logic(void *pdata)

@@ -45,8 +45,8 @@
 
 //////////////////////////////////////////////////////////////////////////////
 //**************************** PRINTER TYPE DEFINITION ****************************
-//#define PRINTER_TYPE_PANEL
-#define PRINTER_TYPE_KIOSK
+#define PRINTER_TYPE_PANEL
+//#define PRINTER_TYPE_KIOSK
 
 //////////////////////////////////////////////////////////////////////////////
 //**************************** CLIENT DEFINITIONS *********************************
@@ -58,7 +58,7 @@
 //#define  _CLIENT_EXITO_
 //#define  _CLIENT_GULF_
 //#define  _CLIENT_MINEROIL_
-#define  _CLIENT_MOBIL_
+//#define  _CLIENT_MOBIL_
 //#define  _CLIENT_PETROBRAS_
 //#define  _CLIENT_PLUS_
 //#define  _CLIENT_TERPEL_

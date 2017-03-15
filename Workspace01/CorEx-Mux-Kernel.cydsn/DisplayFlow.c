@@ -63,7 +63,6 @@ void PrintersWorking(void *pparam);
 void EitherPrinterWorking(void *pparam);
 void SaveSelectedPosition(void *pparam);
 void PrintcopyReceipt(void *pparam);
-void PrintcopyReceiptResponse(void *pparam);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
