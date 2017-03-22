@@ -37,6 +37,8 @@ PrinterTemplate _g_printertemplate[] =
     { PRN_MONEYDAY,     "Dinero Dia : " },
     { PRN_MONEYWEEK,    "Dinero Sem : " },
     { PRN_MONEYMONTH,   "Dinero Mes : " },
+    { PRN_SIGNATURE,    "Firma      : " },
+    { PRN_ID,           "Cedula     : " },
     { 0x00,             NULL },
 };
 

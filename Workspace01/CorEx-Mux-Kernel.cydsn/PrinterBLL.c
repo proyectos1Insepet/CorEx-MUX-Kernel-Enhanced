@@ -35,6 +35,7 @@ uint8 _g_padcharacters[_MAX_PRINTER_LINE_WIDTH_];
 uint8 _g_auxprinterbuffer[_MAX_PRINTER_LINE_WIDTH_];
 uint8 _g_separator[_MAX_PRINTER_LINE_WIDTH_];
 uint8 _g_autocut[] = {  0x1D, 0x56, 0x31 };
+uint8 _g_starting_position[] = {  0x1D, 0x0C };
 
 #ifdef PRINTER_TYPE_PANEL
     uint8 _g_logoprintcmd[] = { 0x0A, 0x1B, 0x40, 0x0A, 0x0A, 0x0A };
@@ -900,6 +901,15 @@ void Print(PSINKMESSAGEPTR pmsg, uint8 printerport)
         PRINTER_INDENTLINE(_LEFT_MARGIN_, printerport);
         #endif
         index += 0x0F;
+        PRINTER_LINEFEED(printerport);
+        prefstr = GetPrinterTemplateLine(PRN_SIGNATURE);
+        WriteAuxPSoC((PNEAR_BYTE_PTR)prefstr, strlen(prefstr), printerport);
+        PRINTER_LINEFEED(printerport);
+        PRINTER_LINEFEED(printerport);
+        prefstr = GetPrinterTemplateLine(PRN_ID);
+        WriteAuxPSoC((PNEAR_BYTE_PTR)prefstr, strlen(prefstr), printerport);
+        PRINTER_LINEFEED(printerport);
+        PRINTER_LINEFEED(printerport);
     }
     
     //line separator
@@ -948,7 +958,8 @@ void Print(PSINKMESSAGEPTR pmsg, uint8 printerport)
     #ifdef PRINTER_TYPE_KIOSK
         //Auto cut command
         PRINTER_AUTOCUT(printerport);
-        //CyDelay(500);//To allow for the cutter to work
+        CyDelay(100);//To allow for the cutter to work
+        PRINTER_RESET(printerport);        
     #endif
         
     I2CBusUnlock();
