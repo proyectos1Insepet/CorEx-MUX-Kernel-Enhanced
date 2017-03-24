@@ -36,6 +36,7 @@ uint8 _g_auxprinterbuffer[_MAX_PRINTER_LINE_WIDTH_];
 uint8 _g_separator[_MAX_PRINTER_LINE_WIDTH_];
 uint8 _g_autocut[] = {  0x1D, 0x56, 0x31 };
 uint8 _g_starting_position[] = {  0x1D, 0x0C };
+uint8 print_signature;
 
 #ifdef PRINTER_TYPE_PANEL
     uint8 _g_logoprintcmd[] = { 0x0A, 0x1B, 0x40, 0x0A, 0x0A, 0x0A };
@@ -67,14 +68,19 @@ void Printer11Callback(void *pdata)
     LoadEepromPage(EEPROM_CONFIGURATION_PAGE7);
     uint8 numberofprintedcopies = GetEepromBuffer()[0x08];
     I2CBusUnlock();
-    
+    print_signature = 0;
     FOR(uint8 index = 0, index < numberofprintedcopies, index++)
     {
         #ifndef _NO_LOGO_
             PrintLogo(PRINTER_PORT1_SIDE1);
         #endif
-        Print(pmsg, PRINTER_PORT1_SIDE1);
+            Print(pmsg, PRINTER_PORT1_SIDE1);
     }
+    #ifdef PRINTER_TYPE_KIOSK
+        //Auto cut command
+        PRINTER_AUTOCUT(PRINTER_PORT1_SIDE1);        
+        //PRINTER_RESET(PRINTER_PORT1_SIDE1);        
+    #endif
 }
 
 //@Created by: HIJH
@@ -91,7 +97,7 @@ void Printer12Callback(void *pdata)
     LoadEepromPage(EEPROM_CONFIGURATION_PAGE7);
     uint8 numberofprintedcopies = GetEepromBuffer()[0x08];
     I2CBusUnlock();
-    
+    print_signature = 0;
     FOR(uint8 index = 0, index < numberofprintedcopies, index++)
     {
         #ifndef _NO_LOGO_
@@ -99,6 +105,11 @@ void Printer12Callback(void *pdata)
         #endif
         Print(pmsg, PRINTER_PORT1_SIDE2);
     }
+    #ifdef PRINTER_TYPE_KIOSK
+        //Auto cut command
+        PRINTER_AUTOCUT(PRINTER_PORT1_SIDE2);        
+        //PRINTER_RESET(PRINTER_PORT1_SIDE2);        
+    #endif
 }
 
 //@Created by: HIJH
@@ -115,7 +126,7 @@ void Printer21Callback(void *pdata)
     LoadEepromPage(EEPROM_CONFIGURATION_PAGE7);
     uint8 numberofprintedcopies = GetEepromBuffer()[0x08];
     I2CBusUnlock();
-    
+    print_signature = 0;
     FOR(uint8 index = 0, index < numberofprintedcopies, index++)
     {
         #ifndef _NO_LOGO_
@@ -123,6 +134,11 @@ void Printer21Callback(void *pdata)
         #endif
         Print(pmsg, PRINTER_PORT2_SIDE1);
     }
+    #ifdef PRINTER_TYPE_KIOSK
+        //Auto cut command
+        PRINTER_AUTOCUT(PRINTER_PORT2_SIDE1);        
+        //PRINTER_RESET(PRINTER_PORT2_SIDE1);        
+    #endif
 }
 
 //@Created by: HIJH
@@ -139,7 +155,7 @@ void Printer22Callback(void *pdata)
     LoadEepromPage(EEPROM_CONFIGURATION_PAGE7);
     uint8 numberofprintedcopies = GetEepromBuffer()[0x08];
     I2CBusUnlock();
-    
+    print_signature = 0;
     FOR(uint8 index = 0, index < numberofprintedcopies, index++)
     {
         #ifndef _NO_LOGO_
@@ -147,6 +163,11 @@ void Printer22Callback(void *pdata)
         #endif
         Print(pmsg, PRINTER_PORT2_SIDE2);
     }
+    #ifdef PRINTER_TYPE_KIOSK
+        //Auto cut command
+        PRINTER_AUTOCUT(PRINTER_PORT2_SIDE2);        
+        //PRINTER_RESET(PRINTER_PORT2_SIDE2);        
+    #endif
 }
 
 //@Created by: HIJH
@@ -400,10 +421,11 @@ uint8 FormatNumberLSDFirst(PNEAR_BYTE_PTR pinput, uint8 inputsize, PNEAR_BYTE_PT
 void Print(PSINKMESSAGEPTR pmsg, uint8 printerport)
 {
     uint8 index = 0;
+    I2CBusLock();
+        
     
     //CAREFUL WITH RETURNS AND RECURSIVE CALLS BETWEEN THE LOCK/UNLOCK CALLS THAT WOULD DEADLOCK!
-    I2CBusLock();
-    
+        
     uint8 padspaces = 0x00;
     uint8 bufferlength = 0x00;
     
@@ -412,6 +434,16 @@ void Print(PSINKMESSAGEPTR pmsg, uint8 printerport)
     
     ClearEepromBuffer();
     //Cleanup of the pump identifier in order to start the enumeration procedure
+    LoadEepromPage(EEPROM_INSEPET_RESERVED_PAGE1);
+    uint8 datamemory [8];
+    uint8 asciidata[16];
+    FOR(index = 0, index < 8, index++){
+        datamemory[index] = GetEepromBuffer()[index];
+        asciidata[2*(index)]   = ( (datamemory[index]>>4)  & 0x0F) + '0';
+        asciidata[2*(index)+1] = ( (datamemory[index])     & 0x0F) + '0';
+        if (asciidata[2*(index)] > '9') asciidata[2*(index)] += 7;
+        if (asciidata[2*(index)+1] > '9') asciidata[2*(index)+1] += 7;
+    }
     LoadEepromPage(EEPROM_CONFIGURATION_PAGE0);
     bufferlength = MeasurePrinterASCIIBufferLength(&GetEepromBuffer()[_EEPROM_PAGE_FIRST32START_]);
     padspaces = PadSpacesToCenter(bufferlength);
@@ -708,7 +740,7 @@ void Print(PSINKMESSAGEPTR pmsg, uint8 printerport)
         #endif
 
         //CAR'S MILEAGE
-        bufflen = GetBufferLengthFromDisplayID(DISPLAY_INTRODUZCA_KILOMETRAJE);
+        /*bufflen = GetBufferLengthFromDisplayID(DISPLAY_INTRODUZCA_KILOMETRAJE);
         buffpos = GetBufferIndexFromDisplayID(DISPLAY_INTRODUZCA_KILOMETRAJE);
 
         memset(_g_auxprinterbuffer, 0x00, _MAX_PRINTER_LINE_WIDTH_);
@@ -717,7 +749,7 @@ void Print(PSINKMESSAGEPTR pmsg, uint8 printerport)
         //output data left aligned
         WriteAuxPSoC((PNEAR_BYTE_PTR)prefstr, strlen(prefstr), printerport);
         //output data
-        WriteAuxPSoC(_g_auxprinterbuffer, index, printerport);
+        WriteAuxPSoC(_g_auxprinterbuffer, index, printerport);*/
     }
     //In case of no printer output check the assigned value for the operation (Cash:0x0D / Credit:0x0E)
     else if(pmsg->_buffer[0x1B] == 0x0E)
@@ -755,7 +787,17 @@ void Print(PSINKMESSAGEPTR pmsg, uint8 printerport)
         PRINTER_INDENTLINE(_LEFT_MARGIN_, printerport);
         #endif
         index += 0x08;
-
+        //Serial ibutton
+        
+        prefstr = GetPrinterTemplateLine(PRN_SERIAL);
+        WriteAuxPSoC((PNEAR_BYTE_PTR)prefstr, strlen(prefstr), printerport);        
+        WriteAuxPSoC((PNEAR_BYTE_PTR)asciidata, 0x10, printerport);
+        PRINTER_LINEFEED(printerport);
+        #ifdef PRINTER_TYPE_PANEL
+        PRINTER_INDENTLINE(_LEFT_MARGIN_, printerport);
+        #endif                        
+        //index += 0x10;
+        
         //Balance (10 bytes)
         prefstr = GetPrinterTemplateLine(PRN_BALANCE);
         //output data left aligned
@@ -900,16 +942,21 @@ void Print(PSINKMESSAGEPTR pmsg, uint8 printerport)
         #ifdef PRINTER_TYPE_PANEL
         PRINTER_INDENTLINE(_LEFT_MARGIN_, printerport);
         #endif
-        index += 0x0F;
+        index += 0x0F;                
         PRINTER_LINEFEED(printerport);
-        prefstr = GetPrinterTemplateLine(PRN_SIGNATURE);
-        WriteAuxPSoC((PNEAR_BYTE_PTR)prefstr, strlen(prefstr), printerport);
-        PRINTER_LINEFEED(printerport);
-        PRINTER_LINEFEED(printerport);
-        prefstr = GetPrinterTemplateLine(PRN_ID);
-        WriteAuxPSoC((PNEAR_BYTE_PTR)prefstr, strlen(prefstr), printerport);
-        PRINTER_LINEFEED(printerport);
-        PRINTER_LINEFEED(printerport);
+        if(print_signature == 1){
+            prefstr = GetPrinterTemplateLine(PRN_ID);
+            WriteAuxPSoC((PNEAR_BYTE_PTR)prefstr, strlen(prefstr), printerport);
+            PRINTER_LINEFEED(printerport);
+            PRINTER_LINEFEED(printerport);
+            PRINTER_LINEFEED(printerport);
+            PRINTER_LINEFEED(printerport);
+            prefstr = GetPrinterTemplateLine(PRN_SIGNATURE);
+            WriteAuxPSoC((PNEAR_BYTE_PTR)prefstr, strlen(prefstr), printerport);
+            PRINTER_LINEFEED(printerport);
+            
+        }
+        print_signature = 1;
     }
     
     //line separator
@@ -955,12 +1002,7 @@ void Print(PSINKMESSAGEPTR pmsg, uint8 printerport)
     //line feed 
     PRINTER_LINEFEED(printerport);
     
-    #ifdef PRINTER_TYPE_KIOSK
-        //Auto cut command
-        PRINTER_AUTOCUT(printerport);
-        CyDelay(100);//To allow for the cutter to work
-        PRINTER_RESET(printerport);        
-    #endif
+   //Espacio para el autocuter
         
     I2CBusUnlock();
 

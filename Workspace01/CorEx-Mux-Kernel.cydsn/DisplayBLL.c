@@ -881,10 +881,16 @@ void iButtonScreenNotification(LPVOID pparam)
     if(pdisplay)
     {
         pdisplay->_timeoutscrid = DISPLAY_ID_RECONOCIDO;
-        //Here we are storing the serial identifier read from the iButton device
+        //Here we are storing the serial identifier read from the iButton device        
         memcpy(pdisplay->_bufferinfo._buffer, pmsg->_buffer, _IBUTTON_PAYLOAD_LENGTH_);
         pdisplay->_bufferinfo._bufferindex = _IBUTTON_PAYLOAD_LENGTH_;
-        
+        I2CBusLock();
+        ClearEepromBuffer();        
+        FOR(uint8 index = 0, index < _IBUTTON_PAYLOAD_LENGTH_, index++){
+            GetEepromBuffer()[7-index] =  pdisplay->_bufferinfo._buffer[index];
+        }
+        StoreEepromPage(EEPROM_INSEPET_RESERVED_PAGE1);        
+        I2CBusUnlock();
         _ALLOCATE_SINKMESSAGE_SLOT(psinkmsg);
         if(psinkmsg)
         {
@@ -1374,7 +1380,7 @@ void DisplayUpdateHomeAnimation(void *pparam)
             DrawHomeDateTime(pdisplay);
             _g_homeanimarray[DISPLAY1]._timeoutmultiplier = 0;
             _g_homeanimarray[DISPLAY1]._colontoggler = !_g_homeanimarray[DISPLAY1]._colontoggler;
-            char8 *pmessage = "MUX Ver. 18.4";
+            char8 *pmessage = "MUX Ver. 19.0.b";
             fontdata._size = 0x01;
             UARTMessage *puartdisp = GetUARTMessageSlot(UART_DISPLAY1);
             if(puartdisp)

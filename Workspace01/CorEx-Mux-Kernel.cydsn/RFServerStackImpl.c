@@ -1065,7 +1065,8 @@ bool RFCreditSalePrintReqResp(void *pparam)
                     //Account Type (16 bytes)
                     memcpy(&psinkmsg->_buffer[index], &pmsg->_buffer[0x64], 0x0F);
                     index += 0x0F;
-
+                    //ibutton
+                    
                     psinkmsg->_buffer[index] =  pmsg->_buffer[0x74];
                     index += 0x01;
                     
