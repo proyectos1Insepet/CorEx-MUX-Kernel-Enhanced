@@ -30,13 +30,13 @@
 //++++++++++++  VALIDATE THE REQUIRED STARTUP TIME (FAST STARTUP / SLOW STARTUP)
 //++++++++++++  THE LOGO MUST BE SELECTED IN THE "CONFIGURATION.H" FILE
 //++++++++++++  ALSO PICK THE RIGHT PRINTER TO OUTPUT THE TRANSACTION INFORMATION (PANEL / KIOSK)
-////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////1/////////////
 //#define _ALLOW_CREDIT_SALE_TESTING_
 #undef _ALLOW_CREDIT_SALE_TESTING_
 ////////////////////////////////////////////////////////////////////////////////
 //PROTOCOL SELECTION
-#define  PRIME_PROTOCOL
-//#define  ENCORE_PROTOCOL
+//#define  PRIME_PROTOCOL
+#define  ENCORE_PROTOCOL
 //#define  ADVANTAGE_PROTOCOL
 //#define  ADVANTAGE_PROTOCOL_SLOWSTARTUP
 ////////////////////////////////////////////////////////////////////////////////
