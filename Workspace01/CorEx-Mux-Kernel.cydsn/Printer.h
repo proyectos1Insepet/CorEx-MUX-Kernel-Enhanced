@@ -40,6 +40,9 @@ WriteAuxPSoC(_g_linefeed, 0x01, a)
 #define PRINTER_AUTOCUT(a)   \
 WriteAuxPSoC(_g_autocut, 0x04, a)
 
+#define PRINTER_RESET(a)   \
+WriteAuxPSoC(_g_starting_position, 0x02, a)
+
 #define PRINTER_INDENTLINE(a, b)    \
 WriteAuxPSoC(_g_padcharacters, a, b)
 
@@ -82,14 +85,10 @@ enum _PRINTER_NAMED_LINES_
     PRN_PRODUCT,
     PRN_PRODPRICE,
     PRN_VOLUME,
-<<<<<<< HEAD
     PRN_MONEY,
     PRN_ID,
     PRN_SIGNATURE,
     PRN_SERIAL
-=======
-    PRN_MONEY
->>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
 };
 
 enum _PRINTER_VOLUME_UNIT_TYPE_

@@ -35,13 +35,8 @@
 #undef _ALLOW_CREDIT_SALE_TESTING_
 ////////////////////////////////////////////////////////////////////////////////
 //PROTOCOL SELECTION
-<<<<<<< HEAD
 //#define  PRIME_PROTOCOL
 #define  ENCORE_PROTOCOL
-=======
-#define  PRIME_PROTOCOL
-//#define  ENCORE_PROTOCOL
->>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
 //#define  ADVANTAGE_PROTOCOL
 //#define  ADVANTAGE_PROTOCOL_SLOWSTARTUP
 ////////////////////////////////////////////////////////////////////////////////

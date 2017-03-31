@@ -498,7 +498,7 @@ DisplayFlow _g_displayflow[] =
         DisplayInputHandler,
         NonEmptyDataValidator,
         //InputBox default X and Y input positions, maximum number of characters and FontData info
-        { 0x004A, 0x002A, 0x0E, { 0x04, 0x10, DISP_TEXT_OPAQUE, 0xFFFF, 0x0000 } },
+        { 0x004A, 0x002A, 0x08, { 0x04, 0x10, DISP_TEXT_OPAQUE, 0xFFFF, 0x0000 } },
         PNEAR_NULLPTR,
         PNEAR_NULLPTR
     },
