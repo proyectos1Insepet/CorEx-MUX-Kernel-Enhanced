@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 1
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccwfw2zM.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 1
   17:.\Generated_Source\PSoC5/I2C_Bus_PM.c **** I2C_Bus_BACKUP_STRUCT I2C_Bus_backup =
   18:.\Generated_Source\PSoC5/I2C_Bus_PM.c **** {
   19:.\Generated_Source\PSoC5/I2C_Bus_PM.c ****     I2C_Bus_DISABLE,
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccwfw2zM.s 			page 2
 
 
   20:.\Generated_Source\PSoC5/I2C_Bus_PM.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 1
   39              		.loc 1 73 0
   40              		.cfi_startproc
   41              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 3
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccwfw2zM.s 			page 3
 
 
   42              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 1
   91:.\Generated_Source\PSoC5/I2C_Bus_PM.c ****     intState = CyEnterCriticalSection();
   92:.\Generated_Source\PSoC5/I2C_Bus_PM.c ****     I2C_Bus_PWRSYS_CR1_REG |= I2C_Bus_PWRSYS_CR1_I2C_REG_BACKUP;
   93:.\Generated_Source\PSoC5/I2C_Bus_PM.c ****     CyExitCriticalSection(intState);
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 4
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccwfw2zM.s 			page 4
 
 
   94:.\Generated_Source\PSoC5/I2C_Bus_PM.c **** 
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 1
  106              	.LFB1:
  121:.\Generated_Source\PSoC5/I2C_Bus_PM.c **** 
  122:.\Generated_Source\PSoC5/I2C_Bus_PM.c **** 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 5
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccwfw2zM.s 			page 5
 
 
  123:.\Generated_Source\PSoC5/I2C_Bus_PM.c **** /*******************************************************************************
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 1
  120 0008 DBB2     		uxtb	r3, r3
  121 000a 03F00403 		and	r3, r3, #4
  122 000e 002B     		cmp	r3, #0
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 6
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccwfw2zM.s 			page 6
 
 
  123 0010 14BF     		ite	ne
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 1
  183:.\Generated_Source\PSoC5/I2C_Bus_PM.c **** *              to the state they were in before I2C_Sleep() or I2C_SaveConfig()
  184:.\Generated_Source\PSoC5/I2C_Bus_PM.c **** *              was called.
  185:.\Generated_Source\PSoC5/I2C_Bus_PM.c **** *   Checked:   Disables the backup regulator of the I2C hardware. Sets up the
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 7
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccwfw2zM.s 			page 7
 
 
  186:.\Generated_Source\PSoC5/I2C_Bus_PM.c **** *              regular component interrupt handler and generates the component
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 1
  179 0016 FFF7FEFF 		bl	CyEnterCriticalSection
  180 001a 0346     		mov	r3, r0
  181 001c FB71     		strb	r3, [r7, #7]
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 8
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccwfw2zM.s 			page 8
 
 
  219:.\Generated_Source\PSoC5/I2C_Bus_PM.c ****         I2C_Bus_PWRSYS_CR1_REG &= (uint8) ~I2C_Bus_PWRSYS_CR1_I2C_REG_BACKUP;
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 1
  212 0050 0B4B     		ldr	r3, .L11+16
  213 0052 094A     		ldr	r2, .L11+8
  214 0054 D278     		ldrb	r2, [r2, #3]	@ zero_extendqisi2
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 9
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccwfw2zM.s 			page 9
 
 
  215 0056 1A70     		strb	r2, [r3]
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 1
  246              		.size	I2C_Bus_RestoreConfig, .-I2C_Bus_RestoreConfig
  247              		.section	.text.I2C_Bus_Wakeup,"ax",%progbits
  248              		.align	2
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 10
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccwfw2zM.s 			page 10
 
 
  249              		.global	I2C_Bus_Wakeup
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 1
  266 0004 FFF7FEFF 		bl	I2C_Bus_RestoreConfig
  303:.\Generated_Source\PSoC5/I2C_Bus_PM.c **** 
  304:.\Generated_Source\PSoC5/I2C_Bus_PM.c ****     /* Restore component enable state */
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 11
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccwfw2zM.s 			page 11
 
 
  305:.\Generated_Source\PSoC5/I2C_Bus_PM.c ****     if (0u != I2C_Bus_backup.enableState)
@@ -646,28 +646,28 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 1
  297 0006 00000000 		.4byte	.Ldebug_abbrev0
  298 000a 04       		.byte	0x4
  299 000b 01       		.uleb128 0x1
- 300 000c F5000000 		.4byte	.LASF27
+ 300 000c FD000000 		.4byte	.LASF27
  301 0010 01       		.byte	0x1
- 302 0011 0A020000 		.4byte	.LASF28
- 303 0015 4B000000 		.4byte	.LASF29
+ 302 0011 12020000 		.4byte	.LASF28
+ 303 0015 45000000 		.4byte	.LASF29
  304 0019 00000000 		.4byte	.Ldebug_ranges0+0
  305 001d 00000000 		.4byte	0
  306 0021 00000000 		.4byte	.Ldebug_line0
  307 0025 02       		.uleb128 0x2
  308 0026 01       		.byte	0x1
  309 0027 06       		.byte	0x6
- 310 0028 5F020000 		.4byte	.LASF0
+ 310 0028 67020000 		.4byte	.LASF0
  311 002c 02       		.uleb128 0x2
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 12
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccwfw2zM.s 			page 12
 
 
  312 002d 01       		.byte	0x1
  313 002e 08       		.byte	0x8
- 314 002f AA000000 		.4byte	.LASF1
+ 314 002f B2000000 		.4byte	.LASF1
  315 0033 02       		.uleb128 0x2
  316 0034 02       		.byte	0x2
  317 0035 05       		.byte	0x5
- 318 0036 3A020000 		.4byte	.LASF2
+ 318 0036 42020000 		.4byte	.LASF2
  319 003a 02       		.uleb128 0x2
  320 003b 02       		.byte	0x2
  321 003c 07       		.byte	0x7
@@ -675,19 +675,19 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 1
  323 0041 02       		.uleb128 0x2
  324 0042 04       		.byte	0x4
  325 0043 05       		.byte	0x5
- 326 0044 4A020000 		.4byte	.LASF4
+ 326 0044 52020000 		.4byte	.LASF4
  327 0048 02       		.uleb128 0x2
  328 0049 04       		.byte	0x4
  329 004a 07       		.byte	0x7
- 330 004b D0000000 		.4byte	.LASF5
+ 330 004b D8000000 		.4byte	.LASF5
  331 004f 02       		.uleb128 0x2
  332 0050 08       		.byte	0x8
  333 0051 05       		.byte	0x5
- 334 0052 FC010000 		.4byte	.LASF6
+ 334 0052 04020000 		.4byte	.LASF6
  335 0056 02       		.uleb128 0x2
  336 0057 08       		.byte	0x8
  337 0058 07       		.byte	0x7
- 338 0059 BD010000 		.4byte	.LASF7
+ 338 0059 C5010000 		.4byte	.LASF7
  339 005d 03       		.uleb128 0x3
  340 005e 04       		.byte	0x4
  341 005f 05       		.byte	0x5
@@ -695,39 +695,39 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 1
  343 0064 02       		.uleb128 0x2
  344 0065 04       		.byte	0x4
  345 0066 07       		.byte	0x7
- 346 0067 B0010000 		.4byte	.LASF8
+ 346 0067 B8010000 		.4byte	.LASF8
  347 006b 04       		.uleb128 0x4
- 348 006c 44020000 		.4byte	.LASF9
+ 348 006c 4C020000 		.4byte	.LASF9
  349 0070 02       		.byte	0x2
  350 0071 3801     		.2byte	0x138
  351 0073 2C000000 		.4byte	0x2c
  352 0077 04       		.uleb128 0x4
- 353 0078 99010000 		.4byte	.LASF10
+ 353 0078 A1010000 		.4byte	.LASF10
  354 007c 02       		.byte	0x2
  355 007d 3901     		.2byte	0x139
  356 007f 3A000000 		.4byte	0x3a
  357 0083 04       		.uleb128 0x4
- 358 0084 A0010000 		.4byte	.LASF11
+ 358 0084 A8010000 		.4byte	.LASF11
  359 0088 02       		.byte	0x2
  360 0089 3A01     		.2byte	0x13a
  361 008b 48000000 		.4byte	0x48
  362 008f 02       		.uleb128 0x2
  363 0090 04       		.byte	0x4
  364 0091 04       		.byte	0x4
- 365 0092 45000000 		.4byte	.LASF12
+ 365 0092 AC000000 		.4byte	.LASF12
  366 0096 02       		.uleb128 0x2
  367 0097 08       		.byte	0x8
  368 0098 04       		.byte	0x4
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 13
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccwfw2zM.s 			page 13
 
 
- 369 0099 83010000 		.4byte	.LASF13
+ 369 0099 8B010000 		.4byte	.LASF13
  370 009d 02       		.uleb128 0x2
  371 009e 01       		.byte	0x1
  372 009f 08       		.byte	0x8
- 373 00a0 30020000 		.4byte	.LASF14
+ 373 00a0 38020000 		.4byte	.LASF14
  374 00a4 04       		.uleb128 0x4
- 375 00a5 B8000000 		.4byte	.LASF15
+ 375 00a5 C0000000 		.4byte	.LASF15
  376 00a9 02       		.byte	0x2
  377 00aa E201     		.2byte	0x1e2
  378 00ac B0000000 		.4byte	0xb0
@@ -743,20 +743,20 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 1
  388 00c6 02       		.uleb128 0x2
  389 00c7 04       		.byte	0x4
  390 00c8 07       		.byte	0x7
- 391 00c9 F3010000 		.4byte	.LASF17
+ 391 00c9 FB010000 		.4byte	.LASF17
  392 00cd 06       		.uleb128 0x6
  393 00ce 06       		.byte	0x6
  394 00cf 03       		.byte	0x3
  395 00d0 76       		.byte	0x76
  396 00d1 1E010000 		.4byte	0x11e
  397 00d5 07       		.uleb128 0x7
- 398 00d6 53020000 		.4byte	.LASF18
+ 398 00d6 5B020000 		.4byte	.LASF18
  399 00da 03       		.byte	0x3
  400 00db 78       		.byte	0x78
  401 00dc 6B000000 		.4byte	0x6b
  402 00e0 00       		.byte	0
  403 00e1 07       		.uleb128 0x7
- 404 00e2 35020000 		.4byte	.LASF19
+ 404 00e2 3D020000 		.4byte	.LASF19
  405 00e6 03       		.byte	0x3
  406 00e7 7B       		.byte	0x7b
  407 00e8 6B000000 		.4byte	0x6b
@@ -768,22 +768,22 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 1
  413 00f4 6B000000 		.4byte	0x6b
  414 00f8 02       		.byte	0x2
  415 00f9 07       		.uleb128 0x7
- 416 00fa F0000000 		.4byte	.LASF20
+ 416 00fa F8000000 		.4byte	.LASF20
  417 00fe 03       		.byte	0x3
  418 00ff 7D       		.byte	0x7d
  419 0100 6B000000 		.4byte	0x6b
  420 0104 03       		.byte	0x3
  421 0105 07       		.uleb128 0x7
- 422 0106 E3010000 		.4byte	.LASF21
+ 422 0106 EB010000 		.4byte	.LASF21
  423 010a 03       		.byte	0x3
  424 010b 7E       		.byte	0x7e
  425 010c 6B000000 		.4byte	0x6b
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 14
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccwfw2zM.s 			page 14
 
 
  426 0110 04       		.byte	0x4
  427 0111 07       		.uleb128 0x7
- 428 0112 EB010000 		.4byte	.LASF22
+ 428 0112 F3010000 		.4byte	.LASF22
  429 0116 03       		.byte	0x3
  430 0117 7F       		.byte	0x7f
  431 0118 6B000000 		.4byte	0x6b
@@ -795,7 +795,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 1
  437 0124 89       		.byte	0x89
  438 0125 CD000000 		.4byte	0xcd
  439 0129 0A       		.uleb128 0xa
- 440 012a BD000000 		.4byte	.LASF24
+ 440 012a C5000000 		.4byte	.LASF24
  441 012e 01       		.byte	0x1
  442 012f 48       		.byte	0x48
  443 0130 00000000 		.4byte	.LFB0
@@ -803,7 +803,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 1
  445 0138 01       		.uleb128 0x1
  446 0139 9C       		.byte	0x9c
  447 013a 0B       		.uleb128 0xb
- 448 013b E2000000 		.4byte	.LASF25
+ 448 013b EA000000 		.4byte	.LASF25
  449 013f 01       		.byte	0x1
  450 0140 97       		.byte	0x97
  451 0141 00000000 		.4byte	.LFB1
@@ -820,7 +820,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 1
  462 015b 9C       		.byte	0x9c
  463 015c 6F010000 		.4byte	0x16f
  464 0160 0D       		.uleb128 0xd
- 465 0161 A7010000 		.4byte	.LASF31
+ 465 0161 AF010000 		.4byte	.LASF31
  466 0165 01       		.byte	0x1
  467 0166 D4       		.byte	0xd4
  468 0167 6B000000 		.4byte	0x6b
@@ -829,7 +829,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 1
  471 016d 77       		.sleb128 -9
  472 016e 00       		.byte	0
  473 016f 0E       		.uleb128 0xe
- 474 0170 D4010000 		.4byte	.LASF26
+ 474 0170 DC010000 		.4byte	.LASF26
  475 0174 01       		.byte	0x1
  476 0175 2C01     		.2byte	0x12c
  477 0177 00000000 		.4byte	.LFB3
@@ -837,8 +837,8 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 1
  479 017f 01       		.uleb128 0x1
  480 0180 9C       		.byte	0x9c
  481 0181 0F       		.uleb128 0xf
- 482 0182 8A010000 		.4byte	.LASF32
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 15
+ 482 0182 92010000 		.4byte	.LASF32
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccwfw2zM.s 			page 15
 
 
  483 0186 01       		.byte	0x1
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 1
  537 002d 0E       		.uleb128 0xe
  538 002e 3A       		.uleb128 0x3a
  539 002f 0B       		.uleb128 0xb
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 16
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccwfw2zM.s 			page 16
 
 
  540 0030 3B       		.uleb128 0x3b
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 1
  594 0066 00       		.byte	0
  595 0067 00       		.byte	0
  596 0068 09       		.uleb128 0x9
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 17
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccwfw2zM.s 			page 17
 
 
  597 0069 16       		.uleb128 0x16
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 1
  651 00a0 9642     		.uleb128 0x2116
  652 00a2 19       		.uleb128 0x19
  653 00a3 00       		.byte	0
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 18
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccwfw2zM.s 			page 18
 
 
  654 00a4 00       		.byte	0
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 1
  708 00db 11       		.uleb128 0x11
  709 00dc 01       		.uleb128 0x1
  710 00dd 12       		.uleb128 0x12
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 19
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccwfw2zM.s 			page 19
 
 
  711 00de 06       		.uleb128 0x6
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 1
  765 0024 00000000 		.4byte	0
  766              		.section	.debug_line,"",%progbits
  767              	.Ldebug_line0:
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 20
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccwfw2zM.s 			page 20
 
 
  768 0000 BE000000 		.section	.debug_str,"MS",%progbits,1
@@ -1167,148 +1167,150 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 1
  776      4241434B 
  776      55505F53 
  776      54525543 
- 777              	.LASF12:
- 778 0045 666C6F61 		.ascii	"float\000"
- 778      7400
- 779              	.LASF29:
- 780 004b 433A5C54 		.ascii	"C:\\TeamInsepet\\NSX-Prime\\Hardware\\CorEx-MUX-Ker"
- 780      65616D49 
- 780      6E736570 
- 780      65745C4E 
- 780      53582D50 
- 781 007a 6E656C2D 		.ascii	"nel-Enhanced\\Workspace01\\CorEx-Mux-Kernel.cydsn\000"
- 781      456E6861 
- 781      6E636564 
- 781      5C576F72 
- 781      6B737061 
- 782              	.LASF1:
- 783 00aa 756E7369 		.ascii	"unsigned char\000"
- 783      676E6564 
- 783      20636861 
- 783      7200
- 784              	.LASF15:
- 785 00b8 72656738 		.ascii	"reg8\000"
- 785      00
- 786              	.LASF24:
- 787 00bd 4932435F 		.ascii	"I2C_Bus_SaveConfig\000"
- 787      4275735F 
- 787      53617665 
- 787      436F6E66 
- 787      696700
- 788              	.LASF5:
- 789 00d0 6C6F6E67 		.ascii	"long unsigned int\000"
- 789      20756E73 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 21
+ 777              	.LASF29:
+ 778 0045 433A5C55 		.ascii	"C:\\Users\\Recepcion\\Documents\\CorEx-MUX-Kernel-E"
+ 778      73657273 
+ 778      5C526563 
+ 778      65706369 
+ 778      6F6E5C44 
+ 779 0074 6E68616E 		.ascii	"nhanced-COPIA RECIBO\\Workspace01\\CorEx-Mux-Kernel"
+ 779      6365642D 
+ 779      434F5049 
+ 779      41205245 
+ 779      4349424F 
+ 780 00a5 2E637964 		.ascii	".cydsn\000"
+ 780      736E00
+ 781              	.LASF12:
+ 782 00ac 666C6F61 		.ascii	"float\000"
+ 782      7400
+ 783              	.LASF1:
+ 784 00b2 756E7369 		.ascii	"unsigned char\000"
+ 784      676E6564 
+ 784      20636861 
+ 784      7200
+ 785              	.LASF15:
+ 786 00c0 72656738 		.ascii	"reg8\000"
+ 786      00
+ 787              	.LASF24:
+ 788 00c5 4932435F 		.ascii	"I2C_Bus_SaveConfig\000"
+ 788      4275735F 
+ 788      53617665 
+ 788      436F6E66 
+ 788      696700
+ 789              	.LASF5:
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccwfw2zM.s 			page 21
 
 
- 789      69676E65 
- 789      6420696E 
- 789      7400
- 790              	.LASF25:
- 791 00e2 4932435F 		.ascii	"I2C_Bus_Sleep\000"
- 791      4275735F 
- 791      536C6565 
- 791      7000
- 792              	.LASF20:
- 793 00f0 61646472 		.ascii	"addr\000"
- 793      00
- 794              	.LASF27:
- 795 00f5 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 795      4320342E 
- 795      392E3320 
- 795      32303135 
- 795      30333033 
- 796 0128 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
- 796      20726576 
- 796      6973696F 
- 796      6E203232 
- 796      31323230 
- 797 015b 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
- 797      66756E63 
- 797      74696F6E 
- 797      2D736563 
- 797      74696F6E 
- 798              	.LASF13:
- 799 0183 646F7562 		.ascii	"double\000"
- 799      6C6500
- 800              	.LASF32:
- 801 018a 4932435F 		.ascii	"I2C_Bus_backup\000"
- 801      4275735F 
- 801      6261636B 
- 801      757000
- 802              	.LASF10:
- 803 0199 75696E74 		.ascii	"uint16\000"
- 803      313600
- 804              	.LASF11:
- 805 01a0 75696E74 		.ascii	"uint32\000"
- 805      333200
- 806              	.LASF31:
- 807 01a7 696E7453 		.ascii	"intState\000"
- 807      74617465 
- 807      00
- 808              	.LASF8:
- 809 01b0 756E7369 		.ascii	"unsigned int\000"
- 809      676E6564 
- 809      20696E74 
- 809      00
- 810              	.LASF7:
- 811 01bd 6C6F6E67 		.ascii	"long long unsigned int\000"
- 811      206C6F6E 
- 811      6720756E 
- 811      7369676E 
- 811      65642069 
- 812              	.LASF26:
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccblleFY.s 			page 22
+ 790 00d8 6C6F6E67 		.ascii	"long unsigned int\000"
+ 790      20756E73 
+ 790      69676E65 
+ 790      6420696E 
+ 790      7400
+ 791              	.LASF25:
+ 792 00ea 4932435F 		.ascii	"I2C_Bus_Sleep\000"
+ 792      4275735F 
+ 792      536C6565 
+ 792      7000
+ 793              	.LASF20:
+ 794 00f8 61646472 		.ascii	"addr\000"
+ 794      00
+ 795              	.LASF27:
+ 796 00fd 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 796      4320342E 
+ 796      392E3320 
+ 796      32303135 
+ 796      30333033 
+ 797 0130 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 797      20726576 
+ 797      6973696F 
+ 797      6E203232 
+ 797      31323230 
+ 798 0163 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 798      66756E63 
+ 798      74696F6E 
+ 798      2D736563 
+ 798      74696F6E 
+ 799              	.LASF13:
+ 800 018b 646F7562 		.ascii	"double\000"
+ 800      6C6500
+ 801              	.LASF32:
+ 802 0192 4932435F 		.ascii	"I2C_Bus_backup\000"
+ 802      4275735F 
+ 802      6261636B 
+ 802      757000
+ 803              	.LASF10:
+ 804 01a1 75696E74 		.ascii	"uint16\000"
+ 804      313600
+ 805              	.LASF11:
+ 806 01a8 75696E74 		.ascii	"uint32\000"
+ 806      333200
+ 807              	.LASF31:
+ 808 01af 696E7453 		.ascii	"intState\000"
+ 808      74617465 
+ 808      00
+ 809              	.LASF8:
+ 810 01b8 756E7369 		.ascii	"unsigned int\000"
+ 810      676E6564 
+ 810      20696E74 
+ 810      00
+ 811              	.LASF7:
+ 812 01c5 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 812      206C6F6E 
+ 812      6720756E 
+ 812      7369676E 
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccwfw2zM.s 			page 22
 
 
- 813 01d4 4932435F 		.ascii	"I2C_Bus_Wakeup\000"
- 813      4275735F 
- 813      57616B65 
- 813      757000
- 814              	.LASF21:
- 815 01e3 636C6B44 		.ascii	"clkDiv1\000"
- 815      69763100 
- 816              	.LASF22:
- 817 01eb 636C6B44 		.ascii	"clkDiv2\000"
- 817      69763200 
- 818              	.LASF17:
- 819 01f3 73697A65 		.ascii	"sizetype\000"
- 819      74797065 
- 819      00
- 820              	.LASF6:
- 821 01fc 6C6F6E67 		.ascii	"long long int\000"
- 821      206C6F6E 
- 821      6720696E 
- 821      7400
- 822              	.LASF28:
- 823 020a 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\I2C_Bus_PM.c\000"
- 823      6E657261 
- 823      7465645F 
- 823      536F7572 
- 823      63655C50 
- 824              	.LASF14:
- 825 0230 63686172 		.ascii	"char\000"
- 825      00
- 826              	.LASF19:
- 827 0235 78636667 		.ascii	"xcfg\000"
- 827      00
- 828              	.LASF2:
- 829 023a 73686F72 		.ascii	"short int\000"
- 829      7420696E 
- 829      7400
- 830              	.LASF9:
- 831 0244 75696E74 		.ascii	"uint8\000"
- 831      3800
- 832              	.LASF4:
- 833 024a 6C6F6E67 		.ascii	"long int\000"
- 833      20696E74 
- 833      00
- 834              	.LASF18:
- 835 0253 656E6162 		.ascii	"enableState\000"
- 835      6C655374 
- 835      61746500 
- 836              	.LASF0:
- 837 025f 7369676E 		.ascii	"signed char\000"
- 837      65642063 
- 837      68617200 
- 838              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
+ 812      65642069 
+ 813              	.LASF26:
+ 814 01dc 4932435F 		.ascii	"I2C_Bus_Wakeup\000"
+ 814      4275735F 
+ 814      57616B65 
+ 814      757000
+ 815              	.LASF21:
+ 816 01eb 636C6B44 		.ascii	"clkDiv1\000"
+ 816      69763100 
+ 817              	.LASF22:
+ 818 01f3 636C6B44 		.ascii	"clkDiv2\000"
+ 818      69763200 
+ 819              	.LASF17:
+ 820 01fb 73697A65 		.ascii	"sizetype\000"
+ 820      74797065 
+ 820      00
+ 821              	.LASF6:
+ 822 0204 6C6F6E67 		.ascii	"long long int\000"
+ 822      206C6F6E 
+ 822      6720696E 
+ 822      7400
+ 823              	.LASF28:
+ 824 0212 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\I2C_Bus_PM.c\000"
+ 824      6E657261 
+ 824      7465645F 
+ 824      536F7572 
+ 824      63655C50 
+ 825              	.LASF14:
+ 826 0238 63686172 		.ascii	"char\000"
+ 826      00
+ 827              	.LASF19:
+ 828 023d 78636667 		.ascii	"xcfg\000"
+ 828      00
+ 829              	.LASF2:
+ 830 0242 73686F72 		.ascii	"short int\000"
+ 830      7420696E 
+ 830      7400
+ 831              	.LASF9:
+ 832 024c 75696E74 		.ascii	"uint8\000"
+ 832      3800
+ 833              	.LASF4:
+ 834 0252 6C6F6E67 		.ascii	"long int\000"
+ 834      20696E74 
+ 834      00
+ 835              	.LASF18:
+ 836 025b 656E6162 		.ascii	"enableState\000"
+ 836      6C655374 
+ 836      61746500 
+ 837              	.LASF0:
+ 838 0267 7369676E 		.ascii	"signed char\000"
+ 838      65642063 
+ 838      68617200 
+ 839              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

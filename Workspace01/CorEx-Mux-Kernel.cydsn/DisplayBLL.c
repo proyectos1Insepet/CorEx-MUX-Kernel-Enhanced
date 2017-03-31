@@ -1809,18 +1809,6 @@ bool DisplayGenericValidator(LPVOID pparam)
                         pdisplay->_nextscrid = DISPLAY_OPERACION_CANCELADA;
                     }
                 }
-                 if(psinkmsg->_buffer[GetBufferIndexFromDisplayID(DISPLAY_SELECCIONE_POSICION)] != 0x00)
-                {
-                    uint8 paymodel = psinkmsg->_buffer[GetBufferIndexFromDisplayID(DISPLAY_OPERACIONES)];
-                    if(paymodel == 0x46 || (pdisplay->_pcurrflow->_scrid == DISPLAY_OPERACIONES && pdisplay->_currscrcode == 0x46))
-                    {
-                        retval = true;
-                        pdisplay->_timeoutscrid = pdisplay->_statechangescrid = DISPLAY_NULL;
-                        psinkmsg->_buffer[GetBufferIndexFromDisplayID(DISPLAY_OPERACIONES)] = 0x00;
-                        psinkmsg->_buffer[GetBufferIndexFromDisplayID(DISPLAY_OPCION_TURNO)] = 0x00;
-                        pdisplay->_nextscrid = DISPLAY_OPERACION_CANCELADA;
-                    }
-                }
             }
         }
         

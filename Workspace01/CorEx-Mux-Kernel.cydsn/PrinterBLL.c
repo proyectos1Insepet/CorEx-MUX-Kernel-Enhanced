@@ -36,7 +36,7 @@ uint8 _g_auxprinterbuffer[_MAX_PRINTER_LINE_WIDTH_];
 uint8 _g_separator[_MAX_PRINTER_LINE_WIDTH_];
 uint8 _g_autocut[] = {  0x1D, 0x56, 0x31 };
 uint8 _g_starting_position[] = {  0x1D, 0x0C };
-
+uint8 print_signature;
 
 #ifdef PRINTER_TYPE_PANEL
     uint8 _g_logoprintcmd[] = { 0x0A, 0x1B, 0x40, 0x0A, 0x0A, 0x0A };
@@ -67,7 +67,8 @@ void Printer11Callback(void *pdata)
     ClearEepromBuffer();
     LoadEepromPage(EEPROM_CONFIGURATION_PAGE7);
     uint8 numberofprintedcopies = GetEepromBuffer()[0x08];
-    I2CBusUnlock();    
+    I2CBusUnlock();
+    print_signature = 0;
     FOR(uint8 index = 0, index < numberofprintedcopies, index++)
     {
         #ifndef _NO_LOGO_
@@ -95,7 +96,8 @@ void Printer12Callback(void *pdata)
     ClearEepromBuffer();
     LoadEepromPage(EEPROM_CONFIGURATION_PAGE7);
     uint8 numberofprintedcopies = GetEepromBuffer()[0x08];
-    I2CBusUnlock();    
+    I2CBusUnlock();
+    print_signature = 0;
     FOR(uint8 index = 0, index < numberofprintedcopies, index++)
     {
         #ifndef _NO_LOGO_
@@ -123,7 +125,8 @@ void Printer21Callback(void *pdata)
     ClearEepromBuffer();
     LoadEepromPage(EEPROM_CONFIGURATION_PAGE7);
     uint8 numberofprintedcopies = GetEepromBuffer()[0x08];
-    I2CBusUnlock();    
+    I2CBusUnlock();
+    print_signature = 0;
     FOR(uint8 index = 0, index < numberofprintedcopies, index++)
     {
         #ifndef _NO_LOGO_
@@ -151,7 +154,8 @@ void Printer22Callback(void *pdata)
     ClearEepromBuffer();
     LoadEepromPage(EEPROM_CONFIGURATION_PAGE7);
     uint8 numberofprintedcopies = GetEepromBuffer()[0x08];
-    I2CBusUnlock();    
+    I2CBusUnlock();
+    print_signature = 0;
     FOR(uint8 index = 0, index < numberofprintedcopies, index++)
     {
         #ifndef _NO_LOGO_
@@ -939,16 +943,20 @@ void Print(PSINKMESSAGEPTR pmsg, uint8 printerport)
         PRINTER_INDENTLINE(_LEFT_MARGIN_, printerport);
         #endif
         index += 0x0F;                
-        PRINTER_LINEFEED(printerport);        
-        prefstr = GetPrinterTemplateLine(PRN_ID);
-        WriteAuxPSoC((PNEAR_BYTE_PTR)prefstr, strlen(prefstr), printerport);
         PRINTER_LINEFEED(printerport);
-        PRINTER_LINEFEED(printerport);
-        PRINTER_LINEFEED(printerport);
-        PRINTER_LINEFEED(printerport);
-        prefstr = GetPrinterTemplateLine(PRN_SIGNATURE);
-        WriteAuxPSoC((PNEAR_BYTE_PTR)prefstr, strlen(prefstr), printerport);
-        PRINTER_LINEFEED(printerport);                    
+        if(print_signature == 1){
+            prefstr = GetPrinterTemplateLine(PRN_ID);
+            WriteAuxPSoC((PNEAR_BYTE_PTR)prefstr, strlen(prefstr), printerport);
+            PRINTER_LINEFEED(printerport);
+            PRINTER_LINEFEED(printerport);
+            PRINTER_LINEFEED(printerport);
+            PRINTER_LINEFEED(printerport);
+            prefstr = GetPrinterTemplateLine(PRN_SIGNATURE);
+            WriteAuxPSoC((PNEAR_BYTE_PTR)prefstr, strlen(prefstr), printerport);
+            PRINTER_LINEFEED(printerport);
+            
+        }
+        print_signature = 1;
     }
     
     //line separator
