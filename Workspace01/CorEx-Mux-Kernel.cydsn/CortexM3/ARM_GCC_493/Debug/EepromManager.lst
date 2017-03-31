@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccessoEG.s 			page 1
-=======
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
->>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccdfZnua.s 			page 1
 
 
    1              		.syntax unified
@@ -62,11 +58,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
   16:.\EepromManager.c **** #include "GlobalDefinitions.h"
   17:.\EepromManager.c **** #include "Eeprom.h"
   18:.\EepromManager.c **** 
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccessoEG.s 			page 2
-=======
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 2
->>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccdfZnua.s 			page 2
 
 
   19:.\EepromManager.c **** volatile bool _g_i2cstart = true;
@@ -126,11 +118,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
   79              		@ frame_needed = 1, uses_anonymous_args = 0
   80 0000 80B5     		push	{r7, lr}
   81              		.cfi_def_cfa_offset 8
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccessoEG.s 			page 3
-=======
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 3
->>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccdfZnua.s 			page 3
 
 
   82              		.cfi_offset 7, -8
@@ -190,11 +178,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
   46:.\EepromManager.c ****     I2C_Bus_MasterClearStatus();    
  124              		.loc 1 46 0
  125 000a FFF7FEFF 		bl	I2C_Bus_MasterClearStatus
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccessoEG.s 			page 4
-=======
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 4
->>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccdfZnua.s 			page 4
 
 
   47:.\EepromManager.c ****     _g_eeprom[0] = (page >> 8) & 0xFF; _g_eeprom[1] = page & 0xFF;
@@ -254,11 +238,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  170 0054 0121     		movs	r1, #1
  171 0056 FFF7FEFF 		bl	I2C_Bus_MasterSendRestart
  172 005a 0346     		mov	r3, r0
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccessoEG.s 			page 5
-=======
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 5
->>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccdfZnua.s 			page 5
 
 
  173 005c BB81     		strh	r3, [r7, #12]	@ movhi
@@ -318,11 +298,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  216              		.cfi_endproc
  217              	.LFE65:
  218              		.size	LoadEepromPage, .-LoadEepromPage
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccessoEG.s 			page 6
-=======
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 6
->>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccdfZnua.s 			page 6
 
 
  219              		.global	__aeabi_i2d
@@ -382,11 +358,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
   80:.\EepromManager.c ****         uint16 limit[0x01] = { ((uint16)(1000*(double)rand()/(double)RAND_MAX) + 100) };
  257              		.loc 1 80 0
  258 001a FFF7FEFF 		bl	rand
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccessoEG.s 			page 7
-=======
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 7
->>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccdfZnua.s 			page 7
 
 
  259 001e 0346     		mov	r3, r0
@@ -446,11 +418,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  311 0086 DBB2     		uxtb	r3, r3
  312 0088 83F00103 		eor	r3, r3, #1
  313 008c DBB2     		uxtb	r3, r3
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccessoEG.s 			page 8
-=======
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 8
->>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccdfZnua.s 			page 8
 
 
  314 008e 002B     		cmp	r3, #0
@@ -510,11 +478,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
   94:.\EepromManager.c **** //@Septembre de 2016
   95:.\EepromManager.c **** void StoreEepromPage(uint16 page)
   96:.\EepromManager.c **** {    
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccessoEG.s 			page 9
-=======
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 9
->>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccdfZnua.s 			page 9
 
 
  357              		.loc 1 96 0
@@ -574,11 +538,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  400              		.loc 1 107 0
  401 003c BB89     		ldrh	r3, [r7, #12]
  402 003e 002B     		cmp	r3, #0
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccessoEG.s 			page 10
-=======
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 10
->>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccdfZnua.s 			page 10
 
 
  403 0040 13D1     		bne	.L25
@@ -638,11 +598,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  445 007c FFF7FEFF 		bl	eepromWP_Write
  118:.\EepromManager.c **** }
  446              		.loc 1 118 0
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccessoEG.s 			page 11
-=======
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 11
->>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccdfZnua.s 			page 11
 
 
  447 0080 1037     		adds	r7, r7, #16
@@ -702,11 +658,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  494              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
  495              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
  496              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccessoEG.s 			page 12
-=======
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 12
->>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccdfZnua.s 			page 12
 
 
  497              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
@@ -719,27 +671,27 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  504 000b 01       		.uleb128 0x1
  505 000c 1B000000 		.4byte	.LASF33
  506 0010 01       		.byte	0x1
- 507 0011 12020000 		.4byte	.LASF34
- 508 0015 B0000000 		.4byte	.LASF35
+ 507 0011 0A020000 		.4byte	.LASF34
+ 508 0015 C3000000 		.4byte	.LASF35
  509 0019 00000000 		.4byte	.Ldebug_ranges0+0
  510 001d 00000000 		.4byte	0
  511 0021 00000000 		.4byte	.Ldebug_line0
  512 0025 02       		.uleb128 0x2
  513 0026 01       		.byte	0x1
  514 0027 06       		.byte	0x6
- 515 0028 52020000 		.4byte	.LASF0
+ 515 0028 4A020000 		.4byte	.LASF0
  516 002c 02       		.uleb128 0x2
  517 002d 01       		.byte	0x1
  518 002e 08       		.byte	0x8
- 519 002f 24010000 		.4byte	.LASF1
+ 519 002f 22010000 		.4byte	.LASF1
  520 0033 02       		.uleb128 0x2
  521 0034 02       		.byte	0x2
  522 0035 05       		.byte	0x5
- 523 0036 08020000 		.4byte	.LASF2
+ 523 0036 00020000 		.4byte	.LASF2
  524 003a 02       		.uleb128 0x2
  525 003b 02       		.byte	0x2
  526 003c 07       		.byte	0x7
- 527 003d 49010000 		.4byte	.LASF3
+ 527 003d 47010000 		.4byte	.LASF3
  528 0041 03       		.uleb128 0x3
  529 0042 11000000 		.4byte	.LASF9
  530 0046 02       		.byte	0x2
@@ -748,53 +700,49 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  533 004c 02       		.uleb128 0x2
  534 004d 04       		.byte	0x4
  535 004e 05       		.byte	0x5
- 536 004f 2E020000 		.4byte	.LASF4
+ 536 004f 26020000 		.4byte	.LASF4
  537 0053 02       		.uleb128 0x2
  538 0054 04       		.byte	0x4
  539 0055 07       		.byte	0x7
- 540 0056 37010000 		.4byte	.LASF5
+ 540 0056 35010000 		.4byte	.LASF5
  541 005a 02       		.uleb128 0x2
  542 005b 08       		.byte	0x8
  543 005c 05       		.byte	0x5
- 544 005d EF010000 		.4byte	.LASF6
+ 544 005d E7010000 		.4byte	.LASF6
  545 0061 02       		.uleb128 0x2
  546 0062 08       		.byte	0x8
  547 0063 07       		.byte	0x7
- 548 0064 AD010000 		.4byte	.LASF7
+ 548 0064 AB010000 		.4byte	.LASF7
  549 0068 04       		.uleb128 0x4
  550 0069 04       		.byte	0x4
  551 006a 05       		.byte	0x5
  552 006b 696E7400 		.ascii	"int\000"
  553 006f 02       		.uleb128 0x2
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccessoEG.s 			page 13
-=======
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 13
->>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccdfZnua.s 			page 13
 
 
  554 0070 04       		.byte	0x4
  555 0071 07       		.byte	0x7
- 556 0072 93010000 		.4byte	.LASF8
+ 556 0072 91010000 		.4byte	.LASF8
  557 0076 03       		.uleb128 0x3
- 558 0077 DE010000 		.4byte	.LASF10
+ 558 0077 D6010000 		.4byte	.LASF10
  559 007b 03       		.byte	0x3
  560 007c 2C       		.byte	0x2c
  561 007d 41000000 		.4byte	0x41
  562 0081 05       		.uleb128 0x5
- 563 0082 D8010000 		.4byte	.LASF11
+ 563 0082 B0000000 		.4byte	.LASF11
  564 0086 04       		.byte	0x4
  565 0087 3801     		.2byte	0x138
  566 0089 2C000000 		.4byte	0x2c
  567 008d 05       		.uleb128 0x5
- 568 008e 7C010000 		.4byte	.LASF12
+ 568 008e 7A010000 		.4byte	.LASF12
  569 0092 04       		.byte	0x4
  570 0093 3901     		.2byte	0x139
  571 0095 3A000000 		.4byte	0x3a
  572 0099 02       		.uleb128 0x2
  573 009a 04       		.byte	0x4
  574 009b 04       		.byte	0x4
- 575 009c 1E010000 		.4byte	.LASF13
+ 575 009c BD000000 		.4byte	.LASF13
  576 00a0 02       		.uleb128 0x2
  577 00a1 08       		.byte	0x8
  578 00a2 04       		.byte	0x4
@@ -802,9 +750,9 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  580 00a7 02       		.uleb128 0x2
  581 00a8 01       		.byte	0x1
  582 00a9 08       		.byte	0x8
- 583 00aa FD010000 		.4byte	.LASF15
+ 583 00aa F5010000 		.4byte	.LASF15
  584 00ae 05       		.uleb128 0x5
- 585 00af 32010000 		.4byte	.LASF16
+ 585 00af 30010000 		.4byte	.LASF16
  586 00b3 04       		.byte	0x4
  587 00b4 E201     		.2byte	0x1e2
  588 00b6 BA000000 		.4byte	0xba
@@ -813,16 +761,16 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  591 00bf 02       		.uleb128 0x2
  592 00c0 04       		.byte	0x4
  593 00c1 07       		.byte	0x7
- 594 00c2 E6010000 		.4byte	.LASF17
+ 594 00c2 DE010000 		.4byte	.LASF17
  595 00c6 02       		.uleb128 0x2
  596 00c7 08       		.byte	0x8
  597 00c8 04       		.byte	0x4
- 598 00c9 46020000 		.4byte	.LASF18
+ 598 00c9 3E020000 		.4byte	.LASF18
  599 00cd 07       		.uleb128 0x7
  600 00ce 04       		.byte	0x4
  601 00cf 81000000 		.4byte	0x81
  602 00d3 08       		.uleb128 0x8
- 603 00d4 5E020000 		.4byte	.LASF36
+ 603 00d4 56020000 		.4byte	.LASF36
  604 00d8 01       		.byte	0x1
  605 00d9 1A       		.byte	0x1a
  606 00da CD000000 		.4byte	0xcd
@@ -830,15 +778,11 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  608 00e2 14000000 		.4byte	.LFE63-.LFB63
  609 00e6 01       		.uleb128 0x1
  610 00e7 9C       		.byte	0x9c
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccessoEG.s 			page 14
-=======
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 14
->>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccdfZnua.s 			page 14
 
 
  611 00e8 09       		.uleb128 0x9
- 612 00e9 A0010000 		.4byte	.LASF26
+ 612 00e9 9E010000 		.4byte	.LASF26
  613 00ed 01       		.byte	0x1
  614 00ee 20       		.byte	0x20
  615 00ef 00000000 		.4byte	.LFB64
@@ -846,7 +790,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  617 00f7 01       		.uleb128 0x1
  618 00f8 9C       		.byte	0x9c
  619 00f9 0A       		.uleb128 0xa
- 620 00fa 37020000 		.4byte	.LASF22
+ 620 00fa 2F020000 		.4byte	.LASF22
  621 00fe 01       		.byte	0x1
  622 00ff 2A       		.byte	0x2a
  623 0100 00000000 		.4byte	.LFB65
@@ -863,7 +807,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  634 011a 91       		.byte	0x91
  635 011b 66       		.sleb128 -26
  636 011c 0C       		.uleb128 0xc
- 637 011d 17010000 		.4byte	.LASF19
+ 637 011d B6000000 		.4byte	.LASF19
  638 0121 01       		.byte	0x1
  639 0122 30       		.byte	0x30
  640 0123 8D000000 		.4byte	0x8d
@@ -874,7 +818,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  645 012b 34000000 		.4byte	.LBB2
  646 012f 56000000 		.4byte	.LBE2-.LBB2
  647 0133 0C       		.uleb128 0xc
- 648 0134 02020000 		.4byte	.LASF20
+ 648 0134 FA010000 		.4byte	.LASF20
  649 0138 01       		.byte	0x1
  650 0139 33       		.byte	0x33
  651 013a 81000000 		.4byte	0x81
@@ -884,7 +828,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  655 0141 00       		.byte	0
  656 0142 00       		.byte	0
  657 0143 0E       		.uleb128 0xe
- 658 0144 69010000 		.4byte	.LASF37
+ 658 0144 67010000 		.4byte	.LASF37
  659 0148 01       		.byte	0x1
  660 0149 45       		.byte	0x45
  661 014a 00000000 		.4byte	.LFB66
@@ -894,16 +838,12 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  665 0154 7F010000 		.4byte	0x17f
  666 0158 0D       		.uleb128 0xd
  667 0159 1A000000 		.4byte	.LBB3
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccessoEG.s 			page 15
-=======
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 15
->>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccdfZnua.s 			page 15
 
 
  668 015d 7E000000 		.4byte	.LBE3-.LBB3
  669 0161 0C       		.uleb128 0xc
- 670 0162 D2010000 		.4byte	.LASF21
+ 670 0162 D0010000 		.4byte	.LASF21
  671 0166 01       		.byte	0x1
  672 0167 50       		.byte	0x50
  673 0168 7F010000 		.4byte	0x17f
@@ -928,7 +868,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  692 018d 00       		.byte	0
  693 018e 00       		.byte	0
  694 018f 0A       		.uleb128 0xa
- 695 0190 83010000 		.4byte	.LASF23
+ 695 0190 81010000 		.4byte	.LASF23
  696 0194 01       		.byte	0x1
  697 0195 5F       		.byte	0x5f
  698 0196 00000000 		.4byte	.LFB67
@@ -945,7 +885,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  709 01b0 91       		.byte	0x91
  710 01b1 6E       		.sleb128 -18
  711 01b2 0C       		.uleb128 0xc
- 712 01b3 74010000 		.4byte	.LASF25
+ 712 01b3 72010000 		.4byte	.LASF25
  713 01b7 01       		.byte	0x1
  714 01b8 61       		.byte	0x61
  715 01b9 81000000 		.4byte	0x81
@@ -953,16 +893,12 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  717 01be 91       		.byte	0x91
  718 01bf 77       		.sleb128 -9
  719 01c0 0C       		.uleb128 0xc
- 720 01c1 17010000 		.4byte	.LASF19
+ 720 01c1 B6000000 		.4byte	.LASF19
  721 01c5 01       		.byte	0x1
  722 01c6 65       		.byte	0x65
  723 01c7 8D000000 		.4byte	0x8d
  724 01cb 02       		.uleb128 0x2
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccessoEG.s 			page 16
-=======
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 16
->>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccdfZnua.s 			page 16
 
 
  725 01cc 91       		.byte	0x91
@@ -971,7 +907,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  728 01cf 42000000 		.4byte	.LBB4
  729 01d3 28000000 		.4byte	.LBE4-.LBB4
  730 01d7 0C       		.uleb128 0xc
- 731 01d8 02020000 		.4byte	.LASF20
+ 731 01d8 FA010000 		.4byte	.LASF20
  732 01dc 01       		.byte	0x1
  733 01dd 6D       		.byte	0x6d
  734 01de 81000000 		.4byte	0x81
@@ -981,7 +917,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  738 01e5 00       		.byte	0
  739 01e6 00       		.byte	0
  740 01e7 09       		.uleb128 0x9
- 741 01e8 74020000 		.4byte	.LASF27
+ 741 01e8 6C020000 		.4byte	.LASF27
  742 01ec 01       		.byte	0x1
  743 01ed 7A       		.byte	0x7a
  744 01ee 00000000 		.4byte	.LFB68
@@ -989,7 +925,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  746 01f6 01       		.uleb128 0x1
  747 01f7 9C       		.byte	0x9c
  748 01f8 12       		.uleb128 0x12
- 749 01f9 5C010000 		.4byte	.LASF28
+ 749 01f9 5A010000 		.4byte	.LASF28
  750 01fd 05       		.byte	0x5
  751 01fe 5506     		.2byte	0x655
  752 0200 04020000 		.4byte	0x204
@@ -1008,9 +944,9 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  765 021f 02       		.uleb128 0x2
  766 0220 01       		.byte	0x1
  767 0221 02       		.byte	0x2
- 768 0222 6E020000 		.4byte	.LASF30
+ 768 0222 66020000 		.4byte	.LASF30
  769 0226 13       		.uleb128 0x13
- 770 0227 C4010000 		.4byte	.LASF31
+ 770 0227 C2010000 		.4byte	.LASF31
  771 022b 01       		.byte	0x1
  772 022c 14       		.byte	0x14
  773 022d 1A020000 		.4byte	0x21a
@@ -1022,17 +958,13 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  779 023c 47020000 		.4byte	0x247
  780 0240 11       		.uleb128 0x11
  781 0241 BF000000 		.4byte	0xbf
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccessoEG.s 			page 17
-=======
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 17
->>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccdfZnua.s 			page 17
 
 
  782 0245 41       		.byte	0x41
  783 0246 00       		.byte	0
  784 0247 13       		.uleb128 0x13
- 785 0248 24020000 		.4byte	.LASF32
+ 785 0248 1C020000 		.4byte	.LASF32
  786 024c 01       		.byte	0x1
  787 024d 16       		.byte	0x16
  788 024e 37020000 		.4byte	0x237
@@ -1086,11 +1018,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  836 0029 00       		.byte	0
  837 002a 00       		.byte	0
  838 002b 04       		.uleb128 0x4
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccessoEG.s 			page 18
-=======
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 18
->>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccdfZnua.s 			page 18
 
 
  839 002c 24       		.uleb128 0x24
@@ -1150,11 +1078,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  893 0062 12       		.uleb128 0x12
  894 0063 06       		.uleb128 0x6
  895 0064 40       		.uleb128 0x40
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccessoEG.s 			page 19
-=======
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 19
->>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccdfZnua.s 			page 19
 
 
  896 0065 18       		.uleb128 0x18
@@ -1214,11 +1138,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  950 009e 03       		.uleb128 0x3
  951 009f 0E       		.uleb128 0xe
  952 00a0 3A       		.uleb128 0x3a
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccessoEG.s 			page 20
-=======
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 20
->>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccdfZnua.s 			page 20
 
 
  953 00a1 0B       		.uleb128 0xb
@@ -1278,11 +1198,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  1007 00d8 00       		.byte	0
  1008 00d9 00       		.byte	0
  1009 00da 0F       		.uleb128 0xf
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccessoEG.s 			page 21
-=======
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 21
->>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccdfZnua.s 			page 21
 
 
  1010 00db 34       		.uleb128 0x34
@@ -1342,11 +1258,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  1064 0111 3A       		.uleb128 0x3a
  1065 0112 0B       		.uleb128 0xb
  1066 0113 3B       		.uleb128 0x3b
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccessoEG.s 			page 22
-=======
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 22
->>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccdfZnua.s 			page 22
 
 
  1067 0114 0B       		.uleb128 0xb
@@ -1406,11 +1318,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  1117      01010101 
  1118              	.LASF24:
  1119 0000 70616765 		.ascii	"page\000"
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccessoEG.s 			page 23
-=======
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 23
->>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccdfZnua.s 			page 23
 
 
  1119      00
@@ -1441,7 +1349,6 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  1128              	.LASF14:
  1129 00a9 646F7562 		.ascii	"double\000"
  1129      6C6500
-<<<<<<< HEAD
  1130              	.LASF11:
  1131 00b0 75696E74 		.ascii	"uint8\000"
  1131      3800
@@ -1471,7 +1378,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  1142 0130 72656738 		.ascii	"reg8\000"
  1142      00
  1143              	.LASF5:
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccessoEG.s 			page 24
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccdfZnua.s 			page 24
 
 
  1144 0135 6C6F6E67 		.ascii	"long unsigned int\000"
@@ -1531,7 +1438,7 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  1166      7400
  1167              	.LASF10:
  1168 01d6 696E7433 		.ascii	"int32_t\000"
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccessoEG.s 			page 25
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccdfZnua.s 			page 25
 
 
  1168      325F7400 
@@ -1591,165 +1498,11 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 1
  1194      6C00
  1195              	.LASF27:
  1196 026c 436C6561 		.ascii	"ClearEepromBuffer\000"
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccessoEG.s 			page 26
-=======
- 1130              	.LASF35:
- 1131 00b0 433A5C55 		.ascii	"C:\\Users\\Recepcion\\Documents\\CorEx-MUX-Kernel-E"
- 1131      73657273 
- 1131      5C526563 
- 1131      65706369 
- 1131      6F6E5C44 
- 1132 00df 6E68616E 		.ascii	"nhanced-COPIA RECIBO\\Workspace01\\CorEx-Mux-Kernel"
- 1132      6365642D 
- 1132      434F5049 
- 1132      41205245 
- 1132      4349424F 
- 1133 0110 2E637964 		.ascii	".cydsn\000"
- 1133      736E00
- 1134              	.LASF19:
- 1135 0117 73746174 		.ascii	"status\000"
- 1135      757300
- 1136              	.LASF13:
- 1137 011e 666C6F61 		.ascii	"float\000"
- 1137      7400
- 1138              	.LASF1:
- 1139 0124 756E7369 		.ascii	"unsigned char\000"
- 1139      676E6564 
- 1139      20636861 
- 1139      7200
- 1140              	.LASF16:
- 1141 0132 72656738 		.ascii	"reg8\000"
- 1141      00
- 1142              	.LASF5:
- 1143 0137 6C6F6E67 		.ascii	"long unsigned int\000"
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 24
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccdfZnua.s 			page 26
 
 
- 1143      20756E73 
- 1143      69676E65 
- 1143      6420696E 
- 1143      7400
- 1144              	.LASF3:
- 1145 0149 73686F72 		.ascii	"short unsigned int\000"
- 1145      7420756E 
- 1145      7369676E 
- 1145      65642069 
- 1145      6E7400
- 1146              	.LASF28:
- 1147 015c 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 1147      52784275 
- 1147      66666572 
- 1147      00
- 1148              	.LASF37:
- 1149 0169 49324342 		.ascii	"I2CBusLock\000"
- 1149      75734C6F 
- 1149      636B00
- 1150              	.LASF25:
- 1151 0174 72657472 		.ascii	"retries\000"
- 1151      69657300 
- 1152              	.LASF12:
- 1153 017c 75696E74 		.ascii	"uint16\000"
- 1153      313600
- 1154              	.LASF23:
- 1155 0183 53746F72 		.ascii	"StoreEepromPage\000"
- 1155      65456570 
- 1155      726F6D50 
- 1155      61676500 
- 1156              	.LASF8:
- 1157 0193 756E7369 		.ascii	"unsigned int\000"
- 1157      676E6564 
- 1157      20696E74 
- 1157      00
- 1158              	.LASF26:
- 1159 01a0 49324342 		.ascii	"I2CBusUnlock\000"
- 1159      7573556E 
- 1159      6C6F636B 
- 1159      00
- 1160              	.LASF7:
- 1161 01ad 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1161      206C6F6E 
- 1161      6720756E 
- 1161      7369676E 
- 1161      65642069 
- 1162              	.LASF31:
- 1163 01c4 5F675F69 		.ascii	"_g_i2cbuslock\000"
- 1163      32636275 
- 1163      736C6F63 
- 1163      6B00
- 1164              	.LASF21:
- 1165 01d2 6C696D69 		.ascii	"limit\000"
- 1165      7400
- 1166              	.LASF11:
- 1167 01d8 75696E74 		.ascii	"uint8\000"
- 1167      3800
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 25
-
-
- 1168              	.LASF10:
- 1169 01de 696E7433 		.ascii	"int32_t\000"
- 1169      325F7400 
- 1170              	.LASF17:
- 1171 01e6 73697A65 		.ascii	"sizetype\000"
- 1171      74797065 
- 1171      00
- 1172              	.LASF6:
- 1173 01ef 6C6F6E67 		.ascii	"long long int\000"
- 1173      206C6F6E 
- 1173      6720696E 
- 1173      7400
- 1174              	.LASF15:
- 1175 01fd 63686172 		.ascii	"char\000"
- 1175      00
- 1176              	.LASF20:
- 1177 0202 696E6465 		.ascii	"index\000"
- 1177      7800
- 1178              	.LASF2:
- 1179 0208 73686F72 		.ascii	"short int\000"
- 1179      7420696E 
- 1179      7400
- 1180              	.LASF34:
- 1181 0212 2E5C4565 		.ascii	".\\EepromManager.c\000"
- 1181      70726F6D 
- 1181      4D616E61 
- 1181      6765722E 
- 1181      6300
- 1182              	.LASF32:
- 1183 0224 5F675F65 		.ascii	"_g_eeprom\000"
- 1183      6570726F 
- 1183      6D00
- 1184              	.LASF4:
- 1185 022e 6C6F6E67 		.ascii	"long int\000"
- 1185      20696E74 
- 1185      00
- 1186              	.LASF22:
- 1187 0237 4C6F6164 		.ascii	"LoadEepromPage\000"
- 1187      45657072 
- 1187      6F6D5061 
- 1187      676500
- 1188              	.LASF18:
- 1189 0246 6C6F6E67 		.ascii	"long double\000"
- 1189      20646F75 
- 1189      626C6500 
- 1190              	.LASF0:
- 1191 0252 7369676E 		.ascii	"signed char\000"
- 1191      65642063 
- 1191      68617200 
- 1192              	.LASF36:
- 1193 025e 47657445 		.ascii	"GetEepromBuffer\000"
- 1193      6570726F 
- 1193      6D427566 
- 1193      66657200 
- 1194              	.LASF30:
- 1195 026e 5F426F6F 		.ascii	"_Bool\000"
- 1195      6C00
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccAl8il.s 			page 26
->>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
-
-
- 1196              	.LASF27:
- 1197 0274 436C6561 		.ascii	"ClearEepromBuffer\000"
- 1197      72456570 
- 1197      726F6D42 
- 1197      75666665 
- 1197      7200
- 1198              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
+ 1196      72456570 
+ 1196      726F6D42 
+ 1196      75666665 
+ 1196      7200
+ 1197              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

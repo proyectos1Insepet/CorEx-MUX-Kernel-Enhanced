@@ -937,21 +937,6 @@ void Print(PSINKMESSAGEPTR pmsg, uint8 printerport)
         #ifdef PRINTER_TYPE_PANEL
         PRINTER_INDENTLINE(_LEFT_MARGIN_, printerport);
         #endif
-<<<<<<< HEAD
-        index += 0x0F;                
-        PRINTER_LINEFEED(printerport);        
-        prefstr = GetPrinterTemplateLine(PRN_ID);
-        WriteAuxPSoC((PNEAR_BYTE_PTR)prefstr, strlen(prefstr), printerport);
-        PRINTER_LINEFEED(printerport);
-        PRINTER_LINEFEED(printerport);
-        PRINTER_LINEFEED(printerport);
-        PRINTER_LINEFEED(printerport);
-        prefstr = GetPrinterTemplateLine(PRN_SIGNATURE);
-        WriteAuxPSoC((PNEAR_BYTE_PTR)prefstr, strlen(prefstr), printerport);
-        PRINTER_LINEFEED(printerport);                    
-=======
-        index += 0x0F;
->>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
     }
     
     //line separator

@@ -82,14 +82,10 @@ enum _PRINTER_NAMED_LINES_
     PRN_PRODUCT,
     PRN_PRODPRICE,
     PRN_VOLUME,
-<<<<<<< HEAD
     PRN_MONEY,
     PRN_ID,
     PRN_SIGNATURE,
     PRN_SERIAL
-=======
-    PRN_MONEY
->>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
 };
 
 enum _PRINTER_VOLUME_UNIT_TYPE_
