@@ -61,11 +61,8 @@ void AcquirePumpStateResponse(void *pparam)
         #endif
         
         if((pjob->_ppump->_pumpstate == PUMP_IDLE || pjob->_ppump->_pumpstate == PUMP_CALLING) && 
-            (prevstate == PUMP_BUSY || prevstate == PUMP_AUTHORIZED))
-            pjob->_ppump->_pumprftransstate = RF_IDLE;
-        /*if((pjob->_ppump->_pumpstate == PUMP_IDLE || pjob->_ppump->_pumpstate == PUMP_CALLING) && 
             (prevstate == PUMP_FEOT || prevstate == PUMP_PEOT || prevstate == PUMP_BUSY || prevstate == PUMP_AUTHORIZED))
-            pjob->_ppump->_pumprftransstate = RF_IDLE;*/
+            pjob->_ppump->_pumprftransstate = RF_IDLE;
         
         pjob->_ppump->_acquiringstate = false;
     }

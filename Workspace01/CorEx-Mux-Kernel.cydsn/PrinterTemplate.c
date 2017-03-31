@@ -16,7 +16,6 @@ PrinterTemplate _g_printertemplate[] =
     { PRN_DATE,         "Fecha      : " },
     { PRN_HOUR,         "Hora       : " },
     { PRN_PLATE,        "Placa      : " },
-    { PRN_SERIAL,       "Serial     : " },
     { PRN_MILLEAGE,     "Kilometraje: " },
     { PRN_TRANSTYPE,    "Tipo       : " },
     { PRN_PUMPPOS,      "Posicion   : " },
@@ -37,9 +36,9 @@ PrinterTemplate _g_printertemplate[] =
     { PRN_VOLUMEMONTH,  "Volumen Mes: " },
     { PRN_MONEYDAY,     "Dinero Dia : " },
     { PRN_MONEYWEEK,    "Dinero Sem : " },
-    { PRN_MONEYMONTH,   "Dinero Mes : " },    
-    { PRN_SIGNATURE,    "Firma      :................. " },
-    { PRN_ID,           "Cedula     :................. " },
+    { PRN_MONEYMONTH,   "Dinero Mes : " },
+    { PRN_SIGNATURE,    "Firma      : " },
+    { PRN_ID,           "Cedula     : " },
     { 0x00,             NULL },
 };
 

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 1
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cchCeyJb.s 			page 1
 
 
    1              		.syntax unified
@@ -40,327 +40,313 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 1
   28      2000
   29 002e 0000     		.align	2
   30              	.LC3:
-  31 0030 53657269 		.ascii	"Serial     : \000"
-  31      616C2020 
-  31      2020203A 
+  31 0030 4B696C6F 		.ascii	"Kilometraje: \000"
+  31      6D657472 
+  31      616A653A 
   31      2000
   32 003e 0000     		.align	2
   33              	.LC4:
-  34 0040 4B696C6F 		.ascii	"Kilometraje: \000"
-  34      6D657472 
-  34      616A653A 
+  34 0040 5469706F 		.ascii	"Tipo       : \000"
+  34      20202020 
+  34      2020203A 
   34      2000
   35 004e 0000     		.align	2
   36              	.LC5:
-  37 0050 5469706F 		.ascii	"Tipo       : \000"
-  37      20202020 
+  37 0050 506F7369 		.ascii	"Posicion   : \000"
+  37      63696F6E 
   37      2020203A 
   37      2000
   38 005e 0000     		.align	2
   39              	.LC6:
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cchCeyJb.s 			page 2
 
 
-  40 0060 506F7369 		.ascii	"Posicion   : \000"
-  40      63696F6E 
+  40 0060 50726F64 		.ascii	"Producto   : \000"
+  40      7563746F 
   40      2020203A 
   40      2000
   41 006e 0000     		.align	2
   42              	.LC7:
-  43 0070 50726F64 		.ascii	"Producto   : \000"
-  43      7563746F 
+  43 0070 50707520 		.ascii	"Ppu        : \000"
+  43      20202020 
   43      2020203A 
   43      2000
   44 007e 0000     		.align	2
   45              	.LC8:
-  46 0080 50707520 		.ascii	"Ppu        : \000"
-  46      20202020 
+  46 0080 566F6C75 		.ascii	"Volumen    : \000"
+  46      6D656E20 
   46      2020203A 
   46      2000
   47 008e 0000     		.align	2
   48              	.LC9:
-  49 0090 566F6C75 		.ascii	"Volumen    : \000"
-  49      6D656E20 
+  49 0090 44696E65 		.ascii	"Dinero     : \000"
+  49      726F2020 
   49      2020203A 
   49      2000
   50 009e 0000     		.align	2
   51              	.LC10:
-  52 00a0 44696E65 		.ascii	"Dinero     : \000"
-  52      726F2020 
-  52      2020203A 
+  52 00a0 436F6E73 		.ascii	"Consecutivo: \000"
+  52      65637574 
+  52      69766F3A 
   52      2000
   53 00ae 0000     		.align	2
   54              	.LC11:
-  55 00b0 436F6E73 		.ascii	"Consecutivo: \000"
-  55      65637574 
-  55      69766F3A 
+  55 00b0 53616C64 		.ascii	"Saldo      : \000"
+  55      6F202020 
+  55      2020203A 
   55      2000
   56 00be 0000     		.align	2
   57              	.LC12:
-  58 00c0 53616C64 		.ascii	"Saldo      : \000"
-  58      6F202020 
+  58 00c0 456D7072 		.ascii	"Empresa    : \000"
+  58      65736120 
   58      2020203A 
   58      2000
   59 00ce 0000     		.align	2
   60              	.LC13:
-  61 00d0 456D7072 		.ascii	"Empresa    : \000"
-  61      65736120 
+  61 00d0 4375656E 		.ascii	"Cuenta     : \000"
+  61      74612020 
   61      2020203A 
   61      2000
   62 00de 0000     		.align	2
   63              	.LC14:
-  64 00e0 4375656E 		.ascii	"Cuenta     : \000"
-  64      74612020 
-  64      2020203A 
+  64 00e0 5469706F 		.ascii	"Tipo Cuenta: \000"
+  64      20437565 
+  64      6E74613A 
   64      2000
   65 00ee 0000     		.align	2
   66              	.LC15:
-  67 00f0 5469706F 		.ascii	"Tipo Cuenta: \000"
-  67      20437565 
-  67      6E74613A 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 3
+  67 00f0 56697369 		.ascii	"Visitas Dia: \000"
+  67      74617320 
+  67      4469613A 
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cchCeyJb.s 			page 3
 
 
   67      2000
   68 00fe 0000     		.align	2
   69              	.LC16:
-  70 0100 56697369 		.ascii	"Visitas Dia: \000"
+  70 0100 56697369 		.ascii	"Visitas Sem: \000"
   70      74617320 
-  70      4469613A 
+  70      53656D3A 
   70      2000
   71 010e 0000     		.align	2
   72              	.LC17:
-  73 0110 56697369 		.ascii	"Visitas Sem: \000"
+  73 0110 56697369 		.ascii	"Visitas Mes: \000"
   73      74617320 
-  73      53656D3A 
+  73      4D65733A 
   73      2000
   74 011e 0000     		.align	2
   75              	.LC18:
-  76 0120 56697369 		.ascii	"Visitas Mes: \000"
-  76      74617320 
-  76      4D65733A 
+  76 0120 566F6C75 		.ascii	"Volumen Dia: \000"
+  76      6D656E20 
+  76      4469613A 
   76      2000
   77 012e 0000     		.align	2
   78              	.LC19:
-  79 0130 566F6C75 		.ascii	"Volumen Dia: \000"
+  79 0130 566F6C75 		.ascii	"Volumen Sem: \000"
   79      6D656E20 
-  79      4469613A 
+  79      53656D3A 
   79      2000
   80 013e 0000     		.align	2
   81              	.LC20:
-  82 0140 566F6C75 		.ascii	"Volumen Sem: \000"
+  82 0140 566F6C75 		.ascii	"Volumen Mes: \000"
   82      6D656E20 
-  82      53656D3A 
+  82      4D65733A 
   82      2000
   83 014e 0000     		.align	2
   84              	.LC21:
-  85 0150 566F6C75 		.ascii	"Volumen Mes: \000"
-  85      6D656E20 
-  85      4D65733A 
+  85 0150 44696E65 		.ascii	"Dinero Dia : \000"
+  85      726F2044 
+  85      6961203A 
   85      2000
   86 015e 0000     		.align	2
   87              	.LC22:
-  88 0160 44696E65 		.ascii	"Dinero Dia : \000"
-  88      726F2044 
-  88      6961203A 
+  88 0160 44696E65 		.ascii	"Dinero Sem : \000"
+  88      726F2053 
+  88      656D203A 
   88      2000
   89 016e 0000     		.align	2
   90              	.LC23:
-  91 0170 44696E65 		.ascii	"Dinero Sem : \000"
-  91      726F2053 
-  91      656D203A 
+  91 0170 44696E65 		.ascii	"Dinero Mes : \000"
+  91      726F204D 
+  91      6573203A 
   91      2000
   92 017e 0000     		.align	2
   93              	.LC24:
-  94 0180 44696E65 		.ascii	"Dinero Mes : \000"
-  94      726F204D 
-  94      6573203A 
+  94 0180 4669726D 		.ascii	"Firma      : \000"
+  94      61202020 
+  94      2020203A 
   94      2000
   95 018e 0000     		.align	2
   96              	.LC25:
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 4
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cchCeyJb.s 			page 4
 
 
-  97 0190 4669726D 		.ascii	"Firma      :................. \000"
-  97      61202020 
+  97 0190 43656475 		.ascii	"Cedula     : \000"
+  97      6C612020 
   97      2020203A 
-  97      2E2E2E2E 
-  97      2E2E2E2E 
-  98 01af 00       		.align	2
-  99              	.LC26:
- 100 01b0 43656475 		.ascii	"Cedula     :................. \000"
- 100      6C612020 
- 100      2020203A 
- 100      2E2E2E2E 
- 100      2E2E2E2E 
- 101              		.data
- 102              		.align	2
- 103              		.type	_g_printertemplate, %object
- 104              		.size	_g_printertemplate, 224
- 105              	_g_printertemplate:
- 106 0000 01       		.byte	1
- 107 0001 000000   		.space	3
- 108 0004 00000000 		.word	.LC0
- 109 0008 02       		.byte	2
- 110 0009 000000   		.space	3
- 111 000c 10000000 		.word	.LC1
- 112 0010 03       		.byte	3
- 113 0011 000000   		.space	3
- 114 0014 20000000 		.word	.LC2
- 115 0018 1B       		.byte	27
- 116 0019 000000   		.space	3
- 117 001c 30000000 		.word	.LC3
- 118 0020 04       		.byte	4
- 119 0021 000000   		.space	3
- 120 0024 40000000 		.word	.LC4
- 121 0028 05       		.byte	5
- 122 0029 000000   		.space	3
- 123 002c 50000000 		.word	.LC5
- 124 0030 06       		.byte	6
- 125 0031 000000   		.space	3
- 126 0034 60000000 		.word	.LC6
- 127 0038 15       		.byte	21
- 128 0039 000000   		.space	3
- 129 003c 70000000 		.word	.LC7
- 130 0040 16       		.byte	22
- 131 0041 000000   		.space	3
- 132 0044 80000000 		.word	.LC8
- 133 0048 17       		.byte	23
- 134 0049 000000   		.space	3
- 135 004c 90000000 		.word	.LC9
- 136 0050 18       		.byte	24
- 137 0051 000000   		.space	3
- 138 0054 A0000000 		.word	.LC10
- 139 0058 07       		.byte	7
- 140 0059 000000   		.space	3
- 141 005c B0000000 		.word	.LC11
- 142 0060 08       		.byte	8
- 143 0061 000000   		.space	3
- 144 0064 C0000000 		.word	.LC12
- 145 0068 09       		.byte	9
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 5
+  97      2000
+  98              		.data
+  99              		.align	2
+ 100              		.type	_g_printertemplate, %object
+ 101              		.size	_g_printertemplate, 216
+ 102              	_g_printertemplate:
+ 103 0000 01       		.byte	1
+ 104 0001 000000   		.space	3
+ 105 0004 00000000 		.word	.LC0
+ 106 0008 02       		.byte	2
+ 107 0009 000000   		.space	3
+ 108 000c 10000000 		.word	.LC1
+ 109 0010 03       		.byte	3
+ 110 0011 000000   		.space	3
+ 111 0014 20000000 		.word	.LC2
+ 112 0018 04       		.byte	4
+ 113 0019 000000   		.space	3
+ 114 001c 30000000 		.word	.LC3
+ 115 0020 05       		.byte	5
+ 116 0021 000000   		.space	3
+ 117 0024 40000000 		.word	.LC4
+ 118 0028 06       		.byte	6
+ 119 0029 000000   		.space	3
+ 120 002c 50000000 		.word	.LC5
+ 121 0030 15       		.byte	21
+ 122 0031 000000   		.space	3
+ 123 0034 60000000 		.word	.LC6
+ 124 0038 16       		.byte	22
+ 125 0039 000000   		.space	3
+ 126 003c 70000000 		.word	.LC7
+ 127 0040 17       		.byte	23
+ 128 0041 000000   		.space	3
+ 129 0044 80000000 		.word	.LC8
+ 130 0048 18       		.byte	24
+ 131 0049 000000   		.space	3
+ 132 004c 90000000 		.word	.LC9
+ 133 0050 07       		.byte	7
+ 134 0051 000000   		.space	3
+ 135 0054 A0000000 		.word	.LC10
+ 136 0058 08       		.byte	8
+ 137 0059 000000   		.space	3
+ 138 005c B0000000 		.word	.LC11
+ 139 0060 09       		.byte	9
+ 140 0061 000000   		.space	3
+ 141 0064 C0000000 		.word	.LC12
+ 142 0068 0A       		.byte	10
+ 143 0069 000000   		.space	3
+ 144 006c D0000000 		.word	.LC13
+ 145 0070 14       		.byte	20
+ 146 0071 000000   		.space	3
+ 147 0074 E0000000 		.word	.LC14
+ 148 0078 0B       		.byte	11
+ 149 0079 000000   		.space	3
+ 150 007c F0000000 		.word	.LC15
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cchCeyJb.s 			page 5
 
 
- 146 0069 000000   		.space	3
- 147 006c D0000000 		.word	.LC13
- 148 0070 0A       		.byte	10
- 149 0071 000000   		.space	3
- 150 0074 E0000000 		.word	.LC14
- 151 0078 14       		.byte	20
- 152 0079 000000   		.space	3
- 153 007c F0000000 		.word	.LC15
- 154 0080 0B       		.byte	11
- 155 0081 000000   		.space	3
- 156 0084 00010000 		.word	.LC16
- 157 0088 0C       		.byte	12
- 158 0089 000000   		.space	3
- 159 008c 10010000 		.word	.LC17
- 160 0090 0D       		.byte	13
- 161 0091 000000   		.space	3
- 162 0094 20010000 		.word	.LC18
- 163 0098 0E       		.byte	14
- 164 0099 000000   		.space	3
- 165 009c 30010000 		.word	.LC19
- 166 00a0 0F       		.byte	15
- 167 00a1 000000   		.space	3
- 168 00a4 40010000 		.word	.LC20
- 169 00a8 10       		.byte	16
- 170 00a9 000000   		.space	3
- 171 00ac 50010000 		.word	.LC21
- 172 00b0 11       		.byte	17
- 173 00b1 000000   		.space	3
- 174 00b4 60010000 		.word	.LC22
- 175 00b8 12       		.byte	18
- 176 00b9 000000   		.space	3
- 177 00bc 70010000 		.word	.LC23
- 178 00c0 13       		.byte	19
- 179 00c1 000000   		.space	3
- 180 00c4 80010000 		.word	.LC24
- 181 00c8 1A       		.byte	26
- 182 00c9 000000   		.space	3
- 183 00cc 90010000 		.word	.LC25
- 184 00d0 19       		.byte	25
- 185 00d1 000000   		.space	3
- 186 00d4 B0010000 		.word	.LC26
- 187 00d8 00       		.byte	0
- 188 00d9 000000   		.space	3
- 189 00dc 00000000 		.word	0
- 190              		.global	_g_printervolumetemplate
- 191              		.section	.rodata
- 192 01cf 00       		.align	2
- 193              	.LC27:
- 194 01d0 2047616C 		.ascii	" Gal\000"
- 194      00
- 195 01d5 000000   		.align	2
- 196              	.LC28:
- 197 01d8 204C00   		.ascii	" L\000"
- 198              		.data
- 199              		.align	2
- 200              		.type	_g_printervolumetemplate, %object
- 201              		.size	_g_printervolumetemplate, 48
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 6
+ 151 0080 0C       		.byte	12
+ 152 0081 000000   		.space	3
+ 153 0084 00010000 		.word	.LC16
+ 154 0088 0D       		.byte	13
+ 155 0089 000000   		.space	3
+ 156 008c 10010000 		.word	.LC17
+ 157 0090 0E       		.byte	14
+ 158 0091 000000   		.space	3
+ 159 0094 20010000 		.word	.LC18
+ 160 0098 0F       		.byte	15
+ 161 0099 000000   		.space	3
+ 162 009c 30010000 		.word	.LC19
+ 163 00a0 10       		.byte	16
+ 164 00a1 000000   		.space	3
+ 165 00a4 40010000 		.word	.LC20
+ 166 00a8 11       		.byte	17
+ 167 00a9 000000   		.space	3
+ 168 00ac 50010000 		.word	.LC21
+ 169 00b0 12       		.byte	18
+ 170 00b1 000000   		.space	3
+ 171 00b4 60010000 		.word	.LC22
+ 172 00b8 13       		.byte	19
+ 173 00b9 000000   		.space	3
+ 174 00bc 70010000 		.word	.LC23
+ 175 00c0 1A       		.byte	26
+ 176 00c1 000000   		.space	3
+ 177 00c4 80010000 		.word	.LC24
+ 178 00c8 19       		.byte	25
+ 179 00c9 000000   		.space	3
+ 180 00cc 90010000 		.word	.LC25
+ 181 00d0 00       		.byte	0
+ 182 00d1 000000   		.space	3
+ 183 00d4 00000000 		.word	0
+ 184              		.global	_g_printervolumetemplate
+ 185              		.section	.rodata
+ 186 019e 0000     		.align	2
+ 187              	.LC26:
+ 188 01a0 2047616C 		.ascii	" Gal\000"
+ 188      00
+ 189 01a5 000000   		.align	2
+ 190              	.LC27:
+ 191 01a8 204C00   		.ascii	" L\000"
+ 192              		.data
+ 193              		.align	2
+ 194              		.type	_g_printervolumetemplate, %object
+ 195              		.size	_g_printervolumetemplate, 48
+ 196              	_g_printervolumetemplate:
+ 197 00d8 01       		.byte	1
+ 198 00d9 000000   		.space	3
+ 199 00dc A0010000 		.word	.LC26
+ 200 00e0 02       		.byte	2
+ 201 00e1 000000   		.space	3
+ 202 00e4 A0010000 		.word	.LC26
+ 203 00e8 03       		.byte	3
+ 204 00e9 000000   		.space	3
+ 205 00ec A8010000 		.word	.LC27
+ 206 00f0 04       		.byte	4
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cchCeyJb.s 			page 6
 
 
- 202              	_g_printervolumetemplate:
- 203 00e0 01       		.byte	1
- 204 00e1 000000   		.space	3
- 205 00e4 D0010000 		.word	.LC27
- 206 00e8 02       		.byte	2
- 207 00e9 000000   		.space	3
- 208 00ec D0010000 		.word	.LC27
- 209 00f0 03       		.byte	3
- 210 00f1 000000   		.space	3
- 211 00f4 D8010000 		.word	.LC28
- 212 00f8 04       		.byte	4
- 213 00f9 000000   		.space	3
- 214 00fc D0010000 		.word	.LC27
- 215 0100 05       		.byte	5
- 216 0101 000000   		.space	3
- 217 0104 D0010000 		.word	.LC27
- 218 0108 00       		.byte	0
- 219 0109 000000   		.space	3
- 220 010c 00000000 		.word	0
- 221              		.global	_g_printerpricetemplate
- 222              		.section	.rodata
- 223 01db 00       		.align	2
- 224              	.LC29:
- 225 01dc 20242F47 		.ascii	" $/Gal\000"
- 225      616C00
- 226 01e3 00       		.align	2
- 227              	.LC30:
- 228 01e4 20242F4C 		.ascii	" $/L\000"
- 228      00
- 229 01e9 000000   		.data
- 230              		.align	2
- 231              		.type	_g_printerpricetemplate, %object
- 232              		.size	_g_printerpricetemplate, 24
- 233              	_g_printerpricetemplate:
- 234 0110 01       		.byte	1
- 235 0111 000000   		.space	3
- 236 0114 DC010000 		.word	.LC29
- 237 0118 03       		.byte	3
- 238 0119 000000   		.space	3
- 239 011c E4010000 		.word	.LC30
- 240 0120 00       		.byte	0
- 241 0121 000000   		.space	3
- 242 0124 00000000 		.word	0
- 243              		.section	.text.GetPrinterTemplateLine,"ax",%progbits
- 244              		.align	2
- 245              		.global	GetPrinterTemplateLine
- 246              		.thumb
- 247              		.thumb_func
- 248              		.type	GetPrinterTemplateLine, %function
- 249              	GetPrinterTemplateLine:
- 250              	.LFB0:
- 251              		.file 1 ".\\PrinterTemplate.c"
+ 207 00f1 000000   		.space	3
+ 208 00f4 A0010000 		.word	.LC26
+ 209 00f8 05       		.byte	5
+ 210 00f9 000000   		.space	3
+ 211 00fc A0010000 		.word	.LC26
+ 212 0100 00       		.byte	0
+ 213 0101 000000   		.space	3
+ 214 0104 00000000 		.word	0
+ 215              		.global	_g_printerpricetemplate
+ 216              		.section	.rodata
+ 217 01ab 00       		.align	2
+ 218              	.LC28:
+ 219 01ac 20242F47 		.ascii	" $/Gal\000"
+ 219      616C00
+ 220 01b3 00       		.align	2
+ 221              	.LC29:
+ 222 01b4 20242F4C 		.ascii	" $/L\000"
+ 222      00
+ 223 01b9 000000   		.data
+ 224              		.align	2
+ 225              		.type	_g_printerpricetemplate, %object
+ 226              		.size	_g_printerpricetemplate, 24
+ 227              	_g_printerpricetemplate:
+ 228 0108 01       		.byte	1
+ 229 0109 000000   		.space	3
+ 230 010c AC010000 		.word	.LC28
+ 231 0110 03       		.byte	3
+ 232 0111 000000   		.space	3
+ 233 0114 B4010000 		.word	.LC29
+ 234 0118 00       		.byte	0
+ 235 0119 000000   		.space	3
+ 236 011c 00000000 		.word	0
+ 237              		.section	.text.GetPrinterTemplateLine,"ax",%progbits
+ 238              		.align	2
+ 239              		.global	GetPrinterTemplateLine
+ 240              		.thumb
+ 241              		.thumb_func
+ 242              		.type	GetPrinterTemplateLine, %function
+ 243              	GetPrinterTemplateLine:
+ 244              	.LFB0:
+ 245              		.file 1 ".\\PrinterTemplate.c"
    1:.\PrinterTemplate.c **** /* ========================================
    2:.\PrinterTemplate.c ****  *
    3:.\PrinterTemplate.c ****  * Copyright YOUR COMPANY, THE YEAR
    4:.\PrinterTemplate.c ****  * All Rights Reserved
    5:.\PrinterTemplate.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 7
-
-
    6:.\PrinterTemplate.c ****  *
    7:.\PrinterTemplate.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
    8:.\PrinterTemplate.c ****  * WHICH IS THE PROPERTY OF your company.
@@ -372,1383 +358,1375 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 1
   14:.\PrinterTemplate.c **** PrinterTemplate _g_printertemplate[] =
   15:.\PrinterTemplate.c **** {
   16:.\PrinterTemplate.c ****     { PRN_DATE,         "Fecha      : " },
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cchCeyJb.s 			page 7
+
+
   17:.\PrinterTemplate.c ****     { PRN_HOUR,         "Hora       : " },
   18:.\PrinterTemplate.c ****     { PRN_PLATE,        "Placa      : " },
-  19:.\PrinterTemplate.c ****     { PRN_SERIAL,       "Serial     : " },
-  20:.\PrinterTemplate.c ****     { PRN_MILLEAGE,     "Kilometraje: " },
-  21:.\PrinterTemplate.c ****     { PRN_TRANSTYPE,    "Tipo       : " },
-  22:.\PrinterTemplate.c ****     { PRN_PUMPPOS,      "Posicion   : " },
-  23:.\PrinterTemplate.c ****     { PRN_PRODUCT,      "Producto   : " },
-  24:.\PrinterTemplate.c ****     { PRN_PRODPRICE,    "Ppu        : " },
-  25:.\PrinterTemplate.c ****     { PRN_VOLUME,       "Volumen    : " },
-  26:.\PrinterTemplate.c ****     { PRN_MONEY,        "Dinero     : " },
-  27:.\PrinterTemplate.c ****     { PRN_INVNUMBER,    "Consecutivo: " },
-  28:.\PrinterTemplate.c ****     { PRN_BALANCE,      "Saldo      : " },
-  29:.\PrinterTemplate.c ****     { PRN_COMPANY,      "Empresa    : " },
-  30:.\PrinterTemplate.c ****     { PRN_ACCOUNT,      "Cuenta     : " },
-  31:.\PrinterTemplate.c ****     { PRN_ACCOUNTTYPE,  "Tipo Cuenta: " },
-  32:.\PrinterTemplate.c ****     { PRN_VISITSDAY,    "Visitas Dia: " },
-  33:.\PrinterTemplate.c ****     { PRN_VISITSWEEK,   "Visitas Sem: " },
-  34:.\PrinterTemplate.c ****     { PRN_VISITSMONTH,  "Visitas Mes: " },
-  35:.\PrinterTemplate.c ****     { PRN_VOLUMEDAY,    "Volumen Dia: " },
-  36:.\PrinterTemplate.c ****     { PRN_VOLUMEWEEK,   "Volumen Sem: " },
-  37:.\PrinterTemplate.c ****     { PRN_VOLUMEMONTH,  "Volumen Mes: " },
-  38:.\PrinterTemplate.c ****     { PRN_MONEYDAY,     "Dinero Dia : " },
-  39:.\PrinterTemplate.c ****     { PRN_MONEYWEEK,    "Dinero Sem : " },
-  40:.\PrinterTemplate.c ****     { PRN_MONEYMONTH,   "Dinero Mes : " },    
-  41:.\PrinterTemplate.c ****     { PRN_SIGNATURE,    "Firma      :................. " },
-  42:.\PrinterTemplate.c ****     { PRN_ID,           "Cedula     :................. " },
-  43:.\PrinterTemplate.c ****     { 0x00,             NULL },
-  44:.\PrinterTemplate.c **** };
-  45:.\PrinterTemplate.c **** 
-  46:.\PrinterTemplate.c **** PrinterTemplate _g_printervolumetemplate[] =
-  47:.\PrinterTemplate.c **** {
-  48:.\PrinterTemplate.c ****     { PRN_VOLUNIT_US_GALLONS,           " Gal" },//US
-  49:.\PrinterTemplate.c ****     { PRN_VOLUNIT_UK_GALLONS,           " Gal" },//UK
-  50:.\PrinterTemplate.c ****     { PRN_VOLUNIT_LITERS,               " L" },//Liters
-  51:.\PrinterTemplate.c ****     { PRN_VOLUNIT_HAWAIIAN_GALLONS_GAS, " Gal" },//Hawaiian Gallons of Gasoline
-  52:.\PrinterTemplate.c ****     { PRN_VOLUNIT_HAWAIIAN_GALLONS_DIE, " Gal" },//Hawaiian Gallons of Diesel
-  53:.\PrinterTemplate.c ****     { 0x00,                             NULL }
-  54:.\PrinterTemplate.c **** };
-  55:.\PrinterTemplate.c **** 
-  56:.\PrinterTemplate.c **** PrinterTemplate _g_printerpricetemplate[] =
-  57:.\PrinterTemplate.c **** {
-  58:.\PrinterTemplate.c ****     { PRN_MONEY_GALLONS,           " $/Gal" },//Money units per Gallon
-  59:.\PrinterTemplate.c ****     { PRN_MONEY_LITERS,            " $/L" },//Money units per Liter
-  60:.\PrinterTemplate.c ****     { 0x00,                        NULL }
-  61:.\PrinterTemplate.c **** };
-  62:.\PrinterTemplate.c **** 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 8
+  19:.\PrinterTemplate.c ****     { PRN_MILLEAGE,     "Kilometraje: " },
+  20:.\PrinterTemplate.c ****     { PRN_TRANSTYPE,    "Tipo       : " },
+  21:.\PrinterTemplate.c ****     { PRN_PUMPPOS,      "Posicion   : " },
+  22:.\PrinterTemplate.c ****     { PRN_PRODUCT,      "Producto   : " },
+  23:.\PrinterTemplate.c ****     { PRN_PRODPRICE,    "Ppu        : " },
+  24:.\PrinterTemplate.c ****     { PRN_VOLUME,       "Volumen    : " },
+  25:.\PrinterTemplate.c ****     { PRN_MONEY,        "Dinero     : " },
+  26:.\PrinterTemplate.c ****     { PRN_INVNUMBER,    "Consecutivo: " },
+  27:.\PrinterTemplate.c ****     { PRN_BALANCE,      "Saldo      : " },
+  28:.\PrinterTemplate.c ****     { PRN_COMPANY,      "Empresa    : " },
+  29:.\PrinterTemplate.c ****     { PRN_ACCOUNT,      "Cuenta     : " },
+  30:.\PrinterTemplate.c ****     { PRN_ACCOUNTTYPE,  "Tipo Cuenta: " },
+  31:.\PrinterTemplate.c ****     { PRN_VISITSDAY,    "Visitas Dia: " },
+  32:.\PrinterTemplate.c ****     { PRN_VISITSWEEK,   "Visitas Sem: " },
+  33:.\PrinterTemplate.c ****     { PRN_VISITSMONTH,  "Visitas Mes: " },
+  34:.\PrinterTemplate.c ****     { PRN_VOLUMEDAY,    "Volumen Dia: " },
+  35:.\PrinterTemplate.c ****     { PRN_VOLUMEWEEK,   "Volumen Sem: " },
+  36:.\PrinterTemplate.c ****     { PRN_VOLUMEMONTH,  "Volumen Mes: " },
+  37:.\PrinterTemplate.c ****     { PRN_MONEYDAY,     "Dinero Dia : " },
+  38:.\PrinterTemplate.c ****     { PRN_MONEYWEEK,    "Dinero Sem : " },
+  39:.\PrinterTemplate.c ****     { PRN_MONEYMONTH,   "Dinero Mes : " },
+  40:.\PrinterTemplate.c ****     { PRN_SIGNATURE,    "Firma      : " },
+  41:.\PrinterTemplate.c ****     { PRN_ID,           "Cedula     : " },
+  42:.\PrinterTemplate.c ****     { 0x00,             NULL },
+  43:.\PrinterTemplate.c **** };
+  44:.\PrinterTemplate.c **** 
+  45:.\PrinterTemplate.c **** PrinterTemplate _g_printervolumetemplate[] =
+  46:.\PrinterTemplate.c **** {
+  47:.\PrinterTemplate.c ****     { PRN_VOLUNIT_US_GALLONS,           " Gal" },//US
+  48:.\PrinterTemplate.c ****     { PRN_VOLUNIT_UK_GALLONS,           " Gal" },//UK
+  49:.\PrinterTemplate.c ****     { PRN_VOLUNIT_LITERS,               " L" },//Liters
+  50:.\PrinterTemplate.c ****     { PRN_VOLUNIT_HAWAIIAN_GALLONS_GAS, " Gal" },//Hawaiian Gallons of Gasoline
+  51:.\PrinterTemplate.c ****     { PRN_VOLUNIT_HAWAIIAN_GALLONS_DIE, " Gal" },//Hawaiian Gallons of Diesel
+  52:.\PrinterTemplate.c ****     { 0x00,                             NULL }
+  53:.\PrinterTemplate.c **** };
+  54:.\PrinterTemplate.c **** 
+  55:.\PrinterTemplate.c **** PrinterTemplate _g_printerpricetemplate[] =
+  56:.\PrinterTemplate.c **** {
+  57:.\PrinterTemplate.c ****     { PRN_MONEY_GALLONS,           " $/Gal" },//Money units per Gallon
+  58:.\PrinterTemplate.c ****     { PRN_MONEY_LITERS,            " $/L" },//Money units per Liter
+  59:.\PrinterTemplate.c ****     { 0x00,                        NULL }
+  60:.\PrinterTemplate.c **** };
+  61:.\PrinterTemplate.c **** 
+  62:.\PrinterTemplate.c **** char8* GetPrinterTemplateLine(uint8 lineid)
+  63:.\PrinterTemplate.c **** {
+ 246              		.loc 1 63 0
+ 247              		.cfi_startproc
+ 248              		@ args = 0, pretend = 0, frame = 16
+ 249              		@ frame_needed = 1, uses_anonymous_args = 0
+ 250              		@ link register save eliminated.
+ 251 0000 80B4     		push	{r7}
+ 252              		.cfi_def_cfa_offset 4
+ 253              		.cfi_offset 7, -4
+ 254 0002 85B0     		sub	sp, sp, #20
+ 255              		.cfi_def_cfa_offset 24
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cchCeyJb.s 			page 8
 
 
-  63:.\PrinterTemplate.c **** char8* GetPrinterTemplateLine(uint8 lineid)
-  64:.\PrinterTemplate.c **** {
- 252              		.loc 1 64 0
- 253              		.cfi_startproc
- 254              		@ args = 0, pretend = 0, frame = 16
- 255              		@ frame_needed = 1, uses_anonymous_args = 0
- 256              		@ link register save eliminated.
- 257 0000 80B4     		push	{r7}
- 258              		.cfi_def_cfa_offset 4
- 259              		.cfi_offset 7, -4
- 260 0002 85B0     		sub	sp, sp, #20
- 261              		.cfi_def_cfa_offset 24
- 262 0004 00AF     		add	r7, sp, #0
- 263              		.cfi_def_cfa_register 7
- 264 0006 0346     		mov	r3, r0
- 265 0008 FB71     		strb	r3, [r7, #7]
-  65:.\PrinterTemplate.c ****     char8* retval = NULL;
- 266              		.loc 1 65 0
- 267 000a 0023     		movs	r3, #0
- 268 000c FB60     		str	r3, [r7, #12]
-  66:.\PrinterTemplate.c ****     PNEAR_PRINTERTEMPLATEPTR ptr = &_g_printertemplate[0x00];
- 269              		.loc 1 66 0
- 270 000e 0D4B     		ldr	r3, .L7
- 271 0010 BB60     		str	r3, [r7, #8]
-  67:.\PrinterTemplate.c ****     while(ptr->_namedline != 0x00)
- 272              		.loc 1 67 0
- 273 0012 0BE0     		b	.L2
- 274              	.L5:
-  68:.\PrinterTemplate.c ****     {
-  69:.\PrinterTemplate.c ****         if(ptr->_namedline == lineid)
- 275              		.loc 1 69 0
- 276 0014 BB68     		ldr	r3, [r7, #8]
- 277 0016 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 278 0018 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
- 279 001a 9A42     		cmp	r2, r3
- 280 001c 03D1     		bne	.L3
-  70:.\PrinterTemplate.c ****         {
-  71:.\PrinterTemplate.c ****             retval = (char8*)ptr->_pstrline;
- 281              		.loc 1 71 0
- 282 001e BB68     		ldr	r3, [r7, #8]
- 283 0020 5B68     		ldr	r3, [r3, #4]
- 284 0022 FB60     		str	r3, [r7, #12]
-  72:.\PrinterTemplate.c ****             break;
- 285              		.loc 1 72 0
- 286 0024 06E0     		b	.L4
- 287              	.L3:
-  73:.\PrinterTemplate.c ****         }
-  74:.\PrinterTemplate.c ****         ptr++;
- 288              		.loc 1 74 0
- 289 0026 BB68     		ldr	r3, [r7, #8]
- 290 0028 0833     		adds	r3, r3, #8
- 291 002a BB60     		str	r3, [r7, #8]
- 292              	.L2:
+ 256 0004 00AF     		add	r7, sp, #0
+ 257              		.cfi_def_cfa_register 7
+ 258 0006 0346     		mov	r3, r0
+ 259 0008 FB71     		strb	r3, [r7, #7]
+  64:.\PrinterTemplate.c ****     char8* retval = NULL;
+ 260              		.loc 1 64 0
+ 261 000a 0023     		movs	r3, #0
+ 262 000c FB60     		str	r3, [r7, #12]
+  65:.\PrinterTemplate.c ****     PNEAR_PRINTERTEMPLATEPTR ptr = &_g_printertemplate[0x00];
+ 263              		.loc 1 65 0
+ 264 000e 0D4B     		ldr	r3, .L7
+ 265 0010 BB60     		str	r3, [r7, #8]
+  66:.\PrinterTemplate.c ****     while(ptr->_namedline != 0x00)
+ 266              		.loc 1 66 0
+ 267 0012 0BE0     		b	.L2
+ 268              	.L5:
   67:.\PrinterTemplate.c ****     {
- 293              		.loc 1 67 0
- 294 002c BB68     		ldr	r3, [r7, #8]
- 295 002e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 9
+  68:.\PrinterTemplate.c ****         if(ptr->_namedline == lineid)
+ 269              		.loc 1 68 0
+ 270 0014 BB68     		ldr	r3, [r7, #8]
+ 271 0016 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 272 0018 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 273 001a 9A42     		cmp	r2, r3
+ 274 001c 03D1     		bne	.L3
+  69:.\PrinterTemplate.c ****         {
+  70:.\PrinterTemplate.c ****             retval = (char8*)ptr->_pstrline;
+ 275              		.loc 1 70 0
+ 276 001e BB68     		ldr	r3, [r7, #8]
+ 277 0020 5B68     		ldr	r3, [r3, #4]
+ 278 0022 FB60     		str	r3, [r7, #12]
+  71:.\PrinterTemplate.c ****             break;
+ 279              		.loc 1 71 0
+ 280 0024 06E0     		b	.L4
+ 281              	.L3:
+  72:.\PrinterTemplate.c ****         }
+  73:.\PrinterTemplate.c ****         ptr++;
+ 282              		.loc 1 73 0
+ 283 0026 BB68     		ldr	r3, [r7, #8]
+ 284 0028 0833     		adds	r3, r3, #8
+ 285 002a BB60     		str	r3, [r7, #8]
+ 286              	.L2:
+  66:.\PrinterTemplate.c ****     {
+ 287              		.loc 1 66 0
+ 288 002c BB68     		ldr	r3, [r7, #8]
+ 289 002e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 290 0030 002B     		cmp	r3, #0
+ 291 0032 EFD1     		bne	.L5
+ 292              	.L4:
+  74:.\PrinterTemplate.c ****     }
+  75:.\PrinterTemplate.c ****     return retval;
+ 293              		.loc 1 75 0
+ 294 0034 FB68     		ldr	r3, [r7, #12]
+  76:.\PrinterTemplate.c **** }
+ 295              		.loc 1 76 0
+ 296 0036 1846     		mov	r0, r3
+ 297 0038 1437     		adds	r7, r7, #20
+ 298              		.cfi_def_cfa_offset 4
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cchCeyJb.s 			page 9
 
 
- 296 0030 002B     		cmp	r3, #0
- 297 0032 EFD1     		bne	.L5
- 298              	.L4:
-  75:.\PrinterTemplate.c ****     }
-  76:.\PrinterTemplate.c ****     return retval;
- 299              		.loc 1 76 0
- 300 0034 FB68     		ldr	r3, [r7, #12]
-  77:.\PrinterTemplate.c **** }
- 301              		.loc 1 77 0
- 302 0036 1846     		mov	r0, r3
- 303 0038 1437     		adds	r7, r7, #20
- 304              		.cfi_def_cfa_offset 4
- 305 003a BD46     		mov	sp, r7
- 306              		.cfi_def_cfa_register 13
- 307              		@ sp needed
- 308 003c 5DF8047B 		ldr	r7, [sp], #4
- 309              		.cfi_restore 7
- 310              		.cfi_def_cfa_offset 0
- 311 0040 7047     		bx	lr
- 312              	.L8:
- 313 0042 00BF     		.align	2
- 314              	.L7:
- 315 0044 00000000 		.word	_g_printertemplate
- 316              		.cfi_endproc
- 317              	.LFE0:
- 318              		.size	GetPrinterTemplateLine, .-GetPrinterTemplateLine
- 319              		.section	.text.GetPrinterVolumeTemplateTag,"ax",%progbits
- 320              		.align	2
- 321              		.global	GetPrinterVolumeTemplateTag
- 322              		.thumb
- 323              		.thumb_func
- 324              		.type	GetPrinterVolumeTemplateTag, %function
- 325              	GetPrinterVolumeTemplateTag:
- 326              	.LFB1:
-  78:.\PrinterTemplate.c **** 
-  79:.\PrinterTemplate.c **** char8* GetPrinterVolumeTemplateTag(uint8 lineid)
-  80:.\PrinterTemplate.c **** {
- 327              		.loc 1 80 0
- 328              		.cfi_startproc
- 329              		@ args = 0, pretend = 0, frame = 16
- 330              		@ frame_needed = 1, uses_anonymous_args = 0
- 331              		@ link register save eliminated.
- 332 0000 80B4     		push	{r7}
- 333              		.cfi_def_cfa_offset 4
- 334              		.cfi_offset 7, -4
- 335 0002 85B0     		sub	sp, sp, #20
- 336              		.cfi_def_cfa_offset 24
- 337 0004 00AF     		add	r7, sp, #0
- 338              		.cfi_def_cfa_register 7
- 339 0006 0346     		mov	r3, r0
- 340 0008 FB71     		strb	r3, [r7, #7]
-  81:.\PrinterTemplate.c ****     char8* retval = NULL;
- 341              		.loc 1 81 0
- 342 000a 0023     		movs	r3, #0
- 343 000c FB60     		str	r3, [r7, #12]
-  82:.\PrinterTemplate.c ****     PNEAR_PRINTERTEMPLATEPTR ptr = &_g_printervolumetemplate[0x00];
- 344              		.loc 1 82 0
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 10
-
-
- 345 000e 0D4B     		ldr	r3, .L15
- 346 0010 BB60     		str	r3, [r7, #8]
-  83:.\PrinterTemplate.c ****     while(ptr->_namedline != 0x00)
- 347              		.loc 1 83 0
- 348 0012 0BE0     		b	.L10
- 349              	.L13:
-  84:.\PrinterTemplate.c ****     {
-  85:.\PrinterTemplate.c ****         if(ptr->_namedline == lineid)
- 350              		.loc 1 85 0
- 351 0014 BB68     		ldr	r3, [r7, #8]
- 352 0016 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 353 0018 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
- 354 001a 9A42     		cmp	r2, r3
- 355 001c 03D1     		bne	.L11
-  86:.\PrinterTemplate.c ****         {
-  87:.\PrinterTemplate.c ****             retval = (char8*)ptr->_pstrline;
- 356              		.loc 1 87 0
- 357 001e BB68     		ldr	r3, [r7, #8]
- 358 0020 5B68     		ldr	r3, [r3, #4]
- 359 0022 FB60     		str	r3, [r7, #12]
-  88:.\PrinterTemplate.c ****             break;
- 360              		.loc 1 88 0
- 361 0024 06E0     		b	.L12
- 362              	.L11:
-  89:.\PrinterTemplate.c ****         }
-  90:.\PrinterTemplate.c ****         ptr++;
- 363              		.loc 1 90 0
- 364 0026 BB68     		ldr	r3, [r7, #8]
- 365 0028 0833     		adds	r3, r3, #8
- 366 002a BB60     		str	r3, [r7, #8]
- 367              	.L10:
+ 299 003a BD46     		mov	sp, r7
+ 300              		.cfi_def_cfa_register 13
+ 301              		@ sp needed
+ 302 003c 5DF8047B 		ldr	r7, [sp], #4
+ 303              		.cfi_restore 7
+ 304              		.cfi_def_cfa_offset 0
+ 305 0040 7047     		bx	lr
+ 306              	.L8:
+ 307 0042 00BF     		.align	2
+ 308              	.L7:
+ 309 0044 00000000 		.word	_g_printertemplate
+ 310              		.cfi_endproc
+ 311              	.LFE0:
+ 312              		.size	GetPrinterTemplateLine, .-GetPrinterTemplateLine
+ 313              		.section	.text.GetPrinterVolumeTemplateTag,"ax",%progbits
+ 314              		.align	2
+ 315              		.global	GetPrinterVolumeTemplateTag
+ 316              		.thumb
+ 317              		.thumb_func
+ 318              		.type	GetPrinterVolumeTemplateTag, %function
+ 319              	GetPrinterVolumeTemplateTag:
+ 320              	.LFB1:
+  77:.\PrinterTemplate.c **** 
+  78:.\PrinterTemplate.c **** char8* GetPrinterVolumeTemplateTag(uint8 lineid)
+  79:.\PrinterTemplate.c **** {
+ 321              		.loc 1 79 0
+ 322              		.cfi_startproc
+ 323              		@ args = 0, pretend = 0, frame = 16
+ 324              		@ frame_needed = 1, uses_anonymous_args = 0
+ 325              		@ link register save eliminated.
+ 326 0000 80B4     		push	{r7}
+ 327              		.cfi_def_cfa_offset 4
+ 328              		.cfi_offset 7, -4
+ 329 0002 85B0     		sub	sp, sp, #20
+ 330              		.cfi_def_cfa_offset 24
+ 331 0004 00AF     		add	r7, sp, #0
+ 332              		.cfi_def_cfa_register 7
+ 333 0006 0346     		mov	r3, r0
+ 334 0008 FB71     		strb	r3, [r7, #7]
+  80:.\PrinterTemplate.c ****     char8* retval = NULL;
+ 335              		.loc 1 80 0
+ 336 000a 0023     		movs	r3, #0
+ 337 000c FB60     		str	r3, [r7, #12]
+  81:.\PrinterTemplate.c ****     PNEAR_PRINTERTEMPLATEPTR ptr = &_g_printervolumetemplate[0x00];
+ 338              		.loc 1 81 0
+ 339 000e 0D4B     		ldr	r3, .L15
+ 340 0010 BB60     		str	r3, [r7, #8]
+  82:.\PrinterTemplate.c ****     while(ptr->_namedline != 0x00)
+ 341              		.loc 1 82 0
+ 342 0012 0BE0     		b	.L10
+ 343              	.L13:
   83:.\PrinterTemplate.c ****     {
- 368              		.loc 1 83 0
- 369 002c BB68     		ldr	r3, [r7, #8]
- 370 002e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 371 0030 002B     		cmp	r3, #0
- 372 0032 EFD1     		bne	.L13
- 373              	.L12:
-  91:.\PrinterTemplate.c ****     }
-  92:.\PrinterTemplate.c ****     return retval;
- 374              		.loc 1 92 0
- 375 0034 FB68     		ldr	r3, [r7, #12]
-  93:.\PrinterTemplate.c **** }
- 376              		.loc 1 93 0
- 377 0036 1846     		mov	r0, r3
- 378 0038 1437     		adds	r7, r7, #20
- 379              		.cfi_def_cfa_offset 4
- 380 003a BD46     		mov	sp, r7
- 381              		.cfi_def_cfa_register 13
- 382              		@ sp needed
- 383 003c 5DF8047B 		ldr	r7, [sp], #4
- 384              		.cfi_restore 7
- 385              		.cfi_def_cfa_offset 0
- 386 0040 7047     		bx	lr
- 387              	.L16:
- 388 0042 00BF     		.align	2
- 389              	.L15:
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 11
+  84:.\PrinterTemplate.c ****         if(ptr->_namedline == lineid)
+ 344              		.loc 1 84 0
+ 345 0014 BB68     		ldr	r3, [r7, #8]
+ 346 0016 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 347 0018 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cchCeyJb.s 			page 10
 
 
- 390 0044 00000000 		.word	_g_printervolumetemplate
- 391              		.cfi_endproc
- 392              	.LFE1:
- 393              		.size	GetPrinterVolumeTemplateTag, .-GetPrinterVolumeTemplateTag
- 394              		.section	.text.GetPrinterPriceTemplateTag,"ax",%progbits
- 395              		.align	2
- 396              		.global	GetPrinterPriceTemplateTag
- 397              		.thumb
- 398              		.thumb_func
- 399              		.type	GetPrinterPriceTemplateTag, %function
- 400              	GetPrinterPriceTemplateTag:
- 401              	.LFB2:
-  94:.\PrinterTemplate.c **** 
-  95:.\PrinterTemplate.c **** char8* GetPrinterPriceTemplateTag(uint8 refid)
-  96:.\PrinterTemplate.c **** {
- 402              		.loc 1 96 0
- 403              		.cfi_startproc
- 404              		@ args = 0, pretend = 0, frame = 16
- 405              		@ frame_needed = 1, uses_anonymous_args = 0
- 406              		@ link register save eliminated.
- 407 0000 80B4     		push	{r7}
- 408              		.cfi_def_cfa_offset 4
- 409              		.cfi_offset 7, -4
- 410 0002 85B0     		sub	sp, sp, #20
- 411              		.cfi_def_cfa_offset 24
- 412 0004 00AF     		add	r7, sp, #0
- 413              		.cfi_def_cfa_register 7
- 414 0006 0346     		mov	r3, r0
- 415 0008 FB71     		strb	r3, [r7, #7]
-  97:.\PrinterTemplate.c ****     char8* retval = NULL;
- 416              		.loc 1 97 0
- 417 000a 0023     		movs	r3, #0
- 418 000c FB60     		str	r3, [r7, #12]
-  98:.\PrinterTemplate.c ****     if(refid == PRN_MONEY_LITERS)
- 419              		.loc 1 98 0
- 420 000e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
- 421 0010 032B     		cmp	r3, #3
- 422 0012 03D1     		bne	.L18
-  99:.\PrinterTemplate.c ****         retval = (char8*)_g_printerpricetemplate[0x01]._pstrline;
- 423              		.loc 1 99 0
- 424 0014 064B     		ldr	r3, .L21
- 425 0016 DB68     		ldr	r3, [r3, #12]
- 426 0018 FB60     		str	r3, [r7, #12]
- 427 001a 02E0     		b	.L19
- 428              	.L18:
- 100:.\PrinterTemplate.c ****     else
- 101:.\PrinterTemplate.c ****         retval = (char8*)_g_printerpricetemplate[0x00]._pstrline;
- 429              		.loc 1 101 0
- 430 001c 044B     		ldr	r3, .L21
- 431 001e 5B68     		ldr	r3, [r3, #4]
- 432 0020 FB60     		str	r3, [r7, #12]
- 433              	.L19:
- 102:.\PrinterTemplate.c ****         
- 103:.\PrinterTemplate.c ****     return retval;
- 434              		.loc 1 103 0
- 435 0022 FB68     		ldr	r3, [r7, #12]
- 104:.\PrinterTemplate.c **** }
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 12
+ 348 001a 9A42     		cmp	r2, r3
+ 349 001c 03D1     		bne	.L11
+  85:.\PrinterTemplate.c ****         {
+  86:.\PrinterTemplate.c ****             retval = (char8*)ptr->_pstrline;
+ 350              		.loc 1 86 0
+ 351 001e BB68     		ldr	r3, [r7, #8]
+ 352 0020 5B68     		ldr	r3, [r3, #4]
+ 353 0022 FB60     		str	r3, [r7, #12]
+  87:.\PrinterTemplate.c ****             break;
+ 354              		.loc 1 87 0
+ 355 0024 06E0     		b	.L12
+ 356              	.L11:
+  88:.\PrinterTemplate.c ****         }
+  89:.\PrinterTemplate.c ****         ptr++;
+ 357              		.loc 1 89 0
+ 358 0026 BB68     		ldr	r3, [r7, #8]
+ 359 0028 0833     		adds	r3, r3, #8
+ 360 002a BB60     		str	r3, [r7, #8]
+ 361              	.L10:
+  82:.\PrinterTemplate.c ****     {
+ 362              		.loc 1 82 0
+ 363 002c BB68     		ldr	r3, [r7, #8]
+ 364 002e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 365 0030 002B     		cmp	r3, #0
+ 366 0032 EFD1     		bne	.L13
+ 367              	.L12:
+  90:.\PrinterTemplate.c ****     }
+  91:.\PrinterTemplate.c ****     return retval;
+ 368              		.loc 1 91 0
+ 369 0034 FB68     		ldr	r3, [r7, #12]
+  92:.\PrinterTemplate.c **** }
+ 370              		.loc 1 92 0
+ 371 0036 1846     		mov	r0, r3
+ 372 0038 1437     		adds	r7, r7, #20
+ 373              		.cfi_def_cfa_offset 4
+ 374 003a BD46     		mov	sp, r7
+ 375              		.cfi_def_cfa_register 13
+ 376              		@ sp needed
+ 377 003c 5DF8047B 		ldr	r7, [sp], #4
+ 378              		.cfi_restore 7
+ 379              		.cfi_def_cfa_offset 0
+ 380 0040 7047     		bx	lr
+ 381              	.L16:
+ 382 0042 00BF     		.align	2
+ 383              	.L15:
+ 384 0044 00000000 		.word	_g_printervolumetemplate
+ 385              		.cfi_endproc
+ 386              	.LFE1:
+ 387              		.size	GetPrinterVolumeTemplateTag, .-GetPrinterVolumeTemplateTag
+ 388              		.section	.text.GetPrinterPriceTemplateTag,"ax",%progbits
+ 389              		.align	2
+ 390              		.global	GetPrinterPriceTemplateTag
+ 391              		.thumb
+ 392              		.thumb_func
+ 393              		.type	GetPrinterPriceTemplateTag, %function
+ 394              	GetPrinterPriceTemplateTag:
+ 395              	.LFB2:
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cchCeyJb.s 			page 11
 
 
- 436              		.loc 1 104 0
- 437 0024 1846     		mov	r0, r3
- 438 0026 1437     		adds	r7, r7, #20
- 439              		.cfi_def_cfa_offset 4
- 440 0028 BD46     		mov	sp, r7
- 441              		.cfi_def_cfa_register 13
- 442              		@ sp needed
- 443 002a 5DF8047B 		ldr	r7, [sp], #4
- 444              		.cfi_restore 7
- 445              		.cfi_def_cfa_offset 0
- 446 002e 7047     		bx	lr
- 447              	.L22:
- 448              		.align	2
- 449              	.L21:
- 450 0030 00000000 		.word	_g_printerpricetemplate
- 451              		.cfi_endproc
- 452              	.LFE2:
- 453              		.size	GetPrinterPriceTemplateTag, .-GetPrinterPriceTemplateTag
- 454              		.text
- 455              	.Letext0:
- 456              		.file 2 "Generated_Source\\PSoC5/cytypes.h"
- 457              		.file 3 ".\\Printer.h"
- 458              		.section	.debug_info,"",%progbits
- 459              	.Ldebug_info0:
- 460 0000 05030000 		.4byte	0x305
- 461 0004 0400     		.2byte	0x4
- 462 0006 00000000 		.4byte	.Ldebug_abbrev0
- 463 000a 04       		.byte	0x4
- 464 000b 01       		.uleb128 0x1
- 465 000c 18020000 		.4byte	.LASF66
- 466 0010 01       		.byte	0x1
- 467 0011 46000000 		.4byte	.LASF67
- 468 0015 D0020000 		.4byte	.LASF68
- 469 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 470 001d 00000000 		.4byte	0
- 471 0021 00000000 		.4byte	.Ldebug_line0
- 472 0025 02       		.uleb128 0x2
- 473 0026 01       		.byte	0x1
- 474 0027 06       		.byte	0x6
- 475 0028 DE000000 		.4byte	.LASF0
- 476 002c 02       		.uleb128 0x2
- 477 002d 01       		.byte	0x1
- 478 002e 08       		.byte	0x8
- 479 002f 48030000 		.4byte	.LASF1
- 480 0033 02       		.uleb128 0x2
- 481 0034 02       		.byte	0x2
- 482 0035 05       		.byte	0x5
- 483 0036 8E030000 		.4byte	.LASF2
- 484 003a 02       		.uleb128 0x2
- 485 003b 02       		.byte	0x2
- 486 003c 07       		.byte	0x7
- 487 003d A2010000 		.4byte	.LASF3
- 488 0041 02       		.uleb128 0x2
- 489 0042 04       		.byte	0x4
- 490 0043 05       		.byte	0x5
- 491 0044 FF000000 		.4byte	.LASF4
- 492 0048 02       		.uleb128 0x2
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 13
+  93:.\PrinterTemplate.c **** 
+  94:.\PrinterTemplate.c **** char8* GetPrinterPriceTemplateTag(uint8 refid)
+  95:.\PrinterTemplate.c **** {
+ 396              		.loc 1 95 0
+ 397              		.cfi_startproc
+ 398              		@ args = 0, pretend = 0, frame = 16
+ 399              		@ frame_needed = 1, uses_anonymous_args = 0
+ 400              		@ link register save eliminated.
+ 401 0000 80B4     		push	{r7}
+ 402              		.cfi_def_cfa_offset 4
+ 403              		.cfi_offset 7, -4
+ 404 0002 85B0     		sub	sp, sp, #20
+ 405              		.cfi_def_cfa_offset 24
+ 406 0004 00AF     		add	r7, sp, #0
+ 407              		.cfi_def_cfa_register 7
+ 408 0006 0346     		mov	r3, r0
+ 409 0008 FB71     		strb	r3, [r7, #7]
+  96:.\PrinterTemplate.c ****     char8* retval = NULL;
+ 410              		.loc 1 96 0
+ 411 000a 0023     		movs	r3, #0
+ 412 000c FB60     		str	r3, [r7, #12]
+  97:.\PrinterTemplate.c ****     if(refid == PRN_MONEY_LITERS)
+ 413              		.loc 1 97 0
+ 414 000e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 415 0010 032B     		cmp	r3, #3
+ 416 0012 03D1     		bne	.L18
+  98:.\PrinterTemplate.c ****         retval = (char8*)_g_printerpricetemplate[0x01]._pstrline;
+ 417              		.loc 1 98 0
+ 418 0014 064B     		ldr	r3, .L21
+ 419 0016 DB68     		ldr	r3, [r3, #12]
+ 420 0018 FB60     		str	r3, [r7, #12]
+ 421 001a 02E0     		b	.L19
+ 422              	.L18:
+  99:.\PrinterTemplate.c ****     else
+ 100:.\PrinterTemplate.c ****         retval = (char8*)_g_printerpricetemplate[0x00]._pstrline;
+ 423              		.loc 1 100 0
+ 424 001c 044B     		ldr	r3, .L21
+ 425 001e 5B68     		ldr	r3, [r3, #4]
+ 426 0020 FB60     		str	r3, [r7, #12]
+ 427              	.L19:
+ 101:.\PrinterTemplate.c ****         
+ 102:.\PrinterTemplate.c ****     return retval;
+ 428              		.loc 1 102 0
+ 429 0022 FB68     		ldr	r3, [r7, #12]
+ 103:.\PrinterTemplate.c **** }
+ 430              		.loc 1 103 0
+ 431 0024 1846     		mov	r0, r3
+ 432 0026 1437     		adds	r7, r7, #20
+ 433              		.cfi_def_cfa_offset 4
+ 434 0028 BD46     		mov	sp, r7
+ 435              		.cfi_def_cfa_register 13
+ 436              		@ sp needed
+ 437 002a 5DF8047B 		ldr	r7, [sp], #4
+ 438              		.cfi_restore 7
+ 439              		.cfi_def_cfa_offset 0
+ 440 002e 7047     		bx	lr
+ 441              	.L22:
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cchCeyJb.s 			page 12
 
 
- 493 0049 04       		.byte	0x4
- 494 004a 07       		.byte	0x7
- 495 004b 82010000 		.4byte	.LASF5
- 496 004f 02       		.uleb128 0x2
- 497 0050 08       		.byte	0x8
- 498 0051 05       		.byte	0x5
- 499 0052 D0000000 		.4byte	.LASF6
- 500 0056 02       		.uleb128 0x2
- 501 0057 08       		.byte	0x8
- 502 0058 07       		.byte	0x7
- 503 0059 81000000 		.4byte	.LASF7
- 504 005d 03       		.uleb128 0x3
- 505 005e 04       		.byte	0x4
- 506 005f 05       		.byte	0x5
- 507 0060 696E7400 		.ascii	"int\000"
- 508 0064 02       		.uleb128 0x2
- 509 0065 04       		.byte	0x4
- 510 0066 07       		.byte	0x7
- 511 0067 66010000 		.4byte	.LASF8
- 512 006b 04       		.uleb128 0x4
- 513 006c 25010000 		.4byte	.LASF11
- 514 0070 02       		.byte	0x2
- 515 0071 3801     		.2byte	0x138
- 516 0073 2C000000 		.4byte	0x2c
- 517 0077 02       		.uleb128 0x2
- 518 0078 04       		.byte	0x4
- 519 0079 04       		.byte	0x4
- 520 007a CA020000 		.4byte	.LASF9
- 521 007e 02       		.uleb128 0x2
- 522 007f 08       		.byte	0x8
- 523 0080 04       		.byte	0x4
- 524 0081 32010000 		.4byte	.LASF10
- 525 0085 04       		.uleb128 0x4
- 526 0086 19040000 		.4byte	.LASF12
- 527 008a 02       		.byte	0x2
- 528 008b 4901     		.2byte	0x149
- 529 008d 91000000 		.4byte	0x91
- 530 0091 02       		.uleb128 0x2
- 531 0092 01       		.byte	0x1
- 532 0093 08       		.byte	0x8
- 533 0094 ED030000 		.4byte	.LASF13
- 534 0098 02       		.uleb128 0x2
- 535 0099 04       		.byte	0x4
- 536 009a 07       		.byte	0x7
- 537 009b F5010000 		.4byte	.LASF14
- 538 009f 02       		.uleb128 0x2
- 539 00a0 08       		.byte	0x8
- 540 00a1 04       		.byte	0x4
- 541 00a2 FE010000 		.4byte	.LASF15
- 542 00a6 05       		.uleb128 0x5
- 543 00a7 A3030000 		.4byte	.LASF43
- 544 00ab 01       		.byte	0x1
- 545 00ac 03       		.byte	0x3
- 546 00ad 3F       		.byte	0x3f
- 547 00ae 55010000 		.4byte	0x155
- 548 00b2 06       		.uleb128 0x6
- 549 00b3 0C000000 		.4byte	.LASF16
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 14
+ 442              		.align	2
+ 443              	.L21:
+ 444 0030 00000000 		.word	_g_printerpricetemplate
+ 445              		.cfi_endproc
+ 446              	.LFE2:
+ 447              		.size	GetPrinterPriceTemplateTag, .-GetPrinterPriceTemplateTag
+ 448              		.text
+ 449              	.Letext0:
+ 450              		.file 2 "Generated_Source\\PSoC5/cytypes.h"
+ 451              		.file 3 ".\\Printer.h"
+ 452              		.section	.debug_info,"",%progbits
+ 453              	.Ldebug_info0:
+ 454 0000 FF020000 		.4byte	0x2ff
+ 455 0004 0400     		.2byte	0x4
+ 456 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 457 000a 04       		.byte	0x4
+ 458 000b 01       		.uleb128 0x1
+ 459 000c 18020000 		.4byte	.LASF65
+ 460 0010 01       		.byte	0x1
+ 461 0011 46000000 		.4byte	.LASF66
+ 462 0015 C5020000 		.4byte	.LASF67
+ 463 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 464 001d 00000000 		.4byte	0
+ 465 0021 00000000 		.4byte	.Ldebug_line0
+ 466 0025 02       		.uleb128 0x2
+ 467 0026 01       		.byte	0x1
+ 468 0027 06       		.byte	0x6
+ 469 0028 DE000000 		.4byte	.LASF0
+ 470 002c 02       		.uleb128 0x2
+ 471 002d 01       		.byte	0x1
+ 472 002e 08       		.byte	0x8
+ 473 002f 3D030000 		.4byte	.LASF1
+ 474 0033 02       		.uleb128 0x2
+ 475 0034 02       		.byte	0x2
+ 476 0035 05       		.byte	0x5
+ 477 0036 83030000 		.4byte	.LASF2
+ 478 003a 02       		.uleb128 0x2
+ 479 003b 02       		.byte	0x2
+ 480 003c 07       		.byte	0x7
+ 481 003d A2010000 		.4byte	.LASF3
+ 482 0041 02       		.uleb128 0x2
+ 483 0042 04       		.byte	0x4
+ 484 0043 05       		.byte	0x5
+ 485 0044 FF000000 		.4byte	.LASF4
+ 486 0048 02       		.uleb128 0x2
+ 487 0049 04       		.byte	0x4
+ 488 004a 07       		.byte	0x7
+ 489 004b 82010000 		.4byte	.LASF5
+ 490 004f 02       		.uleb128 0x2
+ 491 0050 08       		.byte	0x8
+ 492 0051 05       		.byte	0x5
+ 493 0052 D0000000 		.4byte	.LASF6
+ 494 0056 02       		.uleb128 0x2
+ 495 0057 08       		.byte	0x8
+ 496 0058 07       		.byte	0x7
+ 497 0059 81000000 		.4byte	.LASF7
+ 498 005d 03       		.uleb128 0x3
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cchCeyJb.s 			page 13
 
 
- 550 00b7 01       		.sleb128 1
- 551 00b8 06       		.uleb128 0x6
- 552 00b9 12010000 		.4byte	.LASF17
- 553 00bd 02       		.sleb128 2
- 554 00be 06       		.uleb128 0x6
- 555 00bf B9030000 		.4byte	.LASF18
- 556 00c3 03       		.sleb128 3
- 557 00c4 06       		.uleb128 0x6
- 558 00c5 8B040000 		.4byte	.LASF19
- 559 00c9 04       		.sleb128 4
- 560 00ca 06       		.uleb128 0x6
- 561 00cb 73000000 		.4byte	.LASF20
- 562 00cf 05       		.sleb128 5
- 563 00d0 06       		.uleb128 0x6
- 564 00d1 D5040000 		.4byte	.LASF21
- 565 00d5 06       		.sleb128 6
- 566 00d6 06       		.uleb128 0x6
- 567 00d7 0A020000 		.4byte	.LASF22
- 568 00db 07       		.sleb128 7
- 569 00dc 06       		.uleb128 0x6
- 570 00dd 00000000 		.4byte	.LASF23
- 571 00e1 08       		.sleb128 8
- 572 00e2 06       		.uleb128 0x6
- 573 00e3 39010000 		.4byte	.LASF24
- 574 00e7 09       		.sleb128 9
- 575 00e8 06       		.uleb128 0x6
- 576 00e9 D3030000 		.4byte	.LASF25
- 577 00ed 0A       		.sleb128 10
- 578 00ee 06       		.uleb128 0x6
- 579 00ef DF030000 		.4byte	.LASF26
- 580 00f3 0B       		.sleb128 11
- 581 00f4 06       		.uleb128 0x6
- 582 00f5 56030000 		.4byte	.LASF27
- 583 00f9 0C       		.sleb128 12
- 584 00fa 06       		.uleb128 0x6
- 585 00fb AE040000 		.4byte	.LASF28
- 586 00ff 0D       		.sleb128 13
- 587 0100 06       		.uleb128 0x6
- 588 0101 EA000000 		.4byte	.LASF29
- 589 0105 0E       		.sleb128 14
- 590 0106 06       		.uleb128 0x6
- 591 0107 45010000 		.4byte	.LASF30
- 592 010b 0F       		.sleb128 15
- 593 010c 06       		.uleb128 0x6
- 594 010d F2030000 		.4byte	.LASF31
- 595 0111 10       		.sleb128 16
- 596 0112 06       		.uleb128 0x6
- 597 0113 65030000 		.4byte	.LASF32
- 598 0117 11       		.sleb128 17
- 599 0118 06       		.uleb128 0x6
- 600 0119 A6020000 		.4byte	.LASF33
- 601 011d 12       		.sleb128 18
- 602 011e 06       		.uleb128 0x6
- 603 011f 73010000 		.4byte	.LASF34
- 604 0123 13       		.sleb128 19
- 605 0124 06       		.uleb128 0x6
- 606 0125 C3030000 		.4byte	.LASF35
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 15
+ 499 005e 04       		.byte	0x4
+ 500 005f 05       		.byte	0x5
+ 501 0060 696E7400 		.ascii	"int\000"
+ 502 0064 02       		.uleb128 0x2
+ 503 0065 04       		.byte	0x4
+ 504 0066 07       		.byte	0x7
+ 505 0067 66010000 		.4byte	.LASF8
+ 506 006b 04       		.uleb128 0x4
+ 507 006c 25010000 		.4byte	.LASF11
+ 508 0070 02       		.byte	0x2
+ 509 0071 3801     		.2byte	0x138
+ 510 0073 2C000000 		.4byte	0x2c
+ 511 0077 02       		.uleb128 0x2
+ 512 0078 04       		.byte	0x4
+ 513 0079 04       		.byte	0x4
+ 514 007a BF020000 		.4byte	.LASF9
+ 515 007e 02       		.uleb128 0x2
+ 516 007f 08       		.byte	0x8
+ 517 0080 04       		.byte	0x4
+ 518 0081 32010000 		.4byte	.LASF10
+ 519 0085 04       		.uleb128 0x4
+ 520 0086 0E040000 		.4byte	.LASF12
+ 521 008a 02       		.byte	0x2
+ 522 008b 4901     		.2byte	0x149
+ 523 008d 91000000 		.4byte	0x91
+ 524 0091 02       		.uleb128 0x2
+ 525 0092 01       		.byte	0x1
+ 526 0093 08       		.byte	0x8
+ 527 0094 E2030000 		.4byte	.LASF13
+ 528 0098 02       		.uleb128 0x2
+ 529 0099 04       		.byte	0x4
+ 530 009a 07       		.byte	0x7
+ 531 009b F5010000 		.4byte	.LASF14
+ 532 009f 02       		.uleb128 0x2
+ 533 00a0 08       		.byte	0x8
+ 534 00a1 04       		.byte	0x4
+ 535 00a2 FE010000 		.4byte	.LASF15
+ 536 00a6 05       		.uleb128 0x5
+ 537 00a7 98030000 		.4byte	.LASF42
+ 538 00ab 01       		.byte	0x1
+ 539 00ac 03       		.byte	0x3
+ 540 00ad 3F       		.byte	0x3f
+ 541 00ae 4F010000 		.4byte	0x14f
+ 542 00b2 06       		.uleb128 0x6
+ 543 00b3 0C000000 		.4byte	.LASF16
+ 544 00b7 01       		.sleb128 1
+ 545 00b8 06       		.uleb128 0x6
+ 546 00b9 12010000 		.4byte	.LASF17
+ 547 00bd 02       		.sleb128 2
+ 548 00be 06       		.uleb128 0x6
+ 549 00bf AE030000 		.4byte	.LASF18
+ 550 00c3 03       		.sleb128 3
+ 551 00c4 06       		.uleb128 0x6
+ 552 00c5 80040000 		.4byte	.LASF19
+ 553 00c9 04       		.sleb128 4
+ 554 00ca 06       		.uleb128 0x6
+ 555 00cb 73000000 		.4byte	.LASF20
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cchCeyJb.s 			page 14
 
 
- 607 0129 14       		.sleb128 20
- 608 012a 06       		.uleb128 0x6
- 609 012b B5010000 		.4byte	.LASF36
- 610 012f 15       		.sleb128 21
- 611 0130 06       		.uleb128 0x6
- 612 0131 94010000 		.4byte	.LASF37
- 613 0135 16       		.sleb128 22
- 614 0136 06       		.uleb128 0x6
- 615 0137 BF020000 		.4byte	.LASF38
- 616 013b 17       		.sleb128 23
- 617 013c 06       		.uleb128 0x6
- 618 013d 08010000 		.4byte	.LASF39
- 619 0141 18       		.sleb128 24
- 620 0142 06       		.uleb128 0x6
- 621 0143 84040000 		.4byte	.LASF40
- 622 0147 19       		.sleb128 25
- 623 0148 06       		.uleb128 0x6
- 624 0149 AF000000 		.4byte	.LASF41
- 625 014d 1A       		.sleb128 26
- 626 014e 06       		.uleb128 0x6
- 627 014f B4020000 		.4byte	.LASF42
- 628 0153 1B       		.sleb128 27
- 629 0154 00       		.byte	0
- 630 0155 05       		.uleb128 0x5
- 631 0156 1F040000 		.4byte	.LASF44
- 632 015a 01       		.byte	0x1
- 633 015b 03       		.byte	0x3
- 634 015c 5E       		.byte	0x5e
- 635 015d 80010000 		.4byte	0x180
- 636 0161 06       		.uleb128 0x6
- 637 0162 BE040000 		.4byte	.LASF45
- 638 0166 01       		.sleb128 1
- 639 0167 06       		.uleb128 0x6
- 640 0168 02040000 		.4byte	.LASF46
- 641 016c 02       		.sleb128 2
- 642 016d 06       		.uleb128 0x6
- 643 016e E2010000 		.4byte	.LASF47
- 644 0172 03       		.sleb128 3
- 645 0173 06       		.uleb128 0x6
- 646 0174 C1010000 		.4byte	.LASF48
- 647 0178 04       		.sleb128 4
- 648 0179 06       		.uleb128 0x6
- 649 017a 15000000 		.4byte	.LASF49
- 650 017e 05       		.sleb128 5
- 651 017f 00       		.byte	0
- 652 0180 05       		.uleb128 0x5
- 653 0181 98040000 		.4byte	.LASF50
- 654 0185 01       		.byte	0x1
- 655 0186 03       		.byte	0x3
- 656 0187 67       		.byte	0x67
- 657 0188 99010000 		.4byte	0x199
- 658 018c 06       		.uleb128 0x6
- 659 018d 54010000 		.4byte	.LASF51
- 660 0191 01       		.sleb128 1
- 661 0192 06       		.uleb128 0x6
- 662 0193 40040000 		.4byte	.LASF52
- 663 0197 03       		.sleb128 3
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 16
+ 556 00cf 05       		.sleb128 5
+ 557 00d0 06       		.uleb128 0x6
+ 558 00d1 CA040000 		.4byte	.LASF21
+ 559 00d5 06       		.sleb128 6
+ 560 00d6 06       		.uleb128 0x6
+ 561 00d7 0A020000 		.4byte	.LASF22
+ 562 00db 07       		.sleb128 7
+ 563 00dc 06       		.uleb128 0x6
+ 564 00dd 00000000 		.4byte	.LASF23
+ 565 00e1 08       		.sleb128 8
+ 566 00e2 06       		.uleb128 0x6
+ 567 00e3 39010000 		.4byte	.LASF24
+ 568 00e7 09       		.sleb128 9
+ 569 00e8 06       		.uleb128 0x6
+ 570 00e9 C8030000 		.4byte	.LASF25
+ 571 00ed 0A       		.sleb128 10
+ 572 00ee 06       		.uleb128 0x6
+ 573 00ef D4030000 		.4byte	.LASF26
+ 574 00f3 0B       		.sleb128 11
+ 575 00f4 06       		.uleb128 0x6
+ 576 00f5 4B030000 		.4byte	.LASF27
+ 577 00f9 0C       		.sleb128 12
+ 578 00fa 06       		.uleb128 0x6
+ 579 00fb A3040000 		.4byte	.LASF28
+ 580 00ff 0D       		.sleb128 13
+ 581 0100 06       		.uleb128 0x6
+ 582 0101 EA000000 		.4byte	.LASF29
+ 583 0105 0E       		.sleb128 14
+ 584 0106 06       		.uleb128 0x6
+ 585 0107 45010000 		.4byte	.LASF30
+ 586 010b 0F       		.sleb128 15
+ 587 010c 06       		.uleb128 0x6
+ 588 010d E7030000 		.4byte	.LASF31
+ 589 0111 10       		.sleb128 16
+ 590 0112 06       		.uleb128 0x6
+ 591 0113 5A030000 		.4byte	.LASF32
+ 592 0117 11       		.sleb128 17
+ 593 0118 06       		.uleb128 0x6
+ 594 0119 A6020000 		.4byte	.LASF33
+ 595 011d 12       		.sleb128 18
+ 596 011e 06       		.uleb128 0x6
+ 597 011f 73010000 		.4byte	.LASF34
+ 598 0123 13       		.sleb128 19
+ 599 0124 06       		.uleb128 0x6
+ 600 0125 B8030000 		.4byte	.LASF35
+ 601 0129 14       		.sleb128 20
+ 602 012a 06       		.uleb128 0x6
+ 603 012b B5010000 		.4byte	.LASF36
+ 604 012f 15       		.sleb128 21
+ 605 0130 06       		.uleb128 0x6
+ 606 0131 94010000 		.4byte	.LASF37
+ 607 0135 16       		.sleb128 22
+ 608 0136 06       		.uleb128 0x6
+ 609 0137 B4020000 		.4byte	.LASF38
+ 610 013b 17       		.sleb128 23
+ 611 013c 06       		.uleb128 0x6
+ 612 013d 08010000 		.4byte	.LASF39
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cchCeyJb.s 			page 15
 
 
- 664 0198 00       		.byte	0
- 665 0199 07       		.uleb128 0x7
- 666 019a 08       		.byte	0x8
- 667 019b 03       		.byte	0x3
- 668 019c 6D       		.byte	0x6d
- 669 019d BA010000 		.4byte	0x1ba
- 670 01a1 08       		.uleb128 0x8
- 671 01a2 98030000 		.4byte	.LASF53
- 672 01a6 03       		.byte	0x3
- 673 01a7 6F       		.byte	0x6f
- 674 01a8 6B000000 		.4byte	0x6b
- 675 01ac 00       		.byte	0
- 676 01ad 08       		.uleb128 0x8
- 677 01ae 1B010000 		.4byte	.LASF54
- 678 01b2 03       		.byte	0x3
- 679 01b3 70       		.byte	0x70
- 680 01b4 BA010000 		.4byte	0x1ba
- 681 01b8 04       		.byte	0x4
- 682 01b9 00       		.byte	0
- 683 01ba 09       		.uleb128 0x9
- 684 01bb 04       		.byte	0x4
- 685 01bc C0010000 		.4byte	0x1c0
- 686 01c0 0A       		.uleb128 0xa
- 687 01c1 85000000 		.4byte	0x85
- 688 01c5 0B       		.uleb128 0xb
- 689 01c6 36000000 		.4byte	.LASF55
- 690 01ca 03       		.byte	0x3
- 691 01cb 71       		.byte	0x71
- 692 01cc 99010000 		.4byte	0x199
- 693 01d0 0B       		.uleb128 0xb
- 694 01d1 2F030000 		.4byte	.LASF56
- 695 01d5 03       		.byte	0x3
- 696 01d6 71       		.byte	0x71
- 697 01d7 DB010000 		.4byte	0x1db
- 698 01db 09       		.uleb128 0x9
- 699 01dc 04       		.byte	0x4
- 700 01dd 99010000 		.4byte	0x199
- 701 01e1 0C       		.uleb128 0xc
- 702 01e2 98000000 		.4byte	.LASF58
- 703 01e6 01       		.byte	0x1
- 704 01e7 3F       		.byte	0x3f
- 705 01e8 25020000 		.4byte	0x225
- 706 01ec 00000000 		.4byte	.LFB0
- 707 01f0 48000000 		.4byte	.LFE0-.LFB0
- 708 01f4 01       		.uleb128 0x1
- 709 01f5 9C       		.byte	0x9c
- 710 01f6 25020000 		.4byte	0x225
- 711 01fa 0D       		.uleb128 0xd
- 712 01fb F8000000 		.4byte	.LASF60
- 713 01ff 01       		.byte	0x1
- 714 0200 3F       		.byte	0x3f
- 715 0201 6B000000 		.4byte	0x6b
- 716 0205 02       		.uleb128 0x2
- 717 0206 91       		.byte	0x91
- 718 0207 6F       		.sleb128 -17
- 719 0208 0E       		.uleb128 0xe
- 720 0209 2B010000 		.4byte	.LASF57
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 17
+ 613 0141 18       		.sleb128 24
+ 614 0142 06       		.uleb128 0x6
+ 615 0143 79040000 		.4byte	.LASF40
+ 616 0147 19       		.sleb128 25
+ 617 0148 06       		.uleb128 0x6
+ 618 0149 AF000000 		.4byte	.LASF41
+ 619 014d 1A       		.sleb128 26
+ 620 014e 00       		.byte	0
+ 621 014f 05       		.uleb128 0x5
+ 622 0150 14040000 		.4byte	.LASF43
+ 623 0154 01       		.byte	0x1
+ 624 0155 03       		.byte	0x3
+ 625 0156 5D       		.byte	0x5d
+ 626 0157 7A010000 		.4byte	0x17a
+ 627 015b 06       		.uleb128 0x6
+ 628 015c B3040000 		.4byte	.LASF44
+ 629 0160 01       		.sleb128 1
+ 630 0161 06       		.uleb128 0x6
+ 631 0162 F7030000 		.4byte	.LASF45
+ 632 0166 02       		.sleb128 2
+ 633 0167 06       		.uleb128 0x6
+ 634 0168 E2010000 		.4byte	.LASF46
+ 635 016c 03       		.sleb128 3
+ 636 016d 06       		.uleb128 0x6
+ 637 016e C1010000 		.4byte	.LASF47
+ 638 0172 04       		.sleb128 4
+ 639 0173 06       		.uleb128 0x6
+ 640 0174 15000000 		.4byte	.LASF48
+ 641 0178 05       		.sleb128 5
+ 642 0179 00       		.byte	0
+ 643 017a 05       		.uleb128 0x5
+ 644 017b 8D040000 		.4byte	.LASF49
+ 645 017f 01       		.byte	0x1
+ 646 0180 03       		.byte	0x3
+ 647 0181 66       		.byte	0x66
+ 648 0182 93010000 		.4byte	0x193
+ 649 0186 06       		.uleb128 0x6
+ 650 0187 54010000 		.4byte	.LASF50
+ 651 018b 01       		.sleb128 1
+ 652 018c 06       		.uleb128 0x6
+ 653 018d 35040000 		.4byte	.LASF51
+ 654 0191 03       		.sleb128 3
+ 655 0192 00       		.byte	0
+ 656 0193 07       		.uleb128 0x7
+ 657 0194 08       		.byte	0x8
+ 658 0195 03       		.byte	0x3
+ 659 0196 6C       		.byte	0x6c
+ 660 0197 B4010000 		.4byte	0x1b4
+ 661 019b 08       		.uleb128 0x8
+ 662 019c 8D030000 		.4byte	.LASF52
+ 663 01a0 03       		.byte	0x3
+ 664 01a1 6E       		.byte	0x6e
+ 665 01a2 6B000000 		.4byte	0x6b
+ 666 01a6 00       		.byte	0
+ 667 01a7 08       		.uleb128 0x8
+ 668 01a8 1B010000 		.4byte	.LASF53
+ 669 01ac 03       		.byte	0x3
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cchCeyJb.s 			page 16
 
 
- 721 020d 01       		.byte	0x1
- 722 020e 41       		.byte	0x41
- 723 020f 25020000 		.4byte	0x225
- 724 0213 02       		.uleb128 0x2
- 725 0214 91       		.byte	0x91
- 726 0215 74       		.sleb128 -12
- 727 0216 0F       		.uleb128 0xf
- 728 0217 70747200 		.ascii	"ptr\000"
- 729 021b 01       		.byte	0x1
- 730 021c 42       		.byte	0x42
- 731 021d D0010000 		.4byte	0x1d0
- 732 0221 02       		.uleb128 0x2
- 733 0222 91       		.byte	0x91
- 734 0223 70       		.sleb128 -16
- 735 0224 00       		.byte	0
- 736 0225 09       		.uleb128 0x9
- 737 0226 04       		.byte	0x4
- 738 0227 85000000 		.4byte	0x85
- 739 022b 0C       		.uleb128 0xc
- 740 022c 72030000 		.4byte	.LASF59
- 741 0230 01       		.byte	0x1
- 742 0231 4F       		.byte	0x4f
- 743 0232 25020000 		.4byte	0x225
- 744 0236 00000000 		.4byte	.LFB1
- 745 023a 48000000 		.4byte	.LFE1-.LFB1
- 746 023e 01       		.uleb128 0x1
- 747 023f 9C       		.byte	0x9c
- 748 0240 6F020000 		.4byte	0x26f
- 749 0244 0D       		.uleb128 0xd
- 750 0245 F8000000 		.4byte	.LASF60
- 751 0249 01       		.byte	0x1
- 752 024a 4F       		.byte	0x4f
- 753 024b 6B000000 		.4byte	0x6b
- 754 024f 02       		.uleb128 0x2
- 755 0250 91       		.byte	0x91
- 756 0251 6F       		.sleb128 -17
- 757 0252 0E       		.uleb128 0xe
- 758 0253 2B010000 		.4byte	.LASF57
- 759 0257 01       		.byte	0x1
- 760 0258 51       		.byte	0x51
- 761 0259 25020000 		.4byte	0x225
- 762 025d 02       		.uleb128 0x2
- 763 025e 91       		.byte	0x91
- 764 025f 74       		.sleb128 -12
- 765 0260 0F       		.uleb128 0xf
- 766 0261 70747200 		.ascii	"ptr\000"
- 767 0265 01       		.byte	0x1
- 768 0266 52       		.byte	0x52
- 769 0267 D0010000 		.4byte	0x1d0
- 770 026b 02       		.uleb128 0x2
- 771 026c 91       		.byte	0x91
- 772 026d 70       		.sleb128 -16
- 773 026e 00       		.byte	0
- 774 026f 0C       		.uleb128 0xc
- 775 0270 69040000 		.4byte	.LASF61
- 776 0274 01       		.byte	0x1
- 777 0275 5F       		.byte	0x5f
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 18
+ 670 01ad 6F       		.byte	0x6f
+ 671 01ae B4010000 		.4byte	0x1b4
+ 672 01b2 04       		.byte	0x4
+ 673 01b3 00       		.byte	0
+ 674 01b4 09       		.uleb128 0x9
+ 675 01b5 04       		.byte	0x4
+ 676 01b6 BA010000 		.4byte	0x1ba
+ 677 01ba 0A       		.uleb128 0xa
+ 678 01bb 85000000 		.4byte	0x85
+ 679 01bf 0B       		.uleb128 0xb
+ 680 01c0 36000000 		.4byte	.LASF54
+ 681 01c4 03       		.byte	0x3
+ 682 01c5 70       		.byte	0x70
+ 683 01c6 93010000 		.4byte	0x193
+ 684 01ca 0B       		.uleb128 0xb
+ 685 01cb 24030000 		.4byte	.LASF55
+ 686 01cf 03       		.byte	0x3
+ 687 01d0 70       		.byte	0x70
+ 688 01d1 D5010000 		.4byte	0x1d5
+ 689 01d5 09       		.uleb128 0x9
+ 690 01d6 04       		.byte	0x4
+ 691 01d7 93010000 		.4byte	0x193
+ 692 01db 0C       		.uleb128 0xc
+ 693 01dc 98000000 		.4byte	.LASF57
+ 694 01e0 01       		.byte	0x1
+ 695 01e1 3E       		.byte	0x3e
+ 696 01e2 1F020000 		.4byte	0x21f
+ 697 01e6 00000000 		.4byte	.LFB0
+ 698 01ea 48000000 		.4byte	.LFE0-.LFB0
+ 699 01ee 01       		.uleb128 0x1
+ 700 01ef 9C       		.byte	0x9c
+ 701 01f0 1F020000 		.4byte	0x21f
+ 702 01f4 0D       		.uleb128 0xd
+ 703 01f5 F8000000 		.4byte	.LASF59
+ 704 01f9 01       		.byte	0x1
+ 705 01fa 3E       		.byte	0x3e
+ 706 01fb 6B000000 		.4byte	0x6b
+ 707 01ff 02       		.uleb128 0x2
+ 708 0200 91       		.byte	0x91
+ 709 0201 6F       		.sleb128 -17
+ 710 0202 0E       		.uleb128 0xe
+ 711 0203 2B010000 		.4byte	.LASF56
+ 712 0207 01       		.byte	0x1
+ 713 0208 40       		.byte	0x40
+ 714 0209 1F020000 		.4byte	0x21f
+ 715 020d 02       		.uleb128 0x2
+ 716 020e 91       		.byte	0x91
+ 717 020f 74       		.sleb128 -12
+ 718 0210 0F       		.uleb128 0xf
+ 719 0211 70747200 		.ascii	"ptr\000"
+ 720 0215 01       		.byte	0x1
+ 721 0216 41       		.byte	0x41
+ 722 0217 CA010000 		.4byte	0x1ca
+ 723 021b 02       		.uleb128 0x2
+ 724 021c 91       		.byte	0x91
+ 725 021d 70       		.sleb128 -16
+ 726 021e 00       		.byte	0
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cchCeyJb.s 			page 17
 
 
- 778 0276 25020000 		.4byte	0x225
- 779 027a 00000000 		.4byte	.LFB2
- 780 027e 34000000 		.4byte	.LFE2-.LFB2
- 781 0282 01       		.uleb128 0x1
- 782 0283 9C       		.byte	0x9c
- 783 0284 A5020000 		.4byte	0x2a5
- 784 0288 0D       		.uleb128 0xd
- 785 0289 3A040000 		.4byte	.LASF62
- 786 028d 01       		.byte	0x1
- 787 028e 5F       		.byte	0x5f
- 788 028f 6B000000 		.4byte	0x6b
- 789 0293 02       		.uleb128 0x2
- 790 0294 91       		.byte	0x91
- 791 0295 6F       		.sleb128 -17
- 792 0296 0E       		.uleb128 0xe
- 793 0297 2B010000 		.4byte	.LASF57
- 794 029b 01       		.byte	0x1
- 795 029c 61       		.byte	0x61
- 796 029d 25020000 		.4byte	0x225
- 797 02a1 02       		.uleb128 0x2
- 798 02a2 91       		.byte	0x91
- 799 02a3 74       		.sleb128 -12
- 800 02a4 00       		.byte	0
- 801 02a5 10       		.uleb128 0x10
- 802 02a6 C5010000 		.4byte	0x1c5
- 803 02aa B5020000 		.4byte	0x2b5
- 804 02ae 11       		.uleb128 0x11
- 805 02af 98000000 		.4byte	0x98
- 806 02b3 1B       		.byte	0x1b
- 807 02b4 00       		.byte	0
- 808 02b5 12       		.uleb128 0x12
- 809 02b6 BD000000 		.4byte	.LASF63
- 810 02ba 01       		.byte	0x1
- 811 02bb 0E       		.byte	0xe
- 812 02bc A5020000 		.4byte	0x2a5
- 813 02c0 05       		.uleb128 0x5
- 814 02c1 03       		.byte	0x3
- 815 02c2 00000000 		.4byte	_g_printertemplate
- 816 02c6 10       		.uleb128 0x10
- 817 02c7 C5010000 		.4byte	0x1c5
- 818 02cb D6020000 		.4byte	0x2d6
- 819 02cf 11       		.uleb128 0x11
- 820 02d0 98000000 		.4byte	0x98
- 821 02d4 05       		.byte	0x5
- 822 02d5 00       		.byte	0
- 823 02d6 12       		.uleb128 0x12
- 824 02d7 5A000000 		.4byte	.LASF64
- 825 02db 01       		.byte	0x1
- 826 02dc 2E       		.byte	0x2e
- 827 02dd C6020000 		.4byte	0x2c6
- 828 02e1 05       		.uleb128 0x5
- 829 02e2 03       		.byte	0x3
- 830 02e3 00000000 		.4byte	_g_printervolumetemplate
- 831 02e7 10       		.uleb128 0x10
- 832 02e8 C5010000 		.4byte	0x1c5
- 833 02ec F7020000 		.4byte	0x2f7
- 834 02f0 11       		.uleb128 0x11
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 19
+ 727 021f 09       		.uleb128 0x9
+ 728 0220 04       		.byte	0x4
+ 729 0221 85000000 		.4byte	0x85
+ 730 0225 0C       		.uleb128 0xc
+ 731 0226 67030000 		.4byte	.LASF58
+ 732 022a 01       		.byte	0x1
+ 733 022b 4E       		.byte	0x4e
+ 734 022c 1F020000 		.4byte	0x21f
+ 735 0230 00000000 		.4byte	.LFB1
+ 736 0234 48000000 		.4byte	.LFE1-.LFB1
+ 737 0238 01       		.uleb128 0x1
+ 738 0239 9C       		.byte	0x9c
+ 739 023a 69020000 		.4byte	0x269
+ 740 023e 0D       		.uleb128 0xd
+ 741 023f F8000000 		.4byte	.LASF59
+ 742 0243 01       		.byte	0x1
+ 743 0244 4E       		.byte	0x4e
+ 744 0245 6B000000 		.4byte	0x6b
+ 745 0249 02       		.uleb128 0x2
+ 746 024a 91       		.byte	0x91
+ 747 024b 6F       		.sleb128 -17
+ 748 024c 0E       		.uleb128 0xe
+ 749 024d 2B010000 		.4byte	.LASF56
+ 750 0251 01       		.byte	0x1
+ 751 0252 50       		.byte	0x50
+ 752 0253 1F020000 		.4byte	0x21f
+ 753 0257 02       		.uleb128 0x2
+ 754 0258 91       		.byte	0x91
+ 755 0259 74       		.sleb128 -12
+ 756 025a 0F       		.uleb128 0xf
+ 757 025b 70747200 		.ascii	"ptr\000"
+ 758 025f 01       		.byte	0x1
+ 759 0260 51       		.byte	0x51
+ 760 0261 CA010000 		.4byte	0x1ca
+ 761 0265 02       		.uleb128 0x2
+ 762 0266 91       		.byte	0x91
+ 763 0267 70       		.sleb128 -16
+ 764 0268 00       		.byte	0
+ 765 0269 0C       		.uleb128 0xc
+ 766 026a 5E040000 		.4byte	.LASF60
+ 767 026e 01       		.byte	0x1
+ 768 026f 5E       		.byte	0x5e
+ 769 0270 1F020000 		.4byte	0x21f
+ 770 0274 00000000 		.4byte	.LFB2
+ 771 0278 34000000 		.4byte	.LFE2-.LFB2
+ 772 027c 01       		.uleb128 0x1
+ 773 027d 9C       		.byte	0x9c
+ 774 027e 9F020000 		.4byte	0x29f
+ 775 0282 0D       		.uleb128 0xd
+ 776 0283 2F040000 		.4byte	.LASF61
+ 777 0287 01       		.byte	0x1
+ 778 0288 5E       		.byte	0x5e
+ 779 0289 6B000000 		.4byte	0x6b
+ 780 028d 02       		.uleb128 0x2
+ 781 028e 91       		.byte	0x91
+ 782 028f 6F       		.sleb128 -17
+ 783 0290 0E       		.uleb128 0xe
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cchCeyJb.s 			page 18
 
 
- 835 02f1 98000000 		.4byte	0x98
- 836 02f5 02       		.byte	0x2
- 837 02f6 00       		.byte	0
- 838 02f7 12       		.uleb128 0x12
- 839 02f8 51040000 		.4byte	.LASF65
- 840 02fc 01       		.byte	0x1
- 841 02fd 38       		.byte	0x38
- 842 02fe E7020000 		.4byte	0x2e7
- 843 0302 05       		.uleb128 0x5
- 844 0303 03       		.byte	0x3
- 845 0304 00000000 		.4byte	_g_printerpricetemplate
- 846 0308 00       		.byte	0
- 847              		.section	.debug_abbrev,"",%progbits
- 848              	.Ldebug_abbrev0:
- 849 0000 01       		.uleb128 0x1
- 850 0001 11       		.uleb128 0x11
- 851 0002 01       		.byte	0x1
- 852 0003 25       		.uleb128 0x25
- 853 0004 0E       		.uleb128 0xe
- 854 0005 13       		.uleb128 0x13
- 855 0006 0B       		.uleb128 0xb
- 856 0007 03       		.uleb128 0x3
- 857 0008 0E       		.uleb128 0xe
- 858 0009 1B       		.uleb128 0x1b
- 859 000a 0E       		.uleb128 0xe
- 860 000b 55       		.uleb128 0x55
- 861 000c 17       		.uleb128 0x17
- 862 000d 11       		.uleb128 0x11
- 863 000e 01       		.uleb128 0x1
- 864 000f 10       		.uleb128 0x10
- 865 0010 17       		.uleb128 0x17
- 866 0011 00       		.byte	0
- 867 0012 00       		.byte	0
- 868 0013 02       		.uleb128 0x2
- 869 0014 24       		.uleb128 0x24
- 870 0015 00       		.byte	0
- 871 0016 0B       		.uleb128 0xb
- 872 0017 0B       		.uleb128 0xb
- 873 0018 3E       		.uleb128 0x3e
- 874 0019 0B       		.uleb128 0xb
- 875 001a 03       		.uleb128 0x3
- 876 001b 0E       		.uleb128 0xe
- 877 001c 00       		.byte	0
- 878 001d 00       		.byte	0
- 879 001e 03       		.uleb128 0x3
- 880 001f 24       		.uleb128 0x24
- 881 0020 00       		.byte	0
- 882 0021 0B       		.uleb128 0xb
- 883 0022 0B       		.uleb128 0xb
- 884 0023 3E       		.uleb128 0x3e
- 885 0024 0B       		.uleb128 0xb
- 886 0025 03       		.uleb128 0x3
- 887 0026 08       		.uleb128 0x8
- 888 0027 00       		.byte	0
- 889 0028 00       		.byte	0
- 890 0029 04       		.uleb128 0x4
- 891 002a 16       		.uleb128 0x16
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 20
+ 784 0291 2B010000 		.4byte	.LASF56
+ 785 0295 01       		.byte	0x1
+ 786 0296 60       		.byte	0x60
+ 787 0297 1F020000 		.4byte	0x21f
+ 788 029b 02       		.uleb128 0x2
+ 789 029c 91       		.byte	0x91
+ 790 029d 74       		.sleb128 -12
+ 791 029e 00       		.byte	0
+ 792 029f 10       		.uleb128 0x10
+ 793 02a0 BF010000 		.4byte	0x1bf
+ 794 02a4 AF020000 		.4byte	0x2af
+ 795 02a8 11       		.uleb128 0x11
+ 796 02a9 98000000 		.4byte	0x98
+ 797 02ad 1A       		.byte	0x1a
+ 798 02ae 00       		.byte	0
+ 799 02af 12       		.uleb128 0x12
+ 800 02b0 BD000000 		.4byte	.LASF62
+ 801 02b4 01       		.byte	0x1
+ 802 02b5 0E       		.byte	0xe
+ 803 02b6 9F020000 		.4byte	0x29f
+ 804 02ba 05       		.uleb128 0x5
+ 805 02bb 03       		.byte	0x3
+ 806 02bc 00000000 		.4byte	_g_printertemplate
+ 807 02c0 10       		.uleb128 0x10
+ 808 02c1 BF010000 		.4byte	0x1bf
+ 809 02c5 D0020000 		.4byte	0x2d0
+ 810 02c9 11       		.uleb128 0x11
+ 811 02ca 98000000 		.4byte	0x98
+ 812 02ce 05       		.byte	0x5
+ 813 02cf 00       		.byte	0
+ 814 02d0 12       		.uleb128 0x12
+ 815 02d1 5A000000 		.4byte	.LASF63
+ 816 02d5 01       		.byte	0x1
+ 817 02d6 2D       		.byte	0x2d
+ 818 02d7 C0020000 		.4byte	0x2c0
+ 819 02db 05       		.uleb128 0x5
+ 820 02dc 03       		.byte	0x3
+ 821 02dd 00000000 		.4byte	_g_printervolumetemplate
+ 822 02e1 10       		.uleb128 0x10
+ 823 02e2 BF010000 		.4byte	0x1bf
+ 824 02e6 F1020000 		.4byte	0x2f1
+ 825 02ea 11       		.uleb128 0x11
+ 826 02eb 98000000 		.4byte	0x98
+ 827 02ef 02       		.byte	0x2
+ 828 02f0 00       		.byte	0
+ 829 02f1 12       		.uleb128 0x12
+ 830 02f2 46040000 		.4byte	.LASF64
+ 831 02f6 01       		.byte	0x1
+ 832 02f7 37       		.byte	0x37
+ 833 02f8 E1020000 		.4byte	0x2e1
+ 834 02fc 05       		.uleb128 0x5
+ 835 02fd 03       		.byte	0x3
+ 836 02fe 00000000 		.4byte	_g_printerpricetemplate
+ 837 0302 00       		.byte	0
+ 838              		.section	.debug_abbrev,"",%progbits
+ 839              	.Ldebug_abbrev0:
+ 840 0000 01       		.uleb128 0x1
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cchCeyJb.s 			page 19
 
 
- 892 002b 00       		.byte	0
- 893 002c 03       		.uleb128 0x3
- 894 002d 0E       		.uleb128 0xe
- 895 002e 3A       		.uleb128 0x3a
- 896 002f 0B       		.uleb128 0xb
- 897 0030 3B       		.uleb128 0x3b
- 898 0031 05       		.uleb128 0x5
- 899 0032 49       		.uleb128 0x49
- 900 0033 13       		.uleb128 0x13
- 901 0034 00       		.byte	0
- 902 0035 00       		.byte	0
- 903 0036 05       		.uleb128 0x5
- 904 0037 04       		.uleb128 0x4
- 905 0038 01       		.byte	0x1
- 906 0039 03       		.uleb128 0x3
- 907 003a 0E       		.uleb128 0xe
- 908 003b 0B       		.uleb128 0xb
- 909 003c 0B       		.uleb128 0xb
- 910 003d 3A       		.uleb128 0x3a
- 911 003e 0B       		.uleb128 0xb
- 912 003f 3B       		.uleb128 0x3b
- 913 0040 0B       		.uleb128 0xb
- 914 0041 01       		.uleb128 0x1
- 915 0042 13       		.uleb128 0x13
- 916 0043 00       		.byte	0
- 917 0044 00       		.byte	0
- 918 0045 06       		.uleb128 0x6
- 919 0046 28       		.uleb128 0x28
- 920 0047 00       		.byte	0
- 921 0048 03       		.uleb128 0x3
- 922 0049 0E       		.uleb128 0xe
- 923 004a 1C       		.uleb128 0x1c
- 924 004b 0D       		.uleb128 0xd
- 925 004c 00       		.byte	0
- 926 004d 00       		.byte	0
- 927 004e 07       		.uleb128 0x7
- 928 004f 13       		.uleb128 0x13
- 929 0050 01       		.byte	0x1
- 930 0051 0B       		.uleb128 0xb
- 931 0052 0B       		.uleb128 0xb
- 932 0053 3A       		.uleb128 0x3a
- 933 0054 0B       		.uleb128 0xb
- 934 0055 3B       		.uleb128 0x3b
- 935 0056 0B       		.uleb128 0xb
- 936 0057 01       		.uleb128 0x1
- 937 0058 13       		.uleb128 0x13
- 938 0059 00       		.byte	0
- 939 005a 00       		.byte	0
- 940 005b 08       		.uleb128 0x8
- 941 005c 0D       		.uleb128 0xd
- 942 005d 00       		.byte	0
- 943 005e 03       		.uleb128 0x3
- 944 005f 0E       		.uleb128 0xe
- 945 0060 3A       		.uleb128 0x3a
- 946 0061 0B       		.uleb128 0xb
- 947 0062 3B       		.uleb128 0x3b
- 948 0063 0B       		.uleb128 0xb
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 21
+ 841 0001 11       		.uleb128 0x11
+ 842 0002 01       		.byte	0x1
+ 843 0003 25       		.uleb128 0x25
+ 844 0004 0E       		.uleb128 0xe
+ 845 0005 13       		.uleb128 0x13
+ 846 0006 0B       		.uleb128 0xb
+ 847 0007 03       		.uleb128 0x3
+ 848 0008 0E       		.uleb128 0xe
+ 849 0009 1B       		.uleb128 0x1b
+ 850 000a 0E       		.uleb128 0xe
+ 851 000b 55       		.uleb128 0x55
+ 852 000c 17       		.uleb128 0x17
+ 853 000d 11       		.uleb128 0x11
+ 854 000e 01       		.uleb128 0x1
+ 855 000f 10       		.uleb128 0x10
+ 856 0010 17       		.uleb128 0x17
+ 857 0011 00       		.byte	0
+ 858 0012 00       		.byte	0
+ 859 0013 02       		.uleb128 0x2
+ 860 0014 24       		.uleb128 0x24
+ 861 0015 00       		.byte	0
+ 862 0016 0B       		.uleb128 0xb
+ 863 0017 0B       		.uleb128 0xb
+ 864 0018 3E       		.uleb128 0x3e
+ 865 0019 0B       		.uleb128 0xb
+ 866 001a 03       		.uleb128 0x3
+ 867 001b 0E       		.uleb128 0xe
+ 868 001c 00       		.byte	0
+ 869 001d 00       		.byte	0
+ 870 001e 03       		.uleb128 0x3
+ 871 001f 24       		.uleb128 0x24
+ 872 0020 00       		.byte	0
+ 873 0021 0B       		.uleb128 0xb
+ 874 0022 0B       		.uleb128 0xb
+ 875 0023 3E       		.uleb128 0x3e
+ 876 0024 0B       		.uleb128 0xb
+ 877 0025 03       		.uleb128 0x3
+ 878 0026 08       		.uleb128 0x8
+ 879 0027 00       		.byte	0
+ 880 0028 00       		.byte	0
+ 881 0029 04       		.uleb128 0x4
+ 882 002a 16       		.uleb128 0x16
+ 883 002b 00       		.byte	0
+ 884 002c 03       		.uleb128 0x3
+ 885 002d 0E       		.uleb128 0xe
+ 886 002e 3A       		.uleb128 0x3a
+ 887 002f 0B       		.uleb128 0xb
+ 888 0030 3B       		.uleb128 0x3b
+ 889 0031 05       		.uleb128 0x5
+ 890 0032 49       		.uleb128 0x49
+ 891 0033 13       		.uleb128 0x13
+ 892 0034 00       		.byte	0
+ 893 0035 00       		.byte	0
+ 894 0036 05       		.uleb128 0x5
+ 895 0037 04       		.uleb128 0x4
+ 896 0038 01       		.byte	0x1
+ 897 0039 03       		.uleb128 0x3
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cchCeyJb.s 			page 20
 
 
- 949 0064 49       		.uleb128 0x49
- 950 0065 13       		.uleb128 0x13
- 951 0066 38       		.uleb128 0x38
- 952 0067 0B       		.uleb128 0xb
- 953 0068 00       		.byte	0
- 954 0069 00       		.byte	0
- 955 006a 09       		.uleb128 0x9
- 956 006b 0F       		.uleb128 0xf
- 957 006c 00       		.byte	0
- 958 006d 0B       		.uleb128 0xb
- 959 006e 0B       		.uleb128 0xb
- 960 006f 49       		.uleb128 0x49
- 961 0070 13       		.uleb128 0x13
- 962 0071 00       		.byte	0
- 963 0072 00       		.byte	0
- 964 0073 0A       		.uleb128 0xa
- 965 0074 26       		.uleb128 0x26
- 966 0075 00       		.byte	0
- 967 0076 49       		.uleb128 0x49
- 968 0077 13       		.uleb128 0x13
- 969 0078 00       		.byte	0
- 970 0079 00       		.byte	0
- 971 007a 0B       		.uleb128 0xb
- 972 007b 16       		.uleb128 0x16
- 973 007c 00       		.byte	0
- 974 007d 03       		.uleb128 0x3
- 975 007e 0E       		.uleb128 0xe
- 976 007f 3A       		.uleb128 0x3a
- 977 0080 0B       		.uleb128 0xb
- 978 0081 3B       		.uleb128 0x3b
- 979 0082 0B       		.uleb128 0xb
- 980 0083 49       		.uleb128 0x49
- 981 0084 13       		.uleb128 0x13
- 982 0085 00       		.byte	0
- 983 0086 00       		.byte	0
- 984 0087 0C       		.uleb128 0xc
- 985 0088 2E       		.uleb128 0x2e
- 986 0089 01       		.byte	0x1
- 987 008a 3F       		.uleb128 0x3f
- 988 008b 19       		.uleb128 0x19
- 989 008c 03       		.uleb128 0x3
- 990 008d 0E       		.uleb128 0xe
- 991 008e 3A       		.uleb128 0x3a
- 992 008f 0B       		.uleb128 0xb
- 993 0090 3B       		.uleb128 0x3b
- 994 0091 0B       		.uleb128 0xb
- 995 0092 27       		.uleb128 0x27
- 996 0093 19       		.uleb128 0x19
- 997 0094 49       		.uleb128 0x49
- 998 0095 13       		.uleb128 0x13
- 999 0096 11       		.uleb128 0x11
- 1000 0097 01       		.uleb128 0x1
- 1001 0098 12       		.uleb128 0x12
- 1002 0099 06       		.uleb128 0x6
- 1003 009a 40       		.uleb128 0x40
- 1004 009b 18       		.uleb128 0x18
- 1005 009c 9742     		.uleb128 0x2117
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 22
+ 898 003a 0E       		.uleb128 0xe
+ 899 003b 0B       		.uleb128 0xb
+ 900 003c 0B       		.uleb128 0xb
+ 901 003d 3A       		.uleb128 0x3a
+ 902 003e 0B       		.uleb128 0xb
+ 903 003f 3B       		.uleb128 0x3b
+ 904 0040 0B       		.uleb128 0xb
+ 905 0041 01       		.uleb128 0x1
+ 906 0042 13       		.uleb128 0x13
+ 907 0043 00       		.byte	0
+ 908 0044 00       		.byte	0
+ 909 0045 06       		.uleb128 0x6
+ 910 0046 28       		.uleb128 0x28
+ 911 0047 00       		.byte	0
+ 912 0048 03       		.uleb128 0x3
+ 913 0049 0E       		.uleb128 0xe
+ 914 004a 1C       		.uleb128 0x1c
+ 915 004b 0D       		.uleb128 0xd
+ 916 004c 00       		.byte	0
+ 917 004d 00       		.byte	0
+ 918 004e 07       		.uleb128 0x7
+ 919 004f 13       		.uleb128 0x13
+ 920 0050 01       		.byte	0x1
+ 921 0051 0B       		.uleb128 0xb
+ 922 0052 0B       		.uleb128 0xb
+ 923 0053 3A       		.uleb128 0x3a
+ 924 0054 0B       		.uleb128 0xb
+ 925 0055 3B       		.uleb128 0x3b
+ 926 0056 0B       		.uleb128 0xb
+ 927 0057 01       		.uleb128 0x1
+ 928 0058 13       		.uleb128 0x13
+ 929 0059 00       		.byte	0
+ 930 005a 00       		.byte	0
+ 931 005b 08       		.uleb128 0x8
+ 932 005c 0D       		.uleb128 0xd
+ 933 005d 00       		.byte	0
+ 934 005e 03       		.uleb128 0x3
+ 935 005f 0E       		.uleb128 0xe
+ 936 0060 3A       		.uleb128 0x3a
+ 937 0061 0B       		.uleb128 0xb
+ 938 0062 3B       		.uleb128 0x3b
+ 939 0063 0B       		.uleb128 0xb
+ 940 0064 49       		.uleb128 0x49
+ 941 0065 13       		.uleb128 0x13
+ 942 0066 38       		.uleb128 0x38
+ 943 0067 0B       		.uleb128 0xb
+ 944 0068 00       		.byte	0
+ 945 0069 00       		.byte	0
+ 946 006a 09       		.uleb128 0x9
+ 947 006b 0F       		.uleb128 0xf
+ 948 006c 00       		.byte	0
+ 949 006d 0B       		.uleb128 0xb
+ 950 006e 0B       		.uleb128 0xb
+ 951 006f 49       		.uleb128 0x49
+ 952 0070 13       		.uleb128 0x13
+ 953 0071 00       		.byte	0
+ 954 0072 00       		.byte	0
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cchCeyJb.s 			page 21
 
 
- 1006 009e 19       		.uleb128 0x19
- 1007 009f 01       		.uleb128 0x1
- 1008 00a0 13       		.uleb128 0x13
- 1009 00a1 00       		.byte	0
- 1010 00a2 00       		.byte	0
- 1011 00a3 0D       		.uleb128 0xd
- 1012 00a4 05       		.uleb128 0x5
- 1013 00a5 00       		.byte	0
- 1014 00a6 03       		.uleb128 0x3
- 1015 00a7 0E       		.uleb128 0xe
- 1016 00a8 3A       		.uleb128 0x3a
- 1017 00a9 0B       		.uleb128 0xb
- 1018 00aa 3B       		.uleb128 0x3b
- 1019 00ab 0B       		.uleb128 0xb
- 1020 00ac 49       		.uleb128 0x49
- 1021 00ad 13       		.uleb128 0x13
- 1022 00ae 02       		.uleb128 0x2
- 1023 00af 18       		.uleb128 0x18
- 1024 00b0 00       		.byte	0
- 1025 00b1 00       		.byte	0
- 1026 00b2 0E       		.uleb128 0xe
- 1027 00b3 34       		.uleb128 0x34
- 1028 00b4 00       		.byte	0
- 1029 00b5 03       		.uleb128 0x3
- 1030 00b6 0E       		.uleb128 0xe
- 1031 00b7 3A       		.uleb128 0x3a
- 1032 00b8 0B       		.uleb128 0xb
- 1033 00b9 3B       		.uleb128 0x3b
- 1034 00ba 0B       		.uleb128 0xb
- 1035 00bb 49       		.uleb128 0x49
- 1036 00bc 13       		.uleb128 0x13
- 1037 00bd 02       		.uleb128 0x2
- 1038 00be 18       		.uleb128 0x18
- 1039 00bf 00       		.byte	0
- 1040 00c0 00       		.byte	0
- 1041 00c1 0F       		.uleb128 0xf
- 1042 00c2 34       		.uleb128 0x34
- 1043 00c3 00       		.byte	0
- 1044 00c4 03       		.uleb128 0x3
- 1045 00c5 08       		.uleb128 0x8
- 1046 00c6 3A       		.uleb128 0x3a
- 1047 00c7 0B       		.uleb128 0xb
- 1048 00c8 3B       		.uleb128 0x3b
- 1049 00c9 0B       		.uleb128 0xb
- 1050 00ca 49       		.uleb128 0x49
- 1051 00cb 13       		.uleb128 0x13
- 1052 00cc 02       		.uleb128 0x2
- 1053 00cd 18       		.uleb128 0x18
- 1054 00ce 00       		.byte	0
- 1055 00cf 00       		.byte	0
- 1056 00d0 10       		.uleb128 0x10
- 1057 00d1 01       		.uleb128 0x1
- 1058 00d2 01       		.byte	0x1
- 1059 00d3 49       		.uleb128 0x49
- 1060 00d4 13       		.uleb128 0x13
- 1061 00d5 01       		.uleb128 0x1
- 1062 00d6 13       		.uleb128 0x13
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 23
+ 955 0073 0A       		.uleb128 0xa
+ 956 0074 26       		.uleb128 0x26
+ 957 0075 00       		.byte	0
+ 958 0076 49       		.uleb128 0x49
+ 959 0077 13       		.uleb128 0x13
+ 960 0078 00       		.byte	0
+ 961 0079 00       		.byte	0
+ 962 007a 0B       		.uleb128 0xb
+ 963 007b 16       		.uleb128 0x16
+ 964 007c 00       		.byte	0
+ 965 007d 03       		.uleb128 0x3
+ 966 007e 0E       		.uleb128 0xe
+ 967 007f 3A       		.uleb128 0x3a
+ 968 0080 0B       		.uleb128 0xb
+ 969 0081 3B       		.uleb128 0x3b
+ 970 0082 0B       		.uleb128 0xb
+ 971 0083 49       		.uleb128 0x49
+ 972 0084 13       		.uleb128 0x13
+ 973 0085 00       		.byte	0
+ 974 0086 00       		.byte	0
+ 975 0087 0C       		.uleb128 0xc
+ 976 0088 2E       		.uleb128 0x2e
+ 977 0089 01       		.byte	0x1
+ 978 008a 3F       		.uleb128 0x3f
+ 979 008b 19       		.uleb128 0x19
+ 980 008c 03       		.uleb128 0x3
+ 981 008d 0E       		.uleb128 0xe
+ 982 008e 3A       		.uleb128 0x3a
+ 983 008f 0B       		.uleb128 0xb
+ 984 0090 3B       		.uleb128 0x3b
+ 985 0091 0B       		.uleb128 0xb
+ 986 0092 27       		.uleb128 0x27
+ 987 0093 19       		.uleb128 0x19
+ 988 0094 49       		.uleb128 0x49
+ 989 0095 13       		.uleb128 0x13
+ 990 0096 11       		.uleb128 0x11
+ 991 0097 01       		.uleb128 0x1
+ 992 0098 12       		.uleb128 0x12
+ 993 0099 06       		.uleb128 0x6
+ 994 009a 40       		.uleb128 0x40
+ 995 009b 18       		.uleb128 0x18
+ 996 009c 9742     		.uleb128 0x2117
+ 997 009e 19       		.uleb128 0x19
+ 998 009f 01       		.uleb128 0x1
+ 999 00a0 13       		.uleb128 0x13
+ 1000 00a1 00       		.byte	0
+ 1001 00a2 00       		.byte	0
+ 1002 00a3 0D       		.uleb128 0xd
+ 1003 00a4 05       		.uleb128 0x5
+ 1004 00a5 00       		.byte	0
+ 1005 00a6 03       		.uleb128 0x3
+ 1006 00a7 0E       		.uleb128 0xe
+ 1007 00a8 3A       		.uleb128 0x3a
+ 1008 00a9 0B       		.uleb128 0xb
+ 1009 00aa 3B       		.uleb128 0x3b
+ 1010 00ab 0B       		.uleb128 0xb
+ 1011 00ac 49       		.uleb128 0x49
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cchCeyJb.s 			page 22
 
 
- 1063 00d7 00       		.byte	0
- 1064 00d8 00       		.byte	0
- 1065 00d9 11       		.uleb128 0x11
- 1066 00da 21       		.uleb128 0x21
- 1067 00db 00       		.byte	0
- 1068 00dc 49       		.uleb128 0x49
- 1069 00dd 13       		.uleb128 0x13
- 1070 00de 2F       		.uleb128 0x2f
- 1071 00df 0B       		.uleb128 0xb
- 1072 00e0 00       		.byte	0
- 1073 00e1 00       		.byte	0
- 1074 00e2 12       		.uleb128 0x12
- 1075 00e3 34       		.uleb128 0x34
- 1076 00e4 00       		.byte	0
- 1077 00e5 03       		.uleb128 0x3
- 1078 00e6 0E       		.uleb128 0xe
- 1079 00e7 3A       		.uleb128 0x3a
- 1080 00e8 0B       		.uleb128 0xb
- 1081 00e9 3B       		.uleb128 0x3b
- 1082 00ea 0B       		.uleb128 0xb
- 1083 00eb 49       		.uleb128 0x49
- 1084 00ec 13       		.uleb128 0x13
- 1085 00ed 3F       		.uleb128 0x3f
- 1086 00ee 19       		.uleb128 0x19
- 1087 00ef 02       		.uleb128 0x2
- 1088 00f0 18       		.uleb128 0x18
- 1089 00f1 00       		.byte	0
- 1090 00f2 00       		.byte	0
- 1091 00f3 00       		.byte	0
- 1092              		.section	.debug_aranges,"",%progbits
- 1093 0000 2C000000 		.4byte	0x2c
- 1094 0004 0200     		.2byte	0x2
- 1095 0006 00000000 		.4byte	.Ldebug_info0
- 1096 000a 04       		.byte	0x4
- 1097 000b 00       		.byte	0
- 1098 000c 0000     		.2byte	0
- 1099 000e 0000     		.2byte	0
- 1100 0010 00000000 		.4byte	.LFB0
- 1101 0014 48000000 		.4byte	.LFE0-.LFB0
- 1102 0018 00000000 		.4byte	.LFB1
- 1103 001c 48000000 		.4byte	.LFE1-.LFB1
- 1104 0020 00000000 		.4byte	.LFB2
- 1105 0024 34000000 		.4byte	.LFE2-.LFB2
- 1106 0028 00000000 		.4byte	0
- 1107 002c 00000000 		.4byte	0
- 1108              		.section	.debug_ranges,"",%progbits
- 1109              	.Ldebug_ranges0:
- 1110 0000 00000000 		.4byte	.LFB0
- 1111 0004 48000000 		.4byte	.LFE0
- 1112 0008 00000000 		.4byte	.LFB1
- 1113 000c 48000000 		.4byte	.LFE1
- 1114 0010 00000000 		.4byte	.LFB2
- 1115 0014 34000000 		.4byte	.LFE2
- 1116 0018 00000000 		.4byte	0
- 1117 001c 00000000 		.4byte	0
- 1118              		.section	.debug_line,"",%progbits
- 1119              	.Ldebug_line0:
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 24
+ 1012 00ad 13       		.uleb128 0x13
+ 1013 00ae 02       		.uleb128 0x2
+ 1014 00af 18       		.uleb128 0x18
+ 1015 00b0 00       		.byte	0
+ 1016 00b1 00       		.byte	0
+ 1017 00b2 0E       		.uleb128 0xe
+ 1018 00b3 34       		.uleb128 0x34
+ 1019 00b4 00       		.byte	0
+ 1020 00b5 03       		.uleb128 0x3
+ 1021 00b6 0E       		.uleb128 0xe
+ 1022 00b7 3A       		.uleb128 0x3a
+ 1023 00b8 0B       		.uleb128 0xb
+ 1024 00b9 3B       		.uleb128 0x3b
+ 1025 00ba 0B       		.uleb128 0xb
+ 1026 00bb 49       		.uleb128 0x49
+ 1027 00bc 13       		.uleb128 0x13
+ 1028 00bd 02       		.uleb128 0x2
+ 1029 00be 18       		.uleb128 0x18
+ 1030 00bf 00       		.byte	0
+ 1031 00c0 00       		.byte	0
+ 1032 00c1 0F       		.uleb128 0xf
+ 1033 00c2 34       		.uleb128 0x34
+ 1034 00c3 00       		.byte	0
+ 1035 00c4 03       		.uleb128 0x3
+ 1036 00c5 08       		.uleb128 0x8
+ 1037 00c6 3A       		.uleb128 0x3a
+ 1038 00c7 0B       		.uleb128 0xb
+ 1039 00c8 3B       		.uleb128 0x3b
+ 1040 00c9 0B       		.uleb128 0xb
+ 1041 00ca 49       		.uleb128 0x49
+ 1042 00cb 13       		.uleb128 0x13
+ 1043 00cc 02       		.uleb128 0x2
+ 1044 00cd 18       		.uleb128 0x18
+ 1045 00ce 00       		.byte	0
+ 1046 00cf 00       		.byte	0
+ 1047 00d0 10       		.uleb128 0x10
+ 1048 00d1 01       		.uleb128 0x1
+ 1049 00d2 01       		.byte	0x1
+ 1050 00d3 49       		.uleb128 0x49
+ 1051 00d4 13       		.uleb128 0x13
+ 1052 00d5 01       		.uleb128 0x1
+ 1053 00d6 13       		.uleb128 0x13
+ 1054 00d7 00       		.byte	0
+ 1055 00d8 00       		.byte	0
+ 1056 00d9 11       		.uleb128 0x11
+ 1057 00da 21       		.uleb128 0x21
+ 1058 00db 00       		.byte	0
+ 1059 00dc 49       		.uleb128 0x49
+ 1060 00dd 13       		.uleb128 0x13
+ 1061 00de 2F       		.uleb128 0x2f
+ 1062 00df 0B       		.uleb128 0xb
+ 1063 00e0 00       		.byte	0
+ 1064 00e1 00       		.byte	0
+ 1065 00e2 12       		.uleb128 0x12
+ 1066 00e3 34       		.uleb128 0x34
+ 1067 00e4 00       		.byte	0
+ 1068 00e5 03       		.uleb128 0x3
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cchCeyJb.s 			page 23
 
 
- 1120 0000 B4000000 		.section	.debug_str,"MS",%progbits,1
- 1120      02005D00 
- 1120      00000201 
- 1120      FB0E0D00 
- 1120      01010101 
- 1121              	.LASF23:
- 1122 0000 50524E5F 		.ascii	"PRN_BALANCE\000"
- 1122      42414C41 
- 1122      4E434500 
- 1123              	.LASF16:
- 1124 000c 50524E5F 		.ascii	"PRN_DATE\000"
- 1124      44415445 
- 1124      00
- 1125              	.LASF49:
- 1126 0015 50524E5F 		.ascii	"PRN_VOLUNIT_HAWAIIAN_GALLONS_DIE\000"
- 1126      564F4C55 
- 1126      4E49545F 
- 1126      48415741 
- 1126      4949414E 
- 1127              	.LASF55:
- 1128 0036 5072696E 		.ascii	"PrinterTemplate\000"
- 1128      74657254 
- 1128      656D706C 
- 1128      61746500 
- 1129              	.LASF67:
- 1130 0046 2E5C5072 		.ascii	".\\PrinterTemplate.c\000"
- 1130      696E7465 
- 1130      7254656D 
- 1130      706C6174 
- 1130      652E6300 
- 1131              	.LASF64:
- 1132 005a 5F675F70 		.ascii	"_g_printervolumetemplate\000"
- 1132      72696E74 
- 1132      6572766F 
- 1132      6C756D65 
- 1132      74656D70 
- 1133              	.LASF20:
- 1134 0073 50524E5F 		.ascii	"PRN_TRANSTYPE\000"
- 1134      5452414E 
- 1134      53545950 
- 1134      4500
- 1135              	.LASF7:
- 1136 0081 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1136      206C6F6E 
- 1136      6720756E 
- 1136      7369676E 
- 1136      65642069 
- 1137              	.LASF58:
- 1138 0098 47657450 		.ascii	"GetPrinterTemplateLine\000"
- 1138      72696E74 
- 1138      65725465 
- 1138      6D706C61 
- 1138      74654C69 
- 1139              	.LASF41:
- 1140 00af 50524E5F 		.ascii	"PRN_SIGNATURE\000"
- 1140      5349474E 
- 1140      41545552 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 25
+ 1069 00e6 0E       		.uleb128 0xe
+ 1070 00e7 3A       		.uleb128 0x3a
+ 1071 00e8 0B       		.uleb128 0xb
+ 1072 00e9 3B       		.uleb128 0x3b
+ 1073 00ea 0B       		.uleb128 0xb
+ 1074 00eb 49       		.uleb128 0x49
+ 1075 00ec 13       		.uleb128 0x13
+ 1076 00ed 3F       		.uleb128 0x3f
+ 1077 00ee 19       		.uleb128 0x19
+ 1078 00ef 02       		.uleb128 0x2
+ 1079 00f0 18       		.uleb128 0x18
+ 1080 00f1 00       		.byte	0
+ 1081 00f2 00       		.byte	0
+ 1082 00f3 00       		.byte	0
+ 1083              		.section	.debug_aranges,"",%progbits
+ 1084 0000 2C000000 		.4byte	0x2c
+ 1085 0004 0200     		.2byte	0x2
+ 1086 0006 00000000 		.4byte	.Ldebug_info0
+ 1087 000a 04       		.byte	0x4
+ 1088 000b 00       		.byte	0
+ 1089 000c 0000     		.2byte	0
+ 1090 000e 0000     		.2byte	0
+ 1091 0010 00000000 		.4byte	.LFB0
+ 1092 0014 48000000 		.4byte	.LFE0-.LFB0
+ 1093 0018 00000000 		.4byte	.LFB1
+ 1094 001c 48000000 		.4byte	.LFE1-.LFB1
+ 1095 0020 00000000 		.4byte	.LFB2
+ 1096 0024 34000000 		.4byte	.LFE2-.LFB2
+ 1097 0028 00000000 		.4byte	0
+ 1098 002c 00000000 		.4byte	0
+ 1099              		.section	.debug_ranges,"",%progbits
+ 1100              	.Ldebug_ranges0:
+ 1101 0000 00000000 		.4byte	.LFB0
+ 1102 0004 48000000 		.4byte	.LFE0
+ 1103 0008 00000000 		.4byte	.LFB1
+ 1104 000c 48000000 		.4byte	.LFE1
+ 1105 0010 00000000 		.4byte	.LFB2
+ 1106 0014 34000000 		.4byte	.LFE2
+ 1107 0018 00000000 		.4byte	0
+ 1108 001c 00000000 		.4byte	0
+ 1109              		.section	.debug_line,"",%progbits
+ 1110              	.Ldebug_line0:
+ 1111 0000 B4000000 		.section	.debug_str,"MS",%progbits,1
+ 1111      02005D00 
+ 1111      00000201 
+ 1111      FB0E0D00 
+ 1111      01010101 
+ 1112              	.LASF23:
+ 1113 0000 50524E5F 		.ascii	"PRN_BALANCE\000"
+ 1113      42414C41 
+ 1113      4E434500 
+ 1114              	.LASF16:
+ 1115 000c 50524E5F 		.ascii	"PRN_DATE\000"
+ 1115      44415445 
+ 1115      00
+ 1116              	.LASF48:
+ 1117 0015 50524E5F 		.ascii	"PRN_VOLUNIT_HAWAIIAN_GALLONS_DIE\000"
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cchCeyJb.s 			page 24
 
 
- 1140      4500
- 1141              	.LASF63:
- 1142 00bd 5F675F70 		.ascii	"_g_printertemplate\000"
- 1142      72696E74 
- 1142      65727465 
- 1142      6D706C61 
- 1142      746500
- 1143              	.LASF6:
- 1144 00d0 6C6F6E67 		.ascii	"long long int\000"
- 1144      206C6F6E 
- 1144      6720696E 
- 1144      7400
- 1145              	.LASF0:
- 1146 00de 7369676E 		.ascii	"signed char\000"
- 1146      65642063 
- 1146      68617200 
- 1147              	.LASF29:
- 1148 00ea 50524E5F 		.ascii	"PRN_VOLUMEDAY\000"
- 1148      564F4C55 
- 1148      4D454441 
- 1148      5900
- 1149              	.LASF60:
- 1150 00f8 6C696E65 		.ascii	"lineid\000"
- 1150      696400
- 1151              	.LASF4:
- 1152 00ff 6C6F6E67 		.ascii	"long int\000"
- 1152      20696E74 
- 1152      00
- 1153              	.LASF39:
- 1154 0108 50524E5F 		.ascii	"PRN_MONEY\000"
- 1154      4D4F4E45 
- 1154      5900
- 1155              	.LASF17:
- 1156 0112 50524E5F 		.ascii	"PRN_HOUR\000"
- 1156      484F5552 
- 1156      00
- 1157              	.LASF54:
- 1158 011b 5F707374 		.ascii	"_pstrline\000"
- 1158      726C696E 
- 1158      6500
- 1159              	.LASF11:
- 1160 0125 75696E74 		.ascii	"uint8\000"
- 1160      3800
- 1161              	.LASF57:
- 1162 012b 72657476 		.ascii	"retval\000"
- 1162      616C00
- 1163              	.LASF10:
- 1164 0132 646F7562 		.ascii	"double\000"
- 1164      6C6500
- 1165              	.LASF24:
- 1166 0139 50524E5F 		.ascii	"PRN_COMPANY\000"
- 1166      434F4D50 
- 1166      414E5900 
- 1167              	.LASF30:
- 1168 0145 50524E5F 		.ascii	"PRN_VOLUMEWEEK\000"
- 1168      564F4C55 
- 1168      4D455745 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 26
+ 1117      564F4C55 
+ 1117      4E49545F 
+ 1117      48415741 
+ 1117      4949414E 
+ 1118              	.LASF54:
+ 1119 0036 5072696E 		.ascii	"PrinterTemplate\000"
+ 1119      74657254 
+ 1119      656D706C 
+ 1119      61746500 
+ 1120              	.LASF66:
+ 1121 0046 2E5C5072 		.ascii	".\\PrinterTemplate.c\000"
+ 1121      696E7465 
+ 1121      7254656D 
+ 1121      706C6174 
+ 1121      652E6300 
+ 1122              	.LASF63:
+ 1123 005a 5F675F70 		.ascii	"_g_printervolumetemplate\000"
+ 1123      72696E74 
+ 1123      6572766F 
+ 1123      6C756D65 
+ 1123      74656D70 
+ 1124              	.LASF20:
+ 1125 0073 50524E5F 		.ascii	"PRN_TRANSTYPE\000"
+ 1125      5452414E 
+ 1125      53545950 
+ 1125      4500
+ 1126              	.LASF7:
+ 1127 0081 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1127      206C6F6E 
+ 1127      6720756E 
+ 1127      7369676E 
+ 1127      65642069 
+ 1128              	.LASF57:
+ 1129 0098 47657450 		.ascii	"GetPrinterTemplateLine\000"
+ 1129      72696E74 
+ 1129      65725465 
+ 1129      6D706C61 
+ 1129      74654C69 
+ 1130              	.LASF41:
+ 1131 00af 50524E5F 		.ascii	"PRN_SIGNATURE\000"
+ 1131      5349474E 
+ 1131      41545552 
+ 1131      4500
+ 1132              	.LASF62:
+ 1133 00bd 5F675F70 		.ascii	"_g_printertemplate\000"
+ 1133      72696E74 
+ 1133      65727465 
+ 1133      6D706C61 
+ 1133      746500
+ 1134              	.LASF6:
+ 1135 00d0 6C6F6E67 		.ascii	"long long int\000"
+ 1135      206C6F6E 
+ 1135      6720696E 
+ 1135      7400
+ 1136              	.LASF0:
+ 1137 00de 7369676E 		.ascii	"signed char\000"
+ 1137      65642063 
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cchCeyJb.s 			page 25
 
 
- 1168      454B00
- 1169              	.LASF51:
- 1170 0154 50524E5F 		.ascii	"PRN_MONEY_GALLONS\000"
- 1170      4D4F4E45 
- 1170      595F4741 
- 1170      4C4C4F4E 
- 1170      5300
- 1171              	.LASF8:
- 1172 0166 756E7369 		.ascii	"unsigned int\000"
- 1172      676E6564 
- 1172      20696E74 
- 1172      00
- 1173              	.LASF34:
- 1174 0173 50524E5F 		.ascii	"PRN_MONEYMONTH\000"
- 1174      4D4F4E45 
- 1174      594D4F4E 
- 1174      544800
- 1175              	.LASF5:
- 1176 0182 6C6F6E67 		.ascii	"long unsigned int\000"
- 1176      20756E73 
- 1176      69676E65 
- 1176      6420696E 
- 1176      7400
- 1177              	.LASF37:
- 1178 0194 50524E5F 		.ascii	"PRN_PRODPRICE\000"
- 1178      50524F44 
- 1178      50524943 
- 1178      4500
- 1179              	.LASF3:
- 1180 01a2 73686F72 		.ascii	"short unsigned int\000"
- 1180      7420756E 
- 1180      7369676E 
- 1180      65642069 
- 1180      6E7400
- 1181              	.LASF36:
- 1182 01b5 50524E5F 		.ascii	"PRN_PRODUCT\000"
- 1182      50524F44 
- 1182      55435400 
- 1183              	.LASF48:
- 1184 01c1 50524E5F 		.ascii	"PRN_VOLUNIT_HAWAIIAN_GALLONS_GAS\000"
- 1184      564F4C55 
- 1184      4E49545F 
- 1184      48415741 
- 1184      4949414E 
- 1185              	.LASF47:
- 1186 01e2 50524E5F 		.ascii	"PRN_VOLUNIT_LITERS\000"
- 1186      564F4C55 
- 1186      4E49545F 
- 1186      4C495445 
- 1186      525300
- 1187              	.LASF14:
- 1188 01f5 73697A65 		.ascii	"sizetype\000"
- 1188      74797065 
- 1188      00
- 1189              	.LASF15:
- 1190 01fe 6C6F6E67 		.ascii	"long double\000"
- 1190      20646F75 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 27
+ 1137      68617200 
+ 1138              	.LASF29:
+ 1139 00ea 50524E5F 		.ascii	"PRN_VOLUMEDAY\000"
+ 1139      564F4C55 
+ 1139      4D454441 
+ 1139      5900
+ 1140              	.LASF59:
+ 1141 00f8 6C696E65 		.ascii	"lineid\000"
+ 1141      696400
+ 1142              	.LASF4:
+ 1143 00ff 6C6F6E67 		.ascii	"long int\000"
+ 1143      20696E74 
+ 1143      00
+ 1144              	.LASF39:
+ 1145 0108 50524E5F 		.ascii	"PRN_MONEY\000"
+ 1145      4D4F4E45 
+ 1145      5900
+ 1146              	.LASF17:
+ 1147 0112 50524E5F 		.ascii	"PRN_HOUR\000"
+ 1147      484F5552 
+ 1147      00
+ 1148              	.LASF53:
+ 1149 011b 5F707374 		.ascii	"_pstrline\000"
+ 1149      726C696E 
+ 1149      6500
+ 1150              	.LASF11:
+ 1151 0125 75696E74 		.ascii	"uint8\000"
+ 1151      3800
+ 1152              	.LASF56:
+ 1153 012b 72657476 		.ascii	"retval\000"
+ 1153      616C00
+ 1154              	.LASF10:
+ 1155 0132 646F7562 		.ascii	"double\000"
+ 1155      6C6500
+ 1156              	.LASF24:
+ 1157 0139 50524E5F 		.ascii	"PRN_COMPANY\000"
+ 1157      434F4D50 
+ 1157      414E5900 
+ 1158              	.LASF30:
+ 1159 0145 50524E5F 		.ascii	"PRN_VOLUMEWEEK\000"
+ 1159      564F4C55 
+ 1159      4D455745 
+ 1159      454B00
+ 1160              	.LASF50:
+ 1161 0154 50524E5F 		.ascii	"PRN_MONEY_GALLONS\000"
+ 1161      4D4F4E45 
+ 1161      595F4741 
+ 1161      4C4C4F4E 
+ 1161      5300
+ 1162              	.LASF8:
+ 1163 0166 756E7369 		.ascii	"unsigned int\000"
+ 1163      676E6564 
+ 1163      20696E74 
+ 1163      00
+ 1164              	.LASF34:
+ 1165 0173 50524E5F 		.ascii	"PRN_MONEYMONTH\000"
+ 1165      4D4F4E45 
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cchCeyJb.s 			page 26
 
 
- 1190      626C6500 
- 1191              	.LASF22:
- 1192 020a 50524E5F 		.ascii	"PRN_INVNUMBER\000"
- 1192      494E564E 
- 1192      554D4245 
- 1192      5200
- 1193              	.LASF66:
- 1194 0218 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 1194      4320342E 
- 1194      392E3320 
- 1194      32303135 
- 1194      30333033 
- 1195 024b 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
- 1195      20726576 
- 1195      6973696F 
- 1195      6E203232 
- 1195      31323230 
- 1196 027e 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
- 1196      66756E63 
- 1196      74696F6E 
- 1196      2D736563 
- 1196      74696F6E 
- 1197              	.LASF33:
- 1198 02a6 50524E5F 		.ascii	"PRN_MONEYWEEK\000"
- 1198      4D4F4E45 
- 1198      59574545 
- 1198      4B00
- 1199              	.LASF42:
- 1200 02b4 50524E5F 		.ascii	"PRN_SERIAL\000"
- 1200      53455249 
- 1200      414C00
- 1201              	.LASF38:
- 1202 02bf 50524E5F 		.ascii	"PRN_VOLUME\000"
- 1202      564F4C55 
- 1202      4D4500
- 1203              	.LASF9:
- 1204 02ca 666C6F61 		.ascii	"float\000"
- 1204      7400
- 1205              	.LASF68:
- 1206 02d0 433A5C54 		.ascii	"C:\\TeamInsepet\\NSX-Prime\\Hardware\\CorEx-MUX-Ker"
- 1206      65616D49 
- 1206      6E736570 
- 1206      65745C4E 
- 1206      53582D50 
- 1207 02ff 6E656C2D 		.ascii	"nel-Enhanced\\Workspace01\\CorEx-Mux-Kernel.cydsn\000"
- 1207      456E6861 
- 1207      6E636564 
- 1207      5C576F72 
- 1207      6B737061 
- 1208              	.LASF56:
- 1209 032f 504E4541 		.ascii	"PNEAR_PRINTERTEMPLATEPTR\000"
- 1209      525F5052 
- 1209      494E5445 
- 1209      5254454D 
- 1209      504C4154 
- 1210              	.LASF1:
- 1211 0348 756E7369 		.ascii	"unsigned char\000"
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 28
+ 1165      594D4F4E 
+ 1165      544800
+ 1166              	.LASF5:
+ 1167 0182 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1167      20756E73 
+ 1167      69676E65 
+ 1167      6420696E 
+ 1167      7400
+ 1168              	.LASF37:
+ 1169 0194 50524E5F 		.ascii	"PRN_PRODPRICE\000"
+ 1169      50524F44 
+ 1169      50524943 
+ 1169      4500
+ 1170              	.LASF3:
+ 1171 01a2 73686F72 		.ascii	"short unsigned int\000"
+ 1171      7420756E 
+ 1171      7369676E 
+ 1171      65642069 
+ 1171      6E7400
+ 1172              	.LASF36:
+ 1173 01b5 50524E5F 		.ascii	"PRN_PRODUCT\000"
+ 1173      50524F44 
+ 1173      55435400 
+ 1174              	.LASF47:
+ 1175 01c1 50524E5F 		.ascii	"PRN_VOLUNIT_HAWAIIAN_GALLONS_GAS\000"
+ 1175      564F4C55 
+ 1175      4E49545F 
+ 1175      48415741 
+ 1175      4949414E 
+ 1176              	.LASF46:
+ 1177 01e2 50524E5F 		.ascii	"PRN_VOLUNIT_LITERS\000"
+ 1177      564F4C55 
+ 1177      4E49545F 
+ 1177      4C495445 
+ 1177      525300
+ 1178              	.LASF14:
+ 1179 01f5 73697A65 		.ascii	"sizetype\000"
+ 1179      74797065 
+ 1179      00
+ 1180              	.LASF15:
+ 1181 01fe 6C6F6E67 		.ascii	"long double\000"
+ 1181      20646F75 
+ 1181      626C6500 
+ 1182              	.LASF22:
+ 1183 020a 50524E5F 		.ascii	"PRN_INVNUMBER\000"
+ 1183      494E564E 
+ 1183      554D4245 
+ 1183      5200
+ 1184              	.LASF65:
+ 1185 0218 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1185      4320342E 
+ 1185      392E3320 
+ 1185      32303135 
+ 1185      30333033 
+ 1186 024b 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1186      20726576 
+ 1186      6973696F 
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cchCeyJb.s 			page 27
 
 
- 1211      676E6564 
- 1211      20636861 
- 1211      7200
- 1212              	.LASF27:
- 1213 0356 50524E5F 		.ascii	"PRN_VISITSWEEK\000"
- 1213      56495349 
- 1213      54535745 
- 1213      454B00
- 1214              	.LASF32:
- 1215 0365 50524E5F 		.ascii	"PRN_MONEYDAY\000"
- 1215      4D4F4E45 
- 1215      59444159 
- 1215      00
- 1216              	.LASF59:
- 1217 0372 47657450 		.ascii	"GetPrinterVolumeTemplateTag\000"
- 1217      72696E74 
- 1217      6572566F 
- 1217      6C756D65 
- 1217      54656D70 
- 1218              	.LASF2:
- 1219 038e 73686F72 		.ascii	"short int\000"
- 1219      7420696E 
- 1219      7400
- 1220              	.LASF53:
- 1221 0398 5F6E616D 		.ascii	"_namedline\000"
- 1221      65646C69 
- 1221      6E6500
- 1222              	.LASF43:
- 1223 03a3 5F505249 		.ascii	"_PRINTER_NAMED_LINES_\000"
- 1223      4E544552 
- 1223      5F4E414D 
- 1223      45445F4C 
- 1223      494E4553 
- 1224              	.LASF18:
- 1225 03b9 50524E5F 		.ascii	"PRN_PLATE\000"
- 1225      504C4154 
- 1225      4500
- 1226              	.LASF35:
- 1227 03c3 50524E5F 		.ascii	"PRN_ACCOUNTTYPE\000"
- 1227      4143434F 
- 1227      554E5454 
- 1227      59504500 
- 1228              	.LASF25:
- 1229 03d3 50524E5F 		.ascii	"PRN_ACCOUNT\000"
- 1229      4143434F 
- 1229      554E5400 
- 1230              	.LASF26:
- 1231 03df 50524E5F 		.ascii	"PRN_VISITSDAY\000"
- 1231      56495349 
- 1231      54534441 
- 1231      5900
- 1232              	.LASF13:
- 1233 03ed 63686172 		.ascii	"char\000"
- 1233      00
- 1234              	.LASF31:
- 1235 03f2 50524E5F 		.ascii	"PRN_VOLUMEMONTH\000"
- 1235      564F4C55 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 29
+ 1186      6E203232 
+ 1186      31323230 
+ 1187 027e 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1187      66756E63 
+ 1187      74696F6E 
+ 1187      2D736563 
+ 1187      74696F6E 
+ 1188              	.LASF33:
+ 1189 02a6 50524E5F 		.ascii	"PRN_MONEYWEEK\000"
+ 1189      4D4F4E45 
+ 1189      59574545 
+ 1189      4B00
+ 1190              	.LASF38:
+ 1191 02b4 50524E5F 		.ascii	"PRN_VOLUME\000"
+ 1191      564F4C55 
+ 1191      4D4500
+ 1192              	.LASF9:
+ 1193 02bf 666C6F61 		.ascii	"float\000"
+ 1193      7400
+ 1194              	.LASF67:
+ 1195 02c5 433A5C54 		.ascii	"C:\\TeamInsepet\\NSX-Prime\\Hardware\\CorEx-MUX-Ker"
+ 1195      65616D49 
+ 1195      6E736570 
+ 1195      65745C4E 
+ 1195      53582D50 
+ 1196 02f4 6E656C2D 		.ascii	"nel-Enhanced\\Workspace01\\CorEx-Mux-Kernel.cydsn\000"
+ 1196      456E6861 
+ 1196      6E636564 
+ 1196      5C576F72 
+ 1196      6B737061 
+ 1197              	.LASF55:
+ 1198 0324 504E4541 		.ascii	"PNEAR_PRINTERTEMPLATEPTR\000"
+ 1198      525F5052 
+ 1198      494E5445 
+ 1198      5254454D 
+ 1198      504C4154 
+ 1199              	.LASF1:
+ 1200 033d 756E7369 		.ascii	"unsigned char\000"
+ 1200      676E6564 
+ 1200      20636861 
+ 1200      7200
+ 1201              	.LASF27:
+ 1202 034b 50524E5F 		.ascii	"PRN_VISITSWEEK\000"
+ 1202      56495349 
+ 1202      54535745 
+ 1202      454B00
+ 1203              	.LASF32:
+ 1204 035a 50524E5F 		.ascii	"PRN_MONEYDAY\000"
+ 1204      4D4F4E45 
+ 1204      59444159 
+ 1204      00
+ 1205              	.LASF58:
+ 1206 0367 47657450 		.ascii	"GetPrinterVolumeTemplateTag\000"
+ 1206      72696E74 
+ 1206      6572566F 
+ 1206      6C756D65 
+ 1206      54656D70 
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cchCeyJb.s 			page 28
 
 
- 1235      4D454D4F 
- 1235      4E544800 
- 1236              	.LASF46:
- 1237 0402 50524E5F 		.ascii	"PRN_VOLUNIT_UK_GALLONS\000"
- 1237      564F4C55 
- 1237      4E49545F 
- 1237      554B5F47 
- 1237      414C4C4F 
- 1238              	.LASF12:
- 1239 0419 63686172 		.ascii	"char8\000"
- 1239      3800
- 1240              	.LASF44:
- 1241 041f 5F505249 		.ascii	"_PRINTER_VOLUME_UNIT_TYPE_\000"
- 1241      4E544552 
- 1241      5F564F4C 
- 1241      554D455F 
- 1241      554E4954 
- 1242              	.LASF62:
- 1243 043a 72656669 		.ascii	"refid\000"
- 1243      6400
- 1244              	.LASF52:
- 1245 0440 50524E5F 		.ascii	"PRN_MONEY_LITERS\000"
- 1245      4D4F4E45 
- 1245      595F4C49 
- 1245      54455253 
- 1245      00
- 1246              	.LASF65:
- 1247 0451 5F675F70 		.ascii	"_g_printerpricetemplate\000"
- 1247      72696E74 
- 1247      65727072 
- 1247      69636574 
- 1247      656D706C 
- 1248              	.LASF61:
- 1249 0469 47657450 		.ascii	"GetPrinterPriceTemplateTag\000"
- 1249      72696E74 
- 1249      65725072 
- 1249      69636554 
- 1249      656D706C 
- 1250              	.LASF40:
- 1251 0484 50524E5F 		.ascii	"PRN_ID\000"
- 1251      494400
- 1252              	.LASF19:
- 1253 048b 50524E5F 		.ascii	"PRN_MILLEAGE\000"
- 1253      4D494C4C 
- 1253      45414745 
- 1253      00
- 1254              	.LASF50:
- 1255 0498 5F505249 		.ascii	"_PRINTER_PRICE_UNITS_\000"
- 1255      4E544552 
- 1255      5F505249 
- 1255      43455F55 
- 1255      4E495453 
- 1256              	.LASF28:
- 1257 04ae 50524E5F 		.ascii	"PRN_VISITSMONTH\000"
- 1257      56495349 
- 1257      54534D4F 
- 1257      4E544800 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccfBILKR.s 			page 30
+ 1207              	.LASF2:
+ 1208 0383 73686F72 		.ascii	"short int\000"
+ 1208      7420696E 
+ 1208      7400
+ 1209              	.LASF52:
+ 1210 038d 5F6E616D 		.ascii	"_namedline\000"
+ 1210      65646C69 
+ 1210      6E6500
+ 1211              	.LASF42:
+ 1212 0398 5F505249 		.ascii	"_PRINTER_NAMED_LINES_\000"
+ 1212      4E544552 
+ 1212      5F4E414D 
+ 1212      45445F4C 
+ 1212      494E4553 
+ 1213              	.LASF18:
+ 1214 03ae 50524E5F 		.ascii	"PRN_PLATE\000"
+ 1214      504C4154 
+ 1214      4500
+ 1215              	.LASF35:
+ 1216 03b8 50524E5F 		.ascii	"PRN_ACCOUNTTYPE\000"
+ 1216      4143434F 
+ 1216      554E5454 
+ 1216      59504500 
+ 1217              	.LASF25:
+ 1218 03c8 50524E5F 		.ascii	"PRN_ACCOUNT\000"
+ 1218      4143434F 
+ 1218      554E5400 
+ 1219              	.LASF26:
+ 1220 03d4 50524E5F 		.ascii	"PRN_VISITSDAY\000"
+ 1220      56495349 
+ 1220      54534441 
+ 1220      5900
+ 1221              	.LASF13:
+ 1222 03e2 63686172 		.ascii	"char\000"
+ 1222      00
+ 1223              	.LASF31:
+ 1224 03e7 50524E5F 		.ascii	"PRN_VOLUMEMONTH\000"
+ 1224      564F4C55 
+ 1224      4D454D4F 
+ 1224      4E544800 
+ 1225              	.LASF45:
+ 1226 03f7 50524E5F 		.ascii	"PRN_VOLUNIT_UK_GALLONS\000"
+ 1226      564F4C55 
+ 1226      4E49545F 
+ 1226      554B5F47 
+ 1226      414C4C4F 
+ 1227              	.LASF12:
+ 1228 040e 63686172 		.ascii	"char8\000"
+ 1228      3800
+ 1229              	.LASF43:
+ 1230 0414 5F505249 		.ascii	"_PRINTER_VOLUME_UNIT_TYPE_\000"
+ 1230      4E544552 
+ 1230      5F564F4C 
+ 1230      554D455F 
+ 1230      554E4954 
+ 1231              	.LASF61:
+ 1232 042f 72656669 		.ascii	"refid\000"
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cchCeyJb.s 			page 29
 
 
- 1258              	.LASF45:
- 1259 04be 50524E5F 		.ascii	"PRN_VOLUNIT_US_GALLONS\000"
- 1259      564F4C55 
- 1259      4E49545F 
- 1259      55535F47 
- 1259      414C4C4F 
- 1260              	.LASF21:
- 1261 04d5 50524E5F 		.ascii	"PRN_PUMPPOS\000"
- 1261      50554D50 
- 1261      504F5300 
- 1262              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
+ 1232      6400
+ 1233              	.LASF51:
+ 1234 0435 50524E5F 		.ascii	"PRN_MONEY_LITERS\000"
+ 1234      4D4F4E45 
+ 1234      595F4C49 
+ 1234      54455253 
+ 1234      00
+ 1235              	.LASF64:
+ 1236 0446 5F675F70 		.ascii	"_g_printerpricetemplate\000"
+ 1236      72696E74 
+ 1236      65727072 
+ 1236      69636574 
+ 1236      656D706C 
+ 1237              	.LASF60:
+ 1238 045e 47657450 		.ascii	"GetPrinterPriceTemplateTag\000"
+ 1238      72696E74 
+ 1238      65725072 
+ 1238      69636554 
+ 1238      656D706C 
+ 1239              	.LASF40:
+ 1240 0479 50524E5F 		.ascii	"PRN_ID\000"
+ 1240      494400
+ 1241              	.LASF19:
+ 1242 0480 50524E5F 		.ascii	"PRN_MILLEAGE\000"
+ 1242      4D494C4C 
+ 1242      45414745 
+ 1242      00
+ 1243              	.LASF49:
+ 1244 048d 5F505249 		.ascii	"_PRINTER_PRICE_UNITS_\000"
+ 1244      4E544552 
+ 1244      5F505249 
+ 1244      43455F55 
+ 1244      4E495453 
+ 1245              	.LASF28:
+ 1246 04a3 50524E5F 		.ascii	"PRN_VISITSMONTH\000"
+ 1246      56495349 
+ 1246      54534D4F 
+ 1246      4E544800 
+ 1247              	.LASF44:
+ 1248 04b3 50524E5F 		.ascii	"PRN_VOLUNIT_US_GALLONS\000"
+ 1248      564F4C55 
+ 1248      4E49545F 
+ 1248      55535F47 
+ 1248      414C4C4F 
+ 1249              	.LASF21:
+ 1250 04ca 50524E5F 		.ascii	"PRN_PUMPPOS\000"
+ 1250      50554D50 
+ 1250      504F5300 
+ 1251              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
