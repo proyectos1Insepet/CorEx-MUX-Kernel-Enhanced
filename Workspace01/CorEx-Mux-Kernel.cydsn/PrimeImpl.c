@@ -1070,15 +1070,9 @@ void PumpPresetNotification(LPVOID pparam)
             
             pts->_buffersize = index;
             
-            PNEAR_PUMPTRANSACTIONALSTATEPTR ptstemp = pjob->_ppump->PumpTransQueueAllocate(pjob->_ppump);
-            if(ptstemp)
-            {
-                pjob->_ppump->PumpTransQueueDeallocate(pjob->_ppump,ptstemp);
-                pjob->_ppump->PumpTransQueueLock(pjob->_ppump);
-                pjob->_ppump->PumpTransQueueEnqueue(pjob->_ppump, pts);
-                pjob->_ppump->PumpTransQueueUnlock(pjob->_ppump);
-            }else
-                pjob->_ppump->PumpTransQueueDeallocate(pjob->_ppump, pts);
+            pjob->_ppump->PumpTransQueueLock(pjob->_ppump);
+            pjob->_ppump->PumpTransQueueEnqueue(pjob->_ppump, pts);
+            pjob->_ppump->PumpTransQueueUnlock(pjob->_ppump);
         }
     }
 }
@@ -1106,15 +1100,9 @@ void PumpCreditPresetNotification(LPVOID pparam)
             pts->_buffer[index++] = pjob->_ppump->_pumpid;
             pts->_buffersize = index;
             
-            PNEAR_PUMPTRANSACTIONALSTATEPTR ptstemp = pjob->_ppump->PumpTransQueueAllocate(pjob->_ppump);
-            if(ptstemp)
-            {
-                pjob->_ppump->PumpTransQueueDeallocate(pjob->_ppump,ptstemp);
-                pjob->_ppump->PumpTransQueueLock(pjob->_ppump);
-                pjob->_ppump->PumpTransQueueEnqueue(pjob->_ppump, pts);
-                pjob->_ppump->PumpTransQueueUnlock(pjob->_ppump);
-            }else
-                pjob->_ppump->PumpTransQueueDeallocate(pjob->_ppump, pts);
+            pjob->_ppump->PumpTransQueueLock(pjob->_ppump);
+            pjob->_ppump->PumpTransQueueEnqueue(pjob->_ppump, pts);
+            pjob->_ppump->PumpTransQueueUnlock(pjob->_ppump);
         }
     }
 }

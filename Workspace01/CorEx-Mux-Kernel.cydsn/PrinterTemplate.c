@@ -37,9 +37,13 @@ PrinterTemplate _g_printertemplate[] =
     { PRN_VOLUMEMONTH,  "Volumen Mes: " },
     { PRN_MONEYDAY,     "Dinero Dia : " },
     { PRN_MONEYWEEK,    "Dinero Sem : " },
+<<<<<<< HEAD
     { PRN_MONEYMONTH,   "Dinero Mes : " },    
     { PRN_SIGNATURE,    "Firma      :................. " },
     { PRN_ID,           "Cedula     :................. " },
+=======
+    { PRN_MONEYMONTH,   "Dinero Mes : " },
+>>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
     { 0x00,             NULL },
 };
 

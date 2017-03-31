@@ -1380,7 +1380,11 @@ void DisplayUpdateHomeAnimation(void *pparam)
             DrawHomeDateTime(pdisplay);
             _g_homeanimarray[DISPLAY1]._timeoutmultiplier = 0;
             _g_homeanimarray[DISPLAY1]._colontoggler = !_g_homeanimarray[DISPLAY1]._colontoggler;
+<<<<<<< HEAD
             char8 *pmessage = "MUX Ver. 19.0.b";
+=======
+            char8 *pmessage = "MUX Ver. 18.3";
+>>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
             fontdata._size = 0x01;
             UARTMessage *puartdisp = GetUARTMessageSlot(UART_DISPLAY1);
             if(puartdisp)
@@ -1782,8 +1786,6 @@ bool DisplayGenericValidator(LPVOID pparam)
         #endif
         {
             if(psinkmsg)
-            {
-            
                 if(psinkmsg->_buffer[GetBufferIndexFromDisplayID(DISPLAY_SELECCIONE_POSICION)] != 0x00)
                 {
                     uint8 paymodel = psinkmsg->_buffer[GetBufferIndexFromDisplayID(DISPLAY_FORMA_PAGO_DESEADA)];
@@ -1796,6 +1798,7 @@ bool DisplayGenericValidator(LPVOID pparam)
                         pdisplay->_nextscrid = DISPLAY_OPERACION_CANCELADA;
                     }
                 }
+<<<<<<< HEAD
                 
                 if(psinkmsg->_buffer[GetBufferIndexFromDisplayID(DISPLAY_SELECCIONE_POSICION)] != 0x00)
                 {
@@ -1822,6 +1825,8 @@ bool DisplayGenericValidator(LPVOID pparam)
                     }
                 }
             }
+=======
+>>>>>>> parent of cf6f4cd... Ultima version para pruebas 18.5
         }
         
     }
