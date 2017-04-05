@@ -558,38 +558,39 @@ void ProcessPumpTotalsDataReport(void *pparam)
             }
         }
         
-//        uint8 strmlrc = FindLRC(pjob->_ppump->_rxbuffer);
-//        uint8 locallrc = GetLRC(pjob->_ppump->_rxbuffer);
-//        if(strmlrc != locallrc && pjob->_reenqueuecounter < _MAX_RETRIES_)
-//        {
-//            pjob->_reenqueuecounter++;
-//            pjob->_reenqueue = true;
-//            return;
-//        }
         pjob->_reenqueue = false;
         
         pjob->_ppump->PumpTransQueueLock(pjob->_ppump);
         bool transtatefound = pjob->_ppump->PumpTransQueueFind(pjob->_ppump, RF_MUX_TOTALS_REPORT_RESPONSE);
         PNEAR_PUMPTRANSACTIONALSTATEPTR pts = pjob->_ppump->PumpTransQueueAllocate(pjob->_ppump);
+        PNEAR_PUMPTRANSACTIONALSTATEPTR ptstemp = pjob->_ppump->PumpTransQueueAllocate(pjob->_ppump);
+        
         pjob->_ppump->PumpTransQueueUnlock(pjob->_ppump);
-        if(pts && !transtatefound)
+        if(ptstemp)
         {
-            pts->_transtate = RF_MUX_TOTALS_REPORT_RESPONSE;
-            
-            memcpy(pts->_buffer, pjob->_ppump->_rxbuffer, pjob->_ppump->_rxbuffersize);
-            pts->_buffersize = pjob->_ppump->_rxbuffersize;
-            
-            pjob->_ppump->PumpTransQueueLock(pjob->_ppump);
-            pjob->_ppump->PumpTransQueueEnqueue(pjob->_ppump, pts);
-            pjob->_ppump->PumpTransQueueUnlock(pjob->_ppump);
-        }
-        else
-        {
-            pjob->_ppump->PumpTransQueueLock(pjob->_ppump);
+            if(pts && !transtatefound)
+            {
+                pts->_transtate = RF_MUX_TOTALS_REPORT_RESPONSE;
+                
+                memcpy(pts->_buffer, pjob->_ppump->_rxbuffer, pjob->_ppump->_rxbuffersize);
+                pts->_buffersize = pjob->_ppump->_rxbuffersize;
+                
+                pjob->_ppump->PumpTransQueueDeallocate(pjob->_ppump,ptstemp);
+                pjob->_ppump->PumpTransQueueLock(pjob->_ppump);
+                pjob->_ppump->PumpTransQueueEnqueue(pjob->_ppump, pts);
+                pjob->_ppump->PumpTransQueueUnlock(pjob->_ppump);
+            }
+            else
+            {
+                pjob->_ppump->PumpTransQueueLock(pjob->_ppump);
+                pjob->_ppump->PumpTransQueueDeallocate(pjob->_ppump, pts);
+                pjob->_ppump->PumpTransQueueUnlock(pjob->_ppump);
+            }
+            memset(pjob->_ppump->_rxbuffer, 0x00, _PUMP_RX_BUFFER_SIZE_);
+        }else{
             pjob->_ppump->PumpTransQueueDeallocate(pjob->_ppump, pts);
             pjob->_ppump->PumpTransQueueUnlock(pjob->_ppump);
         }
-        memset(pjob->_ppump->_rxbuffer, 0x00, _PUMP_RX_BUFFER_SIZE_);
     }
 }
 

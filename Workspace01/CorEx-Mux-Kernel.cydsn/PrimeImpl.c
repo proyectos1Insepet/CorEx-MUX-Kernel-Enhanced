@@ -520,39 +520,55 @@ void ProcessPumpTotalsDataReport(void *pparam)
     PPUMPTRANSACTIONJOBCONTEXTPTR pjob = (PPUMPTRANSACTIONJOBCONTEXTPTR)pparam;
     if(pjob)
     {
-        //If the response is corrupted, then re-throw the transaction node for a limited number of times!
-        uint8 strmlrc = FindLRC(pjob->_ppump->_rxbuffer);
-        uint8 locallrc = GetLRC(pjob->_ppump->_rxbuffer);
-        if(strmlrc != locallrc && pjob->_reenqueuecounter < _MAX_RETRIES_)
+        bool dataok = true;
+        uint8 numhoses = 0x00;
+        switch(pjob->_ppump->_pumpindex)
         {
-            pjob->_reenqueuecounter++;
-            pjob->_reenqueue = true;
-            return;
+            case 0x00:
+            {
+                numhoses = _g_dispenserlayoutinfo._hosesposition1;
+                break;
+            }
+            case 0x01:
+            {
+                numhoses = _g_dispenserlayoutinfo._hosesposition2;
+                break;
+            }
         }
+        
         pjob->_reenqueue = false;
         
         pjob->_ppump->PumpTransQueueLock(pjob->_ppump);
         bool transtatefound = pjob->_ppump->PumpTransQueueFind(pjob->_ppump, RF_MUX_TOTALS_REPORT_RESPONSE);
         PNEAR_PUMPTRANSACTIONALSTATEPTR pts = pjob->_ppump->PumpTransQueueAllocate(pjob->_ppump);
+        PNEAR_PUMPTRANSACTIONALSTATEPTR ptstemp = pjob->_ppump->PumpTransQueueAllocate(pjob->_ppump);
+        
         pjob->_ppump->PumpTransQueueUnlock(pjob->_ppump);
-        if(pts && !transtatefound)
+        if(ptstemp)
         {
-            pts->_transtate = RF_MUX_TOTALS_REPORT_RESPONSE;
-            
-            memcpy(pts->_buffer, pjob->_ppump->_rxbuffer, pjob->_ppump->_rxbuffersize);
-            pts->_buffersize = pjob->_ppump->_rxbuffersize;
-            
-            pjob->_ppump->PumpTransQueueLock(pjob->_ppump);
-            pjob->_ppump->PumpTransQueueEnqueue(pjob->_ppump, pts);
-            pjob->_ppump->PumpTransQueueUnlock(pjob->_ppump);
-        }
-        else
-        {
-            pjob->_ppump->PumpTransQueueLock(pjob->_ppump);
+            if(pts && !transtatefound)
+            {
+                pts->_transtate = RF_MUX_TOTALS_REPORT_RESPONSE;
+                
+                memcpy(pts->_buffer, pjob->_ppump->_rxbuffer, pjob->_ppump->_rxbuffersize);
+                pts->_buffersize = pjob->_ppump->_rxbuffersize;
+                
+                pjob->_ppump->PumpTransQueueDeallocate(pjob->_ppump,ptstemp);
+                pjob->_ppump->PumpTransQueueLock(pjob->_ppump);
+                pjob->_ppump->PumpTransQueueEnqueue(pjob->_ppump, pts);
+                pjob->_ppump->PumpTransQueueUnlock(pjob->_ppump);
+            }
+            else
+            {
+                pjob->_ppump->PumpTransQueueLock(pjob->_ppump);
+                pjob->_ppump->PumpTransQueueDeallocate(pjob->_ppump, pts);
+                pjob->_ppump->PumpTransQueueUnlock(pjob->_ppump);
+            }
+            memset(pjob->_ppump->_rxbuffer, 0x00, _PUMP_RX_BUFFER_SIZE_);
+        }else{
             pjob->_ppump->PumpTransQueueDeallocate(pjob->_ppump, pts);
             pjob->_ppump->PumpTransQueueUnlock(pjob->_ppump);
         }
-        memset(pjob->_ppump->_rxbuffer, 0x00, _PUMP_RX_BUFFER_SIZE_);
     }
 }
 
