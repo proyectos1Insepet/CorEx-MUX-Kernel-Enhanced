@@ -36,8 +36,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //PROTOCOL SELECTION
 //#define  PRIME_PROTOCOL
-//#define  ENCORE_PROTOCOL
-#define  ADVANTAGE_PROTOCOL
+#define  ENCORE_PROTOCOL
+//#define  ADVANTAGE_PROTOCOL
 //#define  ADVANTAGE_PROTOCOL_SLOWSTARTUP
 ////////////////////////////////////////////////////////////////////////////////
 //THIS DEFINITION IS FOR TESTING PURPOSES ONLY SINCE IT ALLOWS FOR FAST STARTUP!!!
