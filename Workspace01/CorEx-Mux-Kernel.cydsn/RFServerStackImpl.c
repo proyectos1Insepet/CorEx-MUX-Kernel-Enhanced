@@ -403,7 +403,7 @@ bool RFCashCreditSaleFinalReportReqResp(void *pparam)
                     puartdisp->_messagetx[puartdisp->_messagelength++] = (uint8)((_g_stationidentifier >> 8) & 0xFF);
                     puartdisp->_messagetx[puartdisp->_messagelength++] = pmsg->_buffer[_RF_STREAM_POSITION_INDEX_];
                     puartdisp->_messagetx[puartdisp->_messagelength++] = pumptrans->_transtate;
-                    puartdisp->_messagetx[puartdisp->_messagelength++] = 0x00;//?? ESTADOPOSITION ??
+                    puartdisp->_messagetx[puartdisp->_messagelength++] = RF_CASHSALEREPORT;//?? ESTADOPOSITION ??
                     
                     if(_g_dispenserlayoutinfo._displaydigitsmode == 0x06)
                     {
@@ -2686,8 +2686,8 @@ bool RFCopyPrintReqResp(void *pparam)
                 _g_pumps[index].PumpTransQueueDeallocate(&_g_pumps[index], pumptrans);
                 _g_pumps[index].PumpTransQueueUnlock(&_g_pumps[index]);                 
             }
-             if(ppump)
-                    _g_pumps[index]._pumprftransstate = RF_IDLE;            
+//             if(ppump)
+//                    _g_pumps[index]._pumprftransstate = RF_IDLE;            
         }
         _ALLOCATE_SINKMESSAGE_SLOT(psinkmsg);
     	if(psinkmsg)
