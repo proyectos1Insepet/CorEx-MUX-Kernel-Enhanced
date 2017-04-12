@@ -51,7 +51,7 @@ void AcquirePumpStateResponse(void *pparam)
         else
         {
             pjob->_ppump->_transhealth = _PUMP_FAIL_;
-            pjob->_ppump->_pumpstate = prevstate;
+            pjob->_ppump->_pumpstate = RF_ERROR;
         }
         
         if(pjob->_ppump->_pumpstate == PUMP_CALLING)
@@ -60,6 +60,9 @@ void AcquirePumpStateResponse(void *pparam)
         if((pjob->_ppump->_pumpstate == PUMP_IDLE || pjob->_ppump->_pumpstate == PUMP_CALLING) && 
             (prevstate == PUMP_BUSY || prevstate == PUMP_AUTHORIZED))
             pjob->_ppump->_pumprftransstate = RF_IDLE;
+        if((pjob->_ppump->_pumpstate == PUMP_FEOT || pjob->_ppump->_pumpstate == PUMP_PEOT) && 
+            (prevstate == PUMP_BUSY))
+            pjob->_ppump->_pumprftransstate = RF_CASHSALEREPORT;
         /*if((pjob->_ppump->_pumpstate == PUMP_IDLE || pjob->_ppump->_pumpstate == PUMP_CALLING) && 
             (prevstate == PUMP_FEOT || prevstate == PUMP_PEOT || prevstate == PUMP_BUSY || prevstate == PUMP_AUTHORIZED))
             pjob->_ppump->_pumprftransstate = RF_IDLE;*/
