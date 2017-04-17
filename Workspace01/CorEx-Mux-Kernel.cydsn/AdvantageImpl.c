@@ -45,16 +45,22 @@ void AcquirePumpStateResponse(void *pparam)
     if(pjob)
     {
         uint8 prevstate = pjob->_ppump->_pumpstate;
+        uint8 prevfail  = pjob->_ppump->_transhealth;
         pjob->_ppump->_pumpstate = ((pjob->_ppump->_rxbuffer[0x00] & 0xF0) >> 4);
         if(pjob->_ppump->PumpValidState(pjob->_ppump))
             pjob->_ppump->_transhealth = _PUMP_OK_;
         else
         {
             pjob->_ppump->_transhealth = _PUMP_FAIL_;
-            pjob->_ppump->_pumpstate = prevstate;
+            prevstate = 0x00;
+            //pjob->_ppump->_pumpstate = prevstate;
         }   
         if(pjob->_ppump->_pumpstate == PUMP_CALLING)
             pjob->_ppump->_pumplocked = false;
+        
+        if(prevfail == _PUMP_FAIL_ && prevstate == 0x00)
+            pjob->_ppump->_pumprftransstate = RF_ERROR;
+        else if(prevfail != _PUMP_FAIL_ && prevstate == 0x00)
         
         if((pjob->_ppump->_pumpstate == PUMP_IDLE || pjob->_ppump->_pumpstate == PUMP_CALLING) && 
             (prevstate == PUMP_BUSY || prevstate == PUMP_AUTHORIZED))
@@ -68,7 +74,7 @@ void AcquirePumpStateResponse(void *pparam)
             (prevstate == PUMP_FEOT || prevstate == PUMP_PEOT || prevstate == PUMP_BUSY || prevstate == PUMP_AUTHORIZED))
             pjob->_ppump->_pumprftransstate = RF_IDLE;*/
                 
-        pjob->_ppump->_acquiringstate = false;
+        pjob->_ppump->_acquiringstate = true;
     }
 }
 
