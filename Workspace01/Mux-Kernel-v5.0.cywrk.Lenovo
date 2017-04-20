@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Display\DisplayBLL.c">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Mux-Kernel-v5.0\CorEx-Mux-Kernel\Header Files\SinkManager.h">
 <ExpandedNodeIds>
 <v>Mux-Kernel-v5.0</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel</v>
@@ -42,11 +42,9 @@
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Header Files\UARTManager.h</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Configuration\ClientDefinitions.c</v>
-<v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Dispenser</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Dispenser\DispenserBLL.c</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Dispenser\DispenserResolver.c</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Dispenser\DispenserSink.c</v>
-<v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Display</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Display\DisplayBLL.c</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Display\DisplayBufferScreenMap.c</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Display\DisplayCharacterMap.c</v>
@@ -54,6 +52,7 @@
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Display\DisplayResolver.c</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Display\DisplaySink.c</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Display\DisplayUtils.c</v>
+<v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Framework</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Framework\AuxPSoC.c</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Framework\EepromManager.c</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Framework\Initializers.c</v>
@@ -87,16 +86,17 @@
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\ProtocolLibraries\Prime\Prime.h</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\ProtocolLibraries\Prime\PrimeFlow.c</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\ProtocolLibraries\Prime\PrimeImpl.c</v>
+<v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\RFStack</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\RFStack\RFBLL.c</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\RFStack\RFResolver.c</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\RFStack\RFServerStack.c</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\RFStack\RFServerStackImpl.c</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\RFStack\RFSink.c</v>
+<v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\UARTStack</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\UARTStack\UARTManager.c</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\UARTStack\UARTManagerSink.c</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\UARTStack\UARTResolver.c</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\main.c</v>
-<v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Generated_Source</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Generated_Source\PSoC5</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Generated_Source\PSoC5\Clock_CRC</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Generated_Source\PSoC5\Clock_CRC\Clock_CRC.c</v>
@@ -285,6 +285,17 @@
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Generated_Source\PSoC5\project.h</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
+<v>Mux-Kernel-v5.0</v>
+<v>Mux-Kernel-v5.0\CorEx-Mux-Kernel</v>
+<v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\TopDesign</v>
+<v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\CorEx-Mux-Kernel.cydwr</v>
+<v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Documentation</v>
+<v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Documentation\DISPLAY-SEQUENCE-COMMAND-IDS.txt</v>
+<v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Documentation\Index.html</v>
+<v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Documentation\NSX-Router-MUX-Frame-Protocol.txt</v>
+<v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Documentation\PROTOCOLO_NUEVO_NSX-V7.xlsx</v>
+<v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Header Files</v>
+<v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Header Files\AuxPSoC.h</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Header Files\Configuration.h</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Header Files\cyapicallbacks.h</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Header Files\Dispenser.h</v>
@@ -302,18 +313,7 @@
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Configuration</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Dispenser</v>
-<v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Dispenser\DispenserBLL.c</v>
-<v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Dispenser\DispenserResolver.c</v>
-<v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Dispenser\DispenserSink.c</v>
 <v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Display</v>
-<v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Display\DisplayBLL.c</v>
-<v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Display\DisplayBufferScreenMap.c</v>
-<v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Display\DisplayCharacterMap.c</v>
-<v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Display\DisplayFlow.c</v>
-<v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Display\DisplayResolver.c</v>
-<v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Display\DisplaySink.c</v>
-<v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Display\DisplayUtils.c</v>
-<v>Mux-Kernel-v5.0\CorEx-Mux-Kernel\Source Files\Framework</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -580,20 +580,11 @@
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
 <OpenDocs>
-<name v=".\CorEx-Mux-Kernel.cydsn\Dispenser.h" />
-<name v=".\CorEx-Mux-Kernel.cydsn\PrinterBLL.c" />
-<name v=".\CorEx-Mux-Kernel.cydsn\SinkManager.h" />
-<name v=".\CorEx-Mux-Kernel.cydsn\AdvantageImpl.c" />
-<name v=".\CorEx-Mux-Kernel.cydsn\RFLink.h" />
-<name v=".\CorEx-Mux-Kernel.cydsn\Advantage.h" />
 <name v=".\CorEx-Mux-Kernel.cydsn\DispenserBLL.c" />
+<name v=".\CorEx-Mux-Kernel.cydsn\AdvantageImpl.c" />
+<name v=".\CorEx-Mux-Kernel.cydsn\RFServerStackImpl.c" />
+<name v=".\CorEx-Mux-Kernel.cydsn\TopDesign\TopDesign.cysch" />
 <name v=".\CorEx-Mux-Kernel.cydsn\main.c" />
-<name v=".\CorEx-Mux-Kernel.cydsn\Prime.h" />
-<name v=".\CorEx-Mux-Kernel.cydsn\PrimeFlow.c" />
-<name v=".\CorEx-Mux-Kernel.cydsn\PrimeImpl.c" />
-<name v=".\CorEx-Mux-Kernel.cydsn\Encore.h" />
-<name v=".\CorEx-Mux-Kernel.cydsn\EncoreFlow.c" />
-<name v=".\CorEx-Mux-Kernel.cydsn\EncoreImpl.c" />
 </OpenDocs>
 <config v="" />
 <AutoUpdate v="true" />
