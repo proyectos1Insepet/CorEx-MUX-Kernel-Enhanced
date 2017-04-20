@@ -103,7 +103,7 @@ bool RFStateReqResp(void *pparam)
                         puartdisp->_messagetx[puartdisp->_messagelength++] = (uint8)((_g_stationidentifier >> 8) & 0xFF);
                         puartdisp->_messagetx[puartdisp->_messagelength++] = pmsg->_buffer[_RF_STREAM_POSITION_INDEX_];
                         puartdisp->_messagetx[puartdisp->_messagelength++] = pmsg->_buffer[_RF_STREAM_COMMAND_INDEX_];
-                        if(_g_pumps[index]._transhealth == _PUMP_FAIL_){
+                        if(_g_pumps[index]._transhealth == _PUMP_FAIL_ ){
                             puartdisp->_messagetx[puartdisp->_messagelength++] = RF_ERROR;
                         }else{
                              puartdisp->_messagetx[puartdisp->_messagelength++] =_g_pumps[index]._pumprftransstate;
