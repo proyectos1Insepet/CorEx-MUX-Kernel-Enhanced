@@ -130,5 +130,4 @@ extern PSINKMESSAGEPTR _g_pretval[0x04];
 extern SinkMessage _g_sinkmessagequeue[_MESSAGE_QUEUE_DEPTH_];
 extern SinkSubscriber _g_sinksubscriberqueue[_SUBSCRIBER_QUEUE_DEPTH_];
 
-
 /* [] END OF FILE */
