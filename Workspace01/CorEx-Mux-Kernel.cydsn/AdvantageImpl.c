@@ -52,14 +52,18 @@ void AcquirePumpStateResponse(void *pparam)
         {
             pjob->_ppump->_transhealth = _PUMP_FAIL_;
             pjob->_ppump->_pumpstate = prevstate;
-        }
-        
+        }   
         if(pjob->_ppump->_pumpstate == PUMP_CALLING)
             pjob->_ppump->_pumplocked = false;
         
         if((pjob->_ppump->_pumpstate == PUMP_IDLE || pjob->_ppump->_pumpstate == PUMP_CALLING) && 
             (prevstate == PUMP_BUSY || prevstate == PUMP_AUTHORIZED))
+            pjob->_ppump->_pumprftransstate = RF_IDLE; 
+        
+        if((pjob->_ppump->_pumpstate == PUMP_IDLE   ) && 
+            (pjob->_ppump->_pumprftransstate == RF_COPY_RECEIPT ))
             pjob->_ppump->_pumprftransstate = RF_IDLE;
+        
         /*if((pjob->_ppump->_pumpstate == PUMP_IDLE || pjob->_ppump->_pumpstate == PUMP_CALLING) && 
             (prevstate == PUMP_FEOT || prevstate == PUMP_PEOT || prevstate == PUMP_BUSY || prevstate == PUMP_AUTHORIZED))
             pjob->_ppump->_pumprftransstate = RF_IDLE;*/
