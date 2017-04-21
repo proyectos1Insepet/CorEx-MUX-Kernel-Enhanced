@@ -28,6 +28,7 @@
 
 uint8_t FindLRC(char8 *_pbuffer);
 uint8_t GetLRC(char8 *_pbuffer);
+uint8 errorCounter = 0;
 
 void ComplementaryCreditTransactionOnHose(LPVOID pparam);
 void PrimeActivateProgramming(LPVOID pparam);
@@ -46,29 +47,39 @@ void AcquirePumpStateResponse(void *pparam)
     if(pjob)
     {
         uint8 prevstate = pjob->_ppump->_pumpstate;
+        uint8 prevrfstate = pjob->_ppump->_pumprftransstate;
         pjob->_ppump->_pumpstate = ((pjob->_ppump->_rxbuffer[0x00] & 0xF0) >> 4);
-        if(pjob->_ppump->PumpValidState(pjob->_ppump))
-            pjob->_ppump->_transhealth = _PUMP_OK_;
+        if(pjob->_ppump->PumpValidState(pjob->_ppump) && ((pjob->_ppump->_rxbuffer[0x00] & 0x0F)) == pjob->_ppump->_pumpid  ){
+            errorCounter = 0;
+            if(errorCounter == 0){
+                pjob->_ppump->_transhealth = _PUMP_OK_;  
+            }
+        }
         else
         {
-            pjob->_ppump->_transhealth = _PUMP_FAIL_;
-            pjob->_ppump->_pumpstate = prevstate;
-        }
+            errorCounter = errorCounter + 1;
+            if(errorCounter == 3){
+                pjob->_ppump->_transhealth = _PUMP_FAIL_;
+                pjob->_ppump->_pumpstate = PUMP_FAIL;
+                errorCounter = 1;
+            }
+        }   
         
         if(pjob->_ppump->_pumpstate == PUMP_CALLING)
-            pjob->_ppump->_pumplocked = false;
+            pjob->_ppump->_pumplocked = false;                
         
         if((pjob->_ppump->_pumpstate == PUMP_IDLE || pjob->_ppump->_pumpstate == PUMP_CALLING) && 
             (prevstate == PUMP_BUSY || prevstate == PUMP_AUTHORIZED))
-            pjob->_ppump->_pumprftransstate = RF_IDLE;
+            pjob->_ppump->_pumprftransstate = RF_ZERO_SALE; 
+        
+        if((pjob->_ppump->_pumpstate == PUMP_IDLE ) && 
+            (prevrfstate == RF_ZERO_SALE ))
+            pjob->_ppump->_pumprftransstate = RF_IDLE; 
         
         if((pjob->_ppump->_pumpstate == PUMP_IDLE   ) && 
             (pjob->_ppump->_pumprftransstate == RF_COPY_RECEIPT ))
             pjob->_ppump->_pumprftransstate = RF_IDLE;
-        
-        /*if((pjob->_ppump->_pumpstate == PUMP_IDLE || pjob->_ppump->_pumpstate == PUMP_CALLING) && 
-            (prevstate == PUMP_FEOT || prevstate == PUMP_PEOT || prevstate == PUMP_BUSY || prevstate == PUMP_AUTHORIZED))
-            pjob->_ppump->_pumprftransstate = RF_IDLE;*/
+                
                 
         pjob->_ppump->_acquiringstate = false;
     }
@@ -550,6 +561,7 @@ void ProcessPumpTotalsDataReport(void *pparam)
         PNEAR_PUMPTRANSACTIONALSTATEPTR ptstemp = pjob->_ppump->PumpTransQueueAllocate(pjob->_ppump);
         
         pjob->_ppump->PumpTransQueueUnlock(pjob->_ppump);
+        pjob->_ppump->_transhealth = _PUMP_OK_;
         if(ptstemp)
         {
             if(pts && !transtatefound)
@@ -1724,7 +1736,7 @@ void AcquirePumpCompleteConfiguration(void *pparam)
         //THE PERSISTENT FILE SYSTEM (EEPROM)        
         if(pjob->_ppump->_rxbuffer[0 + 45*index] == 0xBA)
         {
-            
+            pjob->_ppump->_transhealth = _PUMP_OK_;
             ClearEepromBuffer();
             bool targetmemoryareafound = false;
             uint16 eeprompumpconfigmemorypageid = 0;
