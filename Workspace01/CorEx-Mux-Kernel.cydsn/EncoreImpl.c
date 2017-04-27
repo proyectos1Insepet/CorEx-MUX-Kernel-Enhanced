@@ -1016,7 +1016,7 @@ void PumpPresetHose(void *pparam)
                 ///THESE CODES MUST BE MATCHED OTHERWISE THE LOGIC WILL BREAKUP THE CODE!
                 puartdisp->_messagetx[index++] = (0xE0 | (0x0F & ppump->_trasactionbuffer[GetBufferIndexFromDisplayID(DISPLAY_SUBA_MANIJA)]));
                 //puartdisp->_messagetx[index++] = 0xE0;
-                
+                _g_pumps[(ppump->_pumpid)-1]._currenthose = (0x0F & ppump->_trasactionbuffer[GetBufferIndexFromDisplayID(DISPLAY_SUBA_MANIJA)])+ 1;
                 puartdisp->_messagetx[index++] = 0xF8; //Preset Data next
                 //Here we copy the remaining 8 bytes for the preset value
                 ///THIS IS AN APPLIED CONVENTION ===>> 0x0008 INDEX POSITION WITHIN THE PUMP'S BUFFER POINTS TO THE PRESET VALUE (VOLUME OR MONEY)
@@ -1052,7 +1052,7 @@ void PumpPresetHose(void *pparam)
                 ///THESE CODES MUST BE MATCHED OTHERWISE THE LOGIC WILL BREAKUP THE CODE!
                 puartdisp->_messagetx[index++] = (0xE0 | (0x0F & ppump->_trasactionbuffer[GetBufferIndexFromDisplayID(DISPLAY_SUBA_MANIJA)]));
                 //puartdisp->_messagetx[index++] = 0xE0;
-                
+                _g_pumps[(ppump->_pumpid)-1]._currenthose = (0x0F & ppump->_trasactionbuffer[GetBufferIndexFromDisplayID(DISPLAY_SUBA_MANIJA)])+ 1;
                 puartdisp->_messagetx[index++] = 0xF8; //Preset Data next
                 //Here we copy the remaining 8 bytes for the preset value
                 ///THIS IS AN APPLIED CONVENTION ===>> 0x0008 INDEX POSITION WITHIN THE PUMP'S BUFFER POINTS TO THE PRESET VALUE (VOLUME OR MONEY)
@@ -1289,7 +1289,7 @@ void PumpFullPresetHose(void *pparam)
                 ///THIS IS AN APPLIED CONVENTION ===>> 0x0006 INDEX POSITION WITHIN THE PUMP'S BUFFER POINTS TO THE PRODUCT TYPE
                 ///THESE CODES MUST BE MATCHED OTHERWISE THE LOGIC WILL BREAKUP THE CODE!
                 puartdisp->_messagetx[index++] = (0xE0 | (0x0F & ppump->_trasactionbuffer[GetBufferIndexFromDisplayID(DISPLAY_SUBA_MANIJA)]));
-                
+                _g_pumps[(ppump->_pumpid)-1]._currenthose = (0x0F & ppump->_trasactionbuffer[GetBufferIndexFromDisplayID(DISPLAY_SUBA_MANIJA)])+ 1;
                 puartdisp->_messagetx[index++] = 0xF8; //Preset Data next
                 //Here we copy the remaining 8 bytes for the preset value
                 ///THIS IS AN APPLIED CONVENTION ===>> 0x0008 INDEX POSITION WITHIN THE PUMP'S BUFFER POINTS TO THE PRESET VALUE (VOLUME OR MONEY)
@@ -1320,7 +1320,7 @@ void PumpFullPresetHose(void *pparam)
                 ///THIS IS AN APPLIED CONVENTION ===>> 0x0006 INDEX POSITION WITHIN THE PUMP'S BUFFER POINTS TO THE PRODUCT TYPE
                 ///THESE CODES MUST BE MATCHED OTHERWISE THE LOGIC WILL BREAKUP THE CODE!
                 puartdisp->_messagetx[index++] = (0xE0 | (0x0F & ppump->_trasactionbuffer[GetBufferIndexFromDisplayID(DISPLAY_SUBA_MANIJA)]));
-                
+                _g_pumps[(ppump->_pumpid)-1]._currenthose = (0x0F & ppump->_trasactionbuffer[GetBufferIndexFromDisplayID(DISPLAY_SUBA_MANIJA)])+ 1;
                 puartdisp->_messagetx[index++] = 0xF8; //Preset Data next
                 //Here we copy the remaining 8 bytes for the preset value
                 ///THIS IS AN APPLIED CONVENTION ===>> 0x0008 INDEX POSITION WITHIN THE PUMP'S BUFFER POINTS TO THE PRESET VALUE (VOLUME OR MONEY)
