@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 1
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 1
 
 
    1              		.syntax unified
@@ -62,11 +58,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
   29:.\iButtonBLL.c **** //Validates and acquires the unique identifier from the related iButton port
   30:.\iButtonBLL.c **** void iButton1Scan(void *pparam)
   31:.\iButtonBLL.c **** {
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 2
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 2
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 2
 
 
   27              		.loc 1 31 0
@@ -126,11 +118,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
   70              		.loc 1 42 0
   71 0036 0023     		movs	r3, #0
   72 0038 BB73     		strb	r3, [r7, #14]
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 3
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 3
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 3
 
 
   73 003a 0BE0     		b	.L4
@@ -190,11 +178,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
   48:.\iButtonBLL.c ****         //iButton data stream integrity is ok after this check...
   49:.\iButtonBLL.c ****         if(crc == pmsg->_buffer[(_IBUTTON_PAYLOAD_LENGTH_ - 1)] && crc != 0x00)
  118              		.loc 1 49 0 is_stmt 1
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 4
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 4
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 4
 
 
  119 0082 BB68     		ldr	r3, [r7, #8]
@@ -254,11 +238,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
   61:.\iButtonBLL.c **** void iButton2Scan(void *pparam)
   62:.\iButtonBLL.c **** {
  162              		.loc 1 62 0
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 5
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 5
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 5
 
 
  163              		.cfi_startproc
@@ -318,11 +298,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  208 003e 2344     		add	r3, r3, r4
  209 0040 1A73     		strb	r2, [r3, #12]
   70:.\iButtonBLL.c ****         FOR(uint8 index = 0, index < _IBUTTON_PAYLOAD_LENGTH_, index++)
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 6
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 6
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 6
 
 
  210              		.loc 1 70 0 discriminator 3
@@ -382,11 +358,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  254              		.loc 1 78 0 is_stmt 1
  255 0086 BB68     		ldr	r3, [r7, #8]
  256 0088 D3F89431 		ldr	r3, [r3, #404]
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 7
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 7
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 7
 
 
  257 008c 002B     		cmp	r3, #0
@@ -446,11 +418,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  299 0004 0120     		movs	r0, #1
  300 0006 FFF7FEFF 		bl	Reset_iButton_Write
   91:.\iButtonBLL.c ****     CRC_CLOCK_PULSE;
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 8
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 8
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 8
 
 
  301              		.loc 1 91 0
@@ -510,11 +478,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  347 0018 03F01003 		and	r3, r3, #16
  348 001c DBB2     		uxtb	r3, r3
  349 001e 2246     		mov	r2, r4
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 9
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 9
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 9
 
 
  350 0020 1343     		orrs	r3, r3, r2
@@ -574,11 +538,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  395 000e 0023     		movs	r3, #0
  396 0010 BB73     		strb	r3, [r7, #14]
  397 0012 1DE0     		b	.L19
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 10
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 10
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 10
 
 
  398              	.L20:
@@ -638,11 +598,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  442 0066 0346     		mov	r3, r0
  443 0068 002B     		cmp	r3, #0
  444 006a 0CBF     		ite	eq
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 11
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 11
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 11
 
 
  445 006c 0123     		moveq	r3, #1
@@ -702,11 +658,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  498 0041 03       		.uleb128 0x3
  499 0042 18060000 		.4byte	.LASF9
  500 0046 02       		.byte	0x2
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 12
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 12
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 12
 
 
  501 0047 3F       		.byte	0x3f
@@ -766,11 +718,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  555 00b3 02       		.uleb128 0x2
  556 00b4 01       		.byte	0x1
  557 00b5 08       		.byte	0x8
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 13
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 13
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 13
 
 
  558 00b6 44040000 		.4byte	.LASF16
@@ -830,11 +778,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  612 0123 0A       		.uleb128 0xa
  613 0124 38010000 		.4byte	.LASF24
  614 0128 05       		.byte	0x5
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 14
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 14
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 14
 
 
  615 0129 5B       		.byte	0x5b
@@ -894,11 +838,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  669 0199 A3010000 		.4byte	0x1a3
  670 019d 0F       		.uleb128 0xf
  671 019e CB000000 		.4byte	0xcb
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 15
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 15
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 15
 
 
  672 01a2 00       		.byte	0
@@ -958,11 +898,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  726 020e 11       		.uleb128 0x11
  727 020f 49040000 		.4byte	.LASF45
  728 0213 0D       		.sleb128 13
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 16
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 16
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 16
 
 
  729 0214 11       		.uleb128 0x11
@@ -1022,11 +958,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  783 0280 11       		.uleb128 0x11
  784 0281 E8000000 		.4byte	.LASF64
  785 0285 20       		.sleb128 32
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 17
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 17
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 17
 
 
  786 0286 11       		.uleb128 0x11
@@ -1086,11 +1018,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  840 02ef 36030000 		.4byte	0x336
  841 02f3 14       		.uleb128 0x14
  842 02f4 88000000 		.4byte	.LASF82
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 18
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 18
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 18
 
 
  843 02f8 01       		.byte	0x1
@@ -1150,11 +1078,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  897 035e 01       		.byte	0x1
  898 035f 41       		.byte	0x41
  899 0360 A9010000 		.4byte	0x1a9
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 19
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 19
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 19
 
 
  900 0364 02       		.uleb128 0x2
@@ -1214,11 +1138,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  954 03d3 68       		.byte	0x68
  955 03d4 CD000000 		.4byte	0xcd
  956 03d8 02       		.uleb128 0x2
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 20
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 20
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 20
 
 
  957 03d9 91       		.byte	0x91
@@ -1278,11 +1198,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  1011 0015 00       		.byte	0
  1012 0016 0B       		.uleb128 0xb
  1013 0017 0B       		.uleb128 0xb
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 21
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 21
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 21
 
 
  1014 0018 3E       		.uleb128 0x3e
@@ -1342,11 +1258,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  1068 004e 0B       		.uleb128 0xb
  1069 004f 00       		.byte	0
  1070 0050 00       		.byte	0
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 22
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 22
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 22
 
 
  1071 0051 08       		.uleb128 0x8
@@ -1406,11 +1318,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  1125 0087 0C       		.uleb128 0xc
  1126 0088 01       		.uleb128 0x1
  1127 0089 01       		.byte	0x1
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 23
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 23
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 23
 
 
  1128 008a 49       		.uleb128 0x49
@@ -1470,11 +1378,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  1182 00c0 00       		.byte	0
  1183 00c1 12       		.uleb128 0x12
  1184 00c2 04       		.uleb128 0x4
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 24
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 24
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 24
 
 
  1185 00c3 01       		.byte	0x1
@@ -1534,11 +1438,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  1239 00fa 03       		.uleb128 0x3
  1240 00fb 0E       		.uleb128 0xe
  1241 00fc 3A       		.uleb128 0x3a
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 25
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 25
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 25
 
 
  1242 00fd 0B       		.uleb128 0xb
@@ -1598,11 +1498,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  1296 0134 19       		.uleb128 0x19
  1297 0135 2E       		.uleb128 0x2e
  1298 0136 00       		.byte	0
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 26
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 26
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 26
 
 
  1299 0137 3F       		.uleb128 0x3f
@@ -1662,11 +1558,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  1353 016f 3B       		.uleb128 0x3b
  1354 0170 05       		.uleb128 0x5
  1355 0171 49       		.uleb128 0x49
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 27
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 27
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 27
 
 
  1356 0172 13       		.uleb128 0x13
@@ -1726,11 +1618,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  1403              	.LASF91:
  1404 000d 69427574 		.ascii	"iButtonCRCReset\000"
  1404      746F6E43 
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 28
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 28
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 28
 
 
  1404      52435265 
@@ -1790,11 +1678,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  1427              	.LASF51:
  1428 00c2 44495350 		.ascii	"DISPENSER_ACQUIRE_TOTALS\000"
  1428      454E5345 
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 29
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 29
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 29
 
 
  1428      525F4143 
@@ -1854,11 +1738,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  1452 017e 44495350 		.ascii	"DISPLAY2_ANIMATE_HOME\000"
  1452      4C415932 
  1452      5F414E49 
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 30
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 30
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 30
 
 
  1452      4D415445 
@@ -1918,11 +1798,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  1472 0295 5052494E 		.ascii	"PRINTER12_JOB\000"
  1472      54455231 
  1472      325F4A4F 
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 31
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 31
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 31
 
 
  1472      4200
@@ -1982,11 +1858,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  1493              	.LASF26:
  1494 035b 5F6D6573 		.ascii	"_messagetimeoutlimit\000"
  1494      73616765 
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 32
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 32
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 32
 
 
  1494      74696D65 
@@ -2020,7 +1892,6 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  1506      676E6564 
  1506      20696E74 
  1506      00
-<<<<<<< HEAD
  1507              	.LASF75:
  1508 03c6 57415443 		.ascii	"WATCHDOG_STARTUP\000"
  1508      48444F47 
@@ -2047,7 +1918,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  1516 0419 5F6D6573 		.ascii	"_messagedelay\000"
  1516      73616765 
  1516      64656C61 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 33
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 33
 
 
  1516      7900
@@ -2099,85 +1970,6 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  1533      6E636564 
  1533      5C576F72 
  1533      6B737061 
-=======
- 1507              	.LASF20:
- 1508 03c7 5F6D6573 		.ascii	"_messageid\000"
- 1508      73616765 
- 1508      696400
- 1509              	.LASF44:
- 1510 03d2 44495350 		.ascii	"DISPENSER_UNLOCK_EOT_PUMPS\000"
- 1510      454E5345 
- 1510      525F554E 
- 1510      4C4F434B 
- 1510      5F454F54 
- 1511              	.LASF88:
- 1512 03ed 433A5C55 		.ascii	"C:\\Users\\Lenovo\\Documents\\GitHub\\CorEx-MUX-Ker"
- 1512      73657273 
- 1512      5C4C656E 
- 1512      6F766F5C 
- 1512      446F6375 
- 1513 041b 6E656C2D 		.ascii	"nel-Enhanced\\Workspace01\\CorEx-Mux-Kernel.cydsn\000"
- 1513      456E6861 
- 1513      6E636564 
- 1513      5C576F72 
- 1513      6B737061 
- 1514              	.LASF41:
- 1515 044b 44495350 		.ascii	"DISPENSER_ACQUIRE_PUMP_HOSE\000"
- 1515      454E5345 
- 1515      525F4143 
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 33
-
-
- 1515      51554952 
- 1515      455F5055 
- 1516              	.LASF23:
- 1517 0467 5F6D6573 		.ascii	"_messagedelay\000"
- 1517      73616765 
- 1517      64656C61 
- 1517      7900
- 1518              	.LASF93:
- 1519 0475 69427574 		.ascii	"iButtonCRCCheck\000"
- 1519      746F6E43 
- 1519      52434368 
- 1519      65636B00 
- 1520              	.LASF34:
- 1521 0485 55415254 		.ascii	"UART_RF_TEST\000"
- 1521      5F52465F 
- 1521      54455354 
- 1521      00
- 1522              	.LASF77:
- 1523 0492 5F494255 		.ascii	"_IBUTTON_PORT2_\000"
- 1523      54544F4E 
- 1523      5F504F52 
- 1523      54325F00 
- 1524              	.LASF16:
- 1525 04a2 63686172 		.ascii	"char\000"
- 1525      00
- 1526              	.LASF45:
- 1527 04a7 44495350 		.ascii	"DISPENSER_LOAD_EEPROM_SETTINGS\000"
- 1527      454E5345 
- 1527      525F4C4F 
- 1527      41445F45 
- 1527      4550524F 
- 1528              	.LASF36:
- 1529 04c6 53494E4B 		.ascii	"SINK_UPDATE_COUNTERS\000"
- 1529      5F555044 
- 1529      4154455F 
- 1529      434F554E 
- 1529      54455253 
- 1530              	.LASF61:
- 1531 04db 5052494E 		.ascii	"PRINTER2_GENERIC_JOB_LOGO\000"
- 1531      54455232 
- 1531      5F47454E 
- 1531      45524943 
- 1531      5F4A4F42 
- 1532              	.LASF46:
- 1533 04f5 44495350 		.ascii	"DISPENSER_ENUMERATE_VISIBLE_PUMPS\000"
- 1533      454E5345 
- 1533      525F454E 
- 1533      554D4552 
- 1533      4154455F 
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
  1534              	.LASF31:
  1535 0518 5F426F6F 		.ascii	"_Bool\000"
  1535      6C00
@@ -2186,11 +1978,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  1537      454E5345 
  1537      525F4143 
  1537      51554952 
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 34
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 34
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 34
 
 
  1537      455F434F 
@@ -2250,11 +2038,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  1559      454E5345 
  1559      525F5055 
  1559      4D505F42 
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 35
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 35
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 35
 
 
  1559      4545505F 
@@ -2314,11 +2098,7 @@ ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 1
  1581      73616765 
  1581      74797065 
  1581      00
-<<<<<<< HEAD
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cccXLvfx.s 			page 36
-=======
-ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccJHFNiu.s 			page 36
->>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccKJLVjB.s 			page 36
 
 
  1582              	.LASF67:
