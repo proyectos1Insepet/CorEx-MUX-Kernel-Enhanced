@@ -1,6 +1,10 @@
 // ======================================================================
 // CorEx-Mux-Kernel.v generated from TopDesign.cysch
+<<<<<<< HEAD
 // 04/24/2017 at 07:49
+=======
+// 04/27/2017 at 06:12
+>>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 

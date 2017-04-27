@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 1
+=======
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc6GIS69.s 			page 1
+>>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
 
 
    1              		.syntax unified
@@ -58,7 +62,11 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 1
   32              		.cfi_def_cfa_offset 8
   33              		.cfi_offset 7, -8
   34              		.cfi_offset 14, -4
+<<<<<<< HEAD
 ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 2
+=======
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc6GIS69.s 			page 2
+>>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
 
 
   35 0002 00AF     		add	r7, sp, #0
@@ -118,7 +126,11 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 1
   70              		.loc 1 42 0
   71 0010 0020     		movs	r0, #0
   72 0012 FFF7FEFF 		bl	Clock_CRC_Write
+<<<<<<< HEAD
 ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 3
+=======
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc6GIS69.s 			page 3
+>>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
 
 
   43:.\Security.c  ****     CyDelay(1u);
@@ -178,7 +190,11 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 1
  115 001a FFF7FEFF 		bl	Reset_CRC_Write
   55:.\Security.c  ****     CyDelay(1u);
  116              		.loc 1 55 0
+<<<<<<< HEAD
 ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 4
+=======
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc6GIS69.s 			page 4
+>>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
 
 
  117 001e 0120     		movs	r0, #1
@@ -238,7 +254,11 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 1
  157 005c E8D3     		bcc	.L7
   66:.\Security.c  **** 
   67:.\Security.c  ****     }
+<<<<<<< HEAD
 ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 5
+=======
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc6GIS69.s 			page 5
+>>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
 
 
   68:.\Security.c  ****     retval = CRC_Security_ReadCRC();
@@ -298,7 +318,11 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 1
  203 0014 5340     		eors	r3, r3, r2
  204 0016 FB71     		strb	r3, [r7, #7]
   77:.\Security.c  ****     for (i = 0; i < 8; i++)
+<<<<<<< HEAD
 ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 6
+=======
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc6GIS69.s 			page 6
+>>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
 
 
  205              		.loc 1 77 0
@@ -358,7 +382,11 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 1
  247 0052 5DF8047B 		ldr	r7, [sp], #4
  248              		.cfi_restore 7
  249              		.cfi_def_cfa_offset 0
+<<<<<<< HEAD
 ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 7
+=======
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc6GIS69.s 			page 7
+>>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
 
 
  250 0056 7047     		bx	lr
@@ -418,7 +446,11 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 1
   94:.\Security.c  ****     FOR(uint16 index = 0, index < buffersize, index++)
  296              		.loc 1 94 0 discriminator 3
  297 002c BB89     		ldrh	r3, [r7, #12]
+<<<<<<< HEAD
 ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 8
+=======
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc6GIS69.s 			page 8
+>>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
 
 
  298 002e 0133     		adds	r3, r3, #1
@@ -477,8 +509,13 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 1
  347 0033 02       		.uleb128 0x2
  348 0034 02       		.byte	0x2
  349 0035 05       		.byte	0x5
+<<<<<<< HEAD
  350 0036 FD010000 		.4byte	.LASF2
 ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 9
+=======
+ 350 0036 FC010000 		.4byte	.LASF2
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc6GIS69.s 			page 9
+>>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
 
 
  351 003a 02       		.uleb128 0x2
@@ -538,7 +575,11 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 1
  405 00a2 04       		.byte	0x4
  406 00a3 79010000 		.4byte	.LASF14
  407 00a7 05       		.uleb128 0x5
+<<<<<<< HEAD
 ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 10
+=======
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc6GIS69.s 			page 10
+>>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
 
 
  408 00a8 41010000 		.4byte	.LASF15
@@ -598,7 +639,11 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 1
  462 0118 9C010000 		.4byte	.LASF22
  463 011c 01       		.byte	0x1
  464 011d 30       		.byte	0x30
+<<<<<<< HEAD
 ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 11
+=======
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc6GIS69.s 			page 11
+>>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
 
 
  465 011e 81000000 		.4byte	0x81
@@ -658,7 +703,11 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 1
  519 0184 6E       		.sleb128 -18
  520 0185 0C       		.uleb128 0xc
  521 0186 6900     		.ascii	"i\000"
+<<<<<<< HEAD
 ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 12
+=======
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc6GIS69.s 			page 12
+>>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
 
 
  522 0188 01       		.byte	0x1
@@ -718,7 +767,11 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 1
  576 01ec F0010000 		.4byte	0x1f0
  577 01f0 0E       		.uleb128 0xe
  578 01f1 76000000 		.4byte	0x76
+<<<<<<< HEAD
 ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 13
+=======
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc6GIS69.s 			page 13
+>>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
 
 
  579 01f5 00       		.byte	0
@@ -778,7 +831,11 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 1
  633 0033 08       		.uleb128 0x8
  634 0034 00       		.byte	0
  635 0035 00       		.byte	0
+<<<<<<< HEAD
 ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 14
+=======
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc6GIS69.s 			page 14
+>>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
 
 
  636 0036 05       		.uleb128 0x5
@@ -838,7 +895,11 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 1
  690 006d 27       		.uleb128 0x27
  691 006e 19       		.uleb128 0x19
  692 006f 49       		.uleb128 0x49
+<<<<<<< HEAD
 ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 15
+=======
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc6GIS69.s 			page 15
+>>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
 
 
  693 0070 13       		.uleb128 0x13
@@ -898,7 +959,11 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 1
  747 00a7 27       		.uleb128 0x27
  748 00a8 19       		.uleb128 0x19
  749 00a9 49       		.uleb128 0x49
+<<<<<<< HEAD
 ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 16
+=======
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc6GIS69.s 			page 16
+>>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
 
 
  750 00aa 13       		.uleb128 0x13
@@ -958,7 +1023,11 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 1
  804 0000 3C000000 		.4byte	0x3c
  805 0004 0200     		.2byte	0x2
  806 0006 00000000 		.4byte	.Ldebug_info0
+<<<<<<< HEAD
 ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 17
+=======
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc6GIS69.s 			page 17
+>>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
 
 
  807 000a 04       		.byte	0x4
@@ -1018,7 +1087,11 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 1
  848      20726576 
  848      6973696F 
  848      6E203232 
+<<<<<<< HEAD
 ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 18
+=======
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc6GIS69.s 			page 18
+>>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
 
 
  848      31323230 
@@ -1078,7 +1151,11 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 1
  870      65642069 
  870      6E7400
  871              	.LASF35:
+<<<<<<< HEAD
 ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 19
+=======
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc6GIS69.s 			page 19
+>>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
 
 
  872 016c 49544D5F 		.ascii	"ITM_RxBuffer\000"
@@ -1138,7 +1215,11 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 1
  899              	.LASF2:
  900 01fd 73686F72 		.ascii	"short int\000"
  900      7420696E 
+<<<<<<< HEAD
 ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccaS5ZAV.s 			page 20
+=======
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\cc6GIS69.s 			page 20
+>>>>>>> 5d99cc67d951a7f3c0e17af4c7fa457321941ad2
 
 
  900      7400
