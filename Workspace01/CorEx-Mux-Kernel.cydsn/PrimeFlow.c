@@ -49,301 +49,301 @@ PumpTransaction _g_standardtransactions[] =
 {
     { _PUMP_FILL_BY_MONEY_, 
         {
-//            #ifdef PRIME_MULTIPLE_PRESET
-//            /////////////////////////////////////////////////////////////////////////
-//            //DATA TO PUMP TO START THE PRESET PROCEDURE
-//            /////////////////////////////////////////////////////////////////////////
-//            {
-//                PumpDataToPump,  //Request pointer
-//                AcquireDatatoPumpResponse, //Response pointer
-//                PumpJobTimeout, //Timeout pointer
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _MAX_RETRIES_,
-//                PUMP_DATA_TO_PUMP_RESPONSE_SIZE,//ONE BYTE OF RESPONSE (0xDp = READY TO RECEIVE DATA)
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _RETRY_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            /////////////////////////////////////////////////////////////////////////
-//            //SENDING PRESET INFO (EIGHT DIGITS FOR THE MONEY/VOLUME PRESET)
-//            /////////////////////////////////////////////////////////////////////////
-//            #ifdef _PRESET_NO_HOSE_
-//            {
-//                PumpPresetNoHose, //Request pointer
-//                PNEAR_NULLPTR, 
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _NO_TIMEOUT_,
-//                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _REPUSH_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            #endif
-//            #ifdef _PRESET_HOSE_
-//            {
-//                PumpPresetHose, //Request pointer
-//                PNEAR_NULLPTR, 
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _NO_TIMEOUT_,
-//                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _REPUSH_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            #endif
-//            /////////////////////////////////////////////////////////////////////////
-//            //DATA TO PUMP TO START THE PRESET PROCEDURE
-//            /////////////////////////////////////////////////////////////////////////
-//            {
-//                PumpDataToPump,  //Request pointer
-//                AcquireDatatoPumpResponse, //Response pointer
-//                PumpJobTimeout, //Timeout pointer
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _MAX_RETRIES_,
-//                PUMP_DATA_TO_PUMP_RESPONSE_SIZE,//ONE BYTE OF RESPONSE (0xDp = READY TO RECEIVE DATA)
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _RETRY_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            /////////////////////////////////////////////////////////////////////////
-//            //SENDING PRESET INFO (EIGHT DIGITS FOR THE MONEY/VOLUME PRESET)
-//            /////////////////////////////////////////////////////////////////////////
-//            #ifdef _PRESET_NO_HOSE_
-//            {
-//                PumpPresetNoHose, //Request pointer
-//                PNEAR_NULLPTR, 
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _NO_TIMEOUT_,
-//                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _REPUSH_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            #endif
-//            #ifdef _PRESET_HOSE_
-//            {
-//                PumpPresetHose, //Request pointer
-//                PNEAR_NULLPTR, 
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _NO_TIMEOUT_,
-//                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _REPUSH_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            #endif
-//            /////////////////////////////////////////////////////////////////////////
-//            //DATA TO PUMP TO START THE PRESET PROCEDURE
-//            /////////////////////////////////////////////////////////////////////////
-//            {
-//                PumpDataToPump,  //Request pointer
-//                AcquireDatatoPumpResponse, //Response pointer
-//                PumpJobTimeout, //Timeout pointer
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _MAX_RETRIES_,
-//                PUMP_DATA_TO_PUMP_RESPONSE_SIZE,//ONE BYTE OF RESPONSE (0xDp = READY TO RECEIVE DATA)
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _RETRY_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            /////////////////////////////////////////////////////////////////////////
-//            //SENDING PRESET INFO (EIGHT DIGITS FOR THE MONEY/VOLUME PRESET)
-//            /////////////////////////////////////////////////////////////////////////
-//            #ifdef _PRESET_NO_HOSE_
-//            {
-//                PumpPresetNoHose, //Request pointer
-//                PNEAR_NULLPTR, 
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _NO_TIMEOUT_,
-//                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _REPUSH_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            #endif
-//            #ifdef _PRESET_HOSE_
-//            {
-//                PumpPresetHose, //Request pointer
-//                PNEAR_NULLPTR, 
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _NO_TIMEOUT_,
-//                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _REPUSH_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            #endif
-//            /////////////////////////////////////////////////////////////////////////
-//            //DATA TO PUMP TO START THE PRESET PROCEDURE
-//            /////////////////////////////////////////////////////////////////////////
-//            {
-//                PumpDataToPump,  //Request pointer
-//                AcquireDatatoPumpResponse, //Response pointer
-//                PumpJobTimeout, //Timeout pointer
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _MAX_RETRIES_,
-//                PUMP_DATA_TO_PUMP_RESPONSE_SIZE,//ONE BYTE OF RESPONSE (0xDp = READY TO RECEIVE DATA)
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _RETRY_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            /////////////////////////////////////////////////////////////////////////
-//            //SENDING PRESET INFO (EIGHT DIGITS FOR THE MONEY/VOLUME PRESET)
-//            /////////////////////////////////////////////////////////////////////////
-//            #ifdef _PRESET_NO_HOSE_
-//            {
-//                PumpPresetNoHose, //Request pointer
-//                PNEAR_NULLPTR, 
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _NO_TIMEOUT_,
-//                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _REPUSH_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            #endif
-//            #ifdef _PRESET_HOSE_
-//            {
-//                PumpPresetHose, //Request pointer
-//                PNEAR_NULLPTR, 
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _NO_TIMEOUT_,
-//                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _REPUSH_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            #endif
-//            
-//            #endif
+            #ifdef PRIME_MULTIPLE_PRESET
+            /////////////////////////////////////////////////////////////////////////
+            //DATA TO PUMP TO START THE PRESET PROCEDURE
+            /////////////////////////////////////////////////////////////////////////
+            {
+                PumpDataToPump,  //Request pointer
+                AcquireDatatoPumpResponse, //Response pointer
+                PumpJobTimeout, //Timeout pointer
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _MAX_RETRIES_,
+                PUMP_DATA_TO_PUMP_RESPONSE_SIZE,//ONE BYTE OF RESPONSE (0xDp = READY TO RECEIVE DATA)
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _RETRY_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            /////////////////////////////////////////////////////////////////////////
+            //SENDING PRESET INFO (EIGHT DIGITS FOR THE MONEY/VOLUME PRESET)
+            /////////////////////////////////////////////////////////////////////////
+            #ifdef _PRESET_NO_HOSE_
+            {
+                PumpPresetNoHose, //Request pointer
+                PNEAR_NULLPTR, 
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _NO_TIMEOUT_,
+                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _REPUSH_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            #endif
+            #ifdef _PRESET_HOSE_
+            {
+                PumpPresetHose, //Request pointer
+                PNEAR_NULLPTR, 
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _NO_TIMEOUT_,
+                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _REPUSH_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            #endif
+            /////////////////////////////////////////////////////////////////////////
+            //DATA TO PUMP TO START THE PRESET PROCEDURE
+            /////////////////////////////////////////////////////////////////////////
+            {
+                PumpDataToPump,  //Request pointer
+                AcquireDatatoPumpResponse, //Response pointer
+                PumpJobTimeout, //Timeout pointer
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _MAX_RETRIES_,
+                PUMP_DATA_TO_PUMP_RESPONSE_SIZE,//ONE BYTE OF RESPONSE (0xDp = READY TO RECEIVE DATA)
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _RETRY_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            /////////////////////////////////////////////////////////////////////////
+            //SENDING PRESET INFO (EIGHT DIGITS FOR THE MONEY/VOLUME PRESET)
+            /////////////////////////////////////////////////////////////////////////
+            #ifdef _PRESET_NO_HOSE_
+            {
+                PumpPresetNoHose, //Request pointer
+                PNEAR_NULLPTR, 
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _NO_TIMEOUT_,
+                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _REPUSH_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            #endif
+            #ifdef _PRESET_HOSE_
+            {
+                PumpPresetHose, //Request pointer
+                PNEAR_NULLPTR, 
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _NO_TIMEOUT_,
+                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _REPUSH_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            #endif
+            /////////////////////////////////////////////////////////////////////////
+            //DATA TO PUMP TO START THE PRESET PROCEDURE
+            /////////////////////////////////////////////////////////////////////////
+            {
+                PumpDataToPump,  //Request pointer
+                AcquireDatatoPumpResponse, //Response pointer
+                PumpJobTimeout, //Timeout pointer
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _MAX_RETRIES_,
+                PUMP_DATA_TO_PUMP_RESPONSE_SIZE,//ONE BYTE OF RESPONSE (0xDp = READY TO RECEIVE DATA)
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _RETRY_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            /////////////////////////////////////////////////////////////////////////
+            //SENDING PRESET INFO (EIGHT DIGITS FOR THE MONEY/VOLUME PRESET)
+            /////////////////////////////////////////////////////////////////////////
+            #ifdef _PRESET_NO_HOSE_
+            {
+                PumpPresetNoHose, //Request pointer
+                PNEAR_NULLPTR, 
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _NO_TIMEOUT_,
+                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _REPUSH_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            #endif
+            #ifdef _PRESET_HOSE_
+            {
+                PumpPresetHose, //Request pointer
+                PNEAR_NULLPTR, 
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _NO_TIMEOUT_,
+                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _REPUSH_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            #endif
+            /////////////////////////////////////////////////////////////////////////
+            //DATA TO PUMP TO START THE PRESET PROCEDURE
+            /////////////////////////////////////////////////////////////////////////
+            {
+                PumpDataToPump,  //Request pointer
+                AcquireDatatoPumpResponse, //Response pointer
+                PumpJobTimeout, //Timeout pointer
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _MAX_RETRIES_,
+                PUMP_DATA_TO_PUMP_RESPONSE_SIZE,//ONE BYTE OF RESPONSE (0xDp = READY TO RECEIVE DATA)
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _RETRY_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            /////////////////////////////////////////////////////////////////////////
+            //SENDING PRESET INFO (EIGHT DIGITS FOR THE MONEY/VOLUME PRESET)
+            /////////////////////////////////////////////////////////////////////////
+            #ifdef _PRESET_NO_HOSE_
+            {
+                PumpPresetNoHose, //Request pointer
+                PNEAR_NULLPTR, 
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _NO_TIMEOUT_,
+                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _REPUSH_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            #endif
+            #ifdef _PRESET_HOSE_
+            {
+                PumpPresetHose, //Request pointer
+                PNEAR_NULLPTR, 
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _NO_TIMEOUT_,
+                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _REPUSH_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            #endif
+            
+            #endif
             /////////////////////////////////////////////////////////////////////////
             //DATA TO PUMP TO START THE PRESET PROCEDURE
             /////////////////////////////////////////////////////////////////////////
@@ -371,29 +371,29 @@ PumpTransaction _g_standardtransactions[] =
             /////////////////////////////////////////////////////////////////////////
             //SENDING PRESET INFO (EIGHT DIGITS FOR THE MONEY/VOLUME PRESET)
             /////////////////////////////////////////////////////////////////////////
-//            #ifdef _PRESET_NO_HOSE_
-//            {
-//                PumpPresetNoHose, //Request pointer
-//                PNEAR_NULLPTR, 
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _NO_TIMEOUT_,
-//                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _REPUSH_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            #endif
+            #ifdef _PRESET_NO_HOSE_
+            {
+                PumpPresetNoHose, //Request pointer
+                PNEAR_NULLPTR, 
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _NO_TIMEOUT_,
+                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _REPUSH_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            #endif
             #ifdef _PRESET_HOSE_
             {
                 PumpPresetHose, //Request pointer
@@ -498,301 +498,80 @@ PumpTransaction _g_standardtransactions[] =
     },
     { _PUMP_FILL_BY_VOLUME_, 
         {       
-//            #ifdef PRIME_MULTIPLE_PRESET
-//            /////////////////////////////////////////////////////////////////////////
-//            //DATA TO PUMP TO START THE PRESET PROCEDURE
-//            /////////////////////////////////////////////////////////////////////////
-//            {
-//                PumpDataToPump,  //Request pointer
-//                AcquireDatatoPumpResponse, //Response pointer
-//                PumpJobTimeout, //Timeout pointer
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _MAX_RETRIES_,
-//                PUMP_DATA_TO_PUMP_RESPONSE_SIZE,//ONE BYTE OF RESPONSE (0xDp = READY TO RECEIVE DATA)
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _RETRY_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                InitiateTransaction,
-//                PNEAR_NULLPTR
-//            },
-//            /////////////////////////////////////////////////////////////////////////
-//            //SENDING PRESET INFO (EIGHT DIGITS FOR THE MONEY/VOLUME PRESET)
-//            /////////////////////////////////////////////////////////////////////////
-//            #ifdef _PRESET_NO_HOSE_
-//            {
-//                PumpPresetNoHose, //Request pointer
-//                PNEAR_NULLPTR, 
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _NO_TIMEOUT_,
-//                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _REPUSH_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            #endif
-//            #ifdef _PRESET_HOSE_
-//            {
-//                PumpPresetHose, //Request pointer
-//                PNEAR_NULLPTR, 
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _NO_TIMEOUT_,
-//                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _REPUSH_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            #endif
-//            /////////////////////////////////////////////////////////////////////////
-//            //DATA TO PUMP TO START THE PRESET PROCEDURE
-//            /////////////////////////////////////////////////////////////////////////
-//            {
-//                PumpDataToPump,  //Request pointer
-//                AcquireDatatoPumpResponse, //Response pointer
-//                PumpJobTimeout, //Timeout pointer
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _MAX_RETRIES_,
-//                PUMP_DATA_TO_PUMP_RESPONSE_SIZE,//ONE BYTE OF RESPONSE (0xDp = READY TO RECEIVE DATA)
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _RETRY_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            /////////////////////////////////////////////////////////////////////////
-//            //SENDING PRESET INFO (EIGHT DIGITS FOR THE MONEY/VOLUME PRESET)
-//            /////////////////////////////////////////////////////////////////////////
-//            #ifdef _PRESET_NO_HOSE_
-//            {
-//                PumpPresetNoHose, //Request pointer
-//                PNEAR_NULLPTR, 
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _NO_TIMEOUT_,
-//                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _REPUSH_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            #endif
-//            #ifdef _PRESET_HOSE_
-//            {
-//                PumpPresetHose, //Request pointer
-//                PNEAR_NULLPTR, 
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _NO_TIMEOUT_,
-//                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _REPUSH_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            #endif
-//            /////////////////////////////////////////////////////////////////////////
-//            //DATA TO PUMP TO START THE PRESET PROCEDURE
-//            /////////////////////////////////////////////////////////////////////////
-//            {
-//                PumpDataToPump,  //Request pointer
-//                AcquireDatatoPumpResponse, //Response pointer
-//                PumpJobTimeout, //Timeout pointer
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _MAX_RETRIES_,
-//                PUMP_DATA_TO_PUMP_RESPONSE_SIZE,//ONE BYTE OF RESPONSE (0xDp = READY TO RECEIVE DATA)
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _RETRY_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            /////////////////////////////////////////////////////////////////////////
-//            //SENDING PRESET INFO (EIGHT DIGITS FOR THE MONEY/VOLUME PRESET)
-//            /////////////////////////////////////////////////////////////////////////
-//            #ifdef _PRESET_NO_HOSE_
-//            {
-//                PumpPresetNoHose, //Request pointer
-//                PNEAR_NULLPTR, 
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _NO_TIMEOUT_,
-//                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _REPUSH_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            #endif
-//            #ifdef _PRESET_HOSE_
-//            {
-//                PumpPresetHose, //Request pointer
-//                PNEAR_NULLPTR, 
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _NO_TIMEOUT_,
-//                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _REPUSH_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            #endif
-//            /////////////////////////////////////////////////////////////////////////
-//            //DATA TO PUMP TO START THE PRESET PROCEDURE
-//            /////////////////////////////////////////////////////////////////////////
-//            {
-//                PumpDataToPump,  //Request pointer
-//                AcquireDatatoPumpResponse, //Response pointer
-//                PumpJobTimeout, //Timeout pointer
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _MAX_RETRIES_,
-//                PUMP_DATA_TO_PUMP_RESPONSE_SIZE,//ONE BYTE OF RESPONSE (0xDp = READY TO RECEIVE DATA)
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _RETRY_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            /////////////////////////////////////////////////////////////////////////
-//            //SENDING PRESET INFO (EIGHT DIGITS FOR THE MONEY/VOLUME PRESET)
-//            /////////////////////////////////////////////////////////////////////////
-//            #ifdef _PRESET_NO_HOSE_
-//            {
-//                PumpPresetNoHose, //Request pointer
-//                PNEAR_NULLPTR, 
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _NO_TIMEOUT_,
-//                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _REPUSH_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            #endif
-//            #ifdef _PRESET_HOSE_
-//            {
-//                PumpPresetHose, //Request pointer
-//                PNEAR_NULLPTR, 
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _NO_TIMEOUT_,
-//                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _REPUSH_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            #endif
-//            
-//            #endif
+            #ifdef PRIME_MULTIPLE_PRESET
+            /////////////////////////////////////////////////////////////////////////
+            //DATA TO PUMP TO START THE PRESET PROCEDURE
+            /////////////////////////////////////////////////////////////////////////
+            {
+                PumpDataToPump,  //Request pointer
+                AcquireDatatoPumpResponse, //Response pointer
+                PumpJobTimeout, //Timeout pointer
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _MAX_RETRIES_,
+                PUMP_DATA_TO_PUMP_RESPONSE_SIZE,//ONE BYTE OF RESPONSE (0xDp = READY TO RECEIVE DATA)
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _RETRY_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                InitiateTransaction,
+                PNEAR_NULLPTR
+            },
+            /////////////////////////////////////////////////////////////////////////
+            //SENDING PRESET INFO (EIGHT DIGITS FOR THE MONEY/VOLUME PRESET)
+            /////////////////////////////////////////////////////////////////////////
+            #ifdef _PRESET_NO_HOSE_
+            {
+                PumpPresetNoHose, //Request pointer
+                PNEAR_NULLPTR, 
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _NO_TIMEOUT_,
+                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _REPUSH_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            #endif
+            #ifdef _PRESET_HOSE_
+            {
+                PumpPresetHose, //Request pointer
+                PNEAR_NULLPTR, 
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _NO_TIMEOUT_,
+                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _REPUSH_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            #endif
             /////////////////////////////////////////////////////////////////////////
             //DATA TO PUMP TO START THE PRESET PROCEDURE
             /////////////////////////////////////////////////////////////////////////
@@ -820,29 +599,250 @@ PumpTransaction _g_standardtransactions[] =
             /////////////////////////////////////////////////////////////////////////
             //SENDING PRESET INFO (EIGHT DIGITS FOR THE MONEY/VOLUME PRESET)
             /////////////////////////////////////////////////////////////////////////
-//            #ifdef _PRESET_NO_HOSE_
-//            {
-//                PumpPresetNoHose, //Request pointer
-//                PNEAR_NULLPTR, 
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _NO_TIMEOUT_,
-//                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _REPUSH_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            #endif
+            #ifdef _PRESET_NO_HOSE_
+            {
+                PumpPresetNoHose, //Request pointer
+                PNEAR_NULLPTR, 
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _NO_TIMEOUT_,
+                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _REPUSH_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            #endif
+            #ifdef _PRESET_HOSE_
+            {
+                PumpPresetHose, //Request pointer
+                PNEAR_NULLPTR, 
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _NO_TIMEOUT_,
+                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _REPUSH_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            #endif
+            /////////////////////////////////////////////////////////////////////////
+            //DATA TO PUMP TO START THE PRESET PROCEDURE
+            /////////////////////////////////////////////////////////////////////////
+            {
+                PumpDataToPump,  //Request pointer
+                AcquireDatatoPumpResponse, //Response pointer
+                PumpJobTimeout, //Timeout pointer
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _MAX_RETRIES_,
+                PUMP_DATA_TO_PUMP_RESPONSE_SIZE,//ONE BYTE OF RESPONSE (0xDp = READY TO RECEIVE DATA)
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _RETRY_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            /////////////////////////////////////////////////////////////////////////
+            //SENDING PRESET INFO (EIGHT DIGITS FOR THE MONEY/VOLUME PRESET)
+            /////////////////////////////////////////////////////////////////////////
+            #ifdef _PRESET_NO_HOSE_
+            {
+                PumpPresetNoHose, //Request pointer
+                PNEAR_NULLPTR, 
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _NO_TIMEOUT_,
+                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _REPUSH_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            #endif
+            #ifdef _PRESET_HOSE_
+            {
+                PumpPresetHose, //Request pointer
+                PNEAR_NULLPTR, 
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _NO_TIMEOUT_,
+                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _REPUSH_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            #endif
+            /////////////////////////////////////////////////////////////////////////
+            //DATA TO PUMP TO START THE PRESET PROCEDURE
+            /////////////////////////////////////////////////////////////////////////
+            {
+                PumpDataToPump,  //Request pointer
+                AcquireDatatoPumpResponse, //Response pointer
+                PumpJobTimeout, //Timeout pointer
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _MAX_RETRIES_,
+                PUMP_DATA_TO_PUMP_RESPONSE_SIZE,//ONE BYTE OF RESPONSE (0xDp = READY TO RECEIVE DATA)
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _RETRY_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            /////////////////////////////////////////////////////////////////////////
+            //SENDING PRESET INFO (EIGHT DIGITS FOR THE MONEY/VOLUME PRESET)
+            /////////////////////////////////////////////////////////////////////////
+            #ifdef _PRESET_NO_HOSE_
+            {
+                PumpPresetNoHose, //Request pointer
+                PNEAR_NULLPTR, 
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _NO_TIMEOUT_,
+                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _REPUSH_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            #endif
+            #ifdef _PRESET_HOSE_
+            {
+                PumpPresetHose, //Request pointer
+                PNEAR_NULLPTR, 
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _NO_TIMEOUT_,
+                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _REPUSH_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            #endif
+            
+            #endif
+            /////////////////////////////////////////////////////////////////////////
+            //DATA TO PUMP TO START THE PRESET PROCEDURE
+            /////////////////////////////////////////////////////////////////////////
+            {
+                PumpDataToPump,  //Request pointer
+                AcquireDatatoPumpResponse, //Response pointer
+                PumpJobTimeout, //Timeout pointer
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _MAX_RETRIES_,
+                PUMP_DATA_TO_PUMP_RESPONSE_SIZE,//ONE BYTE OF RESPONSE (0xDp = READY TO RECEIVE DATA)
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _RETRY_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            /////////////////////////////////////////////////////////////////////////
+            //SENDING PRESET INFO (EIGHT DIGITS FOR THE MONEY/VOLUME PRESET)
+            /////////////////////////////////////////////////////////////////////////
+            #ifdef _PRESET_NO_HOSE_
+            {
+                PumpPresetNoHose, //Request pointer
+                PNEAR_NULLPTR, 
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _NO_TIMEOUT_,
+                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _REPUSH_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            #endif
             #ifdef _PRESET_HOSE_
             {
                 PumpPresetHose, //Request pointer
@@ -950,301 +950,301 @@ PumpTransaction _g_standardtransactions[] =
     },
     { _PUMP_FILL_FULL_, 
         {
-//            #ifdef PRIME_MULTIPLE_PRESET
-//            /////////////////////////////////////////////////////////////////////////
-//            //DATA TO PUMP TO START THE PRESET PROCEDURE
-//            /////////////////////////////////////////////////////////////////////////
-//            {
-//                PumpDataToPump,  //Request pointer
-//                AcquireDatatoPumpResponse, //Response pointer
-//                PumpJobTimeout, //Timeout pointer
-//                PNEAR_NULLPTR,
-//                _NO_TIMEOUT_, //Timeout Limit (msecs)
-//                _MAX_RETRIES_,
-//                PUMP_DATA_TO_PUMP_RESPONSE_SIZE,//ONE BYTE OF RESPONSE (0xDp = READY TO RECEIVE DATA)
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _RETRY_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            /////////////////////////////////////////////////////////////////////////
-//            //SENDING PRESET INFO (EIGHT DIGITS FOR THE MONEY/VOLUME PRESET)
-//            /////////////////////////////////////////////////////////////////////////
-//            #ifdef _PRESET_NO_HOSE_
-//            {
-//                PumpFullPresetNoHose, //Request pointer
-//                PNEAR_NULLPTR, 
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _NO_TIMEOUT_,
-//                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _REPUSH_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            #endif
-//            #ifdef _PRESET_HOSE_
-//            {
-//                PumpFullPresetHose, //Request pointer
-//                PNEAR_NULLPTR, 
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _NO_TIMEOUT_,
-//                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _REPUSH_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            #endif
-//            /////////////////////////////////////////////////////////////////////////
-//            //DATA TO PUMP TO START THE PRESET PROCEDURE
-//            /////////////////////////////////////////////////////////////////////////
-//            {
-//                PumpDataToPump,  //Request pointer
-//                AcquireDatatoPumpResponse, //Response pointer
-//                PumpJobTimeout, //Timeout pointer
-//                PNEAR_NULLPTR,
-//                _NO_TIMEOUT_, //Timeout Limit (msecs)
-//                _MAX_RETRIES_,
-//                PUMP_DATA_TO_PUMP_RESPONSE_SIZE,//ONE BYTE OF RESPONSE (0xDp = READY TO RECEIVE DATA)
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _RETRY_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            /////////////////////////////////////////////////////////////////////////
-//            //SENDING PRESET INFO (EIGHT DIGITS FOR THE MONEY/VOLUME PRESET)
-//            /////////////////////////////////////////////////////////////////////////
-//            #ifdef _PRESET_NO_HOSE_
-//            {
-//                PumpFullPresetNoHose, //Request pointer
-//                PNEAR_NULLPTR, 
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _NO_TIMEOUT_,
-//                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _REPUSH_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            #endif
-//            #ifdef _PRESET_HOSE_
-//            {
-//                PumpFullPresetHose, //Request pointer
-//                PNEAR_NULLPTR, 
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _NO_TIMEOUT_,
-//                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _REPUSH_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            #endif
-//            /////////////////////////////////////////////////////////////////////////
-//            //DATA TO PUMP TO START THE PRESET PROCEDURE
-//            /////////////////////////////////////////////////////////////////////////
-//            {
-//                PumpDataToPump,  //Request pointer
-//                AcquireDatatoPumpResponse, //Response pointer
-//                PumpJobTimeout, //Timeout pointer
-//                PNEAR_NULLPTR,
-//                _NO_TIMEOUT_, //Timeout Limit (msecs)
-//                _MAX_RETRIES_,
-//                PUMP_DATA_TO_PUMP_RESPONSE_SIZE,//ONE BYTE OF RESPONSE (0xDp = READY TO RECEIVE DATA)
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _RETRY_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            /////////////////////////////////////////////////////////////////////////
-//            //SENDING PRESET INFO (EIGHT DIGITS FOR THE MONEY/VOLUME PRESET)
-//            /////////////////////////////////////////////////////////////////////////
-//            #ifdef _PRESET_NO_HOSE_
-//            {
-//                PumpFullPresetNoHose, //Request pointer
-//                PNEAR_NULLPTR, 
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _NO_TIMEOUT_,
-//                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _REPUSH_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            #endif
-//            #ifdef _PRESET_HOSE_
-//            {
-//                PumpFullPresetHose, //Request pointer
-//                PNEAR_NULLPTR, 
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _NO_TIMEOUT_,
-//                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _REPUSH_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            #endif
-//            /////////////////////////////////////////////////////////////////////////
-//            //DATA TO PUMP TO START THE PRESET PROCEDURE
-//            /////////////////////////////////////////////////////////////////////////
-//            {
-//                PumpDataToPump,  //Request pointer
-//                AcquireDatatoPumpResponse, //Response pointer
-//                PumpJobTimeout, //Timeout pointer
-//                PNEAR_NULLPTR,
-//                _NO_TIMEOUT_, //Timeout Limit (msecs)
-//                _MAX_RETRIES_,
-//                PUMP_DATA_TO_PUMP_RESPONSE_SIZE,//ONE BYTE OF RESPONSE (0xDp = READY TO RECEIVE DATA)
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _RETRY_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            /////////////////////////////////////////////////////////////////////////
-//            //SENDING PRESET INFO (EIGHT DIGITS FOR THE MONEY/VOLUME PRESET)
-//            /////////////////////////////////////////////////////////////////////////
-//            #ifdef _PRESET_NO_HOSE_
-//            {
-//                PumpFullPresetNoHose, //Request pointer
-//                PNEAR_NULLPTR, 
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _NO_TIMEOUT_,
-//                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _REPUSH_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            #endif
-//            #ifdef _PRESET_HOSE_
-//            {
-//                PumpFullPresetHose, //Request pointer
-//                PNEAR_NULLPTR, 
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _NO_TIMEOUT_,
-//                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _REPUSH_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            #endif
-//            
-//            #endif
+            #ifdef PRIME_MULTIPLE_PRESET
+            /////////////////////////////////////////////////////////////////////////
+            //DATA TO PUMP TO START THE PRESET PROCEDURE
+            /////////////////////////////////////////////////////////////////////////
+            {
+                PumpDataToPump,  //Request pointer
+                AcquireDatatoPumpResponse, //Response pointer
+                PumpJobTimeout, //Timeout pointer
+                PNEAR_NULLPTR,
+                _NO_TIMEOUT_, //Timeout Limit (msecs)
+                _MAX_RETRIES_,
+                PUMP_DATA_TO_PUMP_RESPONSE_SIZE,//ONE BYTE OF RESPONSE (0xDp = READY TO RECEIVE DATA)
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _RETRY_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            /////////////////////////////////////////////////////////////////////////
+            //SENDING PRESET INFO (EIGHT DIGITS FOR THE MONEY/VOLUME PRESET)
+            /////////////////////////////////////////////////////////////////////////
+            #ifdef _PRESET_NO_HOSE_
+            {
+                PumpFullPresetNoHose, //Request pointer
+                PNEAR_NULLPTR, 
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _NO_TIMEOUT_,
+                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _REPUSH_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            #endif
+            #ifdef _PRESET_HOSE_
+            {
+                PumpFullPresetHose, //Request pointer
+                PNEAR_NULLPTR, 
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _NO_TIMEOUT_,
+                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _REPUSH_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            #endif
+            /////////////////////////////////////////////////////////////////////////
+            //DATA TO PUMP TO START THE PRESET PROCEDURE
+            /////////////////////////////////////////////////////////////////////////
+            {
+                PumpDataToPump,  //Request pointer
+                AcquireDatatoPumpResponse, //Response pointer
+                PumpJobTimeout, //Timeout pointer
+                PNEAR_NULLPTR,
+                _NO_TIMEOUT_, //Timeout Limit (msecs)
+                _MAX_RETRIES_,
+                PUMP_DATA_TO_PUMP_RESPONSE_SIZE,//ONE BYTE OF RESPONSE (0xDp = READY TO RECEIVE DATA)
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _RETRY_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            /////////////////////////////////////////////////////////////////////////
+            //SENDING PRESET INFO (EIGHT DIGITS FOR THE MONEY/VOLUME PRESET)
+            /////////////////////////////////////////////////////////////////////////
+            #ifdef _PRESET_NO_HOSE_
+            {
+                PumpFullPresetNoHose, //Request pointer
+                PNEAR_NULLPTR, 
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _NO_TIMEOUT_,
+                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _REPUSH_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            #endif
+            #ifdef _PRESET_HOSE_
+            {
+                PumpFullPresetHose, //Request pointer
+                PNEAR_NULLPTR, 
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _NO_TIMEOUT_,
+                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _REPUSH_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            #endif
+            /////////////////////////////////////////////////////////////////////////
+            //DATA TO PUMP TO START THE PRESET PROCEDURE
+            /////////////////////////////////////////////////////////////////////////
+            {
+                PumpDataToPump,  //Request pointer
+                AcquireDatatoPumpResponse, //Response pointer
+                PumpJobTimeout, //Timeout pointer
+                PNEAR_NULLPTR,
+                _NO_TIMEOUT_, //Timeout Limit (msecs)
+                _MAX_RETRIES_,
+                PUMP_DATA_TO_PUMP_RESPONSE_SIZE,//ONE BYTE OF RESPONSE (0xDp = READY TO RECEIVE DATA)
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _RETRY_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            /////////////////////////////////////////////////////////////////////////
+            //SENDING PRESET INFO (EIGHT DIGITS FOR THE MONEY/VOLUME PRESET)
+            /////////////////////////////////////////////////////////////////////////
+            #ifdef _PRESET_NO_HOSE_
+            {
+                PumpFullPresetNoHose, //Request pointer
+                PNEAR_NULLPTR, 
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _NO_TIMEOUT_,
+                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _REPUSH_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            #endif
+            #ifdef _PRESET_HOSE_
+            {
+                PumpFullPresetHose, //Request pointer
+                PNEAR_NULLPTR, 
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _NO_TIMEOUT_,
+                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _REPUSH_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            #endif
+            /////////////////////////////////////////////////////////////////////////
+            //DATA TO PUMP TO START THE PRESET PROCEDURE
+            /////////////////////////////////////////////////////////////////////////
+            {
+                PumpDataToPump,  //Request pointer
+                AcquireDatatoPumpResponse, //Response pointer
+                PumpJobTimeout, //Timeout pointer
+                PNEAR_NULLPTR,
+                _NO_TIMEOUT_, //Timeout Limit (msecs)
+                _MAX_RETRIES_,
+                PUMP_DATA_TO_PUMP_RESPONSE_SIZE,//ONE BYTE OF RESPONSE (0xDp = READY TO RECEIVE DATA)
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _RETRY_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            /////////////////////////////////////////////////////////////////////////
+            //SENDING PRESET INFO (EIGHT DIGITS FOR THE MONEY/VOLUME PRESET)
+            /////////////////////////////////////////////////////////////////////////
+            #ifdef _PRESET_NO_HOSE_
+            {
+                PumpFullPresetNoHose, //Request pointer
+                PNEAR_NULLPTR, 
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _NO_TIMEOUT_,
+                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _REPUSH_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            #endif
+            #ifdef _PRESET_HOSE_
+            {
+                PumpFullPresetHose, //Request pointer
+                PNEAR_NULLPTR, 
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _NO_TIMEOUT_,
+                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _REPUSH_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            #endif
+            
+            #endif
             /////////////////////////////////////////////////////////////////////////
             //DATA TO PUMP TO START THE PRESET PROCEDURE
             /////////////////////////////////////////////////////////////////////////
@@ -1272,29 +1272,29 @@ PumpTransaction _g_standardtransactions[] =
             /////////////////////////////////////////////////////////////////////////
             //SENDING PRESET INFO (EIGHT DIGITS FOR THE MONEY/VOLUME PRESET)
             /////////////////////////////////////////////////////////////////////////
-//            #ifdef _PRESET_NO_HOSE_
-//            {
-//                PumpFullPresetNoHose, //Request pointer
-//                PNEAR_NULLPTR, 
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR,
-//                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
-//                _NO_TIMEOUT_,
-//                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _REPUSH_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { true, false, false, false },
-//                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            },
-//            #endif
+            #ifdef _PRESET_NO_HOSE_
+            {
+                PumpFullPresetNoHose, //Request pointer
+                PNEAR_NULLPTR, 
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR,
+                _MAX_RESPONSE_TIMEOUT_, //Timeout Limit (msecs)
+                _NO_TIMEOUT_,
+                PUMP_NO_RESPONSE_SIZE,//NO RESPONSE REQUIRED
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _REPUSH_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { true, false, false, false },
+                { PUMP_SEND_DATA, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            },
+            #endif
             #ifdef _PRESET_HOSE_
             {
                 PumpFullPresetHose, //Request pointer
@@ -2212,68 +2212,68 @@ PumpTransaction _g_standardtransactions[] =
             }
         }
     },
-//    { _PUMP_STOP_, 
-//        {
-//            //PUMP STOP COMMAND DIRECTED TO A SINGLE PUMP
-//            {
-//                PumpStopRequest, 
-//                PNEAR_NULLPTR, 
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR,
-//                _NO_TIMEOUT_, 
-//                _NO_TIMEOUT_,
-//                PUMP_NO_RESPONSE_SIZE,
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _REPUSH_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                InitiateTransaction,
-//                TerminateTransaction
-//            },
-//            {
-//                PNEAR_NULLPTR, PNEAR_NULLPTR, PNEAR_NULLPTR, PNEAR_NULLPTR, 0x00, 0x00, 0x00, false, {}, {}, {}, {},
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            }
-//        }
-//    },
-//    { _PUMP_STOPALL_,
-//        {
-//            //PUMP STOP COMMAND DIRECTED TO ALL PUMPS (STOP BROADCAST)
-//            {
-//                PumpStopAllRequest, 
-//                PNEAR_NULLPTR, 
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR,
-//                _NO_TIMEOUT_, 
-//                _NO_TIMEOUT_,
-//                PUMP_NO_RESPONSE_SIZE,
-//                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
-//                _REPUSH_ACTIVATED_,
-//                //Precondition Codes: Validated before executing the main Request.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                //Poscondition Codes:  Validated before executing the Callback.
-//                //If there are codes within the array and none of them is matched, then "RE-PUSH"
-//                { false, false, false, false },
-//                { 0xFF, 0xFF, 0xFF, 0xFF },
-//                InitiateTransaction,
-//                TerminateTransaction
-//            },
-//            {
-//                PNEAR_NULLPTR, PNEAR_NULLPTR, PNEAR_NULLPTR, PNEAR_NULLPTR, 0x00, 0x00, 0x00, false, {}, {}, {}, {},
-//                PNEAR_NULLPTR,
-//                PNEAR_NULLPTR
-//            }
-//        }
-//    },
+    { _PUMP_STOP_, 
+        {
+            //PUMP STOP COMMAND DIRECTED TO A SINGLE PUMP
+            {
+                PumpStopRequest, 
+                PNEAR_NULLPTR, 
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR,
+                _NO_TIMEOUT_, 
+                _NO_TIMEOUT_,
+                PUMP_NO_RESPONSE_SIZE,
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _REPUSH_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                InitiateTransaction,
+                TerminateTransaction
+            },
+            {
+                PNEAR_NULLPTR, PNEAR_NULLPTR, PNEAR_NULLPTR, PNEAR_NULLPTR, 0x00, 0x00, 0x00, false, {}, {}, {}, {},
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            }
+        }
+    },
+    { _PUMP_STOPALL_,
+        {
+            //PUMP STOP COMMAND DIRECTED TO ALL PUMPS (STOP BROADCAST)
+            {
+                PumpStopAllRequest, 
+                PNEAR_NULLPTR, 
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR,
+                _NO_TIMEOUT_, 
+                _NO_TIMEOUT_,
+                PUMP_NO_RESPONSE_SIZE,
+                //If this flag is set, the "_repushtimeoutlimit" field will be interpreted as retries instead of a "Repush TImeout"
+                _REPUSH_ACTIVATED_,
+                //Precondition Codes: Validated before executing the main Request.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                //Poscondition Codes:  Validated before executing the Callback.
+                //If there are codes within the array and none of them is matched, then "RE-PUSH"
+                { false, false, false, false },
+                { 0xFF, 0xFF, 0xFF, 0xFF },
+                InitiateTransaction,
+                TerminateTransaction
+            },
+            {
+                PNEAR_NULLPTR, PNEAR_NULLPTR, PNEAR_NULLPTR, PNEAR_NULLPTR, 0x00, 0x00, 0x00, false, {}, {}, {}, {},
+                PNEAR_NULLPTR,
+                PNEAR_NULLPTR
+            }
+        }
+    },
     { _PUMP_COMPLETE_CONFIGURATION_,
         {
             /////////////////////////////////////////////////////////////////////////

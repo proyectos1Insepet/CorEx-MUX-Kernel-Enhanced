@@ -1707,7 +1707,8 @@ void AcquirePumpHoseActiveState(void *pparam)
                     _ALLOCATE_SINKMESSAGE_SLOT(psinkmsg);
                     if(psinkmsg)
                     {
-                        _g_pumps[(pjob->_ppump->_pumpid)-1]._currenthose = ((pjob->_ppump->_rxbuffer[0x0E] & 0x0F));
+                        uint8 grado = pjob->_ppump->_rxbuffer[0x0E] & 0x0F;
+                        _g_pumps[(pjob->_ppump->_pumpid)-1]._currenthose = ((grado));
                         psinkmsg->_messageid = pjob->_ppump->_sinktransaction;
                         psinkmsg->_messagedelay = _SINK_TIMEOUT_1S_;
                         psinkmsg->_messagetype = DELAYEDALLINTERESTED;

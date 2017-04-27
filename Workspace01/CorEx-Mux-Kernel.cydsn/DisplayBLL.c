@@ -1374,7 +1374,7 @@ void DisplayUpdateHomeAnimation(void *pparam)
             DrawHomeDateTime(pdisplay);
             _g_homeanimarray[DISPLAY1]._timeoutmultiplier = 0;
             _g_homeanimarray[DISPLAY1]._colontoggler = !_g_homeanimarray[DISPLAY1]._colontoggler;
-            char8 *pmessage = "MUX Ver. 19.1.2.G-P";
+            char8 *pmessage = "MUX Ver. 20";
             fontdata._size = 0x01;
             UARTMessage *puartdisp = GetUARTMessageSlot(UART_DISPLAY1);
             if(puartdisp)
