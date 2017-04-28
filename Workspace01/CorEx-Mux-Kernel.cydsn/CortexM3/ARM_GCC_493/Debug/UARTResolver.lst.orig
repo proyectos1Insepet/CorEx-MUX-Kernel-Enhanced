@@ -1,0 +1,985 @@
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3CuIEB.s 			page 1
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccCZ4DRG.s 			page 1
+>>>>>>> 19.1-Test
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"UARTResolver.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	_g_uartresolvers
+  19              		.data
+  20              		.align	2
+  21              		.type	_g_uartresolvers, %object
+  22              		.size	_g_uartresolvers, 48
+  23              	_g_uartresolvers:
+  24 0000 A0       		.byte	-96
+  25 0001 000000   		.space	3
+  26 0004 00000000 		.word	RFUARTBufferResolver
+  27 0008 A1       		.byte	-95
+  28 0009 000000   		.space	3
+  29 000c 00000000 		.word	0
+  30 0010 A2       		.byte	-94
+  31 0011 000000   		.space	3
+  32 0014 00000000 		.word	DispenserBufferResolver
+  33 0018 A3       		.byte	-93
+  34 0019 000000   		.space	3
+  35 001c 00000000 		.word	Display1BufferResolver
+  36 0020 A4       		.byte	-92
+  37 0021 000000   		.space	3
+  38 0024 00000000 		.word	Display2BufferResolver
+  39 0028 A5       		.byte	-91
+  40 0029 000000   		.space	3
+  41 002c 00000000 		.word	0
+  42              		.section	.text.InvokeResolver,"ax",%progbits
+  43              		.align	2
+  44              		.global	InvokeResolver
+  45              		.thumb
+  46              		.thumb_func
+  47              		.type	InvokeResolver, %function
+  48              	InvokeResolver:
+  49              	.LFB0:
+  50              		.file 1 ".\\UARTResolver.c"
+   1:.\UARTResolver.c **** /* ========================================
+   2:.\UARTResolver.c ****  *
+   3:.\UARTResolver.c ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\UARTResolver.c ****  * All Rights Reserved
+   5:.\UARTResolver.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\UARTResolver.c ****  *
+   7:.\UARTResolver.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3CuIEB.s 			page 2
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccCZ4DRG.s 			page 2
+>>>>>>> 19.1-Test
+
+
+   8:.\UARTResolver.c ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\UARTResolver.c ****  *
+  10:.\UARTResolver.c ****  * ========================================
+  11:.\UARTResolver.c **** */
+  12:.\UARTResolver.c **** 
+  13:.\UARTResolver.c **** #include "UARTManager.h"
+  14:.\UARTResolver.c **** 
+  15:.\UARTResolver.c **** bool RFUARTBufferResolver(uint8* pbuffer, uint16 buffersize);
+  16:.\UARTResolver.c **** bool Display1BufferResolver(uint8* pbuffer, uint16 buffersize);
+  17:.\UARTResolver.c **** bool Display2BufferResolver(uint8* pbuffer, uint16 buffersize);
+  18:.\UARTResolver.c **** bool DispenserBufferResolver(uint8* pbuffer, uint16 buffersize);
+  19:.\UARTResolver.c **** 
+  20:.\UARTResolver.c **** //@Created by: HIJH
+  21:.\UARTResolver.c **** //@Date: Septembre 3 de 2016
+  22:.\UARTResolver.c **** //This array of Resolvers handle the incoming data for each UART port. They parse the incoming data
+  23:.\UARTResolver.c **** //and decide when the data is complete to be pushed into the SinkManager.
+  24:.\UARTResolver.c **** UARTResolver _g_uartresolvers[] =  
+  25:.\UARTResolver.c **** {
+  26:.\UARTResolver.c ****     { UART_RF, RFUARTBufferResolver }, 
+  27:.\UARTResolver.c ****     { UART_PRINTER, NULL }, 
+  28:.\UARTResolver.c ****     { UART_DISPENSER, DispenserBufferResolver }, 
+  29:.\UARTResolver.c ****     { UART_DISPLAY1, Display1BufferResolver }, 
+  30:.\UARTResolver.c ****     { UART_DISPLAY2, Display2BufferResolver }, 
+  31:.\UARTResolver.c ****     { UART_NULL, NULL }
+  32:.\UARTResolver.c **** };
+  33:.\UARTResolver.c **** 
+  34:.\UARTResolver.c **** /*
+  35:.\UARTResolver.c **** @bool InvokeUARTResolver(uint8 identifier, char* pbuffer, uint16 buffersize)
+  36:.\UARTResolver.c **** @Created by: HIJH
+  37:.\UARTResolver.c **** @Date: Août 30 de 2016
+  38:.\UARTResolver.c **** 
+  39:.\UARTResolver.c **** This method handles the entire incoming stream and acts according to the status of the Networking S
+  40:.\UARTResolver.c **** and the block size.
+  41:.\UARTResolver.c **** 
+  42:.\UARTResolver.c **** Once a complete stream (block) has been received, this method checks for the length of the block an
+  43:.\UARTResolver.c **** its content.
+  44:.\UARTResolver.c **** */
+  45:.\UARTResolver.c **** bool InvokeResolver(uint8 identifier, uint8* pbuffer, uint16 buffersize)
+  46:.\UARTResolver.c **** {
+  51              		.loc 1 46 0
+  52              		.cfi_startproc
+  53              		@ args = 0, pretend = 0, frame = 16
+  54              		@ frame_needed = 1, uses_anonymous_args = 0
+  55 0000 80B5     		push	{r7, lr}
+  56              		.cfi_def_cfa_offset 8
+  57              		.cfi_offset 7, -8
+  58              		.cfi_offset 14, -4
+  59 0002 84B0     		sub	sp, sp, #16
+  60              		.cfi_def_cfa_offset 24
+  61 0004 00AF     		add	r7, sp, #0
+  62              		.cfi_def_cfa_register 7
+  63 0006 0346     		mov	r3, r0
+  64 0008 3960     		str	r1, [r7]
+  65 000a FB71     		strb	r3, [r7, #7]
+  66 000c 1346     		mov	r3, r2	@ movhi
+  67 000e BB80     		strh	r3, [r7, #4]	@ movhi
+  47:.\UARTResolver.c ****     bool retval = false;
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3CuIEB.s 			page 3
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccCZ4DRG.s 			page 3
+>>>>>>> 19.1-Test
+
+
+  68              		.loc 1 47 0
+  69 0010 0023     		movs	r3, #0
+  70 0012 FB73     		strb	r3, [r7, #15]
+  48:.\UARTResolver.c ****     PNEAR_UARTRESOLVERPTR ptresolveriterator = &_g_uartresolvers[0];
+  71              		.loc 1 48 0
+  72 0014 0E4B     		ldr	r3, .L7
+  73 0016 BB60     		str	r3, [r7, #8]
+  49:.\UARTResolver.c ****     while(ptresolveriterator->_identifier != UART_NULL)
+  74              		.loc 1 49 0
+  75 0018 10E0     		b	.L2
+  76              	.L5:
+  50:.\UARTResolver.c ****     {
+  51:.\UARTResolver.c ****         if(ptresolveriterator->_identifier == identifier)
+  77              		.loc 1 51 0
+  78 001a BB68     		ldr	r3, [r7, #8]
+  79 001c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  80 001e FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+  81 0020 9A42     		cmp	r2, r3
+  82 0022 08D1     		bne	.L3
+  52:.\UARTResolver.c ****         {
+  53:.\UARTResolver.c ****             retval = ptresolveriterator->PtrResolver(pbuffer, buffersize);
+  83              		.loc 1 53 0
+  84 0024 BB68     		ldr	r3, [r7, #8]
+  85 0026 5B68     		ldr	r3, [r3, #4]
+  86 0028 BA88     		ldrh	r2, [r7, #4]
+  87 002a 3868     		ldr	r0, [r7]
+  88 002c 1146     		mov	r1, r2
+  89 002e 9847     		blx	r3
+  90 0030 0346     		mov	r3, r0
+  91 0032 FB73     		strb	r3, [r7, #15]
+  54:.\UARTResolver.c ****             break;
+  92              		.loc 1 54 0
+  93 0034 06E0     		b	.L4
+  94              	.L3:
+  55:.\UARTResolver.c ****         }
+  56:.\UARTResolver.c ****         ptresolveriterator++;
+  95              		.loc 1 56 0
+  96 0036 BB68     		ldr	r3, [r7, #8]
+  97 0038 0833     		adds	r3, r3, #8
+  98 003a BB60     		str	r3, [r7, #8]
+  99              	.L2:
+  49:.\UARTResolver.c ****     {
+ 100              		.loc 1 49 0
+ 101 003c BB68     		ldr	r3, [r7, #8]
+ 102 003e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 103 0040 A52B     		cmp	r3, #165
+ 104 0042 EAD1     		bne	.L5
+ 105              	.L4:
+  57:.\UARTResolver.c ****     }
+  58:.\UARTResolver.c ****     return retval;
+ 106              		.loc 1 58 0
+ 107 0044 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+  59:.\UARTResolver.c **** }
+ 108              		.loc 1 59 0
+ 109 0046 1846     		mov	r0, r3
+ 110 0048 1037     		adds	r7, r7, #16
+ 111              		.cfi_def_cfa_offset 8
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3CuIEB.s 			page 4
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccCZ4DRG.s 			page 4
+>>>>>>> 19.1-Test
+
+
+ 112 004a BD46     		mov	sp, r7
+ 113              		.cfi_def_cfa_register 13
+ 114              		@ sp needed
+ 115 004c 80BD     		pop	{r7, pc}
+ 116              	.L8:
+ 117 004e 00BF     		.align	2
+ 118              	.L7:
+ 119 0050 00000000 		.word	_g_uartresolvers
+ 120              		.cfi_endproc
+ 121              	.LFE0:
+ 122              		.size	InvokeResolver, .-InvokeResolver
+ 123              		.text
+ 124              	.Letext0:
+ 125              		.file 2 "Generated_Source\\PSoC5/cytypes.h"
+ 126              		.file 3 ".\\UARTManager.h"
+ 127              		.section	.debug_info,"",%progbits
+ 128              	.Ldebug_info0:
+ 129 0000 C3010000 		.4byte	0x1c3
+ 130 0004 0400     		.2byte	0x4
+ 131 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 132 000a 04       		.byte	0x4
+ 133 000b 01       		.uleb128 0x1
+ 134 000c 25010000 		.4byte	.LASF32
+ 135 0010 01       		.byte	0x1
+ 136 0011 B2020000 		.4byte	.LASF33
+ 137 0015 88000000 		.4byte	.LASF34
+ 138 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 139 001d 00000000 		.4byte	0
+ 140 0021 00000000 		.4byte	.Ldebug_line0
+ 141 0025 02       		.uleb128 0x2
+ 142 0026 01       		.byte	0x1
+ 143 0027 06       		.byte	0x6
+ 144 0028 91020000 		.4byte	.LASF0
+ 145 002c 02       		.uleb128 0x2
+ 146 002d 01       		.byte	0x1
+ 147 002e 08       		.byte	0x8
+ 148 002f E7000000 		.4byte	.LASF1
+ 149 0033 02       		.uleb128 0x2
+ 150 0034 02       		.byte	0x2
+ 151 0035 05       		.byte	0x5
+ 152 0036 6A020000 		.4byte	.LASF2
+ 153 003a 02       		.uleb128 0x2
+ 154 003b 02       		.byte	0x2
+ 155 003c 07       		.byte	0x7
+ 156 003d 3A000000 		.4byte	.LASF3
+ 157 0041 02       		.uleb128 0x2
+ 158 0042 04       		.byte	0x4
+ 159 0043 05       		.byte	0x5
+ 160 0044 7C020000 		.4byte	.LASF4
+ 161 0048 02       		.uleb128 0x2
+ 162 0049 04       		.byte	0x4
+ 163 004a 07       		.byte	0x7
+ 164 004b FC000000 		.4byte	.LASF5
+ 165 004f 02       		.uleb128 0x2
+ 166 0050 08       		.byte	0x8
+ 167 0051 05       		.byte	0x5
+ 168 0052 22020000 		.4byte	.LASF6
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3CuIEB.s 			page 5
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccCZ4DRG.s 			page 5
+>>>>>>> 19.1-Test
+
+
+ 169 0056 02       		.uleb128 0x2
+ 170 0057 08       		.byte	0x8
+ 171 0058 07       		.byte	0x7
+ 172 0059 02020000 		.4byte	.LASF7
+ 173 005d 03       		.uleb128 0x3
+ 174 005e 04       		.byte	0x4
+ 175 005f 05       		.byte	0x5
+ 176 0060 696E7400 		.ascii	"int\000"
+ 177 0064 02       		.uleb128 0x2
+ 178 0065 04       		.byte	0x4
+ 179 0066 07       		.byte	0x7
+ 180 0067 4D000000 		.4byte	.LASF8
+ 181 006b 04       		.uleb128 0x4
+ 182 006c 0E010000 		.4byte	.LASF9
+ 183 0070 02       		.byte	0x2
+ 184 0071 3801     		.2byte	0x138
+ 185 0073 2C000000 		.4byte	0x2c
+ 186 0077 04       		.uleb128 0x4
+ 187 0078 E3010000 		.4byte	.LASF10
+ 188 007c 02       		.byte	0x2
+ 189 007d 3901     		.2byte	0x139
+ 190 007f 3A000000 		.4byte	0x3a
+ 191 0083 02       		.uleb128 0x2
+ 192 0084 04       		.byte	0x4
+ 193 0085 04       		.byte	0x4
+ 194 0086 82000000 		.4byte	.LASF11
+ 195 008a 02       		.uleb128 0x2
+ 196 008b 08       		.byte	0x8
+ 197 008c 04       		.byte	0x4
+ 198 008d B3010000 		.4byte	.LASF12
+ 199 0091 02       		.uleb128 0x2
+ 200 0092 01       		.byte	0x1
+ 201 0093 08       		.byte	0x8
+ 202 0094 38020000 		.4byte	.LASF13
+ 203 0098 02       		.uleb128 0x2
+ 204 0099 04       		.byte	0x4
+ 205 009a 07       		.byte	0x7
+ 206 009b 19020000 		.4byte	.LASF14
+ 207 009f 02       		.uleb128 0x2
+ 208 00a0 08       		.byte	0x8
+ 209 00a1 04       		.byte	0x4
+ 210 00a2 85020000 		.4byte	.LASF15
+ 211 00a6 05       		.uleb128 0x5
+ 212 00a7 D3010000 		.4byte	.LASF35
+ 213 00ab 08       		.byte	0x8
+ 214 00ac 03       		.byte	0x3
+ 215 00ad 4A       		.byte	0x4a
+ 216 00ae CB000000 		.4byte	0xcb
+ 217 00b2 06       		.uleb128 0x6
+ 218 00b3 76000000 		.4byte	.LASF16
+ 219 00b7 03       		.byte	0x3
+ 220 00b8 4C       		.byte	0x4c
+ 221 00b9 6B000000 		.4byte	0x6b
+ 222 00bd 00       		.byte	0
+ 223 00be 06       		.uleb128 0x6
+ 224 00bf BA010000 		.4byte	.LASF17
+ 225 00c3 03       		.byte	0x3
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3CuIEB.s 			page 6
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccCZ4DRG.s 			page 6
+>>>>>>> 19.1-Test
+
+
+ 226 00c4 4E       		.byte	0x4e
+ 227 00c5 EC000000 		.4byte	0xec
+ 228 00c9 04       		.byte	0x4
+ 229 00ca 00       		.byte	0
+ 230 00cb 07       		.uleb128 0x7
+ 231 00cc DF000000 		.4byte	0xdf
+ 232 00d0 DF000000 		.4byte	0xdf
+ 233 00d4 08       		.uleb128 0x8
+ 234 00d5 E6000000 		.4byte	0xe6
+ 235 00d9 08       		.uleb128 0x8
+ 236 00da 77000000 		.4byte	0x77
+ 237 00de 00       		.byte	0
+ 238 00df 02       		.uleb128 0x2
+ 239 00e0 01       		.byte	0x1
+ 240 00e1 02       		.byte	0x2
+ 241 00e2 9D020000 		.4byte	.LASF18
+ 242 00e6 09       		.uleb128 0x9
+ 243 00e7 04       		.byte	0x4
+ 244 00e8 6B000000 		.4byte	0x6b
+ 245 00ec 09       		.uleb128 0x9
+ 246 00ed 04       		.byte	0x4
+ 247 00ee CB000000 		.4byte	0xcb
+ 248 00f2 0A       		.uleb128 0xa
+ 249 00f3 C6010000 		.4byte	.LASF19
+ 250 00f7 03       		.byte	0x3
+ 251 00f8 4F       		.byte	0x4f
+ 252 00f9 A6000000 		.4byte	0xa6
+ 253 00fd 0A       		.uleb128 0xa
+ 254 00fe 24000000 		.4byte	.LASF20
+ 255 0102 03       		.byte	0x3
+ 256 0103 4F       		.byte	0x4f
+ 257 0104 08010000 		.4byte	0x108
+ 258 0108 09       		.uleb128 0x9
+ 259 0109 04       		.byte	0x4
+ 260 010a A6000000 		.4byte	0xa6
+ 261 010e 0B       		.uleb128 0xb
+ 262 010f 00000000 		.4byte	.LASF36
+ 263 0113 01       		.byte	0x1
+ 264 0114 03       		.byte	0x3
+ 265 0115 6D       		.byte	0x6d
+ 266 0116 45010000 		.4byte	0x145
+ 267 011a 0C       		.uleb128 0xc
+ 268 011b 74020000 		.4byte	.LASF21
+ 269 011f A001     		.sleb128 160
+ 270 0121 0C       		.uleb128 0xc
+ 271 0122 EA010000 		.4byte	.LASF22
+ 272 0126 A101     		.sleb128 161
+ 273 0128 0C       		.uleb128 0xc
+ 274 0129 A3020000 		.4byte	.LASF23
+ 275 012d A201     		.sleb128 162
+ 276 012f 0C       		.uleb128 0xc
+ 277 0130 5A000000 		.4byte	.LASF24
+ 278 0134 A301     		.sleb128 163
+ 279 0136 0C       		.uleb128 0xc
+ 280 0137 68000000 		.4byte	.LASF25
+ 281 013b A401     		.sleb128 164
+ 282 013d 0C       		.uleb128 0xc
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3CuIEB.s 			page 7
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccCZ4DRG.s 			page 7
+>>>>>>> 19.1-Test
+
+
+ 283 013e 1A000000 		.4byte	.LASF26
+ 284 0142 A501     		.sleb128 165
+ 285 0144 00       		.byte	0
+ 286 0145 0D       		.uleb128 0xd
+ 287 0146 5B020000 		.4byte	.LASF37
+ 288 014a 01       		.byte	0x1
+ 289 014b 2D       		.byte	0x2d
+ 290 014c DF000000 		.4byte	0xdf
+ 291 0150 00000000 		.4byte	.LFB0
+ 292 0154 54000000 		.4byte	.LFE0-.LFB0
+ 293 0158 01       		.uleb128 0x1
+ 294 0159 9C       		.byte	0x9c
+ 295 015a A5010000 		.4byte	0x1a5
+ 296 015e 0E       		.uleb128 0xe
+ 297 015f 50020000 		.4byte	.LASF27
+ 298 0163 01       		.byte	0x1
+ 299 0164 2D       		.byte	0x2d
+ 300 0165 6B000000 		.4byte	0x6b
+ 301 0169 02       		.uleb128 0x2
+ 302 016a 91       		.byte	0x91
+ 303 016b 6F       		.sleb128 -17
+ 304 016c 0E       		.uleb128 0xe
+ 305 016d 30020000 		.4byte	.LASF28
+ 306 0171 01       		.byte	0x1
+ 307 0172 2D       		.byte	0x2d
+ 308 0173 E6000000 		.4byte	0xe6
+ 309 0177 02       		.uleb128 0x2
+ 310 0178 91       		.byte	0x91
+ 311 0179 68       		.sleb128 -24
+ 312 017a 0E       		.uleb128 0xe
+ 313 017b F7010000 		.4byte	.LASF29
+ 314 017f 01       		.byte	0x1
+ 315 0180 2D       		.byte	0x2d
+ 316 0181 77000000 		.4byte	0x77
+ 317 0185 02       		.uleb128 0x2
+ 318 0186 91       		.byte	0x91
+ 319 0187 6C       		.sleb128 -20
+ 320 0188 0F       		.uleb128 0xf
+ 321 0189 F5000000 		.4byte	.LASF30
+ 322 018d 01       		.byte	0x1
+ 323 018e 2F       		.byte	0x2f
+ 324 018f DF000000 		.4byte	0xdf
+ 325 0193 02       		.uleb128 0x2
+ 326 0194 91       		.byte	0x91
+ 327 0195 77       		.sleb128 -9
+ 328 0196 0F       		.uleb128 0xf
+ 329 0197 3D020000 		.4byte	.LASF31
+ 330 019b 01       		.byte	0x1
+ 331 019c 30       		.byte	0x30
+ 332 019d FD000000 		.4byte	0xfd
+ 333 01a1 02       		.uleb128 0x2
+ 334 01a2 91       		.byte	0x91
+ 335 01a3 70       		.sleb128 -16
+ 336 01a4 00       		.byte	0
+ 337 01a5 10       		.uleb128 0x10
+ 338 01a6 F2000000 		.4byte	0xf2
+ 339 01aa B5010000 		.4byte	0x1b5
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3CuIEB.s 			page 8
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccCZ4DRG.s 			page 8
+>>>>>>> 19.1-Test
+
+
+ 340 01ae 11       		.uleb128 0x11
+ 341 01af 98000000 		.4byte	0x98
+ 342 01b3 05       		.byte	0x5
+ 343 01b4 00       		.byte	0
+ 344 01b5 12       		.uleb128 0x12
+ 345 01b6 14010000 		.4byte	.LASF38
+ 346 01ba 01       		.byte	0x1
+ 347 01bb 18       		.byte	0x18
+ 348 01bc A5010000 		.4byte	0x1a5
+ 349 01c0 05       		.uleb128 0x5
+ 350 01c1 03       		.byte	0x3
+ 351 01c2 00000000 		.4byte	_g_uartresolvers
+ 352 01c6 00       		.byte	0
+ 353              		.section	.debug_abbrev,"",%progbits
+ 354              	.Ldebug_abbrev0:
+ 355 0000 01       		.uleb128 0x1
+ 356 0001 11       		.uleb128 0x11
+ 357 0002 01       		.byte	0x1
+ 358 0003 25       		.uleb128 0x25
+ 359 0004 0E       		.uleb128 0xe
+ 360 0005 13       		.uleb128 0x13
+ 361 0006 0B       		.uleb128 0xb
+ 362 0007 03       		.uleb128 0x3
+ 363 0008 0E       		.uleb128 0xe
+ 364 0009 1B       		.uleb128 0x1b
+ 365 000a 0E       		.uleb128 0xe
+ 366 000b 55       		.uleb128 0x55
+ 367 000c 17       		.uleb128 0x17
+ 368 000d 11       		.uleb128 0x11
+ 369 000e 01       		.uleb128 0x1
+ 370 000f 10       		.uleb128 0x10
+ 371 0010 17       		.uleb128 0x17
+ 372 0011 00       		.byte	0
+ 373 0012 00       		.byte	0
+ 374 0013 02       		.uleb128 0x2
+ 375 0014 24       		.uleb128 0x24
+ 376 0015 00       		.byte	0
+ 377 0016 0B       		.uleb128 0xb
+ 378 0017 0B       		.uleb128 0xb
+ 379 0018 3E       		.uleb128 0x3e
+ 380 0019 0B       		.uleb128 0xb
+ 381 001a 03       		.uleb128 0x3
+ 382 001b 0E       		.uleb128 0xe
+ 383 001c 00       		.byte	0
+ 384 001d 00       		.byte	0
+ 385 001e 03       		.uleb128 0x3
+ 386 001f 24       		.uleb128 0x24
+ 387 0020 00       		.byte	0
+ 388 0021 0B       		.uleb128 0xb
+ 389 0022 0B       		.uleb128 0xb
+ 390 0023 3E       		.uleb128 0x3e
+ 391 0024 0B       		.uleb128 0xb
+ 392 0025 03       		.uleb128 0x3
+ 393 0026 08       		.uleb128 0x8
+ 394 0027 00       		.byte	0
+ 395 0028 00       		.byte	0
+ 396 0029 04       		.uleb128 0x4
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3CuIEB.s 			page 9
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccCZ4DRG.s 			page 9
+>>>>>>> 19.1-Test
+
+
+ 397 002a 16       		.uleb128 0x16
+ 398 002b 00       		.byte	0
+ 399 002c 03       		.uleb128 0x3
+ 400 002d 0E       		.uleb128 0xe
+ 401 002e 3A       		.uleb128 0x3a
+ 402 002f 0B       		.uleb128 0xb
+ 403 0030 3B       		.uleb128 0x3b
+ 404 0031 05       		.uleb128 0x5
+ 405 0032 49       		.uleb128 0x49
+ 406 0033 13       		.uleb128 0x13
+ 407 0034 00       		.byte	0
+ 408 0035 00       		.byte	0
+ 409 0036 05       		.uleb128 0x5
+ 410 0037 13       		.uleb128 0x13
+ 411 0038 01       		.byte	0x1
+ 412 0039 03       		.uleb128 0x3
+ 413 003a 0E       		.uleb128 0xe
+ 414 003b 0B       		.uleb128 0xb
+ 415 003c 0B       		.uleb128 0xb
+ 416 003d 3A       		.uleb128 0x3a
+ 417 003e 0B       		.uleb128 0xb
+ 418 003f 3B       		.uleb128 0x3b
+ 419 0040 0B       		.uleb128 0xb
+ 420 0041 01       		.uleb128 0x1
+ 421 0042 13       		.uleb128 0x13
+ 422 0043 00       		.byte	0
+ 423 0044 00       		.byte	0
+ 424 0045 06       		.uleb128 0x6
+ 425 0046 0D       		.uleb128 0xd
+ 426 0047 00       		.byte	0
+ 427 0048 03       		.uleb128 0x3
+ 428 0049 0E       		.uleb128 0xe
+ 429 004a 3A       		.uleb128 0x3a
+ 430 004b 0B       		.uleb128 0xb
+ 431 004c 3B       		.uleb128 0x3b
+ 432 004d 0B       		.uleb128 0xb
+ 433 004e 49       		.uleb128 0x49
+ 434 004f 13       		.uleb128 0x13
+ 435 0050 38       		.uleb128 0x38
+ 436 0051 0B       		.uleb128 0xb
+ 437 0052 00       		.byte	0
+ 438 0053 00       		.byte	0
+ 439 0054 07       		.uleb128 0x7
+ 440 0055 15       		.uleb128 0x15
+ 441 0056 01       		.byte	0x1
+ 442 0057 27       		.uleb128 0x27
+ 443 0058 19       		.uleb128 0x19
+ 444 0059 49       		.uleb128 0x49
+ 445 005a 13       		.uleb128 0x13
+ 446 005b 01       		.uleb128 0x1
+ 447 005c 13       		.uleb128 0x13
+ 448 005d 00       		.byte	0
+ 449 005e 00       		.byte	0
+ 450 005f 08       		.uleb128 0x8
+ 451 0060 05       		.uleb128 0x5
+ 452 0061 00       		.byte	0
+ 453 0062 49       		.uleb128 0x49
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3CuIEB.s 			page 10
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccCZ4DRG.s 			page 10
+>>>>>>> 19.1-Test
+
+
+ 454 0063 13       		.uleb128 0x13
+ 455 0064 00       		.byte	0
+ 456 0065 00       		.byte	0
+ 457 0066 09       		.uleb128 0x9
+ 458 0067 0F       		.uleb128 0xf
+ 459 0068 00       		.byte	0
+ 460 0069 0B       		.uleb128 0xb
+ 461 006a 0B       		.uleb128 0xb
+ 462 006b 49       		.uleb128 0x49
+ 463 006c 13       		.uleb128 0x13
+ 464 006d 00       		.byte	0
+ 465 006e 00       		.byte	0
+ 466 006f 0A       		.uleb128 0xa
+ 467 0070 16       		.uleb128 0x16
+ 468 0071 00       		.byte	0
+ 469 0072 03       		.uleb128 0x3
+ 470 0073 0E       		.uleb128 0xe
+ 471 0074 3A       		.uleb128 0x3a
+ 472 0075 0B       		.uleb128 0xb
+ 473 0076 3B       		.uleb128 0x3b
+ 474 0077 0B       		.uleb128 0xb
+ 475 0078 49       		.uleb128 0x49
+ 476 0079 13       		.uleb128 0x13
+ 477 007a 00       		.byte	0
+ 478 007b 00       		.byte	0
+ 479 007c 0B       		.uleb128 0xb
+ 480 007d 04       		.uleb128 0x4
+ 481 007e 01       		.byte	0x1
+ 482 007f 03       		.uleb128 0x3
+ 483 0080 0E       		.uleb128 0xe
+ 484 0081 0B       		.uleb128 0xb
+ 485 0082 0B       		.uleb128 0xb
+ 486 0083 3A       		.uleb128 0x3a
+ 487 0084 0B       		.uleb128 0xb
+ 488 0085 3B       		.uleb128 0x3b
+ 489 0086 0B       		.uleb128 0xb
+ 490 0087 01       		.uleb128 0x1
+ 491 0088 13       		.uleb128 0x13
+ 492 0089 00       		.byte	0
+ 493 008a 00       		.byte	0
+ 494 008b 0C       		.uleb128 0xc
+ 495 008c 28       		.uleb128 0x28
+ 496 008d 00       		.byte	0
+ 497 008e 03       		.uleb128 0x3
+ 498 008f 0E       		.uleb128 0xe
+ 499 0090 1C       		.uleb128 0x1c
+ 500 0091 0D       		.uleb128 0xd
+ 501 0092 00       		.byte	0
+ 502 0093 00       		.byte	0
+ 503 0094 0D       		.uleb128 0xd
+ 504 0095 2E       		.uleb128 0x2e
+ 505 0096 01       		.byte	0x1
+ 506 0097 3F       		.uleb128 0x3f
+ 507 0098 19       		.uleb128 0x19
+ 508 0099 03       		.uleb128 0x3
+ 509 009a 0E       		.uleb128 0xe
+ 510 009b 3A       		.uleb128 0x3a
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3CuIEB.s 			page 11
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccCZ4DRG.s 			page 11
+>>>>>>> 19.1-Test
+
+
+ 511 009c 0B       		.uleb128 0xb
+ 512 009d 3B       		.uleb128 0x3b
+ 513 009e 0B       		.uleb128 0xb
+ 514 009f 27       		.uleb128 0x27
+ 515 00a0 19       		.uleb128 0x19
+ 516 00a1 49       		.uleb128 0x49
+ 517 00a2 13       		.uleb128 0x13
+ 518 00a3 11       		.uleb128 0x11
+ 519 00a4 01       		.uleb128 0x1
+ 520 00a5 12       		.uleb128 0x12
+ 521 00a6 06       		.uleb128 0x6
+ 522 00a7 40       		.uleb128 0x40
+ 523 00a8 18       		.uleb128 0x18
+ 524 00a9 9642     		.uleb128 0x2116
+ 525 00ab 19       		.uleb128 0x19
+ 526 00ac 01       		.uleb128 0x1
+ 527 00ad 13       		.uleb128 0x13
+ 528 00ae 00       		.byte	0
+ 529 00af 00       		.byte	0
+ 530 00b0 0E       		.uleb128 0xe
+ 531 00b1 05       		.uleb128 0x5
+ 532 00b2 00       		.byte	0
+ 533 00b3 03       		.uleb128 0x3
+ 534 00b4 0E       		.uleb128 0xe
+ 535 00b5 3A       		.uleb128 0x3a
+ 536 00b6 0B       		.uleb128 0xb
+ 537 00b7 3B       		.uleb128 0x3b
+ 538 00b8 0B       		.uleb128 0xb
+ 539 00b9 49       		.uleb128 0x49
+ 540 00ba 13       		.uleb128 0x13
+ 541 00bb 02       		.uleb128 0x2
+ 542 00bc 18       		.uleb128 0x18
+ 543 00bd 00       		.byte	0
+ 544 00be 00       		.byte	0
+ 545 00bf 0F       		.uleb128 0xf
+ 546 00c0 34       		.uleb128 0x34
+ 547 00c1 00       		.byte	0
+ 548 00c2 03       		.uleb128 0x3
+ 549 00c3 0E       		.uleb128 0xe
+ 550 00c4 3A       		.uleb128 0x3a
+ 551 00c5 0B       		.uleb128 0xb
+ 552 00c6 3B       		.uleb128 0x3b
+ 553 00c7 0B       		.uleb128 0xb
+ 554 00c8 49       		.uleb128 0x49
+ 555 00c9 13       		.uleb128 0x13
+ 556 00ca 02       		.uleb128 0x2
+ 557 00cb 18       		.uleb128 0x18
+ 558 00cc 00       		.byte	0
+ 559 00cd 00       		.byte	0
+ 560 00ce 10       		.uleb128 0x10
+ 561 00cf 01       		.uleb128 0x1
+ 562 00d0 01       		.byte	0x1
+ 563 00d1 49       		.uleb128 0x49
+ 564 00d2 13       		.uleb128 0x13
+ 565 00d3 01       		.uleb128 0x1
+ 566 00d4 13       		.uleb128 0x13
+ 567 00d5 00       		.byte	0
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3CuIEB.s 			page 12
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccCZ4DRG.s 			page 12
+>>>>>>> 19.1-Test
+
+
+ 568 00d6 00       		.byte	0
+ 569 00d7 11       		.uleb128 0x11
+ 570 00d8 21       		.uleb128 0x21
+ 571 00d9 00       		.byte	0
+ 572 00da 49       		.uleb128 0x49
+ 573 00db 13       		.uleb128 0x13
+ 574 00dc 2F       		.uleb128 0x2f
+ 575 00dd 0B       		.uleb128 0xb
+ 576 00de 00       		.byte	0
+ 577 00df 00       		.byte	0
+ 578 00e0 12       		.uleb128 0x12
+ 579 00e1 34       		.uleb128 0x34
+ 580 00e2 00       		.byte	0
+ 581 00e3 03       		.uleb128 0x3
+ 582 00e4 0E       		.uleb128 0xe
+ 583 00e5 3A       		.uleb128 0x3a
+ 584 00e6 0B       		.uleb128 0xb
+ 585 00e7 3B       		.uleb128 0x3b
+ 586 00e8 0B       		.uleb128 0xb
+ 587 00e9 49       		.uleb128 0x49
+ 588 00ea 13       		.uleb128 0x13
+ 589 00eb 3F       		.uleb128 0x3f
+ 590 00ec 19       		.uleb128 0x19
+ 591 00ed 02       		.uleb128 0x2
+ 592 00ee 18       		.uleb128 0x18
+ 593 00ef 00       		.byte	0
+ 594 00f0 00       		.byte	0
+ 595 00f1 00       		.byte	0
+ 596              		.section	.debug_aranges,"",%progbits
+ 597 0000 1C000000 		.4byte	0x1c
+ 598 0004 0200     		.2byte	0x2
+ 599 0006 00000000 		.4byte	.Ldebug_info0
+ 600 000a 04       		.byte	0x4
+ 601 000b 00       		.byte	0
+ 602 000c 0000     		.2byte	0
+ 603 000e 0000     		.2byte	0
+ 604 0010 00000000 		.4byte	.LFB0
+ 605 0014 54000000 		.4byte	.LFE0-.LFB0
+ 606 0018 00000000 		.4byte	0
+ 607 001c 00000000 		.4byte	0
+ 608              		.section	.debug_ranges,"",%progbits
+ 609              	.Ldebug_ranges0:
+ 610 0000 00000000 		.4byte	.LFB0
+ 611 0004 54000000 		.4byte	.LFE0
+ 612 0008 00000000 		.4byte	0
+ 613 000c 00000000 		.4byte	0
+ 614              		.section	.debug_line,"",%progbits
+ 615              	.Ldebug_line0:
+ 616 0000 81000000 		.section	.debug_str,"MS",%progbits,1
+ 616      02005E00 
+ 616      00000201 
+ 616      FB0E0D00 
+ 616      01010101 
+ 617              	.LASF36:
+ 618 0000 5F554152 		.ascii	"_UART_MANAGERS_AVAILABLE_\000"
+ 618      545F4D41 
+ 618      4E414745 
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3CuIEB.s 			page 13
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccCZ4DRG.s 			page 13
+>>>>>>> 19.1-Test
+
+
+ 618      52535F41 
+ 618      5641494C 
+ 619              	.LASF26:
+ 620 001a 55415254 		.ascii	"UART_NULL\000"
+ 620      5F4E554C 
+ 620      4C00
+ 621              	.LASF20:
+ 622 0024 504E4541 		.ascii	"PNEAR_UARTRESOLVERPTR\000"
+ 622      525F5541 
+ 622      52545245 
+ 622      534F4C56 
+ 622      45525054 
+ 623              	.LASF3:
+ 624 003a 73686F72 		.ascii	"short unsigned int\000"
+ 624      7420756E 
+ 624      7369676E 
+ 624      65642069 
+ 624      6E7400
+ 625              	.LASF8:
+ 626 004d 756E7369 		.ascii	"unsigned int\000"
+ 626      676E6564 
+ 626      20696E74 
+ 626      00
+ 627              	.LASF24:
+ 628 005a 55415254 		.ascii	"UART_DISPLAY1\000"
+ 628      5F444953 
+ 628      504C4159 
+ 628      3100
+ 629              	.LASF25:
+ 630 0068 55415254 		.ascii	"UART_DISPLAY2\000"
+ 630      5F444953 
+ 630      504C4159 
+ 630      3200
+ 631              	.LASF16:
+ 632 0076 5F696465 		.ascii	"_identifier\000"
+ 632      6E746966 
+ 632      69657200 
+ 633              	.LASF11:
+ 634 0082 666C6F61 		.ascii	"float\000"
+ 634      7400
+ 635              	.LASF34:
+ 636 0088 433A5C54 		.ascii	"C:\\TeamInsepet\\NSX-Prime\\Hardware\\CorEx-MUX-Ker"
+ 636      65616D49 
+ 636      6E736570 
+ 636      65745C4E 
+ 636      53582D50 
+ 637 00b7 6E656C2D 		.ascii	"nel-Enhanced\\Workspace01\\CorEx-Mux-Kernel.cydsn\000"
+ 637      456E6861 
+ 637      6E636564 
+ 637      5C576F72 
+ 637      6B737061 
+ 638              	.LASF1:
+ 639 00e7 756E7369 		.ascii	"unsigned char\000"
+ 639      676E6564 
+ 639      20636861 
+ 639      7200
+ 640              	.LASF30:
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3CuIEB.s 			page 14
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccCZ4DRG.s 			page 14
+>>>>>>> 19.1-Test
+
+
+ 641 00f5 72657476 		.ascii	"retval\000"
+ 641      616C00
+ 642              	.LASF5:
+ 643 00fc 6C6F6E67 		.ascii	"long unsigned int\000"
+ 643      20756E73 
+ 643      69676E65 
+ 643      6420696E 
+ 643      7400
+ 644              	.LASF9:
+ 645 010e 75696E74 		.ascii	"uint8\000"
+ 645      3800
+ 646              	.LASF38:
+ 647 0114 5F675F75 		.ascii	"_g_uartresolvers\000"
+ 647      61727472 
+ 647      65736F6C 
+ 647      76657273 
+ 647      00
+ 648              	.LASF32:
+ 649 0125 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 649      4320342E 
+ 649      392E3320 
+ 649      32303135 
+ 649      30333033 
+ 650 0158 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 650      20726576 
+ 650      6973696F 
+ 650      6E203232 
+ 650      31323230 
+ 651 018b 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 651      66756E63 
+ 651      74696F6E 
+ 651      2D736563 
+ 651      74696F6E 
+ 652              	.LASF12:
+ 653 01b3 646F7562 		.ascii	"double\000"
+ 653      6C6500
+ 654              	.LASF17:
+ 655 01ba 50747252 		.ascii	"PtrResolver\000"
+ 655      65736F6C 
+ 655      76657200 
+ 656              	.LASF19:
+ 657 01c6 55415254 		.ascii	"UARTResolver\000"
+ 657      5265736F 
+ 657      6C766572 
+ 657      00
+ 658              	.LASF35:
+ 659 01d3 5F554152 		.ascii	"_UART_RESOLVER_\000"
+ 659      545F5245 
+ 659      534F4C56 
+ 659      45525F00 
+ 660              	.LASF10:
+ 661 01e3 75696E74 		.ascii	"uint16\000"
+ 661      313600
+ 662              	.LASF22:
+ 663 01ea 55415254 		.ascii	"UART_PRINTER\000"
+ 663      5F505249 
+ 663      4E544552 
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3CuIEB.s 			page 15
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccCZ4DRG.s 			page 15
+>>>>>>> 19.1-Test
+
+
+ 663      00
+ 664              	.LASF29:
+ 665 01f7 62756666 		.ascii	"buffersize\000"
+ 665      65727369 
+ 665      7A6500
+ 666              	.LASF7:
+ 667 0202 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 667      206C6F6E 
+ 667      6720756E 
+ 667      7369676E 
+ 667      65642069 
+ 668              	.LASF14:
+ 669 0219 73697A65 		.ascii	"sizetype\000"
+ 669      74797065 
+ 669      00
+ 670              	.LASF6:
+ 671 0222 6C6F6E67 		.ascii	"long long int\000"
+ 671      206C6F6E 
+ 671      6720696E 
+ 671      7400
+ 672              	.LASF28:
+ 673 0230 70627566 		.ascii	"pbuffer\000"
+ 673      66657200 
+ 674              	.LASF13:
+ 675 0238 63686172 		.ascii	"char\000"
+ 675      00
+ 676              	.LASF31:
+ 677 023d 70747265 		.ascii	"ptresolveriterator\000"
+ 677      736F6C76 
+ 677      65726974 
+ 677      65726174 
+ 677      6F7200
+ 678              	.LASF27:
+ 679 0250 6964656E 		.ascii	"identifier\000"
+ 679      74696669 
+ 679      657200
+ 680              	.LASF37:
+ 681 025b 496E766F 		.ascii	"InvokeResolver\000"
+ 681      6B655265 
+ 681      736F6C76 
+ 681      657200
+ 682              	.LASF2:
+ 683 026a 73686F72 		.ascii	"short int\000"
+ 683      7420696E 
+ 683      7400
+ 684              	.LASF21:
+ 685 0274 55415254 		.ascii	"UART_RF\000"
+ 685      5F524600 
+ 686              	.LASF4:
+ 687 027c 6C6F6E67 		.ascii	"long int\000"
+ 687      20696E74 
+ 687      00
+ 688              	.LASF15:
+ 689 0285 6C6F6E67 		.ascii	"long double\000"
+ 689      20646F75 
+ 689      626C6500 
+ 690              	.LASF0:
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3CuIEB.s 			page 16
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccCZ4DRG.s 			page 16
+>>>>>>> 19.1-Test
+
+
+ 691 0291 7369676E 		.ascii	"signed char\000"
+ 691      65642063 
+ 691      68617200 
+ 692              	.LASF18:
+ 693 029d 5F426F6F 		.ascii	"_Bool\000"
+ 693      6C00
+ 694              	.LASF23:
+ 695 02a3 55415254 		.ascii	"UART_DISPENSER\000"
+ 695      5F444953 
+ 695      50454E53 
+ 695      455200
+ 696              	.LASF33:
+ 697 02b2 2E5C5541 		.ascii	".\\UARTResolver.c\000"
+ 697      52545265 
+ 697      736F6C76 
+ 697      65722E63 
+ 697      00
+ 698              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

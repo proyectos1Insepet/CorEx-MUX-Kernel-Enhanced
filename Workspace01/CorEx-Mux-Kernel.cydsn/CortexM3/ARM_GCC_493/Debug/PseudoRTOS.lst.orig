@@ -1,0 +1,865 @@
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccPB4SML.s 			page 1
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccazkx1R.s 			page 1
+>>>>>>> 19.1-Test
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"PseudoRTOS.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.comm	_g_ptr_LOOP,4,4
+  19              		.comm	_g_loop_container,68,4
+  20              		.section	.text.loop_push,"ax",%progbits
+  21              		.align	2
+  22              		.global	loop_push
+  23              		.thumb
+  24              		.thumb_func
+  25              		.type	loop_push, %function
+  26              	loop_push:
+  27              	.LFB0:
+  28              		.file 1 ".\\PseudoRTOS.c"
+   1:.\PseudoRTOS.c **** /* ========================================
+   2:.\PseudoRTOS.c ****  *
+   3:.\PseudoRTOS.c ****  * Copyright INSEPET SISTEMAS, 2016
+   4:.\PseudoRTOS.c ****  * All Rights Reserved
+   5:.\PseudoRTOS.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\PseudoRTOS.c ****  *
+   7:.\PseudoRTOS.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\PseudoRTOS.c ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\PseudoRTOS.c ****  *
+  10:.\PseudoRTOS.c ****  * ========================================
+  11:.\PseudoRTOS.c **** @Created by: HIJH
+  12:.\PseudoRTOS.c **** @Date: Septembre 2 de 2016
+  13:.\PseudoRTOS.c **** */
+  14:.\PseudoRTOS.c **** #include "GlobalDefinitions.h"
+  15:.\PseudoRTOS.c **** 
+  16:.\PseudoRTOS.c **** PTR_LOOP _g_ptr_LOOP;
+  17:.\PseudoRTOS.c **** LOOPContainer _g_loop_container;
+  18:.\PseudoRTOS.c **** 
+  19:.\PseudoRTOS.c **** //@Created By: HIJH
+  20:.\PseudoRTOS.c **** //@Septembre de 2016
+  21:.\PseudoRTOS.c **** void loop_push(PTR_LOOP _func)
+  22:.\PseudoRTOS.c **** {
+  29              		.loc 1 22 0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 8
+  32              		@ frame_needed = 1, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  34 0000 80B4     		push	{r7}
+  35              		.cfi_def_cfa_offset 4
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccPB4SML.s 			page 2
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccazkx1R.s 			page 2
+>>>>>>> 19.1-Test
+
+
+  36              		.cfi_offset 7, -4
+  37 0002 83B0     		sub	sp, sp, #12
+  38              		.cfi_def_cfa_offset 16
+  39 0004 00AF     		add	r7, sp, #0
+  40              		.cfi_def_cfa_register 7
+  41 0006 7860     		str	r0, [r7, #4]
+  23:.\PseudoRTOS.c ****     if(_g_loop_container._index < _MAX_LOOP_POINTERS)
+  42              		.loc 1 23 0
+  43 0008 0B4B     		ldr	r3, .L3
+  44 000a 93F84030 		ldrb	r3, [r3, #64]	@ zero_extendqisi2
+  45 000e 0F2B     		cmp	r3, #15
+  46 0010 0CD8     		bhi	.L1
+  24:.\PseudoRTOS.c ****         _g_loop_container._ptrarr[_g_loop_container._index++] = _func;
+  47              		.loc 1 24 0
+  48 0012 094B     		ldr	r3, .L3
+  49 0014 93F84030 		ldrb	r3, [r3, #64]	@ zero_extendqisi2
+  50 0018 5A1C     		adds	r2, r3, #1
+  51 001a D1B2     		uxtb	r1, r2
+  52 001c 064A     		ldr	r2, .L3
+  53 001e 82F84010 		strb	r1, [r2, #64]
+  54 0022 1946     		mov	r1, r3
+  55 0024 044A     		ldr	r2, .L3
+  56 0026 7B68     		ldr	r3, [r7, #4]
+  57 0028 42F82130 		str	r3, [r2, r1, lsl #2]
+  58              	.L1:
+  25:.\PseudoRTOS.c **** }
+  59              		.loc 1 25 0
+  60 002c 0C37     		adds	r7, r7, #12
+  61              		.cfi_def_cfa_offset 4
+  62 002e BD46     		mov	sp, r7
+  63              		.cfi_def_cfa_register 13
+  64              		@ sp needed
+  65 0030 5DF8047B 		ldr	r7, [sp], #4
+  66              		.cfi_restore 7
+  67              		.cfi_def_cfa_offset 0
+  68 0034 7047     		bx	lr
+  69              	.L4:
+  70 0036 00BF     		.align	2
+  71              	.L3:
+  72 0038 00000000 		.word	_g_loop_container
+  73              		.cfi_endproc
+  74              	.LFE0:
+  75              		.size	loop_push, .-loop_push
+  76              		.section	.text.loop_invoke,"ax",%progbits
+  77              		.align	2
+  78              		.global	loop_invoke
+  79              		.thumb
+  80              		.thumb_func
+  81              		.type	loop_invoke, %function
+  82              	loop_invoke:
+  83              	.LFB1:
+  26:.\PseudoRTOS.c **** 
+  27:.\PseudoRTOS.c **** //@Created By: HIJH
+  28:.\PseudoRTOS.c **** //@Septembre de 2016
+  29:.\PseudoRTOS.c **** void loop_invoke()
+  30:.\PseudoRTOS.c **** {
+  84              		.loc 1 30 0
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccPB4SML.s 			page 3
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccazkx1R.s 			page 3
+>>>>>>> 19.1-Test
+
+
+  85              		.cfi_startproc
+  86              		@ args = 0, pretend = 0, frame = 8
+  87              		@ frame_needed = 1, uses_anonymous_args = 0
+  88 0000 80B5     		push	{r7, lr}
+  89              		.cfi_def_cfa_offset 8
+  90              		.cfi_offset 7, -8
+  91              		.cfi_offset 14, -4
+  92 0002 82B0     		sub	sp, sp, #8
+  93              		.cfi_def_cfa_offset 16
+  94 0004 00AF     		add	r7, sp, #0
+  95              		.cfi_def_cfa_register 7
+  31:.\PseudoRTOS.c ****     FOR(uint8_t ndx = 0, ndx < _g_loop_container._index, ndx++)
+  96              		.loc 1 31 0
+  97 0006 0023     		movs	r3, #0
+  98 0008 FB71     		strb	r3, [r7, #7]
+  99 000a 11E0     		b	.L6
+ 100              	.L10:
+  32:.\PseudoRTOS.c ****     {
+  33:.\PseudoRTOS.c ****         _g_ptr_LOOP = _g_loop_container._ptrarr[ndx];
+ 101              		.loc 1 33 0
+ 102 000c FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 103 000e 0D4A     		ldr	r2, .L12
+ 104 0010 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 105 0014 0C4A     		ldr	r2, .L12+4
+ 106 0016 1360     		str	r3, [r2]
+  34:.\PseudoRTOS.c ****         if(_g_ptr_LOOP)
+ 107              		.loc 1 34 0
+ 108 0018 0B4B     		ldr	r3, .L12+4
+ 109 001a 1B68     		ldr	r3, [r3]
+ 110 001c 002B     		cmp	r3, #0
+ 111 001e 03D0     		beq	.L7
+  35:.\PseudoRTOS.c ****              _g_ptr_LOOP();
+ 112              		.loc 1 35 0
+ 113 0020 094B     		ldr	r3, .L12+4
+ 114 0022 1B68     		ldr	r3, [r3]
+ 115 0024 9847     		blx	r3
+ 116 0026 00E0     		b	.L11
+ 117              	.L7:
+  36:.\PseudoRTOS.c ****         else
+  37:.\PseudoRTOS.c ****             break;
+ 118              		.loc 1 37 0
+ 119 0028 08E0     		b	.L5
+ 120              	.L11:
+  31:.\PseudoRTOS.c ****     {
+ 121              		.loc 1 31 0 discriminator 2
+ 122 002a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 123 002c 0133     		adds	r3, r3, #1
+ 124 002e FB71     		strb	r3, [r7, #7]
+ 125              	.L6:
+  31:.\PseudoRTOS.c ****     {
+ 126              		.loc 1 31 0 is_stmt 0 discriminator 1
+ 127 0030 044B     		ldr	r3, .L12
+ 128 0032 93F84030 		ldrb	r3, [r3, #64]	@ zero_extendqisi2
+ 129 0036 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 130 0038 9A42     		cmp	r2, r3
+ 131 003a E7D3     		bcc	.L10
+ 132              	.L5:
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccPB4SML.s 			page 4
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccazkx1R.s 			page 4
+>>>>>>> 19.1-Test
+
+
+  38:.\PseudoRTOS.c ****     }
+  39:.\PseudoRTOS.c **** }
+ 133              		.loc 1 39 0 is_stmt 1
+ 134 003c 0837     		adds	r7, r7, #8
+ 135              		.cfi_def_cfa_offset 8
+ 136 003e BD46     		mov	sp, r7
+ 137              		.cfi_def_cfa_register 13
+ 138              		@ sp needed
+ 139 0040 80BD     		pop	{r7, pc}
+ 140              	.L13:
+ 141 0042 00BF     		.align	2
+ 142              	.L12:
+ 143 0044 00000000 		.word	_g_loop_container
+ 144 0048 00000000 		.word	_g_ptr_LOOP
+ 145              		.cfi_endproc
+ 146              	.LFE1:
+ 147              		.size	loop_invoke, .-loop_invoke
+ 148              		.text
+ 149              	.Letext0:
+ 150              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 151              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 152              		.file 4 ".\\GlobalDefinitions.h"
+ 153              		.section	.debug_info,"",%progbits
+ 154              	.Ldebug_info0:
+ 155 0000 63010000 		.4byte	0x163
+ 156 0004 0400     		.2byte	0x4
+ 157 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 158 000a 04       		.byte	0x4
+ 159 000b 01       		.uleb128 0x1
+ 160 000c 1F000000 		.4byte	.LASF22
+ 161 0010 01       		.byte	0x1
+ 162 0011 AD000000 		.4byte	.LASF23
+ 163 0015 AA010000 		.4byte	.LASF24
+ 164 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 165 001d 00000000 		.4byte	0
+ 166 0021 00000000 		.4byte	.Ldebug_line0
+ 167 0025 02       		.uleb128 0x2
+ 168 0026 01       		.byte	0x1
+ 169 0027 06       		.byte	0x6
+ 170 0028 1E020000 		.4byte	.LASF0
+ 171 002c 03       		.uleb128 0x3
+ 172 002d 07000000 		.4byte	.LASF9
+ 173 0031 02       		.byte	0x2
+ 174 0032 1D       		.byte	0x1d
+ 175 0033 37000000 		.4byte	0x37
+ 176 0037 02       		.uleb128 0x2
+ 177 0038 01       		.byte	0x1
+ 178 0039 08       		.byte	0x8
+ 179 003a E2000000 		.4byte	.LASF1
+ 180 003e 02       		.uleb128 0x2
+ 181 003f 02       		.byte	0x2
+ 182 0040 05       		.byte	0x5
+ 183 0041 A0010000 		.4byte	.LASF2
+ 184 0045 02       		.uleb128 0x2
+ 185 0046 02       		.byte	0x2
+ 186 0047 07       		.byte	0x7
+ 187 0048 02010000 		.4byte	.LASF3
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccPB4SML.s 			page 5
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccazkx1R.s 			page 5
+>>>>>>> 19.1-Test
+
+
+ 188 004c 02       		.uleb128 0x2
+ 189 004d 04       		.byte	0x4
+ 190 004e 05       		.byte	0x5
+ 191 004f 09020000 		.4byte	.LASF4
+ 192 0053 02       		.uleb128 0x2
+ 193 0054 04       		.byte	0x4
+ 194 0055 07       		.byte	0x7
+ 195 0056 F0000000 		.4byte	.LASF5
+ 196 005a 02       		.uleb128 0x2
+ 197 005b 08       		.byte	0x8
+ 198 005c 05       		.byte	0x5
+ 199 005d 7A010000 		.4byte	.LASF6
+ 200 0061 02       		.uleb128 0x2
+ 201 0062 08       		.byte	0x8
+ 202 0063 07       		.byte	0x7
+ 203 0064 35010000 		.4byte	.LASF7
+ 204 0068 04       		.uleb128 0x4
+ 205 0069 04       		.byte	0x4
+ 206 006a 05       		.byte	0x5
+ 207 006b 696E7400 		.ascii	"int\000"
+ 208 006f 02       		.uleb128 0x2
+ 209 0070 04       		.byte	0x4
+ 210 0071 07       		.byte	0x7
+ 211 0072 1C010000 		.4byte	.LASF8
+ 212 0076 03       		.uleb128 0x3
+ 213 0077 4C010000 		.4byte	.LASF10
+ 214 007b 03       		.byte	0x3
+ 215 007c 15       		.byte	0x15
+ 216 007d 2C000000 		.4byte	0x2c
+ 217 0081 02       		.uleb128 0x2
+ 218 0082 04       		.byte	0x4
+ 219 0083 04       		.byte	0x4
+ 220 0084 CA000000 		.4byte	.LASF11
+ 221 0088 02       		.uleb128 0x2
+ 222 0089 08       		.byte	0x8
+ 223 008a 04       		.byte	0x4
+ 224 008b 15010000 		.4byte	.LASF12
+ 225 008f 02       		.uleb128 0x2
+ 226 0090 01       		.byte	0x1
+ 227 0091 08       		.byte	0x8
+ 228 0092 88010000 		.4byte	.LASF13
+ 229 0096 02       		.uleb128 0x2
+ 230 0097 04       		.byte	0x4
+ 231 0098 07       		.byte	0x7
+ 232 0099 71010000 		.4byte	.LASF14
+ 233 009d 02       		.uleb128 0x2
+ 234 009e 08       		.byte	0x8
+ 235 009f 04       		.byte	0x4
+ 236 00a0 12020000 		.4byte	.LASF15
+ 237 00a4 03       		.uleb128 0x3
+ 238 00a5 97010000 		.4byte	.LASF16
+ 239 00a9 04       		.byte	0x4
+ 240 00aa 27       		.byte	0x27
+ 241 00ab AF000000 		.4byte	0xaf
+ 242 00af 05       		.uleb128 0x5
+ 243 00b0 04       		.byte	0x4
+ 244 00b1 B5000000 		.4byte	0xb5
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccPB4SML.s 			page 6
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccazkx1R.s 			page 6
+>>>>>>> 19.1-Test
+
+
+ 245 00b5 06       		.uleb128 0x6
+ 246 00b6 BC000000 		.4byte	0xbc
+ 247 00ba 07       		.uleb128 0x7
+ 248 00bb 00       		.byte	0
+ 249 00bc 08       		.uleb128 0x8
+ 250 00bd 60010000 		.4byte	.LASF25
+ 251 00c1 44       		.byte	0x44
+ 252 00c2 04       		.byte	0x4
+ 253 00c3 2C       		.byte	0x2c
+ 254 00c4 E1000000 		.4byte	0xe1
+ 255 00c8 09       		.uleb128 0x9
+ 256 00c9 17000000 		.4byte	.LASF17
+ 257 00cd 04       		.byte	0x4
+ 258 00ce 2E       		.byte	0x2e
+ 259 00cf E1000000 		.4byte	0xe1
+ 260 00d3 00       		.byte	0
+ 261 00d4 09       		.uleb128 0x9
+ 262 00d5 00000000 		.4byte	.LASF18
+ 263 00d9 04       		.byte	0x4
+ 264 00da 2F       		.byte	0x2f
+ 265 00db 76000000 		.4byte	0x76
+ 266 00df 40       		.byte	0x40
+ 267 00e0 00       		.byte	0
+ 268 00e1 0A       		.uleb128 0xa
+ 269 00e2 A4000000 		.4byte	0xa4
+ 270 00e6 F1000000 		.4byte	0xf1
+ 271 00ea 0B       		.uleb128 0xb
+ 272 00eb 96000000 		.4byte	0x96
+ 273 00ef 0F       		.byte	0xf
+ 274 00f0 00       		.byte	0
+ 275 00f1 03       		.uleb128 0x3
+ 276 00f2 BC000000 		.4byte	.LASF19
+ 277 00f6 04       		.byte	0x4
+ 278 00f7 31       		.byte	0x31
+ 279 00f8 BC000000 		.4byte	0xbc
+ 280 00fc 0C       		.uleb128 0xc
+ 281 00fd 8D010000 		.4byte	.LASF26
+ 282 0101 01       		.byte	0x1
+ 283 0102 15       		.byte	0x15
+ 284 0103 00000000 		.4byte	.LFB0
+ 285 0107 3C000000 		.4byte	.LFE0-.LFB0
+ 286 010b 01       		.uleb128 0x1
+ 287 010c 9C       		.byte	0x9c
+ 288 010d 20010000 		.4byte	0x120
+ 289 0111 0D       		.uleb128 0xd
+ 290 0112 11000000 		.4byte	.LASF27
+ 291 0116 01       		.byte	0x1
+ 292 0117 15       		.byte	0x15
+ 293 0118 A4000000 		.4byte	0xa4
+ 294 011c 02       		.uleb128 0x2
+ 295 011d 91       		.byte	0x91
+ 296 011e 74       		.sleb128 -12
+ 297 011f 00       		.byte	0
+ 298 0120 0E       		.uleb128 0xe
+ 299 0121 54010000 		.4byte	.LASF28
+ 300 0125 01       		.byte	0x1
+ 301 0126 1D       		.byte	0x1d
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccPB4SML.s 			page 7
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccazkx1R.s 			page 7
+>>>>>>> 19.1-Test
+
+
+ 302 0127 00000000 		.4byte	.LFB1
+ 303 012b 4C000000 		.4byte	.LFE1-.LFB1
+ 304 012f 01       		.uleb128 0x1
+ 305 0130 9C       		.byte	0x9c
+ 306 0131 44010000 		.4byte	0x144
+ 307 0135 0F       		.uleb128 0xf
+ 308 0136 6E647800 		.ascii	"ndx\000"
+ 309 013a 01       		.byte	0x1
+ 310 013b 1F       		.byte	0x1f
+ 311 013c 76000000 		.4byte	0x76
+ 312 0140 02       		.uleb128 0x2
+ 313 0141 91       		.byte	0x91
+ 314 0142 77       		.sleb128 -9
+ 315 0143 00       		.byte	0
+ 316 0144 10       		.uleb128 0x10
+ 317 0145 29010000 		.4byte	.LASF20
+ 318 0149 01       		.byte	0x1
+ 319 014a 10       		.byte	0x10
+ 320 014b A4000000 		.4byte	0xa4
+ 321 014f 05       		.uleb128 0x5
+ 322 0150 03       		.byte	0x3
+ 323 0151 00000000 		.4byte	_g_ptr_LOOP
+ 324 0155 10       		.uleb128 0x10
+ 325 0156 D0000000 		.4byte	.LASF21
+ 326 015a 01       		.byte	0x1
+ 327 015b 11       		.byte	0x11
+ 328 015c F1000000 		.4byte	0xf1
+ 329 0160 05       		.uleb128 0x5
+ 330 0161 03       		.byte	0x3
+ 331 0162 00000000 		.4byte	_g_loop_container
+ 332 0166 00       		.byte	0
+ 333              		.section	.debug_abbrev,"",%progbits
+ 334              	.Ldebug_abbrev0:
+ 335 0000 01       		.uleb128 0x1
+ 336 0001 11       		.uleb128 0x11
+ 337 0002 01       		.byte	0x1
+ 338 0003 25       		.uleb128 0x25
+ 339 0004 0E       		.uleb128 0xe
+ 340 0005 13       		.uleb128 0x13
+ 341 0006 0B       		.uleb128 0xb
+ 342 0007 03       		.uleb128 0x3
+ 343 0008 0E       		.uleb128 0xe
+ 344 0009 1B       		.uleb128 0x1b
+ 345 000a 0E       		.uleb128 0xe
+ 346 000b 55       		.uleb128 0x55
+ 347 000c 17       		.uleb128 0x17
+ 348 000d 11       		.uleb128 0x11
+ 349 000e 01       		.uleb128 0x1
+ 350 000f 10       		.uleb128 0x10
+ 351 0010 17       		.uleb128 0x17
+ 352 0011 00       		.byte	0
+ 353 0012 00       		.byte	0
+ 354 0013 02       		.uleb128 0x2
+ 355 0014 24       		.uleb128 0x24
+ 356 0015 00       		.byte	0
+ 357 0016 0B       		.uleb128 0xb
+ 358 0017 0B       		.uleb128 0xb
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccPB4SML.s 			page 8
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccazkx1R.s 			page 8
+>>>>>>> 19.1-Test
+
+
+ 359 0018 3E       		.uleb128 0x3e
+ 360 0019 0B       		.uleb128 0xb
+ 361 001a 03       		.uleb128 0x3
+ 362 001b 0E       		.uleb128 0xe
+ 363 001c 00       		.byte	0
+ 364 001d 00       		.byte	0
+ 365 001e 03       		.uleb128 0x3
+ 366 001f 16       		.uleb128 0x16
+ 367 0020 00       		.byte	0
+ 368 0021 03       		.uleb128 0x3
+ 369 0022 0E       		.uleb128 0xe
+ 370 0023 3A       		.uleb128 0x3a
+ 371 0024 0B       		.uleb128 0xb
+ 372 0025 3B       		.uleb128 0x3b
+ 373 0026 0B       		.uleb128 0xb
+ 374 0027 49       		.uleb128 0x49
+ 375 0028 13       		.uleb128 0x13
+ 376 0029 00       		.byte	0
+ 377 002a 00       		.byte	0
+ 378 002b 04       		.uleb128 0x4
+ 379 002c 24       		.uleb128 0x24
+ 380 002d 00       		.byte	0
+ 381 002e 0B       		.uleb128 0xb
+ 382 002f 0B       		.uleb128 0xb
+ 383 0030 3E       		.uleb128 0x3e
+ 384 0031 0B       		.uleb128 0xb
+ 385 0032 03       		.uleb128 0x3
+ 386 0033 08       		.uleb128 0x8
+ 387 0034 00       		.byte	0
+ 388 0035 00       		.byte	0
+ 389 0036 05       		.uleb128 0x5
+ 390 0037 0F       		.uleb128 0xf
+ 391 0038 00       		.byte	0
+ 392 0039 0B       		.uleb128 0xb
+ 393 003a 0B       		.uleb128 0xb
+ 394 003b 49       		.uleb128 0x49
+ 395 003c 13       		.uleb128 0x13
+ 396 003d 00       		.byte	0
+ 397 003e 00       		.byte	0
+ 398 003f 06       		.uleb128 0x6
+ 399 0040 15       		.uleb128 0x15
+ 400 0041 01       		.byte	0x1
+ 401 0042 01       		.uleb128 0x1
+ 402 0043 13       		.uleb128 0x13
+ 403 0044 00       		.byte	0
+ 404 0045 00       		.byte	0
+ 405 0046 07       		.uleb128 0x7
+ 406 0047 18       		.uleb128 0x18
+ 407 0048 00       		.byte	0
+ 408 0049 00       		.byte	0
+ 409 004a 00       		.byte	0
+ 410 004b 08       		.uleb128 0x8
+ 411 004c 13       		.uleb128 0x13
+ 412 004d 01       		.byte	0x1
+ 413 004e 03       		.uleb128 0x3
+ 414 004f 0E       		.uleb128 0xe
+ 415 0050 0B       		.uleb128 0xb
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccPB4SML.s 			page 9
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccazkx1R.s 			page 9
+>>>>>>> 19.1-Test
+
+
+ 416 0051 0B       		.uleb128 0xb
+ 417 0052 3A       		.uleb128 0x3a
+ 418 0053 0B       		.uleb128 0xb
+ 419 0054 3B       		.uleb128 0x3b
+ 420 0055 0B       		.uleb128 0xb
+ 421 0056 01       		.uleb128 0x1
+ 422 0057 13       		.uleb128 0x13
+ 423 0058 00       		.byte	0
+ 424 0059 00       		.byte	0
+ 425 005a 09       		.uleb128 0x9
+ 426 005b 0D       		.uleb128 0xd
+ 427 005c 00       		.byte	0
+ 428 005d 03       		.uleb128 0x3
+ 429 005e 0E       		.uleb128 0xe
+ 430 005f 3A       		.uleb128 0x3a
+ 431 0060 0B       		.uleb128 0xb
+ 432 0061 3B       		.uleb128 0x3b
+ 433 0062 0B       		.uleb128 0xb
+ 434 0063 49       		.uleb128 0x49
+ 435 0064 13       		.uleb128 0x13
+ 436 0065 38       		.uleb128 0x38
+ 437 0066 0B       		.uleb128 0xb
+ 438 0067 00       		.byte	0
+ 439 0068 00       		.byte	0
+ 440 0069 0A       		.uleb128 0xa
+ 441 006a 01       		.uleb128 0x1
+ 442 006b 01       		.byte	0x1
+ 443 006c 49       		.uleb128 0x49
+ 444 006d 13       		.uleb128 0x13
+ 445 006e 01       		.uleb128 0x1
+ 446 006f 13       		.uleb128 0x13
+ 447 0070 00       		.byte	0
+ 448 0071 00       		.byte	0
+ 449 0072 0B       		.uleb128 0xb
+ 450 0073 21       		.uleb128 0x21
+ 451 0074 00       		.byte	0
+ 452 0075 49       		.uleb128 0x49
+ 453 0076 13       		.uleb128 0x13
+ 454 0077 2F       		.uleb128 0x2f
+ 455 0078 0B       		.uleb128 0xb
+ 456 0079 00       		.byte	0
+ 457 007a 00       		.byte	0
+ 458 007b 0C       		.uleb128 0xc
+ 459 007c 2E       		.uleb128 0x2e
+ 460 007d 01       		.byte	0x1
+ 461 007e 3F       		.uleb128 0x3f
+ 462 007f 19       		.uleb128 0x19
+ 463 0080 03       		.uleb128 0x3
+ 464 0081 0E       		.uleb128 0xe
+ 465 0082 3A       		.uleb128 0x3a
+ 466 0083 0B       		.uleb128 0xb
+ 467 0084 3B       		.uleb128 0x3b
+ 468 0085 0B       		.uleb128 0xb
+ 469 0086 27       		.uleb128 0x27
+ 470 0087 19       		.uleb128 0x19
+ 471 0088 11       		.uleb128 0x11
+ 472 0089 01       		.uleb128 0x1
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccPB4SML.s 			page 10
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccazkx1R.s 			page 10
+>>>>>>> 19.1-Test
+
+
+ 473 008a 12       		.uleb128 0x12
+ 474 008b 06       		.uleb128 0x6
+ 475 008c 40       		.uleb128 0x40
+ 476 008d 18       		.uleb128 0x18
+ 477 008e 9742     		.uleb128 0x2117
+ 478 0090 19       		.uleb128 0x19
+ 479 0091 01       		.uleb128 0x1
+ 480 0092 13       		.uleb128 0x13
+ 481 0093 00       		.byte	0
+ 482 0094 00       		.byte	0
+ 483 0095 0D       		.uleb128 0xd
+ 484 0096 05       		.uleb128 0x5
+ 485 0097 00       		.byte	0
+ 486 0098 03       		.uleb128 0x3
+ 487 0099 0E       		.uleb128 0xe
+ 488 009a 3A       		.uleb128 0x3a
+ 489 009b 0B       		.uleb128 0xb
+ 490 009c 3B       		.uleb128 0x3b
+ 491 009d 0B       		.uleb128 0xb
+ 492 009e 49       		.uleb128 0x49
+ 493 009f 13       		.uleb128 0x13
+ 494 00a0 02       		.uleb128 0x2
+ 495 00a1 18       		.uleb128 0x18
+ 496 00a2 00       		.byte	0
+ 497 00a3 00       		.byte	0
+ 498 00a4 0E       		.uleb128 0xe
+ 499 00a5 2E       		.uleb128 0x2e
+ 500 00a6 01       		.byte	0x1
+ 501 00a7 3F       		.uleb128 0x3f
+ 502 00a8 19       		.uleb128 0x19
+ 503 00a9 03       		.uleb128 0x3
+ 504 00aa 0E       		.uleb128 0xe
+ 505 00ab 3A       		.uleb128 0x3a
+ 506 00ac 0B       		.uleb128 0xb
+ 507 00ad 3B       		.uleb128 0x3b
+ 508 00ae 0B       		.uleb128 0xb
+ 509 00af 11       		.uleb128 0x11
+ 510 00b0 01       		.uleb128 0x1
+ 511 00b1 12       		.uleb128 0x12
+ 512 00b2 06       		.uleb128 0x6
+ 513 00b3 40       		.uleb128 0x40
+ 514 00b4 18       		.uleb128 0x18
+ 515 00b5 9642     		.uleb128 0x2116
+ 516 00b7 19       		.uleb128 0x19
+ 517 00b8 01       		.uleb128 0x1
+ 518 00b9 13       		.uleb128 0x13
+ 519 00ba 00       		.byte	0
+ 520 00bb 00       		.byte	0
+ 521 00bc 0F       		.uleb128 0xf
+ 522 00bd 34       		.uleb128 0x34
+ 523 00be 00       		.byte	0
+ 524 00bf 03       		.uleb128 0x3
+ 525 00c0 08       		.uleb128 0x8
+ 526 00c1 3A       		.uleb128 0x3a
+ 527 00c2 0B       		.uleb128 0xb
+ 528 00c3 3B       		.uleb128 0x3b
+ 529 00c4 0B       		.uleb128 0xb
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccPB4SML.s 			page 11
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccazkx1R.s 			page 11
+>>>>>>> 19.1-Test
+
+
+ 530 00c5 49       		.uleb128 0x49
+ 531 00c6 13       		.uleb128 0x13
+ 532 00c7 02       		.uleb128 0x2
+ 533 00c8 18       		.uleb128 0x18
+ 534 00c9 00       		.byte	0
+ 535 00ca 00       		.byte	0
+ 536 00cb 10       		.uleb128 0x10
+ 537 00cc 34       		.uleb128 0x34
+ 538 00cd 00       		.byte	0
+ 539 00ce 03       		.uleb128 0x3
+ 540 00cf 0E       		.uleb128 0xe
+ 541 00d0 3A       		.uleb128 0x3a
+ 542 00d1 0B       		.uleb128 0xb
+ 543 00d2 3B       		.uleb128 0x3b
+ 544 00d3 0B       		.uleb128 0xb
+ 545 00d4 49       		.uleb128 0x49
+ 546 00d5 13       		.uleb128 0x13
+ 547 00d6 3F       		.uleb128 0x3f
+ 548 00d7 19       		.uleb128 0x19
+ 549 00d8 02       		.uleb128 0x2
+ 550 00d9 18       		.uleb128 0x18
+ 551 00da 00       		.byte	0
+ 552 00db 00       		.byte	0
+ 553 00dc 00       		.byte	0
+ 554              		.section	.debug_aranges,"",%progbits
+ 555 0000 24000000 		.4byte	0x24
+ 556 0004 0200     		.2byte	0x2
+ 557 0006 00000000 		.4byte	.Ldebug_info0
+ 558 000a 04       		.byte	0x4
+ 559 000b 00       		.byte	0
+ 560 000c 0000     		.2byte	0
+ 561 000e 0000     		.2byte	0
+ 562 0010 00000000 		.4byte	.LFB0
+ 563 0014 3C000000 		.4byte	.LFE0-.LFB0
+ 564 0018 00000000 		.4byte	.LFB1
+ 565 001c 4C000000 		.4byte	.LFE1-.LFB1
+ 566 0020 00000000 		.4byte	0
+ 567 0024 00000000 		.4byte	0
+ 568              		.section	.debug_ranges,"",%progbits
+ 569              	.Ldebug_ranges0:
+ 570 0000 00000000 		.4byte	.LFB0
+ 571 0004 3C000000 		.4byte	.LFE0
+ 572 0008 00000000 		.4byte	.LFB1
+ 573 000c 4C000000 		.4byte	.LFE1
+ 574 0010 00000000 		.4byte	0
+ 575 0014 00000000 		.4byte	0
+ 576              		.section	.debug_line,"",%progbits
+ 577              	.Ldebug_line0:
+ 578 0000 71010000 		.section	.debug_str,"MS",%progbits,1
+ 578      02003601 
+ 578      00000201 
+ 578      FB0E0D00 
+ 578      01010101 
+ 579              	.LASF18:
+ 580 0000 5F696E64 		.ascii	"_index\000"
+ 580      657800
+ 581              	.LASF9:
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccPB4SML.s 			page 12
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccazkx1R.s 			page 12
+>>>>>>> 19.1-Test
+
+
+ 582 0007 5F5F7569 		.ascii	"__uint8_t\000"
+ 582      6E74385F 
+ 582      7400
+ 583              	.LASF27:
+ 584 0011 5F66756E 		.ascii	"_func\000"
+ 584      6300
+ 585              	.LASF17:
+ 586 0017 5F707472 		.ascii	"_ptrarr\000"
+ 586      61727200 
+ 587              	.LASF22:
+ 588 001f 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 588      4320342E 
+ 588      392E3320 
+ 588      32303135 
+ 588      30333033 
+ 589 0052 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 589      20726576 
+ 589      6973696F 
+ 589      6E203232 
+ 589      31323230 
+ 590 0085 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 590      66756E63 
+ 590      74696F6E 
+ 590      2D736563 
+ 590      74696F6E 
+ 591              	.LASF23:
+ 592 00ad 2E5C5073 		.ascii	".\\PseudoRTOS.c\000"
+ 592      6575646F 
+ 592      52544F53 
+ 592      2E6300
+ 593              	.LASF19:
+ 594 00bc 4C4F4F50 		.ascii	"LOOPContainer\000"
+ 594      436F6E74 
+ 594      61696E65 
+ 594      7200
+ 595              	.LASF11:
+ 596 00ca 666C6F61 		.ascii	"float\000"
+ 596      7400
+ 597              	.LASF21:
+ 598 00d0 5F675F6C 		.ascii	"_g_loop_container\000"
+ 598      6F6F705F 
+ 598      636F6E74 
+ 598      61696E65 
+ 598      7200
+ 599              	.LASF1:
+ 600 00e2 756E7369 		.ascii	"unsigned char\000"
+ 600      676E6564 
+ 600      20636861 
+ 600      7200
+ 601              	.LASF5:
+ 602 00f0 6C6F6E67 		.ascii	"long unsigned int\000"
+ 602      20756E73 
+ 602      69676E65 
+ 602      6420696E 
+ 602      7400
+ 603              	.LASF3:
+ 604 0102 73686F72 		.ascii	"short unsigned int\000"
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccPB4SML.s 			page 13
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccazkx1R.s 			page 13
+>>>>>>> 19.1-Test
+
+
+ 604      7420756E 
+ 604      7369676E 
+ 604      65642069 
+ 604      6E7400
+ 605              	.LASF12:
+ 606 0115 646F7562 		.ascii	"double\000"
+ 606      6C6500
+ 607              	.LASF8:
+ 608 011c 756E7369 		.ascii	"unsigned int\000"
+ 608      676E6564 
+ 608      20696E74 
+ 608      00
+ 609              	.LASF20:
+ 610 0129 5F675F70 		.ascii	"_g_ptr_LOOP\000"
+ 610      74725F4C 
+ 610      4F4F5000 
+ 611              	.LASF7:
+ 612 0135 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 612      206C6F6E 
+ 612      6720756E 
+ 612      7369676E 
+ 612      65642069 
+ 613              	.LASF10:
+ 614 014c 75696E74 		.ascii	"uint8_t\000"
+ 614      385F7400 
+ 615              	.LASF28:
+ 616 0154 6C6F6F70 		.ascii	"loop_invoke\000"
+ 616      5F696E76 
+ 616      6F6B6500 
+ 617              	.LASF25:
+ 618 0160 5F5F4C4F 		.ascii	"__LOOP_Container\000"
+ 618      4F505F43 
+ 618      6F6E7461 
+ 618      696E6572 
+ 618      00
+ 619              	.LASF14:
+ 620 0171 73697A65 		.ascii	"sizetype\000"
+ 620      74797065 
+ 620      00
+ 621              	.LASF6:
+ 622 017a 6C6F6E67 		.ascii	"long long int\000"
+ 622      206C6F6E 
+ 622      6720696E 
+ 622      7400
+ 623              	.LASF13:
+ 624 0188 63686172 		.ascii	"char\000"
+ 624      00
+ 625              	.LASF26:
+ 626 018d 6C6F6F70 		.ascii	"loop_push\000"
+ 626      5F707573 
+ 626      6800
+ 627              	.LASF16:
+ 628 0197 5054525F 		.ascii	"PTR_LOOP\000"
+ 628      4C4F4F50 
+ 628      00
+ 629              	.LASF2:
+ 630 01a0 73686F72 		.ascii	"short int\000"
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccPB4SML.s 			page 14
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccazkx1R.s 			page 14
+>>>>>>> 19.1-Test
+
+
+ 630      7420696E 
+ 630      7400
+ 631              	.LASF24:
+ 632 01aa 433A5C54 		.ascii	"C:\\TeamInsepet\\NSX-Prime\\Hardware\\CorEx-MUX-Ker"
+ 632      65616D49 
+ 632      6E736570 
+ 632      65745C4E 
+ 632      53582D50 
+ 633 01d9 6E656C2D 		.ascii	"nel-Enhanced\\Workspace01\\CorEx-Mux-Kernel.cydsn\000"
+ 633      456E6861 
+ 633      6E636564 
+ 633      5C576F72 
+ 633      6B737061 
+ 634              	.LASF4:
+ 635 0209 6C6F6E67 		.ascii	"long int\000"
+ 635      20696E74 
+ 635      00
+ 636              	.LASF15:
+ 637 0212 6C6F6E67 		.ascii	"long double\000"
+ 637      20646F75 
+ 637      626C6500 
+ 638              	.LASF0:
+ 639 021e 7369676E 		.ascii	"signed char\000"
+ 639      65642063 
+ 639      68617200 
+ 640              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

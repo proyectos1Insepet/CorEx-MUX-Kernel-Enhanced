@@ -1,0 +1,1560 @@
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3MF08M.s 			page 1
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccoohGob.s 			page 1
+>>>>>>> 19.1-Test
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"PrinterSink.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.comm	_g_printerlayout,2,4
+  19              		.section	.text.PrinterSinkRegistration,"ax",%progbits
+  20              		.align	2
+  21              		.global	PrinterSinkRegistration
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	PrinterSinkRegistration, %function
+  25              	PrinterSinkRegistration:
+  26              	.LFB0:
+  27              		.file 1 ".\\PrinterSink.c"
+   1:.\PrinterSink.c **** /* ========================================
+   2:.\PrinterSink.c ****  *
+   3:.\PrinterSink.c ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\PrinterSink.c ****  * All Rights Reserved
+   5:.\PrinterSink.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\PrinterSink.c ****  *
+   7:.\PrinterSink.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\PrinterSink.c ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\PrinterSink.c ****  *
+  10:.\PrinterSink.c ****  * ========================================
+  11:.\PrinterSink.c **** */
+  12:.\PrinterSink.c **** #include "SinkManager.h"
+  13:.\PrinterSink.c **** #include "SinkObservables.h"
+  14:.\PrinterSink.c **** #include "Eeprom.h"
+  15:.\PrinterSink.c **** #include "Printer.h"
+  16:.\PrinterSink.c **** 
+  17:.\PrinterSink.c **** void Printer11Callback(void *pdata);
+  18:.\PrinterSink.c **** void Printer12Callback(void *pdata);
+  19:.\PrinterSink.c **** void Printer21Callback(void *pdata);
+  20:.\PrinterSink.c **** void Printer22Callback(void *pdata);
+  21:.\PrinterSink.c **** void Printer1GenericCallback(void *pdata);
+  22:.\PrinterSink.c **** void Printer2GenericCallback(void *pdata);
+  23:.\PrinterSink.c **** void Printer1GenericCallbacklogo(void *pdata);
+  24:.\PrinterSink.c **** void Printer2GenericCallbacklogo(void *pdata);
+  25:.\PrinterSink.c **** 
+  26:.\PrinterSink.c **** PrinterLayout _g_printerlayout;
+  27:.\PrinterSink.c **** 
+  28:.\PrinterSink.c **** extern uint8 _g_separator[_MAX_PRINTER_LINE_WIDTH_];
+  29:.\PrinterSink.c **** extern uint8 _g_padcharacters[_MAX_PRINTER_LINE_WIDTH_];
+  30:.\PrinterSink.c **** 
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3MF08M.s 			page 2
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccoohGob.s 			page 2
+>>>>>>> 19.1-Test
+
+
+  31:.\PrinterSink.c **** void PrinterSinkRegistration()
+  32:.\PrinterSink.c **** {
+  28              		.loc 1 32 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 8
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 82B0     		sub	sp, sp, #8
+  37              		.cfi_def_cfa_offset 16
+  38 0004 00AF     		add	r7, sp, #0
+  39              		.cfi_def_cfa_register 7
+  33:.\PrinterSink.c ****     PSINKSUBSCRIBERPTR psubscriber = AllocateSubscriberSlot();
+  40              		.loc 1 33 0
+  41 0006 FFF7FEFF 		bl	AllocateSubscriberSlot
+  42 000a 7860     		str	r0, [r7, #4]
+  34:.\PrinterSink.c ****     if(psubscriber)
+  43              		.loc 1 34 0
+  44 000c 7B68     		ldr	r3, [r7, #4]
+  45 000e 002B     		cmp	r3, #0
+  46 0010 71D0     		beq	.L2
+  47              	.LBB2:
+  35:.\PrinterSink.c ****     {
+  36:.\PrinterSink.c ****         uint8 index = 0;
+  48              		.loc 1 36 0
+  49 0012 0023     		movs	r3, #0
+  50 0014 FB70     		strb	r3, [r7, #3]
+  37:.\PrinterSink.c ****         //The maximum number of observable identifiers is _OBSERVED_IDENTIFIERS_
+  38:.\PrinterSink.c ****         //located in the header file "SinkManager.h"
+  39:.\PrinterSink.c ****         //Every identifier is paired with its respective Callback method pointer
+  40:.\PrinterSink.c ****         psubscriber->_arrmsgid[index] = PRINTER11_JOB;
+  51              		.loc 1 40 0
+  52 0016 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+  53 0018 7A68     		ldr	r2, [r7, #4]
+  54 001a 1344     		add	r3, r3, r2
+  55 001c 1622     		movs	r2, #22
+  56 001e 5A70     		strb	r2, [r3, #1]
+  41:.\PrinterSink.c ****         psubscriber->Callback[index++] = Printer11Callback;
+  57              		.loc 1 41 0
+  58 0020 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+  59 0022 5A1C     		adds	r2, r3, #1
+  60 0024 FA70     		strb	r2, [r7, #3]
+  61 0026 7A68     		ldr	r2, [r7, #4]
+  62 0028 0233     		adds	r3, r3, #2
+  63 002a 9B00     		lsls	r3, r3, #2
+  64 002c 1344     		add	r3, r3, r2
+  65 002e 3B4A     		ldr	r2, .L3
+  66 0030 5A60     		str	r2, [r3, #4]
+  42:.\PrinterSink.c **** 
+  43:.\PrinterSink.c ****         psubscriber->_arrmsgid[index] = PRINTER12_JOB;
+  67              		.loc 1 43 0
+  68 0032 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+  69 0034 7A68     		ldr	r2, [r7, #4]
+  70 0036 1344     		add	r3, r3, r2
+  71 0038 1722     		movs	r2, #23
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3MF08M.s 			page 3
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccoohGob.s 			page 3
+>>>>>>> 19.1-Test
+
+
+  72 003a 5A70     		strb	r2, [r3, #1]
+  44:.\PrinterSink.c ****         psubscriber->Callback[index++] = Printer12Callback;
+  73              		.loc 1 44 0
+  74 003c FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+  75 003e 5A1C     		adds	r2, r3, #1
+  76 0040 FA70     		strb	r2, [r7, #3]
+  77 0042 7A68     		ldr	r2, [r7, #4]
+  78 0044 0233     		adds	r3, r3, #2
+  79 0046 9B00     		lsls	r3, r3, #2
+  80 0048 1344     		add	r3, r3, r2
+  81 004a 354A     		ldr	r2, .L3+4
+  82 004c 5A60     		str	r2, [r3, #4]
+  45:.\PrinterSink.c ****         
+  46:.\PrinterSink.c ****         psubscriber->_arrmsgid[index] = PRINTER21_JOB;
+  83              		.loc 1 46 0
+  84 004e FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+  85 0050 7A68     		ldr	r2, [r7, #4]
+  86 0052 1344     		add	r3, r3, r2
+  87 0054 1822     		movs	r2, #24
+  88 0056 5A70     		strb	r2, [r3, #1]
+  47:.\PrinterSink.c ****         psubscriber->Callback[index++] = Printer21Callback;
+  89              		.loc 1 47 0
+  90 0058 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+  91 005a 5A1C     		adds	r2, r3, #1
+  92 005c FA70     		strb	r2, [r7, #3]
+  93 005e 7A68     		ldr	r2, [r7, #4]
+  94 0060 0233     		adds	r3, r3, #2
+  95 0062 9B00     		lsls	r3, r3, #2
+  96 0064 1344     		add	r3, r3, r2
+  97 0066 2F4A     		ldr	r2, .L3+8
+  98 0068 5A60     		str	r2, [r3, #4]
+  48:.\PrinterSink.c **** 
+  49:.\PrinterSink.c ****         psubscriber->_arrmsgid[index] = PRINTER22_JOB;
+  99              		.loc 1 49 0
+ 100 006a FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 101 006c 7A68     		ldr	r2, [r7, #4]
+ 102 006e 1344     		add	r3, r3, r2
+ 103 0070 1922     		movs	r2, #25
+ 104 0072 5A70     		strb	r2, [r3, #1]
+  50:.\PrinterSink.c ****         psubscriber->Callback[index++] = Printer22Callback;
+ 105              		.loc 1 50 0
+ 106 0074 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 107 0076 5A1C     		adds	r2, r3, #1
+ 108 0078 FA70     		strb	r2, [r7, #3]
+ 109 007a 7A68     		ldr	r2, [r7, #4]
+ 110 007c 0233     		adds	r3, r3, #2
+ 111 007e 9B00     		lsls	r3, r3, #2
+ 112 0080 1344     		add	r3, r3, r2
+ 113 0082 294A     		ldr	r2, .L3+12
+ 114 0084 5A60     		str	r2, [r3, #4]
+  51:.\PrinterSink.c **** 
+  52:.\PrinterSink.c ****         psubscriber->_arrmsgid[index] = PRINTER1_GENERIC_JOB;
+ 115              		.loc 1 52 0
+ 116 0086 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 117 0088 7A68     		ldr	r2, [r7, #4]
+ 118 008a 1344     		add	r3, r3, r2
+ 119 008c 1A22     		movs	r2, #26
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3MF08M.s 			page 4
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccoohGob.s 			page 4
+>>>>>>> 19.1-Test
+
+
+ 120 008e 5A70     		strb	r2, [r3, #1]
+  53:.\PrinterSink.c ****         psubscriber->Callback[index++] = Printer1GenericCallback;
+ 121              		.loc 1 53 0
+ 122 0090 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 123 0092 5A1C     		adds	r2, r3, #1
+ 124 0094 FA70     		strb	r2, [r7, #3]
+ 125 0096 7A68     		ldr	r2, [r7, #4]
+ 126 0098 0233     		adds	r3, r3, #2
+ 127 009a 9B00     		lsls	r3, r3, #2
+ 128 009c 1344     		add	r3, r3, r2
+ 129 009e 234A     		ldr	r2, .L3+16
+ 130 00a0 5A60     		str	r2, [r3, #4]
+  54:.\PrinterSink.c **** 
+  55:.\PrinterSink.c ****         psubscriber->_arrmsgid[index] = PRINTER2_GENERIC_JOB;
+ 131              		.loc 1 55 0
+ 132 00a2 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 133 00a4 7A68     		ldr	r2, [r7, #4]
+ 134 00a6 1344     		add	r3, r3, r2
+ 135 00a8 1B22     		movs	r2, #27
+ 136 00aa 5A70     		strb	r2, [r3, #1]
+  56:.\PrinterSink.c ****         psubscriber->Callback[index++] = Printer2GenericCallback;
+ 137              		.loc 1 56 0
+ 138 00ac FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 139 00ae 5A1C     		adds	r2, r3, #1
+ 140 00b0 FA70     		strb	r2, [r7, #3]
+ 141 00b2 7A68     		ldr	r2, [r7, #4]
+ 142 00b4 0233     		adds	r3, r3, #2
+ 143 00b6 9B00     		lsls	r3, r3, #2
+ 144 00b8 1344     		add	r3, r3, r2
+ 145 00ba 1D4A     		ldr	r2, .L3+20
+ 146 00bc 5A60     		str	r2, [r3, #4]
+  57:.\PrinterSink.c ****         
+  58:.\PrinterSink.c ****         psubscriber->_arrmsgid[index] = PRINTER1_GENERIC_JOB_LOGO;
+ 147              		.loc 1 58 0
+ 148 00be FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 149 00c0 7A68     		ldr	r2, [r7, #4]
+ 150 00c2 1344     		add	r3, r3, r2
+ 151 00c4 1C22     		movs	r2, #28
+ 152 00c6 5A70     		strb	r2, [r3, #1]
+  59:.\PrinterSink.c ****         psubscriber->Callback[index++] = Printer1GenericCallbacklogo;
+ 153              		.loc 1 59 0
+ 154 00c8 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 155 00ca 5A1C     		adds	r2, r3, #1
+ 156 00cc FA70     		strb	r2, [r7, #3]
+ 157 00ce 7A68     		ldr	r2, [r7, #4]
+ 158 00d0 0233     		adds	r3, r3, #2
+ 159 00d2 9B00     		lsls	r3, r3, #2
+ 160 00d4 1344     		add	r3, r3, r2
+ 161 00d6 174A     		ldr	r2, .L3+24
+ 162 00d8 5A60     		str	r2, [r3, #4]
+  60:.\PrinterSink.c **** 
+  61:.\PrinterSink.c ****         psubscriber->_arrmsgid[index] = PRINTER2_GENERIC_JOB_LOGO;
+ 163              		.loc 1 61 0
+ 164 00da FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 165 00dc 7A68     		ldr	r2, [r7, #4]
+ 166 00de 1344     		add	r3, r3, r2
+ 167 00e0 1D22     		movs	r2, #29
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3MF08M.s 			page 5
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccoohGob.s 			page 5
+>>>>>>> 19.1-Test
+
+
+ 168 00e2 5A70     		strb	r2, [r3, #1]
+  62:.\PrinterSink.c ****         psubscriber->Callback[index++] = Printer2GenericCallbacklogo;
+ 169              		.loc 1 62 0
+ 170 00e4 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 171 00e6 5A1C     		adds	r2, r3, #1
+ 172 00e8 FA70     		strb	r2, [r7, #3]
+ 173 00ea 7A68     		ldr	r2, [r7, #4]
+ 174 00ec 0233     		adds	r3, r3, #2
+ 175 00ee 9B00     		lsls	r3, r3, #2
+ 176 00f0 1344     		add	r3, r3, r2
+ 177 00f2 114A     		ldr	r2, .L3+28
+ 178 00f4 5A60     		str	r2, [r3, #4]
+ 179              	.L2:
+ 180              	.LBE2:
+  63:.\PrinterSink.c ****     }
+  64:.\PrinterSink.c ****     
+  65:.\PrinterSink.c ****     //This is the default printer port allocation
+  66:.\PrinterSink.c ****     _g_printerlayout._printerportside1 = PRINTER11_JOB;
+ 181              		.loc 1 66 0
+ 182 00f6 114B     		ldr	r3, .L3+32
+ 183 00f8 1622     		movs	r2, #22
+ 184 00fa 1A70     		strb	r2, [r3]
+  67:.\PrinterSink.c ****     _g_printerlayout._printerportside2 = PRINTER21_JOB;
+ 185              		.loc 1 67 0
+ 186 00fc 0F4B     		ldr	r3, .L3+32
+ 187 00fe 1822     		movs	r2, #24
+ 188 0100 5A70     		strb	r2, [r3, #1]
+  68:.\PrinterSink.c ****     //Loading printer port configuration from the EEPROM here ...
+  69:.\PrinterSink.c ****     
+  70:.\PrinterSink.c ****     memset(_g_padcharacters, _ASCII_SPACE_, _MAX_PRINTER_LINE_WIDTH_);
+ 189              		.loc 1 70 0
+ 190 0102 0F48     		ldr	r0, .L3+36
+ 191 0104 2021     		movs	r1, #32
+ 192 0106 1F22     		movs	r2, #31
+ 193 0108 FFF7FEFF 		bl	memset
+  71:.\PrinterSink.c ****     memset(_g_separator, _ASCII_DASH_, _MAX_PRINTER_LINE_WIDTH_);
+ 194              		.loc 1 71 0
+ 195 010c 0D48     		ldr	r0, .L3+40
+ 196 010e 2A21     		movs	r1, #42
+ 197 0110 1F22     		movs	r2, #31
+ 198 0112 FFF7FEFF 		bl	memset
+  72:.\PrinterSink.c **** }
+ 199              		.loc 1 72 0
+ 200 0116 0837     		adds	r7, r7, #8
+ 201              		.cfi_def_cfa_offset 8
+ 202 0118 BD46     		mov	sp, r7
+ 203              		.cfi_def_cfa_register 13
+ 204              		@ sp needed
+ 205 011a 80BD     		pop	{r7, pc}
+ 206              	.L4:
+ 207              		.align	2
+ 208              	.L3:
+ 209 011c 00000000 		.word	Printer11Callback
+ 210 0120 00000000 		.word	Printer12Callback
+ 211 0124 00000000 		.word	Printer21Callback
+ 212 0128 00000000 		.word	Printer22Callback
+ 213 012c 00000000 		.word	Printer1GenericCallback
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3MF08M.s 			page 6
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccoohGob.s 			page 6
+>>>>>>> 19.1-Test
+
+
+ 214 0130 00000000 		.word	Printer2GenericCallback
+ 215 0134 00000000 		.word	Printer1GenericCallbacklogo
+ 216 0138 00000000 		.word	Printer2GenericCallbacklogo
+ 217 013c 00000000 		.word	_g_printerlayout
+ 218 0140 00000000 		.word	_g_padcharacters
+ 219 0144 00000000 		.word	_g_separator
+ 220              		.cfi_endproc
+ 221              	.LFE0:
+ 222              		.size	PrinterSinkRegistration, .-PrinterSinkRegistration
+ 223              		.text
+ 224              	.Letext0:
+ 225              		.file 2 ".\\SinkManager.h"
+ 226              		.file 3 "Generated_Source\\PSoC5/cytypes.h"
+ 227              		.file 4 ".\\Printer.h"
+ 228              		.file 5 ".\\SinkObservables.h"
+ 229              		.section	.debug_info,"",%progbits
+ 230              	.Ldebug_info0:
+ 231 0000 C6020000 		.4byte	0x2c6
+ 232 0004 0400     		.2byte	0x4
+ 233 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 234 000a 04       		.byte	0x4
+ 235 000b 01       		.uleb128 0x1
+ 236 000c 00000000 		.4byte	.LASF71
+ 237 0010 01       		.byte	0x1
+ 238 0011 FE000000 		.4byte	.LASF72
+ 239 0015 41040000 		.4byte	.LASF73
+ 240 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 241 001d 00000000 		.4byte	0
+ 242 0021 00000000 		.4byte	.Ldebug_line0
+ 243 0025 02       		.uleb128 0x2
+ 244 0026 01       		.byte	0x1
+ 245 0027 06       		.byte	0x6
+ 246 0028 14030000 		.4byte	.LASF0
+ 247 002c 02       		.uleb128 0x2
+ 248 002d 01       		.byte	0x1
+ 249 002e 08       		.byte	0x8
+ 250 002f D8020000 		.4byte	.LASF1
+ 251 0033 02       		.uleb128 0x2
+ 252 0034 02       		.byte	0x2
+ 253 0035 05       		.byte	0x5
+ 254 0036 CC000000 		.4byte	.LASF2
+ 255 003a 02       		.uleb128 0x2
+ 256 003b 02       		.byte	0x2
+ 257 003c 07       		.byte	0x7
+ 258 003d 9B030000 		.4byte	.LASF3
+ 259 0041 02       		.uleb128 0x2
+ 260 0042 04       		.byte	0x4
+ 261 0043 05       		.byte	0x5
+ 262 0044 11060000 		.4byte	.LASF4
+ 263 0048 02       		.uleb128 0x2
+ 264 0049 04       		.byte	0x4
+ 265 004a 07       		.byte	0x7
+ 266 004b 11050000 		.4byte	.LASF5
+ 267 004f 02       		.uleb128 0x2
+ 268 0050 08       		.byte	0x8
+ 269 0051 05       		.byte	0x5
+ 270 0052 F5010000 		.4byte	.LASF6
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3MF08M.s 			page 7
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccoohGob.s 			page 7
+>>>>>>> 19.1-Test
+
+
+ 271 0056 02       		.uleb128 0x2
+ 272 0057 08       		.byte	0x8
+ 273 0058 07       		.byte	0x7
+ 274 0059 20030000 		.4byte	.LASF7
+ 275 005d 03       		.uleb128 0x3
+ 276 005e 04       		.byte	0x4
+ 277 005f 05       		.byte	0x5
+ 278 0060 696E7400 		.ascii	"int\000"
+ 279 0064 02       		.uleb128 0x2
+ 280 0065 04       		.byte	0x4
+ 281 0066 07       		.byte	0x7
+ 282 0067 45030000 		.4byte	.LASF8
+ 283 006b 04       		.uleb128 0x4
+ 284 006c 8E010000 		.4byte	.LASF18
+ 285 0070 03       		.byte	0x3
+ 286 0071 3801     		.2byte	0x138
+ 287 0073 2C000000 		.4byte	0x2c
+ 288 0077 02       		.uleb128 0x2
+ 289 0078 04       		.byte	0x4
+ 290 0079 04       		.byte	0x4
+ 291 007a D8010000 		.4byte	.LASF9
+ 292 007e 02       		.uleb128 0x2
+ 293 007f 08       		.byte	0x8
+ 294 0080 04       		.byte	0x4
+ 295 0081 23050000 		.4byte	.LASF10
+ 296 0085 02       		.uleb128 0x2
+ 297 0086 01       		.byte	0x1
+ 298 0087 08       		.byte	0x8
+ 299 0088 CC030000 		.4byte	.LASF11
+ 300 008c 05       		.uleb128 0x5
+ 301 008d 6B000000 		.4byte	0x6b
+ 302 0091 02       		.uleb128 0x2
+ 303 0092 04       		.byte	0x4
+ 304 0093 07       		.byte	0x7
+ 305 0094 F5000000 		.4byte	.LASF12
+ 306 0098 06       		.uleb128 0x6
+ 307 0099 04       		.byte	0x4
+ 308 009a 02       		.uleb128 0x2
+ 309 009b 08       		.byte	0x8
+ 310 009c 04       		.byte	0x4
+ 311 009d CC020000 		.4byte	.LASF13
+ 312 00a1 02       		.uleb128 0x2
+ 313 00a2 01       		.byte	0x1
+ 314 00a3 02       		.byte	0x2
+ 315 00a4 A0040000 		.4byte	.LASF14
+ 316 00a8 07       		.uleb128 0x7
+ 317 00a9 B3000000 		.4byte	0xb3
+ 318 00ad 08       		.uleb128 0x8
+ 319 00ae 98000000 		.4byte	0x98
+ 320 00b2 00       		.byte	0
+ 321 00b3 09       		.uleb128 0x9
+ 322 00b4 04       		.byte	0x4
+ 323 00b5 A8000000 		.4byte	0xa8
+ 324 00b9 0A       		.uleb128 0xa
+ 325 00ba 89030000 		.4byte	.LASF74
+ 326 00be 2C       		.byte	0x2c
+ 327 00bf 02       		.byte	0x2
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3MF08M.s 			page 8
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccoohGob.s 			page 8
+>>>>>>> 19.1-Test
+
+
+ 328 00c0 66       		.byte	0x66
+ 329 00c1 EA000000 		.4byte	0xea
+ 330 00c5 0B       		.uleb128 0xb
+ 331 00c6 27010000 		.4byte	.LASF15
+ 332 00ca 02       		.byte	0x2
+ 333 00cb 68       		.byte	0x68
+ 334 00cc 8C000000 		.4byte	0x8c
+ 335 00d0 00       		.byte	0
+ 336 00d1 0B       		.uleb128 0xb
+ 337 00d2 48060000 		.4byte	.LASF16
+ 338 00d6 02       		.byte	0x2
+ 339 00d7 6A       		.byte	0x6a
+ 340 00d8 EA000000 		.4byte	0xea
+ 341 00dc 01       		.byte	0x1
+ 342 00dd 0B       		.uleb128 0xb
+ 343 00de 8C060000 		.4byte	.LASF17
+ 344 00e2 02       		.byte	0x2
+ 345 00e3 6B       		.byte	0x6b
+ 346 00e4 FA000000 		.4byte	0xfa
+ 347 00e8 0C       		.byte	0xc
+ 348 00e9 00       		.byte	0
+ 349 00ea 0C       		.uleb128 0xc
+ 350 00eb 6B000000 		.4byte	0x6b
+ 351 00ef FA000000 		.4byte	0xfa
+ 352 00f3 0D       		.uleb128 0xd
+ 353 00f4 91000000 		.4byte	0x91
+ 354 00f8 07       		.byte	0x7
+ 355 00f9 00       		.byte	0
+ 356 00fa 0C       		.uleb128 0xc
+ 357 00fb B3000000 		.4byte	0xb3
+ 358 00ff 0A010000 		.4byte	0x10a
+ 359 0103 0D       		.uleb128 0xd
+ 360 0104 91000000 		.4byte	0x91
+ 361 0108 07       		.byte	0x7
+ 362 0109 00       		.byte	0
+ 363 010a 0E       		.uleb128 0xe
+ 364 010b A6040000 		.4byte	.LASF19
+ 365 010f 02       		.byte	0x2
+ 366 0110 6C       		.byte	0x6c
+ 367 0111 15010000 		.4byte	0x115
+ 368 0115 09       		.uleb128 0x9
+ 369 0116 04       		.byte	0x4
+ 370 0117 B9000000 		.4byte	0xb9
+ 371 011b 0F       		.uleb128 0xf
+ 372 011c E6020000 		.4byte	.LASF75
+ 373 0120 01       		.byte	0x1
+ 374 0121 05       		.byte	0x5
+ 375 0122 0F       		.byte	0xf
+ 376 0123 2A020000 		.4byte	0x22a
+ 377 0127 10       		.uleb128 0x10
+ 378 0128 FF040000 		.4byte	.LASF20
+ 379 012c 01       		.sleb128 1
+ 380 012d 10       		.uleb128 0x10
+ 381 012e AE030000 		.4byte	.LASF21
+ 382 0132 02       		.sleb128 2
+ 383 0133 10       		.uleb128 0x10
+ 384 0134 1A060000 		.4byte	.LASF22
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3MF08M.s 			page 9
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccoohGob.s 			page 9
+>>>>>>> 19.1-Test
+
+
+ 385 0138 03       		.sleb128 3
+ 386 0139 10       		.uleb128 0x10
+ 387 013a F0030000 		.4byte	.LASF23
+ 388 013e 04       		.sleb128 4
+ 389 013f 10       		.uleb128 0x10
+ 390 0140 7A020000 		.4byte	.LASF24
+ 391 0144 05       		.sleb128 5
+ 392 0145 10       		.uleb128 0x10
+ 393 0146 B2050000 		.4byte	.LASF25
+ 394 014a 06       		.sleb128 6
+ 395 014b 10       		.uleb128 0x10
+ 396 014c E6050000 		.4byte	.LASF26
+ 397 0150 07       		.sleb128 7
+ 398 0151 10       		.uleb128 0x10
+ 399 0152 39020000 		.4byte	.LASF27
+ 400 0156 08       		.sleb128 8
+ 401 0157 10       		.uleb128 0x10
+ 402 0158 6D030000 		.4byte	.LASF28
+ 403 015c 09       		.sleb128 9
+ 404 015d 10       		.uleb128 0x10
+ 405 015e 54010000 		.4byte	.LASF29
+ 406 0162 0A       		.sleb128 10
+ 407 0163 10       		.uleb128 0x10
+ 408 0164 7F050000 		.4byte	.LASF30
+ 409 0168 0B       		.sleb128 11
+ 410 0169 10       		.uleb128 0x10
+ 411 016a 52030000 		.4byte	.LASF31
+ 412 016e 0C       		.sleb128 12
+ 413 016f 10       		.uleb128 0x10
+ 414 0170 D1030000 		.4byte	.LASF32
+ 415 0174 0D       		.sleb128 13
+ 416 0175 10       		.uleb128 0x10
+ 417 0176 1F040000 		.4byte	.LASF33
+ 418 017a 0E       		.sleb128 14
+ 419 017b 10       		.uleb128 0x10
+ 420 017c B9040000 		.4byte	.LASF34
+ 421 0180 0F       		.sleb128 15
+ 422 0181 10       		.uleb128 0x10
+ 423 0182 F9020000 		.4byte	.LASF35
+ 424 0186 10       		.sleb128 16
+ 425 0187 10       		.uleb128 0x10
+ 426 0188 8D020000 		.4byte	.LASF36
+ 427 018c 11       		.sleb128 17
+ 428 018d 10       		.uleb128 0x10
+ 429 018e 6B060000 		.4byte	.LASF37
+ 430 0192 12       		.sleb128 18
+ 431 0193 10       		.uleb128 0x10
+ 432 0194 0E010000 		.4byte	.LASF38
+ 433 0198 13       		.sleb128 19
+ 434 0199 10       		.uleb128 0x10
+ 435 019a DE010000 		.4byte	.LASF39
+ 436 019e 14       		.sleb128 20
+ 437 019f 10       		.uleb128 0x10
+ 438 01a0 55050000 		.4byte	.LASF40
+ 439 01a4 15       		.sleb128 21
+ 440 01a5 10       		.uleb128 0x10
+ 441 01a6 A1000000 		.4byte	.LASF41
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3MF08M.s 			page 10
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccoohGob.s 			page 10
+>>>>>>> 19.1-Test
+
+
+ 442 01aa 16       		.sleb128 22
+ 443 01ab 10       		.uleb128 0x10
+ 444 01ac 56020000 		.4byte	.LASF42
+ 445 01b0 17       		.sleb128 23
+ 446 01b1 10       		.uleb128 0x10
+ 447 01b2 37030000 		.4byte	.LASF43
+ 448 01b6 18       		.sleb128 24
+ 449 01b7 10       		.uleb128 0x10
+ 450 01b8 D8050000 		.4byte	.LASF44
+ 451 01bc 19       		.sleb128 25
+ 452 01bd 10       		.uleb128 0x10
+ 453 01be 3F010000 		.4byte	.LASF45
+ 454 01c2 1A       		.sleb128 26
+ 455 01c3 10       		.uleb128 0x10
+ 456 01c4 C3010000 		.4byte	.LASF46
+ 457 01c8 1B       		.sleb128 27
+ 458 01c9 10       		.uleb128 0x10
+ 459 01ca E5040000 		.4byte	.LASF47
+ 460 01ce 1C       		.sleb128 28
+ 461 01cf 10       		.uleb128 0x10
+ 462 01d0 05040000 		.4byte	.LASF48
+ 463 01d4 1D       		.sleb128 29
+ 464 01d5 10       		.uleb128 0x10
+ 465 01d6 3B050000 		.4byte	.LASF49
+ 466 01da 1E       		.sleb128 30
+ 467 01db 10       		.uleb128 0x10
+ 468 01dc 8E000000 		.4byte	.LASF50
+ 469 01e0 1F       		.sleb128 31
+ 470 01e1 10       		.uleb128 0x10
+ 471 01e2 2E010000 		.4byte	.LASF51
+ 472 01e6 20       		.sleb128 32
+ 473 01e7 10       		.uleb128 0x10
+ 474 01e8 94010000 		.4byte	.LASF52
+ 475 01ec 21       		.sleb128 33
+ 476 01ed 10       		.uleb128 0x10
+ 477 01ee 64020000 		.4byte	.LASF53
+ 478 01f2 22       		.sleb128 34
+ 479 01f3 10       		.uleb128 0x10
+ 480 01f4 35060000 		.4byte	.LASF54
+ 481 01f8 23       		.sleb128 35
+ 482 01f9 10       		.uleb128 0x10
+ 483 01fa 7D010000 		.4byte	.LASF55
+ 484 01fe 24       		.sleb128 36
+ 485 01ff 10       		.uleb128 0x10
+ 486 0200 B3020000 		.4byte	.LASF56
+ 487 0204 25       		.sleb128 37
+ 488 0205 10       		.uleb128 0x10
+ 489 0206 AD010000 		.4byte	.LASF57
+ 490 020a 26       		.sleb128 38
+ 491 020b 10       		.uleb128 0x10
+ 492 020c D6000000 		.4byte	.LASF58
+ 493 0210 27       		.sleb128 39
+ 494 0211 10       		.uleb128 0x10
+ 495 0212 71050000 		.4byte	.LASF59
+ 496 0216 28       		.sleb128 40
+ 497 0217 10       		.uleb128 0x10
+ 498 0218 52060000 		.4byte	.LASF60
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3MF08M.s 			page 11
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccoohGob.s 			page 11
+>>>>>>> 19.1-Test
+
+
+ 499 021c 29       		.sleb128 41
+ 500 021d 10       		.uleb128 0x10
+ 501 021e AF000000 		.4byte	.LASF61
+ 502 0222 2A       		.sleb128 42
+ 503 0223 10       		.uleb128 0x10
+ 504 0224 2A050000 		.4byte	.LASF62
+ 505 0228 2B       		.sleb128 43
+ 506 0229 00       		.byte	0
+ 507 022a 11       		.uleb128 0x11
+ 508 022b 02       		.byte	0x2
+ 509 022c 04       		.byte	0x4
+ 510 022d 72       		.byte	0x72
+ 511 022e 4B020000 		.4byte	0x24b
+ 512 0232 0B       		.uleb128 0xb
+ 513 0233 03020000 		.4byte	.LASF63
+ 514 0237 04       		.byte	0x4
+ 515 0238 74       		.byte	0x74
+ 516 0239 6B000000 		.4byte	0x6b
+ 517 023d 00       		.byte	0
+ 518 023e 0B       		.uleb128 0xb
+ 519 023f C6050000 		.4byte	.LASF64
+ 520 0243 04       		.byte	0x4
+ 521 0244 75       		.byte	0x75
+ 522 0245 6B000000 		.4byte	0x6b
+ 523 0249 01       		.byte	0x1
+ 524 024a 00       		.byte	0
+ 525 024b 0E       		.uleb128 0xe
+ 526 024c A4050000 		.4byte	.LASF65
+ 527 0250 04       		.byte	0x4
+ 528 0251 77       		.byte	0x77
+ 529 0252 2A020000 		.4byte	0x22a
+ 530 0256 12       		.uleb128 0x12
+ 531 0257 15020000 		.4byte	.LASF76
+ 532 025b 01       		.byte	0x1
+ 533 025c 1F       		.byte	0x1f
+ 534 025d 00000000 		.4byte	.LFB0
+ 535 0261 48010000 		.4byte	.LFE0-.LFB0
+ 536 0265 01       		.uleb128 0x1
+ 537 0266 9C       		.byte	0x9c
+ 538 0267 92020000 		.4byte	0x292
+ 539 026b 13       		.uleb128 0x13
+ 540 026c 2D020000 		.4byte	.LASF66
+ 541 0270 01       		.byte	0x1
+ 542 0271 21       		.byte	0x21
+ 543 0272 0A010000 		.4byte	0x10a
+ 544 0276 02       		.uleb128 0x2
+ 545 0277 91       		.byte	0x91
+ 546 0278 74       		.sleb128 -12
+ 547 0279 14       		.uleb128 0x14
+ 548 027a 12000000 		.4byte	.LBB2
+ 549 027e E4000000 		.4byte	.LBE2-.LBB2
+ 550 0282 13       		.uleb128 0x13
+ 551 0283 77010000 		.4byte	.LASF67
+ 552 0287 01       		.byte	0x1
+ 553 0288 24       		.byte	0x24
+ 554 0289 6B000000 		.4byte	0x6b
+ 555 028d 02       		.uleb128 0x2
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3MF08M.s 			page 12
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccoohGob.s 			page 12
+>>>>>>> 19.1-Test
+
+
+ 556 028e 91       		.byte	0x91
+ 557 028f 73       		.sleb128 -13
+ 558 0290 00       		.byte	0
+ 559 0291 00       		.byte	0
+ 560 0292 15       		.uleb128 0x15
+ 561 0293 E4000000 		.4byte	.LASF68
+ 562 0297 01       		.byte	0x1
+ 563 0298 1A       		.byte	0x1a
+ 564 0299 4B020000 		.4byte	0x24b
+ 565 029d 05       		.uleb128 0x5
+ 566 029e 03       		.byte	0x3
+ 567 029f 00000000 		.4byte	_g_printerlayout
+ 568 02a3 0C       		.uleb128 0xc
+ 569 02a4 6B000000 		.4byte	0x6b
+ 570 02a8 B3020000 		.4byte	0x2b3
+ 571 02ac 0D       		.uleb128 0xd
+ 572 02ad 91000000 		.4byte	0x91
+ 573 02b1 1E       		.byte	0x1e
+ 574 02b2 00       		.byte	0
+ 575 02b3 16       		.uleb128 0x16
+ 576 02b4 A6020000 		.4byte	.LASF69
+ 577 02b8 01       		.byte	0x1
+ 578 02b9 1C       		.byte	0x1c
+ 579 02ba A3020000 		.4byte	0x2a3
+ 580 02be 16       		.uleb128 0x16
+ 581 02bf BB030000 		.4byte	.LASF70
+ 582 02c3 01       		.byte	0x1
+ 583 02c4 1D       		.byte	0x1d
+ 584 02c5 A3020000 		.4byte	0x2a3
+ 585 02c9 00       		.byte	0
+ 586              		.section	.debug_abbrev,"",%progbits
+ 587              	.Ldebug_abbrev0:
+ 588 0000 01       		.uleb128 0x1
+ 589 0001 11       		.uleb128 0x11
+ 590 0002 01       		.byte	0x1
+ 591 0003 25       		.uleb128 0x25
+ 592 0004 0E       		.uleb128 0xe
+ 593 0005 13       		.uleb128 0x13
+ 594 0006 0B       		.uleb128 0xb
+ 595 0007 03       		.uleb128 0x3
+ 596 0008 0E       		.uleb128 0xe
+ 597 0009 1B       		.uleb128 0x1b
+ 598 000a 0E       		.uleb128 0xe
+ 599 000b 55       		.uleb128 0x55
+ 600 000c 17       		.uleb128 0x17
+ 601 000d 11       		.uleb128 0x11
+ 602 000e 01       		.uleb128 0x1
+ 603 000f 10       		.uleb128 0x10
+ 604 0010 17       		.uleb128 0x17
+ 605 0011 00       		.byte	0
+ 606 0012 00       		.byte	0
+ 607 0013 02       		.uleb128 0x2
+ 608 0014 24       		.uleb128 0x24
+ 609 0015 00       		.byte	0
+ 610 0016 0B       		.uleb128 0xb
+ 611 0017 0B       		.uleb128 0xb
+ 612 0018 3E       		.uleb128 0x3e
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3MF08M.s 			page 13
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccoohGob.s 			page 13
+>>>>>>> 19.1-Test
+
+
+ 613 0019 0B       		.uleb128 0xb
+ 614 001a 03       		.uleb128 0x3
+ 615 001b 0E       		.uleb128 0xe
+ 616 001c 00       		.byte	0
+ 617 001d 00       		.byte	0
+ 618 001e 03       		.uleb128 0x3
+ 619 001f 24       		.uleb128 0x24
+ 620 0020 00       		.byte	0
+ 621 0021 0B       		.uleb128 0xb
+ 622 0022 0B       		.uleb128 0xb
+ 623 0023 3E       		.uleb128 0x3e
+ 624 0024 0B       		.uleb128 0xb
+ 625 0025 03       		.uleb128 0x3
+ 626 0026 08       		.uleb128 0x8
+ 627 0027 00       		.byte	0
+ 628 0028 00       		.byte	0
+ 629 0029 04       		.uleb128 0x4
+ 630 002a 16       		.uleb128 0x16
+ 631 002b 00       		.byte	0
+ 632 002c 03       		.uleb128 0x3
+ 633 002d 0E       		.uleb128 0xe
+ 634 002e 3A       		.uleb128 0x3a
+ 635 002f 0B       		.uleb128 0xb
+ 636 0030 3B       		.uleb128 0x3b
+ 637 0031 05       		.uleb128 0x5
+ 638 0032 49       		.uleb128 0x49
+ 639 0033 13       		.uleb128 0x13
+ 640 0034 00       		.byte	0
+ 641 0035 00       		.byte	0
+ 642 0036 05       		.uleb128 0x5
+ 643 0037 35       		.uleb128 0x35
+ 644 0038 00       		.byte	0
+ 645 0039 49       		.uleb128 0x49
+ 646 003a 13       		.uleb128 0x13
+ 647 003b 00       		.byte	0
+ 648 003c 00       		.byte	0
+ 649 003d 06       		.uleb128 0x6
+ 650 003e 0F       		.uleb128 0xf
+ 651 003f 00       		.byte	0
+ 652 0040 0B       		.uleb128 0xb
+ 653 0041 0B       		.uleb128 0xb
+ 654 0042 00       		.byte	0
+ 655 0043 00       		.byte	0
+ 656 0044 07       		.uleb128 0x7
+ 657 0045 15       		.uleb128 0x15
+ 658 0046 01       		.byte	0x1
+ 659 0047 27       		.uleb128 0x27
+ 660 0048 19       		.uleb128 0x19
+ 661 0049 01       		.uleb128 0x1
+ 662 004a 13       		.uleb128 0x13
+ 663 004b 00       		.byte	0
+ 664 004c 00       		.byte	0
+ 665 004d 08       		.uleb128 0x8
+ 666 004e 05       		.uleb128 0x5
+ 667 004f 00       		.byte	0
+ 668 0050 49       		.uleb128 0x49
+ 669 0051 13       		.uleb128 0x13
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3MF08M.s 			page 14
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccoohGob.s 			page 14
+>>>>>>> 19.1-Test
+
+
+ 670 0052 00       		.byte	0
+ 671 0053 00       		.byte	0
+ 672 0054 09       		.uleb128 0x9
+ 673 0055 0F       		.uleb128 0xf
+ 674 0056 00       		.byte	0
+ 675 0057 0B       		.uleb128 0xb
+ 676 0058 0B       		.uleb128 0xb
+ 677 0059 49       		.uleb128 0x49
+ 678 005a 13       		.uleb128 0x13
+ 679 005b 00       		.byte	0
+ 680 005c 00       		.byte	0
+ 681 005d 0A       		.uleb128 0xa
+ 682 005e 13       		.uleb128 0x13
+ 683 005f 01       		.byte	0x1
+ 684 0060 03       		.uleb128 0x3
+ 685 0061 0E       		.uleb128 0xe
+ 686 0062 0B       		.uleb128 0xb
+ 687 0063 0B       		.uleb128 0xb
+ 688 0064 3A       		.uleb128 0x3a
+ 689 0065 0B       		.uleb128 0xb
+ 690 0066 3B       		.uleb128 0x3b
+ 691 0067 0B       		.uleb128 0xb
+ 692 0068 01       		.uleb128 0x1
+ 693 0069 13       		.uleb128 0x13
+ 694 006a 00       		.byte	0
+ 695 006b 00       		.byte	0
+ 696 006c 0B       		.uleb128 0xb
+ 697 006d 0D       		.uleb128 0xd
+ 698 006e 00       		.byte	0
+ 699 006f 03       		.uleb128 0x3
+ 700 0070 0E       		.uleb128 0xe
+ 701 0071 3A       		.uleb128 0x3a
+ 702 0072 0B       		.uleb128 0xb
+ 703 0073 3B       		.uleb128 0x3b
+ 704 0074 0B       		.uleb128 0xb
+ 705 0075 49       		.uleb128 0x49
+ 706 0076 13       		.uleb128 0x13
+ 707 0077 38       		.uleb128 0x38
+ 708 0078 0B       		.uleb128 0xb
+ 709 0079 00       		.byte	0
+ 710 007a 00       		.byte	0
+ 711 007b 0C       		.uleb128 0xc
+ 712 007c 01       		.uleb128 0x1
+ 713 007d 01       		.byte	0x1
+ 714 007e 49       		.uleb128 0x49
+ 715 007f 13       		.uleb128 0x13
+ 716 0080 01       		.uleb128 0x1
+ 717 0081 13       		.uleb128 0x13
+ 718 0082 00       		.byte	0
+ 719 0083 00       		.byte	0
+ 720 0084 0D       		.uleb128 0xd
+ 721 0085 21       		.uleb128 0x21
+ 722 0086 00       		.byte	0
+ 723 0087 49       		.uleb128 0x49
+ 724 0088 13       		.uleb128 0x13
+ 725 0089 2F       		.uleb128 0x2f
+ 726 008a 0B       		.uleb128 0xb
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3MF08M.s 			page 15
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccoohGob.s 			page 15
+>>>>>>> 19.1-Test
+
+
+ 727 008b 00       		.byte	0
+ 728 008c 00       		.byte	0
+ 729 008d 0E       		.uleb128 0xe
+ 730 008e 16       		.uleb128 0x16
+ 731 008f 00       		.byte	0
+ 732 0090 03       		.uleb128 0x3
+ 733 0091 0E       		.uleb128 0xe
+ 734 0092 3A       		.uleb128 0x3a
+ 735 0093 0B       		.uleb128 0xb
+ 736 0094 3B       		.uleb128 0x3b
+ 737 0095 0B       		.uleb128 0xb
+ 738 0096 49       		.uleb128 0x49
+ 739 0097 13       		.uleb128 0x13
+ 740 0098 00       		.byte	0
+ 741 0099 00       		.byte	0
+ 742 009a 0F       		.uleb128 0xf
+ 743 009b 04       		.uleb128 0x4
+ 744 009c 01       		.byte	0x1
+ 745 009d 03       		.uleb128 0x3
+ 746 009e 0E       		.uleb128 0xe
+ 747 009f 0B       		.uleb128 0xb
+ 748 00a0 0B       		.uleb128 0xb
+ 749 00a1 3A       		.uleb128 0x3a
+ 750 00a2 0B       		.uleb128 0xb
+ 751 00a3 3B       		.uleb128 0x3b
+ 752 00a4 0B       		.uleb128 0xb
+ 753 00a5 01       		.uleb128 0x1
+ 754 00a6 13       		.uleb128 0x13
+ 755 00a7 00       		.byte	0
+ 756 00a8 00       		.byte	0
+ 757 00a9 10       		.uleb128 0x10
+ 758 00aa 28       		.uleb128 0x28
+ 759 00ab 00       		.byte	0
+ 760 00ac 03       		.uleb128 0x3
+ 761 00ad 0E       		.uleb128 0xe
+ 762 00ae 1C       		.uleb128 0x1c
+ 763 00af 0D       		.uleb128 0xd
+ 764 00b0 00       		.byte	0
+ 765 00b1 00       		.byte	0
+ 766 00b2 11       		.uleb128 0x11
+ 767 00b3 13       		.uleb128 0x13
+ 768 00b4 01       		.byte	0x1
+ 769 00b5 0B       		.uleb128 0xb
+ 770 00b6 0B       		.uleb128 0xb
+ 771 00b7 3A       		.uleb128 0x3a
+ 772 00b8 0B       		.uleb128 0xb
+ 773 00b9 3B       		.uleb128 0x3b
+ 774 00ba 0B       		.uleb128 0xb
+ 775 00bb 01       		.uleb128 0x1
+ 776 00bc 13       		.uleb128 0x13
+ 777 00bd 00       		.byte	0
+ 778 00be 00       		.byte	0
+ 779 00bf 12       		.uleb128 0x12
+ 780 00c0 2E       		.uleb128 0x2e
+ 781 00c1 01       		.byte	0x1
+ 782 00c2 3F       		.uleb128 0x3f
+ 783 00c3 19       		.uleb128 0x19
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3MF08M.s 			page 16
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccoohGob.s 			page 16
+>>>>>>> 19.1-Test
+
+
+ 784 00c4 03       		.uleb128 0x3
+ 785 00c5 0E       		.uleb128 0xe
+ 786 00c6 3A       		.uleb128 0x3a
+ 787 00c7 0B       		.uleb128 0xb
+ 788 00c8 3B       		.uleb128 0x3b
+ 789 00c9 0B       		.uleb128 0xb
+ 790 00ca 11       		.uleb128 0x11
+ 791 00cb 01       		.uleb128 0x1
+ 792 00cc 12       		.uleb128 0x12
+ 793 00cd 06       		.uleb128 0x6
+ 794 00ce 40       		.uleb128 0x40
+ 795 00cf 18       		.uleb128 0x18
+ 796 00d0 9642     		.uleb128 0x2116
+ 797 00d2 19       		.uleb128 0x19
+ 798 00d3 01       		.uleb128 0x1
+ 799 00d4 13       		.uleb128 0x13
+ 800 00d5 00       		.byte	0
+ 801 00d6 00       		.byte	0
+ 802 00d7 13       		.uleb128 0x13
+ 803 00d8 34       		.uleb128 0x34
+ 804 00d9 00       		.byte	0
+ 805 00da 03       		.uleb128 0x3
+ 806 00db 0E       		.uleb128 0xe
+ 807 00dc 3A       		.uleb128 0x3a
+ 808 00dd 0B       		.uleb128 0xb
+ 809 00de 3B       		.uleb128 0x3b
+ 810 00df 0B       		.uleb128 0xb
+ 811 00e0 49       		.uleb128 0x49
+ 812 00e1 13       		.uleb128 0x13
+ 813 00e2 02       		.uleb128 0x2
+ 814 00e3 18       		.uleb128 0x18
+ 815 00e4 00       		.byte	0
+ 816 00e5 00       		.byte	0
+ 817 00e6 14       		.uleb128 0x14
+ 818 00e7 0B       		.uleb128 0xb
+ 819 00e8 01       		.byte	0x1
+ 820 00e9 11       		.uleb128 0x11
+ 821 00ea 01       		.uleb128 0x1
+ 822 00eb 12       		.uleb128 0x12
+ 823 00ec 06       		.uleb128 0x6
+ 824 00ed 00       		.byte	0
+ 825 00ee 00       		.byte	0
+ 826 00ef 15       		.uleb128 0x15
+ 827 00f0 34       		.uleb128 0x34
+ 828 00f1 00       		.byte	0
+ 829 00f2 03       		.uleb128 0x3
+ 830 00f3 0E       		.uleb128 0xe
+ 831 00f4 3A       		.uleb128 0x3a
+ 832 00f5 0B       		.uleb128 0xb
+ 833 00f6 3B       		.uleb128 0x3b
+ 834 00f7 0B       		.uleb128 0xb
+ 835 00f8 49       		.uleb128 0x49
+ 836 00f9 13       		.uleb128 0x13
+ 837 00fa 3F       		.uleb128 0x3f
+ 838 00fb 19       		.uleb128 0x19
+ 839 00fc 02       		.uleb128 0x2
+ 840 00fd 18       		.uleb128 0x18
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3MF08M.s 			page 17
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccoohGob.s 			page 17
+>>>>>>> 19.1-Test
+
+
+ 841 00fe 00       		.byte	0
+ 842 00ff 00       		.byte	0
+ 843 0100 16       		.uleb128 0x16
+ 844 0101 34       		.uleb128 0x34
+ 845 0102 00       		.byte	0
+ 846 0103 03       		.uleb128 0x3
+ 847 0104 0E       		.uleb128 0xe
+ 848 0105 3A       		.uleb128 0x3a
+ 849 0106 0B       		.uleb128 0xb
+ 850 0107 3B       		.uleb128 0x3b
+ 851 0108 0B       		.uleb128 0xb
+ 852 0109 49       		.uleb128 0x49
+ 853 010a 13       		.uleb128 0x13
+ 854 010b 3F       		.uleb128 0x3f
+ 855 010c 19       		.uleb128 0x19
+ 856 010d 3C       		.uleb128 0x3c
+ 857 010e 19       		.uleb128 0x19
+ 858 010f 00       		.byte	0
+ 859 0110 00       		.byte	0
+ 860 0111 00       		.byte	0
+ 861              		.section	.debug_aranges,"",%progbits
+ 862 0000 1C000000 		.4byte	0x1c
+ 863 0004 0200     		.2byte	0x2
+ 864 0006 00000000 		.4byte	.Ldebug_info0
+ 865 000a 04       		.byte	0x4
+ 866 000b 00       		.byte	0
+ 867 000c 0000     		.2byte	0
+ 868 000e 0000     		.2byte	0
+ 869 0010 00000000 		.4byte	.LFB0
+ 870 0014 48010000 		.4byte	.LFE0-.LFB0
+ 871 0018 00000000 		.4byte	0
+ 872 001c 00000000 		.4byte	0
+ 873              		.section	.debug_ranges,"",%progbits
+ 874              	.Ldebug_ranges0:
+ 875 0000 00000000 		.4byte	.LFB0
+ 876 0004 48010000 		.4byte	.LFE0
+ 877 0008 00000000 		.4byte	0
+ 878 000c 00000000 		.4byte	0
+ 879              		.section	.debug_line,"",%progbits
+ 880              	.Ldebug_line0:
+ 881 0000 B0000000 		.section	.debug_str,"MS",%progbits,1
+ 881      02008300 
+ 881      00000201 
+ 881      FB0E0D00 
+ 881      01010101 
+ 882              	.LASF71:
+ 883 0000 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 883      4320342E 
+ 883      392E3320 
+ 883      32303135 
+ 883      30333033 
+ 884 0033 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 884      20726576 
+ 884      6973696F 
+ 884      6E203232 
+ 884      31323230 
+ 885 0066 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3MF08M.s 			page 18
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccoohGob.s 			page 18
+>>>>>>> 19.1-Test
+
+
+ 885      66756E63 
+ 885      74696F6E 
+ 885      2D736563 
+ 885      74696F6E 
+ 886              	.LASF50:
+ 887 008e 44495350 		.ascii	"DISPLAY1_RECEPTION\000"
+ 887      4C415931 
+ 887      5F524543 
+ 887      45505449 
+ 887      4F4E00
+ 888              	.LASF41:
+ 889 00a1 5052494E 		.ascii	"PRINTER11_JOB\000"
+ 889      54455231 
+ 889      315F4A4F 
+ 889      4200
+ 890              	.LASF61:
+ 891 00af 544F4747 		.ascii	"TOGGLE_SCREEN_AND_WRITE_TEST\000"
+ 891      4C455F53 
+ 891      43524545 
+ 891      4E5F414E 
+ 891      445F5752 
+ 892              	.LASF2:
+ 893 00cc 73686F72 		.ascii	"short int\000"
+ 893      7420696E 
+ 893      7400
+ 894              	.LASF58:
+ 895 00d6 49425554 		.ascii	"IBUTTON1_SCAN\000"
+ 895      544F4E31 
+ 895      5F534341 
+ 895      4E00
+ 896              	.LASF68:
+ 897 00e4 5F675F70 		.ascii	"_g_printerlayout\000"
+ 897      72696E74 
+ 897      65726C61 
+ 897      796F7574 
+ 897      00
+ 898              	.LASF12:
+ 899 00f5 73697A65 		.ascii	"sizetype\000"
+ 899      74797065 
+ 899      00
+ 900              	.LASF72:
+ 901 00fe 2E5C5072 		.ascii	".\\PrinterSink.c\000"
+ 901      696E7465 
+ 901      7253696E 
+ 901      6B2E6300 
+ 902              	.LASF38:
+ 903 010e 44495350 		.ascii	"DISPENSER_ACQUIRE_TOTALS\000"
+ 903      454E5345 
+ 903      525F4143 
+ 903      51554952 
+ 903      455F544F 
+ 904              	.LASF15:
+ 905 0127 5F737461 		.ascii	"_state\000"
+ 905      746500
+ 906              	.LASF51:
+ 907 012e 44495350 		.ascii	"DISPLAY1_MESSAGE\000"
+ 907      4C415931 
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3MF08M.s 			page 19
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccoohGob.s 			page 19
+>>>>>>> 19.1-Test
+
+
+ 907      5F4D4553 
+ 907      53414745 
+ 907      00
+ 908              	.LASF45:
+ 909 013f 5052494E 		.ascii	"PRINTER1_GENERIC_JOB\000"
+ 909      54455231 
+ 909      5F47454E 
+ 909      45524943 
+ 909      5F4A4F42 
+ 910              	.LASF29:
+ 911 0154 44495350 		.ascii	"DISPENSER_EXECUTE_CASH_TRANSACTION\000"
+ 911      454E5345 
+ 911      525F4558 
+ 911      45435554 
+ 911      455F4341 
+ 912              	.LASF67:
+ 913 0177 696E6465 		.ascii	"index\000"
+ 913      7800
+ 914              	.LASF55:
+ 915 017d 44495350 		.ascii	"DISPLAY2_MESSAGE\000"
+ 915      4C415932 
+ 915      5F4D4553 
+ 915      53414745 
+ 915      00
+ 916              	.LASF18:
+ 917 018e 75696E74 		.ascii	"uint8\000"
+ 917      3800
+ 918              	.LASF52:
+ 919 0194 44495350 		.ascii	"DISPLAY1_UPDATE_DATETIME\000"
+ 919      4C415931 
+ 919      5F555044 
+ 919      4154455F 
+ 919      44415445 
+ 920              	.LASF57:
+ 921 01ad 44495350 		.ascii	"DISPLAY2_ANIMATE_HOME\000"
+ 921      4C415932 
+ 921      5F414E49 
+ 921      4D415445 
+ 921      5F484F4D 
+ 922              	.LASF46:
+ 923 01c3 5052494E 		.ascii	"PRINTER2_GENERIC_JOB\000"
+ 923      54455232 
+ 923      5F47454E 
+ 923      45524943 
+ 923      5F4A4F42 
+ 924              	.LASF9:
+ 925 01d8 666C6F61 		.ascii	"float\000"
+ 925      7400
+ 926              	.LASF39:
+ 927 01de 44495350 		.ascii	"DISPENSER_PUMP_HANDLER\000"
+ 927      454E5345 
+ 927      525F5055 
+ 927      4D505F48 
+ 927      414E444C 
+ 928              	.LASF6:
+ 929 01f5 6C6F6E67 		.ascii	"long long int\000"
+ 929      206C6F6E 
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3MF08M.s 			page 20
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccoohGob.s 			page 20
+>>>>>>> 19.1-Test
+
+
+ 929      6720696E 
+ 929      7400
+ 930              	.LASF63:
+ 931 0203 5F707269 		.ascii	"_printerportside1\000"
+ 931      6E746572 
+ 931      706F7274 
+ 931      73696465 
+ 931      3100
+ 932              	.LASF76:
+ 933 0215 5072696E 		.ascii	"PrinterSinkRegistration\000"
+ 933      74657253 
+ 933      696E6B52 
+ 933      65676973 
+ 933      74726174 
+ 934              	.LASF66:
+ 935 022d 70737562 		.ascii	"psubscriber\000"
+ 935      73637269 
+ 935      62657200 
+ 936              	.LASF27:
+ 937 0239 44495350 		.ascii	"DISPENSER_ACQUIRE_PUMP_STATE\000"
+ 937      454E5345 
+ 937      525F4143 
+ 937      51554952 
+ 937      455F5055 
+ 938              	.LASF42:
+ 939 0256 5052494E 		.ascii	"PRINTER12_JOB\000"
+ 939      54455231 
+ 939      325F4A4F 
+ 939      4200
+ 940              	.LASF53:
+ 941 0264 44495350 		.ascii	"DISPLAY1_ANIMATE_HOME\000"
+ 941      4C415931 
+ 941      5F414E49 
+ 941      4D415445 
+ 941      5F484F4D 
+ 942              	.LASF24:
+ 943 027a 53494E4B 		.ascii	"SINK_RELEASE_BY_ID\000"
+ 943      5F52454C 
+ 943      45415345 
+ 943      5F42595F 
+ 943      494400
+ 944              	.LASF36:
+ 945 028d 44495350 		.ascii	"DISPENSER_RESTORE_PRICES\000"
+ 945      454E5345 
+ 945      525F5245 
+ 945      53544F52 
+ 945      455F5052 
+ 946              	.LASF69:
+ 947 02a6 5F675F73 		.ascii	"_g_separator\000"
+ 947      65706172 
+ 947      61746F72 
+ 947      00
+ 948              	.LASF56:
+ 949 02b3 44495350 		.ascii	"DISPLAY2_UPDATE_DATETIME\000"
+ 949      4C415932 
+ 949      5F555044 
+ 949      4154455F 
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3MF08M.s 			page 21
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccoohGob.s 			page 21
+>>>>>>> 19.1-Test
+
+
+ 949      44415445 
+ 950              	.LASF13:
+ 951 02cc 6C6F6E67 		.ascii	"long double\000"
+ 951      20646F75 
+ 951      626C6500 
+ 952              	.LASF1:
+ 953 02d8 756E7369 		.ascii	"unsigned char\000"
+ 953      676E6564 
+ 953      20636861 
+ 953      7200
+ 954              	.LASF75:
+ 955 02e6 5F53494E 		.ascii	"_SINK_OBSERVABLES_\000"
+ 955      4B5F4F42 
+ 955      53455256 
+ 955      41424C45 
+ 955      535F00
+ 956              	.LASF35:
+ 957 02f9 44495350 		.ascii	"DISPENSER_CONFIGURE_PRICES\000"
+ 957      454E5345 
+ 957      525F434F 
+ 957      4E464947 
+ 957      5552455F 
+ 958              	.LASF0:
+ 959 0314 7369676E 		.ascii	"signed char\000"
+ 959      65642063 
+ 959      68617200 
+ 960              	.LASF7:
+ 961 0320 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 961      206C6F6E 
+ 961      6720756E 
+ 961      7369676E 
+ 961      65642069 
+ 962              	.LASF43:
+ 963 0337 5052494E 		.ascii	"PRINTER21_JOB\000"
+ 963      54455232 
+ 963      315F4A4F 
+ 963      4200
+ 964              	.LASF8:
+ 965 0345 756E7369 		.ascii	"unsigned int\000"
+ 965      676E6564 
+ 965      20696E74 
+ 965      00
+ 966              	.LASF31:
+ 967 0352 44495350 		.ascii	"DISPENSER_UNLOCK_EOT_PUMPS\000"
+ 967      454E5345 
+ 967      525F554E 
+ 967      4C4F434B 
+ 967      5F454F54 
+ 968              	.LASF28:
+ 969 036d 44495350 		.ascii	"DISPENSER_ACQUIRE_PUMP_HOSE\000"
+ 969      454E5345 
+ 969      525F4143 
+ 969      51554952 
+ 969      455F5055 
+ 970              	.LASF74:
+ 971 0389 5F53494E 		.ascii	"_SINK_SUBSCRIBER_\000"
+ 971      4B5F5355 
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3MF08M.s 			page 22
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccoohGob.s 			page 22
+>>>>>>> 19.1-Test
+
+
+ 971      42534352 
+ 971      49424552 
+ 971      5F00
+ 972              	.LASF3:
+ 973 039b 73686F72 		.ascii	"short unsigned int\000"
+ 973      7420756E 
+ 973      7369676E 
+ 973      65642069 
+ 973      6E7400
+ 974              	.LASF21:
+ 975 03ae 55415254 		.ascii	"UART_RF_TEST\000"
+ 975      5F52465F 
+ 975      54455354 
+ 975      00
+ 976              	.LASF70:
+ 977 03bb 5F675F70 		.ascii	"_g_padcharacters\000"
+ 977      61646368 
+ 977      61726163 
+ 977      74657273 
+ 977      00
+ 978              	.LASF11:
+ 979 03cc 63686172 		.ascii	"char\000"
+ 979      00
+ 980              	.LASF32:
+ 981 03d1 44495350 		.ascii	"DISPENSER_LOAD_EEPROM_SETTINGS\000"
+ 981      454E5345 
+ 981      525F4C4F 
+ 981      41445F45 
+ 981      4550524F 
+ 982              	.LASF23:
+ 983 03f0 53494E4B 		.ascii	"SINK_UPDATE_COUNTERS\000"
+ 983      5F555044 
+ 983      4154455F 
+ 983      434F554E 
+ 983      54455253 
+ 984              	.LASF48:
+ 985 0405 5052494E 		.ascii	"PRINTER2_GENERIC_JOB_LOGO\000"
+ 985      54455232 
+ 985      5F47454E 
+ 985      45524943 
+ 985      5F4A4F42 
+ 986              	.LASF33:
+ 987 041f 44495350 		.ascii	"DISPENSER_ENUMERATE_VISIBLE_PUMPS\000"
+ 987      454E5345 
+ 987      525F454E 
+ 987      554D4552 
+ 987      4154455F 
+ 988              	.LASF73:
+ 989 0441 433A5C54 		.ascii	"C:\\TeamInsepet\\NSX-Prime\\Hardware\\CorEx-MUX-Ker"
+ 989      65616D49 
+ 989      6E736570 
+ 989      65745C4E 
+ 989      53582D50 
+ 990 0470 6E656C2D 		.ascii	"nel-Enhanced\\Workspace01\\CorEx-Mux-Kernel.cydsn\000"
+ 990      456E6861 
+ 990      6E636564 
+ 990      5C576F72 
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3MF08M.s 			page 23
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccoohGob.s 			page 23
+>>>>>>> 19.1-Test
+
+
+ 990      6B737061 
+ 991              	.LASF14:
+ 992 04a0 5F426F6F 		.ascii	"_Bool\000"
+ 992      6C00
+ 993              	.LASF19:
+ 994 04a6 5053494E 		.ascii	"PSINKSUBSCRIBERPTR\000"
+ 994      4B535542 
+ 994      53435249 
+ 994      42455250 
+ 994      545200
+ 995              	.LASF34:
+ 996 04b9 44495350 		.ascii	"DISPENSER_ACQUIRE_CONFIGURATION_INFORMATION\000"
+ 996      454E5345 
+ 996      525F4143 
+ 996      51554952 
+ 996      455F434F 
+ 997              	.LASF47:
+ 998 04e5 5052494E 		.ascii	"PRINTER1_GENERIC_JOB_LOGO\000"
+ 998      54455231 
+ 998      5F47454E 
+ 998      45524943 
+ 998      5F4A4F42 
+ 999              	.LASF20:
+ 1000 04ff 55415254 		.ascii	"UART_RF_RECEPTION\000"
+ 1000      5F52465F 
+ 1000      52454345 
+ 1000      5054494F 
+ 1000      4E00
+ 1001              	.LASF5:
+ 1002 0511 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1002      20756E73 
+ 1002      69676E65 
+ 1002      6420696E 
+ 1002      7400
+ 1003              	.LASF10:
+ 1004 0523 646F7562 		.ascii	"double\000"
+ 1004      6C6500
+ 1005              	.LASF62:
+ 1006 052a 57415443 		.ascii	"WATCHDOG_STARTUP\000"
+ 1006      48444F47 
+ 1006      5F535441 
+ 1006      52545550 
+ 1006      00
+ 1007              	.LASF49:
+ 1008 053b 44495350 		.ascii	"DISPLAY_UPDATE_PUMP_STATE\000"
+ 1008      4C41595F 
+ 1008      55504441 
+ 1008      54455F50 
+ 1008      554D505F 
+ 1009              	.LASF40:
+ 1010 0555 44495350 		.ascii	"DISPENSER_PUMP_BEEP_WARNING\000"
+ 1010      454E5345 
+ 1010      525F5055 
+ 1010      4D505F42 
+ 1010      4545505F 
+ 1011              	.LASF59:
+ 1012 0571 49425554 		.ascii	"IBUTTON2_SCAN\000"
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3MF08M.s 			page 24
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccoohGob.s 			page 24
+>>>>>>> 19.1-Test
+
+
+ 1012      544F4E32 
+ 1012      5F534341 
+ 1012      4E00
+ 1013              	.LASF30:
+ 1014 057f 44495350 		.ascii	"DISPENSER_EXECUTE_CREDIT_TRANSACTION\000"
+ 1014      454E5345 
+ 1014      525F4558 
+ 1014      45435554 
+ 1014      455F4352 
+ 1015              	.LASF65:
+ 1016 05a4 5072696E 		.ascii	"PrinterLayout\000"
+ 1016      7465724C 
+ 1016      61796F75 
+ 1016      7400
+ 1017              	.LASF25:
+ 1018 05b2 53494E4B 		.ascii	"SINK_RELEASE_BY_PTR\000"
+ 1018      5F52454C 
+ 1018      45415345 
+ 1018      5F42595F 
+ 1018      50545200 
+ 1019              	.LASF64:
+ 1020 05c6 5F707269 		.ascii	"_printerportside2\000"
+ 1020      6E746572 
+ 1020      706F7274 
+ 1020      73696465 
+ 1020      3200
+ 1021              	.LASF44:
+ 1022 05d8 5052494E 		.ascii	"PRINTER22_JOB\000"
+ 1022      54455232 
+ 1022      325F4A4F 
+ 1022      4200
+ 1023              	.LASF26:
+ 1024 05e6 44495350 		.ascii	"DISPENSER_UPDATE_PUMP_TRANSACTION_TIMEOUTS\000"
+ 1024      454E5345 
+ 1024      525F5550 
+ 1024      44415445 
+ 1024      5F50554D 
+ 1025              	.LASF4:
+ 1026 0611 6C6F6E67 		.ascii	"long int\000"
+ 1026      20696E74 
+ 1026      00
+ 1027              	.LASF22:
+ 1028 061a 55415254 		.ascii	"UART_RF_AUTONOMOUS_MONITOR\000"
+ 1028      5F52465F 
+ 1028      4155544F 
+ 1028      4E4F4D4F 
+ 1028      55535F4D 
+ 1029              	.LASF54:
+ 1030 0635 44495350 		.ascii	"DISPLAY2_RECEPTION\000"
+ 1030      4C415932 
+ 1030      5F524543 
+ 1030      45505449 
+ 1030      4F4E00
+ 1031              	.LASF16:
+ 1032 0648 5F617272 		.ascii	"_arrmsgid\000"
+ 1032      6D736769 
+ 1032      6400
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc3MF08M.s 			page 25
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccoohGob.s 			page 25
+>>>>>>> 19.1-Test
+
+
+ 1033              	.LASF60:
+ 1034 0652 474C4F42 		.ascii	"GLOBAL_TICK_NOTIFICATION\000"
+ 1034      414C5F54 
+ 1034      49434B5F 
+ 1034      4E4F5449 
+ 1034      46494341 
+ 1035              	.LASF37:
+ 1036 066b 44495350 		.ascii	"DISPENSER_CONFIGURE_SINGLE_PRICE\000"
+ 1036      454E5345 
+ 1036      525F434F 
+ 1036      4E464947 
+ 1036      5552455F 
+ 1037              	.LASF17:
+ 1038 068c 43616C6C 		.ascii	"Callback\000"
+ 1038      6261636B 
+ 1038      00
+ 1039              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

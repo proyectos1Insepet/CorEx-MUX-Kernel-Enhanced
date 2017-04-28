@@ -1,0 +1,1375 @@
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cco7sHgb.s 			page 1
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cck8imSI.s 			page 1
+>>>>>>> 19.1-Test
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"iButtonProtocol.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.iButtonResetPresenceSequence,"ax",%progbits
+  19              		.align	2
+  20              		.global	iButtonResetPresenceSequence
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	iButtonResetPresenceSequence, %function
+  24              	iButtonResetPresenceSequence:
+  25              	.LFB63:
+  26              		.file 1 ".\\iButtonProtocol.c"
+   1:.\iButtonProtocol.c **** /* ========================================
+   2:.\iButtonProtocol.c ****  *
+   3:.\iButtonProtocol.c ****  * Copyright INSEPET SISTEMAS, 2016
+   4:.\iButtonProtocol.c ****  * All Rights Reserved
+   5:.\iButtonProtocol.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\iButtonProtocol.c ****  *
+   7:.\iButtonProtocol.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\iButtonProtocol.c ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\iButtonProtocol.c ****  *
+  10:.\iButtonProtocol.c ****  * ========================================
+  11:.\iButtonProtocol.c **** @Created By: HIJH
+  12:.\iButtonProtocol.c **** @Date: Septembre de 2016
+  13:.\iButtonProtocol.c **** 
+  14:.\iButtonProtocol.c **** This is the implementation of the 1-Wire protocol for the iButton communication
+  15:.\iButtonProtocol.c **** 
+  16:.\iButtonProtocol.c **** */
+  17:.\iButtonProtocol.c **** #include <project.h>
+  18:.\iButtonProtocol.c **** #include "SinkManager.h"
+  19:.\iButtonProtocol.c **** #include "SinkObservables.h"
+  20:.\iButtonProtocol.c **** #include "GlobalDefinitions.h"
+  21:.\iButtonProtocol.c **** #include "iButton.h"
+  22:.\iButtonProtocol.c **** 
+  23:.\iButtonProtocol.c **** bool iButtonResetPresenceSequence(uint8 port)
+  24:.\iButtonProtocol.c **** {
+  27              		.loc 1 24 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 16
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31 0000 80B5     		push	{r7, lr}
+  32              		.cfi_def_cfa_offset 8
+  33              		.cfi_offset 7, -8
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cco7sHgb.s 			page 2
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cck8imSI.s 			page 2
+>>>>>>> 19.1-Test
+
+
+  34              		.cfi_offset 14, -4
+  35 0002 84B0     		sub	sp, sp, #16
+  36              		.cfi_def_cfa_offset 24
+  37 0004 00AF     		add	r7, sp, #0
+  38              		.cfi_def_cfa_register 7
+  39 0006 0346     		mov	r3, r0
+  40 0008 FB71     		strb	r3, [r7, #7]
+  25:.\iButtonProtocol.c ****     bool retval = false;
+  41              		.loc 1 25 0
+  42 000a 0023     		movs	r3, #0
+  43 000c FB73     		strb	r3, [r7, #15]
+  26:.\iButtonProtocol.c ****     switch(port)
+  44              		.loc 1 26 0
+  45 000e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+  46 0010 012B     		cmp	r3, #1
+  47 0012 02D0     		beq	.L3
+  48 0014 022B     		cmp	r3, #2
+  49 0016 16D0     		beq	.L4
+  50 0018 2BE0     		b	.L2
+  51              	.L3:
+  27:.\iButtonProtocol.c ****     {
+  28:.\iButtonProtocol.c ****         case _IBUTTON_PORT1_:
+  29:.\iButtonProtocol.c ****         {
+  30:.\iButtonProtocol.c ****             iButton1_Write(LOW);
+  52              		.loc 1 30 0
+  53 001a 0020     		movs	r0, #0
+  54 001c FFF7FEFF 		bl	iButton1_Write
+  31:.\iButtonProtocol.c ****             _1WIRE_WAIT_RSTL;
+  55              		.loc 1 31 0
+  56 0020 4FF4FA70 		mov	r0, #500
+  57 0024 FFF7FEFF 		bl	CyDelayUs
+  32:.\iButtonProtocol.c ****             iButton1_Write(HIGH);
+  58              		.loc 1 32 0
+  59 0028 0120     		movs	r0, #1
+  60 002a FFF7FEFF 		bl	iButton1_Write
+  33:.\iButtonProtocol.c ****             _1WIRE_WAIT_PDL;
+  61              		.loc 1 33 0
+  62 002e 4620     		movs	r0, #70
+  63 0030 FFF7FEFF 		bl	CyDelayUs
+  34:.\iButtonProtocol.c ****             retval = !iButton1_Read(); //Ack/Nack
+  64              		.loc 1 34 0
+  65 0034 FFF7FEFF 		bl	iButton1_Read
+  66 0038 0346     		mov	r3, r0
+  67 003a 002B     		cmp	r3, #0
+  68 003c 0CBF     		ite	eq
+  69 003e 0123     		moveq	r3, #1
+  70 0040 0023     		movne	r3, #0
+  71 0042 FB73     		strb	r3, [r7, #15]
+  35:.\iButtonProtocol.c ****             break;
+  72              		.loc 1 35 0
+  73 0044 15E0     		b	.L2
+  74              	.L4:
+  36:.\iButtonProtocol.c ****         }
+  37:.\iButtonProtocol.c ****         case _IBUTTON_PORT2_:
+  38:.\iButtonProtocol.c ****         {
+  39:.\iButtonProtocol.c ****             iButton2_Write(LOW);
+  75              		.loc 1 39 0
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cco7sHgb.s 			page 3
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cck8imSI.s 			page 3
+>>>>>>> 19.1-Test
+
+
+  76 0046 0020     		movs	r0, #0
+  77 0048 FFF7FEFF 		bl	iButton2_Write
+  40:.\iButtonProtocol.c ****             _1WIRE_WAIT_RSTL;
+  78              		.loc 1 40 0
+  79 004c 4FF4FA70 		mov	r0, #500
+  80 0050 FFF7FEFF 		bl	CyDelayUs
+  41:.\iButtonProtocol.c ****             iButton2_Write(HIGH);
+  81              		.loc 1 41 0
+  82 0054 0120     		movs	r0, #1
+  83 0056 FFF7FEFF 		bl	iButton2_Write
+  42:.\iButtonProtocol.c ****             _1WIRE_WAIT_PDL;
+  84              		.loc 1 42 0
+  85 005a 4620     		movs	r0, #70
+  86 005c FFF7FEFF 		bl	CyDelayUs
+  43:.\iButtonProtocol.c ****             retval = !iButton2_Read(); //Ack/Nack
+  87              		.loc 1 43 0
+  88 0060 FFF7FEFF 		bl	iButton2_Read
+  89 0064 0346     		mov	r3, r0
+  90 0066 002B     		cmp	r3, #0
+  91 0068 0CBF     		ite	eq
+  92 006a 0123     		moveq	r3, #1
+  93 006c 0023     		movne	r3, #0
+  94 006e FB73     		strb	r3, [r7, #15]
+  44:.\iButtonProtocol.c ****             break;
+  95              		.loc 1 44 0
+  96 0070 00BF     		nop
+  97              	.L2:
+  45:.\iButtonProtocol.c ****         }
+  46:.\iButtonProtocol.c ****     }
+  47:.\iButtonProtocol.c ****     _1WIRE_RESET_WAIT_TIME_SLOT;
+  98              		.loc 1 47 0
+  99 0072 6420     		movs	r0, #100
+ 100 0074 FFF7FEFF 		bl	CyDelayUs
+  48:.\iButtonProtocol.c ****     return retval;
+ 101              		.loc 1 48 0
+ 102 0078 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+  49:.\iButtonProtocol.c **** }
+ 103              		.loc 1 49 0
+ 104 007a 1846     		mov	r0, r3
+ 105 007c 1037     		adds	r7, r7, #16
+ 106              		.cfi_def_cfa_offset 8
+ 107 007e BD46     		mov	sp, r7
+ 108              		.cfi_def_cfa_register 13
+ 109              		@ sp needed
+ 110 0080 80BD     		pop	{r7, pc}
+ 111              		.cfi_endproc
+ 112              	.LFE63:
+ 113              		.size	iButtonResetPresenceSequence, .-iButtonResetPresenceSequence
+ 114 0082 00BF     		.section	.text.iButtonRead,"ax",%progbits
+ 115              		.align	2
+ 116              		.global	iButtonRead
+ 117              		.thumb
+ 118              		.thumb_func
+ 119              		.type	iButtonRead, %function
+ 120              	iButtonRead:
+ 121              	.LFB64:
+  50:.\iButtonProtocol.c **** 
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cco7sHgb.s 			page 4
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cck8imSI.s 			page 4
+>>>>>>> 19.1-Test
+
+
+  51:.\iButtonProtocol.c **** uint8 iButtonRead(uint8 port)
+  52:.\iButtonProtocol.c **** {
+ 122              		.loc 1 52 0
+ 123              		.cfi_startproc
+ 124              		@ args = 0, pretend = 0, frame = 16
+ 125              		@ frame_needed = 1, uses_anonymous_args = 0
+ 126 0000 80B5     		push	{r7, lr}
+ 127              		.cfi_def_cfa_offset 8
+ 128              		.cfi_offset 7, -8
+ 129              		.cfi_offset 14, -4
+ 130 0002 84B0     		sub	sp, sp, #16
+ 131              		.cfi_def_cfa_offset 24
+ 132 0004 00AF     		add	r7, sp, #0
+ 133              		.cfi_def_cfa_register 7
+ 134 0006 0346     		mov	r3, r0
+ 135 0008 FB71     		strb	r3, [r7, #7]
+  53:.\iButtonProtocol.c ****     uint8 retval = 0x00;
+ 136              		.loc 1 53 0
+ 137 000a 0023     		movs	r3, #0
+ 138 000c FB73     		strb	r3, [r7, #15]
+  54:.\iButtonProtocol.c ****     switch(port)
+ 139              		.loc 1 54 0
+ 140 000e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 141 0010 012B     		cmp	r3, #1
+ 142 0012 02D0     		beq	.L8
+ 143 0014 022B     		cmp	r3, #2
+ 144 0016 26D0     		beq	.L9
+ 145 0018 4BE0     		b	.L7
+ 146              	.L8:
+ 147              	.LBB2:
+  55:.\iButtonProtocol.c ****     {
+  56:.\iButtonProtocol.c ****         case _IBUTTON_PORT1_:
+  57:.\iButtonProtocol.c ****         {
+  58:.\iButtonProtocol.c ****             FOR(uint8 index = 0, index < 8, index++)
+ 148              		.loc 1 58 0
+ 149 001a 0023     		movs	r3, #0
+ 150 001c BB73     		strb	r3, [r7, #14]
+ 151 001e 1EE0     		b	.L10
+ 152              	.L11:
+ 153              	.LBB3:
+  59:.\iButtonProtocol.c ****             {
+  60:.\iButtonProtocol.c ****                 iButton1_Write(LOW);
+ 154              		.loc 1 60 0 discriminator 3
+ 155 0020 0020     		movs	r0, #0
+ 156 0022 FFF7FEFF 		bl	iButton1_Write
+  61:.\iButtonProtocol.c ****                 _1WIRE_RL1_TIME;
+ 157              		.loc 1 61 0 discriminator 3
+ 158 0026 0620     		movs	r0, #6
+ 159 0028 FFF7FEFF 		bl	CyDelayUs
+  62:.\iButtonProtocol.c ****                 iButton1_Write(HIGH);
+ 160              		.loc 1 62 0 discriminator 3
+ 161 002c 0120     		movs	r0, #1
+ 162 002e FFF7FEFF 		bl	iButton1_Write
+  63:.\iButtonProtocol.c ****                 _1WIRE_MSR0_TIME;
+ 163              		.loc 1 63 0 discriminator 3
+ 164 0032 0920     		movs	r0, #9
+ 165 0034 FFF7FEFF 		bl	CyDelayUs
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cco7sHgb.s 			page 5
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cck8imSI.s 			page 5
+>>>>>>> 19.1-Test
+
+
+  64:.\iButtonProtocol.c ****                 uint8 bitdata = iButton1_Read();
+ 166              		.loc 1 64 0 discriminator 3
+ 167 0038 FFF7FEFF 		bl	iButton1_Read
+ 168 003c 0346     		mov	r3, r0
+ 169 003e 3B73     		strb	r3, [r7, #12]
+  65:.\iButtonProtocol.c ****                 retval |= (bitdata << index);
+ 170              		.loc 1 65 0 discriminator 3
+ 171 0040 3A7B     		ldrb	r2, [r7, #12]	@ zero_extendqisi2
+ 172 0042 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 173 0044 02FA03F3 		lsl	r3, r2, r3
+ 174 0048 DAB2     		uxtb	r2, r3
+ 175 004a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 176 004c 1343     		orrs	r3, r3, r2
+ 177 004e DBB2     		uxtb	r3, r3
+ 178 0050 FB73     		strb	r3, [r7, #15]
+  66:.\iButtonProtocol.c ****                 _1WIRE_WAIT_TIME_SLOT;
+ 179              		.loc 1 66 0 discriminator 3
+ 180 0052 3720     		movs	r0, #55
+ 181 0054 FFF7FEFF 		bl	CyDelayUs
+ 182              	.LBE3:
+  58:.\iButtonProtocol.c ****             {
+ 183              		.loc 1 58 0 discriminator 3
+ 184 0058 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 185 005a 0133     		adds	r3, r3, #1
+ 186 005c BB73     		strb	r3, [r7, #14]
+ 187              	.L10:
+  58:.\iButtonProtocol.c ****             {
+ 188              		.loc 1 58 0 is_stmt 0 discriminator 1
+ 189 005e BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 190 0060 072B     		cmp	r3, #7
+ 191 0062 DDD9     		bls	.L11
+  67:.\iButtonProtocol.c ****             }
+  68:.\iButtonProtocol.c ****             break;
+ 192              		.loc 1 68 0 is_stmt 1
+ 193 0064 25E0     		b	.L7
+ 194              	.L9:
+ 195              	.LBE2:
+ 196              	.LBB4:
+  69:.\iButtonProtocol.c ****         }
+  70:.\iButtonProtocol.c ****         case _IBUTTON_PORT2_:
+  71:.\iButtonProtocol.c ****         {
+  72:.\iButtonProtocol.c ****             FOR(uint8 index = 0, index < 8, index++)
+ 197              		.loc 1 72 0
+ 198 0066 0023     		movs	r3, #0
+ 199 0068 7B73     		strb	r3, [r7, #13]
+ 200 006a 1EE0     		b	.L12
+ 201              	.L13:
+ 202              	.LBB5:
+  73:.\iButtonProtocol.c ****             {
+  74:.\iButtonProtocol.c ****                 iButton2_Write(LOW);
+ 203              		.loc 1 74 0 discriminator 3
+ 204 006c 0020     		movs	r0, #0
+ 205 006e FFF7FEFF 		bl	iButton2_Write
+  75:.\iButtonProtocol.c ****                 _1WIRE_RL1_TIME;
+ 206              		.loc 1 75 0 discriminator 3
+ 207 0072 0620     		movs	r0, #6
+ 208 0074 FFF7FEFF 		bl	CyDelayUs
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cco7sHgb.s 			page 6
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cck8imSI.s 			page 6
+>>>>>>> 19.1-Test
+
+
+  76:.\iButtonProtocol.c ****                 iButton2_Write(HIGH);
+ 209              		.loc 1 76 0 discriminator 3
+ 210 0078 0120     		movs	r0, #1
+ 211 007a FFF7FEFF 		bl	iButton2_Write
+  77:.\iButtonProtocol.c ****                 _1WIRE_MSR0_TIME;
+ 212              		.loc 1 77 0 discriminator 3
+ 213 007e 0920     		movs	r0, #9
+ 214 0080 FFF7FEFF 		bl	CyDelayUs
+  78:.\iButtonProtocol.c ****                 uint8 bitdata = iButton2_Read();
+ 215              		.loc 1 78 0 discriminator 3
+ 216 0084 FFF7FEFF 		bl	iButton2_Read
+ 217 0088 0346     		mov	r3, r0
+ 218 008a FB72     		strb	r3, [r7, #11]
+  79:.\iButtonProtocol.c ****                 retval |= (bitdata << index);
+ 219              		.loc 1 79 0 discriminator 3
+ 220 008c FA7A     		ldrb	r2, [r7, #11]	@ zero_extendqisi2
+ 221 008e 7B7B     		ldrb	r3, [r7, #13]	@ zero_extendqisi2
+ 222 0090 02FA03F3 		lsl	r3, r2, r3
+ 223 0094 DAB2     		uxtb	r2, r3
+ 224 0096 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 225 0098 1343     		orrs	r3, r3, r2
+ 226 009a DBB2     		uxtb	r3, r3
+ 227 009c FB73     		strb	r3, [r7, #15]
+  80:.\iButtonProtocol.c ****                 _1WIRE_WAIT_TIME_SLOT;
+ 228              		.loc 1 80 0 discriminator 3
+ 229 009e 3720     		movs	r0, #55
+ 230 00a0 FFF7FEFF 		bl	CyDelayUs
+ 231              	.LBE5:
+  72:.\iButtonProtocol.c ****             {
+ 232              		.loc 1 72 0 discriminator 3
+ 233 00a4 7B7B     		ldrb	r3, [r7, #13]	@ zero_extendqisi2
+ 234 00a6 0133     		adds	r3, r3, #1
+ 235 00a8 7B73     		strb	r3, [r7, #13]
+ 236              	.L12:
+  72:.\iButtonProtocol.c ****             {
+ 237              		.loc 1 72 0 is_stmt 0 discriminator 1
+ 238 00aa 7B7B     		ldrb	r3, [r7, #13]	@ zero_extendqisi2
+ 239 00ac 072B     		cmp	r3, #7
+ 240 00ae DDD9     		bls	.L13
+  81:.\iButtonProtocol.c ****             }
+  82:.\iButtonProtocol.c ****             break;
+ 241              		.loc 1 82 0 is_stmt 1
+ 242 00b0 00BF     		nop
+ 243              	.L7:
+ 244              	.LBE4:
+  83:.\iButtonProtocol.c ****         }
+  84:.\iButtonProtocol.c ****     }
+  85:.\iButtonProtocol.c ****     return retval;
+ 245              		.loc 1 85 0
+ 246 00b2 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+  86:.\iButtonProtocol.c **** }
+ 247              		.loc 1 86 0
+ 248 00b4 1846     		mov	r0, r3
+ 249 00b6 1037     		adds	r7, r7, #16
+ 250              		.cfi_def_cfa_offset 8
+ 251 00b8 BD46     		mov	sp, r7
+ 252              		.cfi_def_cfa_register 13
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cco7sHgb.s 			page 7
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cck8imSI.s 			page 7
+>>>>>>> 19.1-Test
+
+
+ 253              		@ sp needed
+ 254 00ba 80BD     		pop	{r7, pc}
+ 255              		.cfi_endproc
+ 256              	.LFE64:
+ 257              		.size	iButtonRead, .-iButtonRead
+ 258              		.section	.text.iButtonWrite,"ax",%progbits
+ 259              		.align	2
+ 260              		.global	iButtonWrite
+ 261              		.thumb
+ 262              		.thumb_func
+ 263              		.type	iButtonWrite, %function
+ 264              	iButtonWrite:
+ 265              	.LFB65:
+  87:.\iButtonProtocol.c **** 
+  88:.\iButtonProtocol.c **** void iButtonWrite(uint8 port, uint8 data)
+  89:.\iButtonProtocol.c **** {
+ 266              		.loc 1 89 0
+ 267              		.cfi_startproc
+ 268              		@ args = 0, pretend = 0, frame = 16
+ 269              		@ frame_needed = 1, uses_anonymous_args = 0
+ 270 0000 80B5     		push	{r7, lr}
+ 271              		.cfi_def_cfa_offset 8
+ 272              		.cfi_offset 7, -8
+ 273              		.cfi_offset 14, -4
+ 274 0002 84B0     		sub	sp, sp, #16
+ 275              		.cfi_def_cfa_offset 24
+ 276 0004 00AF     		add	r7, sp, #0
+ 277              		.cfi_def_cfa_register 7
+ 278 0006 0346     		mov	r3, r0
+ 279 0008 0A46     		mov	r2, r1
+ 280 000a FB71     		strb	r3, [r7, #7]
+ 281 000c 1346     		mov	r3, r2
+ 282 000e BB71     		strb	r3, [r7, #6]
+  90:.\iButtonProtocol.c ****     switch(port)
+ 283              		.loc 1 90 0
+ 284 0010 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 285 0012 012B     		cmp	r3, #1
+ 286 0014 02D0     		beq	.L17
+ 287 0016 022B     		cmp	r3, #2
+ 288 0018 28D0     		beq	.L18
+ 289 001a 4FE0     		b	.L15
+ 290              	.L17:
+ 291              	.LBB6:
+  91:.\iButtonProtocol.c ****     {
+  92:.\iButtonProtocol.c ****         case _IBUTTON_PORT1_:
+  93:.\iButtonProtocol.c ****         {
+  94:.\iButtonProtocol.c ****             FOR(uint8 index = 0, index < 8, index++)
+ 292              		.loc 1 94 0
+ 293 001c 0023     		movs	r3, #0
+ 294 001e FB73     		strb	r3, [r7, #15]
+ 295 0020 20E0     		b	.L19
+ 296              	.L22:
+  95:.\iButtonProtocol.c ****             {
+  96:.\iButtonProtocol.c ****                 iButton1_Write(LOW);
+ 297              		.loc 1 96 0
+ 298 0022 0020     		movs	r0, #0
+ 299 0024 FFF7FEFF 		bl	iButton1_Write
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cco7sHgb.s 			page 8
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cck8imSI.s 			page 8
+>>>>>>> 19.1-Test
+
+
+  97:.\iButtonProtocol.c ****                 if((data >> index) & 0x01)
+ 300              		.loc 1 97 0
+ 301 0028 BA79     		ldrb	r2, [r7, #6]	@ zero_extendqisi2
+ 302 002a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 303 002c 42FA03F3 		asr	r3, r2, r3
+ 304 0030 03F00103 		and	r3, r3, #1
+ 305 0034 002B     		cmp	r3, #0
+ 306 0036 09D0     		beq	.L20
+  98:.\iButtonProtocol.c ****                 {
+  99:.\iButtonProtocol.c ****                     _1WIRE_WRITE1_DELAY;
+ 307              		.loc 1 99 0
+ 308 0038 0620     		movs	r0, #6
+ 309 003a FFF7FEFF 		bl	CyDelayUs
+ 100:.\iButtonProtocol.c ****                     iButton1_Write(HIGH);
+ 310              		.loc 1 100 0
+ 311 003e 0120     		movs	r0, #1
+ 312 0040 FFF7FEFF 		bl	iButton1_Write
+ 101:.\iButtonProtocol.c ****                     _1WIRE_WRITE1_TIME_SLOT_;
+ 313              		.loc 1 101 0
+ 314 0044 4020     		movs	r0, #64
+ 315 0046 FFF7FEFF 		bl	CyDelayUs
+ 316 004a 08E0     		b	.L21
+ 317              	.L20:
+ 102:.\iButtonProtocol.c ****                 }
+ 103:.\iButtonProtocol.c ****                 else
+ 104:.\iButtonProtocol.c ****                 {
+ 105:.\iButtonProtocol.c ****                     _1WIRE_WRITE0_DELAY;
+ 318              		.loc 1 105 0
+ 319 004c 3C20     		movs	r0, #60
+ 320 004e FFF7FEFF 		bl	CyDelayUs
+ 106:.\iButtonProtocol.c ****                     iButton1_Write(HIGH);
+ 321              		.loc 1 106 0
+ 322 0052 0120     		movs	r0, #1
+ 323 0054 FFF7FEFF 		bl	iButton1_Write
+ 107:.\iButtonProtocol.c ****                     _1WIRE_WRITE0_TIME_SLOT_;
+ 324              		.loc 1 107 0
+ 325 0058 0A20     		movs	r0, #10
+ 326 005a FFF7FEFF 		bl	CyDelayUs
+ 327              	.L21:
+  94:.\iButtonProtocol.c ****             {
+ 328              		.loc 1 94 0 discriminator 2
+ 329 005e FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 330 0060 0133     		adds	r3, r3, #1
+ 331 0062 FB73     		strb	r3, [r7, #15]
+ 332              	.L19:
+  94:.\iButtonProtocol.c ****             {
+ 333              		.loc 1 94 0 is_stmt 0 discriminator 1
+ 334 0064 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 335 0066 072B     		cmp	r3, #7
+ 336 0068 DBD9     		bls	.L22
+ 108:.\iButtonProtocol.c **** 
+ 109:.\iButtonProtocol.c ****                 }
+ 110:.\iButtonProtocol.c ****             }
+ 111:.\iButtonProtocol.c ****             break;
+ 337              		.loc 1 111 0 is_stmt 1
+ 338 006a 27E0     		b	.L15
+ 339              	.L18:
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cco7sHgb.s 			page 9
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cck8imSI.s 			page 9
+>>>>>>> 19.1-Test
+
+
+ 340              	.LBE6:
+ 341              	.LBB7:
+ 112:.\iButtonProtocol.c ****         }
+ 113:.\iButtonProtocol.c ****         case _IBUTTON_PORT2_:
+ 114:.\iButtonProtocol.c ****         {
+ 115:.\iButtonProtocol.c ****             FOR(uint8 index = 0, index < 8, index++)
+ 342              		.loc 1 115 0
+ 343 006c 0023     		movs	r3, #0
+ 344 006e BB73     		strb	r3, [r7, #14]
+ 345 0070 20E0     		b	.L23
+ 346              	.L26:
+ 116:.\iButtonProtocol.c ****             {
+ 117:.\iButtonProtocol.c ****                 iButton2_Write(LOW);
+ 347              		.loc 1 117 0
+ 348 0072 0020     		movs	r0, #0
+ 349 0074 FFF7FEFF 		bl	iButton2_Write
+ 118:.\iButtonProtocol.c ****                 if((data >> index) & 0x01)
+ 350              		.loc 1 118 0
+ 351 0078 BA79     		ldrb	r2, [r7, #6]	@ zero_extendqisi2
+ 352 007a BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 353 007c 42FA03F3 		asr	r3, r2, r3
+ 354 0080 03F00103 		and	r3, r3, #1
+ 355 0084 002B     		cmp	r3, #0
+ 356 0086 09D0     		beq	.L24
+ 119:.\iButtonProtocol.c ****                 {
+ 120:.\iButtonProtocol.c ****                     _1WIRE_WRITE1_DELAY;
+ 357              		.loc 1 120 0
+ 358 0088 0620     		movs	r0, #6
+ 359 008a FFF7FEFF 		bl	CyDelayUs
+ 121:.\iButtonProtocol.c ****                     iButton2_Write(HIGH);
+ 360              		.loc 1 121 0
+ 361 008e 0120     		movs	r0, #1
+ 362 0090 FFF7FEFF 		bl	iButton2_Write
+ 122:.\iButtonProtocol.c ****                     _1WIRE_WRITE1_TIME_SLOT_;
+ 363              		.loc 1 122 0
+ 364 0094 4020     		movs	r0, #64
+ 365 0096 FFF7FEFF 		bl	CyDelayUs
+ 366 009a 08E0     		b	.L25
+ 367              	.L24:
+ 123:.\iButtonProtocol.c ****                 }
+ 124:.\iButtonProtocol.c ****                 else
+ 125:.\iButtonProtocol.c ****                 {
+ 126:.\iButtonProtocol.c ****                     _1WIRE_WRITE0_DELAY;
+ 368              		.loc 1 126 0
+ 369 009c 3C20     		movs	r0, #60
+ 370 009e FFF7FEFF 		bl	CyDelayUs
+ 127:.\iButtonProtocol.c ****                     iButton2_Write(HIGH);
+ 371              		.loc 1 127 0
+ 372 00a2 0120     		movs	r0, #1
+ 373 00a4 FFF7FEFF 		bl	iButton2_Write
+ 128:.\iButtonProtocol.c ****                     _1WIRE_WRITE0_TIME_SLOT_;
+ 374              		.loc 1 128 0
+ 375 00a8 0A20     		movs	r0, #10
+ 376 00aa FFF7FEFF 		bl	CyDelayUs
+ 377              	.L25:
+ 115:.\iButtonProtocol.c ****             {
+ 378              		.loc 1 115 0 discriminator 2
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cco7sHgb.s 			page 10
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cck8imSI.s 			page 10
+>>>>>>> 19.1-Test
+
+
+ 379 00ae BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 380 00b0 0133     		adds	r3, r3, #1
+ 381 00b2 BB73     		strb	r3, [r7, #14]
+ 382              	.L23:
+ 115:.\iButtonProtocol.c ****             {
+ 383              		.loc 1 115 0 is_stmt 0 discriminator 1
+ 384 00b4 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 385 00b6 072B     		cmp	r3, #7
+ 386 00b8 DBD9     		bls	.L26
+ 129:.\iButtonProtocol.c ****                 }
+ 130:.\iButtonProtocol.c ****             }
+ 131:.\iButtonProtocol.c ****             break;
+ 387              		.loc 1 131 0 is_stmt 1
+ 388 00ba 00BF     		nop
+ 389              	.L15:
+ 390              	.LBE7:
+ 132:.\iButtonProtocol.c ****         }
+ 133:.\iButtonProtocol.c ****     }
+ 134:.\iButtonProtocol.c **** }
+ 391              		.loc 1 134 0
+ 392 00bc 1037     		adds	r7, r7, #16
+ 393              		.cfi_def_cfa_offset 8
+ 394 00be BD46     		mov	sp, r7
+ 395              		.cfi_def_cfa_register 13
+ 396              		@ sp needed
+ 397 00c0 80BD     		pop	{r7, pc}
+ 398              		.cfi_endproc
+ 399              	.LFE65:
+ 400              		.size	iButtonWrite, .-iButtonWrite
+ 401 00c2 00BF     		.text
+ 402              	.Letext0:
+ 403              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 404              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 405              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 406              		.file 5 ".\\iButton.h"
+ 407              		.file 6 "Generated_Source\\PSoC5/core_cm3.h"
+ 408              		.section	.debug_info,"",%progbits
+ 409              	.Ldebug_info0:
+ 410 0000 10020000 		.4byte	0x210
+ 411 0004 0400     		.2byte	0x4
+ 412 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 413 000a 04       		.byte	0x4
+ 414 000b 01       		.uleb128 0x1
+ 415 000c 12000000 		.4byte	.LASF27
+ 416 0010 01       		.byte	0x1
+ 417 0011 32020000 		.4byte	.LASF28
+ 418 0015 AB000000 		.4byte	.LASF29
+ 419 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 420 001d 00000000 		.4byte	0
+ 421 0021 00000000 		.4byte	.Ldebug_line0
+ 422 0025 02       		.uleb128 0x2
+ 423 0026 01       		.byte	0x1
+ 424 0027 06       		.byte	0x6
+ 425 0028 26020000 		.4byte	.LASF0
+ 426 002c 02       		.uleb128 0x2
+ 427 002d 01       		.byte	0x1
+ 428 002e 08       		.byte	0x8
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cco7sHgb.s 			page 11
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cck8imSI.s 			page 11
+>>>>>>> 19.1-Test
+
+
+ 429 002f 1A010000 		.4byte	.LASF1
+ 430 0033 02       		.uleb128 0x2
+ 431 0034 02       		.byte	0x2
+ 432 0035 05       		.byte	0x5
+ 433 0036 01020000 		.4byte	.LASF2
+ 434 003a 02       		.uleb128 0x2
+ 435 003b 02       		.byte	0x2
+ 436 003c 07       		.byte	0x7
+ 437 003d 41010000 		.4byte	.LASF3
+ 438 0041 03       		.uleb128 0x3
+ 439 0042 00000000 		.4byte	.LASF9
+ 440 0046 02       		.byte	0x2
+ 441 0047 3F       		.byte	0x3f
+ 442 0048 4C000000 		.4byte	0x4c
+ 443 004c 02       		.uleb128 0x2
+ 444 004d 04       		.byte	0x4
+ 445 004e 05       		.byte	0x5
+ 446 004f 11020000 		.4byte	.LASF4
+ 447 0053 02       		.uleb128 0x2
+ 448 0054 04       		.byte	0x4
+ 449 0055 07       		.byte	0x7
+ 450 0056 2F010000 		.4byte	.LASF5
+ 451 005a 02       		.uleb128 0x2
+ 452 005b 08       		.byte	0x8
+ 453 005c 05       		.byte	0x5
+ 454 005d D3010000 		.4byte	.LASF6
+ 455 0061 02       		.uleb128 0x2
+ 456 0062 08       		.byte	0x8
+ 457 0063 07       		.byte	0x7
+ 458 0064 9F010000 		.4byte	.LASF7
+ 459 0068 04       		.uleb128 0x4
+ 460 0069 04       		.byte	0x4
+ 461 006a 05       		.byte	0x5
+ 462 006b 696E7400 		.ascii	"int\000"
+ 463 006f 02       		.uleb128 0x2
+ 464 0070 04       		.byte	0x4
+ 465 0071 07       		.byte	0x7
+ 466 0072 92010000 		.4byte	.LASF8
+ 467 0076 03       		.uleb128 0x3
+ 468 0077 C2010000 		.4byte	.LASF10
+ 469 007b 03       		.byte	0x3
+ 470 007c 2C       		.byte	0x2c
+ 471 007d 41000000 		.4byte	0x41
+ 472 0081 05       		.uleb128 0x5
+ 473 0082 0B020000 		.4byte	.LASF11
+ 474 0086 04       		.byte	0x4
+ 475 0087 3801     		.2byte	0x138
+ 476 0089 2C000000 		.4byte	0x2c
+ 477 008d 02       		.uleb128 0x2
+ 478 008e 04       		.byte	0x4
+ 479 008f 04       		.byte	0x4
+ 480 0090 A0000000 		.4byte	.LASF12
+ 481 0094 02       		.uleb128 0x2
+ 482 0095 08       		.byte	0x8
+ 483 0096 04       		.byte	0x4
+ 484 0097 7E010000 		.4byte	.LASF13
+ 485 009b 02       		.uleb128 0x2
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cco7sHgb.s 			page 12
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cck8imSI.s 			page 12
+>>>>>>> 19.1-Test
+
+
+ 486 009c 01       		.byte	0x1
+ 487 009d 08       		.byte	0x8
+ 488 009e E1010000 		.4byte	.LASF14
+ 489 00a2 02       		.uleb128 0x2
+ 490 00a3 04       		.byte	0x4
+ 491 00a4 07       		.byte	0x7
+ 492 00a5 CA010000 		.4byte	.LASF15
+ 493 00a9 02       		.uleb128 0x2
+ 494 00aa 08       		.byte	0x8
+ 495 00ab 04       		.byte	0x4
+ 496 00ac 1A020000 		.4byte	.LASF16
+ 497 00b0 02       		.uleb128 0x2
+ 498 00b1 01       		.byte	0x1
+ 499 00b2 02       		.byte	0x2
+ 500 00b3 46020000 		.4byte	.LASF17
+ 501 00b7 06       		.uleb128 0x6
+ 502 00b8 01       		.byte	0x1
+ 503 00b9 05       		.byte	0x5
+ 504 00ba 2B       		.byte	0x2b
+ 505 00bb CC000000 		.4byte	0xcc
+ 506 00bf 07       		.uleb128 0x7
+ 507 00c0 EC010000 		.4byte	.LASF18
+ 508 00c4 01       		.sleb128 1
+ 509 00c5 07       		.uleb128 0x7
+ 510 00c6 0A010000 		.4byte	.LASF19
+ 511 00ca 02       		.sleb128 2
+ 512 00cb 00       		.byte	0
+ 513 00cc 08       		.uleb128 0x8
+ 514 00cd 61010000 		.4byte	.LASF20
+ 515 00d1 01       		.byte	0x1
+ 516 00d2 17       		.byte	0x17
+ 517 00d3 B0000000 		.4byte	0xb0
+ 518 00d7 00000000 		.4byte	.LFB63
+ 519 00db 82000000 		.4byte	.LFE63-.LFB63
+ 520 00df 01       		.uleb128 0x1
+ 521 00e0 9C       		.byte	0x9c
+ 522 00e1 02010000 		.4byte	0x102
+ 523 00e5 09       		.uleb128 0x9
+ 524 00e6 FC010000 		.4byte	.LASF22
+ 525 00ea 01       		.byte	0x1
+ 526 00eb 17       		.byte	0x17
+ 527 00ec 81000000 		.4byte	0x81
+ 528 00f0 02       		.uleb128 0x2
+ 529 00f1 91       		.byte	0x91
+ 530 00f2 6F       		.sleb128 -17
+ 531 00f3 0A       		.uleb128 0xa
+ 532 00f4 28010000 		.4byte	.LASF23
+ 533 00f8 01       		.byte	0x1
+ 534 00f9 19       		.byte	0x19
+ 535 00fa B0000000 		.4byte	0xb0
+ 536 00fe 02       		.uleb128 0x2
+ 537 00ff 91       		.byte	0x91
+ 538 0100 77       		.sleb128 -9
+ 539 0101 00       		.byte	0
+ 540 0102 08       		.uleb128 0x8
+ 541 0103 B6010000 		.4byte	.LASF21
+ 542 0107 01       		.byte	0x1
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cco7sHgb.s 			page 13
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cck8imSI.s 			page 13
+>>>>>>> 19.1-Test
+
+
+ 543 0108 33       		.byte	0x33
+ 544 0109 81000000 		.4byte	0x81
+ 545 010d 00000000 		.4byte	.LFB64
+ 546 0111 BC000000 		.4byte	.LFE64-.LFB64
+ 547 0115 01       		.uleb128 0x1
+ 548 0116 9C       		.byte	0x9c
+ 549 0117 9C010000 		.4byte	0x19c
+ 550 011b 09       		.uleb128 0x9
+ 551 011c FC010000 		.4byte	.LASF22
+ 552 0120 01       		.byte	0x1
+ 553 0121 33       		.byte	0x33
+ 554 0122 81000000 		.4byte	0x81
+ 555 0126 02       		.uleb128 0x2
+ 556 0127 91       		.byte	0x91
+ 557 0128 6F       		.sleb128 -17
+ 558 0129 0A       		.uleb128 0xa
+ 559 012a 28010000 		.4byte	.LASF23
+ 560 012e 01       		.byte	0x1
+ 561 012f 35       		.byte	0x35
+ 562 0130 81000000 		.4byte	0x81
+ 563 0134 02       		.uleb128 0x2
+ 564 0135 91       		.byte	0x91
+ 565 0136 77       		.sleb128 -9
+ 566 0137 0B       		.uleb128 0xb
+ 567 0138 1A000000 		.4byte	.LBB2
+ 568 013c 4C000000 		.4byte	.LBE2-.LBB2
+ 569 0140 6B010000 		.4byte	0x16b
+ 570 0144 0A       		.uleb128 0xa
+ 571 0145 E6010000 		.4byte	.LASF24
+ 572 0149 01       		.byte	0x1
+ 573 014a 3A       		.byte	0x3a
+ 574 014b 81000000 		.4byte	0x81
+ 575 014f 02       		.uleb128 0x2
+ 576 0150 91       		.byte	0x91
+ 577 0151 76       		.sleb128 -10
+ 578 0152 0C       		.uleb128 0xc
+ 579 0153 20000000 		.4byte	.LBB3
+ 580 0157 38000000 		.4byte	.LBE3-.LBB3
+ 581 015b 0A       		.uleb128 0xa
+ 582 015c 0A000000 		.4byte	.LASF25
+ 583 0160 01       		.byte	0x1
+ 584 0161 40       		.byte	0x40
+ 585 0162 81000000 		.4byte	0x81
+ 586 0166 02       		.uleb128 0x2
+ 587 0167 91       		.byte	0x91
+ 588 0168 74       		.sleb128 -12
+ 589 0169 00       		.byte	0
+ 590 016a 00       		.byte	0
+ 591 016b 0C       		.uleb128 0xc
+ 592 016c 66000000 		.4byte	.LBB4
+ 593 0170 4C000000 		.4byte	.LBE4-.LBB4
+ 594 0174 0A       		.uleb128 0xa
+ 595 0175 E6010000 		.4byte	.LASF24
+ 596 0179 01       		.byte	0x1
+ 597 017a 48       		.byte	0x48
+ 598 017b 81000000 		.4byte	0x81
+ 599 017f 02       		.uleb128 0x2
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cco7sHgb.s 			page 14
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cck8imSI.s 			page 14
+>>>>>>> 19.1-Test
+
+
+ 600 0180 91       		.byte	0x91
+ 601 0181 75       		.sleb128 -11
+ 602 0182 0C       		.uleb128 0xc
+ 603 0183 6C000000 		.4byte	.LBB5
+ 604 0187 38000000 		.4byte	.LBE5-.LBB5
+ 605 018b 0A       		.uleb128 0xa
+ 606 018c 0A000000 		.4byte	.LASF25
+ 607 0190 01       		.byte	0x1
+ 608 0191 4E       		.byte	0x4e
+ 609 0192 81000000 		.4byte	0x81
+ 610 0196 02       		.uleb128 0x2
+ 611 0197 91       		.byte	0x91
+ 612 0198 73       		.sleb128 -13
+ 613 0199 00       		.byte	0
+ 614 019a 00       		.byte	0
+ 615 019b 00       		.byte	0
+ 616 019c 0D       		.uleb128 0xd
+ 617 019d 85010000 		.4byte	.LASF30
+ 618 01a1 01       		.byte	0x1
+ 619 01a2 58       		.byte	0x58
+ 620 01a3 00000000 		.4byte	.LFB65
+ 621 01a7 C2000000 		.4byte	.LFE65-.LFB65
+ 622 01ab 01       		.uleb128 0x1
+ 623 01ac 9C       		.byte	0x9c
+ 624 01ad 02020000 		.4byte	0x202
+ 625 01b1 09       		.uleb128 0x9
+ 626 01b2 FC010000 		.4byte	.LASF22
+ 627 01b6 01       		.byte	0x1
+ 628 01b7 58       		.byte	0x58
+ 629 01b8 81000000 		.4byte	0x81
+ 630 01bc 02       		.uleb128 0x2
+ 631 01bd 91       		.byte	0x91
+ 632 01be 6F       		.sleb128 -17
+ 633 01bf 09       		.uleb128 0x9
+ 634 01c0 A6000000 		.4byte	.LASF26
+ 635 01c4 01       		.byte	0x1
+ 636 01c5 58       		.byte	0x58
+ 637 01c6 81000000 		.4byte	0x81
+ 638 01ca 02       		.uleb128 0x2
+ 639 01cb 91       		.byte	0x91
+ 640 01cc 6E       		.sleb128 -18
+ 641 01cd 0B       		.uleb128 0xb
+ 642 01ce 1C000000 		.4byte	.LBB6
+ 643 01d2 50000000 		.4byte	.LBE6-.LBB6
+ 644 01d6 E9010000 		.4byte	0x1e9
+ 645 01da 0A       		.uleb128 0xa
+ 646 01db E6010000 		.4byte	.LASF24
+ 647 01df 01       		.byte	0x1
+ 648 01e0 5E       		.byte	0x5e
+ 649 01e1 81000000 		.4byte	0x81
+ 650 01e5 02       		.uleb128 0x2
+ 651 01e6 91       		.byte	0x91
+ 652 01e7 77       		.sleb128 -9
+ 653 01e8 00       		.byte	0
+ 654 01e9 0C       		.uleb128 0xc
+ 655 01ea 6C000000 		.4byte	.LBB7
+ 656 01ee 50000000 		.4byte	.LBE7-.LBB7
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cco7sHgb.s 			page 15
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cck8imSI.s 			page 15
+>>>>>>> 19.1-Test
+
+
+ 657 01f2 0A       		.uleb128 0xa
+ 658 01f3 E6010000 		.4byte	.LASF24
+ 659 01f7 01       		.byte	0x1
+ 660 01f8 73       		.byte	0x73
+ 661 01f9 81000000 		.4byte	0x81
+ 662 01fd 02       		.uleb128 0x2
+ 663 01fe 91       		.byte	0x91
+ 664 01ff 76       		.sleb128 -10
+ 665 0200 00       		.byte	0
+ 666 0201 00       		.byte	0
+ 667 0202 0E       		.uleb128 0xe
+ 668 0203 54010000 		.4byte	.LASF31
+ 669 0207 06       		.byte	0x6
+ 670 0208 5506     		.2byte	0x655
+ 671 020a 0E020000 		.4byte	0x20e
+ 672 020e 0F       		.uleb128 0xf
+ 673 020f 76000000 		.4byte	0x76
+ 674 0213 00       		.byte	0
+ 675              		.section	.debug_abbrev,"",%progbits
+ 676              	.Ldebug_abbrev0:
+ 677 0000 01       		.uleb128 0x1
+ 678 0001 11       		.uleb128 0x11
+ 679 0002 01       		.byte	0x1
+ 680 0003 25       		.uleb128 0x25
+ 681 0004 0E       		.uleb128 0xe
+ 682 0005 13       		.uleb128 0x13
+ 683 0006 0B       		.uleb128 0xb
+ 684 0007 03       		.uleb128 0x3
+ 685 0008 0E       		.uleb128 0xe
+ 686 0009 1B       		.uleb128 0x1b
+ 687 000a 0E       		.uleb128 0xe
+ 688 000b 55       		.uleb128 0x55
+ 689 000c 17       		.uleb128 0x17
+ 690 000d 11       		.uleb128 0x11
+ 691 000e 01       		.uleb128 0x1
+ 692 000f 10       		.uleb128 0x10
+ 693 0010 17       		.uleb128 0x17
+ 694 0011 00       		.byte	0
+ 695 0012 00       		.byte	0
+ 696 0013 02       		.uleb128 0x2
+ 697 0014 24       		.uleb128 0x24
+ 698 0015 00       		.byte	0
+ 699 0016 0B       		.uleb128 0xb
+ 700 0017 0B       		.uleb128 0xb
+ 701 0018 3E       		.uleb128 0x3e
+ 702 0019 0B       		.uleb128 0xb
+ 703 001a 03       		.uleb128 0x3
+ 704 001b 0E       		.uleb128 0xe
+ 705 001c 00       		.byte	0
+ 706 001d 00       		.byte	0
+ 707 001e 03       		.uleb128 0x3
+ 708 001f 16       		.uleb128 0x16
+ 709 0020 00       		.byte	0
+ 710 0021 03       		.uleb128 0x3
+ 711 0022 0E       		.uleb128 0xe
+ 712 0023 3A       		.uleb128 0x3a
+ 713 0024 0B       		.uleb128 0xb
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cco7sHgb.s 			page 16
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cck8imSI.s 			page 16
+>>>>>>> 19.1-Test
+
+
+ 714 0025 3B       		.uleb128 0x3b
+ 715 0026 0B       		.uleb128 0xb
+ 716 0027 49       		.uleb128 0x49
+ 717 0028 13       		.uleb128 0x13
+ 718 0029 00       		.byte	0
+ 719 002a 00       		.byte	0
+ 720 002b 04       		.uleb128 0x4
+ 721 002c 24       		.uleb128 0x24
+ 722 002d 00       		.byte	0
+ 723 002e 0B       		.uleb128 0xb
+ 724 002f 0B       		.uleb128 0xb
+ 725 0030 3E       		.uleb128 0x3e
+ 726 0031 0B       		.uleb128 0xb
+ 727 0032 03       		.uleb128 0x3
+ 728 0033 08       		.uleb128 0x8
+ 729 0034 00       		.byte	0
+ 730 0035 00       		.byte	0
+ 731 0036 05       		.uleb128 0x5
+ 732 0037 16       		.uleb128 0x16
+ 733 0038 00       		.byte	0
+ 734 0039 03       		.uleb128 0x3
+ 735 003a 0E       		.uleb128 0xe
+ 736 003b 3A       		.uleb128 0x3a
+ 737 003c 0B       		.uleb128 0xb
+ 738 003d 3B       		.uleb128 0x3b
+ 739 003e 05       		.uleb128 0x5
+ 740 003f 49       		.uleb128 0x49
+ 741 0040 13       		.uleb128 0x13
+ 742 0041 00       		.byte	0
+ 743 0042 00       		.byte	0
+ 744 0043 06       		.uleb128 0x6
+ 745 0044 04       		.uleb128 0x4
+ 746 0045 01       		.byte	0x1
+ 747 0046 0B       		.uleb128 0xb
+ 748 0047 0B       		.uleb128 0xb
+ 749 0048 3A       		.uleb128 0x3a
+ 750 0049 0B       		.uleb128 0xb
+ 751 004a 3B       		.uleb128 0x3b
+ 752 004b 0B       		.uleb128 0xb
+ 753 004c 01       		.uleb128 0x1
+ 754 004d 13       		.uleb128 0x13
+ 755 004e 00       		.byte	0
+ 756 004f 00       		.byte	0
+ 757 0050 07       		.uleb128 0x7
+ 758 0051 28       		.uleb128 0x28
+ 759 0052 00       		.byte	0
+ 760 0053 03       		.uleb128 0x3
+ 761 0054 0E       		.uleb128 0xe
+ 762 0055 1C       		.uleb128 0x1c
+ 763 0056 0D       		.uleb128 0xd
+ 764 0057 00       		.byte	0
+ 765 0058 00       		.byte	0
+ 766 0059 08       		.uleb128 0x8
+ 767 005a 2E       		.uleb128 0x2e
+ 768 005b 01       		.byte	0x1
+ 769 005c 3F       		.uleb128 0x3f
+ 770 005d 19       		.uleb128 0x19
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cco7sHgb.s 			page 17
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cck8imSI.s 			page 17
+>>>>>>> 19.1-Test
+
+
+ 771 005e 03       		.uleb128 0x3
+ 772 005f 0E       		.uleb128 0xe
+ 773 0060 3A       		.uleb128 0x3a
+ 774 0061 0B       		.uleb128 0xb
+ 775 0062 3B       		.uleb128 0x3b
+ 776 0063 0B       		.uleb128 0xb
+ 777 0064 27       		.uleb128 0x27
+ 778 0065 19       		.uleb128 0x19
+ 779 0066 49       		.uleb128 0x49
+ 780 0067 13       		.uleb128 0x13
+ 781 0068 11       		.uleb128 0x11
+ 782 0069 01       		.uleb128 0x1
+ 783 006a 12       		.uleb128 0x12
+ 784 006b 06       		.uleb128 0x6
+ 785 006c 40       		.uleb128 0x40
+ 786 006d 18       		.uleb128 0x18
+ 787 006e 9642     		.uleb128 0x2116
+ 788 0070 19       		.uleb128 0x19
+ 789 0071 01       		.uleb128 0x1
+ 790 0072 13       		.uleb128 0x13
+ 791 0073 00       		.byte	0
+ 792 0074 00       		.byte	0
+ 793 0075 09       		.uleb128 0x9
+ 794 0076 05       		.uleb128 0x5
+ 795 0077 00       		.byte	0
+ 796 0078 03       		.uleb128 0x3
+ 797 0079 0E       		.uleb128 0xe
+ 798 007a 3A       		.uleb128 0x3a
+ 799 007b 0B       		.uleb128 0xb
+ 800 007c 3B       		.uleb128 0x3b
+ 801 007d 0B       		.uleb128 0xb
+ 802 007e 49       		.uleb128 0x49
+ 803 007f 13       		.uleb128 0x13
+ 804 0080 02       		.uleb128 0x2
+ 805 0081 18       		.uleb128 0x18
+ 806 0082 00       		.byte	0
+ 807 0083 00       		.byte	0
+ 808 0084 0A       		.uleb128 0xa
+ 809 0085 34       		.uleb128 0x34
+ 810 0086 00       		.byte	0
+ 811 0087 03       		.uleb128 0x3
+ 812 0088 0E       		.uleb128 0xe
+ 813 0089 3A       		.uleb128 0x3a
+ 814 008a 0B       		.uleb128 0xb
+ 815 008b 3B       		.uleb128 0x3b
+ 816 008c 0B       		.uleb128 0xb
+ 817 008d 49       		.uleb128 0x49
+ 818 008e 13       		.uleb128 0x13
+ 819 008f 02       		.uleb128 0x2
+ 820 0090 18       		.uleb128 0x18
+ 821 0091 00       		.byte	0
+ 822 0092 00       		.byte	0
+ 823 0093 0B       		.uleb128 0xb
+ 824 0094 0B       		.uleb128 0xb
+ 825 0095 01       		.byte	0x1
+ 826 0096 11       		.uleb128 0x11
+ 827 0097 01       		.uleb128 0x1
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cco7sHgb.s 			page 18
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cck8imSI.s 			page 18
+>>>>>>> 19.1-Test
+
+
+ 828 0098 12       		.uleb128 0x12
+ 829 0099 06       		.uleb128 0x6
+ 830 009a 01       		.uleb128 0x1
+ 831 009b 13       		.uleb128 0x13
+ 832 009c 00       		.byte	0
+ 833 009d 00       		.byte	0
+ 834 009e 0C       		.uleb128 0xc
+ 835 009f 0B       		.uleb128 0xb
+ 836 00a0 01       		.byte	0x1
+ 837 00a1 11       		.uleb128 0x11
+ 838 00a2 01       		.uleb128 0x1
+ 839 00a3 12       		.uleb128 0x12
+ 840 00a4 06       		.uleb128 0x6
+ 841 00a5 00       		.byte	0
+ 842 00a6 00       		.byte	0
+ 843 00a7 0D       		.uleb128 0xd
+ 844 00a8 2E       		.uleb128 0x2e
+ 845 00a9 01       		.byte	0x1
+ 846 00aa 3F       		.uleb128 0x3f
+ 847 00ab 19       		.uleb128 0x19
+ 848 00ac 03       		.uleb128 0x3
+ 849 00ad 0E       		.uleb128 0xe
+ 850 00ae 3A       		.uleb128 0x3a
+ 851 00af 0B       		.uleb128 0xb
+ 852 00b0 3B       		.uleb128 0x3b
+ 853 00b1 0B       		.uleb128 0xb
+ 854 00b2 27       		.uleb128 0x27
+ 855 00b3 19       		.uleb128 0x19
+ 856 00b4 11       		.uleb128 0x11
+ 857 00b5 01       		.uleb128 0x1
+ 858 00b6 12       		.uleb128 0x12
+ 859 00b7 06       		.uleb128 0x6
+ 860 00b8 40       		.uleb128 0x40
+ 861 00b9 18       		.uleb128 0x18
+ 862 00ba 9642     		.uleb128 0x2116
+ 863 00bc 19       		.uleb128 0x19
+ 864 00bd 01       		.uleb128 0x1
+ 865 00be 13       		.uleb128 0x13
+ 866 00bf 00       		.byte	0
+ 867 00c0 00       		.byte	0
+ 868 00c1 0E       		.uleb128 0xe
+ 869 00c2 34       		.uleb128 0x34
+ 870 00c3 00       		.byte	0
+ 871 00c4 03       		.uleb128 0x3
+ 872 00c5 0E       		.uleb128 0xe
+ 873 00c6 3A       		.uleb128 0x3a
+ 874 00c7 0B       		.uleb128 0xb
+ 875 00c8 3B       		.uleb128 0x3b
+ 876 00c9 05       		.uleb128 0x5
+ 877 00ca 49       		.uleb128 0x49
+ 878 00cb 13       		.uleb128 0x13
+ 879 00cc 3F       		.uleb128 0x3f
+ 880 00cd 19       		.uleb128 0x19
+ 881 00ce 3C       		.uleb128 0x3c
+ 882 00cf 19       		.uleb128 0x19
+ 883 00d0 00       		.byte	0
+ 884 00d1 00       		.byte	0
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cco7sHgb.s 			page 19
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cck8imSI.s 			page 19
+>>>>>>> 19.1-Test
+
+
+ 885 00d2 0F       		.uleb128 0xf
+ 886 00d3 35       		.uleb128 0x35
+ 887 00d4 00       		.byte	0
+ 888 00d5 49       		.uleb128 0x49
+ 889 00d6 13       		.uleb128 0x13
+ 890 00d7 00       		.byte	0
+ 891 00d8 00       		.byte	0
+ 892 00d9 00       		.byte	0
+ 893              		.section	.debug_aranges,"",%progbits
+ 894 0000 2C000000 		.4byte	0x2c
+ 895 0004 0200     		.2byte	0x2
+ 896 0006 00000000 		.4byte	.Ldebug_info0
+ 897 000a 04       		.byte	0x4
+ 898 000b 00       		.byte	0
+ 899 000c 0000     		.2byte	0
+ 900 000e 0000     		.2byte	0
+ 901 0010 00000000 		.4byte	.LFB63
+ 902 0014 82000000 		.4byte	.LFE63-.LFB63
+ 903 0018 00000000 		.4byte	.LFB64
+ 904 001c BC000000 		.4byte	.LFE64-.LFB64
+ 905 0020 00000000 		.4byte	.LFB65
+ 906 0024 C2000000 		.4byte	.LFE65-.LFB65
+ 907 0028 00000000 		.4byte	0
+ 908 002c 00000000 		.4byte	0
+ 909              		.section	.debug_ranges,"",%progbits
+ 910              	.Ldebug_ranges0:
+ 911 0000 00000000 		.4byte	.LFB63
+ 912 0004 82000000 		.4byte	.LFE63
+ 913 0008 00000000 		.4byte	.LFB64
+ 914 000c BC000000 		.4byte	.LFE64
+ 915 0010 00000000 		.4byte	.LFB65
+ 916 0014 C2000000 		.4byte	.LFE65
+ 917 0018 00000000 		.4byte	0
+ 918 001c 00000000 		.4byte	0
+ 919              		.section	.debug_line,"",%progbits
+ 920              	.Ldebug_line0:
+ 921 0000 4C020000 		.section	.debug_str,"MS",%progbits,1
+ 921      02006301 
+ 921      00000201 
+ 921      FB0E0D00 
+ 921      01010101 
+ 922              	.LASF9:
+ 923 0000 5F5F696E 		.ascii	"__int32_t\000"
+ 923      7433325F 
+ 923      7400
+ 924              	.LASF25:
+ 925 000a 62697464 		.ascii	"bitdata\000"
+ 925      61746100 
+ 926              	.LASF27:
+ 927 0012 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 927      4320342E 
+ 927      392E3320 
+ 927      32303135 
+ 927      30333033 
+ 928 0045 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 928      20726576 
+ 928      6973696F 
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cco7sHgb.s 			page 20
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cck8imSI.s 			page 20
+>>>>>>> 19.1-Test
+
+
+ 928      6E203232 
+ 928      31323230 
+ 929 0078 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 929      66756E63 
+ 929      74696F6E 
+ 929      2D736563 
+ 929      74696F6E 
+ 930              	.LASF12:
+ 931 00a0 666C6F61 		.ascii	"float\000"
+ 931      7400
+ 932              	.LASF26:
+ 933 00a6 64617461 		.ascii	"data\000"
+ 933      00
+ 934              	.LASF29:
+ 935 00ab 433A5C54 		.ascii	"C:\\TeamInsepet\\NSX-Prime\\Hardware\\CorEx-MUX-Ker"
+ 935      65616D49 
+ 935      6E736570 
+ 935      65745C4E 
+ 935      53582D50 
+ 936 00da 6E656C2D 		.ascii	"nel-Enhanced\\Workspace01\\CorEx-Mux-Kernel.cydsn\000"
+ 936      456E6861 
+ 936      6E636564 
+ 936      5C576F72 
+ 936      6B737061 
+ 937              	.LASF19:
+ 938 010a 5F494255 		.ascii	"_IBUTTON_PORT2_\000"
+ 938      54544F4E 
+ 938      5F504F52 
+ 938      54325F00 
+ 939              	.LASF1:
+ 940 011a 756E7369 		.ascii	"unsigned char\000"
+ 940      676E6564 
+ 940      20636861 
+ 940      7200
+ 941              	.LASF23:
+ 942 0128 72657476 		.ascii	"retval\000"
+ 942      616C00
+ 943              	.LASF5:
+ 944 012f 6C6F6E67 		.ascii	"long unsigned int\000"
+ 944      20756E73 
+ 944      69676E65 
+ 944      6420696E 
+ 944      7400
+ 945              	.LASF3:
+ 946 0141 73686F72 		.ascii	"short unsigned int\000"
+ 946      7420756E 
+ 946      7369676E 
+ 946      65642069 
+ 946      6E7400
+ 947              	.LASF31:
+ 948 0154 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 948      52784275 
+ 948      66666572 
+ 948      00
+ 949              	.LASF20:
+ 950 0161 69427574 		.ascii	"iButtonResetPresenceSequence\000"
+ 950      746F6E52 
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cco7sHgb.s 			page 21
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cck8imSI.s 			page 21
+>>>>>>> 19.1-Test
+
+
+ 950      65736574 
+ 950      50726573 
+ 950      656E6365 
+ 951              	.LASF13:
+ 952 017e 646F7562 		.ascii	"double\000"
+ 952      6C6500
+ 953              	.LASF30:
+ 954 0185 69427574 		.ascii	"iButtonWrite\000"
+ 954      746F6E57 
+ 954      72697465 
+ 954      00
+ 955              	.LASF8:
+ 956 0192 756E7369 		.ascii	"unsigned int\000"
+ 956      676E6564 
+ 956      20696E74 
+ 956      00
+ 957              	.LASF7:
+ 958 019f 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 958      206C6F6E 
+ 958      6720756E 
+ 958      7369676E 
+ 958      65642069 
+ 959              	.LASF21:
+ 960 01b6 69427574 		.ascii	"iButtonRead\000"
+ 960      746F6E52 
+ 960      65616400 
+ 961              	.LASF10:
+ 962 01c2 696E7433 		.ascii	"int32_t\000"
+ 962      325F7400 
+ 963              	.LASF15:
+ 964 01ca 73697A65 		.ascii	"sizetype\000"
+ 964      74797065 
+ 964      00
+ 965              	.LASF6:
+ 966 01d3 6C6F6E67 		.ascii	"long long int\000"
+ 966      206C6F6E 
+ 966      6720696E 
+ 966      7400
+ 967              	.LASF14:
+ 968 01e1 63686172 		.ascii	"char\000"
+ 968      00
+ 969              	.LASF24:
+ 970 01e6 696E6465 		.ascii	"index\000"
+ 970      7800
+ 971              	.LASF18:
+ 972 01ec 5F494255 		.ascii	"_IBUTTON_PORT1_\000"
+ 972      54544F4E 
+ 972      5F504F52 
+ 972      54315F00 
+ 973              	.LASF22:
+ 974 01fc 706F7274 		.ascii	"port\000"
+ 974      00
+ 975              	.LASF2:
+ 976 0201 73686F72 		.ascii	"short int\000"
+ 976      7420696E 
+ 976      7400
+ 977              	.LASF11:
+<<<<<<< HEAD
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cco7sHgb.s 			page 22
+=======
+ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cck8imSI.s 			page 22
+>>>>>>> 19.1-Test
+
+
+ 978 020b 75696E74 		.ascii	"uint8\000"
+ 978      3800
+ 979              	.LASF4:
+ 980 0211 6C6F6E67 		.ascii	"long int\000"
+ 980      20696E74 
+ 980      00
+ 981              	.LASF16:
+ 982 021a 6C6F6E67 		.ascii	"long double\000"
+ 982      20646F75 
+ 982      626C6500 
+ 983              	.LASF0:
+ 984 0226 7369676E 		.ascii	"signed char\000"
+ 984      65642063 
+ 984      68617200 
+ 985              	.LASF28:
+ 986 0232 2E5C6942 		.ascii	".\\iButtonProtocol.c\000"
+ 986      7574746F 
+ 986      6E50726F 
+ 986      746F636F 
+ 986      6C2E6300 
+ 987              	.LASF17:
+ 988 0246 5F426F6F 		.ascii	"_Bool\000"
+ 988      6C00
+ 989              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
