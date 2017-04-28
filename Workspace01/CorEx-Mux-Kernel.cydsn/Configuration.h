@@ -45,12 +45,12 @@
 
 //////////////////////////////////////////////////////////////////////////////
 //**************************** PRINTER TYPE DEFINITION ****************************
-#define PRINTER_TYPE_PANEL
-//#define PRINTER_TYPE_KIOSK
+//#define PRINTER_TYPE_PANEL
+#define PRINTER_TYPE_KIOSK
 
 //////////////////////////////////////////////////////////////////////////////
 //**************************** CLIENT DEFINITIONS *********************************
-//#define  _CLIENT_BIOMAX_
+#define  _CLIENT_BIOMAX_
 //#define  _CLIENT_BRIO_
 //#define  _CLIENT_CENCOSUD_
 //#define  _CLIENT_ECOPETROL_
@@ -64,7 +64,7 @@
 //#define  _CLIENT_TERPEL_
 //#define  _CLIENT_TEXACO_
 //#define  _CLIENT_ZEUS_
-#define  _CLIENT_PETROMIL_
+//#define  _CLIENT_PETROMIL_
 //#define  _CLIENT_TREBOL_
 //#define  _CLIENT_PUMA_ //No esta para kiosko
 //#define _NO_LOGO_
