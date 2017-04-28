@@ -28,6 +28,7 @@
 
 uint8_t FindLRC(char8 *_pbuffer);
 uint8_t GetLRC(char8 *_pbuffer);
+uint8 errorCounter = 0;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////                 BLOCK OF AVAILABLE RESPONSE HANDLERS
@@ -45,24 +46,39 @@ void AcquirePumpStateResponse(void *pparam)
     if(pjob)
     {
         uint8 prevstate = pjob->_ppump->_pumpstate;
+        uint8 prevrfstate = pjob->_ppump->_pumprftransstate;
         pjob->_ppump->_pumpstate = ((pjob->_ppump->_rxbuffer[0x00] & 0xF0) >> 4);
-        if(pjob->_ppump->PumpValidState(pjob->_ppump))
-            pjob->_ppump->_transhealth = _PUMP_OK_;
+        if(pjob->_ppump->PumpValidState(pjob->_ppump) && ((pjob->_ppump->_rxbuffer[0x00] & 0x0F)) == pjob->_ppump->_pumpid  ){
+            errorCounter = 0;
+            if(errorCounter == 0){
+                pjob->_ppump->_transhealth = _PUMP_OK_;  
+            }
+        }
         else
         {
-            pjob->_ppump->_transhealth = _PUMP_FAIL_;
-            pjob->_ppump->_pumpstate = prevstate;
-        }
+            errorCounter = errorCounter + 1;
+            if(errorCounter == 3){
+                pjob->_ppump->_transhealth = _PUMP_FAIL_;
+                pjob->_ppump->_pumpstate = PUMP_FAIL;
+                errorCounter = 1;
+            }
+        }   
         
         if(pjob->_ppump->_pumpstate == PUMP_CALLING)
-            pjob->_ppump->_pumplocked = false;
+            pjob->_ppump->_pumplocked = false;                
         
         if((pjob->_ppump->_pumpstate == PUMP_IDLE || pjob->_ppump->_pumpstate == PUMP_CALLING) && 
             (prevstate == PUMP_BUSY || prevstate == PUMP_AUTHORIZED))
+            pjob->_ppump->_pumprftransstate = RF_ZERO_SALE; 
+        
+        if((pjob->_ppump->_pumpstate == PUMP_IDLE ) && 
+            (prevrfstate == RF_ZERO_SALE ))
+            pjob->_ppump->_pumprftransstate = RF_IDLE; 
+        
+        if((pjob->_ppump->_pumpstate == PUMP_IDLE   ) && 
+            (pjob->_ppump->_pumprftransstate == RF_COPY_RECEIPT ))
             pjob->_ppump->_pumprftransstate = RF_IDLE;
-        /*if((pjob->_ppump->_pumpstate == PUMP_IDLE || pjob->_ppump->_pumpstate == PUMP_CALLING) && 
-            (prevstate == PUMP_FEOT || prevstate == PUMP_PEOT || prevstate == PUMP_BUSY || prevstate == PUMP_AUTHORIZED))
-            pjob->_ppump->_pumprftransstate = RF_IDLE;*/
+                
                 
         pjob->_ppump->_acquiringstate = false;
     }
@@ -572,6 +588,7 @@ void ProcessPumpTotalsDataReport(void *pparam)
         PNEAR_PUMPTRANSACTIONALSTATEPTR ptstemp = pjob->_ppump->PumpTransQueueAllocate(pjob->_ppump);
         
         pjob->_ppump->PumpTransQueueUnlock(pjob->_ppump);
+        pjob->_ppump->_transhealth = _PUMP_OK_;
         if(ptstemp)
         {
             if(pts && !transtatefound)
@@ -999,7 +1016,7 @@ void PumpPresetHose(void *pparam)
                 ///THESE CODES MUST BE MATCHED OTHERWISE THE LOGIC WILL BREAKUP THE CODE!
                 puartdisp->_messagetx[index++] = (0xE0 | (0x0F & ppump->_trasactionbuffer[GetBufferIndexFromDisplayID(DISPLAY_SUBA_MANIJA)]));
                 //puartdisp->_messagetx[index++] = 0xE0;
-                
+                _g_pumps[(ppump->_pumpid)-1]._currenthose = (0x0F & ppump->_trasactionbuffer[GetBufferIndexFromDisplayID(DISPLAY_SUBA_MANIJA)])+ 1;
                 puartdisp->_messagetx[index++] = 0xF8; //Preset Data next
                 //Here we copy the remaining 8 bytes for the preset value
                 ///THIS IS AN APPLIED CONVENTION ===>> 0x0008 INDEX POSITION WITHIN THE PUMP'S BUFFER POINTS TO THE PRESET VALUE (VOLUME OR MONEY)
@@ -1035,7 +1052,7 @@ void PumpPresetHose(void *pparam)
                 ///THESE CODES MUST BE MATCHED OTHERWISE THE LOGIC WILL BREAKUP THE CODE!
                 puartdisp->_messagetx[index++] = (0xE0 | (0x0F & ppump->_trasactionbuffer[GetBufferIndexFromDisplayID(DISPLAY_SUBA_MANIJA)]));
                 //puartdisp->_messagetx[index++] = 0xE0;
-                
+                _g_pumps[(ppump->_pumpid)-1]._currenthose = (0x0F & ppump->_trasactionbuffer[GetBufferIndexFromDisplayID(DISPLAY_SUBA_MANIJA)])+ 1;
                 puartdisp->_messagetx[index++] = 0xF8; //Preset Data next
                 //Here we copy the remaining 8 bytes for the preset value
                 ///THIS IS AN APPLIED CONVENTION ===>> 0x0008 INDEX POSITION WITHIN THE PUMP'S BUFFER POINTS TO THE PRESET VALUE (VOLUME OR MONEY)
@@ -1272,7 +1289,7 @@ void PumpFullPresetHose(void *pparam)
                 ///THIS IS AN APPLIED CONVENTION ===>> 0x0006 INDEX POSITION WITHIN THE PUMP'S BUFFER POINTS TO THE PRODUCT TYPE
                 ///THESE CODES MUST BE MATCHED OTHERWISE THE LOGIC WILL BREAKUP THE CODE!
                 puartdisp->_messagetx[index++] = (0xE0 | (0x0F & ppump->_trasactionbuffer[GetBufferIndexFromDisplayID(DISPLAY_SUBA_MANIJA)]));
-                
+                _g_pumps[(ppump->_pumpid)-1]._currenthose = (0x0F & ppump->_trasactionbuffer[GetBufferIndexFromDisplayID(DISPLAY_SUBA_MANIJA)])+ 1;
                 puartdisp->_messagetx[index++] = 0xF8; //Preset Data next
                 //Here we copy the remaining 8 bytes for the preset value
                 ///THIS IS AN APPLIED CONVENTION ===>> 0x0008 INDEX POSITION WITHIN THE PUMP'S BUFFER POINTS TO THE PRESET VALUE (VOLUME OR MONEY)
@@ -1303,7 +1320,7 @@ void PumpFullPresetHose(void *pparam)
                 ///THIS IS AN APPLIED CONVENTION ===>> 0x0006 INDEX POSITION WITHIN THE PUMP'S BUFFER POINTS TO THE PRODUCT TYPE
                 ///THESE CODES MUST BE MATCHED OTHERWISE THE LOGIC WILL BREAKUP THE CODE!
                 puartdisp->_messagetx[index++] = (0xE0 | (0x0F & ppump->_trasactionbuffer[GetBufferIndexFromDisplayID(DISPLAY_SUBA_MANIJA)]));
-                
+                _g_pumps[(ppump->_pumpid)-1]._currenthose = (0x0F & ppump->_trasactionbuffer[GetBufferIndexFromDisplayID(DISPLAY_SUBA_MANIJA)])+ 1;
                 puartdisp->_messagetx[index++] = 0xF8; //Preset Data next
                 //Here we copy the remaining 8 bytes for the preset value
                 ///THIS IS AN APPLIED CONVENTION ===>> 0x0008 INDEX POSITION WITHIN THE PUMP'S BUFFER POINTS TO THE PRESET VALUE (VOLUME OR MONEY)
@@ -1733,6 +1750,7 @@ void AcquirePumpCompleteConfiguration(void *pparam)
         //THE PERSISTENT FILE SYSTEM (EEPROM)        
         if(pjob->_ppump->_rxbuffer[0x00] == 0xBA)
         {
+            pjob->_ppump->_transhealth = _PUMP_OK_;
             ClearEepromBuffer();
             bool targetmemoryareafound = false;
             uint16 eeprompumpconfigmemorypageid = 0;

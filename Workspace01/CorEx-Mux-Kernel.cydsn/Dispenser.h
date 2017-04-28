@@ -35,9 +35,15 @@
 #undef _ALLOW_CREDIT_SALE_TESTING_
 ////////////////////////////////////////////////////////////////////////////////
 //PROTOCOL SELECTION
+
 #define  PRIME_PROTOCOL
 //#define  ENCORE_PROTOCOL
 //#define  ADVANTAGE_PROTOCOL
+
+//#define  PRIME_PROTOCOL
+//#define  ENCORE_PROTOCOL
+#define  ADVANTAGE_PROTOCOL
+
 //#define  ADVANTAGE_PROTOCOL_SLOWSTARTUP
 ////////////////////////////////////////////////////////////////////////////////
 //THIS DEFINITION IS FOR TESTING PURPOSES ONLY SINCE IT ALLOWS FOR FAST STARTUP!!!

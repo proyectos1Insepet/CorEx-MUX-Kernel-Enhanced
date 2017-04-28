@@ -103,7 +103,11 @@ bool RFStateReqResp(void *pparam)
                         puartdisp->_messagetx[puartdisp->_messagelength++] = (uint8)((_g_stationidentifier >> 8) & 0xFF);
                         puartdisp->_messagetx[puartdisp->_messagelength++] = pmsg->_buffer[_RF_STREAM_POSITION_INDEX_];
                         puartdisp->_messagetx[puartdisp->_messagelength++] = pmsg->_buffer[_RF_STREAM_COMMAND_INDEX_];
-                        puartdisp->_messagetx[puartdisp->_messagelength++] = _g_pumps[index]._pumprftransstate;
+                        if(_g_pumps[index]._transhealth == _PUMP_FAIL_ ){
+                            puartdisp->_messagetx[puartdisp->_messagelength++] = RF_ERROR;
+                        }else{
+                             puartdisp->_messagetx[puartdisp->_messagelength++] =_g_pumps[index]._pumprftransstate;
+                        }
                         
                         puartdisp->_messagetx[puartdisp->_messagelength] = RawCRCCheck((PSTR)puartdisp->_messagetx, puartdisp->_messagelength);
                         puartdisp->_messagelength++;
@@ -324,7 +328,7 @@ bool RFCashSalePresetReportReqResp(void *pparam)
                     puartdisp->_messagetx[puartdisp->_messagelength++] = pmsg->_buffer[_RF_STREAM_POSITION_INDEX_];
                     puartdisp->_messagetx[puartdisp->_messagelength++] = pumptrans->_transtate;
                     puartdisp->_messagetx[puartdisp->_messagelength++] = RFUnmapCommand2State(pumptrans->_transtate);
-                    puartdisp->_messagetx[puartdisp->_messagelength++] = 0x00;//ID Grado/Hose not available
+                    puartdisp->_messagetx[puartdisp->_messagelength++] = _g_pumps[index]._currenthose;//0x00;//ID Grado/Hose not available
                     //PRESET type defined on this position (for further details see the function "PumpPresetNotification" in the file "PrimeImpl.c")
                     puartdisp->_messagetx[puartdisp->_messagelength++] = (pumptrans->_buffer[0x01] & 0x0F);
                     //PRESET value as a BCD array starting at position 0x02
@@ -403,7 +407,7 @@ bool RFCashCreditSaleFinalReportReqResp(void *pparam)
                     puartdisp->_messagetx[puartdisp->_messagelength++] = (uint8)((_g_stationidentifier >> 8) & 0xFF);
                     puartdisp->_messagetx[puartdisp->_messagelength++] = pmsg->_buffer[_RF_STREAM_POSITION_INDEX_];
                     puartdisp->_messagetx[puartdisp->_messagelength++] = pumptrans->_transtate;
-                    puartdisp->_messagetx[puartdisp->_messagelength++] = 0x00;//?? ESTADOPOSITION ??
+                    puartdisp->_messagetx[puartdisp->_messagelength++] = RF_CASHSALEREPORT;//?? ESTADOPOSITION ??
                     
                     if(_g_dispenserlayoutinfo._displaydigitsmode == 0x06)
                     {
@@ -2677,6 +2681,7 @@ bool RFCopyPrintReqResp(void *pparam)
                     puartdisp->_messagetx[puartdisp->_messagelength++] = pmsg->_buffer[_RF_STREAM_POSITION_INDEX_];
                     puartdisp->_messagetx[puartdisp->_messagelength++] = RF_MUX_COPY_REQUEST_RESPONSE;
                     puartdisp->_messagetx[puartdisp->_messagelength++] = 0x0B;//_g_pumps[index]._pumpid;
+					puartdisp->_messagelength += (pumptrans->_buffersize - 1);
                     puartdisp->_messagetx[puartdisp->_messagelength] = RawCRCCheck((PSTR)puartdisp->_messagetx, puartdisp->_messagelength - 1);
                     puartdisp->_messagelength++;
 
@@ -2685,8 +2690,8 @@ bool RFCopyPrintReqResp(void *pparam)
                 _g_pumps[index].PumpTransQueueDeallocate(&_g_pumps[index], pumptrans);
                 _g_pumps[index].PumpTransQueueUnlock(&_g_pumps[index]);                 
             }
-             if(ppump)
-                    ppump->_pumprftransstate = RF_IDLE;            
+//             if(ppump)
+//                    _g_pumps[index]._pumprftransstate = RF_IDLE;            
         }
         _ALLOCATE_SINKMESSAGE_SLOT(psinkmsg);
     	if(psinkmsg)
