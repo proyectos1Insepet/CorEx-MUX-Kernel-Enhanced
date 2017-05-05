@@ -328,7 +328,7 @@ bool RFCashSalePresetReportReqResp(void *pparam)
                     puartdisp->_messagetx[puartdisp->_messagelength++] = pmsg->_buffer[_RF_STREAM_POSITION_INDEX_];
                     puartdisp->_messagetx[puartdisp->_messagelength++] = pumptrans->_transtate;
                     puartdisp->_messagetx[puartdisp->_messagelength++] = RFUnmapCommand2State(pumptrans->_transtate);
-                    puartdisp->_messagetx[puartdisp->_messagelength++] = _g_pumps[_g_pumps[index]._pumpid-1]._currenthose;//0x00;//ID Grado/Hose not available
+                    puartdisp->_messagetx[puartdisp->_messagelength++] = 0x00;//_g_pumps[_g_pumps[index]._pumpid-1]._currenthose;////ID Grado/Hose not available
                     //PRESET type defined on this position (for further details see the function "PumpPresetNotification" in the file "PrimeImpl.c")
                     puartdisp->_messagetx[puartdisp->_messagelength++] = (pumptrans->_buffer[0x01] & 0x0F);
                     //PRESET value as a BCD array starting at position 0x02

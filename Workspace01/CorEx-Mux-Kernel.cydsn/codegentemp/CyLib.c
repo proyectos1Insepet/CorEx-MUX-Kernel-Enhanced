@@ -2680,8 +2680,6 @@ void CyEnableInts(uint32 mask)
     {
         uint8 i;
 
-        CYASSERT(i <= CY_INT_NUMBER_MAX);
-
         for (i = 0; i <= CY_INT_NUMBER_MAX; i++)
         {
             CY_SET_REG16(&CY_INT_VECT_TABLE[i], (uint16) &IntDefaultHandler);
@@ -2920,10 +2918,9 @@ void CyEnableInts(uint32 mask)
     ********************************************************************************
     *
     * Summary:
-    *  Configures the SysTick timer to generate interrupt every 1 ms by call to the
-    *  CySysTickInit() function and starts it by calling CySysTickEnable() function.
-    *  Refer to the corresponding function description for the details.
-
+    *  Configures the SysTick timer to generate an interrupt every 1 ms and enables
+    *  the interrupt. Refer to the corresponding function description for details.
+    *
     * Parameters:
     *  None
     *
@@ -2954,7 +2951,7 @@ void CyEnableInts(uint32 mask)
     *  Initializes the callback addresses with pointers to NULL, associates the
     *  SysTick system vector with the function that is responsible for calling
     *  registered callback functions, configures SysTick timer to generate interrupt
-    * every 1 ms.
+    *  every 1 ms.
     *
     * Parameters:
     *  None
@@ -3149,22 +3146,24 @@ void CyEnableInts(uint32 mask)
     * Summary:
     *  Sets the clock source for the SysTick counter.
     *
+    *  Clears SysTick count flag if it was set. If clock source is not ready this
+    *  function call will have no effect. After changing clock source to the low
+    *  frequency clock the counter and reload register values will remain unchanged
+    *  so time to the interrupt will be significantly longer and vice versa.
+    *
+    *  The function is not available on PSoC 4000, PSoC 4100, and PSoC 42000
+    *  devices. The SysTick timer clocked by the System clock on these devices.
+    *
     * Parameters:
     *  clockSource: Clock source for SysTick counter
     *         Define                     Clock Source
     *   CY_SYS_SYST_CSR_CLK_SRC_SYSCLK     SysTick is clocked by CPU clock.
     *   CY_SYS_SYST_CSR_CLK_SRC_LFCLK      SysTick is clocked by the low frequency
-    *                                      clock (ILO 100 KHz for PSoC 5LP, and
+    *                                      clock. (ILO 100 KHz for PSoC 5LP, and
     *                                      LFCLK for PSoC 4).
     *
     * Return:
     *  None
-    *
-    * Side Effects:
-    *  Clears SysTick count flag if it was set. If clock source is not ready this
-    *  function call will have no effect. After changing clock source to the low
-    *  frequency clock the counter and reload register values will remain unchanged
-    *  so time to the interrupt will be significantly bigger and vice versa.
     *
     *******************************************************************************/
     void CySysTickSetClockSource(uint32 clockSource)
