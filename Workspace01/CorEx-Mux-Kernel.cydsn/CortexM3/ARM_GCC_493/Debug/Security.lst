@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccx6frKa.s 			page 1
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccQob1qP.s 			page 1
 
 
    1              		.syntax unified
@@ -18,15 +18,16 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccx6frKa.s 			page 1
   15              		.text
   16              	.Ltext0:
   17              		.cfi_sections	.debug_frame
-  18              		.section	.text.StartSecurityLayer,"ax",%progbits
-  19              		.align	2
-  20              		.global	StartSecurityLayer
-  21              		.thumb
-  22              		.thumb_func
-  23              		.type	StartSecurityLayer, %function
-  24              	StartSecurityLayer:
-  25              	.LFB63:
-  26              		.file 1 ".\\Security.c"
+  18              		.comm	HoseDispenser,1,1
+  19              		.section	.text.StartSecurityLayer,"ax",%progbits
+  20              		.align	2
+  21              		.global	StartSecurityLayer
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	StartSecurityLayer, %function
+  25              	StartSecurityLayer:
+  26              	.LFB63:
+  27              		.file 1 ".\\Security.c"
    1:.\Security.c  **** /* ========================================
    2:.\Security.c  ****  *
    3:.\Security.c  ****  * Copyright INSEPET SISTEMAS, 2016
@@ -50,40 +51,40 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccx6frKa.s 			page 1
   21:.\Security.c  **** //@Septembre de 2016
   22:.\Security.c  **** void StartSecurityLayer()
   23:.\Security.c  **** {
-  27              		.loc 1 23 0
-  28              		.cfi_startproc
-  29              		@ args = 0, pretend = 0, frame = 0
-  30              		@ frame_needed = 1, uses_anonymous_args = 0
-  31 0000 80B5     		push	{r7, lr}
-  32              		.cfi_def_cfa_offset 8
-  33              		.cfi_offset 7, -8
-  34              		.cfi_offset 14, -4
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccx6frKa.s 			page 2
+  28              		.loc 1 23 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccQob1qP.s 			page 2
 
 
-  35 0002 00AF     		add	r7, sp, #0
-  36              		.cfi_def_cfa_register 7
+  35              		.cfi_offset 14, -4
+  36 0002 00AF     		add	r7, sp, #0
+  37              		.cfi_def_cfa_register 7
   24:.\Security.c  ****     //ShiftReg_Scramble_Start();
   25:.\Security.c  ****     ShiftReg_Security_Start();
-  37              		.loc 1 25 0
-  38 0004 FFF7FEFF 		bl	ShiftReg_Security_Start
+  38              		.loc 1 25 0
+  39 0004 FFF7FEFF 		bl	ShiftReg_Security_Start
   26:.\Security.c  ****     CRC_Security_Start();
-  39              		.loc 1 26 0
-  40 0008 FFF7FEFF 		bl	CRC_Security_Start
+  40              		.loc 1 26 0
+  41 0008 FFF7FEFF 		bl	CRC_Security_Start
   27:.\Security.c  **** }
-  41              		.loc 1 27 0
-  42 000c 80BD     		pop	{r7, pc}
-  43              		.cfi_endproc
-  44              	.LFE63:
-  45              		.size	StartSecurityLayer, .-StartSecurityLayer
-  46 000e 00BF     		.section	.text.ClockCRC,"ax",%progbits
-  47              		.align	2
-  48              		.global	ClockCRC
-  49              		.thumb
-  50              		.thumb_func
-  51              		.type	ClockCRC, %function
-  52              	ClockCRC:
-  53              	.LFB64:
+  42              		.loc 1 27 0
+  43 000c 80BD     		pop	{r7, pc}
+  44              		.cfi_endproc
+  45              	.LFE63:
+  46              		.size	StartSecurityLayer, .-StartSecurityLayer
+  47 000e 00BF     		.section	.text.ClockCRC,"ax",%progbits
+  48              		.align	2
+  49              		.global	ClockCRC
+  50              		.thumb
+  51              		.thumb_func
+  52              		.type	ClockCRC, %function
+  53              	ClockCRC:
+  54              	.LFB64:
   28:.\Security.c  **** 
   29:.\Security.c  **** //*******************************************************************************************
   30:.\Security.c  **** //@Created by: HIJH
@@ -96,1077 +97,1111 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccx6frKa.s 			page 1
   37:.\Security.c  **** 
   38:.\Security.c  **** void ClockCRC()
   39:.\Security.c  **** {
-  54              		.loc 1 39 0
-  55              		.cfi_startproc
-  56              		@ args = 0, pretend = 0, frame = 0
-  57              		@ frame_needed = 1, uses_anonymous_args = 0
-  58 0000 80B5     		push	{r7, lr}
-  59              		.cfi_def_cfa_offset 8
-  60              		.cfi_offset 7, -8
-  61              		.cfi_offset 14, -4
-  62 0002 00AF     		add	r7, sp, #0
-  63              		.cfi_def_cfa_register 7
+  55              		.loc 1 39 0
+  56              		.cfi_startproc
+  57              		@ args = 0, pretend = 0, frame = 0
+  58              		@ frame_needed = 1, uses_anonymous_args = 0
+  59 0000 80B5     		push	{r7, lr}
+  60              		.cfi_def_cfa_offset 8
+  61              		.cfi_offset 7, -8
+  62              		.cfi_offset 14, -4
+  63 0002 00AF     		add	r7, sp, #0
+  64              		.cfi_def_cfa_register 7
   40:.\Security.c  ****     Clock_CRC_Write(1u);
-  64              		.loc 1 40 0
-  65 0004 0120     		movs	r0, #1
-  66 0006 FFF7FEFF 		bl	Clock_CRC_Write
+  65              		.loc 1 40 0
+  66 0004 0120     		movs	r0, #1
+  67 0006 FFF7FEFF 		bl	Clock_CRC_Write
   41:.\Security.c  ****     CyDelay(1u);
-  67              		.loc 1 41 0
-  68 000a 0120     		movs	r0, #1
-  69 000c FFF7FEFF 		bl	CyDelay
+  68              		.loc 1 41 0
+  69 000a 0120     		movs	r0, #1
+  70 000c FFF7FEFF 		bl	CyDelay
   42:.\Security.c  ****     Clock_CRC_Write(0u);
-  70              		.loc 1 42 0
-  71 0010 0020     		movs	r0, #0
-  72 0012 FFF7FEFF 		bl	Clock_CRC_Write
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccx6frKa.s 			page 3
+  71              		.loc 1 42 0
+  72 0010 0020     		movs	r0, #0
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccQob1qP.s 			page 3
 
 
+  73 0012 FFF7FEFF 		bl	Clock_CRC_Write
   43:.\Security.c  ****     CyDelay(1u);
-  73              		.loc 1 43 0
-  74 0016 0120     		movs	r0, #1
-  75 0018 FFF7FEFF 		bl	CyDelay
+  74              		.loc 1 43 0
+  75 0016 0120     		movs	r0, #1
+  76 0018 FFF7FEFF 		bl	CyDelay
   44:.\Security.c  **** }
-  76              		.loc 1 44 0
-  77 001c 80BD     		pop	{r7, pc}
-  78              		.cfi_endproc
-  79              	.LFE64:
-  80              		.size	ClockCRC, .-ClockCRC
-  81 001e 00BF     		.section	.text.CalcCRC,"ax",%progbits
-  82              		.align	2
-  83              		.global	CalcCRC
-  84              		.thumb
-  85              		.thumb_func
-  86              		.type	CalcCRC, %function
-  87              	CalcCRC:
-  88              	.LFB65:
+  77              		.loc 1 44 0
+  78 001c 80BD     		pop	{r7, pc}
+  79              		.cfi_endproc
+  80              	.LFE64:
+  81              		.size	ClockCRC, .-ClockCRC
+  82 001e 00BF     		.section	.text.CalcCRC,"ax",%progbits
+  83              		.align	2
+  84              		.global	CalcCRC
+  85              		.thumb
+  86              		.thumb_func
+  87              		.type	CalcCRC, %function
+  88              	CalcCRC:
+  89              	.LFB65:
   45:.\Security.c  **** 
   46:.\Security.c  **** //@Created By: HIJH
   47:.\Security.c  **** //@Septembre de 2016
   48:.\Security.c  **** char8 CalcCRC(char8 *pbuffer, uint8 buffersize)
   49:.\Security.c  **** {
-  89              		.loc 1 49 0
-  90              		.cfi_startproc
-  91              		@ args = 0, pretend = 0, frame = 16
-  92              		@ frame_needed = 1, uses_anonymous_args = 0
-  93 0000 80B5     		push	{r7, lr}
-  94              		.cfi_def_cfa_offset 8
-  95              		.cfi_offset 7, -8
-  96              		.cfi_offset 14, -4
-  97 0002 84B0     		sub	sp, sp, #16
-  98              		.cfi_def_cfa_offset 24
-  99 0004 00AF     		add	r7, sp, #0
- 100              		.cfi_def_cfa_register 7
- 101 0006 7860     		str	r0, [r7, #4]
- 102 0008 0B46     		mov	r3, r1
- 103 000a FB70     		strb	r3, [r7, #3]
+  90              		.loc 1 49 0
+  91              		.cfi_startproc
+  92              		@ args = 0, pretend = 0, frame = 16
+  93              		@ frame_needed = 1, uses_anonymous_args = 0
+  94 0000 80B5     		push	{r7, lr}
+  95              		.cfi_def_cfa_offset 8
+  96              		.cfi_offset 7, -8
+  97              		.cfi_offset 14, -4
+  98 0002 84B0     		sub	sp, sp, #16
+  99              		.cfi_def_cfa_offset 24
+ 100 0004 00AF     		add	r7, sp, #0
+ 101              		.cfi_def_cfa_register 7
+ 102 0006 7860     		str	r0, [r7, #4]
+ 103 0008 0B46     		mov	r3, r1
+ 104 000a FB70     		strb	r3, [r7, #3]
   50:.\Security.c  ****     uint8 index = 0;
- 104              		.loc 1 50 0
- 105 000c 0023     		movs	r3, #0
- 106 000e FB73     		strb	r3, [r7, #15]
+ 105              		.loc 1 50 0
+ 106 000c 0023     		movs	r3, #0
+ 107 000e FB73     		strb	r3, [r7, #15]
   51:.\Security.c  ****     uint8 byteindex = 0;
- 107              		.loc 1 51 0
- 108 0010 0023     		movs	r3, #0
- 109 0012 BB73     		strb	r3, [r7, #14]
+ 108              		.loc 1 51 0
+ 109 0010 0023     		movs	r3, #0
+ 110 0012 BB73     		strb	r3, [r7, #14]
   52:.\Security.c  ****     char8 retval = 0x00;
- 110              		.loc 1 52 0
- 111 0014 0023     		movs	r3, #0
- 112 0016 7B73     		strb	r3, [r7, #13]
+ 111              		.loc 1 52 0
+ 112 0014 0023     		movs	r3, #0
+ 113 0016 7B73     		strb	r3, [r7, #13]
   53:.\Security.c  ****     
   54:.\Security.c  ****     Reset_CRC_Write(1u);
- 113              		.loc 1 54 0
- 114 0018 0120     		movs	r0, #1
- 115 001a FFF7FEFF 		bl	Reset_CRC_Write
+ 114              		.loc 1 54 0
+ 115 0018 0120     		movs	r0, #1
+ 116 001a FFF7FEFF 		bl	Reset_CRC_Write
   55:.\Security.c  ****     CyDelay(1u);
- 116              		.loc 1 55 0
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccx6frKa.s 			page 4
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccQob1qP.s 			page 4
 
 
- 117 001e 0120     		movs	r0, #1
- 118 0020 FFF7FEFF 		bl	CyDelay
+ 117              		.loc 1 55 0
+ 118 001e 0120     		movs	r0, #1
+ 119 0020 FFF7FEFF 		bl	CyDelay
   56:.\Security.c  ****     ClockCRC();
- 119              		.loc 1 56 0
- 120 0024 FFF7FEFF 		bl	ClockCRC
+ 120              		.loc 1 56 0
+ 121 0024 FFF7FEFF 		bl	ClockCRC
   57:.\Security.c  ****     Reset_CRC_Write(0u);
- 121              		.loc 1 57 0
- 122 0028 0020     		movs	r0, #0
- 123 002a FFF7FEFF 		bl	Reset_CRC_Write
+ 122              		.loc 1 57 0
+ 123 0028 0020     		movs	r0, #0
+ 124 002a FFF7FEFF 		bl	Reset_CRC_Write
   58:.\Security.c  ****     for(;index < buffersize; index++)
- 124              		.loc 1 58 0
- 125 002e 12E0     		b	.L4
- 126              	.L7:
+ 125              		.loc 1 58 0
+ 126 002e 12E0     		b	.L4
+ 127              	.L7:
   59:.\Security.c  ****     {
   60:.\Security.c  ****         ShiftReg_Security_WriteRegValue(pbuffer[index]);
- 127              		.loc 1 60 0
- 128 0030 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
- 129 0032 7A68     		ldr	r2, [r7, #4]
- 130 0034 1344     		add	r3, r3, r2
- 131 0036 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 132 0038 1846     		mov	r0, r3
- 133 003a FFF7FEFF 		bl	ShiftReg_Security_WriteRegValue
+ 128              		.loc 1 60 0
+ 129 0030 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 130 0032 7A68     		ldr	r2, [r7, #4]
+ 131 0034 1344     		add	r3, r3, r2
+ 132 0036 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 133 0038 1846     		mov	r0, r3
+ 134 003a FFF7FEFF 		bl	ShiftReg_Security_WriteRegValue
   61:.\Security.c  ****         //Shifting current byte bits from the Shift Register 
   62:.\Security.c  ****         //into the CRC UDB to apply the polynomial
   63:.\Security.c  ****         //This should count from 0 to 7 (meaning 8 bits = byte)
   64:.\Security.c  ****         for(; byteindex < 8; byteindex++)
- 134              		.loc 1 64 0
- 135 003e 04E0     		b	.L5
- 136              	.L6:
+ 135              		.loc 1 64 0
+ 136 003e 04E0     		b	.L5
+ 137              	.L6:
   65:.\Security.c  ****             ClockCRC();
- 137              		.loc 1 65 0 discriminator 2
- 138 0040 FFF7FEFF 		bl	ClockCRC
+ 138              		.loc 1 65 0 discriminator 2
+ 139 0040 FFF7FEFF 		bl	ClockCRC
   64:.\Security.c  ****             ClockCRC();
- 139              		.loc 1 64 0 discriminator 2
- 140 0044 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
- 141 0046 0133     		adds	r3, r3, #1
- 142 0048 BB73     		strb	r3, [r7, #14]
- 143              	.L5:
+ 140              		.loc 1 64 0 discriminator 2
+ 141 0044 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 142 0046 0133     		adds	r3, r3, #1
+ 143 0048 BB73     		strb	r3, [r7, #14]
+ 144              	.L5:
   64:.\Security.c  ****             ClockCRC();
- 144              		.loc 1 64 0 is_stmt 0 discriminator 1
- 145 004a BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
- 146 004c 072B     		cmp	r3, #7
- 147 004e F7D9     		bls	.L6
+ 145              		.loc 1 64 0 is_stmt 0 discriminator 1
+ 146 004a BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 147 004c 072B     		cmp	r3, #7
+ 148 004e F7D9     		bls	.L6
   58:.\Security.c  ****     {
- 148              		.loc 1 58 0 is_stmt 1
- 149 0050 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
- 150 0052 0133     		adds	r3, r3, #1
- 151 0054 FB73     		strb	r3, [r7, #15]
- 152              	.L4:
+ 149              		.loc 1 58 0 is_stmt 1
+ 150 0050 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 151 0052 0133     		adds	r3, r3, #1
+ 152 0054 FB73     		strb	r3, [r7, #15]
+ 153              	.L4:
   58:.\Security.c  ****     {
- 153              		.loc 1 58 0 is_stmt 0 discriminator 1
- 154 0056 FA7B     		ldrb	r2, [r7, #15]	@ zero_extendqisi2
- 155 0058 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
- 156 005a 9A42     		cmp	r2, r3
- 157 005c E8D3     		bcc	.L7
+ 154              		.loc 1 58 0 is_stmt 0 discriminator 1
+ 155 0056 FA7B     		ldrb	r2, [r7, #15]	@ zero_extendqisi2
+ 156 0058 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 157 005a 9A42     		cmp	r2, r3
+ 158 005c E8D3     		bcc	.L7
   66:.\Security.c  **** 
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccQob1qP.s 			page 5
+
+
   67:.\Security.c  ****     }
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccx6frKa.s 			page 5
-
-
   68:.\Security.c  ****     retval = CRC_Security_ReadCRC();
- 158              		.loc 1 68 0 is_stmt 1
- 159 005e FFF7FEFF 		bl	CRC_Security_ReadCRC
- 160 0062 0346     		mov	r3, r0
- 161 0064 7B73     		strb	r3, [r7, #13]
+ 159              		.loc 1 68 0 is_stmt 1
+ 160 005e FFF7FEFF 		bl	CRC_Security_ReadCRC
+ 161 0062 0346     		mov	r3, r0
+ 162 0064 7B73     		strb	r3, [r7, #13]
   69:.\Security.c  ****     
   70:.\Security.c  ****     return retval;
- 162              		.loc 1 70 0
- 163 0066 7B7B     		ldrb	r3, [r7, #13]	@ zero_extendqisi2
+ 163              		.loc 1 70 0
+ 164 0066 7B7B     		ldrb	r3, [r7, #13]	@ zero_extendqisi2
   71:.\Security.c  **** }
- 164              		.loc 1 71 0
- 165 0068 1846     		mov	r0, r3
- 166 006a 1037     		adds	r7, r7, #16
- 167              		.cfi_def_cfa_offset 8
- 168 006c BD46     		mov	sp, r7
- 169              		.cfi_def_cfa_register 13
- 170              		@ sp needed
- 171 006e 80BD     		pop	{r7, pc}
- 172              		.cfi_endproc
- 173              	.LFE65:
- 174              		.size	CalcCRC, .-CalcCRC
- 175              		.section	.text.CRCCheck,"ax",%progbits
- 176              		.align	2
- 177              		.global	CRCCheck
- 178              		.thumb
- 179              		.thumb_func
- 180              		.type	CRCCheck, %function
- 181              	CRCCheck:
- 182              	.LFB66:
+ 165              		.loc 1 71 0
+ 166 0068 1846     		mov	r0, r3
+ 167 006a 1037     		adds	r7, r7, #16
+ 168              		.cfi_def_cfa_offset 8
+ 169 006c BD46     		mov	sp, r7
+ 170              		.cfi_def_cfa_register 13
+ 171              		@ sp needed
+ 172 006e 80BD     		pop	{r7, pc}
+ 173              		.cfi_endproc
+ 174              	.LFE65:
+ 175              		.size	CalcCRC, .-CalcCRC
+ 176              		.section	.text.CRCCheck,"ax",%progbits
+ 177              		.align	2
+ 178              		.global	CRCCheck
+ 179              		.thumb
+ 180              		.thumb_func
+ 181              		.type	CRCCheck, %function
+ 182              	CRCCheck:
+ 183              	.LFB66:
   72:.\Security.c  **** 
   73:.\Security.c  **** uint8 CRCCheck(char8 crcseed, uint8 data)
   74:.\Security.c  **** {
- 183              		.loc 1 74 0
- 184              		.cfi_startproc
- 185              		@ args = 0, pretend = 0, frame = 16
- 186              		@ frame_needed = 1, uses_anonymous_args = 0
- 187              		@ link register save eliminated.
- 188 0000 80B4     		push	{r7}
- 189              		.cfi_def_cfa_offset 4
- 190              		.cfi_offset 7, -4
- 191 0002 85B0     		sub	sp, sp, #20
- 192              		.cfi_def_cfa_offset 24
- 193 0004 00AF     		add	r7, sp, #0
- 194              		.cfi_def_cfa_register 7
- 195 0006 0346     		mov	r3, r0
- 196 0008 0A46     		mov	r2, r1
- 197 000a FB71     		strb	r3, [r7, #7]
- 198 000c 1346     		mov	r3, r2
- 199 000e BB71     		strb	r3, [r7, #6]
+ 184              		.loc 1 74 0
+ 185              		.cfi_startproc
+ 186              		@ args = 0, pretend = 0, frame = 16
+ 187              		@ frame_needed = 1, uses_anonymous_args = 0
+ 188              		@ link register save eliminated.
+ 189 0000 80B4     		push	{r7}
+ 190              		.cfi_def_cfa_offset 4
+ 191              		.cfi_offset 7, -4
+ 192 0002 85B0     		sub	sp, sp, #20
+ 193              		.cfi_def_cfa_offset 24
+ 194 0004 00AF     		add	r7, sp, #0
+ 195              		.cfi_def_cfa_register 7
+ 196 0006 0346     		mov	r3, r0
+ 197 0008 0A46     		mov	r2, r1
+ 198 000a FB71     		strb	r3, [r7, #7]
+ 199 000c 1346     		mov	r3, r2
+ 200 000e BB71     		strb	r3, [r7, #6]
   75:.\Security.c  ****     uint8 i;
   76:.\Security.c  ****     crcseed = crcseed ^ data;
- 200              		.loc 1 76 0
- 201 0010 FA79     		ldrb	r2, [r7, #7]
- 202 0012 BB79     		ldrb	r3, [r7, #6]
- 203 0014 5340     		eors	r3, r3, r2
- 204 0016 FB71     		strb	r3, [r7, #7]
+ 201              		.loc 1 76 0
+ 202 0010 FA79     		ldrb	r2, [r7, #7]
+ 203 0012 BB79     		ldrb	r3, [r7, #6]
+ 204 0014 5340     		eors	r3, r3, r2
+ 205 0016 FB71     		strb	r3, [r7, #7]
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccQob1qP.s 			page 6
+
+
   77:.\Security.c  ****     for (i = 0; i < 8; i++)
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccx6frKa.s 			page 6
-
-
- 205              		.loc 1 77 0
- 206 0018 0023     		movs	r3, #0
- 207 001a FB73     		strb	r3, [r7, #15]
- 208 001c 12E0     		b	.L10
- 209              	.L13:
+ 206              		.loc 1 77 0
+ 207 0018 0023     		movs	r3, #0
+ 208 001a FB73     		strb	r3, [r7, #15]
+ 209 001c 12E0     		b	.L10
+ 210              	.L13:
   78:.\Security.c  ****     {
   79:.\Security.c  ****         if (crcseed & 0x01){
- 210              		.loc 1 79 0
- 211 001e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
- 212 0020 03F00103 		and	r3, r3, #1
- 213 0024 002B     		cmp	r3, #0
- 214 0026 07D0     		beq	.L11
+ 211              		.loc 1 79 0
+ 212 001e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 213 0020 03F00103 		and	r3, r3, #1
+ 214 0024 002B     		cmp	r3, #0
+ 215 0026 07D0     		beq	.L11
   80:.\Security.c  ****             crcseed = (crcseed >> 1) ^ 0x8C;
- 215              		.loc 1 80 0
- 216 0028 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
- 217 002a 5B08     		lsrs	r3, r3, #1
- 218 002c DBB2     		uxtb	r3, r3
- 219 002e 83F07303 		eor	r3, r3, #115
- 220 0032 DB43     		mvns	r3, r3
- 221 0034 FB71     		strb	r3, [r7, #7]
- 222 0036 02E0     		b	.L12
- 223              	.L11:
+ 216              		.loc 1 80 0
+ 217 0028 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 218 002a 5B08     		lsrs	r3, r3, #1
+ 219 002c DBB2     		uxtb	r3, r3
+ 220 002e 83F07303 		eor	r3, r3, #115
+ 221 0032 DB43     		mvns	r3, r3
+ 222 0034 FB71     		strb	r3, [r7, #7]
+ 223 0036 02E0     		b	.L12
+ 224              	.L11:
   81:.\Security.c  **** 		}	
   82:.\Security.c  ****         else{
   83:.\Security.c  ****             crcseed >>= 1;
- 224              		.loc 1 83 0
- 225 0038 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
- 226 003a 5B08     		lsrs	r3, r3, #1
- 227 003c FB71     		strb	r3, [r7, #7]
- 228              	.L12:
+ 225              		.loc 1 83 0
+ 226 0038 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 227 003a 5B08     		lsrs	r3, r3, #1
+ 228 003c FB71     		strb	r3, [r7, #7]
+ 229              	.L12:
   77:.\Security.c  ****     {
- 229              		.loc 1 77 0 discriminator 2
- 230 003e FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
- 231 0040 0133     		adds	r3, r3, #1
- 232 0042 FB73     		strb	r3, [r7, #15]
- 233              	.L10:
+ 230              		.loc 1 77 0 discriminator 2
+ 231 003e FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 232 0040 0133     		adds	r3, r3, #1
+ 233 0042 FB73     		strb	r3, [r7, #15]
+ 234              	.L10:
   77:.\Security.c  ****     {
- 234              		.loc 1 77 0 is_stmt 0 discriminator 1
- 235 0044 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
- 236 0046 072B     		cmp	r3, #7
- 237 0048 E9D9     		bls	.L13
+ 235              		.loc 1 77 0 is_stmt 0 discriminator 1
+ 236 0044 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 237 0046 072B     		cmp	r3, #7
+ 238 0048 E9D9     		bls	.L13
   84:.\Security.c  **** 		}	
   85:.\Security.c  ****     }
   86:.\Security.c  ****     return crcseed;
- 238              		.loc 1 86 0 is_stmt 1
- 239 004a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 239              		.loc 1 86 0 is_stmt 1
+ 240 004a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
   87:.\Security.c  **** }
- 240              		.loc 1 87 0
- 241 004c 1846     		mov	r0, r3
- 242 004e 1437     		adds	r7, r7, #20
- 243              		.cfi_def_cfa_offset 4
- 244 0050 BD46     		mov	sp, r7
- 245              		.cfi_def_cfa_register 13
- 246              		@ sp needed
- 247 0052 5DF8047B 		ldr	r7, [sp], #4
- 248              		.cfi_restore 7
- 249              		.cfi_def_cfa_offset 0
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccx6frKa.s 			page 7
+ 241              		.loc 1 87 0
+ 242 004c 1846     		mov	r0, r3
+ 243 004e 1437     		adds	r7, r7, #20
+ 244              		.cfi_def_cfa_offset 4
+ 245 0050 BD46     		mov	sp, r7
+ 246              		.cfi_def_cfa_register 13
+ 247              		@ sp needed
+ 248 0052 5DF8047B 		ldr	r7, [sp], #4
+ 249              		.cfi_restore 7
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccQob1qP.s 			page 7
 
 
- 250 0056 7047     		bx	lr
- 251              		.cfi_endproc
- 252              	.LFE66:
- 253              		.size	CRCCheck, .-CRCCheck
- 254              		.section	.text.RawCRCCheck,"ax",%progbits
- 255              		.align	2
- 256              		.global	RawCRCCheck
- 257              		.thumb
- 258              		.thumb_func
- 259              		.type	RawCRCCheck, %function
- 260              	RawCRCCheck:
- 261              	.LFB67:
+ 250              		.cfi_def_cfa_offset 0
+ 251 0056 7047     		bx	lr
+ 252              		.cfi_endproc
+ 253              	.LFE66:
+ 254              		.size	CRCCheck, .-CRCCheck
+ 255              		.section	.text.RawCRCCheck,"ax",%progbits
+ 256              		.align	2
+ 257              		.global	RawCRCCheck
+ 258              		.thumb
+ 259              		.thumb_func
+ 260              		.type	RawCRCCheck, %function
+ 261              	RawCRCCheck:
+ 262              	.LFB67:
   88:.\Security.c  **** 
   89:.\Security.c  **** //@Created By: HIJH
   90:.\Security.c  **** //@Septembre de 2016
   91:.\Security.c  **** uint8 RawCRCCheck(char8 *pdata, uint16 buffersize)
   92:.\Security.c  **** {
- 262              		.loc 1 92 0
- 263              		.cfi_startproc
- 264              		@ args = 0, pretend = 0, frame = 16
- 265              		@ frame_needed = 1, uses_anonymous_args = 0
- 266 0000 80B5     		push	{r7, lr}
- 267              		.cfi_def_cfa_offset 8
- 268              		.cfi_offset 7, -8
- 269              		.cfi_offset 14, -4
- 270 0002 84B0     		sub	sp, sp, #16
- 271              		.cfi_def_cfa_offset 24
- 272 0004 00AF     		add	r7, sp, #0
- 273              		.cfi_def_cfa_register 7
- 274 0006 7860     		str	r0, [r7, #4]
- 275 0008 0B46     		mov	r3, r1
- 276 000a 7B80     		strh	r3, [r7, #2]	@ movhi
+ 263              		.loc 1 92 0
+ 264              		.cfi_startproc
+ 265              		@ args = 0, pretend = 0, frame = 16
+ 266              		@ frame_needed = 1, uses_anonymous_args = 0
+ 267 0000 80B5     		push	{r7, lr}
+ 268              		.cfi_def_cfa_offset 8
+ 269              		.cfi_offset 7, -8
+ 270              		.cfi_offset 14, -4
+ 271 0002 84B0     		sub	sp, sp, #16
+ 272              		.cfi_def_cfa_offset 24
+ 273 0004 00AF     		add	r7, sp, #0
+ 274              		.cfi_def_cfa_register 7
+ 275 0006 7860     		str	r0, [r7, #4]
+ 276 0008 0B46     		mov	r3, r1
+ 277 000a 7B80     		strh	r3, [r7, #2]	@ movhi
   93:.\Security.c  ****     uint8 crcseed = 0x00;
- 277              		.loc 1 93 0
- 278 000c 0023     		movs	r3, #0
- 279 000e FB73     		strb	r3, [r7, #15]
+ 278              		.loc 1 93 0
+ 279 000c 0023     		movs	r3, #0
+ 280 000e FB73     		strb	r3, [r7, #15]
   94:.\Security.c  ****     FOR(uint16 index = 0, index < buffersize, index++)
- 280              		.loc 1 94 0
- 281 0010 0023     		movs	r3, #0
- 282 0012 BB81     		strh	r3, [r7, #12]	@ movhi
- 283 0014 0DE0     		b	.L16
- 284              	.L17:
+ 281              		.loc 1 94 0
+ 282 0010 0023     		movs	r3, #0
+ 283 0012 BB81     		strh	r3, [r7, #12]	@ movhi
+ 284 0014 0DE0     		b	.L16
+ 285              	.L17:
   95:.\Security.c  ****         crcseed = CRCCheck(crcseed, pdata[index]);
- 285              		.loc 1 95 0 discriminator 3
- 286 0016 BB89     		ldrh	r3, [r7, #12]
- 287 0018 7A68     		ldr	r2, [r7, #4]
- 288 001a 1344     		add	r3, r3, r2
- 289 001c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 290 001e FA7B     		ldrb	r2, [r7, #15]	@ zero_extendqisi2
- 291 0020 1046     		mov	r0, r2
- 292 0022 1946     		mov	r1, r3
- 293 0024 FFF7FEFF 		bl	CRCCheck
- 294 0028 0346     		mov	r3, r0
- 295 002a FB73     		strb	r3, [r7, #15]
+ 286              		.loc 1 95 0 discriminator 3
+ 287 0016 BB89     		ldrh	r3, [r7, #12]
+ 288 0018 7A68     		ldr	r2, [r7, #4]
+ 289 001a 1344     		add	r3, r3, r2
+ 290 001c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 291 001e FA7B     		ldrb	r2, [r7, #15]	@ zero_extendqisi2
+ 292 0020 1046     		mov	r0, r2
+ 293 0022 1946     		mov	r1, r3
+ 294 0024 FFF7FEFF 		bl	CRCCheck
+ 295 0028 0346     		mov	r3, r0
+ 296 002a FB73     		strb	r3, [r7, #15]
   94:.\Security.c  ****     FOR(uint16 index = 0, index < buffersize, index++)
- 296              		.loc 1 94 0 discriminator 3
- 297 002c BB89     		ldrh	r3, [r7, #12]
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccx6frKa.s 			page 8
+ 297              		.loc 1 94 0 discriminator 3
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccQob1qP.s 			page 8
 
 
- 298 002e 0133     		adds	r3, r3, #1
- 299 0030 BB81     		strh	r3, [r7, #12]	@ movhi
- 300              	.L16:
+ 298 002c BB89     		ldrh	r3, [r7, #12]
+ 299 002e 0133     		adds	r3, r3, #1
+ 300 0030 BB81     		strh	r3, [r7, #12]	@ movhi
+ 301              	.L16:
   94:.\Security.c  ****     FOR(uint16 index = 0, index < buffersize, index++)
- 301              		.loc 1 94 0 is_stmt 0 discriminator 1
- 302 0032 BA89     		ldrh	r2, [r7, #12]
- 303 0034 7B88     		ldrh	r3, [r7, #2]
- 304 0036 9A42     		cmp	r2, r3
- 305 0038 EDD3     		bcc	.L17
+ 302              		.loc 1 94 0 is_stmt 0 discriminator 1
+ 303 0032 BA89     		ldrh	r2, [r7, #12]
+ 304 0034 7B88     		ldrh	r3, [r7, #2]
+ 305 0036 9A42     		cmp	r2, r3
+ 306 0038 EDD3     		bcc	.L17
   96:.\Security.c  ****         
   97:.\Security.c  ****     return crcseed;
- 306              		.loc 1 97 0 is_stmt 1
- 307 003a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 307              		.loc 1 97 0 is_stmt 1
+ 308 003a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
   98:.\Security.c  **** }
- 308              		.loc 1 98 0
- 309 003c 1846     		mov	r0, r3
- 310 003e 1037     		adds	r7, r7, #16
- 311              		.cfi_def_cfa_offset 8
- 312 0040 BD46     		mov	sp, r7
- 313              		.cfi_def_cfa_register 13
- 314              		@ sp needed
- 315 0042 80BD     		pop	{r7, pc}
- 316              		.cfi_endproc
- 317              	.LFE67:
- 318              		.size	RawCRCCheck, .-RawCRCCheck
- 319              		.text
- 320              	.Letext0:
- 321              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
- 322              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
- 323              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
- 324              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
- 325              		.section	.debug_info,"",%progbits
- 326              	.Ldebug_info0:
- 327 0000 F2010000 		.4byte	0x1f2
- 328 0004 0400     		.2byte	0x4
- 329 0006 00000000 		.4byte	.Ldebug_abbrev0
- 330 000a 04       		.byte	0x4
- 331 000b 01       		.uleb128 0x1
- 332 000c 18000000 		.4byte	.LASF32
- 333 0010 01       		.byte	0x1
- 334 0011 BE010000 		.4byte	.LASF33
- 335 0015 C4000000 		.4byte	.LASF34
- 336 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 337 001d 00000000 		.4byte	0
- 338 0021 00000000 		.4byte	.Ldebug_line0
- 339 0025 02       		.uleb128 0x2
- 340 0026 01       		.byte	0x1
- 341 0027 06       		.byte	0x6
- 342 0028 35020000 		.4byte	.LASF0
- 343 002c 02       		.uleb128 0x2
- 344 002d 01       		.byte	0x1
- 345 002e 08       		.byte	0x8
- 346 002f 23010000 		.4byte	.LASF1
- 347 0033 02       		.uleb128 0x2
- 348 0034 02       		.byte	0x2
- 349 0035 05       		.byte	0x5
- 350 0036 FD010000 		.4byte	.LASF2
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccx6frKa.s 			page 9
+ 309              		.loc 1 98 0
+ 310 003c 1846     		mov	r0, r3
+ 311 003e 1037     		adds	r7, r7, #16
+ 312              		.cfi_def_cfa_offset 8
+ 313 0040 BD46     		mov	sp, r7
+ 314              		.cfi_def_cfa_register 13
+ 315              		@ sp needed
+ 316 0042 80BD     		pop	{r7, pc}
+ 317              		.cfi_endproc
+ 318              	.LFE67:
+ 319              		.size	RawCRCCheck, .-RawCRCCheck
+ 320              		.text
+ 321              	.Letext0:
+ 322              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 323              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 324              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 325              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 326              		.file 6 ".\\GlobalDefinitions.h"
+ 327              		.section	.debug_info,"",%progbits
+ 328              	.Ldebug_info0:
+ 329 0000 03020000 		.4byte	0x203
+ 330 0004 0400     		.2byte	0x4
+ 331 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 332 000a 04       		.byte	0x4
+ 333 000b 01       		.uleb128 0x1
+ 334 000c F8000000 		.4byte	.LASF34
+ 335 0010 01       		.byte	0x1
+ 336 0011 CB010000 		.4byte	.LASF35
+ 337 0015 39000000 		.4byte	.LASF36
+ 338 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 339 001d 00000000 		.4byte	0
+ 340 0021 00000000 		.4byte	.Ldebug_line0
+ 341 0025 02       		.uleb128 0x2
+ 342 0026 01       		.byte	0x1
+ 343 0027 06       		.byte	0x6
+ 344 0028 42020000 		.4byte	.LASF0
+ 345 002c 02       		.uleb128 0x2
+ 346 002d 01       		.byte	0x1
+ 347 002e 08       		.byte	0x8
+ 348 002f A2000000 		.4byte	.LASF1
+ 349 0033 02       		.uleb128 0x2
+ 350 0034 02       		.byte	0x2
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccQob1qP.s 			page 9
 
 
- 351 003a 02       		.uleb128 0x2
- 352 003b 02       		.byte	0x2
- 353 003c 07       		.byte	0x7
- 354 003d 59010000 		.4byte	.LASF3
- 355 0041 03       		.uleb128 0x3
- 356 0042 06000000 		.4byte	.LASF9
- 357 0046 02       		.byte	0x2
- 358 0047 3F       		.byte	0x3f
- 359 0048 4C000000 		.4byte	0x4c
- 360 004c 02       		.uleb128 0x2
- 361 004d 04       		.byte	0x4
- 362 004e 05       		.byte	0x5
- 363 004f 17020000 		.4byte	.LASF4
- 364 0053 02       		.uleb128 0x2
- 365 0054 04       		.byte	0x4
- 366 0055 07       		.byte	0x7
- 367 0056 47010000 		.4byte	.LASF5
- 368 005a 02       		.uleb128 0x2
- 369 005b 08       		.byte	0x8
- 370 005c 05       		.byte	0x5
- 371 005d DC010000 		.4byte	.LASF6
- 372 0061 02       		.uleb128 0x2
- 373 0062 08       		.byte	0x8
- 374 0063 07       		.byte	0x7
- 375 0064 A7010000 		.4byte	.LASF7
- 376 0068 04       		.uleb128 0x4
- 377 0069 04       		.byte	0x4
- 378 006a 05       		.byte	0x5
- 379 006b 696E7400 		.ascii	"int\000"
- 380 006f 02       		.uleb128 0x2
- 381 0070 04       		.byte	0x4
- 382 0071 07       		.byte	0x7
- 383 0072 87010000 		.4byte	.LASF8
- 384 0076 03       		.uleb128 0x3
- 385 0077 CB010000 		.4byte	.LASF10
- 386 007b 03       		.byte	0x3
- 387 007c 2C       		.byte	0x2c
- 388 007d 41000000 		.4byte	0x41
- 389 0081 05       		.uleb128 0x5
- 390 0082 07020000 		.4byte	.LASF11
- 391 0086 04       		.byte	0x4
- 392 0087 3801     		.2byte	0x138
- 393 0089 2C000000 		.4byte	0x2c
- 394 008d 05       		.uleb128 0x5
- 395 008e 80010000 		.4byte	.LASF12
- 396 0092 04       		.byte	0x4
- 397 0093 3901     		.2byte	0x139
- 398 0095 3A000000 		.4byte	0x3a
- 399 0099 02       		.uleb128 0x2
- 400 009a 04       		.byte	0x4
- 401 009b 04       		.byte	0x4
- 402 009c B9000000 		.4byte	.LASF13
- 403 00a0 02       		.uleb128 0x2
- 404 00a1 08       		.byte	0x8
- 405 00a2 04       		.byte	0x4
- 406 00a3 79010000 		.4byte	.LASF14
- 407 00a7 05       		.uleb128 0x5
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccx6frKa.s 			page 10
+ 351 0035 05       		.byte	0x5
+ 352 0036 0A020000 		.4byte	.LASF2
+ 353 003a 02       		.uleb128 0x2
+ 354 003b 02       		.byte	0x2
+ 355 003c 07       		.byte	0x7
+ 356 003d D8000000 		.4byte	.LASF3
+ 357 0041 03       		.uleb128 0x3
+ 358 0042 06000000 		.4byte	.LASF9
+ 359 0046 02       		.byte	0x2
+ 360 0047 3F       		.byte	0x3f
+ 361 0048 4C000000 		.4byte	0x4c
+ 362 004c 02       		.uleb128 0x2
+ 363 004d 04       		.byte	0x4
+ 364 004e 05       		.byte	0x5
+ 365 004f 24020000 		.4byte	.LASF4
+ 366 0053 02       		.uleb128 0x2
+ 367 0054 04       		.byte	0x4
+ 368 0055 07       		.byte	0x7
+ 369 0056 C6000000 		.4byte	.LASF5
+ 370 005a 02       		.uleb128 0x2
+ 371 005b 08       		.byte	0x8
+ 372 005c 05       		.byte	0x5
+ 373 005d E9010000 		.4byte	.LASF6
+ 374 0061 02       		.uleb128 0x2
+ 375 0062 08       		.byte	0x8
+ 376 0063 07       		.byte	0x7
+ 377 0064 B4010000 		.4byte	.LASF7
+ 378 0068 04       		.uleb128 0x4
+ 379 0069 04       		.byte	0x4
+ 380 006a 05       		.byte	0x5
+ 381 006b 696E7400 		.ascii	"int\000"
+ 382 006f 02       		.uleb128 0x2
+ 383 0070 04       		.byte	0x4
+ 384 0071 07       		.byte	0x7
+ 385 0072 94010000 		.4byte	.LASF8
+ 386 0076 03       		.uleb128 0x3
+ 387 0077 D8010000 		.4byte	.LASF10
+ 388 007b 03       		.byte	0x3
+ 389 007c 2C       		.byte	0x2c
+ 390 007d 41000000 		.4byte	0x41
+ 391 0081 05       		.uleb128 0x5
+ 392 0082 14020000 		.4byte	.LASF11
+ 393 0086 04       		.byte	0x4
+ 394 0087 3801     		.2byte	0x138
+ 395 0089 2C000000 		.4byte	0x2c
+ 396 008d 05       		.uleb128 0x5
+ 397 008e 8D010000 		.4byte	.LASF12
+ 398 0092 04       		.byte	0x4
+ 399 0093 3901     		.2byte	0x139
+ 400 0095 3A000000 		.4byte	0x3a
+ 401 0099 02       		.uleb128 0x2
+ 402 009a 04       		.byte	0x4
+ 403 009b 04       		.byte	0x4
+ 404 009c 97000000 		.4byte	.LASF13
+ 405 00a0 02       		.uleb128 0x2
+ 406 00a1 08       		.byte	0x8
+ 407 00a2 04       		.byte	0x4
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccQob1qP.s 			page 10
 
 
- 408 00a8 41010000 		.4byte	.LASF15
- 409 00ac 04       		.byte	0x4
- 410 00ad 4901     		.2byte	0x149
- 411 00af B3000000 		.4byte	0xb3
- 412 00b3 02       		.uleb128 0x2
- 413 00b4 01       		.byte	0x1
- 414 00b5 08       		.byte	0x8
- 415 00b6 F2010000 		.4byte	.LASF16
- 416 00ba 02       		.uleb128 0x2
- 417 00bb 04       		.byte	0x4
- 418 00bc 07       		.byte	0x7
- 419 00bd D3010000 		.4byte	.LASF17
- 420 00c1 02       		.uleb128 0x2
- 421 00c2 08       		.byte	0x8
- 422 00c3 04       		.byte	0x4
- 423 00c4 20020000 		.4byte	.LASF18
- 424 00c8 06       		.uleb128 0x6
- 425 00c9 04       		.byte	0x4
- 426 00ca A7000000 		.4byte	0xa7
- 427 00ce 07       		.uleb128 0x7
- 428 00cf A6000000 		.4byte	.LASF19
- 429 00d3 01       		.byte	0x1
- 430 00d4 16       		.byte	0x16
- 431 00d5 00000000 		.4byte	.LFB63
- 432 00d9 0E000000 		.4byte	.LFE63-.LFB63
- 433 00dd 01       		.uleb128 0x1
- 434 00de 9C       		.byte	0x9c
- 435 00df 07       		.uleb128 0x7
- 436 00e0 38010000 		.4byte	.LASF20
- 437 00e4 01       		.byte	0x1
- 438 00e5 26       		.byte	0x26
- 439 00e6 00000000 		.4byte	.LFB64
- 440 00ea 1E000000 		.4byte	.LFE64-.LFB64
- 441 00ee 01       		.uleb128 0x1
- 442 00ef 9C       		.byte	0x9c
- 443 00f0 08       		.uleb128 0x8
- 444 00f1 10000000 		.4byte	.LASF26
- 445 00f5 01       		.byte	0x1
- 446 00f6 30       		.byte	0x30
- 447 00f7 A7000000 		.4byte	0xa7
- 448 00fb 00000000 		.4byte	.LFB65
- 449 00ff 70000000 		.4byte	.LFE65-.LFB65
- 450 0103 01       		.uleb128 0x1
- 451 0104 9C       		.byte	0x9c
- 452 0105 50010000 		.4byte	0x150
- 453 0109 09       		.uleb128 0x9
- 454 010a EA010000 		.4byte	.LASF21
- 455 010e 01       		.byte	0x1
- 456 010f 30       		.byte	0x30
- 457 0110 C8000000 		.4byte	0xc8
- 458 0114 02       		.uleb128 0x2
- 459 0115 91       		.byte	0x91
- 460 0116 6C       		.sleb128 -20
- 461 0117 09       		.uleb128 0x9
- 462 0118 9C010000 		.4byte	.LASF22
- 463 011c 01       		.byte	0x1
- 464 011d 30       		.byte	0x30
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccx6frKa.s 			page 11
+ 408 00a3 86010000 		.4byte	.LASF14
+ 409 00a7 05       		.uleb128 0x5
+ 410 00a8 C0000000 		.4byte	.LASF15
+ 411 00ac 04       		.byte	0x4
+ 412 00ad 4901     		.2byte	0x149
+ 413 00af B3000000 		.4byte	0xb3
+ 414 00b3 02       		.uleb128 0x2
+ 415 00b4 01       		.byte	0x1
+ 416 00b5 08       		.byte	0x8
+ 417 00b6 FF010000 		.4byte	.LASF16
+ 418 00ba 02       		.uleb128 0x2
+ 419 00bb 04       		.byte	0x4
+ 420 00bc 07       		.byte	0x7
+ 421 00bd E0010000 		.4byte	.LASF17
+ 422 00c1 02       		.uleb128 0x2
+ 423 00c2 08       		.byte	0x8
+ 424 00c3 04       		.byte	0x4
+ 425 00c4 2D020000 		.4byte	.LASF18
+ 426 00c8 06       		.uleb128 0x6
+ 427 00c9 04       		.byte	0x4
+ 428 00ca A7000000 		.4byte	0xa7
+ 429 00ce 07       		.uleb128 0x7
+ 430 00cf 26000000 		.4byte	.LASF19
+ 431 00d3 01       		.byte	0x1
+ 432 00d4 16       		.byte	0x16
+ 433 00d5 00000000 		.4byte	.LFB63
+ 434 00d9 0E000000 		.4byte	.LFE63-.LFB63
+ 435 00dd 01       		.uleb128 0x1
+ 436 00de 9C       		.byte	0x9c
+ 437 00df 07       		.uleb128 0x7
+ 438 00e0 B7000000 		.4byte	.LASF20
+ 439 00e4 01       		.byte	0x1
+ 440 00e5 26       		.byte	0x26
+ 441 00e6 00000000 		.4byte	.LFB64
+ 442 00ea 1E000000 		.4byte	.LFE64-.LFB64
+ 443 00ee 01       		.uleb128 0x1
+ 444 00ef 9C       		.byte	0x9c
+ 445 00f0 08       		.uleb128 0x8
+ 446 00f1 10000000 		.4byte	.LASF26
+ 447 00f5 01       		.byte	0x1
+ 448 00f6 30       		.byte	0x30
+ 449 00f7 A7000000 		.4byte	0xa7
+ 450 00fb 00000000 		.4byte	.LFB65
+ 451 00ff 70000000 		.4byte	.LFE65-.LFB65
+ 452 0103 01       		.uleb128 0x1
+ 453 0104 9C       		.byte	0x9c
+ 454 0105 50010000 		.4byte	0x150
+ 455 0109 09       		.uleb128 0x9
+ 456 010a F7010000 		.4byte	.LASF21
+ 457 010e 01       		.byte	0x1
+ 458 010f 30       		.byte	0x30
+ 459 0110 C8000000 		.4byte	0xc8
+ 460 0114 02       		.uleb128 0x2
+ 461 0115 91       		.byte	0x91
+ 462 0116 6C       		.sleb128 -20
+ 463 0117 09       		.uleb128 0x9
+ 464 0118 A9010000 		.4byte	.LASF22
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccQob1qP.s 			page 11
 
 
- 465 011e 81000000 		.4byte	0x81
- 466 0122 02       		.uleb128 0x2
- 467 0123 91       		.byte	0x91
- 468 0124 6B       		.sleb128 -21
- 469 0125 0A       		.uleb128 0xa
- 470 0126 F7010000 		.4byte	.LASF23
- 471 012a 01       		.byte	0x1
- 472 012b 32       		.byte	0x32
- 473 012c 81000000 		.4byte	0x81
- 474 0130 02       		.uleb128 0x2
- 475 0131 91       		.byte	0x91
- 476 0132 77       		.sleb128 -9
- 477 0133 0A       		.uleb128 0xa
- 478 0134 0D020000 		.4byte	.LASF24
- 479 0138 01       		.byte	0x1
- 480 0139 33       		.byte	0x33
- 481 013a 81000000 		.4byte	0x81
- 482 013e 02       		.uleb128 0x2
- 483 013f 91       		.byte	0x91
- 484 0140 76       		.sleb128 -10
- 485 0141 0A       		.uleb128 0xa
- 486 0142 31010000 		.4byte	.LASF25
- 487 0146 01       		.byte	0x1
- 488 0147 34       		.byte	0x34
- 489 0148 A7000000 		.4byte	0xa7
- 490 014c 02       		.uleb128 0x2
- 491 014d 91       		.byte	0x91
- 492 014e 75       		.sleb128 -11
- 493 014f 00       		.byte	0
- 494 0150 0B       		.uleb128 0xb
- 495 0151 2C020000 		.4byte	.LASF27
- 496 0155 01       		.byte	0x1
- 497 0156 49       		.byte	0x49
- 498 0157 81000000 		.4byte	0x81
- 499 015b 00000000 		.4byte	.LFB66
- 500 015f 58000000 		.4byte	.LFE66-.LFB66
- 501 0163 01       		.uleb128 0x1
- 502 0164 9C       		.byte	0x9c
- 503 0165 92010000 		.4byte	0x192
- 504 0169 09       		.uleb128 0x9
- 505 016a 94010000 		.4byte	.LASF28
- 506 016e 01       		.byte	0x1
- 507 016f 49       		.byte	0x49
- 508 0170 A7000000 		.4byte	0xa7
- 509 0174 02       		.uleb128 0x2
- 510 0175 91       		.byte	0x91
- 511 0176 6F       		.sleb128 -17
- 512 0177 09       		.uleb128 0x9
- 513 0178 BF000000 		.4byte	.LASF29
- 514 017c 01       		.byte	0x1
- 515 017d 49       		.byte	0x49
- 516 017e 81000000 		.4byte	0x81
- 517 0182 02       		.uleb128 0x2
- 518 0183 91       		.byte	0x91
- 519 0184 6E       		.sleb128 -18
- 520 0185 0C       		.uleb128 0xc
- 521 0186 6900     		.ascii	"i\000"
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccx6frKa.s 			page 12
+ 465 011c 01       		.byte	0x1
+ 466 011d 30       		.byte	0x30
+ 467 011e 81000000 		.4byte	0x81
+ 468 0122 02       		.uleb128 0x2
+ 469 0123 91       		.byte	0x91
+ 470 0124 6B       		.sleb128 -21
+ 471 0125 0A       		.uleb128 0xa
+ 472 0126 04020000 		.4byte	.LASF23
+ 473 012a 01       		.byte	0x1
+ 474 012b 32       		.byte	0x32
+ 475 012c 81000000 		.4byte	0x81
+ 476 0130 02       		.uleb128 0x2
+ 477 0131 91       		.byte	0x91
+ 478 0132 77       		.sleb128 -9
+ 479 0133 0A       		.uleb128 0xa
+ 480 0134 1A020000 		.4byte	.LASF24
+ 481 0138 01       		.byte	0x1
+ 482 0139 33       		.byte	0x33
+ 483 013a 81000000 		.4byte	0x81
+ 484 013e 02       		.uleb128 0x2
+ 485 013f 91       		.byte	0x91
+ 486 0140 76       		.sleb128 -10
+ 487 0141 0A       		.uleb128 0xa
+ 488 0142 B0000000 		.4byte	.LASF25
+ 489 0146 01       		.byte	0x1
+ 490 0147 34       		.byte	0x34
+ 491 0148 A7000000 		.4byte	0xa7
+ 492 014c 02       		.uleb128 0x2
+ 493 014d 91       		.byte	0x91
+ 494 014e 75       		.sleb128 -11
+ 495 014f 00       		.byte	0
+ 496 0150 0B       		.uleb128 0xb
+ 497 0151 39020000 		.4byte	.LASF27
+ 498 0155 01       		.byte	0x1
+ 499 0156 49       		.byte	0x49
+ 500 0157 81000000 		.4byte	0x81
+ 501 015b 00000000 		.4byte	.LFB66
+ 502 015f 58000000 		.4byte	.LFE66-.LFB66
+ 503 0163 01       		.uleb128 0x1
+ 504 0164 9C       		.byte	0x9c
+ 505 0165 92010000 		.4byte	0x192
+ 506 0169 09       		.uleb128 0x9
+ 507 016a A1010000 		.4byte	.LASF28
+ 508 016e 01       		.byte	0x1
+ 509 016f 49       		.byte	0x49
+ 510 0170 A7000000 		.4byte	0xa7
+ 511 0174 02       		.uleb128 0x2
+ 512 0175 91       		.byte	0x91
+ 513 0176 6F       		.sleb128 -17
+ 514 0177 09       		.uleb128 0x9
+ 515 0178 9D000000 		.4byte	.LASF29
+ 516 017c 01       		.byte	0x1
+ 517 017d 49       		.byte	0x49
+ 518 017e 81000000 		.4byte	0x81
+ 519 0182 02       		.uleb128 0x2
+ 520 0183 91       		.byte	0x91
+ 521 0184 6E       		.sleb128 -18
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccQob1qP.s 			page 12
 
 
- 522 0188 01       		.byte	0x1
- 523 0189 4B       		.byte	0x4b
- 524 018a 81000000 		.4byte	0x81
- 525 018e 02       		.uleb128 0x2
- 526 018f 91       		.byte	0x91
- 527 0190 77       		.sleb128 -9
- 528 0191 00       		.byte	0
- 529 0192 08       		.uleb128 0x8
- 530 0193 41020000 		.4byte	.LASF30
- 531 0197 01       		.byte	0x1
- 532 0198 5B       		.byte	0x5b
- 533 0199 81000000 		.4byte	0x81
- 534 019d 00000000 		.4byte	.LFB67
- 535 01a1 44000000 		.4byte	.LFE67-.LFB67
- 536 01a5 01       		.uleb128 0x1
- 537 01a6 9C       		.byte	0x9c
- 538 01a7 E4010000 		.4byte	0x1e4
- 539 01ab 09       		.uleb128 0x9
- 540 01ac 00000000 		.4byte	.LASF31
- 541 01b0 01       		.byte	0x1
- 542 01b1 5B       		.byte	0x5b
- 543 01b2 C8000000 		.4byte	0xc8
- 544 01b6 02       		.uleb128 0x2
- 545 01b7 91       		.byte	0x91
- 546 01b8 6C       		.sleb128 -20
- 547 01b9 09       		.uleb128 0x9
- 548 01ba 9C010000 		.4byte	.LASF22
- 549 01be 01       		.byte	0x1
- 550 01bf 5B       		.byte	0x5b
- 551 01c0 8D000000 		.4byte	0x8d
- 552 01c4 02       		.uleb128 0x2
- 553 01c5 91       		.byte	0x91
- 554 01c6 6A       		.sleb128 -22
- 555 01c7 0A       		.uleb128 0xa
- 556 01c8 94010000 		.4byte	.LASF28
- 557 01cc 01       		.byte	0x1
- 558 01cd 5D       		.byte	0x5d
- 559 01ce 81000000 		.4byte	0x81
- 560 01d2 02       		.uleb128 0x2
- 561 01d3 91       		.byte	0x91
- 562 01d4 77       		.sleb128 -9
- 563 01d5 0A       		.uleb128 0xa
- 564 01d6 F7010000 		.4byte	.LASF23
- 565 01da 01       		.byte	0x1
- 566 01db 5E       		.byte	0x5e
- 567 01dc 8D000000 		.4byte	0x8d
- 568 01e0 02       		.uleb128 0x2
- 569 01e1 91       		.byte	0x91
- 570 01e2 74       		.sleb128 -12
- 571 01e3 00       		.byte	0
- 572 01e4 0D       		.uleb128 0xd
- 573 01e5 6C010000 		.4byte	.LASF35
- 574 01e9 05       		.byte	0x5
- 575 01ea 5506     		.2byte	0x655
- 576 01ec F0010000 		.4byte	0x1f0
- 577 01f0 0E       		.uleb128 0xe
- 578 01f1 76000000 		.4byte	0x76
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccx6frKa.s 			page 13
+ 522 0185 0C       		.uleb128 0xc
+ 523 0186 6900     		.ascii	"i\000"
+ 524 0188 01       		.byte	0x1
+ 525 0189 4B       		.byte	0x4b
+ 526 018a 81000000 		.4byte	0x81
+ 527 018e 02       		.uleb128 0x2
+ 528 018f 91       		.byte	0x91
+ 529 0190 77       		.sleb128 -9
+ 530 0191 00       		.byte	0
+ 531 0192 08       		.uleb128 0x8
+ 532 0193 4E020000 		.4byte	.LASF30
+ 533 0197 01       		.byte	0x1
+ 534 0198 5B       		.byte	0x5b
+ 535 0199 81000000 		.4byte	0x81
+ 536 019d 00000000 		.4byte	.LFB67
+ 537 01a1 44000000 		.4byte	.LFE67-.LFB67
+ 538 01a5 01       		.uleb128 0x1
+ 539 01a6 9C       		.byte	0x9c
+ 540 01a7 E4010000 		.4byte	0x1e4
+ 541 01ab 09       		.uleb128 0x9
+ 542 01ac 00000000 		.4byte	.LASF31
+ 543 01b0 01       		.byte	0x1
+ 544 01b1 5B       		.byte	0x5b
+ 545 01b2 C8000000 		.4byte	0xc8
+ 546 01b6 02       		.uleb128 0x2
+ 547 01b7 91       		.byte	0x91
+ 548 01b8 6C       		.sleb128 -20
+ 549 01b9 09       		.uleb128 0x9
+ 550 01ba A9010000 		.4byte	.LASF22
+ 551 01be 01       		.byte	0x1
+ 552 01bf 5B       		.byte	0x5b
+ 553 01c0 8D000000 		.4byte	0x8d
+ 554 01c4 02       		.uleb128 0x2
+ 555 01c5 91       		.byte	0x91
+ 556 01c6 6A       		.sleb128 -22
+ 557 01c7 0A       		.uleb128 0xa
+ 558 01c8 A1010000 		.4byte	.LASF28
+ 559 01cc 01       		.byte	0x1
+ 560 01cd 5D       		.byte	0x5d
+ 561 01ce 81000000 		.4byte	0x81
+ 562 01d2 02       		.uleb128 0x2
+ 563 01d3 91       		.byte	0x91
+ 564 01d4 77       		.sleb128 -9
+ 565 01d5 0A       		.uleb128 0xa
+ 566 01d6 04020000 		.4byte	.LASF23
+ 567 01da 01       		.byte	0x1
+ 568 01db 5E       		.byte	0x5e
+ 569 01dc 8D000000 		.4byte	0x8d
+ 570 01e0 02       		.uleb128 0x2
+ 571 01e1 91       		.byte	0x91
+ 572 01e2 74       		.sleb128 -12
+ 573 01e3 00       		.byte	0
+ 574 01e4 0D       		.uleb128 0xd
+ 575 01e5 EB000000 		.4byte	.LASF32
+ 576 01e9 05       		.byte	0x5
+ 577 01ea 5506     		.2byte	0x655
+ 578 01ec F0010000 		.4byte	0x1f0
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccQob1qP.s 			page 13
 
 
- 579 01f5 00       		.byte	0
- 580              		.section	.debug_abbrev,"",%progbits
- 581              	.Ldebug_abbrev0:
- 582 0000 01       		.uleb128 0x1
- 583 0001 11       		.uleb128 0x11
- 584 0002 01       		.byte	0x1
- 585 0003 25       		.uleb128 0x25
- 586 0004 0E       		.uleb128 0xe
- 587 0005 13       		.uleb128 0x13
- 588 0006 0B       		.uleb128 0xb
- 589 0007 03       		.uleb128 0x3
- 590 0008 0E       		.uleb128 0xe
- 591 0009 1B       		.uleb128 0x1b
- 592 000a 0E       		.uleb128 0xe
- 593 000b 55       		.uleb128 0x55
- 594 000c 17       		.uleb128 0x17
- 595 000d 11       		.uleb128 0x11
- 596 000e 01       		.uleb128 0x1
- 597 000f 10       		.uleb128 0x10
- 598 0010 17       		.uleb128 0x17
- 599 0011 00       		.byte	0
- 600 0012 00       		.byte	0
- 601 0013 02       		.uleb128 0x2
- 602 0014 24       		.uleb128 0x24
- 603 0015 00       		.byte	0
- 604 0016 0B       		.uleb128 0xb
- 605 0017 0B       		.uleb128 0xb
- 606 0018 3E       		.uleb128 0x3e
- 607 0019 0B       		.uleb128 0xb
- 608 001a 03       		.uleb128 0x3
- 609 001b 0E       		.uleb128 0xe
- 610 001c 00       		.byte	0
- 611 001d 00       		.byte	0
- 612 001e 03       		.uleb128 0x3
- 613 001f 16       		.uleb128 0x16
- 614 0020 00       		.byte	0
- 615 0021 03       		.uleb128 0x3
- 616 0022 0E       		.uleb128 0xe
- 617 0023 3A       		.uleb128 0x3a
- 618 0024 0B       		.uleb128 0xb
- 619 0025 3B       		.uleb128 0x3b
- 620 0026 0B       		.uleb128 0xb
- 621 0027 49       		.uleb128 0x49
- 622 0028 13       		.uleb128 0x13
- 623 0029 00       		.byte	0
- 624 002a 00       		.byte	0
- 625 002b 04       		.uleb128 0x4
- 626 002c 24       		.uleb128 0x24
- 627 002d 00       		.byte	0
- 628 002e 0B       		.uleb128 0xb
- 629 002f 0B       		.uleb128 0xb
- 630 0030 3E       		.uleb128 0x3e
- 631 0031 0B       		.uleb128 0xb
- 632 0032 03       		.uleb128 0x3
- 633 0033 08       		.uleb128 0x8
- 634 0034 00       		.byte	0
- 635 0035 00       		.byte	0
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccx6frKa.s 			page 14
+ 579 01f0 0E       		.uleb128 0xe
+ 580 01f1 76000000 		.4byte	0x76
+ 581 01f5 0F       		.uleb128 0xf
+ 582 01f6 18000000 		.4byte	.LASF33
+ 583 01fa 06       		.byte	0x6
+ 584 01fb 52       		.byte	0x52
+ 585 01fc 81000000 		.4byte	0x81
+ 586 0200 05       		.uleb128 0x5
+ 587 0201 03       		.byte	0x3
+ 588 0202 00000000 		.4byte	HoseDispenser
+ 589 0206 00       		.byte	0
+ 590              		.section	.debug_abbrev,"",%progbits
+ 591              	.Ldebug_abbrev0:
+ 592 0000 01       		.uleb128 0x1
+ 593 0001 11       		.uleb128 0x11
+ 594 0002 01       		.byte	0x1
+ 595 0003 25       		.uleb128 0x25
+ 596 0004 0E       		.uleb128 0xe
+ 597 0005 13       		.uleb128 0x13
+ 598 0006 0B       		.uleb128 0xb
+ 599 0007 03       		.uleb128 0x3
+ 600 0008 0E       		.uleb128 0xe
+ 601 0009 1B       		.uleb128 0x1b
+ 602 000a 0E       		.uleb128 0xe
+ 603 000b 55       		.uleb128 0x55
+ 604 000c 17       		.uleb128 0x17
+ 605 000d 11       		.uleb128 0x11
+ 606 000e 01       		.uleb128 0x1
+ 607 000f 10       		.uleb128 0x10
+ 608 0010 17       		.uleb128 0x17
+ 609 0011 00       		.byte	0
+ 610 0012 00       		.byte	0
+ 611 0013 02       		.uleb128 0x2
+ 612 0014 24       		.uleb128 0x24
+ 613 0015 00       		.byte	0
+ 614 0016 0B       		.uleb128 0xb
+ 615 0017 0B       		.uleb128 0xb
+ 616 0018 3E       		.uleb128 0x3e
+ 617 0019 0B       		.uleb128 0xb
+ 618 001a 03       		.uleb128 0x3
+ 619 001b 0E       		.uleb128 0xe
+ 620 001c 00       		.byte	0
+ 621 001d 00       		.byte	0
+ 622 001e 03       		.uleb128 0x3
+ 623 001f 16       		.uleb128 0x16
+ 624 0020 00       		.byte	0
+ 625 0021 03       		.uleb128 0x3
+ 626 0022 0E       		.uleb128 0xe
+ 627 0023 3A       		.uleb128 0x3a
+ 628 0024 0B       		.uleb128 0xb
+ 629 0025 3B       		.uleb128 0x3b
+ 630 0026 0B       		.uleb128 0xb
+ 631 0027 49       		.uleb128 0x49
+ 632 0028 13       		.uleb128 0x13
+ 633 0029 00       		.byte	0
+ 634 002a 00       		.byte	0
+ 635 002b 04       		.uleb128 0x4
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccQob1qP.s 			page 14
 
 
- 636 0036 05       		.uleb128 0x5
- 637 0037 16       		.uleb128 0x16
- 638 0038 00       		.byte	0
- 639 0039 03       		.uleb128 0x3
- 640 003a 0E       		.uleb128 0xe
- 641 003b 3A       		.uleb128 0x3a
- 642 003c 0B       		.uleb128 0xb
- 643 003d 3B       		.uleb128 0x3b
- 644 003e 05       		.uleb128 0x5
- 645 003f 49       		.uleb128 0x49
- 646 0040 13       		.uleb128 0x13
- 647 0041 00       		.byte	0
- 648 0042 00       		.byte	0
- 649 0043 06       		.uleb128 0x6
- 650 0044 0F       		.uleb128 0xf
- 651 0045 00       		.byte	0
- 652 0046 0B       		.uleb128 0xb
- 653 0047 0B       		.uleb128 0xb
- 654 0048 49       		.uleb128 0x49
- 655 0049 13       		.uleb128 0x13
- 656 004a 00       		.byte	0
- 657 004b 00       		.byte	0
- 658 004c 07       		.uleb128 0x7
- 659 004d 2E       		.uleb128 0x2e
- 660 004e 00       		.byte	0
- 661 004f 3F       		.uleb128 0x3f
- 662 0050 19       		.uleb128 0x19
- 663 0051 03       		.uleb128 0x3
- 664 0052 0E       		.uleb128 0xe
- 665 0053 3A       		.uleb128 0x3a
- 666 0054 0B       		.uleb128 0xb
- 667 0055 3B       		.uleb128 0x3b
- 668 0056 0B       		.uleb128 0xb
- 669 0057 11       		.uleb128 0x11
- 670 0058 01       		.uleb128 0x1
- 671 0059 12       		.uleb128 0x12
- 672 005a 06       		.uleb128 0x6
- 673 005b 40       		.uleb128 0x40
- 674 005c 18       		.uleb128 0x18
- 675 005d 9642     		.uleb128 0x2116
- 676 005f 19       		.uleb128 0x19
- 677 0060 00       		.byte	0
- 678 0061 00       		.byte	0
- 679 0062 08       		.uleb128 0x8
- 680 0063 2E       		.uleb128 0x2e
- 681 0064 01       		.byte	0x1
- 682 0065 3F       		.uleb128 0x3f
- 683 0066 19       		.uleb128 0x19
- 684 0067 03       		.uleb128 0x3
- 685 0068 0E       		.uleb128 0xe
- 686 0069 3A       		.uleb128 0x3a
- 687 006a 0B       		.uleb128 0xb
- 688 006b 3B       		.uleb128 0x3b
- 689 006c 0B       		.uleb128 0xb
- 690 006d 27       		.uleb128 0x27
- 691 006e 19       		.uleb128 0x19
- 692 006f 49       		.uleb128 0x49
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccx6frKa.s 			page 15
+ 636 002c 24       		.uleb128 0x24
+ 637 002d 00       		.byte	0
+ 638 002e 0B       		.uleb128 0xb
+ 639 002f 0B       		.uleb128 0xb
+ 640 0030 3E       		.uleb128 0x3e
+ 641 0031 0B       		.uleb128 0xb
+ 642 0032 03       		.uleb128 0x3
+ 643 0033 08       		.uleb128 0x8
+ 644 0034 00       		.byte	0
+ 645 0035 00       		.byte	0
+ 646 0036 05       		.uleb128 0x5
+ 647 0037 16       		.uleb128 0x16
+ 648 0038 00       		.byte	0
+ 649 0039 03       		.uleb128 0x3
+ 650 003a 0E       		.uleb128 0xe
+ 651 003b 3A       		.uleb128 0x3a
+ 652 003c 0B       		.uleb128 0xb
+ 653 003d 3B       		.uleb128 0x3b
+ 654 003e 05       		.uleb128 0x5
+ 655 003f 49       		.uleb128 0x49
+ 656 0040 13       		.uleb128 0x13
+ 657 0041 00       		.byte	0
+ 658 0042 00       		.byte	0
+ 659 0043 06       		.uleb128 0x6
+ 660 0044 0F       		.uleb128 0xf
+ 661 0045 00       		.byte	0
+ 662 0046 0B       		.uleb128 0xb
+ 663 0047 0B       		.uleb128 0xb
+ 664 0048 49       		.uleb128 0x49
+ 665 0049 13       		.uleb128 0x13
+ 666 004a 00       		.byte	0
+ 667 004b 00       		.byte	0
+ 668 004c 07       		.uleb128 0x7
+ 669 004d 2E       		.uleb128 0x2e
+ 670 004e 00       		.byte	0
+ 671 004f 3F       		.uleb128 0x3f
+ 672 0050 19       		.uleb128 0x19
+ 673 0051 03       		.uleb128 0x3
+ 674 0052 0E       		.uleb128 0xe
+ 675 0053 3A       		.uleb128 0x3a
+ 676 0054 0B       		.uleb128 0xb
+ 677 0055 3B       		.uleb128 0x3b
+ 678 0056 0B       		.uleb128 0xb
+ 679 0057 11       		.uleb128 0x11
+ 680 0058 01       		.uleb128 0x1
+ 681 0059 12       		.uleb128 0x12
+ 682 005a 06       		.uleb128 0x6
+ 683 005b 40       		.uleb128 0x40
+ 684 005c 18       		.uleb128 0x18
+ 685 005d 9642     		.uleb128 0x2116
+ 686 005f 19       		.uleb128 0x19
+ 687 0060 00       		.byte	0
+ 688 0061 00       		.byte	0
+ 689 0062 08       		.uleb128 0x8
+ 690 0063 2E       		.uleb128 0x2e
+ 691 0064 01       		.byte	0x1
+ 692 0065 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccQob1qP.s 			page 15
 
 
- 693 0070 13       		.uleb128 0x13
- 694 0071 11       		.uleb128 0x11
- 695 0072 01       		.uleb128 0x1
- 696 0073 12       		.uleb128 0x12
- 697 0074 06       		.uleb128 0x6
- 698 0075 40       		.uleb128 0x40
- 699 0076 18       		.uleb128 0x18
- 700 0077 9642     		.uleb128 0x2116
- 701 0079 19       		.uleb128 0x19
- 702 007a 01       		.uleb128 0x1
- 703 007b 13       		.uleb128 0x13
- 704 007c 00       		.byte	0
- 705 007d 00       		.byte	0
- 706 007e 09       		.uleb128 0x9
- 707 007f 05       		.uleb128 0x5
- 708 0080 00       		.byte	0
- 709 0081 03       		.uleb128 0x3
- 710 0082 0E       		.uleb128 0xe
- 711 0083 3A       		.uleb128 0x3a
- 712 0084 0B       		.uleb128 0xb
- 713 0085 3B       		.uleb128 0x3b
- 714 0086 0B       		.uleb128 0xb
- 715 0087 49       		.uleb128 0x49
- 716 0088 13       		.uleb128 0x13
- 717 0089 02       		.uleb128 0x2
- 718 008a 18       		.uleb128 0x18
- 719 008b 00       		.byte	0
- 720 008c 00       		.byte	0
- 721 008d 0A       		.uleb128 0xa
- 722 008e 34       		.uleb128 0x34
- 723 008f 00       		.byte	0
- 724 0090 03       		.uleb128 0x3
- 725 0091 0E       		.uleb128 0xe
- 726 0092 3A       		.uleb128 0x3a
- 727 0093 0B       		.uleb128 0xb
- 728 0094 3B       		.uleb128 0x3b
- 729 0095 0B       		.uleb128 0xb
- 730 0096 49       		.uleb128 0x49
- 731 0097 13       		.uleb128 0x13
- 732 0098 02       		.uleb128 0x2
- 733 0099 18       		.uleb128 0x18
- 734 009a 00       		.byte	0
- 735 009b 00       		.byte	0
- 736 009c 0B       		.uleb128 0xb
- 737 009d 2E       		.uleb128 0x2e
- 738 009e 01       		.byte	0x1
- 739 009f 3F       		.uleb128 0x3f
- 740 00a0 19       		.uleb128 0x19
- 741 00a1 03       		.uleb128 0x3
- 742 00a2 0E       		.uleb128 0xe
- 743 00a3 3A       		.uleb128 0x3a
- 744 00a4 0B       		.uleb128 0xb
- 745 00a5 3B       		.uleb128 0x3b
- 746 00a6 0B       		.uleb128 0xb
- 747 00a7 27       		.uleb128 0x27
- 748 00a8 19       		.uleb128 0x19
- 749 00a9 49       		.uleb128 0x49
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccx6frKa.s 			page 16
+ 693 0066 19       		.uleb128 0x19
+ 694 0067 03       		.uleb128 0x3
+ 695 0068 0E       		.uleb128 0xe
+ 696 0069 3A       		.uleb128 0x3a
+ 697 006a 0B       		.uleb128 0xb
+ 698 006b 3B       		.uleb128 0x3b
+ 699 006c 0B       		.uleb128 0xb
+ 700 006d 27       		.uleb128 0x27
+ 701 006e 19       		.uleb128 0x19
+ 702 006f 49       		.uleb128 0x49
+ 703 0070 13       		.uleb128 0x13
+ 704 0071 11       		.uleb128 0x11
+ 705 0072 01       		.uleb128 0x1
+ 706 0073 12       		.uleb128 0x12
+ 707 0074 06       		.uleb128 0x6
+ 708 0075 40       		.uleb128 0x40
+ 709 0076 18       		.uleb128 0x18
+ 710 0077 9642     		.uleb128 0x2116
+ 711 0079 19       		.uleb128 0x19
+ 712 007a 01       		.uleb128 0x1
+ 713 007b 13       		.uleb128 0x13
+ 714 007c 00       		.byte	0
+ 715 007d 00       		.byte	0
+ 716 007e 09       		.uleb128 0x9
+ 717 007f 05       		.uleb128 0x5
+ 718 0080 00       		.byte	0
+ 719 0081 03       		.uleb128 0x3
+ 720 0082 0E       		.uleb128 0xe
+ 721 0083 3A       		.uleb128 0x3a
+ 722 0084 0B       		.uleb128 0xb
+ 723 0085 3B       		.uleb128 0x3b
+ 724 0086 0B       		.uleb128 0xb
+ 725 0087 49       		.uleb128 0x49
+ 726 0088 13       		.uleb128 0x13
+ 727 0089 02       		.uleb128 0x2
+ 728 008a 18       		.uleb128 0x18
+ 729 008b 00       		.byte	0
+ 730 008c 00       		.byte	0
+ 731 008d 0A       		.uleb128 0xa
+ 732 008e 34       		.uleb128 0x34
+ 733 008f 00       		.byte	0
+ 734 0090 03       		.uleb128 0x3
+ 735 0091 0E       		.uleb128 0xe
+ 736 0092 3A       		.uleb128 0x3a
+ 737 0093 0B       		.uleb128 0xb
+ 738 0094 3B       		.uleb128 0x3b
+ 739 0095 0B       		.uleb128 0xb
+ 740 0096 49       		.uleb128 0x49
+ 741 0097 13       		.uleb128 0x13
+ 742 0098 02       		.uleb128 0x2
+ 743 0099 18       		.uleb128 0x18
+ 744 009a 00       		.byte	0
+ 745 009b 00       		.byte	0
+ 746 009c 0B       		.uleb128 0xb
+ 747 009d 2E       		.uleb128 0x2e
+ 748 009e 01       		.byte	0x1
+ 749 009f 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccQob1qP.s 			page 16
 
 
- 750 00aa 13       		.uleb128 0x13
- 751 00ab 11       		.uleb128 0x11
- 752 00ac 01       		.uleb128 0x1
- 753 00ad 12       		.uleb128 0x12
- 754 00ae 06       		.uleb128 0x6
- 755 00af 40       		.uleb128 0x40
- 756 00b0 18       		.uleb128 0x18
- 757 00b1 9742     		.uleb128 0x2117
- 758 00b3 19       		.uleb128 0x19
- 759 00b4 01       		.uleb128 0x1
- 760 00b5 13       		.uleb128 0x13
- 761 00b6 00       		.byte	0
- 762 00b7 00       		.byte	0
- 763 00b8 0C       		.uleb128 0xc
- 764 00b9 34       		.uleb128 0x34
- 765 00ba 00       		.byte	0
- 766 00bb 03       		.uleb128 0x3
- 767 00bc 08       		.uleb128 0x8
- 768 00bd 3A       		.uleb128 0x3a
- 769 00be 0B       		.uleb128 0xb
- 770 00bf 3B       		.uleb128 0x3b
- 771 00c0 0B       		.uleb128 0xb
- 772 00c1 49       		.uleb128 0x49
- 773 00c2 13       		.uleb128 0x13
- 774 00c3 02       		.uleb128 0x2
- 775 00c4 18       		.uleb128 0x18
- 776 00c5 00       		.byte	0
- 777 00c6 00       		.byte	0
- 778 00c7 0D       		.uleb128 0xd
- 779 00c8 34       		.uleb128 0x34
- 780 00c9 00       		.byte	0
- 781 00ca 03       		.uleb128 0x3
- 782 00cb 0E       		.uleb128 0xe
- 783 00cc 3A       		.uleb128 0x3a
- 784 00cd 0B       		.uleb128 0xb
- 785 00ce 3B       		.uleb128 0x3b
- 786 00cf 05       		.uleb128 0x5
- 787 00d0 49       		.uleb128 0x49
- 788 00d1 13       		.uleb128 0x13
- 789 00d2 3F       		.uleb128 0x3f
- 790 00d3 19       		.uleb128 0x19
- 791 00d4 3C       		.uleb128 0x3c
- 792 00d5 19       		.uleb128 0x19
- 793 00d6 00       		.byte	0
- 794 00d7 00       		.byte	0
- 795 00d8 0E       		.uleb128 0xe
- 796 00d9 35       		.uleb128 0x35
- 797 00da 00       		.byte	0
- 798 00db 49       		.uleb128 0x49
- 799 00dc 13       		.uleb128 0x13
- 800 00dd 00       		.byte	0
- 801 00de 00       		.byte	0
- 802 00df 00       		.byte	0
- 803              		.section	.debug_aranges,"",%progbits
- 804 0000 3C000000 		.4byte	0x3c
- 805 0004 0200     		.2byte	0x2
- 806 0006 00000000 		.4byte	.Ldebug_info0
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccx6frKa.s 			page 17
+ 750 00a0 19       		.uleb128 0x19
+ 751 00a1 03       		.uleb128 0x3
+ 752 00a2 0E       		.uleb128 0xe
+ 753 00a3 3A       		.uleb128 0x3a
+ 754 00a4 0B       		.uleb128 0xb
+ 755 00a5 3B       		.uleb128 0x3b
+ 756 00a6 0B       		.uleb128 0xb
+ 757 00a7 27       		.uleb128 0x27
+ 758 00a8 19       		.uleb128 0x19
+ 759 00a9 49       		.uleb128 0x49
+ 760 00aa 13       		.uleb128 0x13
+ 761 00ab 11       		.uleb128 0x11
+ 762 00ac 01       		.uleb128 0x1
+ 763 00ad 12       		.uleb128 0x12
+ 764 00ae 06       		.uleb128 0x6
+ 765 00af 40       		.uleb128 0x40
+ 766 00b0 18       		.uleb128 0x18
+ 767 00b1 9742     		.uleb128 0x2117
+ 768 00b3 19       		.uleb128 0x19
+ 769 00b4 01       		.uleb128 0x1
+ 770 00b5 13       		.uleb128 0x13
+ 771 00b6 00       		.byte	0
+ 772 00b7 00       		.byte	0
+ 773 00b8 0C       		.uleb128 0xc
+ 774 00b9 34       		.uleb128 0x34
+ 775 00ba 00       		.byte	0
+ 776 00bb 03       		.uleb128 0x3
+ 777 00bc 08       		.uleb128 0x8
+ 778 00bd 3A       		.uleb128 0x3a
+ 779 00be 0B       		.uleb128 0xb
+ 780 00bf 3B       		.uleb128 0x3b
+ 781 00c0 0B       		.uleb128 0xb
+ 782 00c1 49       		.uleb128 0x49
+ 783 00c2 13       		.uleb128 0x13
+ 784 00c3 02       		.uleb128 0x2
+ 785 00c4 18       		.uleb128 0x18
+ 786 00c5 00       		.byte	0
+ 787 00c6 00       		.byte	0
+ 788 00c7 0D       		.uleb128 0xd
+ 789 00c8 34       		.uleb128 0x34
+ 790 00c9 00       		.byte	0
+ 791 00ca 03       		.uleb128 0x3
+ 792 00cb 0E       		.uleb128 0xe
+ 793 00cc 3A       		.uleb128 0x3a
+ 794 00cd 0B       		.uleb128 0xb
+ 795 00ce 3B       		.uleb128 0x3b
+ 796 00cf 05       		.uleb128 0x5
+ 797 00d0 49       		.uleb128 0x49
+ 798 00d1 13       		.uleb128 0x13
+ 799 00d2 3F       		.uleb128 0x3f
+ 800 00d3 19       		.uleb128 0x19
+ 801 00d4 3C       		.uleb128 0x3c
+ 802 00d5 19       		.uleb128 0x19
+ 803 00d6 00       		.byte	0
+ 804 00d7 00       		.byte	0
+ 805 00d8 0E       		.uleb128 0xe
+ 806 00d9 35       		.uleb128 0x35
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccQob1qP.s 			page 17
 
 
- 807 000a 04       		.byte	0x4
- 808 000b 00       		.byte	0
- 809 000c 0000     		.2byte	0
- 810 000e 0000     		.2byte	0
- 811 0010 00000000 		.4byte	.LFB63
- 812 0014 0E000000 		.4byte	.LFE63-.LFB63
- 813 0018 00000000 		.4byte	.LFB64
- 814 001c 1E000000 		.4byte	.LFE64-.LFB64
- 815 0020 00000000 		.4byte	.LFB65
- 816 0024 70000000 		.4byte	.LFE65-.LFB65
- 817 0028 00000000 		.4byte	.LFB66
- 818 002c 58000000 		.4byte	.LFE66-.LFB66
- 819 0030 00000000 		.4byte	.LFB67
- 820 0034 44000000 		.4byte	.LFE67-.LFB67
- 821 0038 00000000 		.4byte	0
- 822 003c 00000000 		.4byte	0
- 823              		.section	.debug_ranges,"",%progbits
- 824              	.Ldebug_ranges0:
- 825 0000 00000000 		.4byte	.LFB63
- 826 0004 0E000000 		.4byte	.LFE63
- 827 0008 00000000 		.4byte	.LFB64
- 828 000c 1E000000 		.4byte	.LFE64
- 829 0010 00000000 		.4byte	.LFB65
- 830 0014 70000000 		.4byte	.LFE65
- 831 0018 00000000 		.4byte	.LFB66
- 832 001c 58000000 		.4byte	.LFE66
- 833 0020 00000000 		.4byte	.LFB67
- 834 0024 44000000 		.4byte	.LFE67
- 835 0028 00000000 		.4byte	0
- 836 002c 00000000 		.4byte	0
- 837              		.section	.debug_line,"",%progbits
- 838              	.Ldebug_line0:
- 839 0000 FE010000 		.section	.debug_str,"MS",%progbits,1
- 839      02004D01 
- 839      00000201 
- 839      FB0E0D00 
- 839      01010101 
- 840              	.LASF31:
- 841 0000 70646174 		.ascii	"pdata\000"
- 841      6100
- 842              	.LASF9:
- 843 0006 5F5F696E 		.ascii	"__int32_t\000"
- 843      7433325F 
- 843      7400
- 844              	.LASF26:
- 845 0010 43616C63 		.ascii	"CalcCRC\000"
- 845      43524300 
- 846              	.LASF32:
- 847 0018 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 847      4320342E 
- 847      392E3320 
- 847      32303135 
- 847      30333033 
- 848 004b 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
- 848      20726576 
- 848      6973696F 
- 848      6E203232 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccx6frKa.s 			page 18
+ 807 00da 00       		.byte	0
+ 808 00db 49       		.uleb128 0x49
+ 809 00dc 13       		.uleb128 0x13
+ 810 00dd 00       		.byte	0
+ 811 00de 00       		.byte	0
+ 812 00df 0F       		.uleb128 0xf
+ 813 00e0 34       		.uleb128 0x34
+ 814 00e1 00       		.byte	0
+ 815 00e2 03       		.uleb128 0x3
+ 816 00e3 0E       		.uleb128 0xe
+ 817 00e4 3A       		.uleb128 0x3a
+ 818 00e5 0B       		.uleb128 0xb
+ 819 00e6 3B       		.uleb128 0x3b
+ 820 00e7 0B       		.uleb128 0xb
+ 821 00e8 49       		.uleb128 0x49
+ 822 00e9 13       		.uleb128 0x13
+ 823 00ea 3F       		.uleb128 0x3f
+ 824 00eb 19       		.uleb128 0x19
+ 825 00ec 02       		.uleb128 0x2
+ 826 00ed 18       		.uleb128 0x18
+ 827 00ee 00       		.byte	0
+ 828 00ef 00       		.byte	0
+ 829 00f0 00       		.byte	0
+ 830              		.section	.debug_aranges,"",%progbits
+ 831 0000 3C000000 		.4byte	0x3c
+ 832 0004 0200     		.2byte	0x2
+ 833 0006 00000000 		.4byte	.Ldebug_info0
+ 834 000a 04       		.byte	0x4
+ 835 000b 00       		.byte	0
+ 836 000c 0000     		.2byte	0
+ 837 000e 0000     		.2byte	0
+ 838 0010 00000000 		.4byte	.LFB63
+ 839 0014 0E000000 		.4byte	.LFE63-.LFB63
+ 840 0018 00000000 		.4byte	.LFB64
+ 841 001c 1E000000 		.4byte	.LFE64-.LFB64
+ 842 0020 00000000 		.4byte	.LFB65
+ 843 0024 70000000 		.4byte	.LFE65-.LFB65
+ 844 0028 00000000 		.4byte	.LFB66
+ 845 002c 58000000 		.4byte	.LFE66-.LFB66
+ 846 0030 00000000 		.4byte	.LFB67
+ 847 0034 44000000 		.4byte	.LFE67-.LFB67
+ 848 0038 00000000 		.4byte	0
+ 849 003c 00000000 		.4byte	0
+ 850              		.section	.debug_ranges,"",%progbits
+ 851              	.Ldebug_ranges0:
+ 852 0000 00000000 		.4byte	.LFB63
+ 853 0004 0E000000 		.4byte	.LFE63
+ 854 0008 00000000 		.4byte	.LFB64
+ 855 000c 1E000000 		.4byte	.LFE64
+ 856 0010 00000000 		.4byte	.LFB65
+ 857 0014 70000000 		.4byte	.LFE65
+ 858 0018 00000000 		.4byte	.LFB66
+ 859 001c 58000000 		.4byte	.LFE66
+ 860 0020 00000000 		.4byte	.LFB67
+ 861 0024 44000000 		.4byte	.LFE67
+ 862 0028 00000000 		.4byte	0
+ 863 002c 00000000 		.4byte	0
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccQob1qP.s 			page 18
 
 
- 848      31323230 
- 849 007e 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
- 849      66756E63 
- 849      74696F6E 
- 849      2D736563 
- 849      74696F6E 
- 850              	.LASF19:
- 851 00a6 53746172 		.ascii	"StartSecurityLayer\000"
- 851      74536563 
- 851      75726974 
- 851      794C6179 
- 851      657200
- 852              	.LASF13:
- 853 00b9 666C6F61 		.ascii	"float\000"
- 853      7400
- 854              	.LASF29:
- 855 00bf 64617461 		.ascii	"data\000"
- 855      00
- 856              	.LASF34:
- 857 00c4 433A5C54 		.ascii	"C:\\TeamInsepet\\NSX-Prime\\Hardware\\CorEx-MUX-Ker"
- 857      65616D49 
- 857      6E736570 
- 857      65745C4E 
- 857      53582D50 
- 858 00f3 6E656C2D 		.ascii	"nel-Enhanced\\Workspace01\\CorEx-Mux-Kernel.cydsn\000"
- 858      456E6861 
- 858      6E636564 
- 858      5C576F72 
- 858      6B737061 
- 859              	.LASF1:
- 860 0123 756E7369 		.ascii	"unsigned char\000"
- 860      676E6564 
- 860      20636861 
- 860      7200
- 861              	.LASF25:
- 862 0131 72657476 		.ascii	"retval\000"
- 862      616C00
- 863              	.LASF20:
- 864 0138 436C6F63 		.ascii	"ClockCRC\000"
- 864      6B435243 
- 864      00
- 865              	.LASF15:
- 866 0141 63686172 		.ascii	"char8\000"
- 866      3800
- 867              	.LASF5:
- 868 0147 6C6F6E67 		.ascii	"long unsigned int\000"
- 868      20756E73 
- 868      69676E65 
- 868      6420696E 
- 868      7400
- 869              	.LASF3:
- 870 0159 73686F72 		.ascii	"short unsigned int\000"
- 870      7420756E 
- 870      7369676E 
- 870      65642069 
- 870      6E7400
- 871              	.LASF35:
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccx6frKa.s 			page 19
+ 864              		.section	.debug_line,"",%progbits
+ 865              	.Ldebug_line0:
+ 866 0000 17020000 		.section	.debug_str,"MS",%progbits,1
+ 866      02006601 
+ 866      00000201 
+ 866      FB0E0D00 
+ 866      01010101 
+ 867              	.LASF31:
+ 868 0000 70646174 		.ascii	"pdata\000"
+ 868      6100
+ 869              	.LASF9:
+ 870 0006 5F5F696E 		.ascii	"__int32_t\000"
+ 870      7433325F 
+ 870      7400
+ 871              	.LASF26:
+ 872 0010 43616C63 		.ascii	"CalcCRC\000"
+ 872      43524300 
+ 873              	.LASF33:
+ 874 0018 486F7365 		.ascii	"HoseDispenser\000"
+ 874      44697370 
+ 874      656E7365 
+ 874      7200
+ 875              	.LASF19:
+ 876 0026 53746172 		.ascii	"StartSecurityLayer\000"
+ 876      74536563 
+ 876      75726974 
+ 876      794C6179 
+ 876      657200
+ 877              	.LASF36:
+ 878 0039 433A5C55 		.ascii	"C:\\Users\\Lenovo\\Documents\\GitHub\\CorEx-MUX-Ker"
+ 878      73657273 
+ 878      5C4C656E 
+ 878      6F766F5C 
+ 878      446F6375 
+ 879 0067 6E656C2D 		.ascii	"nel-Enhanced\\Workspace01\\CorEx-Mux-Kernel.cydsn\000"
+ 879      456E6861 
+ 879      6E636564 
+ 879      5C576F72 
+ 879      6B737061 
+ 880              	.LASF13:
+ 881 0097 666C6F61 		.ascii	"float\000"
+ 881      7400
+ 882              	.LASF29:
+ 883 009d 64617461 		.ascii	"data\000"
+ 883      00
+ 884              	.LASF1:
+ 885 00a2 756E7369 		.ascii	"unsigned char\000"
+ 885      676E6564 
+ 885      20636861 
+ 885      7200
+ 886              	.LASF25:
+ 887 00b0 72657476 		.ascii	"retval\000"
+ 887      616C00
+ 888              	.LASF20:
+ 889 00b7 436C6F63 		.ascii	"ClockCRC\000"
+ 889      6B435243 
+ 889      00
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccQob1qP.s 			page 19
 
 
- 872 016c 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 872      52784275 
- 872      66666572 
- 872      00
- 873              	.LASF14:
- 874 0179 646F7562 		.ascii	"double\000"
- 874      6C6500
- 875              	.LASF12:
- 876 0180 75696E74 		.ascii	"uint16\000"
- 876      313600
- 877              	.LASF8:
- 878 0187 756E7369 		.ascii	"unsigned int\000"
- 878      676E6564 
- 878      20696E74 
- 878      00
- 879              	.LASF28:
- 880 0194 63726373 		.ascii	"crcseed\000"
- 880      65656400 
- 881              	.LASF22:
- 882 019c 62756666 		.ascii	"buffersize\000"
- 882      65727369 
- 882      7A6500
- 883              	.LASF7:
- 884 01a7 6C6F6E67 		.ascii	"long long unsigned int\000"
- 884      206C6F6E 
- 884      6720756E 
- 884      7369676E 
- 884      65642069 
- 885              	.LASF33:
- 886 01be 2E5C5365 		.ascii	".\\Security.c\000"
- 886      63757269 
- 886      74792E63 
- 886      00
- 887              	.LASF10:
- 888 01cb 696E7433 		.ascii	"int32_t\000"
- 888      325F7400 
- 889              	.LASF17:
- 890 01d3 73697A65 		.ascii	"sizetype\000"
- 890      74797065 
- 890      00
- 891              	.LASF6:
- 892 01dc 6C6F6E67 		.ascii	"long long int\000"
- 892      206C6F6E 
- 892      6720696E 
- 892      7400
- 893              	.LASF21:
- 894 01ea 70627566 		.ascii	"pbuffer\000"
- 894      66657200 
- 895              	.LASF16:
- 896 01f2 63686172 		.ascii	"char\000"
- 896      00
- 897              	.LASF23:
- 898 01f7 696E6465 		.ascii	"index\000"
- 898      7800
- 899              	.LASF2:
- 900 01fd 73686F72 		.ascii	"short int\000"
- 900      7420696E 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccx6frKa.s 			page 20
+ 890              	.LASF15:
+ 891 00c0 63686172 		.ascii	"char8\000"
+ 891      3800
+ 892              	.LASF5:
+ 893 00c6 6C6F6E67 		.ascii	"long unsigned int\000"
+ 893      20756E73 
+ 893      69676E65 
+ 893      6420696E 
+ 893      7400
+ 894              	.LASF3:
+ 895 00d8 73686F72 		.ascii	"short unsigned int\000"
+ 895      7420756E 
+ 895      7369676E 
+ 895      65642069 
+ 895      6E7400
+ 896              	.LASF32:
+ 897 00eb 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 897      52784275 
+ 897      66666572 
+ 897      00
+ 898              	.LASF34:
+ 899 00f8 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 899      4320342E 
+ 899      392E3320 
+ 899      32303135 
+ 899      30333033 
+ 900 012b 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 900      20726576 
+ 900      6973696F 
+ 900      6E203232 
+ 900      31323230 
+ 901 015e 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 901      66756E63 
+ 901      74696F6E 
+ 901      2D736563 
+ 901      74696F6E 
+ 902              	.LASF14:
+ 903 0186 646F7562 		.ascii	"double\000"
+ 903      6C6500
+ 904              	.LASF12:
+ 905 018d 75696E74 		.ascii	"uint16\000"
+ 905      313600
+ 906              	.LASF8:
+ 907 0194 756E7369 		.ascii	"unsigned int\000"
+ 907      676E6564 
+ 907      20696E74 
+ 907      00
+ 908              	.LASF28:
+ 909 01a1 63726373 		.ascii	"crcseed\000"
+ 909      65656400 
+ 910              	.LASF22:
+ 911 01a9 62756666 		.ascii	"buffersize\000"
+ 911      65727369 
+ 911      7A6500
+ 912              	.LASF7:
+ 913 01b4 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 913      206C6F6E 
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccQob1qP.s 			page 20
 
 
- 900      7400
- 901              	.LASF11:
- 902 0207 75696E74 		.ascii	"uint8\000"
- 902      3800
- 903              	.LASF24:
- 904 020d 62797465 		.ascii	"byteindex\000"
- 904      696E6465 
- 904      7800
- 905              	.LASF4:
- 906 0217 6C6F6E67 		.ascii	"long int\000"
- 906      20696E74 
- 906      00
- 907              	.LASF18:
- 908 0220 6C6F6E67 		.ascii	"long double\000"
- 908      20646F75 
- 908      626C6500 
- 909              	.LASF27:
- 910 022c 43524343 		.ascii	"CRCCheck\000"
- 910      6865636B 
- 910      00
- 911              	.LASF0:
- 912 0235 7369676E 		.ascii	"signed char\000"
- 912      65642063 
- 912      68617200 
- 913              	.LASF30:
- 914 0241 52617743 		.ascii	"RawCRCCheck\000"
- 914      52434368 
- 914      65636B00 
- 915              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
+ 913      6720756E 
+ 913      7369676E 
+ 913      65642069 
+ 914              	.LASF35:
+ 915 01cb 2E5C5365 		.ascii	".\\Security.c\000"
+ 915      63757269 
+ 915      74792E63 
+ 915      00
+ 916              	.LASF10:
+ 917 01d8 696E7433 		.ascii	"int32_t\000"
+ 917      325F7400 
+ 918              	.LASF17:
+ 919 01e0 73697A65 		.ascii	"sizetype\000"
+ 919      74797065 
+ 919      00
+ 920              	.LASF6:
+ 921 01e9 6C6F6E67 		.ascii	"long long int\000"
+ 921      206C6F6E 
+ 921      6720696E 
+ 921      7400
+ 922              	.LASF21:
+ 923 01f7 70627566 		.ascii	"pbuffer\000"
+ 923      66657200 
+ 924              	.LASF16:
+ 925 01ff 63686172 		.ascii	"char\000"
+ 925      00
+ 926              	.LASF23:
+ 927 0204 696E6465 		.ascii	"index\000"
+ 927      7800
+ 928              	.LASF2:
+ 929 020a 73686F72 		.ascii	"short int\000"
+ 929      7420696E 
+ 929      7400
+ 930              	.LASF11:
+ 931 0214 75696E74 		.ascii	"uint8\000"
+ 931      3800
+ 932              	.LASF24:
+ 933 021a 62797465 		.ascii	"byteindex\000"
+ 933      696E6465 
+ 933      7800
+ 934              	.LASF4:
+ 935 0224 6C6F6E67 		.ascii	"long int\000"
+ 935      20696E74 
+ 935      00
+ 936              	.LASF18:
+ 937 022d 6C6F6E67 		.ascii	"long double\000"
+ 937      20646F75 
+ 937      626C6500 
+ 938              	.LASF27:
+ 939 0239 43524343 		.ascii	"CRCCheck\000"
+ 939      6865636B 
+ 939      00
+ 940              	.LASF0:
+ 941 0242 7369676E 		.ascii	"signed char\000"
+ 941      65642063 
+ 941      68617200 
+ 942              	.LASF30:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccQob1qP.s 			page 21
+
+
+ 943 024e 52617743 		.ascii	"RawCRCCheck\000"
+ 943      52434368 
+ 943      65636B00 
+ 944              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

@@ -1709,6 +1709,7 @@ void AcquirePumpHoseActiveState(void *pparam)
                     {
                         uint8 grado = pjob->_ppump->_rxbuffer[0x0E] & 0x0F;
                         _g_pumps[(pjob->_ppump->_pumpid)-1]._currenthose = ((grado));
+                        HoseDispenser = _g_pumps[(pjob->_ppump->_pumpid)-1]._currenthose;
                         psinkmsg->_messageid = pjob->_ppump->_sinktransaction;
                         psinkmsg->_messagedelay = _SINK_TIMEOUT_1S_;
                         psinkmsg->_messagetype = DELAYEDALLINTERESTED;

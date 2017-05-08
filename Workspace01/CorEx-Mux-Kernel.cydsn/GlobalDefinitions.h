@@ -79,5 +79,6 @@ bool ISVALIDBCD(uint8 *pbuffer, uint16 buffersize);
 typedef char8  *PNEAR_STR_PTR;
 typedef uint8  *PNEAR_BYTE_PTR;
 typedef uint16 *PNEAR_WORD_PTR;
+uint8 HoseDispenser;
 
 /* [] END OF FILE */

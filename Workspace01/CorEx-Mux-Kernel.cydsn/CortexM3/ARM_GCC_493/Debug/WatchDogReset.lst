@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccniKWhe.s 			page 1
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccDMGED9.s 			page 1
 
 
    1              		.syntax unified
@@ -18,21 +18,22 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccniKWhe.s 			page 1
   15              		.text
   16              	.Ltext0:
   17              		.cfi_sections	.debug_frame
-  18              		.global	_g_wdtstarted
-  19              		.bss
-  20              		.type	_g_wdtstarted, %object
-  21              		.size	_g_wdtstarted, 1
-  22              	_g_wdtstarted:
-  23 0000 00       		.space	1
-  24              		.section	.text.WatchDogInitialize,"ax",%progbits
-  25              		.align	2
-  26              		.global	WatchDogInitialize
-  27              		.thumb
-  28              		.thumb_func
-  29              		.type	WatchDogInitialize, %function
-  30              	WatchDogInitialize:
-  31              	.LFB63:
-  32              		.file 1 ".\\WatchDogReset.c"
+  18              		.comm	HoseDispenser,1,1
+  19              		.global	_g_wdtstarted
+  20              		.bss
+  21              		.type	_g_wdtstarted, %object
+  22              		.size	_g_wdtstarted, 1
+  23              	_g_wdtstarted:
+  24 0000 00       		.space	1
+  25              		.section	.text.WatchDogInitialize,"ax",%progbits
+  26              		.align	2
+  27              		.global	WatchDogInitialize
+  28              		.thumb
+  29              		.thumb_func
+  30              		.type	WatchDogInitialize, %function
+  31              	WatchDogInitialize:
+  32              	.LFB63:
+  33              		.file 1 ".\\WatchDogReset.c"
    1:.\WatchDogReset.c **** /* ========================================
    2:.\WatchDogReset.c ****  *
    3:.\WatchDogReset.c ****  * Copyright INSEPET SISTEMAS, 2016
@@ -57,1335 +58,1349 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccniKWhe.s 			page 1
   22:.\WatchDogReset.c **** volatile bool _g_wdtstarted = false;
   23:.\WatchDogReset.c **** 
   24:.\WatchDogReset.c **** void WatchDogStartup();
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccDMGED9.s 			page 2
+
+
   25:.\WatchDogReset.c **** void WatchDogHandler();
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccniKWhe.s 			page 2
-
-
   26:.\WatchDogReset.c **** 
   27:.\WatchDogReset.c **** //@Created By: HIJH
   28:.\WatchDogReset.c **** //@Janvier 1 de 2017
   29:.\WatchDogReset.c **** void WatchDogInitialize()
   30:.\WatchDogReset.c **** {
-  33              		.loc 1 30 0
-  34              		.cfi_startproc
-  35              		@ args = 0, pretend = 0, frame = 8
-  36              		@ frame_needed = 1, uses_anonymous_args = 0
-  37 0000 80B5     		push	{r7, lr}
-  38              		.cfi_def_cfa_offset 8
-  39              		.cfi_offset 7, -8
-  40              		.cfi_offset 14, -4
-  41 0002 82B0     		sub	sp, sp, #8
-  42              		.cfi_def_cfa_offset 16
-  43 0004 00AF     		add	r7, sp, #0
-  44              		.cfi_def_cfa_register 7
+  34              		.loc 1 30 0
+  35              		.cfi_startproc
+  36              		@ args = 0, pretend = 0, frame = 8
+  37              		@ frame_needed = 1, uses_anonymous_args = 0
+  38 0000 80B5     		push	{r7, lr}
+  39              		.cfi_def_cfa_offset 8
+  40              		.cfi_offset 7, -8
+  41              		.cfi_offset 14, -4
+  42 0002 82B0     		sub	sp, sp, #8
+  43              		.cfi_def_cfa_offset 16
+  44 0004 00AF     		add	r7, sp, #0
+  45              		.cfi_def_cfa_register 7
   31:.\WatchDogReset.c ****     PSINKSUBSCRIBERPTR psubscriber = AllocateSubscriberSlot();
-  45              		.loc 1 31 0
-  46 0006 FFF7FEFF 		bl	AllocateSubscriberSlot
-  47 000a 7860     		str	r0, [r7, #4]
+  46              		.loc 1 31 0
+  47 0006 FFF7FEFF 		bl	AllocateSubscriberSlot
+  48 000a 7860     		str	r0, [r7, #4]
   32:.\WatchDogReset.c ****     if(psubscriber)
-  48              		.loc 1 32 0
-  49 000c 7B68     		ldr	r3, [r7, #4]
-  50 000e 002B     		cmp	r3, #0
-  51 0010 0FD0     		beq	.L2
-  52              	.LBB2:
+  49              		.loc 1 32 0
+  50 000c 7B68     		ldr	r3, [r7, #4]
+  51 000e 002B     		cmp	r3, #0
+  52 0010 0FD0     		beq	.L2
+  53              	.LBB2:
   33:.\WatchDogReset.c ****     {
   34:.\WatchDogReset.c ****         uint8 index = 0;
-  53              		.loc 1 34 0
-  54 0012 0023     		movs	r3, #0
-  55 0014 FB70     		strb	r3, [r7, #3]
+  54              		.loc 1 34 0
+  55 0012 0023     		movs	r3, #0
+  56 0014 FB70     		strb	r3, [r7, #3]
   35:.\WatchDogReset.c ****         //The maximum number of observable identifiers is _OBSERVED_IDENTIFIERS_
   36:.\WatchDogReset.c ****         //located in the header file "SinkManager.h"
   37:.\WatchDogReset.c ****         //Every identifier is paired with its respective Callback method pointer
   38:.\WatchDogReset.c ****         psubscriber->_arrmsgid[index] = WATCHDOG_STARTUP;
-  56              		.loc 1 38 0
-  57 0016 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
-  58 0018 7A68     		ldr	r2, [r7, #4]
-  59 001a 1344     		add	r3, r3, r2
-  60 001c 2B22     		movs	r2, #43
-  61 001e 5A70     		strb	r2, [r3, #1]
+  57              		.loc 1 38 0
+  58 0016 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+  59 0018 7A68     		ldr	r2, [r7, #4]
+  60 001a 1344     		add	r3, r3, r2
+  61 001c 2B22     		movs	r2, #43
+  62 001e 5A70     		strb	r2, [r3, #1]
   39:.\WatchDogReset.c ****         psubscriber->Callback[index++] = WatchDogStartup;
-  62              		.loc 1 39 0
-  63 0020 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
-  64 0022 5A1C     		adds	r2, r3, #1
-  65 0024 FA70     		strb	r2, [r7, #3]
-  66 0026 7A68     		ldr	r2, [r7, #4]
-  67 0028 0233     		adds	r3, r3, #2
-  68 002a 9B00     		lsls	r3, r3, #2
-  69 002c 1344     		add	r3, r3, r2
-  70 002e 044A     		ldr	r2, .L3
-  71 0030 5A60     		str	r2, [r3, #4]
-  72              	.L2:
-  73              	.LBE2:
+  63              		.loc 1 39 0
+  64 0020 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+  65 0022 5A1C     		adds	r2, r3, #1
+  66 0024 FA70     		strb	r2, [r7, #3]
+  67 0026 7A68     		ldr	r2, [r7, #4]
+  68 0028 0233     		adds	r3, r3, #2
+  69 002a 9B00     		lsls	r3, r3, #2
+  70 002c 1344     		add	r3, r3, r2
+  71 002e 044A     		ldr	r2, .L3
+  72 0030 5A60     		str	r2, [r3, #4]
+  73              	.L2:
+  74              	.LBE2:
   40:.\WatchDogReset.c ****     }
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccDMGED9.s 			page 3
+
+
   41:.\WatchDogReset.c ****     
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccniKWhe.s 			page 3
-
-
   42:.\WatchDogReset.c ****     GLOBAL_LOOP_PUSH(WatchDogHandler);
-  74              		.loc 1 42 0
-  75 0032 0448     		ldr	r0, .L3+4
-  76 0034 FFF7FEFF 		bl	loop_push
+  75              		.loc 1 42 0
+  76 0032 0448     		ldr	r0, .L3+4
+  77 0034 FFF7FEFF 		bl	loop_push
   43:.\WatchDogReset.c **** }
-  77              		.loc 1 43 0
-  78 0038 0837     		adds	r7, r7, #8
-  79              		.cfi_def_cfa_offset 8
-  80 003a BD46     		mov	sp, r7
-  81              		.cfi_def_cfa_register 13
-  82              		@ sp needed
-  83 003c 80BD     		pop	{r7, pc}
-  84              	.L4:
-  85 003e 00BF     		.align	2
-  86              	.L3:
-  87 0040 00000000 		.word	WatchDogStartup
-  88 0044 00000000 		.word	WatchDogHandler
-  89              		.cfi_endproc
-  90              	.LFE63:
-  91              		.size	WatchDogInitialize, .-WatchDogInitialize
-  92              		.section	.text.WatchDogHandler,"ax",%progbits
-  93              		.align	2
-  94              		.global	WatchDogHandler
-  95              		.thumb
-  96              		.thumb_func
-  97              		.type	WatchDogHandler, %function
-  98              	WatchDogHandler:
-  99              	.LFB64:
+  78              		.loc 1 43 0
+  79 0038 0837     		adds	r7, r7, #8
+  80              		.cfi_def_cfa_offset 8
+  81 003a BD46     		mov	sp, r7
+  82              		.cfi_def_cfa_register 13
+  83              		@ sp needed
+  84 003c 80BD     		pop	{r7, pc}
+  85              	.L4:
+  86 003e 00BF     		.align	2
+  87              	.L3:
+  88 0040 00000000 		.word	WatchDogStartup
+  89 0044 00000000 		.word	WatchDogHandler
+  90              		.cfi_endproc
+  91              	.LFE63:
+  92              		.size	WatchDogInitialize, .-WatchDogInitialize
+  93              		.section	.text.WatchDogHandler,"ax",%progbits
+  94              		.align	2
+  95              		.global	WatchDogHandler
+  96              		.thumb
+  97              		.thumb_func
+  98              		.type	WatchDogHandler, %function
+  99              	WatchDogHandler:
+ 100              	.LFB64:
   44:.\WatchDogReset.c **** 
   45:.\WatchDogReset.c **** //@Created By: HIJH
   46:.\WatchDogReset.c **** //@Janvier 1 de 2017
   47:.\WatchDogReset.c **** void WatchDogHandler()
   48:.\WatchDogReset.c **** {
- 100              		.loc 1 48 0
- 101              		.cfi_startproc
- 102              		@ args = 0, pretend = 0, frame = 0
- 103              		@ frame_needed = 1, uses_anonymous_args = 0
- 104 0000 80B5     		push	{r7, lr}
- 105              		.cfi_def_cfa_offset 8
- 106              		.cfi_offset 7, -8
- 107              		.cfi_offset 14, -4
- 108 0002 00AF     		add	r7, sp, #0
- 109              		.cfi_def_cfa_register 7
+ 101              		.loc 1 48 0
+ 102              		.cfi_startproc
+ 103              		@ args = 0, pretend = 0, frame = 0
+ 104              		@ frame_needed = 1, uses_anonymous_args = 0
+ 105 0000 80B5     		push	{r7, lr}
+ 106              		.cfi_def_cfa_offset 8
+ 107              		.cfi_offset 7, -8
+ 108              		.cfi_offset 14, -4
+ 109 0002 00AF     		add	r7, sp, #0
+ 110              		.cfi_def_cfa_register 7
   49:.\WatchDogReset.c ****     if(_g_wdtstarted)
- 110              		.loc 1 49 0
- 111 0004 034B     		ldr	r3, .L7
- 112 0006 1B78     		ldrb	r3, [r3]
- 113 0008 DBB2     		uxtb	r3, r3
- 114 000a 002B     		cmp	r3, #0
- 115 000c 01D0     		beq	.L5
+ 111              		.loc 1 49 0
+ 112 0004 034B     		ldr	r3, .L7
+ 113 0006 1B78     		ldrb	r3, [r3]
+ 114 0008 DBB2     		uxtb	r3, r3
+ 115 000a 002B     		cmp	r3, #0
+ 116 000c 01D0     		beq	.L5
   50:.\WatchDogReset.c ****         CyWdtClear();
- 116              		.loc 1 50 0
- 117 000e FFF7FEFF 		bl	CyWdtClear
- 118              	.L5:
+ 117              		.loc 1 50 0
+ 118 000e FFF7FEFF 		bl	CyWdtClear
+ 119              	.L5:
   51:.\WatchDogReset.c **** }
- 119              		.loc 1 51 0
- 120 0012 80BD     		pop	{r7, pc}
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccniKWhe.s 			page 4
+ 120              		.loc 1 51 0
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccDMGED9.s 			page 4
 
 
- 121              	.L8:
- 122              		.align	2
- 123              	.L7:
- 124 0014 00000000 		.word	_g_wdtstarted
- 125              		.cfi_endproc
- 126              	.LFE64:
- 127              		.size	WatchDogHandler, .-WatchDogHandler
- 128              		.section	.text.WatchDogStartup,"ax",%progbits
- 129              		.align	2
- 130              		.global	WatchDogStartup
- 131              		.thumb
- 132              		.thumb_func
- 133              		.type	WatchDogStartup, %function
- 134              	WatchDogStartup:
- 135              	.LFB65:
+ 121 0012 80BD     		pop	{r7, pc}
+ 122              	.L8:
+ 123              		.align	2
+ 124              	.L7:
+ 125 0014 00000000 		.word	_g_wdtstarted
+ 126              		.cfi_endproc
+ 127              	.LFE64:
+ 128              		.size	WatchDogHandler, .-WatchDogHandler
+ 129              		.section	.text.WatchDogStartup,"ax",%progbits
+ 130              		.align	2
+ 131              		.global	WatchDogStartup
+ 132              		.thumb
+ 133              		.thumb_func
+ 134              		.type	WatchDogStartup, %function
+ 135              	WatchDogStartup:
+ 136              	.LFB65:
   52:.\WatchDogReset.c **** 
   53:.\WatchDogReset.c **** //@Created By: HIJH
   54:.\WatchDogReset.c **** //@Janvier 1 de 2017
   55:.\WatchDogReset.c **** void WatchDogStartup()
   56:.\WatchDogReset.c **** {
- 136              		.loc 1 56 0
- 137              		.cfi_startproc
- 138              		@ args = 0, pretend = 0, frame = 0
- 139              		@ frame_needed = 1, uses_anonymous_args = 0
- 140 0000 80B5     		push	{r7, lr}
- 141              		.cfi_def_cfa_offset 8
- 142              		.cfi_offset 7, -8
- 143              		.cfi_offset 14, -4
- 144 0002 00AF     		add	r7, sp, #0
- 145              		.cfi_def_cfa_register 7
+ 137              		.loc 1 56 0
+ 138              		.cfi_startproc
+ 139              		@ args = 0, pretend = 0, frame = 0
+ 140              		@ frame_needed = 1, uses_anonymous_args = 0
+ 141 0000 80B5     		push	{r7, lr}
+ 142              		.cfi_def_cfa_offset 8
+ 143              		.cfi_offset 7, -8
+ 144              		.cfi_offset 14, -4
+ 145 0002 00AF     		add	r7, sp, #0
+ 146              		.cfi_def_cfa_register 7
   57:.\WatchDogReset.c ****     _g_wdtstarted = true;
- 146              		.loc 1 57 0
- 147 0004 034B     		ldr	r3, .L10
- 148 0006 0122     		movs	r2, #1
- 149 0008 1A70     		strb	r2, [r3]
+ 147              		.loc 1 57 0
+ 148 0004 034B     		ldr	r3, .L10
+ 149 0006 0122     		movs	r2, #1
+ 150 0008 1A70     		strb	r2, [r3]
   58:.\WatchDogReset.c ****     CyWdtStart(CYWDT_1024_TICKS,CYWDT_LPMODE_NOCHANGE);
- 150              		.loc 1 58 0
- 151 000a 0320     		movs	r0, #3
- 152 000c 0021     		movs	r1, #0
- 153 000e FFF7FEFF 		bl	CyWdtStart
+ 151              		.loc 1 58 0
+ 152 000a 0320     		movs	r0, #3
+ 153 000c 0021     		movs	r1, #0
+ 154 000e FFF7FEFF 		bl	CyWdtStart
   59:.\WatchDogReset.c **** }
- 154              		.loc 1 59 0
- 155 0012 80BD     		pop	{r7, pc}
- 156              	.L11:
- 157              		.align	2
- 158              	.L10:
- 159 0014 00000000 		.word	_g_wdtstarted
- 160              		.cfi_endproc
- 161              	.LFE65:
- 162              		.size	WatchDogStartup, .-WatchDogStartup
- 163              		.text
- 164              	.Letext0:
- 165              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
- 166              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
- 167              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
- 168              		.file 5 ".\\SinkManager.h"
- 169              		.file 6 "Generated_Source\\PSoC5/core_cm3.h"
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccniKWhe.s 			page 5
+ 155              		.loc 1 59 0
+ 156 0012 80BD     		pop	{r7, pc}
+ 157              	.L11:
+ 158              		.align	2
+ 159              	.L10:
+ 160 0014 00000000 		.word	_g_wdtstarted
+ 161              		.cfi_endproc
+ 162              	.LFE65:
+ 163              		.size	WatchDogStartup, .-WatchDogStartup
+ 164              		.text
+ 165              	.Letext0:
+ 166              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 167              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 168              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 169              		.file 5 ".\\SinkManager.h"
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccDMGED9.s 			page 5
 
 
- 170              		.file 7 ".\\SinkObservables.h"
- 171              		.section	.debug_info,"",%progbits
- 172              	.Ldebug_info0:
- 173 0000 C2020000 		.4byte	0x2c2
- 174 0004 0400     		.2byte	0x4
- 175 0006 00000000 		.4byte	.Ldebug_abbrev0
- 176 000a 04       		.byte	0x4
- 177 000b 01       		.uleb128 0x1
- 178 000c 6D010000 		.4byte	.LASF71
- 179 0010 01       		.byte	0x1
- 180 0011 10030000 		.4byte	.LASF72
- 181 0015 1B040000 		.4byte	.LASF73
- 182 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 183 001d 00000000 		.4byte	0
- 184 0021 00000000 		.4byte	.Ldebug_line0
- 185 0025 02       		.uleb128 0x2
- 186 0026 01       		.byte	0x1
- 187 0027 06       		.byte	0x6
- 188 0028 E5020000 		.4byte	.LASF0
- 189 002c 02       		.uleb128 0x2
- 190 002d 01       		.byte	0x1
- 191 002e 08       		.byte	0x8
- 192 002f A9020000 		.4byte	.LASF1
- 193 0033 02       		.uleb128 0x2
- 194 0034 02       		.byte	0x2
- 195 0035 05       		.byte	0x5
- 196 0036 3E000000 		.4byte	.LASF2
- 197 003a 02       		.uleb128 0x2
- 198 003b 02       		.byte	0x2
- 199 003c 07       		.byte	0x7
- 200 003d 86030000 		.4byte	.LASF3
- 201 0041 03       		.uleb128 0x3
- 202 0042 5A050000 		.4byte	.LASF9
- 203 0046 02       		.byte	0x2
- 204 0047 3F       		.byte	0x3f
- 205 0048 4C000000 		.4byte	0x4c
- 206 004c 02       		.uleb128 0x2
- 207 004d 04       		.byte	0x4
- 208 004e 05       		.byte	0x5
- 209 004f ED050000 		.4byte	.LASF4
- 210 0053 02       		.uleb128 0x2
- 211 0054 04       		.byte	0x4
- 212 0055 07       		.byte	0x7
- 213 0056 EC040000 		.4byte	.LASF5
- 214 005a 02       		.uleb128 0x2
- 215 005b 08       		.byte	0x8
- 216 005c 05       		.byte	0x5
- 217 005d 5F010000 		.4byte	.LASF6
- 218 0061 02       		.uleb128 0x2
- 219 0062 08       		.byte	0x8
- 220 0063 07       		.byte	0x7
- 221 0064 F9020000 		.4byte	.LASF7
- 222 0068 04       		.uleb128 0x4
- 223 0069 04       		.byte	0x4
- 224 006a 05       		.byte	0x5
- 225 006b 696E7400 		.ascii	"int\000"
- 226 006f 02       		.uleb128 0x2
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccniKWhe.s 			page 6
+ 170              		.file 6 "Generated_Source\\PSoC5/core_cm3.h"
+ 171              		.file 7 ".\\GlobalDefinitions.h"
+ 172              		.file 8 ".\\SinkObservables.h"
+ 173              		.section	.debug_info,"",%progbits
+ 174              	.Ldebug_info0:
+ 175 0000 D3020000 		.4byte	0x2d3
+ 176 0004 0400     		.2byte	0x4
+ 177 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 178 000a 04       		.byte	0x4
+ 179 000b 01       		.uleb128 0x1
+ 180 000c 6D010000 		.4byte	.LASF72
+ 181 0010 01       		.byte	0x1
+ 182 0011 10030000 		.4byte	.LASF73
+ 183 0015 58030000 		.4byte	.LASF74
+ 184 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 185 001d 00000000 		.4byte	0
+ 186 0021 00000000 		.4byte	.Ldebug_line0
+ 187 0025 02       		.uleb128 0x2
+ 188 0026 01       		.byte	0x1
+ 189 0027 06       		.byte	0x6
+ 190 0028 E5020000 		.4byte	.LASF0
+ 191 002c 02       		.uleb128 0x2
+ 192 002d 01       		.byte	0x1
+ 193 002e 08       		.byte	0x8
+ 194 002f A9020000 		.4byte	.LASF1
+ 195 0033 02       		.uleb128 0x2
+ 196 0034 02       		.byte	0x2
+ 197 0035 05       		.byte	0x5
+ 198 0036 3E000000 		.4byte	.LASF2
+ 199 003a 02       		.uleb128 0x2
+ 200 003b 02       		.byte	0x2
+ 201 003c 07       		.byte	0x7
+ 202 003d D3040000 		.4byte	.LASF3
+ 203 0041 03       		.uleb128 0x3
+ 204 0042 67050000 		.4byte	.LASF9
+ 205 0046 02       		.byte	0x2
+ 206 0047 3F       		.byte	0x3f
+ 207 0048 4C000000 		.4byte	0x4c
+ 208 004c 02       		.uleb128 0x2
+ 209 004d 04       		.byte	0x4
+ 210 004e 05       		.byte	0x5
+ 211 004f FA050000 		.4byte	.LASF4
+ 212 0053 02       		.uleb128 0x2
+ 213 0054 04       		.byte	0x4
+ 214 0055 07       		.byte	0x7
+ 215 0056 F9040000 		.4byte	.LASF5
+ 216 005a 02       		.uleb128 0x2
+ 217 005b 08       		.byte	0x8
+ 218 005c 05       		.byte	0x5
+ 219 005d 5F010000 		.4byte	.LASF6
+ 220 0061 02       		.uleb128 0x2
+ 221 0062 08       		.byte	0x8
+ 222 0063 07       		.byte	0x7
+ 223 0064 F9020000 		.4byte	.LASF7
+ 224 0068 04       		.uleb128 0x4
+ 225 0069 04       		.byte	0x4
+ 226 006a 05       		.byte	0x5
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccDMGED9.s 			page 6
 
 
- 227 0070 04       		.byte	0x4
- 228 0071 07       		.byte	0x7
- 229 0072 30030000 		.4byte	.LASF8
- 230 0076 03       		.uleb128 0x3
- 231 0077 F1020000 		.4byte	.LASF10
- 232 007b 03       		.byte	0x3
- 233 007c 2C       		.byte	0x2c
- 234 007d 41000000 		.4byte	0x41
- 235 0081 05       		.uleb128 0x5
- 236 0082 0F010000 		.4byte	.LASF11
- 237 0086 04       		.byte	0x4
- 238 0087 3801     		.2byte	0x138
- 239 0089 2C000000 		.4byte	0x2c
- 240 008d 02       		.uleb128 0x2
- 241 008e 04       		.byte	0x4
- 242 008f 04       		.byte	0x4
- 243 0090 59010000 		.4byte	.LASF12
- 244 0094 02       		.uleb128 0x2
- 245 0095 08       		.byte	0x8
- 246 0096 04       		.byte	0x4
- 247 0097 FE040000 		.4byte	.LASF13
- 248 009b 02       		.uleb128 0x2
- 249 009c 01       		.byte	0x1
- 250 009d 08       		.byte	0x8
- 251 009e A6030000 		.4byte	.LASF14
- 252 00a2 06       		.uleb128 0x6
- 253 00a3 81000000 		.4byte	0x81
- 254 00a7 02       		.uleb128 0x2
- 255 00a8 04       		.byte	0x4
- 256 00a9 07       		.byte	0x7
- 257 00aa 56000000 		.4byte	.LASF15
- 258 00ae 07       		.uleb128 0x7
- 259 00af 04       		.byte	0x4
- 260 00b0 02       		.uleb128 0x2
- 261 00b1 08       		.byte	0x8
- 262 00b2 04       		.byte	0x4
- 263 00b3 9D020000 		.4byte	.LASF16
- 264 00b7 08       		.uleb128 0x8
- 265 00b8 B7020000 		.4byte	.LASF74
- 266 00bc 01       		.byte	0x1
- 267 00bd 07       		.byte	0x7
- 268 00be 0F       		.byte	0xf
- 269 00bf C6010000 		.4byte	0x1c6
- 270 00c3 09       		.uleb128 0x9
- 271 00c4 6F000000 		.4byte	.LASF17
- 272 00c8 01       		.sleb128 1
- 273 00c9 09       		.uleb128 0x9
- 274 00ca 99030000 		.4byte	.LASF18
- 275 00ce 02       		.sleb128 2
- 276 00cf 09       		.uleb128 0x9
- 277 00d0 03060000 		.4byte	.LASF19
- 278 00d4 03       		.sleb128 3
- 279 00d5 09       		.uleb128 0x9
- 280 00d6 CA030000 		.4byte	.LASF20
- 281 00da 04       		.sleb128 4
- 282 00db 09       		.uleb128 0x9
- 283 00dc 58020000 		.4byte	.LASF21
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccniKWhe.s 			page 7
+ 227 006b 696E7400 		.ascii	"int\000"
+ 228 006f 02       		.uleb128 0x2
+ 229 0070 04       		.byte	0x4
+ 230 0071 07       		.byte	0x7
+ 231 0072 30030000 		.4byte	.LASF8
+ 232 0076 03       		.uleb128 0x3
+ 233 0077 F1020000 		.4byte	.LASF10
+ 234 007b 03       		.byte	0x3
+ 235 007c 2C       		.byte	0x2c
+ 236 007d 41000000 		.4byte	0x41
+ 237 0081 05       		.uleb128 0x5
+ 238 0082 0F010000 		.4byte	.LASF11
+ 239 0086 04       		.byte	0x4
+ 240 0087 3801     		.2byte	0x138
+ 241 0089 2C000000 		.4byte	0x2c
+ 242 008d 02       		.uleb128 0x2
+ 243 008e 04       		.byte	0x4
+ 244 008f 04       		.byte	0x4
+ 245 0090 59010000 		.4byte	.LASF12
+ 246 0094 02       		.uleb128 0x2
+ 247 0095 08       		.byte	0x8
+ 248 0096 04       		.byte	0x4
+ 249 0097 0B050000 		.4byte	.LASF13
+ 250 009b 02       		.uleb128 0x2
+ 251 009c 01       		.byte	0x1
+ 252 009d 08       		.byte	0x8
+ 253 009e FF030000 		.4byte	.LASF14
+ 254 00a2 06       		.uleb128 0x6
+ 255 00a3 81000000 		.4byte	0x81
+ 256 00a7 02       		.uleb128 0x2
+ 257 00a8 04       		.byte	0x4
+ 258 00a9 07       		.byte	0x7
+ 259 00aa 56000000 		.4byte	.LASF15
+ 260 00ae 07       		.uleb128 0x7
+ 261 00af 04       		.byte	0x4
+ 262 00b0 02       		.uleb128 0x2
+ 263 00b1 08       		.byte	0x8
+ 264 00b2 04       		.byte	0x4
+ 265 00b3 9D020000 		.4byte	.LASF16
+ 266 00b7 08       		.uleb128 0x8
+ 267 00b8 B7020000 		.4byte	.LASF75
+ 268 00bc 01       		.byte	0x1
+ 269 00bd 08       		.byte	0x8
+ 270 00be 0F       		.byte	0xf
+ 271 00bf C6010000 		.4byte	0x1c6
+ 272 00c3 09       		.uleb128 0x9
+ 273 00c4 6F000000 		.4byte	.LASF17
+ 274 00c8 01       		.sleb128 1
+ 275 00c9 09       		.uleb128 0x9
+ 276 00ca F2030000 		.4byte	.LASF18
+ 277 00ce 02       		.sleb128 2
+ 278 00cf 09       		.uleb128 0x9
+ 279 00d0 10060000 		.4byte	.LASF19
+ 280 00d4 03       		.sleb128 3
+ 281 00d5 09       		.uleb128 0x9
+ 282 00d6 23040000 		.4byte	.LASF20
+ 283 00da 04       		.sleb128 4
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccDMGED9.s 			page 7
 
 
- 284 00e0 05       		.sleb128 5
- 285 00e1 09       		.uleb128 0x9
- 286 00e2 A0050000 		.4byte	.LASF22
- 287 00e6 06       		.sleb128 6
- 288 00e7 09       		.uleb128 0x9
- 289 00e8 C2050000 		.4byte	.LASF23
- 290 00ec 07       		.sleb128 7
- 291 00ed 09       		.uleb128 0x9
- 292 00ee 17020000 		.4byte	.LASF24
- 293 00f2 08       		.sleb128 8
- 294 00f3 09       		.uleb128 0x9
- 295 00f4 58030000 		.4byte	.LASF25
- 296 00f8 09       		.sleb128 9
- 297 00f9 09       		.uleb128 0x9
- 298 00fa D5000000 		.4byte	.LASF26
- 299 00fe 0A       		.sleb128 10
- 300 00ff 09       		.uleb128 0x9
- 301 0100 64050000 		.4byte	.LASF27
- 302 0104 0B       		.sleb128 11
- 303 0105 09       		.uleb128 0x9
- 304 0106 3D030000 		.4byte	.LASF28
- 305 010a 0C       		.sleb128 12
- 306 010b 09       		.uleb128 0x9
- 307 010c AB030000 		.4byte	.LASF29
- 308 0110 0D       		.sleb128 13
- 309 0111 09       		.uleb128 0x9
- 310 0112 F9030000 		.4byte	.LASF30
- 311 0116 0E       		.sleb128 14
- 312 0117 09       		.uleb128 0x9
- 313 0118 93040000 		.4byte	.LASF31
- 314 011c 0F       		.sleb128 15
- 315 011d 09       		.uleb128 0x9
- 316 011e CA020000 		.4byte	.LASF32
- 317 0122 10       		.sleb128 16
- 318 0123 09       		.uleb128 0x9
- 319 0124 6B020000 		.4byte	.LASF33
- 320 0128 11       		.sleb128 17
- 321 0129 09       		.uleb128 0x9
- 322 012a 54060000 		.4byte	.LASF34
- 323 012e 12       		.sleb128 18
- 324 012f 09       		.uleb128 0x9
- 325 0130 81000000 		.4byte	.LASF35
- 326 0134 13       		.sleb128 19
- 327 0135 09       		.uleb128 0x9
- 328 0136 89050000 		.4byte	.LASF36
- 329 013a 14       		.sleb128 20
- 330 013b 09       		.uleb128 0x9
- 331 013c 30050000 		.4byte	.LASF37
- 332 0140 15       		.sleb128 21
- 333 0141 09       		.uleb128 0x9
- 334 0142 13000000 		.4byte	.LASF38
- 335 0146 16       		.sleb128 22
- 336 0147 09       		.uleb128 0x9
- 337 0148 34020000 		.4byte	.LASF39
- 338 014c 17       		.sleb128 23
- 339 014d 09       		.uleb128 0x9
- 340 014e 22030000 		.4byte	.LASF40
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccniKWhe.s 			page 8
+ 284 00db 09       		.uleb128 0x9
+ 285 00dc 58020000 		.4byte	.LASF21
+ 286 00e0 05       		.sleb128 5
+ 287 00e1 09       		.uleb128 0x9
+ 288 00e2 AD050000 		.4byte	.LASF22
+ 289 00e6 06       		.sleb128 6
+ 290 00e7 09       		.uleb128 0x9
+ 291 00e8 CF050000 		.4byte	.LASF23
+ 292 00ec 07       		.sleb128 7
+ 293 00ed 09       		.uleb128 0x9
+ 294 00ee 17020000 		.4byte	.LASF24
+ 295 00f2 08       		.sleb128 8
+ 296 00f3 09       		.uleb128 0x9
+ 297 00f4 B6030000 		.4byte	.LASF25
+ 298 00f8 09       		.sleb128 9
+ 299 00f9 09       		.uleb128 0x9
+ 300 00fa D5000000 		.4byte	.LASF26
+ 301 00fe 0A       		.sleb128 10
+ 302 00ff 09       		.uleb128 0x9
+ 303 0100 71050000 		.4byte	.LASF27
+ 304 0104 0B       		.sleb128 11
+ 305 0105 09       		.uleb128 0x9
+ 306 0106 3D030000 		.4byte	.LASF28
+ 307 010a 0C       		.sleb128 12
+ 308 010b 09       		.uleb128 0x9
+ 309 010c 04040000 		.4byte	.LASF29
+ 310 0110 0D       		.sleb128 13
+ 311 0111 09       		.uleb128 0x9
+ 312 0112 52040000 		.4byte	.LASF30
+ 313 0116 0E       		.sleb128 14
+ 314 0117 09       		.uleb128 0x9
+ 315 0118 8D040000 		.4byte	.LASF31
+ 316 011c 0F       		.sleb128 15
+ 317 011d 09       		.uleb128 0x9
+ 318 011e CA020000 		.4byte	.LASF32
+ 319 0122 10       		.sleb128 16
+ 320 0123 09       		.uleb128 0x9
+ 321 0124 6B020000 		.4byte	.LASF33
+ 322 0128 11       		.sleb128 17
+ 323 0129 09       		.uleb128 0x9
+ 324 012a 61060000 		.4byte	.LASF34
+ 325 012e 12       		.sleb128 18
+ 326 012f 09       		.uleb128 0x9
+ 327 0130 81000000 		.4byte	.LASF35
+ 328 0134 13       		.sleb128 19
+ 329 0135 09       		.uleb128 0x9
+ 330 0136 96050000 		.4byte	.LASF36
+ 331 013a 14       		.sleb128 20
+ 332 013b 09       		.uleb128 0x9
+ 333 013c 3D050000 		.4byte	.LASF37
+ 334 0140 15       		.sleb128 21
+ 335 0141 09       		.uleb128 0x9
+ 336 0142 13000000 		.4byte	.LASF38
+ 337 0146 16       		.sleb128 22
+ 338 0147 09       		.uleb128 0x9
+ 339 0148 34020000 		.4byte	.LASF39
+ 340 014c 17       		.sleb128 23
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccDMGED9.s 			page 8
 
 
- 341 0152 18       		.sleb128 24
- 342 0153 09       		.uleb128 0x9
- 343 0154 B4050000 		.4byte	.LASF41
- 344 0158 19       		.sleb128 25
- 345 0159 09       		.uleb128 0x9
- 346 015a C0000000 		.4byte	.LASF42
- 347 015e 1A       		.sleb128 26
- 348 015f 09       		.uleb128 0x9
- 349 0160 44010000 		.4byte	.LASF43
- 350 0164 1B       		.sleb128 27
- 351 0165 09       		.uleb128 0x9
- 352 0166 BF040000 		.4byte	.LASF44
- 353 016a 1C       		.sleb128 28
- 354 016b 09       		.uleb128 0x9
- 355 016c DF030000 		.4byte	.LASF45
- 356 0170 1D       		.sleb128 29
- 357 0171 09       		.uleb128 0x9
- 358 0172 16050000 		.4byte	.LASF46
- 359 0176 1E       		.sleb128 30
- 360 0177 09       		.uleb128 0x9
- 361 0178 00000000 		.4byte	.LASF47
- 362 017c 1F       		.sleb128 31
- 363 017d 09       		.uleb128 0x9
- 364 017e AF000000 		.4byte	.LASF48
- 365 0182 20       		.sleb128 32
- 366 0183 09       		.uleb128 0x9
- 367 0184 15010000 		.4byte	.LASF49
- 368 0188 21       		.sleb128 33
- 369 0189 09       		.uleb128 0x9
- 370 018a 42020000 		.4byte	.LASF50
- 371 018e 22       		.sleb128 34
- 372 018f 09       		.uleb128 0x9
- 373 0190 1E060000 		.4byte	.LASF51
- 374 0194 23       		.sleb128 35
- 375 0195 09       		.uleb128 0x9
- 376 0196 FE000000 		.4byte	.LASF52
- 377 019a 24       		.sleb128 36
- 378 019b 09       		.uleb128 0x9
- 379 019c 84020000 		.4byte	.LASF53
- 380 01a0 25       		.sleb128 37
- 381 01a1 09       		.uleb128 0x9
- 382 01a2 2E010000 		.4byte	.LASF54
- 383 01a6 26       		.sleb128 38
- 384 01a7 09       		.uleb128 0x9
- 385 01a8 48000000 		.4byte	.LASF55
- 386 01ac 27       		.sleb128 39
- 387 01ad 09       		.uleb128 0x9
- 388 01ae 4C050000 		.4byte	.LASF56
- 389 01b2 28       		.sleb128 40
- 390 01b3 09       		.uleb128 0x9
- 391 01b4 3B060000 		.4byte	.LASF57
- 392 01b8 29       		.sleb128 41
- 393 01b9 09       		.uleb128 0x9
- 394 01ba 21000000 		.4byte	.LASF58
- 395 01be 2A       		.sleb128 42
- 396 01bf 09       		.uleb128 0x9
- 397 01c0 05050000 		.4byte	.LASF59
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccniKWhe.s 			page 9
+ 341 014d 09       		.uleb128 0x9
+ 342 014e 22030000 		.4byte	.LASF40
+ 343 0152 18       		.sleb128 24
+ 344 0153 09       		.uleb128 0x9
+ 345 0154 C1050000 		.4byte	.LASF41
+ 346 0158 19       		.sleb128 25
+ 347 0159 09       		.uleb128 0x9
+ 348 015a C0000000 		.4byte	.LASF42
+ 349 015e 1A       		.sleb128 26
+ 350 015f 09       		.uleb128 0x9
+ 351 0160 44010000 		.4byte	.LASF43
+ 352 0164 1B       		.sleb128 27
+ 353 0165 09       		.uleb128 0x9
+ 354 0166 B9040000 		.4byte	.LASF44
+ 355 016a 1C       		.sleb128 28
+ 356 016b 09       		.uleb128 0x9
+ 357 016c 38040000 		.4byte	.LASF45
+ 358 0170 1D       		.sleb128 29
+ 359 0171 09       		.uleb128 0x9
+ 360 0172 23050000 		.4byte	.LASF46
+ 361 0176 1E       		.sleb128 30
+ 362 0177 09       		.uleb128 0x9
+ 363 0178 00000000 		.4byte	.LASF47
+ 364 017c 1F       		.sleb128 31
+ 365 017d 09       		.uleb128 0x9
+ 366 017e AF000000 		.4byte	.LASF48
+ 367 0182 20       		.sleb128 32
+ 368 0183 09       		.uleb128 0x9
+ 369 0184 15010000 		.4byte	.LASF49
+ 370 0188 21       		.sleb128 33
+ 371 0189 09       		.uleb128 0x9
+ 372 018a 42020000 		.4byte	.LASF50
+ 373 018e 22       		.sleb128 34
+ 374 018f 09       		.uleb128 0x9
+ 375 0190 2B060000 		.4byte	.LASF51
+ 376 0194 23       		.sleb128 35
+ 377 0195 09       		.uleb128 0x9
+ 378 0196 FE000000 		.4byte	.LASF52
+ 379 019a 24       		.sleb128 36
+ 380 019b 09       		.uleb128 0x9
+ 381 019c 84020000 		.4byte	.LASF53
+ 382 01a0 25       		.sleb128 37
+ 383 01a1 09       		.uleb128 0x9
+ 384 01a2 2E010000 		.4byte	.LASF54
+ 385 01a6 26       		.sleb128 38
+ 386 01a7 09       		.uleb128 0x9
+ 387 01a8 48000000 		.4byte	.LASF55
+ 388 01ac 27       		.sleb128 39
+ 389 01ad 09       		.uleb128 0x9
+ 390 01ae 59050000 		.4byte	.LASF56
+ 391 01b2 28       		.sleb128 40
+ 392 01b3 09       		.uleb128 0x9
+ 393 01b4 48060000 		.4byte	.LASF57
+ 394 01b8 29       		.sleb128 41
+ 395 01b9 09       		.uleb128 0x9
+ 396 01ba 21000000 		.4byte	.LASF58
+ 397 01be 2A       		.sleb128 42
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccDMGED9.s 			page 9
 
 
- 398 01c4 2B       		.sleb128 43
- 399 01c5 00       		.byte	0
- 400 01c6 06       		.uleb128 0x6
- 401 01c7 CB010000 		.4byte	0x1cb
- 402 01cb 02       		.uleb128 0x2
- 403 01cc 01       		.byte	0x1
- 404 01cd 02       		.byte	0x2
- 405 01ce 7A040000 		.4byte	.LASF60
- 406 01d2 0A       		.uleb128 0xa
- 407 01d3 DD010000 		.4byte	0x1dd
- 408 01d7 0B       		.uleb128 0xb
- 409 01d8 AE000000 		.4byte	0xae
- 410 01dc 00       		.byte	0
- 411 01dd 0C       		.uleb128 0xc
- 412 01de 04       		.byte	0x4
- 413 01df D2010000 		.4byte	0x1d2
- 414 01e3 0D       		.uleb128 0xd
- 415 01e4 74030000 		.4byte	.LASF75
- 416 01e8 2C       		.byte	0x2c
- 417 01e9 05       		.byte	0x5
- 418 01ea 66       		.byte	0x66
- 419 01eb 14020000 		.4byte	0x214
- 420 01ef 0E       		.uleb128 0xe
- 421 01f0 A8000000 		.4byte	.LASF61
- 422 01f4 05       		.byte	0x5
- 423 01f5 68       		.byte	0x68
- 424 01f6 A2000000 		.4byte	0xa2
- 425 01fa 00       		.byte	0
- 426 01fb 0E       		.uleb128 0xe
- 427 01fc 31060000 		.4byte	.LASF62
- 428 0200 05       		.byte	0x5
- 429 0201 6A       		.byte	0x6a
- 430 0202 14020000 		.4byte	0x214
- 431 0206 01       		.byte	0x1
- 432 0207 0E       		.uleb128 0xe
- 433 0208 75060000 		.4byte	.LASF63
- 434 020c 05       		.byte	0x5
- 435 020d 6B       		.byte	0x6b
- 436 020e 24020000 		.4byte	0x224
- 437 0212 0C       		.byte	0xc
- 438 0213 00       		.byte	0
- 439 0214 0F       		.uleb128 0xf
- 440 0215 81000000 		.4byte	0x81
- 441 0219 24020000 		.4byte	0x224
- 442 021d 10       		.uleb128 0x10
- 443 021e A7000000 		.4byte	0xa7
- 444 0222 07       		.byte	0x7
- 445 0223 00       		.byte	0
- 446 0224 0F       		.uleb128 0xf
- 447 0225 DD010000 		.4byte	0x1dd
- 448 0229 34020000 		.4byte	0x234
- 449 022d 10       		.uleb128 0x10
- 450 022e A7000000 		.4byte	0xa7
- 451 0232 07       		.byte	0x7
- 452 0233 00       		.byte	0
- 453 0234 03       		.uleb128 0x3
- 454 0235 80040000 		.4byte	.LASF64
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccniKWhe.s 			page 10
+ 398 01bf 09       		.uleb128 0x9
+ 399 01c0 12050000 		.4byte	.LASF59
+ 400 01c4 2B       		.sleb128 43
+ 401 01c5 00       		.byte	0
+ 402 01c6 06       		.uleb128 0x6
+ 403 01c7 CB010000 		.4byte	0x1cb
+ 404 01cb 02       		.uleb128 0x2
+ 405 01cc 01       		.byte	0x1
+ 406 01cd 02       		.byte	0x2
+ 407 01ce 74040000 		.4byte	.LASF60
+ 408 01d2 0A       		.uleb128 0xa
+ 409 01d3 DD010000 		.4byte	0x1dd
+ 410 01d7 0B       		.uleb128 0xb
+ 411 01d8 AE000000 		.4byte	0xae
+ 412 01dc 00       		.byte	0
+ 413 01dd 0C       		.uleb128 0xc
+ 414 01de 04       		.byte	0x4
+ 415 01df D2010000 		.4byte	0x1d2
+ 416 01e3 0D       		.uleb128 0xd
+ 417 01e4 D2030000 		.4byte	.LASF76
+ 418 01e8 2C       		.byte	0x2c
+ 419 01e9 05       		.byte	0x5
+ 420 01ea 66       		.byte	0x66
+ 421 01eb 14020000 		.4byte	0x214
+ 422 01ef 0E       		.uleb128 0xe
+ 423 01f0 A8000000 		.4byte	.LASF61
+ 424 01f4 05       		.byte	0x5
+ 425 01f5 68       		.byte	0x68
+ 426 01f6 A2000000 		.4byte	0xa2
+ 427 01fa 00       		.byte	0
+ 428 01fb 0E       		.uleb128 0xe
+ 429 01fc 3E060000 		.4byte	.LASF62
+ 430 0200 05       		.byte	0x5
+ 431 0201 6A       		.byte	0x6a
+ 432 0202 14020000 		.4byte	0x214
+ 433 0206 01       		.byte	0x1
+ 434 0207 0E       		.uleb128 0xe
+ 435 0208 82060000 		.4byte	.LASF63
+ 436 020c 05       		.byte	0x5
+ 437 020d 6B       		.byte	0x6b
+ 438 020e 24020000 		.4byte	0x224
+ 439 0212 0C       		.byte	0xc
+ 440 0213 00       		.byte	0
+ 441 0214 0F       		.uleb128 0xf
+ 442 0215 81000000 		.4byte	0x81
+ 443 0219 24020000 		.4byte	0x224
+ 444 021d 10       		.uleb128 0x10
+ 445 021e A7000000 		.4byte	0xa7
+ 446 0222 07       		.byte	0x7
+ 447 0223 00       		.byte	0
+ 448 0224 0F       		.uleb128 0xf
+ 449 0225 DD010000 		.4byte	0x1dd
+ 450 0229 34020000 		.4byte	0x234
+ 451 022d 10       		.uleb128 0x10
+ 452 022e A7000000 		.4byte	0xa7
+ 453 0232 07       		.byte	0x7
+ 454 0233 00       		.byte	0
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccDMGED9.s 			page 10
 
 
- 455 0239 05       		.byte	0x5
- 456 023a 6C       		.byte	0x6c
- 457 023b 3F020000 		.4byte	0x23f
- 458 023f 0C       		.uleb128 0xc
- 459 0240 04       		.byte	0x4
- 460 0241 E3010000 		.4byte	0x1e3
- 461 0245 11       		.uleb128 0x11
- 462 0246 D9040000 		.4byte	.LASF76
- 463 024a 01       		.byte	0x1
- 464 024b 1D       		.byte	0x1d
- 465 024c 00000000 		.4byte	.LFB63
- 466 0250 48000000 		.4byte	.LFE63-.LFB63
- 467 0254 01       		.uleb128 0x1
- 468 0255 9C       		.byte	0x9c
- 469 0256 81020000 		.4byte	0x281
- 470 025a 12       		.uleb128 0x12
- 471 025b FB010000 		.4byte	.LASF65
- 472 025f 01       		.byte	0x1
- 473 0260 1F       		.byte	0x1f
- 474 0261 34020000 		.4byte	0x234
- 475 0265 02       		.uleb128 0x2
- 476 0266 91       		.byte	0x91
- 477 0267 74       		.sleb128 -12
- 478 0268 13       		.uleb128 0x13
- 479 0269 12000000 		.4byte	.LBB2
- 480 026d 20000000 		.4byte	.LBE2-.LBB2
- 481 0271 12       		.uleb128 0x12
- 482 0272 F8000000 		.4byte	.LASF66
- 483 0276 01       		.byte	0x1
- 484 0277 22       		.byte	0x22
- 485 0278 81000000 		.4byte	0x81
- 486 027c 02       		.uleb128 0x2
- 487 027d 91       		.byte	0x91
- 488 027e 73       		.sleb128 -13
- 489 027f 00       		.byte	0
- 490 0280 00       		.byte	0
- 491 0281 14       		.uleb128 0x14
- 492 0282 5F000000 		.4byte	.LASF67
- 493 0286 01       		.byte	0x1
- 494 0287 2F       		.byte	0x2f
- 495 0288 00000000 		.4byte	.LFB64
- 496 028c 18000000 		.4byte	.LFE64-.LFB64
- 497 0290 01       		.uleb128 0x1
- 498 0291 9C       		.byte	0x9c
- 499 0292 14       		.uleb128 0x14
- 500 0293 07020000 		.4byte	.LASF68
- 501 0297 01       		.byte	0x1
- 502 0298 37       		.byte	0x37
- 503 0299 00000000 		.4byte	.LFB65
- 504 029d 18000000 		.4byte	.LFE65-.LFB65
- 505 02a1 01       		.uleb128 0x1
- 506 02a2 9C       		.byte	0x9c
- 507 02a3 15       		.uleb128 0x15
- 508 02a4 F6050000 		.4byte	.LASF69
- 509 02a8 06       		.byte	0x6
- 510 02a9 5506     		.2byte	0x655
- 511 02ab AF020000 		.4byte	0x2af
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccniKWhe.s 			page 11
+ 455 0234 03       		.uleb128 0x3
+ 456 0235 7A040000 		.4byte	.LASF64
+ 457 0239 05       		.byte	0x5
+ 458 023a 6C       		.byte	0x6c
+ 459 023b 3F020000 		.4byte	0x23f
+ 460 023f 0C       		.uleb128 0xc
+ 461 0240 04       		.byte	0x4
+ 462 0241 E3010000 		.4byte	0x1e3
+ 463 0245 11       		.uleb128 0x11
+ 464 0246 E6040000 		.4byte	.LASF77
+ 465 024a 01       		.byte	0x1
+ 466 024b 1D       		.byte	0x1d
+ 467 024c 00000000 		.4byte	.LFB63
+ 468 0250 48000000 		.4byte	.LFE63-.LFB63
+ 469 0254 01       		.uleb128 0x1
+ 470 0255 9C       		.byte	0x9c
+ 471 0256 81020000 		.4byte	0x281
+ 472 025a 12       		.uleb128 0x12
+ 473 025b FB010000 		.4byte	.LASF65
+ 474 025f 01       		.byte	0x1
+ 475 0260 1F       		.byte	0x1f
+ 476 0261 34020000 		.4byte	0x234
+ 477 0265 02       		.uleb128 0x2
+ 478 0266 91       		.byte	0x91
+ 479 0267 74       		.sleb128 -12
+ 480 0268 13       		.uleb128 0x13
+ 481 0269 12000000 		.4byte	.LBB2
+ 482 026d 20000000 		.4byte	.LBE2-.LBB2
+ 483 0271 12       		.uleb128 0x12
+ 484 0272 F8000000 		.4byte	.LASF66
+ 485 0276 01       		.byte	0x1
+ 486 0277 22       		.byte	0x22
+ 487 0278 81000000 		.4byte	0x81
+ 488 027c 02       		.uleb128 0x2
+ 489 027d 91       		.byte	0x91
+ 490 027e 73       		.sleb128 -13
+ 491 027f 00       		.byte	0
+ 492 0280 00       		.byte	0
+ 493 0281 14       		.uleb128 0x14
+ 494 0282 5F000000 		.4byte	.LASF67
+ 495 0286 01       		.byte	0x1
+ 496 0287 2F       		.byte	0x2f
+ 497 0288 00000000 		.4byte	.LFB64
+ 498 028c 18000000 		.4byte	.LFE64-.LFB64
+ 499 0290 01       		.uleb128 0x1
+ 500 0291 9C       		.byte	0x9c
+ 501 0292 14       		.uleb128 0x14
+ 502 0293 07020000 		.4byte	.LASF68
+ 503 0297 01       		.byte	0x1
+ 504 0298 37       		.byte	0x37
+ 505 0299 00000000 		.4byte	.LFB65
+ 506 029d 18000000 		.4byte	.LFE65-.LFB65
+ 507 02a1 01       		.uleb128 0x1
+ 508 02a2 9C       		.byte	0x9c
+ 509 02a3 15       		.uleb128 0x15
+ 510 02a4 03060000 		.4byte	.LASF69
+ 511 02a8 06       		.byte	0x6
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccDMGED9.s 			page 11
 
 
- 512 02af 06       		.uleb128 0x6
- 513 02b0 76000000 		.4byte	0x76
- 514 02b4 16       		.uleb128 0x16
- 515 02b5 9A000000 		.4byte	.LASF70
- 516 02b9 01       		.byte	0x1
- 517 02ba 16       		.byte	0x16
- 518 02bb C6010000 		.4byte	0x1c6
- 519 02bf 05       		.uleb128 0x5
- 520 02c0 03       		.byte	0x3
- 521 02c1 00000000 		.4byte	_g_wdtstarted
- 522 02c5 00       		.byte	0
- 523              		.section	.debug_abbrev,"",%progbits
- 524              	.Ldebug_abbrev0:
- 525 0000 01       		.uleb128 0x1
- 526 0001 11       		.uleb128 0x11
- 527 0002 01       		.byte	0x1
- 528 0003 25       		.uleb128 0x25
- 529 0004 0E       		.uleb128 0xe
- 530 0005 13       		.uleb128 0x13
- 531 0006 0B       		.uleb128 0xb
- 532 0007 03       		.uleb128 0x3
- 533 0008 0E       		.uleb128 0xe
- 534 0009 1B       		.uleb128 0x1b
- 535 000a 0E       		.uleb128 0xe
- 536 000b 55       		.uleb128 0x55
- 537 000c 17       		.uleb128 0x17
- 538 000d 11       		.uleb128 0x11
- 539 000e 01       		.uleb128 0x1
- 540 000f 10       		.uleb128 0x10
- 541 0010 17       		.uleb128 0x17
- 542 0011 00       		.byte	0
- 543 0012 00       		.byte	0
- 544 0013 02       		.uleb128 0x2
- 545 0014 24       		.uleb128 0x24
- 546 0015 00       		.byte	0
- 547 0016 0B       		.uleb128 0xb
- 548 0017 0B       		.uleb128 0xb
- 549 0018 3E       		.uleb128 0x3e
- 550 0019 0B       		.uleb128 0xb
- 551 001a 03       		.uleb128 0x3
- 552 001b 0E       		.uleb128 0xe
- 553 001c 00       		.byte	0
- 554 001d 00       		.byte	0
- 555 001e 03       		.uleb128 0x3
- 556 001f 16       		.uleb128 0x16
- 557 0020 00       		.byte	0
- 558 0021 03       		.uleb128 0x3
- 559 0022 0E       		.uleb128 0xe
- 560 0023 3A       		.uleb128 0x3a
- 561 0024 0B       		.uleb128 0xb
- 562 0025 3B       		.uleb128 0x3b
- 563 0026 0B       		.uleb128 0xb
- 564 0027 49       		.uleb128 0x49
- 565 0028 13       		.uleb128 0x13
- 566 0029 00       		.byte	0
- 567 002a 00       		.byte	0
- 568 002b 04       		.uleb128 0x4
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccniKWhe.s 			page 12
+ 512 02a9 5506     		.2byte	0x655
+ 513 02ab AF020000 		.4byte	0x2af
+ 514 02af 06       		.uleb128 0x6
+ 515 02b0 76000000 		.4byte	0x76
+ 516 02b4 16       		.uleb128 0x16
+ 517 02b5 E4030000 		.4byte	.LASF70
+ 518 02b9 07       		.byte	0x7
+ 519 02ba 52       		.byte	0x52
+ 520 02bb 81000000 		.4byte	0x81
+ 521 02bf 05       		.uleb128 0x5
+ 522 02c0 03       		.byte	0x3
+ 523 02c1 00000000 		.4byte	HoseDispenser
+ 524 02c5 16       		.uleb128 0x16
+ 525 02c6 9A000000 		.4byte	.LASF71
+ 526 02ca 01       		.byte	0x1
+ 527 02cb 16       		.byte	0x16
+ 528 02cc C6010000 		.4byte	0x1c6
+ 529 02d0 05       		.uleb128 0x5
+ 530 02d1 03       		.byte	0x3
+ 531 02d2 00000000 		.4byte	_g_wdtstarted
+ 532 02d6 00       		.byte	0
+ 533              		.section	.debug_abbrev,"",%progbits
+ 534              	.Ldebug_abbrev0:
+ 535 0000 01       		.uleb128 0x1
+ 536 0001 11       		.uleb128 0x11
+ 537 0002 01       		.byte	0x1
+ 538 0003 25       		.uleb128 0x25
+ 539 0004 0E       		.uleb128 0xe
+ 540 0005 13       		.uleb128 0x13
+ 541 0006 0B       		.uleb128 0xb
+ 542 0007 03       		.uleb128 0x3
+ 543 0008 0E       		.uleb128 0xe
+ 544 0009 1B       		.uleb128 0x1b
+ 545 000a 0E       		.uleb128 0xe
+ 546 000b 55       		.uleb128 0x55
+ 547 000c 17       		.uleb128 0x17
+ 548 000d 11       		.uleb128 0x11
+ 549 000e 01       		.uleb128 0x1
+ 550 000f 10       		.uleb128 0x10
+ 551 0010 17       		.uleb128 0x17
+ 552 0011 00       		.byte	0
+ 553 0012 00       		.byte	0
+ 554 0013 02       		.uleb128 0x2
+ 555 0014 24       		.uleb128 0x24
+ 556 0015 00       		.byte	0
+ 557 0016 0B       		.uleb128 0xb
+ 558 0017 0B       		.uleb128 0xb
+ 559 0018 3E       		.uleb128 0x3e
+ 560 0019 0B       		.uleb128 0xb
+ 561 001a 03       		.uleb128 0x3
+ 562 001b 0E       		.uleb128 0xe
+ 563 001c 00       		.byte	0
+ 564 001d 00       		.byte	0
+ 565 001e 03       		.uleb128 0x3
+ 566 001f 16       		.uleb128 0x16
+ 567 0020 00       		.byte	0
+ 568 0021 03       		.uleb128 0x3
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccDMGED9.s 			page 12
 
 
- 569 002c 24       		.uleb128 0x24
- 570 002d 00       		.byte	0
- 571 002e 0B       		.uleb128 0xb
- 572 002f 0B       		.uleb128 0xb
- 573 0030 3E       		.uleb128 0x3e
- 574 0031 0B       		.uleb128 0xb
- 575 0032 03       		.uleb128 0x3
- 576 0033 08       		.uleb128 0x8
- 577 0034 00       		.byte	0
- 578 0035 00       		.byte	0
- 579 0036 05       		.uleb128 0x5
- 580 0037 16       		.uleb128 0x16
- 581 0038 00       		.byte	0
- 582 0039 03       		.uleb128 0x3
- 583 003a 0E       		.uleb128 0xe
- 584 003b 3A       		.uleb128 0x3a
- 585 003c 0B       		.uleb128 0xb
- 586 003d 3B       		.uleb128 0x3b
- 587 003e 05       		.uleb128 0x5
- 588 003f 49       		.uleb128 0x49
- 589 0040 13       		.uleb128 0x13
- 590 0041 00       		.byte	0
- 591 0042 00       		.byte	0
- 592 0043 06       		.uleb128 0x6
- 593 0044 35       		.uleb128 0x35
- 594 0045 00       		.byte	0
- 595 0046 49       		.uleb128 0x49
- 596 0047 13       		.uleb128 0x13
- 597 0048 00       		.byte	0
- 598 0049 00       		.byte	0
- 599 004a 07       		.uleb128 0x7
- 600 004b 0F       		.uleb128 0xf
- 601 004c 00       		.byte	0
- 602 004d 0B       		.uleb128 0xb
- 603 004e 0B       		.uleb128 0xb
- 604 004f 00       		.byte	0
- 605 0050 00       		.byte	0
- 606 0051 08       		.uleb128 0x8
- 607 0052 04       		.uleb128 0x4
- 608 0053 01       		.byte	0x1
- 609 0054 03       		.uleb128 0x3
- 610 0055 0E       		.uleb128 0xe
- 611 0056 0B       		.uleb128 0xb
- 612 0057 0B       		.uleb128 0xb
- 613 0058 3A       		.uleb128 0x3a
- 614 0059 0B       		.uleb128 0xb
- 615 005a 3B       		.uleb128 0x3b
- 616 005b 0B       		.uleb128 0xb
- 617 005c 01       		.uleb128 0x1
- 618 005d 13       		.uleb128 0x13
- 619 005e 00       		.byte	0
- 620 005f 00       		.byte	0
- 621 0060 09       		.uleb128 0x9
- 622 0061 28       		.uleb128 0x28
- 623 0062 00       		.byte	0
- 624 0063 03       		.uleb128 0x3
- 625 0064 0E       		.uleb128 0xe
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccniKWhe.s 			page 13
+ 569 0022 0E       		.uleb128 0xe
+ 570 0023 3A       		.uleb128 0x3a
+ 571 0024 0B       		.uleb128 0xb
+ 572 0025 3B       		.uleb128 0x3b
+ 573 0026 0B       		.uleb128 0xb
+ 574 0027 49       		.uleb128 0x49
+ 575 0028 13       		.uleb128 0x13
+ 576 0029 00       		.byte	0
+ 577 002a 00       		.byte	0
+ 578 002b 04       		.uleb128 0x4
+ 579 002c 24       		.uleb128 0x24
+ 580 002d 00       		.byte	0
+ 581 002e 0B       		.uleb128 0xb
+ 582 002f 0B       		.uleb128 0xb
+ 583 0030 3E       		.uleb128 0x3e
+ 584 0031 0B       		.uleb128 0xb
+ 585 0032 03       		.uleb128 0x3
+ 586 0033 08       		.uleb128 0x8
+ 587 0034 00       		.byte	0
+ 588 0035 00       		.byte	0
+ 589 0036 05       		.uleb128 0x5
+ 590 0037 16       		.uleb128 0x16
+ 591 0038 00       		.byte	0
+ 592 0039 03       		.uleb128 0x3
+ 593 003a 0E       		.uleb128 0xe
+ 594 003b 3A       		.uleb128 0x3a
+ 595 003c 0B       		.uleb128 0xb
+ 596 003d 3B       		.uleb128 0x3b
+ 597 003e 05       		.uleb128 0x5
+ 598 003f 49       		.uleb128 0x49
+ 599 0040 13       		.uleb128 0x13
+ 600 0041 00       		.byte	0
+ 601 0042 00       		.byte	0
+ 602 0043 06       		.uleb128 0x6
+ 603 0044 35       		.uleb128 0x35
+ 604 0045 00       		.byte	0
+ 605 0046 49       		.uleb128 0x49
+ 606 0047 13       		.uleb128 0x13
+ 607 0048 00       		.byte	0
+ 608 0049 00       		.byte	0
+ 609 004a 07       		.uleb128 0x7
+ 610 004b 0F       		.uleb128 0xf
+ 611 004c 00       		.byte	0
+ 612 004d 0B       		.uleb128 0xb
+ 613 004e 0B       		.uleb128 0xb
+ 614 004f 00       		.byte	0
+ 615 0050 00       		.byte	0
+ 616 0051 08       		.uleb128 0x8
+ 617 0052 04       		.uleb128 0x4
+ 618 0053 01       		.byte	0x1
+ 619 0054 03       		.uleb128 0x3
+ 620 0055 0E       		.uleb128 0xe
+ 621 0056 0B       		.uleb128 0xb
+ 622 0057 0B       		.uleb128 0xb
+ 623 0058 3A       		.uleb128 0x3a
+ 624 0059 0B       		.uleb128 0xb
+ 625 005a 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccDMGED9.s 			page 13
 
 
- 626 0065 1C       		.uleb128 0x1c
- 627 0066 0D       		.uleb128 0xd
- 628 0067 00       		.byte	0
- 629 0068 00       		.byte	0
- 630 0069 0A       		.uleb128 0xa
- 631 006a 15       		.uleb128 0x15
- 632 006b 01       		.byte	0x1
- 633 006c 27       		.uleb128 0x27
- 634 006d 19       		.uleb128 0x19
- 635 006e 01       		.uleb128 0x1
- 636 006f 13       		.uleb128 0x13
- 637 0070 00       		.byte	0
- 638 0071 00       		.byte	0
- 639 0072 0B       		.uleb128 0xb
- 640 0073 05       		.uleb128 0x5
- 641 0074 00       		.byte	0
- 642 0075 49       		.uleb128 0x49
- 643 0076 13       		.uleb128 0x13
- 644 0077 00       		.byte	0
- 645 0078 00       		.byte	0
- 646 0079 0C       		.uleb128 0xc
- 647 007a 0F       		.uleb128 0xf
- 648 007b 00       		.byte	0
- 649 007c 0B       		.uleb128 0xb
- 650 007d 0B       		.uleb128 0xb
- 651 007e 49       		.uleb128 0x49
- 652 007f 13       		.uleb128 0x13
- 653 0080 00       		.byte	0
- 654 0081 00       		.byte	0
- 655 0082 0D       		.uleb128 0xd
- 656 0083 13       		.uleb128 0x13
- 657 0084 01       		.byte	0x1
- 658 0085 03       		.uleb128 0x3
- 659 0086 0E       		.uleb128 0xe
- 660 0087 0B       		.uleb128 0xb
- 661 0088 0B       		.uleb128 0xb
- 662 0089 3A       		.uleb128 0x3a
- 663 008a 0B       		.uleb128 0xb
- 664 008b 3B       		.uleb128 0x3b
- 665 008c 0B       		.uleb128 0xb
- 666 008d 01       		.uleb128 0x1
- 667 008e 13       		.uleb128 0x13
- 668 008f 00       		.byte	0
- 669 0090 00       		.byte	0
- 670 0091 0E       		.uleb128 0xe
- 671 0092 0D       		.uleb128 0xd
- 672 0093 00       		.byte	0
- 673 0094 03       		.uleb128 0x3
- 674 0095 0E       		.uleb128 0xe
- 675 0096 3A       		.uleb128 0x3a
- 676 0097 0B       		.uleb128 0xb
- 677 0098 3B       		.uleb128 0x3b
- 678 0099 0B       		.uleb128 0xb
- 679 009a 49       		.uleb128 0x49
- 680 009b 13       		.uleb128 0x13
- 681 009c 38       		.uleb128 0x38
- 682 009d 0B       		.uleb128 0xb
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccniKWhe.s 			page 14
+ 626 005b 0B       		.uleb128 0xb
+ 627 005c 01       		.uleb128 0x1
+ 628 005d 13       		.uleb128 0x13
+ 629 005e 00       		.byte	0
+ 630 005f 00       		.byte	0
+ 631 0060 09       		.uleb128 0x9
+ 632 0061 28       		.uleb128 0x28
+ 633 0062 00       		.byte	0
+ 634 0063 03       		.uleb128 0x3
+ 635 0064 0E       		.uleb128 0xe
+ 636 0065 1C       		.uleb128 0x1c
+ 637 0066 0D       		.uleb128 0xd
+ 638 0067 00       		.byte	0
+ 639 0068 00       		.byte	0
+ 640 0069 0A       		.uleb128 0xa
+ 641 006a 15       		.uleb128 0x15
+ 642 006b 01       		.byte	0x1
+ 643 006c 27       		.uleb128 0x27
+ 644 006d 19       		.uleb128 0x19
+ 645 006e 01       		.uleb128 0x1
+ 646 006f 13       		.uleb128 0x13
+ 647 0070 00       		.byte	0
+ 648 0071 00       		.byte	0
+ 649 0072 0B       		.uleb128 0xb
+ 650 0073 05       		.uleb128 0x5
+ 651 0074 00       		.byte	0
+ 652 0075 49       		.uleb128 0x49
+ 653 0076 13       		.uleb128 0x13
+ 654 0077 00       		.byte	0
+ 655 0078 00       		.byte	0
+ 656 0079 0C       		.uleb128 0xc
+ 657 007a 0F       		.uleb128 0xf
+ 658 007b 00       		.byte	0
+ 659 007c 0B       		.uleb128 0xb
+ 660 007d 0B       		.uleb128 0xb
+ 661 007e 49       		.uleb128 0x49
+ 662 007f 13       		.uleb128 0x13
+ 663 0080 00       		.byte	0
+ 664 0081 00       		.byte	0
+ 665 0082 0D       		.uleb128 0xd
+ 666 0083 13       		.uleb128 0x13
+ 667 0084 01       		.byte	0x1
+ 668 0085 03       		.uleb128 0x3
+ 669 0086 0E       		.uleb128 0xe
+ 670 0087 0B       		.uleb128 0xb
+ 671 0088 0B       		.uleb128 0xb
+ 672 0089 3A       		.uleb128 0x3a
+ 673 008a 0B       		.uleb128 0xb
+ 674 008b 3B       		.uleb128 0x3b
+ 675 008c 0B       		.uleb128 0xb
+ 676 008d 01       		.uleb128 0x1
+ 677 008e 13       		.uleb128 0x13
+ 678 008f 00       		.byte	0
+ 679 0090 00       		.byte	0
+ 680 0091 0E       		.uleb128 0xe
+ 681 0092 0D       		.uleb128 0xd
+ 682 0093 00       		.byte	0
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccDMGED9.s 			page 14
 
 
- 683 009e 00       		.byte	0
- 684 009f 00       		.byte	0
- 685 00a0 0F       		.uleb128 0xf
- 686 00a1 01       		.uleb128 0x1
- 687 00a2 01       		.byte	0x1
- 688 00a3 49       		.uleb128 0x49
- 689 00a4 13       		.uleb128 0x13
- 690 00a5 01       		.uleb128 0x1
- 691 00a6 13       		.uleb128 0x13
- 692 00a7 00       		.byte	0
- 693 00a8 00       		.byte	0
- 694 00a9 10       		.uleb128 0x10
- 695 00aa 21       		.uleb128 0x21
- 696 00ab 00       		.byte	0
- 697 00ac 49       		.uleb128 0x49
- 698 00ad 13       		.uleb128 0x13
- 699 00ae 2F       		.uleb128 0x2f
- 700 00af 0B       		.uleb128 0xb
- 701 00b0 00       		.byte	0
- 702 00b1 00       		.byte	0
- 703 00b2 11       		.uleb128 0x11
- 704 00b3 2E       		.uleb128 0x2e
- 705 00b4 01       		.byte	0x1
- 706 00b5 3F       		.uleb128 0x3f
- 707 00b6 19       		.uleb128 0x19
- 708 00b7 03       		.uleb128 0x3
- 709 00b8 0E       		.uleb128 0xe
- 710 00b9 3A       		.uleb128 0x3a
- 711 00ba 0B       		.uleb128 0xb
- 712 00bb 3B       		.uleb128 0x3b
- 713 00bc 0B       		.uleb128 0xb
- 714 00bd 11       		.uleb128 0x11
- 715 00be 01       		.uleb128 0x1
- 716 00bf 12       		.uleb128 0x12
- 717 00c0 06       		.uleb128 0x6
- 718 00c1 40       		.uleb128 0x40
- 719 00c2 18       		.uleb128 0x18
- 720 00c3 9642     		.uleb128 0x2116
- 721 00c5 19       		.uleb128 0x19
- 722 00c6 01       		.uleb128 0x1
- 723 00c7 13       		.uleb128 0x13
- 724 00c8 00       		.byte	0
- 725 00c9 00       		.byte	0
- 726 00ca 12       		.uleb128 0x12
- 727 00cb 34       		.uleb128 0x34
- 728 00cc 00       		.byte	0
- 729 00cd 03       		.uleb128 0x3
- 730 00ce 0E       		.uleb128 0xe
- 731 00cf 3A       		.uleb128 0x3a
- 732 00d0 0B       		.uleb128 0xb
- 733 00d1 3B       		.uleb128 0x3b
- 734 00d2 0B       		.uleb128 0xb
- 735 00d3 49       		.uleb128 0x49
- 736 00d4 13       		.uleb128 0x13
- 737 00d5 02       		.uleb128 0x2
- 738 00d6 18       		.uleb128 0x18
- 739 00d7 00       		.byte	0
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccniKWhe.s 			page 15
+ 683 0094 03       		.uleb128 0x3
+ 684 0095 0E       		.uleb128 0xe
+ 685 0096 3A       		.uleb128 0x3a
+ 686 0097 0B       		.uleb128 0xb
+ 687 0098 3B       		.uleb128 0x3b
+ 688 0099 0B       		.uleb128 0xb
+ 689 009a 49       		.uleb128 0x49
+ 690 009b 13       		.uleb128 0x13
+ 691 009c 38       		.uleb128 0x38
+ 692 009d 0B       		.uleb128 0xb
+ 693 009e 00       		.byte	0
+ 694 009f 00       		.byte	0
+ 695 00a0 0F       		.uleb128 0xf
+ 696 00a1 01       		.uleb128 0x1
+ 697 00a2 01       		.byte	0x1
+ 698 00a3 49       		.uleb128 0x49
+ 699 00a4 13       		.uleb128 0x13
+ 700 00a5 01       		.uleb128 0x1
+ 701 00a6 13       		.uleb128 0x13
+ 702 00a7 00       		.byte	0
+ 703 00a8 00       		.byte	0
+ 704 00a9 10       		.uleb128 0x10
+ 705 00aa 21       		.uleb128 0x21
+ 706 00ab 00       		.byte	0
+ 707 00ac 49       		.uleb128 0x49
+ 708 00ad 13       		.uleb128 0x13
+ 709 00ae 2F       		.uleb128 0x2f
+ 710 00af 0B       		.uleb128 0xb
+ 711 00b0 00       		.byte	0
+ 712 00b1 00       		.byte	0
+ 713 00b2 11       		.uleb128 0x11
+ 714 00b3 2E       		.uleb128 0x2e
+ 715 00b4 01       		.byte	0x1
+ 716 00b5 3F       		.uleb128 0x3f
+ 717 00b6 19       		.uleb128 0x19
+ 718 00b7 03       		.uleb128 0x3
+ 719 00b8 0E       		.uleb128 0xe
+ 720 00b9 3A       		.uleb128 0x3a
+ 721 00ba 0B       		.uleb128 0xb
+ 722 00bb 3B       		.uleb128 0x3b
+ 723 00bc 0B       		.uleb128 0xb
+ 724 00bd 11       		.uleb128 0x11
+ 725 00be 01       		.uleb128 0x1
+ 726 00bf 12       		.uleb128 0x12
+ 727 00c0 06       		.uleb128 0x6
+ 728 00c1 40       		.uleb128 0x40
+ 729 00c2 18       		.uleb128 0x18
+ 730 00c3 9642     		.uleb128 0x2116
+ 731 00c5 19       		.uleb128 0x19
+ 732 00c6 01       		.uleb128 0x1
+ 733 00c7 13       		.uleb128 0x13
+ 734 00c8 00       		.byte	0
+ 735 00c9 00       		.byte	0
+ 736 00ca 12       		.uleb128 0x12
+ 737 00cb 34       		.uleb128 0x34
+ 738 00cc 00       		.byte	0
+ 739 00cd 03       		.uleb128 0x3
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccDMGED9.s 			page 15
 
 
- 740 00d8 00       		.byte	0
- 741 00d9 13       		.uleb128 0x13
- 742 00da 0B       		.uleb128 0xb
- 743 00db 01       		.byte	0x1
- 744 00dc 11       		.uleb128 0x11
- 745 00dd 01       		.uleb128 0x1
- 746 00de 12       		.uleb128 0x12
- 747 00df 06       		.uleb128 0x6
- 748 00e0 00       		.byte	0
- 749 00e1 00       		.byte	0
- 750 00e2 14       		.uleb128 0x14
- 751 00e3 2E       		.uleb128 0x2e
- 752 00e4 00       		.byte	0
- 753 00e5 3F       		.uleb128 0x3f
- 754 00e6 19       		.uleb128 0x19
- 755 00e7 03       		.uleb128 0x3
- 756 00e8 0E       		.uleb128 0xe
- 757 00e9 3A       		.uleb128 0x3a
- 758 00ea 0B       		.uleb128 0xb
- 759 00eb 3B       		.uleb128 0x3b
- 760 00ec 0B       		.uleb128 0xb
- 761 00ed 11       		.uleb128 0x11
- 762 00ee 01       		.uleb128 0x1
- 763 00ef 12       		.uleb128 0x12
- 764 00f0 06       		.uleb128 0x6
- 765 00f1 40       		.uleb128 0x40
- 766 00f2 18       		.uleb128 0x18
- 767 00f3 9642     		.uleb128 0x2116
- 768 00f5 19       		.uleb128 0x19
- 769 00f6 00       		.byte	0
- 770 00f7 00       		.byte	0
- 771 00f8 15       		.uleb128 0x15
- 772 00f9 34       		.uleb128 0x34
- 773 00fa 00       		.byte	0
- 774 00fb 03       		.uleb128 0x3
- 775 00fc 0E       		.uleb128 0xe
- 776 00fd 3A       		.uleb128 0x3a
- 777 00fe 0B       		.uleb128 0xb
- 778 00ff 3B       		.uleb128 0x3b
- 779 0100 05       		.uleb128 0x5
- 780 0101 49       		.uleb128 0x49
- 781 0102 13       		.uleb128 0x13
- 782 0103 3F       		.uleb128 0x3f
- 783 0104 19       		.uleb128 0x19
- 784 0105 3C       		.uleb128 0x3c
- 785 0106 19       		.uleb128 0x19
- 786 0107 00       		.byte	0
- 787 0108 00       		.byte	0
- 788 0109 16       		.uleb128 0x16
- 789 010a 34       		.uleb128 0x34
- 790 010b 00       		.byte	0
- 791 010c 03       		.uleb128 0x3
- 792 010d 0E       		.uleb128 0xe
- 793 010e 3A       		.uleb128 0x3a
- 794 010f 0B       		.uleb128 0xb
- 795 0110 3B       		.uleb128 0x3b
- 796 0111 0B       		.uleb128 0xb
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccniKWhe.s 			page 16
+ 740 00ce 0E       		.uleb128 0xe
+ 741 00cf 3A       		.uleb128 0x3a
+ 742 00d0 0B       		.uleb128 0xb
+ 743 00d1 3B       		.uleb128 0x3b
+ 744 00d2 0B       		.uleb128 0xb
+ 745 00d3 49       		.uleb128 0x49
+ 746 00d4 13       		.uleb128 0x13
+ 747 00d5 02       		.uleb128 0x2
+ 748 00d6 18       		.uleb128 0x18
+ 749 00d7 00       		.byte	0
+ 750 00d8 00       		.byte	0
+ 751 00d9 13       		.uleb128 0x13
+ 752 00da 0B       		.uleb128 0xb
+ 753 00db 01       		.byte	0x1
+ 754 00dc 11       		.uleb128 0x11
+ 755 00dd 01       		.uleb128 0x1
+ 756 00de 12       		.uleb128 0x12
+ 757 00df 06       		.uleb128 0x6
+ 758 00e0 00       		.byte	0
+ 759 00e1 00       		.byte	0
+ 760 00e2 14       		.uleb128 0x14
+ 761 00e3 2E       		.uleb128 0x2e
+ 762 00e4 00       		.byte	0
+ 763 00e5 3F       		.uleb128 0x3f
+ 764 00e6 19       		.uleb128 0x19
+ 765 00e7 03       		.uleb128 0x3
+ 766 00e8 0E       		.uleb128 0xe
+ 767 00e9 3A       		.uleb128 0x3a
+ 768 00ea 0B       		.uleb128 0xb
+ 769 00eb 3B       		.uleb128 0x3b
+ 770 00ec 0B       		.uleb128 0xb
+ 771 00ed 11       		.uleb128 0x11
+ 772 00ee 01       		.uleb128 0x1
+ 773 00ef 12       		.uleb128 0x12
+ 774 00f0 06       		.uleb128 0x6
+ 775 00f1 40       		.uleb128 0x40
+ 776 00f2 18       		.uleb128 0x18
+ 777 00f3 9642     		.uleb128 0x2116
+ 778 00f5 19       		.uleb128 0x19
+ 779 00f6 00       		.byte	0
+ 780 00f7 00       		.byte	0
+ 781 00f8 15       		.uleb128 0x15
+ 782 00f9 34       		.uleb128 0x34
+ 783 00fa 00       		.byte	0
+ 784 00fb 03       		.uleb128 0x3
+ 785 00fc 0E       		.uleb128 0xe
+ 786 00fd 3A       		.uleb128 0x3a
+ 787 00fe 0B       		.uleb128 0xb
+ 788 00ff 3B       		.uleb128 0x3b
+ 789 0100 05       		.uleb128 0x5
+ 790 0101 49       		.uleb128 0x49
+ 791 0102 13       		.uleb128 0x13
+ 792 0103 3F       		.uleb128 0x3f
+ 793 0104 19       		.uleb128 0x19
+ 794 0105 3C       		.uleb128 0x3c
+ 795 0106 19       		.uleb128 0x19
+ 796 0107 00       		.byte	0
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccDMGED9.s 			page 16
 
 
- 797 0112 49       		.uleb128 0x49
- 798 0113 13       		.uleb128 0x13
- 799 0114 3F       		.uleb128 0x3f
- 800 0115 19       		.uleb128 0x19
- 801 0116 02       		.uleb128 0x2
- 802 0117 18       		.uleb128 0x18
- 803 0118 00       		.byte	0
- 804 0119 00       		.byte	0
- 805 011a 00       		.byte	0
- 806              		.section	.debug_aranges,"",%progbits
- 807 0000 2C000000 		.4byte	0x2c
- 808 0004 0200     		.2byte	0x2
- 809 0006 00000000 		.4byte	.Ldebug_info0
- 810 000a 04       		.byte	0x4
- 811 000b 00       		.byte	0
- 812 000c 0000     		.2byte	0
- 813 000e 0000     		.2byte	0
- 814 0010 00000000 		.4byte	.LFB63
- 815 0014 48000000 		.4byte	.LFE63-.LFB63
- 816 0018 00000000 		.4byte	.LFB64
- 817 001c 18000000 		.4byte	.LFE64-.LFB64
- 818 0020 00000000 		.4byte	.LFB65
- 819 0024 18000000 		.4byte	.LFE65-.LFB65
- 820 0028 00000000 		.4byte	0
- 821 002c 00000000 		.4byte	0
- 822              		.section	.debug_ranges,"",%progbits
- 823              	.Ldebug_ranges0:
- 824 0000 00000000 		.4byte	.LFB63
- 825 0004 48000000 		.4byte	.LFE63
- 826 0008 00000000 		.4byte	.LFB64
- 827 000c 18000000 		.4byte	.LFE64
- 828 0010 00000000 		.4byte	.LFB65
- 829 0014 18000000 		.4byte	.LFE65
- 830 0018 00000000 		.4byte	0
- 831 001c 00000000 		.4byte	0
- 832              		.section	.debug_line,"",%progbits
- 833              	.Ldebug_line0:
- 834 0000 BC010000 		.section	.debug_str,"MS",%progbits,1
- 834      02007C01 
- 834      00000201 
- 834      FB0E0D00 
- 834      01010101 
- 835              	.LASF47:
- 836 0000 44495350 		.ascii	"DISPLAY1_RECEPTION\000"
- 836      4C415931 
- 836      5F524543 
- 836      45505449 
- 836      4F4E00
- 837              	.LASF38:
- 838 0013 5052494E 		.ascii	"PRINTER11_JOB\000"
- 838      54455231 
- 838      315F4A4F 
- 838      4200
- 839              	.LASF58:
- 840 0021 544F4747 		.ascii	"TOGGLE_SCREEN_AND_WRITE_TEST\000"
- 840      4C455F53 
- 840      43524545 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccniKWhe.s 			page 17
+ 797 0108 00       		.byte	0
+ 798 0109 16       		.uleb128 0x16
+ 799 010a 34       		.uleb128 0x34
+ 800 010b 00       		.byte	0
+ 801 010c 03       		.uleb128 0x3
+ 802 010d 0E       		.uleb128 0xe
+ 803 010e 3A       		.uleb128 0x3a
+ 804 010f 0B       		.uleb128 0xb
+ 805 0110 3B       		.uleb128 0x3b
+ 806 0111 0B       		.uleb128 0xb
+ 807 0112 49       		.uleb128 0x49
+ 808 0113 13       		.uleb128 0x13
+ 809 0114 3F       		.uleb128 0x3f
+ 810 0115 19       		.uleb128 0x19
+ 811 0116 02       		.uleb128 0x2
+ 812 0117 18       		.uleb128 0x18
+ 813 0118 00       		.byte	0
+ 814 0119 00       		.byte	0
+ 815 011a 00       		.byte	0
+ 816              		.section	.debug_aranges,"",%progbits
+ 817 0000 2C000000 		.4byte	0x2c
+ 818 0004 0200     		.2byte	0x2
+ 819 0006 00000000 		.4byte	.Ldebug_info0
+ 820 000a 04       		.byte	0x4
+ 821 000b 00       		.byte	0
+ 822 000c 0000     		.2byte	0
+ 823 000e 0000     		.2byte	0
+ 824 0010 00000000 		.4byte	.LFB63
+ 825 0014 48000000 		.4byte	.LFE63-.LFB63
+ 826 0018 00000000 		.4byte	.LFB64
+ 827 001c 18000000 		.4byte	.LFE64-.LFB64
+ 828 0020 00000000 		.4byte	.LFB65
+ 829 0024 18000000 		.4byte	.LFE65-.LFB65
+ 830 0028 00000000 		.4byte	0
+ 831 002c 00000000 		.4byte	0
+ 832              		.section	.debug_ranges,"",%progbits
+ 833              	.Ldebug_ranges0:
+ 834 0000 00000000 		.4byte	.LFB63
+ 835 0004 48000000 		.4byte	.LFE63
+ 836 0008 00000000 		.4byte	.LFB64
+ 837 000c 18000000 		.4byte	.LFE64
+ 838 0010 00000000 		.4byte	.LFB65
+ 839 0014 18000000 		.4byte	.LFE65
+ 840 0018 00000000 		.4byte	0
+ 841 001c 00000000 		.4byte	0
+ 842              		.section	.debug_line,"",%progbits
+ 843              	.Ldebug_line0:
+ 844 0000 D5010000 		.section	.debug_str,"MS",%progbits,1
+ 844      02009501 
+ 844      00000201 
+ 844      FB0E0D00 
+ 844      01010101 
+ 845              	.LASF47:
+ 846 0000 44495350 		.ascii	"DISPLAY1_RECEPTION\000"
+ 846      4C415931 
+ 846      5F524543 
+ 846      45505449 
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccDMGED9.s 			page 17
 
 
- 840      4E5F414E 
- 840      445F5752 
- 841              	.LASF2:
- 842 003e 73686F72 		.ascii	"short int\000"
- 842      7420696E 
- 842      7400
- 843              	.LASF55:
- 844 0048 49425554 		.ascii	"IBUTTON1_SCAN\000"
- 844      544F4E31 
- 844      5F534341 
- 844      4E00
- 845              	.LASF15:
- 846 0056 73697A65 		.ascii	"sizetype\000"
- 846      74797065 
- 846      00
- 847              	.LASF67:
- 848 005f 57617463 		.ascii	"WatchDogHandler\000"
- 848      68446F67 
- 848      48616E64 
- 848      6C657200 
- 849              	.LASF17:
- 850 006f 55415254 		.ascii	"UART_RF_RECEPTION\000"
- 850      5F52465F 
- 850      52454345 
- 850      5054494F 
- 850      4E00
- 851              	.LASF35:
- 852 0081 44495350 		.ascii	"DISPENSER_ACQUIRE_TOTALS\000"
- 852      454E5345 
- 852      525F4143 
- 852      51554952 
- 852      455F544F 
- 853              	.LASF70:
- 854 009a 5F675F77 		.ascii	"_g_wdtstarted\000"
- 854      64747374 
- 854      61727465 
- 854      6400
- 855              	.LASF61:
- 856 00a8 5F737461 		.ascii	"_state\000"
- 856      746500
- 857              	.LASF48:
- 858 00af 44495350 		.ascii	"DISPLAY1_MESSAGE\000"
- 858      4C415931 
- 858      5F4D4553 
- 858      53414745 
- 858      00
- 859              	.LASF42:
- 860 00c0 5052494E 		.ascii	"PRINTER1_GENERIC_JOB\000"
- 860      54455231 
- 860      5F47454E 
- 860      45524943 
- 860      5F4A4F42 
- 861              	.LASF26:
- 862 00d5 44495350 		.ascii	"DISPENSER_EXECUTE_CASH_TRANSACTION\000"
+ 846      4F4E00
+ 847              	.LASF38:
+ 848 0013 5052494E 		.ascii	"PRINTER11_JOB\000"
+ 848      54455231 
+ 848      315F4A4F 
+ 848      4200
+ 849              	.LASF58:
+ 850 0021 544F4747 		.ascii	"TOGGLE_SCREEN_AND_WRITE_TEST\000"
+ 850      4C455F53 
+ 850      43524545 
+ 850      4E5F414E 
+ 850      445F5752 
+ 851              	.LASF2:
+ 852 003e 73686F72 		.ascii	"short int\000"
+ 852      7420696E 
+ 852      7400
+ 853              	.LASF55:
+ 854 0048 49425554 		.ascii	"IBUTTON1_SCAN\000"
+ 854      544F4E31 
+ 854      5F534341 
+ 854      4E00
+ 855              	.LASF15:
+ 856 0056 73697A65 		.ascii	"sizetype\000"
+ 856      74797065 
+ 856      00
+ 857              	.LASF67:
+ 858 005f 57617463 		.ascii	"WatchDogHandler\000"
+ 858      68446F67 
+ 858      48616E64 
+ 858      6C657200 
+ 859              	.LASF17:
+ 860 006f 55415254 		.ascii	"UART_RF_RECEPTION\000"
+ 860      5F52465F 
+ 860      52454345 
+ 860      5054494F 
+ 860      4E00
+ 861              	.LASF35:
+ 862 0081 44495350 		.ascii	"DISPENSER_ACQUIRE_TOTALS\000"
  862      454E5345 
- 862      525F4558 
- 862      45435554 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccniKWhe.s 			page 18
+ 862      525F4143 
+ 862      51554952 
+ 862      455F544F 
+ 863              	.LASF71:
+ 864 009a 5F675F77 		.ascii	"_g_wdtstarted\000"
+ 864      64747374 
+ 864      61727465 
+ 864      6400
+ 865              	.LASF61:
+ 866 00a8 5F737461 		.ascii	"_state\000"
+ 866      746500
+ 867              	.LASF48:
+ 868 00af 44495350 		.ascii	"DISPLAY1_MESSAGE\000"
+ 868      4C415931 
+ 868      5F4D4553 
+ 868      53414745 
+ 868      00
+ 869              	.LASF42:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccDMGED9.s 			page 18
 
 
- 862      455F4341 
- 863              	.LASF66:
- 864 00f8 696E6465 		.ascii	"index\000"
- 864      7800
- 865              	.LASF52:
- 866 00fe 44495350 		.ascii	"DISPLAY2_MESSAGE\000"
- 866      4C415932 
- 866      5F4D4553 
- 866      53414745 
- 866      00
- 867              	.LASF11:
- 868 010f 75696E74 		.ascii	"uint8\000"
- 868      3800
- 869              	.LASF49:
- 870 0115 44495350 		.ascii	"DISPLAY1_UPDATE_DATETIME\000"
- 870      4C415931 
- 870      5F555044 
- 870      4154455F 
- 870      44415445 
- 871              	.LASF54:
- 872 012e 44495350 		.ascii	"DISPLAY2_ANIMATE_HOME\000"
- 872      4C415932 
- 872      5F414E49 
- 872      4D415445 
- 872      5F484F4D 
- 873              	.LASF43:
- 874 0144 5052494E 		.ascii	"PRINTER2_GENERIC_JOB\000"
- 874      54455232 
- 874      5F47454E 
- 874      45524943 
- 874      5F4A4F42 
- 875              	.LASF12:
- 876 0159 666C6F61 		.ascii	"float\000"
- 876      7400
- 877              	.LASF6:
- 878 015f 6C6F6E67 		.ascii	"long long int\000"
- 878      206C6F6E 
- 878      6720696E 
- 878      7400
- 879              	.LASF71:
- 880 016d 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 880      4320342E 
- 880      392E3320 
- 880      32303135 
- 880      30333033 
- 881 01a0 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
- 881      20726576 
- 881      6973696F 
- 881      6E203232 
- 881      31323230 
- 882 01d3 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
- 882      66756E63 
- 882      74696F6E 
- 882      2D736563 
- 882      74696F6E 
- 883              	.LASF65:
- 884 01fb 70737562 		.ascii	"psubscriber\000"
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccniKWhe.s 			page 19
+ 870 00c0 5052494E 		.ascii	"PRINTER1_GENERIC_JOB\000"
+ 870      54455231 
+ 870      5F47454E 
+ 870      45524943 
+ 870      5F4A4F42 
+ 871              	.LASF26:
+ 872 00d5 44495350 		.ascii	"DISPENSER_EXECUTE_CASH_TRANSACTION\000"
+ 872      454E5345 
+ 872      525F4558 
+ 872      45435554 
+ 872      455F4341 
+ 873              	.LASF66:
+ 874 00f8 696E6465 		.ascii	"index\000"
+ 874      7800
+ 875              	.LASF52:
+ 876 00fe 44495350 		.ascii	"DISPLAY2_MESSAGE\000"
+ 876      4C415932 
+ 876      5F4D4553 
+ 876      53414745 
+ 876      00
+ 877              	.LASF11:
+ 878 010f 75696E74 		.ascii	"uint8\000"
+ 878      3800
+ 879              	.LASF49:
+ 880 0115 44495350 		.ascii	"DISPLAY1_UPDATE_DATETIME\000"
+ 880      4C415931 
+ 880      5F555044 
+ 880      4154455F 
+ 880      44415445 
+ 881              	.LASF54:
+ 882 012e 44495350 		.ascii	"DISPLAY2_ANIMATE_HOME\000"
+ 882      4C415932 
+ 882      5F414E49 
+ 882      4D415445 
+ 882      5F484F4D 
+ 883              	.LASF43:
+ 884 0144 5052494E 		.ascii	"PRINTER2_GENERIC_JOB\000"
+ 884      54455232 
+ 884      5F47454E 
+ 884      45524943 
+ 884      5F4A4F42 
+ 885              	.LASF12:
+ 886 0159 666C6F61 		.ascii	"float\000"
+ 886      7400
+ 887              	.LASF6:
+ 888 015f 6C6F6E67 		.ascii	"long long int\000"
+ 888      206C6F6E 
+ 888      6720696E 
+ 888      7400
+ 889              	.LASF72:
+ 890 016d 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 890      4320342E 
+ 890      392E3320 
+ 890      32303135 
+ 890      30333033 
+ 891 01a0 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 891      20726576 
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccDMGED9.s 			page 19
 
 
- 884      73637269 
- 884      62657200 
- 885              	.LASF68:
- 886 0207 57617463 		.ascii	"WatchDogStartup\000"
- 886      68446F67 
- 886      53746172 
- 886      74757000 
- 887              	.LASF24:
- 888 0217 44495350 		.ascii	"DISPENSER_ACQUIRE_PUMP_STATE\000"
- 888      454E5345 
- 888      525F4143 
- 888      51554952 
- 888      455F5055 
- 889              	.LASF39:
- 890 0234 5052494E 		.ascii	"PRINTER12_JOB\000"
- 890      54455231 
- 890      325F4A4F 
- 890      4200
- 891              	.LASF50:
- 892 0242 44495350 		.ascii	"DISPLAY1_ANIMATE_HOME\000"
- 892      4C415931 
- 892      5F414E49 
- 892      4D415445 
- 892      5F484F4D 
- 893              	.LASF21:
- 894 0258 53494E4B 		.ascii	"SINK_RELEASE_BY_ID\000"
- 894      5F52454C 
- 894      45415345 
- 894      5F42595F 
- 894      494400
- 895              	.LASF33:
- 896 026b 44495350 		.ascii	"DISPENSER_RESTORE_PRICES\000"
- 896      454E5345 
- 896      525F5245 
- 896      53544F52 
- 896      455F5052 
- 897              	.LASF53:
- 898 0284 44495350 		.ascii	"DISPLAY2_UPDATE_DATETIME\000"
- 898      4C415932 
- 898      5F555044 
- 898      4154455F 
- 898      44415445 
- 899              	.LASF16:
- 900 029d 6C6F6E67 		.ascii	"long double\000"
- 900      20646F75 
- 900      626C6500 
- 901              	.LASF1:
- 902 02a9 756E7369 		.ascii	"unsigned char\000"
- 902      676E6564 
- 902      20636861 
- 902      7200
- 903              	.LASF74:
- 904 02b7 5F53494E 		.ascii	"_SINK_OBSERVABLES_\000"
- 904      4B5F4F42 
- 904      53455256 
- 904      41424C45 
- 904      535F00
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccniKWhe.s 			page 20
-
-
- 905              	.LASF32:
- 906 02ca 44495350 		.ascii	"DISPENSER_CONFIGURE_PRICES\000"
+ 891      6973696F 
+ 891      6E203232 
+ 891      31323230 
+ 892 01d3 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 892      66756E63 
+ 892      74696F6E 
+ 892      2D736563 
+ 892      74696F6E 
+ 893              	.LASF65:
+ 894 01fb 70737562 		.ascii	"psubscriber\000"
+ 894      73637269 
+ 894      62657200 
+ 895              	.LASF68:
+ 896 0207 57617463 		.ascii	"WatchDogStartup\000"
+ 896      68446F67 
+ 896      53746172 
+ 896      74757000 
+ 897              	.LASF24:
+ 898 0217 44495350 		.ascii	"DISPENSER_ACQUIRE_PUMP_STATE\000"
+ 898      454E5345 
+ 898      525F4143 
+ 898      51554952 
+ 898      455F5055 
+ 899              	.LASF39:
+ 900 0234 5052494E 		.ascii	"PRINTER12_JOB\000"
+ 900      54455231 
+ 900      325F4A4F 
+ 900      4200
+ 901              	.LASF50:
+ 902 0242 44495350 		.ascii	"DISPLAY1_ANIMATE_HOME\000"
+ 902      4C415931 
+ 902      5F414E49 
+ 902      4D415445 
+ 902      5F484F4D 
+ 903              	.LASF21:
+ 904 0258 53494E4B 		.ascii	"SINK_RELEASE_BY_ID\000"
+ 904      5F52454C 
+ 904      45415345 
+ 904      5F42595F 
+ 904      494400
+ 905              	.LASF33:
+ 906 026b 44495350 		.ascii	"DISPENSER_RESTORE_PRICES\000"
  906      454E5345 
- 906      525F434F 
- 906      4E464947 
- 906      5552455F 
- 907              	.LASF0:
- 908 02e5 7369676E 		.ascii	"signed char\000"
- 908      65642063 
- 908      68617200 
- 909              	.LASF10:
- 910 02f1 696E7433 		.ascii	"int32_t\000"
- 910      325F7400 
- 911              	.LASF7:
- 912 02f9 6C6F6E67 		.ascii	"long long unsigned int\000"
- 912      206C6F6E 
- 912      6720756E 
- 912      7369676E 
- 912      65642069 
- 913              	.LASF72:
- 914 0310 2E5C5761 		.ascii	".\\WatchDogReset.c\000"
- 914      74636844 
- 914      6F675265 
- 914      7365742E 
- 914      6300
- 915              	.LASF40:
- 916 0322 5052494E 		.ascii	"PRINTER21_JOB\000"
- 916      54455232 
- 916      315F4A4F 
- 916      4200
- 917              	.LASF8:
- 918 0330 756E7369 		.ascii	"unsigned int\000"
- 918      676E6564 
- 918      20696E74 
- 918      00
- 919              	.LASF28:
- 920 033d 44495350 		.ascii	"DISPENSER_UNLOCK_EOT_PUMPS\000"
- 920      454E5345 
- 920      525F554E 
- 920      4C4F434B 
- 920      5F454F54 
- 921              	.LASF25:
- 922 0358 44495350 		.ascii	"DISPENSER_ACQUIRE_PUMP_HOSE\000"
- 922      454E5345 
- 922      525F4143 
- 922      51554952 
- 922      455F5055 
- 923              	.LASF75:
- 924 0374 5F53494E 		.ascii	"_SINK_SUBSCRIBER_\000"
- 924      4B5F5355 
- 924      42534352 
- 924      49424552 
- 924      5F00
- 925              	.LASF3:
- 926 0386 73686F72 		.ascii	"short unsigned int\000"
- 926      7420756E 
- 926      7369676E 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccniKWhe.s 			page 21
+ 906      525F5245 
+ 906      53544F52 
+ 906      455F5052 
+ 907              	.LASF53:
+ 908 0284 44495350 		.ascii	"DISPLAY2_UPDATE_DATETIME\000"
+ 908      4C415932 
+ 908      5F555044 
+ 908      4154455F 
+ 908      44415445 
+ 909              	.LASF16:
+ 910 029d 6C6F6E67 		.ascii	"long double\000"
+ 910      20646F75 
+ 910      626C6500 
+ 911              	.LASF1:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccDMGED9.s 			page 20
 
 
- 926      65642069 
- 926      6E7400
- 927              	.LASF18:
- 928 0399 55415254 		.ascii	"UART_RF_TEST\000"
- 928      5F52465F 
- 928      54455354 
+ 912 02a9 756E7369 		.ascii	"unsigned char\000"
+ 912      676E6564 
+ 912      20636861 
+ 912      7200
+ 913              	.LASF75:
+ 914 02b7 5F53494E 		.ascii	"_SINK_OBSERVABLES_\000"
+ 914      4B5F4F42 
+ 914      53455256 
+ 914      41424C45 
+ 914      535F00
+ 915              	.LASF32:
+ 916 02ca 44495350 		.ascii	"DISPENSER_CONFIGURE_PRICES\000"
+ 916      454E5345 
+ 916      525F434F 
+ 916      4E464947 
+ 916      5552455F 
+ 917              	.LASF0:
+ 918 02e5 7369676E 		.ascii	"signed char\000"
+ 918      65642063 
+ 918      68617200 
+ 919              	.LASF10:
+ 920 02f1 696E7433 		.ascii	"int32_t\000"
+ 920      325F7400 
+ 921              	.LASF7:
+ 922 02f9 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 922      206C6F6E 
+ 922      6720756E 
+ 922      7369676E 
+ 922      65642069 
+ 923              	.LASF73:
+ 924 0310 2E5C5761 		.ascii	".\\WatchDogReset.c\000"
+ 924      74636844 
+ 924      6F675265 
+ 924      7365742E 
+ 924      6300
+ 925              	.LASF40:
+ 926 0322 5052494E 		.ascii	"PRINTER21_JOB\000"
+ 926      54455232 
+ 926      315F4A4F 
+ 926      4200
+ 927              	.LASF8:
+ 928 0330 756E7369 		.ascii	"unsigned int\000"
+ 928      676E6564 
+ 928      20696E74 
  928      00
- 929              	.LASF14:
- 930 03a6 63686172 		.ascii	"char\000"
- 930      00
- 931              	.LASF29:
- 932 03ab 44495350 		.ascii	"DISPENSER_LOAD_EEPROM_SETTINGS\000"
- 932      454E5345 
- 932      525F4C4F 
- 932      41445F45 
- 932      4550524F 
- 933              	.LASF20:
- 934 03ca 53494E4B 		.ascii	"SINK_UPDATE_COUNTERS\000"
- 934      5F555044 
- 934      4154455F 
- 934      434F554E 
- 934      54455253 
- 935              	.LASF45:
- 936 03df 5052494E 		.ascii	"PRINTER2_GENERIC_JOB_LOGO\000"
- 936      54455232 
- 936      5F47454E 
- 936      45524943 
- 936      5F4A4F42 
- 937              	.LASF30:
- 938 03f9 44495350 		.ascii	"DISPENSER_ENUMERATE_VISIBLE_PUMPS\000"
- 938      454E5345 
- 938      525F454E 
- 938      554D4552 
- 938      4154455F 
- 939              	.LASF73:
- 940 041b 433A5C54 		.ascii	"C:\\TeamInsepet\\NSX-Prime\\Hardware\\CorEx-MUX-Ker"
- 940      65616D49 
- 940      6E736570 
- 940      65745C4E 
- 940      53582D50 
- 941 044a 6E656C2D 		.ascii	"nel-Enhanced\\Workspace01\\CorEx-Mux-Kernel.cydsn\000"
- 941      456E6861 
- 941      6E636564 
- 941      5C576F72 
- 941      6B737061 
- 942              	.LASF60:
- 943 047a 5F426F6F 		.ascii	"_Bool\000"
- 943      6C00
- 944              	.LASF64:
- 945 0480 5053494E 		.ascii	"PSINKSUBSCRIBERPTR\000"
- 945      4B535542 
- 945      53435249 
- 945      42455250 
- 945      545200
- 946              	.LASF31:
- 947 0493 44495350 		.ascii	"DISPENSER_ACQUIRE_CONFIGURATION_INFORMATION\000"
- 947      454E5345 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccniKWhe.s 			page 22
+ 929              	.LASF28:
+ 930 033d 44495350 		.ascii	"DISPENSER_UNLOCK_EOT_PUMPS\000"
+ 930      454E5345 
+ 930      525F554E 
+ 930      4C4F434B 
+ 930      5F454F54 
+ 931              	.LASF74:
+ 932 0358 433A5C55 		.ascii	"C:\\Users\\Lenovo\\Documents\\GitHub\\CorEx-MUX-Ker"
+ 932      73657273 
+ 932      5C4C656E 
+ 932      6F766F5C 
+ 932      446F6375 
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccDMGED9.s 			page 21
 
 
- 947      525F4143 
- 947      51554952 
- 947      455F434F 
- 948              	.LASF44:
- 949 04bf 5052494E 		.ascii	"PRINTER1_GENERIC_JOB_LOGO\000"
- 949      54455231 
+ 933 0386 6E656C2D 		.ascii	"nel-Enhanced\\Workspace01\\CorEx-Mux-Kernel.cydsn\000"
+ 933      456E6861 
+ 933      6E636564 
+ 933      5C576F72 
+ 933      6B737061 
+ 934              	.LASF25:
+ 935 03b6 44495350 		.ascii	"DISPENSER_ACQUIRE_PUMP_HOSE\000"
+ 935      454E5345 
+ 935      525F4143 
+ 935      51554952 
+ 935      455F5055 
+ 936              	.LASF76:
+ 937 03d2 5F53494E 		.ascii	"_SINK_SUBSCRIBER_\000"
+ 937      4B5F5355 
+ 937      42534352 
+ 937      49424552 
+ 937      5F00
+ 938              	.LASF70:
+ 939 03e4 486F7365 		.ascii	"HoseDispenser\000"
+ 939      44697370 
+ 939      656E7365 
+ 939      7200
+ 940              	.LASF18:
+ 941 03f2 55415254 		.ascii	"UART_RF_TEST\000"
+ 941      5F52465F 
+ 941      54455354 
+ 941      00
+ 942              	.LASF14:
+ 943 03ff 63686172 		.ascii	"char\000"
+ 943      00
+ 944              	.LASF29:
+ 945 0404 44495350 		.ascii	"DISPENSER_LOAD_EEPROM_SETTINGS\000"
+ 945      454E5345 
+ 945      525F4C4F 
+ 945      41445F45 
+ 945      4550524F 
+ 946              	.LASF20:
+ 947 0423 53494E4B 		.ascii	"SINK_UPDATE_COUNTERS\000"
+ 947      5F555044 
+ 947      4154455F 
+ 947      434F554E 
+ 947      54455253 
+ 948              	.LASF45:
+ 949 0438 5052494E 		.ascii	"PRINTER2_GENERIC_JOB_LOGO\000"
+ 949      54455232 
  949      5F47454E 
  949      45524943 
  949      5F4A4F42 
- 950              	.LASF76:
- 951 04d9 57617463 		.ascii	"WatchDogInitialize\000"
- 951      68446F67 
- 951      496E6974 
- 951      69616C69 
- 951      7A6500
- 952              	.LASF5:
- 953 04ec 6C6F6E67 		.ascii	"long unsigned int\000"
- 953      20756E73 
- 953      69676E65 
- 953      6420696E 
- 953      7400
- 954              	.LASF13:
- 955 04fe 646F7562 		.ascii	"double\000"
- 955      6C6500
- 956              	.LASF59:
- 957 0505 57415443 		.ascii	"WATCHDOG_STARTUP\000"
- 957      48444F47 
- 957      5F535441 
- 957      52545550 
- 957      00
- 958              	.LASF46:
- 959 0516 44495350 		.ascii	"DISPLAY_UPDATE_PUMP_STATE\000"
- 959      4C41595F 
- 959      55504441 
- 959      54455F50 
- 959      554D505F 
- 960              	.LASF37:
- 961 0530 44495350 		.ascii	"DISPENSER_PUMP_BEEP_WARNING\000"
- 961      454E5345 
- 961      525F5055 
- 961      4D505F42 
- 961      4545505F 
- 962              	.LASF56:
- 963 054c 49425554 		.ascii	"IBUTTON2_SCAN\000"
- 963      544F4E32 
- 963      5F534341 
- 963      4E00
- 964              	.LASF9:
- 965 055a 5F5F696E 		.ascii	"__int32_t\000"
- 965      7433325F 
+ 950              	.LASF30:
+ 951 0452 44495350 		.ascii	"DISPENSER_ENUMERATE_VISIBLE_PUMPS\000"
+ 951      454E5345 
+ 951      525F454E 
+ 951      554D4552 
+ 951      4154455F 
+ 952              	.LASF60:
+ 953 0474 5F426F6F 		.ascii	"_Bool\000"
+ 953      6C00
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccDMGED9.s 			page 22
+
+
+ 954              	.LASF64:
+ 955 047a 5053494E 		.ascii	"PSINKSUBSCRIBERPTR\000"
+ 955      4B535542 
+ 955      53435249 
+ 955      42455250 
+ 955      545200
+ 956              	.LASF31:
+ 957 048d 44495350 		.ascii	"DISPENSER_ACQUIRE_CONFIGURATION_INFORMATION\000"
+ 957      454E5345 
+ 957      525F4143 
+ 957      51554952 
+ 957      455F434F 
+ 958              	.LASF44:
+ 959 04b9 5052494E 		.ascii	"PRINTER1_GENERIC_JOB_LOGO\000"
+ 959      54455231 
+ 959      5F47454E 
+ 959      45524943 
+ 959      5F4A4F42 
+ 960              	.LASF3:
+ 961 04d3 73686F72 		.ascii	"short unsigned int\000"
+ 961      7420756E 
+ 961      7369676E 
+ 961      65642069 
+ 961      6E7400
+ 962              	.LASF77:
+ 963 04e6 57617463 		.ascii	"WatchDogInitialize\000"
+ 963      68446F67 
+ 963      496E6974 
+ 963      69616C69 
+ 963      7A6500
+ 964              	.LASF5:
+ 965 04f9 6C6F6E67 		.ascii	"long unsigned int\000"
+ 965      20756E73 
+ 965      69676E65 
+ 965      6420696E 
  965      7400
- 966              	.LASF27:
- 967 0564 44495350 		.ascii	"DISPENSER_EXECUTE_CREDIT_TRANSACTION\000"
- 967      454E5345 
- 967      525F4558 
- 967      45435554 
- 967      455F4352 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccniKWhe.s 			page 23
+ 966              	.LASF13:
+ 967 050b 646F7562 		.ascii	"double\000"
+ 967      6C6500
+ 968              	.LASF59:
+ 969 0512 57415443 		.ascii	"WATCHDOG_STARTUP\000"
+ 969      48444F47 
+ 969      5F535441 
+ 969      52545550 
+ 969      00
+ 970              	.LASF46:
+ 971 0523 44495350 		.ascii	"DISPLAY_UPDATE_PUMP_STATE\000"
+ 971      4C41595F 
+ 971      55504441 
+ 971      54455F50 
+ 971      554D505F 
+ 972              	.LASF37:
+ 973 053d 44495350 		.ascii	"DISPENSER_PUMP_BEEP_WARNING\000"
+ 973      454E5345 
+ 973      525F5055 
+ 973      4D505F42 
+ 973      4545505F 
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccDMGED9.s 			page 23
 
 
- 968              	.LASF36:
- 969 0589 44495350 		.ascii	"DISPENSER_PUMP_HANDLER\000"
- 969      454E5345 
- 969      525F5055 
- 969      4D505F48 
- 969      414E444C 
- 970              	.LASF22:
- 971 05a0 53494E4B 		.ascii	"SINK_RELEASE_BY_PTR\000"
- 971      5F52454C 
- 971      45415345 
- 971      5F42595F 
- 971      50545200 
- 972              	.LASF41:
- 973 05b4 5052494E 		.ascii	"PRINTER22_JOB\000"
- 973      54455232 
- 973      325F4A4F 
- 973      4200
- 974              	.LASF23:
- 975 05c2 44495350 		.ascii	"DISPENSER_UPDATE_PUMP_TRANSACTION_TIMEOUTS\000"
- 975      454E5345 
- 975      525F5550 
- 975      44415445 
- 975      5F50554D 
- 976              	.LASF4:
- 977 05ed 6C6F6E67 		.ascii	"long int\000"
- 977      20696E74 
- 977      00
- 978              	.LASF69:
- 979 05f6 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 979      52784275 
- 979      66666572 
- 979      00
- 980              	.LASF19:
- 981 0603 55415254 		.ascii	"UART_RF_AUTONOMOUS_MONITOR\000"
- 981      5F52465F 
- 981      4155544F 
- 981      4E4F4D4F 
- 981      55535F4D 
- 982              	.LASF51:
- 983 061e 44495350 		.ascii	"DISPLAY2_RECEPTION\000"
- 983      4C415932 
- 983      5F524543 
- 983      45505449 
- 983      4F4E00
- 984              	.LASF62:
- 985 0631 5F617272 		.ascii	"_arrmsgid\000"
- 985      6D736769 
- 985      6400
- 986              	.LASF57:
- 987 063b 474C4F42 		.ascii	"GLOBAL_TICK_NOTIFICATION\000"
- 987      414C5F54 
- 987      49434B5F 
- 987      4E4F5449 
- 987      46494341 
- 988              	.LASF34:
- 989 0654 44495350 		.ascii	"DISPENSER_CONFIGURE_SINGLE_PRICE\000"
- 989      454E5345 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccniKWhe.s 			page 24
-
-
- 989      525F434F 
- 989      4E464947 
- 989      5552455F 
- 990              	.LASF63:
- 991 0675 43616C6C 		.ascii	"Callback\000"
- 991      6261636B 
+ 974              	.LASF56:
+ 975 0559 49425554 		.ascii	"IBUTTON2_SCAN\000"
+ 975      544F4E32 
+ 975      5F534341 
+ 975      4E00
+ 976              	.LASF9:
+ 977 0567 5F5F696E 		.ascii	"__int32_t\000"
+ 977      7433325F 
+ 977      7400
+ 978              	.LASF27:
+ 979 0571 44495350 		.ascii	"DISPENSER_EXECUTE_CREDIT_TRANSACTION\000"
+ 979      454E5345 
+ 979      525F4558 
+ 979      45435554 
+ 979      455F4352 
+ 980              	.LASF36:
+ 981 0596 44495350 		.ascii	"DISPENSER_PUMP_HANDLER\000"
+ 981      454E5345 
+ 981      525F5055 
+ 981      4D505F48 
+ 981      414E444C 
+ 982              	.LASF22:
+ 983 05ad 53494E4B 		.ascii	"SINK_RELEASE_BY_PTR\000"
+ 983      5F52454C 
+ 983      45415345 
+ 983      5F42595F 
+ 983      50545200 
+ 984              	.LASF41:
+ 985 05c1 5052494E 		.ascii	"PRINTER22_JOB\000"
+ 985      54455232 
+ 985      325F4A4F 
+ 985      4200
+ 986              	.LASF23:
+ 987 05cf 44495350 		.ascii	"DISPENSER_UPDATE_PUMP_TRANSACTION_TIMEOUTS\000"
+ 987      454E5345 
+ 987      525F5550 
+ 987      44415445 
+ 987      5F50554D 
+ 988              	.LASF4:
+ 989 05fa 6C6F6E67 		.ascii	"long int\000"
+ 989      20696E74 
+ 989      00
+ 990              	.LASF69:
+ 991 0603 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 991      52784275 
+ 991      66666572 
  991      00
- 992              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
+ 992              	.LASF19:
+ 993 0610 55415254 		.ascii	"UART_RF_AUTONOMOUS_MONITOR\000"
+ 993      5F52465F 
+ 993      4155544F 
+ 993      4E4F4D4F 
+ 993      55535F4D 
+ 994              	.LASF51:
+ 995 062b 44495350 		.ascii	"DISPLAY2_RECEPTION\000"
+ 995      4C415932 
+ 995      5F524543 
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccDMGED9.s 			page 24
+
+
+ 995      45505449 
+ 995      4F4E00
+ 996              	.LASF62:
+ 997 063e 5F617272 		.ascii	"_arrmsgid\000"
+ 997      6D736769 
+ 997      6400
+ 998              	.LASF57:
+ 999 0648 474C4F42 		.ascii	"GLOBAL_TICK_NOTIFICATION\000"
+ 999      414C5F54 
+ 999      49434B5F 
+ 999      4E4F5449 
+ 999      46494341 
+ 1000              	.LASF34:
+ 1001 0661 44495350 		.ascii	"DISPENSER_CONFIGURE_SINGLE_PRICE\000"
+ 1001      454E5345 
+ 1001      525F434F 
+ 1001      4E464947 
+ 1001      5552455F 
+ 1002              	.LASF63:
+ 1003 0682 43616C6C 		.ascii	"Callback\000"
+ 1003      6261636B 
+ 1003      00
+ 1004              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

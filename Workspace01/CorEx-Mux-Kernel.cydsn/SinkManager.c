@@ -118,7 +118,7 @@ bool FindSinkMessage(uint8 messageid)
     {
         if(_g_sinkmessagequeue[index]._messageid == messageid)
         {
-            retval = true;
+            retval = false;
             break;
         }
     }

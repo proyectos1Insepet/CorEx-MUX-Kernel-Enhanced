@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccZG7i8v.s 			page 1
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccqKXrBz.s 			page 1
 
 
    1              		.syntax unified
@@ -18,15 +18,16 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccZG7i8v.s 			page 1
   15              		.text
   16              	.Ltext0:
   17              		.cfi_sections	.debug_frame
-  18              		.section	.text.iButtonSinkRegistration,"ax",%progbits
-  19              		.align	2
-  20              		.global	iButtonSinkRegistration
-  21              		.thumb
-  22              		.thumb_func
-  23              		.type	iButtonSinkRegistration, %function
-  24              	iButtonSinkRegistration:
-  25              	.LFB63:
-  26              		.file 1 ".\\iButtonSink.c"
+  18              		.comm	HoseDispenser,1,1
+  19              		.section	.text.iButtonSinkRegistration,"ax",%progbits
+  20              		.align	2
+  21              		.global	iButtonSinkRegistration
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	iButtonSinkRegistration, %function
+  25              	iButtonSinkRegistration:
+  26              	.LFB63:
+  27              		.file 1 ".\\iButtonSink.c"
    1:.\iButtonSink.c **** /* ========================================
    2:.\iButtonSink.c ****  *
    3:.\iButtonSink.c ****  * Copyright SISTEMAS INSEPET, 2016
@@ -52,1159 +53,1190 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccZG7i8v.s 			page 1
   23:.\iButtonSink.c **** 
   24:.\iButtonSink.c **** void iButtonSinkRegistration()
   25:.\iButtonSink.c **** {
-  27              		.loc 1 25 0
-  28              		.cfi_startproc
-  29              		@ args = 0, pretend = 0, frame = 8
-  30              		@ frame_needed = 1, uses_anonymous_args = 0
-  31 0000 80B5     		push	{r7, lr}
-  32              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccZG7i8v.s 			page 2
+  28              		.loc 1 25 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 8
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccqKXrBz.s 			page 2
 
 
-  33              		.cfi_offset 7, -8
-  34              		.cfi_offset 14, -4
-  35 0002 82B0     		sub	sp, sp, #8
-  36              		.cfi_def_cfa_offset 16
-  37 0004 00AF     		add	r7, sp, #0
-  38              		.cfi_def_cfa_register 7
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 82B0     		sub	sp, sp, #8
+  37              		.cfi_def_cfa_offset 16
+  38 0004 00AF     		add	r7, sp, #0
+  39              		.cfi_def_cfa_register 7
   26:.\iButtonSink.c ****     PSINKSUBSCRIBERPTR psubscriber = AllocateSubscriberSlot();
-  39              		.loc 1 26 0
-  40 0006 FFF7FEFF 		bl	AllocateSubscriberSlot
-  41 000a 7860     		str	r0, [r7, #4]
+  40              		.loc 1 26 0
+  41 0006 FFF7FEFF 		bl	AllocateSubscriberSlot
+  42 000a 7860     		str	r0, [r7, #4]
   27:.\iButtonSink.c ****     if(psubscriber)
-  42              		.loc 1 27 0
-  43 000c 7B68     		ldr	r3, [r7, #4]
-  44 000e 002B     		cmp	r3, #0
-  45 0010 1DD0     		beq	.L1
-  46              	.LBB2:
+  43              		.loc 1 27 0
+  44 000c 7B68     		ldr	r3, [r7, #4]
+  45 000e 002B     		cmp	r3, #0
+  46 0010 1DD0     		beq	.L1
+  47              	.LBB2:
   28:.\iButtonSink.c ****     {
   29:.\iButtonSink.c ****         uint8 index = 0;
-  47              		.loc 1 29 0
-  48 0012 0023     		movs	r3, #0
-  49 0014 FB70     		strb	r3, [r7, #3]
+  48              		.loc 1 29 0
+  49 0012 0023     		movs	r3, #0
+  50 0014 FB70     		strb	r3, [r7, #3]
   30:.\iButtonSink.c ****         //The maximum number of observable identifiers is _OBSERVED_IDENTIFIERS_
   31:.\iButtonSink.c ****         //located in the header file "SinkManager.h"
   32:.\iButtonSink.c ****         //Every identifier is paired with its respective Callback method pointer
   33:.\iButtonSink.c ****         psubscriber->_arrmsgid[index] = IBUTTON1_SCAN;
-  50              		.loc 1 33 0
-  51 0016 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
-  52 0018 7A68     		ldr	r2, [r7, #4]
-  53 001a 1344     		add	r3, r3, r2
-  54 001c 2722     		movs	r2, #39
-  55 001e 5A70     		strb	r2, [r3, #1]
+  51              		.loc 1 33 0
+  52 0016 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+  53 0018 7A68     		ldr	r2, [r7, #4]
+  54 001a 1344     		add	r3, r3, r2
+  55 001c 2722     		movs	r2, #39
+  56 001e 5A70     		strb	r2, [r3, #1]
   34:.\iButtonSink.c ****         psubscriber->Callback[index++] = iButton1Scan;
-  56              		.loc 1 34 0
-  57 0020 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
-  58 0022 5A1C     		adds	r2, r3, #1
-  59 0024 FA70     		strb	r2, [r7, #3]
-  60 0026 7A68     		ldr	r2, [r7, #4]
-  61 0028 0233     		adds	r3, r3, #2
-  62 002a 9B00     		lsls	r3, r3, #2
-  63 002c 1344     		add	r3, r3, r2
-  64 002e 094A     		ldr	r2, .L3
-  65 0030 5A60     		str	r2, [r3, #4]
+  57              		.loc 1 34 0
+  58 0020 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+  59 0022 5A1C     		adds	r2, r3, #1
+  60 0024 FA70     		strb	r2, [r7, #3]
+  61 0026 7A68     		ldr	r2, [r7, #4]
+  62 0028 0233     		adds	r3, r3, #2
+  63 002a 9B00     		lsls	r3, r3, #2
+  64 002c 1344     		add	r3, r3, r2
+  65 002e 094A     		ldr	r2, .L3
+  66 0030 5A60     		str	r2, [r3, #4]
   35:.\iButtonSink.c ****         
   36:.\iButtonSink.c ****         psubscriber->_arrmsgid[index] = IBUTTON2_SCAN;
-  66              		.loc 1 36 0
-  67 0032 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
-  68 0034 7A68     		ldr	r2, [r7, #4]
-  69 0036 1344     		add	r3, r3, r2
-  70 0038 2822     		movs	r2, #40
-  71 003a 5A70     		strb	r2, [r3, #1]
+  67              		.loc 1 36 0
+  68 0032 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+  69 0034 7A68     		ldr	r2, [r7, #4]
+  70 0036 1344     		add	r3, r3, r2
+  71 0038 2822     		movs	r2, #40
+  72 003a 5A70     		strb	r2, [r3, #1]
   37:.\iButtonSink.c ****         psubscriber->Callback[index++] = iButton2Scan;
-  72              		.loc 1 37 0
-  73 003c FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
-  74 003e 5A1C     		adds	r2, r3, #1
-  75 0040 FA70     		strb	r2, [r7, #3]
-  76 0042 7A68     		ldr	r2, [r7, #4]
-  77 0044 0233     		adds	r3, r3, #2
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccZG7i8v.s 			page 3
+  73              		.loc 1 37 0
+  74 003c FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+  75 003e 5A1C     		adds	r2, r3, #1
+  76 0040 FA70     		strb	r2, [r7, #3]
+  77 0042 7A68     		ldr	r2, [r7, #4]
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccqKXrBz.s 			page 3
 
 
-  78 0046 9B00     		lsls	r3, r3, #2
-  79 0048 1344     		add	r3, r3, r2
-  80 004a 034A     		ldr	r2, .L3+4
-  81 004c 5A60     		str	r2, [r3, #4]
-  82              	.L1:
-  83              	.LBE2:
+  78 0044 0233     		adds	r3, r3, #2
+  79 0046 9B00     		lsls	r3, r3, #2
+  80 0048 1344     		add	r3, r3, r2
+  81 004a 034A     		ldr	r2, .L3+4
+  82 004c 5A60     		str	r2, [r3, #4]
+  83              	.L1:
+  84              	.LBE2:
   38:.\iButtonSink.c ****     }
   39:.\iButtonSink.c **** }
-  84              		.loc 1 39 0
-  85 004e 0837     		adds	r7, r7, #8
-  86              		.cfi_def_cfa_offset 8
-  87 0050 BD46     		mov	sp, r7
-  88              		.cfi_def_cfa_register 13
-  89              		@ sp needed
-  90 0052 80BD     		pop	{r7, pc}
-  91              	.L4:
-  92              		.align	2
-  93              	.L3:
-  94 0054 00000000 		.word	iButton1Scan
-  95 0058 00000000 		.word	iButton2Scan
-  96              		.cfi_endproc
-  97              	.LFE63:
-  98              		.size	iButtonSinkRegistration, .-iButtonSinkRegistration
-  99              		.text
- 100              	.Letext0:
- 101              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
- 102              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
- 103              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
- 104              		.file 5 ".\\SinkManager.h"
- 105              		.file 6 ".\\SinkObservables.h"
- 106              		.file 7 "Generated_Source\\PSoC5/core_cm3.h"
- 107              		.section	.debug_info,"",%progbits
- 108              	.Ldebug_info0:
- 109 0000 8A020000 		.4byte	0x28a
- 110 0004 0400     		.2byte	0x4
- 111 0006 00000000 		.4byte	.Ldebug_abbrev0
- 112 000a 04       		.byte	0x4
- 113 000b 01       		.uleb128 0x1
- 114 000c 65010000 		.4byte	.LASF67
- 115 0010 01       		.byte	0x1
- 116 0011 C8000000 		.4byte	.LASF68
- 117 0015 F1030000 		.4byte	.LASF69
- 118 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 119 001d 00000000 		.4byte	0
- 120 0021 00000000 		.4byte	.Ldebug_line0
- 121 0025 02       		.uleb128 0x2
- 122 0026 01       		.byte	0x1
- 123 0027 06       		.byte	0x6
- 124 0028 CD020000 		.4byte	.LASF0
- 125 002c 02       		.uleb128 0x2
- 126 002d 01       		.byte	0x1
- 127 002e 08       		.byte	0x8
- 128 002f 91020000 		.4byte	.LASF1
- 129 0033 02       		.uleb128 0x2
- 130 0034 02       		.byte	0x2
- 131 0035 05       		.byte	0x5
- 132 0036 3E000000 		.4byte	.LASF2
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccZG7i8v.s 			page 4
+  85              		.loc 1 39 0
+  86 004e 0837     		adds	r7, r7, #8
+  87              		.cfi_def_cfa_offset 8
+  88 0050 BD46     		mov	sp, r7
+  89              		.cfi_def_cfa_register 13
+  90              		@ sp needed
+  91 0052 80BD     		pop	{r7, pc}
+  92              	.L4:
+  93              		.align	2
+  94              	.L3:
+  95 0054 00000000 		.word	iButton1Scan
+  96 0058 00000000 		.word	iButton2Scan
+  97              		.cfi_endproc
+  98              	.LFE63:
+  99              		.size	iButtonSinkRegistration, .-iButtonSinkRegistration
+ 100              		.text
+ 101              	.Letext0:
+ 102              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 103              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 104              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 105              		.file 5 ".\\SinkManager.h"
+ 106              		.file 6 "Generated_Source\\PSoC5/core_cm3.h"
+ 107              		.file 7 ".\\GlobalDefinitions.h"
+ 108              		.file 8 ".\\SinkObservables.h"
+ 109              		.section	.debug_info,"",%progbits
+ 110              	.Ldebug_info0:
+ 111 0000 9B020000 		.4byte	0x29b
+ 112 0004 0400     		.2byte	0x4
+ 113 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 114 000a 04       		.byte	0x4
+ 115 000b 01       		.uleb128 0x1
+ 116 000c 65010000 		.4byte	.LASF69
+ 117 0010 01       		.byte	0x1
+ 118 0011 C8000000 		.4byte	.LASF70
+ 119 0015 2E030000 		.4byte	.LASF71
+ 120 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 121 001d 00000000 		.4byte	0
+ 122 0021 00000000 		.4byte	.Ldebug_line0
+ 123 0025 02       		.uleb128 0x2
+ 124 0026 01       		.byte	0x1
+ 125 0027 06       		.byte	0x6
+ 126 0028 CD020000 		.4byte	.LASF0
+ 127 002c 02       		.uleb128 0x2
+ 128 002d 01       		.byte	0x1
+ 129 002e 08       		.byte	0x8
+ 130 002f 91020000 		.4byte	.LASF1
+ 131 0033 02       		.uleb128 0x2
+ 132 0034 02       		.byte	0x2
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccqKXrBz.s 			page 4
 
 
- 133 003a 02       		.uleb128 0x2
- 134 003b 02       		.byte	0x2
- 135 003c 07       		.byte	0x7
- 136 003d 5C030000 		.4byte	.LASF3
- 137 0041 03       		.uleb128 0x3
- 138 0042 2F050000 		.4byte	.LASF9
- 139 0046 02       		.byte	0x2
- 140 0047 3F       		.byte	0x3f
- 141 0048 4C000000 		.4byte	0x4c
- 142 004c 02       		.uleb128 0x2
- 143 004d 04       		.byte	0x4
- 144 004e 05       		.byte	0x5
- 145 004f C2050000 		.4byte	.LASF4
- 146 0053 02       		.uleb128 0x2
- 147 0054 04       		.byte	0x4
- 148 0055 07       		.byte	0x7
- 149 0056 C1040000 		.4byte	.LASF5
- 150 005a 02       		.uleb128 0x2
- 151 005b 08       		.byte	0x8
- 152 005c 05       		.byte	0x5
- 153 005d 57010000 		.4byte	.LASF6
- 154 0061 02       		.uleb128 0x2
- 155 0062 08       		.byte	0x8
- 156 0063 07       		.byte	0x7
- 157 0064 E1020000 		.4byte	.LASF7
- 158 0068 04       		.uleb128 0x4
- 159 0069 04       		.byte	0x4
- 160 006a 05       		.byte	0x5
- 161 006b 696E7400 		.ascii	"int\000"
- 162 006f 02       		.uleb128 0x2
- 163 0070 04       		.byte	0x4
- 164 0071 07       		.byte	0x7
- 165 0072 06030000 		.4byte	.LASF8
- 166 0076 03       		.uleb128 0x3
- 167 0077 D9020000 		.4byte	.LASF10
- 168 007b 03       		.byte	0x3
- 169 007c 2C       		.byte	0x2c
- 170 007d 41000000 		.4byte	0x41
- 171 0081 05       		.uleb128 0x5
- 172 0082 EF000000 		.4byte	.LASF11
- 173 0086 04       		.byte	0x4
- 174 0087 3801     		.2byte	0x138
- 175 0089 2C000000 		.4byte	0x2c
- 176 008d 02       		.uleb128 0x2
- 177 008e 04       		.byte	0x4
- 178 008f 04       		.byte	0x4
- 179 0090 51010000 		.4byte	.LASF12
- 180 0094 02       		.uleb128 0x2
- 181 0095 08       		.byte	0x8
- 182 0096 04       		.byte	0x4
- 183 0097 D3040000 		.4byte	.LASF13
- 184 009b 02       		.uleb128 0x2
- 185 009c 01       		.byte	0x1
- 186 009d 08       		.byte	0x8
- 187 009e 7C030000 		.4byte	.LASF14
- 188 00a2 06       		.uleb128 0x6
- 189 00a3 81000000 		.4byte	0x81
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccZG7i8v.s 			page 5
+ 133 0035 05       		.byte	0x5
+ 134 0036 3E000000 		.4byte	.LASF2
+ 135 003a 02       		.uleb128 0x2
+ 136 003b 02       		.byte	0x2
+ 137 003c 07       		.byte	0x7
+ 138 003d A9040000 		.4byte	.LASF3
+ 139 0041 03       		.uleb128 0x3
+ 140 0042 3C050000 		.4byte	.LASF9
+ 141 0046 02       		.byte	0x2
+ 142 0047 3F       		.byte	0x3f
+ 143 0048 4C000000 		.4byte	0x4c
+ 144 004c 02       		.uleb128 0x2
+ 145 004d 04       		.byte	0x4
+ 146 004e 05       		.byte	0x5
+ 147 004f CF050000 		.4byte	.LASF4
+ 148 0053 02       		.uleb128 0x2
+ 149 0054 04       		.byte	0x4
+ 150 0055 07       		.byte	0x7
+ 151 0056 CE040000 		.4byte	.LASF5
+ 152 005a 02       		.uleb128 0x2
+ 153 005b 08       		.byte	0x8
+ 154 005c 05       		.byte	0x5
+ 155 005d 57010000 		.4byte	.LASF6
+ 156 0061 02       		.uleb128 0x2
+ 157 0062 08       		.byte	0x8
+ 158 0063 07       		.byte	0x7
+ 159 0064 E1020000 		.4byte	.LASF7
+ 160 0068 04       		.uleb128 0x4
+ 161 0069 04       		.byte	0x4
+ 162 006a 05       		.byte	0x5
+ 163 006b 696E7400 		.ascii	"int\000"
+ 164 006f 02       		.uleb128 0x2
+ 165 0070 04       		.byte	0x4
+ 166 0071 07       		.byte	0x7
+ 167 0072 06030000 		.4byte	.LASF8
+ 168 0076 03       		.uleb128 0x3
+ 169 0077 D9020000 		.4byte	.LASF10
+ 170 007b 03       		.byte	0x3
+ 171 007c 2C       		.byte	0x2c
+ 172 007d 41000000 		.4byte	0x41
+ 173 0081 05       		.uleb128 0x5
+ 174 0082 EF000000 		.4byte	.LASF11
+ 175 0086 04       		.byte	0x4
+ 176 0087 3801     		.2byte	0x138
+ 177 0089 2C000000 		.4byte	0x2c
+ 178 008d 02       		.uleb128 0x2
+ 179 008e 04       		.byte	0x4
+ 180 008f 04       		.byte	0x4
+ 181 0090 51010000 		.4byte	.LASF12
+ 182 0094 02       		.uleb128 0x2
+ 183 0095 08       		.byte	0x8
+ 184 0096 04       		.byte	0x4
+ 185 0097 E0040000 		.4byte	.LASF13
+ 186 009b 02       		.uleb128 0x2
+ 187 009c 01       		.byte	0x1
+ 188 009d 08       		.byte	0x8
+ 189 009e D5030000 		.4byte	.LASF14
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccqKXrBz.s 			page 5
 
 
- 190 00a7 02       		.uleb128 0x2
- 191 00a8 04       		.byte	0x4
- 192 00a9 07       		.byte	0x7
- 193 00aa 56000000 		.4byte	.LASF15
- 194 00ae 07       		.uleb128 0x7
- 195 00af 04       		.byte	0x4
- 196 00b0 02       		.uleb128 0x2
- 197 00b1 08       		.byte	0x8
- 198 00b2 04       		.byte	0x4
- 199 00b3 85020000 		.4byte	.LASF16
- 200 00b7 02       		.uleb128 0x2
- 201 00b8 01       		.byte	0x1
- 202 00b9 02       		.byte	0x2
- 203 00ba 50040000 		.4byte	.LASF17
- 204 00be 08       		.uleb128 0x8
- 205 00bf C9000000 		.4byte	0xc9
- 206 00c3 09       		.uleb128 0x9
- 207 00c4 AE000000 		.4byte	0xae
- 208 00c8 00       		.byte	0
- 209 00c9 0A       		.uleb128 0xa
- 210 00ca 04       		.byte	0x4
- 211 00cb BE000000 		.4byte	0xbe
- 212 00cf 0B       		.uleb128 0xb
- 213 00d0 4A030000 		.4byte	.LASF70
- 214 00d4 2C       		.byte	0x2c
- 215 00d5 05       		.byte	0x5
- 216 00d6 66       		.byte	0x66
- 217 00d7 00010000 		.4byte	0x100
- 218 00db 0C       		.uleb128 0xc
- 219 00dc 78000000 		.4byte	.LASF18
- 220 00e0 05       		.byte	0x5
- 221 00e1 68       		.byte	0x68
- 222 00e2 A2000000 		.4byte	0xa2
- 223 00e6 00       		.byte	0
- 224 00e7 0C       		.uleb128 0xc
- 225 00e8 06060000 		.4byte	.LASF19
- 226 00ec 05       		.byte	0x5
- 227 00ed 6A       		.byte	0x6a
- 228 00ee 00010000 		.4byte	0x100
- 229 00f2 01       		.byte	0x1
- 230 00f3 0C       		.uleb128 0xc
- 231 00f4 4A060000 		.4byte	.LASF20
- 232 00f8 05       		.byte	0x5
- 233 00f9 6B       		.byte	0x6b
- 234 00fa 10010000 		.4byte	0x110
- 235 00fe 0C       		.byte	0xc
- 236 00ff 00       		.byte	0
- 237 0100 0D       		.uleb128 0xd
- 238 0101 81000000 		.4byte	0x81
- 239 0105 10010000 		.4byte	0x110
- 240 0109 0E       		.uleb128 0xe
- 241 010a A7000000 		.4byte	0xa7
- 242 010e 07       		.byte	0x7
- 243 010f 00       		.byte	0
- 244 0110 0D       		.uleb128 0xd
- 245 0111 C9000000 		.4byte	0xc9
- 246 0115 20010000 		.4byte	0x120
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccZG7i8v.s 			page 6
+ 190 00a2 06       		.uleb128 0x6
+ 191 00a3 81000000 		.4byte	0x81
+ 192 00a7 02       		.uleb128 0x2
+ 193 00a8 04       		.byte	0x4
+ 194 00a9 07       		.byte	0x7
+ 195 00aa 56000000 		.4byte	.LASF15
+ 196 00ae 07       		.uleb128 0x7
+ 197 00af 04       		.byte	0x4
+ 198 00b0 02       		.uleb128 0x2
+ 199 00b1 08       		.byte	0x8
+ 200 00b2 04       		.byte	0x4
+ 201 00b3 85020000 		.4byte	.LASF16
+ 202 00b7 02       		.uleb128 0x2
+ 203 00b8 01       		.byte	0x1
+ 204 00b9 02       		.byte	0x2
+ 205 00ba 4A040000 		.4byte	.LASF17
+ 206 00be 08       		.uleb128 0x8
+ 207 00bf C9000000 		.4byte	0xc9
+ 208 00c3 09       		.uleb128 0x9
+ 209 00c4 AE000000 		.4byte	0xae
+ 210 00c8 00       		.byte	0
+ 211 00c9 0A       		.uleb128 0xa
+ 212 00ca 04       		.byte	0x4
+ 213 00cb BE000000 		.4byte	0xbe
+ 214 00cf 0B       		.uleb128 0xb
+ 215 00d0 A8030000 		.4byte	.LASF72
+ 216 00d4 2C       		.byte	0x2c
+ 217 00d5 05       		.byte	0x5
+ 218 00d6 66       		.byte	0x66
+ 219 00d7 00010000 		.4byte	0x100
+ 220 00db 0C       		.uleb128 0xc
+ 221 00dc 78000000 		.4byte	.LASF18
+ 222 00e0 05       		.byte	0x5
+ 223 00e1 68       		.byte	0x68
+ 224 00e2 A2000000 		.4byte	0xa2
+ 225 00e6 00       		.byte	0
+ 226 00e7 0C       		.uleb128 0xc
+ 227 00e8 13060000 		.4byte	.LASF19
+ 228 00ec 05       		.byte	0x5
+ 229 00ed 6A       		.byte	0x6a
+ 230 00ee 00010000 		.4byte	0x100
+ 231 00f2 01       		.byte	0x1
+ 232 00f3 0C       		.uleb128 0xc
+ 233 00f4 57060000 		.4byte	.LASF20
+ 234 00f8 05       		.byte	0x5
+ 235 00f9 6B       		.byte	0x6b
+ 236 00fa 10010000 		.4byte	0x110
+ 237 00fe 0C       		.byte	0xc
+ 238 00ff 00       		.byte	0
+ 239 0100 0D       		.uleb128 0xd
+ 240 0101 81000000 		.4byte	0x81
+ 241 0105 10010000 		.4byte	0x110
+ 242 0109 0E       		.uleb128 0xe
+ 243 010a A7000000 		.4byte	0xa7
+ 244 010e 07       		.byte	0x7
+ 245 010f 00       		.byte	0
+ 246 0110 0D       		.uleb128 0xd
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccqKXrBz.s 			page 6
 
 
- 247 0119 0E       		.uleb128 0xe
- 248 011a A7000000 		.4byte	0xa7
- 249 011e 07       		.byte	0x7
- 250 011f 00       		.byte	0
- 251 0120 03       		.uleb128 0x3
- 252 0121 56040000 		.4byte	.LASF21
- 253 0125 05       		.byte	0x5
- 254 0126 6C       		.byte	0x6c
- 255 0127 2B010000 		.4byte	0x12b
- 256 012b 0A       		.uleb128 0xa
- 257 012c 04       		.byte	0x4
- 258 012d CF000000 		.4byte	0xcf
- 259 0131 0F       		.uleb128 0xf
- 260 0132 9F020000 		.4byte	.LASF71
- 261 0136 01       		.byte	0x1
- 262 0137 06       		.byte	0x6
- 263 0138 0F       		.byte	0xf
- 264 0139 40020000 		.4byte	0x240
- 265 013d 10       		.uleb128 0x10
- 266 013e AF040000 		.4byte	.LASF22
- 267 0142 01       		.sleb128 1
- 268 0143 10       		.uleb128 0x10
- 269 0144 6F030000 		.4byte	.LASF23
- 270 0148 02       		.sleb128 2
- 271 0149 10       		.uleb128 0x10
- 272 014a D8050000 		.4byte	.LASF24
- 273 014e 03       		.sleb128 3
- 274 014f 10       		.uleb128 0x10
- 275 0150 A0030000 		.4byte	.LASF25
- 276 0154 04       		.sleb128 4
- 277 0155 10       		.uleb128 0x10
- 278 0156 40020000 		.4byte	.LASF26
- 279 015a 05       		.sleb128 5
- 280 015b 10       		.uleb128 0x10
- 281 015c 75050000 		.4byte	.LASF27
- 282 0160 06       		.sleb128 6
- 283 0161 10       		.uleb128 0x10
- 284 0162 97050000 		.4byte	.LASF28
- 285 0166 07       		.sleb128 7
- 286 0167 10       		.uleb128 0x10
- 287 0168 FF010000 		.4byte	.LASF29
- 288 016c 08       		.sleb128 8
- 289 016d 10       		.uleb128 0x10
- 290 016e 2E030000 		.4byte	.LASF30
- 291 0172 09       		.sleb128 9
- 292 0173 10       		.uleb128 0x10
- 293 0174 A5000000 		.4byte	.LASF31
- 294 0178 0A       		.sleb128 10
- 295 0179 10       		.uleb128 0x10
- 296 017a 39050000 		.4byte	.LASF32
- 297 017e 0B       		.sleb128 11
- 298 017f 10       		.uleb128 0x10
- 299 0180 13030000 		.4byte	.LASF33
- 300 0184 0C       		.sleb128 12
- 301 0185 10       		.uleb128 0x10
- 302 0186 81030000 		.4byte	.LASF34
- 303 018a 0D       		.sleb128 13
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccZG7i8v.s 			page 7
+ 247 0111 C9000000 		.4byte	0xc9
+ 248 0115 20010000 		.4byte	0x120
+ 249 0119 0E       		.uleb128 0xe
+ 250 011a A7000000 		.4byte	0xa7
+ 251 011e 07       		.byte	0x7
+ 252 011f 00       		.byte	0
+ 253 0120 03       		.uleb128 0x3
+ 254 0121 50040000 		.4byte	.LASF21
+ 255 0125 05       		.byte	0x5
+ 256 0126 6C       		.byte	0x6c
+ 257 0127 2B010000 		.4byte	0x12b
+ 258 012b 0A       		.uleb128 0xa
+ 259 012c 04       		.byte	0x4
+ 260 012d CF000000 		.4byte	0xcf
+ 261 0131 0F       		.uleb128 0xf
+ 262 0132 9F020000 		.4byte	.LASF73
+ 263 0136 01       		.byte	0x1
+ 264 0137 08       		.byte	0x8
+ 265 0138 0F       		.byte	0xf
+ 266 0139 40020000 		.4byte	0x240
+ 267 013d 10       		.uleb128 0x10
+ 268 013e BC040000 		.4byte	.LASF22
+ 269 0142 01       		.sleb128 1
+ 270 0143 10       		.uleb128 0x10
+ 271 0144 C8030000 		.4byte	.LASF23
+ 272 0148 02       		.sleb128 2
+ 273 0149 10       		.uleb128 0x10
+ 274 014a E5050000 		.4byte	.LASF24
+ 275 014e 03       		.sleb128 3
+ 276 014f 10       		.uleb128 0x10
+ 277 0150 F9030000 		.4byte	.LASF25
+ 278 0154 04       		.sleb128 4
+ 279 0155 10       		.uleb128 0x10
+ 280 0156 40020000 		.4byte	.LASF26
+ 281 015a 05       		.sleb128 5
+ 282 015b 10       		.uleb128 0x10
+ 283 015c 82050000 		.4byte	.LASF27
+ 284 0160 06       		.sleb128 6
+ 285 0161 10       		.uleb128 0x10
+ 286 0162 A4050000 		.4byte	.LASF28
+ 287 0166 07       		.sleb128 7
+ 288 0167 10       		.uleb128 0x10
+ 289 0168 FF010000 		.4byte	.LASF29
+ 290 016c 08       		.sleb128 8
+ 291 016d 10       		.uleb128 0x10
+ 292 016e 8C030000 		.4byte	.LASF30
+ 293 0172 09       		.sleb128 9
+ 294 0173 10       		.uleb128 0x10
+ 295 0174 A5000000 		.4byte	.LASF31
+ 296 0178 0A       		.sleb128 10
+ 297 0179 10       		.uleb128 0x10
+ 298 017a 46050000 		.4byte	.LASF32
+ 299 017e 0B       		.sleb128 11
+ 300 017f 10       		.uleb128 0x10
+ 301 0180 13030000 		.4byte	.LASF33
+ 302 0184 0C       		.sleb128 12
+ 303 0185 10       		.uleb128 0x10
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccqKXrBz.s 			page 7
 
 
- 304 018b 10       		.uleb128 0x10
- 305 018c CF030000 		.4byte	.LASF35
- 306 0190 0E       		.sleb128 14
- 307 0191 10       		.uleb128 0x10
- 308 0192 69040000 		.4byte	.LASF36
- 309 0196 0F       		.sleb128 15
- 310 0197 10       		.uleb128 0x10
- 311 0198 B2020000 		.4byte	.LASF37
- 312 019c 10       		.sleb128 16
- 313 019d 10       		.uleb128 0x10
- 314 019e 53020000 		.4byte	.LASF38
- 315 01a2 11       		.sleb128 17
- 316 01a3 10       		.uleb128 0x10
- 317 01a4 29060000 		.4byte	.LASF39
- 318 01a8 12       		.sleb128 18
- 319 01a9 10       		.uleb128 0x10
- 320 01aa 5F000000 		.4byte	.LASF40
- 321 01ae 13       		.sleb128 19
- 322 01af 10       		.uleb128 0x10
- 323 01b0 5E050000 		.4byte	.LASF41
- 324 01b4 14       		.sleb128 20
- 325 01b5 10       		.uleb128 0x10
- 326 01b6 05050000 		.4byte	.LASF42
- 327 01ba 15       		.sleb128 21
- 328 01bb 10       		.uleb128 0x10
- 329 01bc 13000000 		.4byte	.LASF43
- 330 01c0 16       		.sleb128 22
- 331 01c1 10       		.uleb128 0x10
- 332 01c2 1C020000 		.4byte	.LASF44
- 333 01c6 17       		.sleb128 23
- 334 01c7 10       		.uleb128 0x10
- 335 01c8 F8020000 		.4byte	.LASF45
- 336 01cc 18       		.sleb128 24
- 337 01cd 10       		.uleb128 0x10
- 338 01ce 89050000 		.4byte	.LASF46
- 339 01d2 19       		.sleb128 25
- 340 01d3 10       		.uleb128 0x10
- 341 01d4 90000000 		.4byte	.LASF47
- 342 01d8 1A       		.sleb128 26
- 343 01d9 10       		.uleb128 0x10
- 344 01da 24010000 		.4byte	.LASF48
- 345 01de 1B       		.sleb128 27
- 346 01df 10       		.uleb128 0x10
- 347 01e0 95040000 		.4byte	.LASF49
- 348 01e4 1C       		.sleb128 28
- 349 01e5 10       		.uleb128 0x10
- 350 01e6 B5030000 		.4byte	.LASF50
- 351 01ea 1D       		.sleb128 29
- 352 01eb 10       		.uleb128 0x10
- 353 01ec EB040000 		.4byte	.LASF51
- 354 01f0 1E       		.sleb128 30
- 355 01f1 10       		.uleb128 0x10
- 356 01f2 00000000 		.4byte	.LASF52
- 357 01f6 1F       		.sleb128 31
- 358 01f7 10       		.uleb128 0x10
- 359 01f8 7F000000 		.4byte	.LASF53
- 360 01fc 20       		.sleb128 32
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccZG7i8v.s 			page 8
+ 304 0186 DA030000 		.4byte	.LASF34
+ 305 018a 0D       		.sleb128 13
+ 306 018b 10       		.uleb128 0x10
+ 307 018c 28040000 		.4byte	.LASF35
+ 308 0190 0E       		.sleb128 14
+ 309 0191 10       		.uleb128 0x10
+ 310 0192 63040000 		.4byte	.LASF36
+ 311 0196 0F       		.sleb128 15
+ 312 0197 10       		.uleb128 0x10
+ 313 0198 B2020000 		.4byte	.LASF37
+ 314 019c 10       		.sleb128 16
+ 315 019d 10       		.uleb128 0x10
+ 316 019e 53020000 		.4byte	.LASF38
+ 317 01a2 11       		.sleb128 17
+ 318 01a3 10       		.uleb128 0x10
+ 319 01a4 36060000 		.4byte	.LASF39
+ 320 01a8 12       		.sleb128 18
+ 321 01a9 10       		.uleb128 0x10
+ 322 01aa 5F000000 		.4byte	.LASF40
+ 323 01ae 13       		.sleb128 19
+ 324 01af 10       		.uleb128 0x10
+ 325 01b0 6B050000 		.4byte	.LASF41
+ 326 01b4 14       		.sleb128 20
+ 327 01b5 10       		.uleb128 0x10
+ 328 01b6 12050000 		.4byte	.LASF42
+ 329 01ba 15       		.sleb128 21
+ 330 01bb 10       		.uleb128 0x10
+ 331 01bc 13000000 		.4byte	.LASF43
+ 332 01c0 16       		.sleb128 22
+ 333 01c1 10       		.uleb128 0x10
+ 334 01c2 1C020000 		.4byte	.LASF44
+ 335 01c6 17       		.sleb128 23
+ 336 01c7 10       		.uleb128 0x10
+ 337 01c8 F8020000 		.4byte	.LASF45
+ 338 01cc 18       		.sleb128 24
+ 339 01cd 10       		.uleb128 0x10
+ 340 01ce 96050000 		.4byte	.LASF46
+ 341 01d2 19       		.sleb128 25
+ 342 01d3 10       		.uleb128 0x10
+ 343 01d4 90000000 		.4byte	.LASF47
+ 344 01d8 1A       		.sleb128 26
+ 345 01d9 10       		.uleb128 0x10
+ 346 01da 24010000 		.4byte	.LASF48
+ 347 01de 1B       		.sleb128 27
+ 348 01df 10       		.uleb128 0x10
+ 349 01e0 8F040000 		.4byte	.LASF49
+ 350 01e4 1C       		.sleb128 28
+ 351 01e5 10       		.uleb128 0x10
+ 352 01e6 0E040000 		.4byte	.LASF50
+ 353 01ea 1D       		.sleb128 29
+ 354 01eb 10       		.uleb128 0x10
+ 355 01ec F8040000 		.4byte	.LASF51
+ 356 01f0 1E       		.sleb128 30
+ 357 01f1 10       		.uleb128 0x10
+ 358 01f2 00000000 		.4byte	.LASF52
+ 359 01f6 1F       		.sleb128 31
+ 360 01f7 10       		.uleb128 0x10
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccqKXrBz.s 			page 8
 
 
- 361 01fd 10       		.uleb128 0x10
- 362 01fe F5000000 		.4byte	.LASF54
- 363 0202 21       		.sleb128 33
- 364 0203 10       		.uleb128 0x10
- 365 0204 2A020000 		.4byte	.LASF55
- 366 0208 22       		.sleb128 34
- 367 0209 10       		.uleb128 0x10
- 368 020a F3050000 		.4byte	.LASF56
- 369 020e 23       		.sleb128 35
- 370 020f 10       		.uleb128 0x10
- 371 0210 DE000000 		.4byte	.LASF57
- 372 0214 24       		.sleb128 36
- 373 0215 10       		.uleb128 0x10
- 374 0216 6C020000 		.4byte	.LASF58
- 375 021a 25       		.sleb128 37
- 376 021b 10       		.uleb128 0x10
- 377 021c 0E010000 		.4byte	.LASF59
- 378 0220 26       		.sleb128 38
- 379 0221 10       		.uleb128 0x10
- 380 0222 48000000 		.4byte	.LASF60
- 381 0226 27       		.sleb128 39
- 382 0227 10       		.uleb128 0x10
- 383 0228 21050000 		.4byte	.LASF61
- 384 022c 28       		.sleb128 40
- 385 022d 10       		.uleb128 0x10
- 386 022e 10060000 		.4byte	.LASF62
- 387 0232 29       		.sleb128 41
- 388 0233 10       		.uleb128 0x10
- 389 0234 21000000 		.4byte	.LASF63
- 390 0238 2A       		.sleb128 42
- 391 0239 10       		.uleb128 0x10
- 392 023a DA040000 		.4byte	.LASF64
- 393 023e 2B       		.sleb128 43
- 394 023f 00       		.byte	0
- 395 0240 11       		.uleb128 0x11
- 396 0241 39010000 		.4byte	.LASF72
- 397 0245 01       		.byte	0x1
- 398 0246 18       		.byte	0x18
- 399 0247 00000000 		.4byte	.LFB63
- 400 024b 5C000000 		.4byte	.LFE63-.LFB63
- 401 024f 01       		.uleb128 0x1
- 402 0250 9C       		.byte	0x9c
- 403 0251 7C020000 		.4byte	0x27c
- 404 0255 12       		.uleb128 0x12
- 405 0256 F3010000 		.4byte	.LASF65
- 406 025a 01       		.byte	0x1
- 407 025b 1A       		.byte	0x1a
- 408 025c 20010000 		.4byte	0x120
- 409 0260 02       		.uleb128 0x2
- 410 0261 91       		.byte	0x91
- 411 0262 74       		.sleb128 -12
- 412 0263 13       		.uleb128 0x13
- 413 0264 12000000 		.4byte	.LBB2
- 414 0268 3C000000 		.4byte	.LBE2-.LBB2
- 415 026c 12       		.uleb128 0x12
- 416 026d D8000000 		.4byte	.LASF66
- 417 0271 01       		.byte	0x1
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccZG7i8v.s 			page 9
+ 361 01f8 7F000000 		.4byte	.LASF53
+ 362 01fc 20       		.sleb128 32
+ 363 01fd 10       		.uleb128 0x10
+ 364 01fe F5000000 		.4byte	.LASF54
+ 365 0202 21       		.sleb128 33
+ 366 0203 10       		.uleb128 0x10
+ 367 0204 2A020000 		.4byte	.LASF55
+ 368 0208 22       		.sleb128 34
+ 369 0209 10       		.uleb128 0x10
+ 370 020a 00060000 		.4byte	.LASF56
+ 371 020e 23       		.sleb128 35
+ 372 020f 10       		.uleb128 0x10
+ 373 0210 DE000000 		.4byte	.LASF57
+ 374 0214 24       		.sleb128 36
+ 375 0215 10       		.uleb128 0x10
+ 376 0216 6C020000 		.4byte	.LASF58
+ 377 021a 25       		.sleb128 37
+ 378 021b 10       		.uleb128 0x10
+ 379 021c 0E010000 		.4byte	.LASF59
+ 380 0220 26       		.sleb128 38
+ 381 0221 10       		.uleb128 0x10
+ 382 0222 48000000 		.4byte	.LASF60
+ 383 0226 27       		.sleb128 39
+ 384 0227 10       		.uleb128 0x10
+ 385 0228 2E050000 		.4byte	.LASF61
+ 386 022c 28       		.sleb128 40
+ 387 022d 10       		.uleb128 0x10
+ 388 022e 1D060000 		.4byte	.LASF62
+ 389 0232 29       		.sleb128 41
+ 390 0233 10       		.uleb128 0x10
+ 391 0234 21000000 		.4byte	.LASF63
+ 392 0238 2A       		.sleb128 42
+ 393 0239 10       		.uleb128 0x10
+ 394 023a E7040000 		.4byte	.LASF64
+ 395 023e 2B       		.sleb128 43
+ 396 023f 00       		.byte	0
+ 397 0240 11       		.uleb128 0x11
+ 398 0241 39010000 		.4byte	.LASF74
+ 399 0245 01       		.byte	0x1
+ 400 0246 18       		.byte	0x18
+ 401 0247 00000000 		.4byte	.LFB63
+ 402 024b 5C000000 		.4byte	.LFE63-.LFB63
+ 403 024f 01       		.uleb128 0x1
+ 404 0250 9C       		.byte	0x9c
+ 405 0251 7C020000 		.4byte	0x27c
+ 406 0255 12       		.uleb128 0x12
+ 407 0256 F3010000 		.4byte	.LASF65
+ 408 025a 01       		.byte	0x1
+ 409 025b 1A       		.byte	0x1a
+ 410 025c 20010000 		.4byte	0x120
+ 411 0260 02       		.uleb128 0x2
+ 412 0261 91       		.byte	0x91
+ 413 0262 74       		.sleb128 -12
+ 414 0263 13       		.uleb128 0x13
+ 415 0264 12000000 		.4byte	.LBB2
+ 416 0268 3C000000 		.4byte	.LBE2-.LBB2
+ 417 026c 12       		.uleb128 0x12
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccqKXrBz.s 			page 9
 
 
- 418 0272 1D       		.byte	0x1d
- 419 0273 81000000 		.4byte	0x81
- 420 0277 02       		.uleb128 0x2
- 421 0278 91       		.byte	0x91
- 422 0279 73       		.sleb128 -13
- 423 027a 00       		.byte	0
- 424 027b 00       		.byte	0
- 425 027c 14       		.uleb128 0x14
- 426 027d CB050000 		.4byte	.LASF73
- 427 0281 07       		.byte	0x7
- 428 0282 5506     		.2byte	0x655
- 429 0284 88020000 		.4byte	0x288
- 430 0288 06       		.uleb128 0x6
- 431 0289 76000000 		.4byte	0x76
- 432 028d 00       		.byte	0
- 433              		.section	.debug_abbrev,"",%progbits
- 434              	.Ldebug_abbrev0:
- 435 0000 01       		.uleb128 0x1
- 436 0001 11       		.uleb128 0x11
- 437 0002 01       		.byte	0x1
- 438 0003 25       		.uleb128 0x25
- 439 0004 0E       		.uleb128 0xe
- 440 0005 13       		.uleb128 0x13
- 441 0006 0B       		.uleb128 0xb
- 442 0007 03       		.uleb128 0x3
- 443 0008 0E       		.uleb128 0xe
- 444 0009 1B       		.uleb128 0x1b
- 445 000a 0E       		.uleb128 0xe
- 446 000b 55       		.uleb128 0x55
- 447 000c 17       		.uleb128 0x17
- 448 000d 11       		.uleb128 0x11
- 449 000e 01       		.uleb128 0x1
- 450 000f 10       		.uleb128 0x10
- 451 0010 17       		.uleb128 0x17
- 452 0011 00       		.byte	0
- 453 0012 00       		.byte	0
- 454 0013 02       		.uleb128 0x2
- 455 0014 24       		.uleb128 0x24
- 456 0015 00       		.byte	0
- 457 0016 0B       		.uleb128 0xb
- 458 0017 0B       		.uleb128 0xb
- 459 0018 3E       		.uleb128 0x3e
- 460 0019 0B       		.uleb128 0xb
- 461 001a 03       		.uleb128 0x3
- 462 001b 0E       		.uleb128 0xe
- 463 001c 00       		.byte	0
- 464 001d 00       		.byte	0
- 465 001e 03       		.uleb128 0x3
- 466 001f 16       		.uleb128 0x16
- 467 0020 00       		.byte	0
- 468 0021 03       		.uleb128 0x3
- 469 0022 0E       		.uleb128 0xe
- 470 0023 3A       		.uleb128 0x3a
- 471 0024 0B       		.uleb128 0xb
- 472 0025 3B       		.uleb128 0x3b
- 473 0026 0B       		.uleb128 0xb
- 474 0027 49       		.uleb128 0x49
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccZG7i8v.s 			page 10
+ 418 026d D8000000 		.4byte	.LASF66
+ 419 0271 01       		.byte	0x1
+ 420 0272 1D       		.byte	0x1d
+ 421 0273 81000000 		.4byte	0x81
+ 422 0277 02       		.uleb128 0x2
+ 423 0278 91       		.byte	0x91
+ 424 0279 73       		.sleb128 -13
+ 425 027a 00       		.byte	0
+ 426 027b 00       		.byte	0
+ 427 027c 14       		.uleb128 0x14
+ 428 027d D8050000 		.4byte	.LASF67
+ 429 0281 06       		.byte	0x6
+ 430 0282 5506     		.2byte	0x655
+ 431 0284 88020000 		.4byte	0x288
+ 432 0288 06       		.uleb128 0x6
+ 433 0289 76000000 		.4byte	0x76
+ 434 028d 15       		.uleb128 0x15
+ 435 028e BA030000 		.4byte	.LASF68
+ 436 0292 07       		.byte	0x7
+ 437 0293 52       		.byte	0x52
+ 438 0294 81000000 		.4byte	0x81
+ 439 0298 05       		.uleb128 0x5
+ 440 0299 03       		.byte	0x3
+ 441 029a 00000000 		.4byte	HoseDispenser
+ 442 029e 00       		.byte	0
+ 443              		.section	.debug_abbrev,"",%progbits
+ 444              	.Ldebug_abbrev0:
+ 445 0000 01       		.uleb128 0x1
+ 446 0001 11       		.uleb128 0x11
+ 447 0002 01       		.byte	0x1
+ 448 0003 25       		.uleb128 0x25
+ 449 0004 0E       		.uleb128 0xe
+ 450 0005 13       		.uleb128 0x13
+ 451 0006 0B       		.uleb128 0xb
+ 452 0007 03       		.uleb128 0x3
+ 453 0008 0E       		.uleb128 0xe
+ 454 0009 1B       		.uleb128 0x1b
+ 455 000a 0E       		.uleb128 0xe
+ 456 000b 55       		.uleb128 0x55
+ 457 000c 17       		.uleb128 0x17
+ 458 000d 11       		.uleb128 0x11
+ 459 000e 01       		.uleb128 0x1
+ 460 000f 10       		.uleb128 0x10
+ 461 0010 17       		.uleb128 0x17
+ 462 0011 00       		.byte	0
+ 463 0012 00       		.byte	0
+ 464 0013 02       		.uleb128 0x2
+ 465 0014 24       		.uleb128 0x24
+ 466 0015 00       		.byte	0
+ 467 0016 0B       		.uleb128 0xb
+ 468 0017 0B       		.uleb128 0xb
+ 469 0018 3E       		.uleb128 0x3e
+ 470 0019 0B       		.uleb128 0xb
+ 471 001a 03       		.uleb128 0x3
+ 472 001b 0E       		.uleb128 0xe
+ 473 001c 00       		.byte	0
+ 474 001d 00       		.byte	0
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccqKXrBz.s 			page 10
 
 
- 475 0028 13       		.uleb128 0x13
- 476 0029 00       		.byte	0
- 477 002a 00       		.byte	0
- 478 002b 04       		.uleb128 0x4
- 479 002c 24       		.uleb128 0x24
- 480 002d 00       		.byte	0
- 481 002e 0B       		.uleb128 0xb
- 482 002f 0B       		.uleb128 0xb
- 483 0030 3E       		.uleb128 0x3e
- 484 0031 0B       		.uleb128 0xb
- 485 0032 03       		.uleb128 0x3
- 486 0033 08       		.uleb128 0x8
- 487 0034 00       		.byte	0
- 488 0035 00       		.byte	0
- 489 0036 05       		.uleb128 0x5
- 490 0037 16       		.uleb128 0x16
- 491 0038 00       		.byte	0
- 492 0039 03       		.uleb128 0x3
- 493 003a 0E       		.uleb128 0xe
- 494 003b 3A       		.uleb128 0x3a
- 495 003c 0B       		.uleb128 0xb
- 496 003d 3B       		.uleb128 0x3b
- 497 003e 05       		.uleb128 0x5
- 498 003f 49       		.uleb128 0x49
- 499 0040 13       		.uleb128 0x13
- 500 0041 00       		.byte	0
- 501 0042 00       		.byte	0
- 502 0043 06       		.uleb128 0x6
- 503 0044 35       		.uleb128 0x35
- 504 0045 00       		.byte	0
- 505 0046 49       		.uleb128 0x49
- 506 0047 13       		.uleb128 0x13
- 507 0048 00       		.byte	0
- 508 0049 00       		.byte	0
- 509 004a 07       		.uleb128 0x7
- 510 004b 0F       		.uleb128 0xf
- 511 004c 00       		.byte	0
- 512 004d 0B       		.uleb128 0xb
- 513 004e 0B       		.uleb128 0xb
- 514 004f 00       		.byte	0
- 515 0050 00       		.byte	0
- 516 0051 08       		.uleb128 0x8
- 517 0052 15       		.uleb128 0x15
- 518 0053 01       		.byte	0x1
- 519 0054 27       		.uleb128 0x27
- 520 0055 19       		.uleb128 0x19
- 521 0056 01       		.uleb128 0x1
- 522 0057 13       		.uleb128 0x13
- 523 0058 00       		.byte	0
- 524 0059 00       		.byte	0
- 525 005a 09       		.uleb128 0x9
- 526 005b 05       		.uleb128 0x5
- 527 005c 00       		.byte	0
- 528 005d 49       		.uleb128 0x49
- 529 005e 13       		.uleb128 0x13
- 530 005f 00       		.byte	0
- 531 0060 00       		.byte	0
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccZG7i8v.s 			page 11
+ 475 001e 03       		.uleb128 0x3
+ 476 001f 16       		.uleb128 0x16
+ 477 0020 00       		.byte	0
+ 478 0021 03       		.uleb128 0x3
+ 479 0022 0E       		.uleb128 0xe
+ 480 0023 3A       		.uleb128 0x3a
+ 481 0024 0B       		.uleb128 0xb
+ 482 0025 3B       		.uleb128 0x3b
+ 483 0026 0B       		.uleb128 0xb
+ 484 0027 49       		.uleb128 0x49
+ 485 0028 13       		.uleb128 0x13
+ 486 0029 00       		.byte	0
+ 487 002a 00       		.byte	0
+ 488 002b 04       		.uleb128 0x4
+ 489 002c 24       		.uleb128 0x24
+ 490 002d 00       		.byte	0
+ 491 002e 0B       		.uleb128 0xb
+ 492 002f 0B       		.uleb128 0xb
+ 493 0030 3E       		.uleb128 0x3e
+ 494 0031 0B       		.uleb128 0xb
+ 495 0032 03       		.uleb128 0x3
+ 496 0033 08       		.uleb128 0x8
+ 497 0034 00       		.byte	0
+ 498 0035 00       		.byte	0
+ 499 0036 05       		.uleb128 0x5
+ 500 0037 16       		.uleb128 0x16
+ 501 0038 00       		.byte	0
+ 502 0039 03       		.uleb128 0x3
+ 503 003a 0E       		.uleb128 0xe
+ 504 003b 3A       		.uleb128 0x3a
+ 505 003c 0B       		.uleb128 0xb
+ 506 003d 3B       		.uleb128 0x3b
+ 507 003e 05       		.uleb128 0x5
+ 508 003f 49       		.uleb128 0x49
+ 509 0040 13       		.uleb128 0x13
+ 510 0041 00       		.byte	0
+ 511 0042 00       		.byte	0
+ 512 0043 06       		.uleb128 0x6
+ 513 0044 35       		.uleb128 0x35
+ 514 0045 00       		.byte	0
+ 515 0046 49       		.uleb128 0x49
+ 516 0047 13       		.uleb128 0x13
+ 517 0048 00       		.byte	0
+ 518 0049 00       		.byte	0
+ 519 004a 07       		.uleb128 0x7
+ 520 004b 0F       		.uleb128 0xf
+ 521 004c 00       		.byte	0
+ 522 004d 0B       		.uleb128 0xb
+ 523 004e 0B       		.uleb128 0xb
+ 524 004f 00       		.byte	0
+ 525 0050 00       		.byte	0
+ 526 0051 08       		.uleb128 0x8
+ 527 0052 15       		.uleb128 0x15
+ 528 0053 01       		.byte	0x1
+ 529 0054 27       		.uleb128 0x27
+ 530 0055 19       		.uleb128 0x19
+ 531 0056 01       		.uleb128 0x1
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccqKXrBz.s 			page 11
 
 
- 532 0061 0A       		.uleb128 0xa
- 533 0062 0F       		.uleb128 0xf
- 534 0063 00       		.byte	0
- 535 0064 0B       		.uleb128 0xb
- 536 0065 0B       		.uleb128 0xb
- 537 0066 49       		.uleb128 0x49
- 538 0067 13       		.uleb128 0x13
- 539 0068 00       		.byte	0
- 540 0069 00       		.byte	0
- 541 006a 0B       		.uleb128 0xb
- 542 006b 13       		.uleb128 0x13
- 543 006c 01       		.byte	0x1
- 544 006d 03       		.uleb128 0x3
- 545 006e 0E       		.uleb128 0xe
- 546 006f 0B       		.uleb128 0xb
- 547 0070 0B       		.uleb128 0xb
- 548 0071 3A       		.uleb128 0x3a
- 549 0072 0B       		.uleb128 0xb
- 550 0073 3B       		.uleb128 0x3b
- 551 0074 0B       		.uleb128 0xb
- 552 0075 01       		.uleb128 0x1
- 553 0076 13       		.uleb128 0x13
- 554 0077 00       		.byte	0
- 555 0078 00       		.byte	0
- 556 0079 0C       		.uleb128 0xc
- 557 007a 0D       		.uleb128 0xd
- 558 007b 00       		.byte	0
- 559 007c 03       		.uleb128 0x3
- 560 007d 0E       		.uleb128 0xe
- 561 007e 3A       		.uleb128 0x3a
- 562 007f 0B       		.uleb128 0xb
- 563 0080 3B       		.uleb128 0x3b
- 564 0081 0B       		.uleb128 0xb
- 565 0082 49       		.uleb128 0x49
- 566 0083 13       		.uleb128 0x13
- 567 0084 38       		.uleb128 0x38
- 568 0085 0B       		.uleb128 0xb
- 569 0086 00       		.byte	0
- 570 0087 00       		.byte	0
- 571 0088 0D       		.uleb128 0xd
- 572 0089 01       		.uleb128 0x1
- 573 008a 01       		.byte	0x1
- 574 008b 49       		.uleb128 0x49
- 575 008c 13       		.uleb128 0x13
- 576 008d 01       		.uleb128 0x1
- 577 008e 13       		.uleb128 0x13
- 578 008f 00       		.byte	0
- 579 0090 00       		.byte	0
- 580 0091 0E       		.uleb128 0xe
- 581 0092 21       		.uleb128 0x21
- 582 0093 00       		.byte	0
- 583 0094 49       		.uleb128 0x49
- 584 0095 13       		.uleb128 0x13
- 585 0096 2F       		.uleb128 0x2f
- 586 0097 0B       		.uleb128 0xb
- 587 0098 00       		.byte	0
- 588 0099 00       		.byte	0
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccZG7i8v.s 			page 12
+ 532 0057 13       		.uleb128 0x13
+ 533 0058 00       		.byte	0
+ 534 0059 00       		.byte	0
+ 535 005a 09       		.uleb128 0x9
+ 536 005b 05       		.uleb128 0x5
+ 537 005c 00       		.byte	0
+ 538 005d 49       		.uleb128 0x49
+ 539 005e 13       		.uleb128 0x13
+ 540 005f 00       		.byte	0
+ 541 0060 00       		.byte	0
+ 542 0061 0A       		.uleb128 0xa
+ 543 0062 0F       		.uleb128 0xf
+ 544 0063 00       		.byte	0
+ 545 0064 0B       		.uleb128 0xb
+ 546 0065 0B       		.uleb128 0xb
+ 547 0066 49       		.uleb128 0x49
+ 548 0067 13       		.uleb128 0x13
+ 549 0068 00       		.byte	0
+ 550 0069 00       		.byte	0
+ 551 006a 0B       		.uleb128 0xb
+ 552 006b 13       		.uleb128 0x13
+ 553 006c 01       		.byte	0x1
+ 554 006d 03       		.uleb128 0x3
+ 555 006e 0E       		.uleb128 0xe
+ 556 006f 0B       		.uleb128 0xb
+ 557 0070 0B       		.uleb128 0xb
+ 558 0071 3A       		.uleb128 0x3a
+ 559 0072 0B       		.uleb128 0xb
+ 560 0073 3B       		.uleb128 0x3b
+ 561 0074 0B       		.uleb128 0xb
+ 562 0075 01       		.uleb128 0x1
+ 563 0076 13       		.uleb128 0x13
+ 564 0077 00       		.byte	0
+ 565 0078 00       		.byte	0
+ 566 0079 0C       		.uleb128 0xc
+ 567 007a 0D       		.uleb128 0xd
+ 568 007b 00       		.byte	0
+ 569 007c 03       		.uleb128 0x3
+ 570 007d 0E       		.uleb128 0xe
+ 571 007e 3A       		.uleb128 0x3a
+ 572 007f 0B       		.uleb128 0xb
+ 573 0080 3B       		.uleb128 0x3b
+ 574 0081 0B       		.uleb128 0xb
+ 575 0082 49       		.uleb128 0x49
+ 576 0083 13       		.uleb128 0x13
+ 577 0084 38       		.uleb128 0x38
+ 578 0085 0B       		.uleb128 0xb
+ 579 0086 00       		.byte	0
+ 580 0087 00       		.byte	0
+ 581 0088 0D       		.uleb128 0xd
+ 582 0089 01       		.uleb128 0x1
+ 583 008a 01       		.byte	0x1
+ 584 008b 49       		.uleb128 0x49
+ 585 008c 13       		.uleb128 0x13
+ 586 008d 01       		.uleb128 0x1
+ 587 008e 13       		.uleb128 0x13
+ 588 008f 00       		.byte	0
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccqKXrBz.s 			page 12
 
 
- 589 009a 0F       		.uleb128 0xf
- 590 009b 04       		.uleb128 0x4
- 591 009c 01       		.byte	0x1
- 592 009d 03       		.uleb128 0x3
- 593 009e 0E       		.uleb128 0xe
- 594 009f 0B       		.uleb128 0xb
- 595 00a0 0B       		.uleb128 0xb
- 596 00a1 3A       		.uleb128 0x3a
- 597 00a2 0B       		.uleb128 0xb
- 598 00a3 3B       		.uleb128 0x3b
- 599 00a4 0B       		.uleb128 0xb
- 600 00a5 01       		.uleb128 0x1
- 601 00a6 13       		.uleb128 0x13
- 602 00a7 00       		.byte	0
- 603 00a8 00       		.byte	0
- 604 00a9 10       		.uleb128 0x10
- 605 00aa 28       		.uleb128 0x28
- 606 00ab 00       		.byte	0
- 607 00ac 03       		.uleb128 0x3
- 608 00ad 0E       		.uleb128 0xe
- 609 00ae 1C       		.uleb128 0x1c
- 610 00af 0D       		.uleb128 0xd
- 611 00b0 00       		.byte	0
- 612 00b1 00       		.byte	0
- 613 00b2 11       		.uleb128 0x11
- 614 00b3 2E       		.uleb128 0x2e
- 615 00b4 01       		.byte	0x1
- 616 00b5 3F       		.uleb128 0x3f
- 617 00b6 19       		.uleb128 0x19
- 618 00b7 03       		.uleb128 0x3
- 619 00b8 0E       		.uleb128 0xe
- 620 00b9 3A       		.uleb128 0x3a
- 621 00ba 0B       		.uleb128 0xb
- 622 00bb 3B       		.uleb128 0x3b
- 623 00bc 0B       		.uleb128 0xb
- 624 00bd 11       		.uleb128 0x11
- 625 00be 01       		.uleb128 0x1
- 626 00bf 12       		.uleb128 0x12
- 627 00c0 06       		.uleb128 0x6
- 628 00c1 40       		.uleb128 0x40
- 629 00c2 18       		.uleb128 0x18
- 630 00c3 9642     		.uleb128 0x2116
- 631 00c5 19       		.uleb128 0x19
- 632 00c6 01       		.uleb128 0x1
- 633 00c7 13       		.uleb128 0x13
- 634 00c8 00       		.byte	0
- 635 00c9 00       		.byte	0
- 636 00ca 12       		.uleb128 0x12
- 637 00cb 34       		.uleb128 0x34
- 638 00cc 00       		.byte	0
- 639 00cd 03       		.uleb128 0x3
- 640 00ce 0E       		.uleb128 0xe
- 641 00cf 3A       		.uleb128 0x3a
- 642 00d0 0B       		.uleb128 0xb
- 643 00d1 3B       		.uleb128 0x3b
- 644 00d2 0B       		.uleb128 0xb
- 645 00d3 49       		.uleb128 0x49
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccZG7i8v.s 			page 13
+ 589 0090 00       		.byte	0
+ 590 0091 0E       		.uleb128 0xe
+ 591 0092 21       		.uleb128 0x21
+ 592 0093 00       		.byte	0
+ 593 0094 49       		.uleb128 0x49
+ 594 0095 13       		.uleb128 0x13
+ 595 0096 2F       		.uleb128 0x2f
+ 596 0097 0B       		.uleb128 0xb
+ 597 0098 00       		.byte	0
+ 598 0099 00       		.byte	0
+ 599 009a 0F       		.uleb128 0xf
+ 600 009b 04       		.uleb128 0x4
+ 601 009c 01       		.byte	0x1
+ 602 009d 03       		.uleb128 0x3
+ 603 009e 0E       		.uleb128 0xe
+ 604 009f 0B       		.uleb128 0xb
+ 605 00a0 0B       		.uleb128 0xb
+ 606 00a1 3A       		.uleb128 0x3a
+ 607 00a2 0B       		.uleb128 0xb
+ 608 00a3 3B       		.uleb128 0x3b
+ 609 00a4 0B       		.uleb128 0xb
+ 610 00a5 01       		.uleb128 0x1
+ 611 00a6 13       		.uleb128 0x13
+ 612 00a7 00       		.byte	0
+ 613 00a8 00       		.byte	0
+ 614 00a9 10       		.uleb128 0x10
+ 615 00aa 28       		.uleb128 0x28
+ 616 00ab 00       		.byte	0
+ 617 00ac 03       		.uleb128 0x3
+ 618 00ad 0E       		.uleb128 0xe
+ 619 00ae 1C       		.uleb128 0x1c
+ 620 00af 0D       		.uleb128 0xd
+ 621 00b0 00       		.byte	0
+ 622 00b1 00       		.byte	0
+ 623 00b2 11       		.uleb128 0x11
+ 624 00b3 2E       		.uleb128 0x2e
+ 625 00b4 01       		.byte	0x1
+ 626 00b5 3F       		.uleb128 0x3f
+ 627 00b6 19       		.uleb128 0x19
+ 628 00b7 03       		.uleb128 0x3
+ 629 00b8 0E       		.uleb128 0xe
+ 630 00b9 3A       		.uleb128 0x3a
+ 631 00ba 0B       		.uleb128 0xb
+ 632 00bb 3B       		.uleb128 0x3b
+ 633 00bc 0B       		.uleb128 0xb
+ 634 00bd 11       		.uleb128 0x11
+ 635 00be 01       		.uleb128 0x1
+ 636 00bf 12       		.uleb128 0x12
+ 637 00c0 06       		.uleb128 0x6
+ 638 00c1 40       		.uleb128 0x40
+ 639 00c2 18       		.uleb128 0x18
+ 640 00c3 9642     		.uleb128 0x2116
+ 641 00c5 19       		.uleb128 0x19
+ 642 00c6 01       		.uleb128 0x1
+ 643 00c7 13       		.uleb128 0x13
+ 644 00c8 00       		.byte	0
+ 645 00c9 00       		.byte	0
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccqKXrBz.s 			page 13
 
 
- 646 00d4 13       		.uleb128 0x13
- 647 00d5 02       		.uleb128 0x2
- 648 00d6 18       		.uleb128 0x18
- 649 00d7 00       		.byte	0
- 650 00d8 00       		.byte	0
- 651 00d9 13       		.uleb128 0x13
- 652 00da 0B       		.uleb128 0xb
- 653 00db 01       		.byte	0x1
- 654 00dc 11       		.uleb128 0x11
- 655 00dd 01       		.uleb128 0x1
- 656 00de 12       		.uleb128 0x12
- 657 00df 06       		.uleb128 0x6
- 658 00e0 00       		.byte	0
- 659 00e1 00       		.byte	0
- 660 00e2 14       		.uleb128 0x14
- 661 00e3 34       		.uleb128 0x34
- 662 00e4 00       		.byte	0
- 663 00e5 03       		.uleb128 0x3
- 664 00e6 0E       		.uleb128 0xe
- 665 00e7 3A       		.uleb128 0x3a
- 666 00e8 0B       		.uleb128 0xb
- 667 00e9 3B       		.uleb128 0x3b
- 668 00ea 05       		.uleb128 0x5
- 669 00eb 49       		.uleb128 0x49
- 670 00ec 13       		.uleb128 0x13
- 671 00ed 3F       		.uleb128 0x3f
- 672 00ee 19       		.uleb128 0x19
- 673 00ef 3C       		.uleb128 0x3c
- 674 00f0 19       		.uleb128 0x19
- 675 00f1 00       		.byte	0
- 676 00f2 00       		.byte	0
- 677 00f3 00       		.byte	0
- 678              		.section	.debug_aranges,"",%progbits
- 679 0000 1C000000 		.4byte	0x1c
- 680 0004 0200     		.2byte	0x2
- 681 0006 00000000 		.4byte	.Ldebug_info0
- 682 000a 04       		.byte	0x4
- 683 000b 00       		.byte	0
- 684 000c 0000     		.2byte	0
- 685 000e 0000     		.2byte	0
- 686 0010 00000000 		.4byte	.LFB63
- 687 0014 5C000000 		.4byte	.LFE63-.LFB63
- 688 0018 00000000 		.4byte	0
- 689 001c 00000000 		.4byte	0
- 690              		.section	.debug_ranges,"",%progbits
- 691              	.Ldebug_ranges0:
- 692 0000 00000000 		.4byte	.LFB63
- 693 0004 5C000000 		.4byte	.LFE63
- 694 0008 00000000 		.4byte	0
- 695 000c 00000000 		.4byte	0
- 696              		.section	.debug_line,"",%progbits
- 697              	.Ldebug_line0:
- 698 0000 97010000 		.section	.debug_str,"MS",%progbits,1
- 698      02007A01 
- 698      00000201 
- 698      FB0E0D00 
- 698      01010101 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccZG7i8v.s 			page 14
+ 646 00ca 12       		.uleb128 0x12
+ 647 00cb 34       		.uleb128 0x34
+ 648 00cc 00       		.byte	0
+ 649 00cd 03       		.uleb128 0x3
+ 650 00ce 0E       		.uleb128 0xe
+ 651 00cf 3A       		.uleb128 0x3a
+ 652 00d0 0B       		.uleb128 0xb
+ 653 00d1 3B       		.uleb128 0x3b
+ 654 00d2 0B       		.uleb128 0xb
+ 655 00d3 49       		.uleb128 0x49
+ 656 00d4 13       		.uleb128 0x13
+ 657 00d5 02       		.uleb128 0x2
+ 658 00d6 18       		.uleb128 0x18
+ 659 00d7 00       		.byte	0
+ 660 00d8 00       		.byte	0
+ 661 00d9 13       		.uleb128 0x13
+ 662 00da 0B       		.uleb128 0xb
+ 663 00db 01       		.byte	0x1
+ 664 00dc 11       		.uleb128 0x11
+ 665 00dd 01       		.uleb128 0x1
+ 666 00de 12       		.uleb128 0x12
+ 667 00df 06       		.uleb128 0x6
+ 668 00e0 00       		.byte	0
+ 669 00e1 00       		.byte	0
+ 670 00e2 14       		.uleb128 0x14
+ 671 00e3 34       		.uleb128 0x34
+ 672 00e4 00       		.byte	0
+ 673 00e5 03       		.uleb128 0x3
+ 674 00e6 0E       		.uleb128 0xe
+ 675 00e7 3A       		.uleb128 0x3a
+ 676 00e8 0B       		.uleb128 0xb
+ 677 00e9 3B       		.uleb128 0x3b
+ 678 00ea 05       		.uleb128 0x5
+ 679 00eb 49       		.uleb128 0x49
+ 680 00ec 13       		.uleb128 0x13
+ 681 00ed 3F       		.uleb128 0x3f
+ 682 00ee 19       		.uleb128 0x19
+ 683 00ef 3C       		.uleb128 0x3c
+ 684 00f0 19       		.uleb128 0x19
+ 685 00f1 00       		.byte	0
+ 686 00f2 00       		.byte	0
+ 687 00f3 15       		.uleb128 0x15
+ 688 00f4 34       		.uleb128 0x34
+ 689 00f5 00       		.byte	0
+ 690 00f6 03       		.uleb128 0x3
+ 691 00f7 0E       		.uleb128 0xe
+ 692 00f8 3A       		.uleb128 0x3a
+ 693 00f9 0B       		.uleb128 0xb
+ 694 00fa 3B       		.uleb128 0x3b
+ 695 00fb 0B       		.uleb128 0xb
+ 696 00fc 49       		.uleb128 0x49
+ 697 00fd 13       		.uleb128 0x13
+ 698 00fe 3F       		.uleb128 0x3f
+ 699 00ff 19       		.uleb128 0x19
+ 700 0100 02       		.uleb128 0x2
+ 701 0101 18       		.uleb128 0x18
+ 702 0102 00       		.byte	0
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccqKXrBz.s 			page 14
 
 
- 699              	.LASF52:
- 700 0000 44495350 		.ascii	"DISPLAY1_RECEPTION\000"
- 700      4C415931 
- 700      5F524543 
- 700      45505449 
- 700      4F4E00
- 701              	.LASF43:
- 702 0013 5052494E 		.ascii	"PRINTER11_JOB\000"
- 702      54455231 
- 702      315F4A4F 
- 702      4200
- 703              	.LASF63:
- 704 0021 544F4747 		.ascii	"TOGGLE_SCREEN_AND_WRITE_TEST\000"
- 704      4C455F53 
- 704      43524545 
- 704      4E5F414E 
- 704      445F5752 
- 705              	.LASF2:
- 706 003e 73686F72 		.ascii	"short int\000"
- 706      7420696E 
- 706      7400
- 707              	.LASF60:
- 708 0048 49425554 		.ascii	"IBUTTON1_SCAN\000"
- 708      544F4E31 
- 708      5F534341 
- 708      4E00
- 709              	.LASF15:
- 710 0056 73697A65 		.ascii	"sizetype\000"
- 710      74797065 
- 710      00
- 711              	.LASF40:
- 712 005f 44495350 		.ascii	"DISPENSER_ACQUIRE_TOTALS\000"
- 712      454E5345 
- 712      525F4143 
- 712      51554952 
- 712      455F544F 
- 713              	.LASF18:
- 714 0078 5F737461 		.ascii	"_state\000"
- 714      746500
- 715              	.LASF53:
- 716 007f 44495350 		.ascii	"DISPLAY1_MESSAGE\000"
- 716      4C415931 
- 716      5F4D4553 
- 716      53414745 
- 716      00
- 717              	.LASF47:
- 718 0090 5052494E 		.ascii	"PRINTER1_GENERIC_JOB\000"
- 718      54455231 
- 718      5F47454E 
- 718      45524943 
- 718      5F4A4F42 
- 719              	.LASF31:
- 720 00a5 44495350 		.ascii	"DISPENSER_EXECUTE_CASH_TRANSACTION\000"
- 720      454E5345 
- 720      525F4558 
- 720      45435554 
- 720      455F4341 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccZG7i8v.s 			page 15
+ 703 0103 00       		.byte	0
+ 704 0104 00       		.byte	0
+ 705              		.section	.debug_aranges,"",%progbits
+ 706 0000 1C000000 		.4byte	0x1c
+ 707 0004 0200     		.2byte	0x2
+ 708 0006 00000000 		.4byte	.Ldebug_info0
+ 709 000a 04       		.byte	0x4
+ 710 000b 00       		.byte	0
+ 711 000c 0000     		.2byte	0
+ 712 000e 0000     		.2byte	0
+ 713 0010 00000000 		.4byte	.LFB63
+ 714 0014 5C000000 		.4byte	.LFE63-.LFB63
+ 715 0018 00000000 		.4byte	0
+ 716 001c 00000000 		.4byte	0
+ 717              		.section	.debug_ranges,"",%progbits
+ 718              	.Ldebug_ranges0:
+ 719 0000 00000000 		.4byte	.LFB63
+ 720 0004 5C000000 		.4byte	.LFE63
+ 721 0008 00000000 		.4byte	0
+ 722 000c 00000000 		.4byte	0
+ 723              		.section	.debug_line,"",%progbits
+ 724              	.Ldebug_line0:
+ 725 0000 B0010000 		.section	.debug_str,"MS",%progbits,1
+ 725      02009301 
+ 725      00000201 
+ 725      FB0E0D00 
+ 725      01010101 
+ 726              	.LASF52:
+ 727 0000 44495350 		.ascii	"DISPLAY1_RECEPTION\000"
+ 727      4C415931 
+ 727      5F524543 
+ 727      45505449 
+ 727      4F4E00
+ 728              	.LASF43:
+ 729 0013 5052494E 		.ascii	"PRINTER11_JOB\000"
+ 729      54455231 
+ 729      315F4A4F 
+ 729      4200
+ 730              	.LASF63:
+ 731 0021 544F4747 		.ascii	"TOGGLE_SCREEN_AND_WRITE_TEST\000"
+ 731      4C455F53 
+ 731      43524545 
+ 731      4E5F414E 
+ 731      445F5752 
+ 732              	.LASF2:
+ 733 003e 73686F72 		.ascii	"short int\000"
+ 733      7420696E 
+ 733      7400
+ 734              	.LASF60:
+ 735 0048 49425554 		.ascii	"IBUTTON1_SCAN\000"
+ 735      544F4E31 
+ 735      5F534341 
+ 735      4E00
+ 736              	.LASF15:
+ 737 0056 73697A65 		.ascii	"sizetype\000"
+ 737      74797065 
+ 737      00
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccqKXrBz.s 			page 15
 
 
- 721              	.LASF68:
- 722 00c8 2E5C6942 		.ascii	".\\iButtonSink.c\000"
- 722      7574746F 
- 722      6E53696E 
- 722      6B2E6300 
- 723              	.LASF66:
- 724 00d8 696E6465 		.ascii	"index\000"
- 724      7800
- 725              	.LASF57:
- 726 00de 44495350 		.ascii	"DISPLAY2_MESSAGE\000"
- 726      4C415932 
- 726      5F4D4553 
- 726      53414745 
- 726      00
- 727              	.LASF11:
- 728 00ef 75696E74 		.ascii	"uint8\000"
- 728      3800
- 729              	.LASF54:
- 730 00f5 44495350 		.ascii	"DISPLAY1_UPDATE_DATETIME\000"
- 730      4C415931 
- 730      5F555044 
- 730      4154455F 
- 730      44415445 
- 731              	.LASF59:
- 732 010e 44495350 		.ascii	"DISPLAY2_ANIMATE_HOME\000"
- 732      4C415932 
- 732      5F414E49 
- 732      4D415445 
- 732      5F484F4D 
- 733              	.LASF48:
- 734 0124 5052494E 		.ascii	"PRINTER2_GENERIC_JOB\000"
- 734      54455232 
- 734      5F47454E 
- 734      45524943 
- 734      5F4A4F42 
- 735              	.LASF72:
- 736 0139 69427574 		.ascii	"iButtonSinkRegistration\000"
- 736      746F6E53 
- 736      696E6B52 
- 736      65676973 
- 736      74726174 
- 737              	.LASF12:
- 738 0151 666C6F61 		.ascii	"float\000"
- 738      7400
- 739              	.LASF6:
- 740 0157 6C6F6E67 		.ascii	"long long int\000"
- 740      206C6F6E 
- 740      6720696E 
- 740      7400
- 741              	.LASF67:
- 742 0165 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 742      4320342E 
- 742      392E3320 
- 742      32303135 
- 742      30333033 
- 743 0198 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
- 743      20726576 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccZG7i8v.s 			page 16
+ 738              	.LASF40:
+ 739 005f 44495350 		.ascii	"DISPENSER_ACQUIRE_TOTALS\000"
+ 739      454E5345 
+ 739      525F4143 
+ 739      51554952 
+ 739      455F544F 
+ 740              	.LASF18:
+ 741 0078 5F737461 		.ascii	"_state\000"
+ 741      746500
+ 742              	.LASF53:
+ 743 007f 44495350 		.ascii	"DISPLAY1_MESSAGE\000"
+ 743      4C415931 
+ 743      5F4D4553 
+ 743      53414745 
+ 743      00
+ 744              	.LASF47:
+ 745 0090 5052494E 		.ascii	"PRINTER1_GENERIC_JOB\000"
+ 745      54455231 
+ 745      5F47454E 
+ 745      45524943 
+ 745      5F4A4F42 
+ 746              	.LASF31:
+ 747 00a5 44495350 		.ascii	"DISPENSER_EXECUTE_CASH_TRANSACTION\000"
+ 747      454E5345 
+ 747      525F4558 
+ 747      45435554 
+ 747      455F4341 
+ 748              	.LASF70:
+ 749 00c8 2E5C6942 		.ascii	".\\iButtonSink.c\000"
+ 749      7574746F 
+ 749      6E53696E 
+ 749      6B2E6300 
+ 750              	.LASF66:
+ 751 00d8 696E6465 		.ascii	"index\000"
+ 751      7800
+ 752              	.LASF57:
+ 753 00de 44495350 		.ascii	"DISPLAY2_MESSAGE\000"
+ 753      4C415932 
+ 753      5F4D4553 
+ 753      53414745 
+ 753      00
+ 754              	.LASF11:
+ 755 00ef 75696E74 		.ascii	"uint8\000"
+ 755      3800
+ 756              	.LASF54:
+ 757 00f5 44495350 		.ascii	"DISPLAY1_UPDATE_DATETIME\000"
+ 757      4C415931 
+ 757      5F555044 
+ 757      4154455F 
+ 757      44415445 
+ 758              	.LASF59:
+ 759 010e 44495350 		.ascii	"DISPLAY2_ANIMATE_HOME\000"
+ 759      4C415932 
+ 759      5F414E49 
+ 759      4D415445 
+ 759      5F484F4D 
+ 760              	.LASF48:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccqKXrBz.s 			page 16
 
 
- 743      6973696F 
- 743      6E203232 
- 743      31323230 
- 744 01cb 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
- 744      66756E63 
- 744      74696F6E 
- 744      2D736563 
- 744      74696F6E 
- 745              	.LASF65:
- 746 01f3 70737562 		.ascii	"psubscriber\000"
- 746      73637269 
- 746      62657200 
- 747              	.LASF29:
- 748 01ff 44495350 		.ascii	"DISPENSER_ACQUIRE_PUMP_STATE\000"
- 748      454E5345 
- 748      525F4143 
- 748      51554952 
- 748      455F5055 
- 749              	.LASF44:
- 750 021c 5052494E 		.ascii	"PRINTER12_JOB\000"
- 750      54455231 
- 750      325F4A4F 
- 750      4200
- 751              	.LASF55:
- 752 022a 44495350 		.ascii	"DISPLAY1_ANIMATE_HOME\000"
- 752      4C415931 
- 752      5F414E49 
- 752      4D415445 
- 752      5F484F4D 
- 753              	.LASF26:
- 754 0240 53494E4B 		.ascii	"SINK_RELEASE_BY_ID\000"
- 754      5F52454C 
- 754      45415345 
- 754      5F42595F 
- 754      494400
- 755              	.LASF38:
- 756 0253 44495350 		.ascii	"DISPENSER_RESTORE_PRICES\000"
- 756      454E5345 
- 756      525F5245 
- 756      53544F52 
- 756      455F5052 
- 757              	.LASF58:
- 758 026c 44495350 		.ascii	"DISPLAY2_UPDATE_DATETIME\000"
- 758      4C415932 
- 758      5F555044 
- 758      4154455F 
- 758      44415445 
- 759              	.LASF16:
- 760 0285 6C6F6E67 		.ascii	"long double\000"
- 760      20646F75 
- 760      626C6500 
- 761              	.LASF1:
- 762 0291 756E7369 		.ascii	"unsigned char\000"
- 762      676E6564 
- 762      20636861 
- 762      7200
- 763              	.LASF71:
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccZG7i8v.s 			page 17
+ 761 0124 5052494E 		.ascii	"PRINTER2_GENERIC_JOB\000"
+ 761      54455232 
+ 761      5F47454E 
+ 761      45524943 
+ 761      5F4A4F42 
+ 762              	.LASF74:
+ 763 0139 69427574 		.ascii	"iButtonSinkRegistration\000"
+ 763      746F6E53 
+ 763      696E6B52 
+ 763      65676973 
+ 763      74726174 
+ 764              	.LASF12:
+ 765 0151 666C6F61 		.ascii	"float\000"
+ 765      7400
+ 766              	.LASF6:
+ 767 0157 6C6F6E67 		.ascii	"long long int\000"
+ 767      206C6F6E 
+ 767      6720696E 
+ 767      7400
+ 768              	.LASF69:
+ 769 0165 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 769      4320342E 
+ 769      392E3320 
+ 769      32303135 
+ 769      30333033 
+ 770 0198 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 770      20726576 
+ 770      6973696F 
+ 770      6E203232 
+ 770      31323230 
+ 771 01cb 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 771      66756E63 
+ 771      74696F6E 
+ 771      2D736563 
+ 771      74696F6E 
+ 772              	.LASF65:
+ 773 01f3 70737562 		.ascii	"psubscriber\000"
+ 773      73637269 
+ 773      62657200 
+ 774              	.LASF29:
+ 775 01ff 44495350 		.ascii	"DISPENSER_ACQUIRE_PUMP_STATE\000"
+ 775      454E5345 
+ 775      525F4143 
+ 775      51554952 
+ 775      455F5055 
+ 776              	.LASF44:
+ 777 021c 5052494E 		.ascii	"PRINTER12_JOB\000"
+ 777      54455231 
+ 777      325F4A4F 
+ 777      4200
+ 778              	.LASF55:
+ 779 022a 44495350 		.ascii	"DISPLAY1_ANIMATE_HOME\000"
+ 779      4C415931 
+ 779      5F414E49 
+ 779      4D415445 
+ 779      5F484F4D 
+ 780              	.LASF26:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccqKXrBz.s 			page 17
 
 
- 764 029f 5F53494E 		.ascii	"_SINK_OBSERVABLES_\000"
- 764      4B5F4F42 
- 764      53455256 
- 764      41424C45 
- 764      535F00
- 765              	.LASF37:
- 766 02b2 44495350 		.ascii	"DISPENSER_CONFIGURE_PRICES\000"
- 766      454E5345 
- 766      525F434F 
- 766      4E464947 
- 766      5552455F 
- 767              	.LASF0:
- 768 02cd 7369676E 		.ascii	"signed char\000"
- 768      65642063 
- 768      68617200 
- 769              	.LASF10:
- 770 02d9 696E7433 		.ascii	"int32_t\000"
- 770      325F7400 
- 771              	.LASF7:
- 772 02e1 6C6F6E67 		.ascii	"long long unsigned int\000"
- 772      206C6F6E 
- 772      6720756E 
- 772      7369676E 
- 772      65642069 
- 773              	.LASF45:
- 774 02f8 5052494E 		.ascii	"PRINTER21_JOB\000"
- 774      54455232 
- 774      315F4A4F 
- 774      4200
- 775              	.LASF8:
- 776 0306 756E7369 		.ascii	"unsigned int\000"
- 776      676E6564 
- 776      20696E74 
- 776      00
- 777              	.LASF33:
- 778 0313 44495350 		.ascii	"DISPENSER_UNLOCK_EOT_PUMPS\000"
- 778      454E5345 
- 778      525F554E 
- 778      4C4F434B 
- 778      5F454F54 
- 779              	.LASF30:
- 780 032e 44495350 		.ascii	"DISPENSER_ACQUIRE_PUMP_HOSE\000"
- 780      454E5345 
- 780      525F4143 
- 780      51554952 
- 780      455F5055 
- 781              	.LASF70:
- 782 034a 5F53494E 		.ascii	"_SINK_SUBSCRIBER_\000"
- 782      4B5F5355 
- 782      42534352 
- 782      49424552 
- 782      5F00
- 783              	.LASF3:
- 784 035c 73686F72 		.ascii	"short unsigned int\000"
- 784      7420756E 
- 784      7369676E 
- 784      65642069 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccZG7i8v.s 			page 18
+ 781 0240 53494E4B 		.ascii	"SINK_RELEASE_BY_ID\000"
+ 781      5F52454C 
+ 781      45415345 
+ 781      5F42595F 
+ 781      494400
+ 782              	.LASF38:
+ 783 0253 44495350 		.ascii	"DISPENSER_RESTORE_PRICES\000"
+ 783      454E5345 
+ 783      525F5245 
+ 783      53544F52 
+ 783      455F5052 
+ 784              	.LASF58:
+ 785 026c 44495350 		.ascii	"DISPLAY2_UPDATE_DATETIME\000"
+ 785      4C415932 
+ 785      5F555044 
+ 785      4154455F 
+ 785      44415445 
+ 786              	.LASF16:
+ 787 0285 6C6F6E67 		.ascii	"long double\000"
+ 787      20646F75 
+ 787      626C6500 
+ 788              	.LASF1:
+ 789 0291 756E7369 		.ascii	"unsigned char\000"
+ 789      676E6564 
+ 789      20636861 
+ 789      7200
+ 790              	.LASF73:
+ 791 029f 5F53494E 		.ascii	"_SINK_OBSERVABLES_\000"
+ 791      4B5F4F42 
+ 791      53455256 
+ 791      41424C45 
+ 791      535F00
+ 792              	.LASF37:
+ 793 02b2 44495350 		.ascii	"DISPENSER_CONFIGURE_PRICES\000"
+ 793      454E5345 
+ 793      525F434F 
+ 793      4E464947 
+ 793      5552455F 
+ 794              	.LASF0:
+ 795 02cd 7369676E 		.ascii	"signed char\000"
+ 795      65642063 
+ 795      68617200 
+ 796              	.LASF10:
+ 797 02d9 696E7433 		.ascii	"int32_t\000"
+ 797      325F7400 
+ 798              	.LASF7:
+ 799 02e1 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 799      206C6F6E 
+ 799      6720756E 
+ 799      7369676E 
+ 799      65642069 
+ 800              	.LASF45:
+ 801 02f8 5052494E 		.ascii	"PRINTER21_JOB\000"
+ 801      54455232 
+ 801      315F4A4F 
+ 801      4200
+ 802              	.LASF8:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccqKXrBz.s 			page 18
 
 
- 784      6E7400
- 785              	.LASF23:
- 786 036f 55415254 		.ascii	"UART_RF_TEST\000"
- 786      5F52465F 
- 786      54455354 
- 786      00
- 787              	.LASF14:
- 788 037c 63686172 		.ascii	"char\000"
- 788      00
- 789              	.LASF34:
- 790 0381 44495350 		.ascii	"DISPENSER_LOAD_EEPROM_SETTINGS\000"
- 790      454E5345 
- 790      525F4C4F 
- 790      41445F45 
- 790      4550524F 
- 791              	.LASF25:
- 792 03a0 53494E4B 		.ascii	"SINK_UPDATE_COUNTERS\000"
- 792      5F555044 
- 792      4154455F 
- 792      434F554E 
- 792      54455253 
- 793              	.LASF50:
- 794 03b5 5052494E 		.ascii	"PRINTER2_GENERIC_JOB_LOGO\000"
- 794      54455232 
- 794      5F47454E 
- 794      45524943 
- 794      5F4A4F42 
- 795              	.LASF35:
- 796 03cf 44495350 		.ascii	"DISPENSER_ENUMERATE_VISIBLE_PUMPS\000"
- 796      454E5345 
- 796      525F454E 
- 796      554D4552 
- 796      4154455F 
- 797              	.LASF69:
- 798 03f1 433A5C54 		.ascii	"C:\\TeamInsepet\\NSX-Prime\\Hardware\\CorEx-MUX-Ker"
- 798      65616D49 
- 798      6E736570 
- 798      65745C4E 
- 798      53582D50 
- 799 0420 6E656C2D 		.ascii	"nel-Enhanced\\Workspace01\\CorEx-Mux-Kernel.cydsn\000"
- 799      456E6861 
- 799      6E636564 
- 799      5C576F72 
- 799      6B737061 
- 800              	.LASF17:
- 801 0450 5F426F6F 		.ascii	"_Bool\000"
- 801      6C00
- 802              	.LASF21:
- 803 0456 5053494E 		.ascii	"PSINKSUBSCRIBERPTR\000"
- 803      4B535542 
- 803      53435249 
- 803      42455250 
- 803      545200
- 804              	.LASF36:
- 805 0469 44495350 		.ascii	"DISPENSER_ACQUIRE_CONFIGURATION_INFORMATION\000"
+ 803 0306 756E7369 		.ascii	"unsigned int\000"
+ 803      676E6564 
+ 803      20696E74 
+ 803      00
+ 804              	.LASF33:
+ 805 0313 44495350 		.ascii	"DISPENSER_UNLOCK_EOT_PUMPS\000"
  805      454E5345 
- 805      525F4143 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccZG7i8v.s 			page 19
+ 805      525F554E 
+ 805      4C4F434B 
+ 805      5F454F54 
+ 806              	.LASF71:
+ 807 032e 433A5C55 		.ascii	"C:\\Users\\Lenovo\\Documents\\GitHub\\CorEx-MUX-Ker"
+ 807      73657273 
+ 807      5C4C656E 
+ 807      6F766F5C 
+ 807      446F6375 
+ 808 035c 6E656C2D 		.ascii	"nel-Enhanced\\Workspace01\\CorEx-Mux-Kernel.cydsn\000"
+ 808      456E6861 
+ 808      6E636564 
+ 808      5C576F72 
+ 808      6B737061 
+ 809              	.LASF30:
+ 810 038c 44495350 		.ascii	"DISPENSER_ACQUIRE_PUMP_HOSE\000"
+ 810      454E5345 
+ 810      525F4143 
+ 810      51554952 
+ 810      455F5055 
+ 811              	.LASF72:
+ 812 03a8 5F53494E 		.ascii	"_SINK_SUBSCRIBER_\000"
+ 812      4B5F5355 
+ 812      42534352 
+ 812      49424552 
+ 812      5F00
+ 813              	.LASF68:
+ 814 03ba 486F7365 		.ascii	"HoseDispenser\000"
+ 814      44697370 
+ 814      656E7365 
+ 814      7200
+ 815              	.LASF23:
+ 816 03c8 55415254 		.ascii	"UART_RF_TEST\000"
+ 816      5F52465F 
+ 816      54455354 
+ 816      00
+ 817              	.LASF14:
+ 818 03d5 63686172 		.ascii	"char\000"
+ 818      00
+ 819              	.LASF34:
+ 820 03da 44495350 		.ascii	"DISPENSER_LOAD_EEPROM_SETTINGS\000"
+ 820      454E5345 
+ 820      525F4C4F 
+ 820      41445F45 
+ 820      4550524F 
+ 821              	.LASF25:
+ 822 03f9 53494E4B 		.ascii	"SINK_UPDATE_COUNTERS\000"
+ 822      5F555044 
+ 822      4154455F 
+ 822      434F554E 
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccqKXrBz.s 			page 19
 
 
- 805      51554952 
- 805      455F434F 
- 806              	.LASF49:
- 807 0495 5052494E 		.ascii	"PRINTER1_GENERIC_JOB_LOGO\000"
- 807      54455231 
- 807      5F47454E 
- 807      45524943 
- 807      5F4A4F42 
- 808              	.LASF22:
- 809 04af 55415254 		.ascii	"UART_RF_RECEPTION\000"
- 809      5F52465F 
- 809      52454345 
- 809      5054494F 
- 809      4E00
- 810              	.LASF5:
- 811 04c1 6C6F6E67 		.ascii	"long unsigned int\000"
- 811      20756E73 
- 811      69676E65 
- 811      6420696E 
- 811      7400
- 812              	.LASF13:
- 813 04d3 646F7562 		.ascii	"double\000"
- 813      6C6500
- 814              	.LASF64:
- 815 04da 57415443 		.ascii	"WATCHDOG_STARTUP\000"
- 815      48444F47 
- 815      5F535441 
- 815      52545550 
- 815      00
- 816              	.LASF51:
- 817 04eb 44495350 		.ascii	"DISPLAY_UPDATE_PUMP_STATE\000"
- 817      4C41595F 
- 817      55504441 
- 817      54455F50 
- 817      554D505F 
- 818              	.LASF42:
- 819 0505 44495350 		.ascii	"DISPENSER_PUMP_BEEP_WARNING\000"
- 819      454E5345 
- 819      525F5055 
- 819      4D505F42 
- 819      4545505F 
- 820              	.LASF61:
- 821 0521 49425554 		.ascii	"IBUTTON2_SCAN\000"
- 821      544F4E32 
- 821      5F534341 
- 821      4E00
- 822              	.LASF9:
- 823 052f 5F5F696E 		.ascii	"__int32_t\000"
- 823      7433325F 
- 823      7400
- 824              	.LASF32:
- 825 0539 44495350 		.ascii	"DISPENSER_EXECUTE_CREDIT_TRANSACTION\000"
- 825      454E5345 
- 825      525F4558 
- 825      45435554 
- 825      455F4352 
- 826              	.LASF41:
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccZG7i8v.s 			page 20
+ 822      54455253 
+ 823              	.LASF50:
+ 824 040e 5052494E 		.ascii	"PRINTER2_GENERIC_JOB_LOGO\000"
+ 824      54455232 
+ 824      5F47454E 
+ 824      45524943 
+ 824      5F4A4F42 
+ 825              	.LASF35:
+ 826 0428 44495350 		.ascii	"DISPENSER_ENUMERATE_VISIBLE_PUMPS\000"
+ 826      454E5345 
+ 826      525F454E 
+ 826      554D4552 
+ 826      4154455F 
+ 827              	.LASF17:
+ 828 044a 5F426F6F 		.ascii	"_Bool\000"
+ 828      6C00
+ 829              	.LASF21:
+ 830 0450 5053494E 		.ascii	"PSINKSUBSCRIBERPTR\000"
+ 830      4B535542 
+ 830      53435249 
+ 830      42455250 
+ 830      545200
+ 831              	.LASF36:
+ 832 0463 44495350 		.ascii	"DISPENSER_ACQUIRE_CONFIGURATION_INFORMATION\000"
+ 832      454E5345 
+ 832      525F4143 
+ 832      51554952 
+ 832      455F434F 
+ 833              	.LASF49:
+ 834 048f 5052494E 		.ascii	"PRINTER1_GENERIC_JOB_LOGO\000"
+ 834      54455231 
+ 834      5F47454E 
+ 834      45524943 
+ 834      5F4A4F42 
+ 835              	.LASF3:
+ 836 04a9 73686F72 		.ascii	"short unsigned int\000"
+ 836      7420756E 
+ 836      7369676E 
+ 836      65642069 
+ 836      6E7400
+ 837              	.LASF22:
+ 838 04bc 55415254 		.ascii	"UART_RF_RECEPTION\000"
+ 838      5F52465F 
+ 838      52454345 
+ 838      5054494F 
+ 838      4E00
+ 839              	.LASF5:
+ 840 04ce 6C6F6E67 		.ascii	"long unsigned int\000"
+ 840      20756E73 
+ 840      69676E65 
+ 840      6420696E 
+ 840      7400
+ 841              	.LASF13:
+ 842 04e0 646F7562 		.ascii	"double\000"
+ 842      6C6500
+ 843              	.LASF64:
+ 844 04e7 57415443 		.ascii	"WATCHDOG_STARTUP\000"
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccqKXrBz.s 			page 20
 
 
- 827 055e 44495350 		.ascii	"DISPENSER_PUMP_HANDLER\000"
- 827      454E5345 
- 827      525F5055 
- 827      4D505F48 
- 827      414E444C 
- 828              	.LASF27:
- 829 0575 53494E4B 		.ascii	"SINK_RELEASE_BY_PTR\000"
- 829      5F52454C 
- 829      45415345 
- 829      5F42595F 
- 829      50545200 
- 830              	.LASF46:
- 831 0589 5052494E 		.ascii	"PRINTER22_JOB\000"
- 831      54455232 
- 831      325F4A4F 
- 831      4200
- 832              	.LASF28:
- 833 0597 44495350 		.ascii	"DISPENSER_UPDATE_PUMP_TRANSACTION_TIMEOUTS\000"
- 833      454E5345 
- 833      525F5550 
- 833      44415445 
- 833      5F50554D 
- 834              	.LASF4:
- 835 05c2 6C6F6E67 		.ascii	"long int\000"
- 835      20696E74 
- 835      00
- 836              	.LASF73:
- 837 05cb 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 837      52784275 
- 837      66666572 
- 837      00
- 838              	.LASF24:
- 839 05d8 55415254 		.ascii	"UART_RF_AUTONOMOUS_MONITOR\000"
- 839      5F52465F 
- 839      4155544F 
- 839      4E4F4D4F 
- 839      55535F4D 
- 840              	.LASF56:
- 841 05f3 44495350 		.ascii	"DISPLAY2_RECEPTION\000"
- 841      4C415932 
- 841      5F524543 
- 841      45505449 
- 841      4F4E00
- 842              	.LASF19:
- 843 0606 5F617272 		.ascii	"_arrmsgid\000"
- 843      6D736769 
- 843      6400
- 844              	.LASF62:
- 845 0610 474C4F42 		.ascii	"GLOBAL_TICK_NOTIFICATION\000"
- 845      414C5F54 
- 845      49434B5F 
- 845      4E4F5449 
- 845      46494341 
- 846              	.LASF39:
- 847 0629 44495350 		.ascii	"DISPENSER_CONFIGURE_SINGLE_PRICE\000"
- 847      454E5345 
- 847      525F434F 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\ccZG7i8v.s 			page 21
+ 844      48444F47 
+ 844      5F535441 
+ 844      52545550 
+ 844      00
+ 845              	.LASF51:
+ 846 04f8 44495350 		.ascii	"DISPLAY_UPDATE_PUMP_STATE\000"
+ 846      4C41595F 
+ 846      55504441 
+ 846      54455F50 
+ 846      554D505F 
+ 847              	.LASF42:
+ 848 0512 44495350 		.ascii	"DISPENSER_PUMP_BEEP_WARNING\000"
+ 848      454E5345 
+ 848      525F5055 
+ 848      4D505F42 
+ 848      4545505F 
+ 849              	.LASF61:
+ 850 052e 49425554 		.ascii	"IBUTTON2_SCAN\000"
+ 850      544F4E32 
+ 850      5F534341 
+ 850      4E00
+ 851              	.LASF9:
+ 852 053c 5F5F696E 		.ascii	"__int32_t\000"
+ 852      7433325F 
+ 852      7400
+ 853              	.LASF32:
+ 854 0546 44495350 		.ascii	"DISPENSER_EXECUTE_CREDIT_TRANSACTION\000"
+ 854      454E5345 
+ 854      525F4558 
+ 854      45435554 
+ 854      455F4352 
+ 855              	.LASF41:
+ 856 056b 44495350 		.ascii	"DISPENSER_PUMP_HANDLER\000"
+ 856      454E5345 
+ 856      525F5055 
+ 856      4D505F48 
+ 856      414E444C 
+ 857              	.LASF27:
+ 858 0582 53494E4B 		.ascii	"SINK_RELEASE_BY_PTR\000"
+ 858      5F52454C 
+ 858      45415345 
+ 858      5F42595F 
+ 858      50545200 
+ 859              	.LASF46:
+ 860 0596 5052494E 		.ascii	"PRINTER22_JOB\000"
+ 860      54455232 
+ 860      325F4A4F 
+ 860      4200
+ 861              	.LASF28:
+ 862 05a4 44495350 		.ascii	"DISPENSER_UPDATE_PUMP_TRANSACTION_TIMEOUTS\000"
+ 862      454E5345 
+ 862      525F5550 
+ 862      44415445 
+ 862      5F50554D 
+ 863              	.LASF4:
+ 864 05cf 6C6F6E67 		.ascii	"long int\000"
+ 864      20696E74 
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccqKXrBz.s 			page 21
 
 
- 847      4E464947 
- 847      5552455F 
- 848              	.LASF20:
- 849 064a 43616C6C 		.ascii	"Callback\000"
- 849      6261636B 
- 849      00
- 850              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
+ 864      00
+ 865              	.LASF67:
+ 866 05d8 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 866      52784275 
+ 866      66666572 
+ 866      00
+ 867              	.LASF24:
+ 868 05e5 55415254 		.ascii	"UART_RF_AUTONOMOUS_MONITOR\000"
+ 868      5F52465F 
+ 868      4155544F 
+ 868      4E4F4D4F 
+ 868      55535F4D 
+ 869              	.LASF56:
+ 870 0600 44495350 		.ascii	"DISPLAY2_RECEPTION\000"
+ 870      4C415932 
+ 870      5F524543 
+ 870      45505449 
+ 870      4F4E00
+ 871              	.LASF19:
+ 872 0613 5F617272 		.ascii	"_arrmsgid\000"
+ 872      6D736769 
+ 872      6400
+ 873              	.LASF62:
+ 874 061d 474C4F42 		.ascii	"GLOBAL_TICK_NOTIFICATION\000"
+ 874      414C5F54 
+ 874      49434B5F 
+ 874      4E4F5449 
+ 874      46494341 
+ 875              	.LASF39:
+ 876 0636 44495350 		.ascii	"DISPENSER_CONFIGURE_SINGLE_PRICE\000"
+ 876      454E5345 
+ 876      525F434F 
+ 876      4E464947 
+ 876      5552455F 
+ 877              	.LASF20:
+ 878 0657 43616C6C 		.ascii	"Callback\000"
+ 878      6261636B 
+ 878      00
+ 879              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

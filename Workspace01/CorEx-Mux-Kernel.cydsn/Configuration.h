@@ -59,9 +59,9 @@
 //#define  _CLIENT_GULF_
 //#define  _CLIENT_MINEROIL_
 //#define  _CLIENT_MOBIL_
-//#define  _CLIENT_PETROBRAS_
+#define  _CLIENT_PETROBRAS_
 //#define  _CLIENT_PLUS_
-#define  _CLIENT_TERPEL_
+//#define  _CLIENT_TERPEL_
 //#define  _CLIENT_TEXACO_
 //#define  _CLIENT_ZEUS_
 //#define  _CLIENT_PETROMIL_

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc2sfagC.s 			page 1
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfBpJLK.s 			page 1
 
 
    1              		.syntax unified
@@ -18,15 +18,16 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc2sfagC.s 			page 1
   15              		.text
   16              	.Ltext0:
   17              		.cfi_sections	.debug_frame
-  18              		.section	.text.main,"ax",%progbits
-  19              		.align	2
-  20              		.global	main
-  21              		.thumb
-  22              		.thumb_func
-  23              		.type	main, %function
-  24              	main:
-  25              	.LFB63:
-  26              		.file 1 ".\\main.c"
+  18              		.comm	HoseDispenser,1,1
+  19              		.section	.text.main,"ax",%progbits
+  20              		.align	2
+  21              		.global	main
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	main, %function
+  25              	main:
+  26              	.LFB63:
+  27              		.file 1 ".\\main.c"
    1:.\main.c      **** /* ========================================
    2:.\main.c      ****  *
    3:.\main.c      ****  * Copyright INSEPET SISTEMAS, 2016
@@ -57,10 +58,10 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc2sfagC.s 			page 1
   28:.\main.c      **** - Global variables and types are prefixed with "_g_" to imply that are "Global"
   29:.\main.c      **** 
   30:.\main.c      **** There is a global loop handler that invokes all of the handled methods in the order they where push
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfBpJLK.s 			page 2
+
+
   31:.\main.c      **** onto the Loop Queue. Take this into account in order to avoid weird behaviors.
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc2sfagC.s 			page 2
-
-
   32:.\main.c      **** 
   33:.\main.c      **** As an example on how to push a method that will be running in the loop, one would make the followin
   34:.\main.c      **** 
@@ -75,28 +76,28 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc2sfagC.s 			page 1
   43:.\main.c      **** 
   44:.\main.c      **** int main()
   45:.\main.c      **** {    
-  27              		.loc 1 45 0
-  28              		.cfi_startproc
-  29              		@ args = 0, pretend = 0, frame = 0
-  30              		@ frame_needed = 1, uses_anonymous_args = 0
-  31 0000 80B5     		push	{r7, lr}
-  32              		.cfi_def_cfa_offset 8
-  33              		.cfi_offset 7, -8
-  34              		.cfi_offset 14, -4
-  35 0002 00AF     		add	r7, sp, #0
-  36              		.cfi_def_cfa_register 7
+  28              		.loc 1 45 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 00AF     		add	r7, sp, #0
+  37              		.cfi_def_cfa_register 7
   46:.\main.c      ****     CyGlobalIntEnable; /* Enable global interrupts. */
-  37              		.loc 1 46 0
-  38              	@ 46 ".\main.c" 1
-  39 0004 62B6     		CPSIE   i
-  40              	@ 0 "" 2
+  38              		.loc 1 46 0
+  39              	@ 46 ".\main.c" 1
+  40 0004 62B6     		CPSIE   i
+  41              	@ 0 "" 2
   47:.\main.c      ****     
   48:.\main.c      ****     //Setting the bus clock freq as reference for CyDelay functions
   49:.\main.c      ****     CyDelayFreq(0u);
-  41              		.loc 1 49 0
-  42              		.thumb
-  43 0006 0020     		movs	r0, #0
-  44 0008 FFF7FEFF 		bl	CyDelayFreq
+  42              		.loc 1 49 0
+  43              		.thumb
+  44 0006 0020     		movs	r0, #0
+  45 0008 FFF7FEFF 		bl	CyDelayFreq
   50:.\main.c      ****     /* 
   51:.\main.c      ****     Place your initialization/startup code here (e.g. MyInst_Start()) 
   52:.\main.c      ****     ******************************************************************
@@ -106,389 +107,445 @@ ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc2sfagC.s 			page 1
   56:.\main.c      ****         
   57:.\main.c      ****     //First initialization delay
   58:.\main.c      ****     INITITALIZATION_DELAY0;
-  45              		.loc 1 58 0
-  46 000c 4FF47A70 		mov	r0, #1000
-  47 0010 FFF7FEFF 		bl	CyDelay
+  46              		.loc 1 58 0
+  47 000c 4FF47A70 		mov	r0, #1000
+  48 0010 FFF7FEFF 		bl	CyDelay
   59:.\main.c      ****     //All of the initializers all invoked from the file "Initializers.c" located in the "Framework"
   60:.\main.c      ****     GlobalInitializer();
-  48              		.loc 1 60 0
-  49 0014 FFF7FEFF 		bl	GlobalInitializer
+  49              		.loc 1 60 0
+  50 0014 FFF7FEFF 		bl	GlobalInitializer
   61:.\main.c      ****     //Second initialization delay
   62:.\main.c      ****     INITITALIZATION_DELAY1;
-  50              		.loc 1 62 0
-  51 0018 4FF4FA70 		mov	r0, #500
-  52 001c FFF7FEFF 		bl	CyDelay
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc2sfagC.s 			page 3
+  51              		.loc 1 62 0
+  52 0018 4FF4FA70 		mov	r0, #500
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfBpJLK.s 			page 3
 
 
-  53              	.L2:
+  53 001c FFF7FEFF 		bl	CyDelay
+  54              	.L2:
   63:.\main.c      ****     //Infinite loop over the whole registered handlers
   64:.\main.c      ****     LOOP_FOREVER;
-  54              		.loc 1 64 0 discriminator 1
-  55 0020 FFF7FEFF 		bl	loop_invoke
-  56 0024 FCE7     		b	.L2
-  57              		.cfi_endproc
-  58              	.LFE63:
-  59              		.size	main, .-main
-  60 0026 00BF     		.text
-  61              	.Letext0:
-  62              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
-  63              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
-  64              		.file 4 "Generated_Source\\PSoC5/core_cm3.h"
-  65              		.section	.debug_info,"",%progbits
-  66              	.Ldebug_info0:
-  67 0000 C7000000 		.4byte	0xc7
-  68 0004 0400     		.2byte	0x4
-  69 0006 00000000 		.4byte	.Ldebug_abbrev0
-  70 000a 04       		.byte	0x4
-  71 000b 01       		.uleb128 0x1
-  72 000c D7000000 		.4byte	.LASF16
-  73 0010 01       		.byte	0x1
-  74 0011 65010000 		.4byte	.LASF17
-  75 0015 5C000000 		.4byte	.LASF18
-  76 0019 00000000 		.4byte	.Ldebug_ranges0+0
-  77 001d 00000000 		.4byte	0
-  78 0021 00000000 		.4byte	.Ldebug_line0
-  79 0025 02       		.uleb128 0x2
-  80 0026 01       		.byte	0x1
-  81 0027 06       		.byte	0x6
-  82 0028 82010000 		.4byte	.LASF0
-  83 002c 02       		.uleb128 0x2
-  84 002d 01       		.byte	0x1
-  85 002e 08       		.byte	0x8
-  86 002f BB000000 		.4byte	.LASF1
-  87 0033 02       		.uleb128 0x2
-  88 0034 02       		.byte	0x2
-  89 0035 05       		.byte	0x5
-  90 0036 AA010000 		.4byte	.LASF2
-  91 003a 02       		.uleb128 0x2
-  92 003b 02       		.byte	0x2
-  93 003c 07       		.byte	0x7
-  94 003d 0E000000 		.4byte	.LASF3
-  95 0041 03       		.uleb128 0x3
-  96 0042 9A010000 		.4byte	.LASF9
-  97 0046 02       		.byte	0x2
-  98 0047 3F       		.byte	0x3f
-  99 0048 4C000000 		.4byte	0x4c
- 100 004c 02       		.uleb128 0x2
- 101 004d 04       		.byte	0x4
- 102 004e 05       		.byte	0x5
- 103 004f CE000000 		.4byte	.LASF4
- 104 0053 02       		.uleb128 0x2
- 105 0054 04       		.byte	0x4
- 106 0055 07       		.byte	0x7
- 107 0056 33000000 		.4byte	.LASF5
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc2sfagC.s 			page 4
+  55              		.loc 1 64 0 discriminator 1
+  56 0020 FFF7FEFF 		bl	loop_invoke
+  57 0024 FCE7     		b	.L2
+  58              		.cfi_endproc
+  59              	.LFE63:
+  60              		.size	main, .-main
+  61 0026 00BF     		.text
+  62              	.Letext0:
+  63              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+  64              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+  65              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+  66              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+  67              		.file 6 ".\\GlobalDefinitions.h"
+  68              		.section	.debug_info,"",%progbits
+  69              	.Ldebug_info0:
+  70 0000 E4000000 		.4byte	0xe4
+  71 0004 0400     		.2byte	0x4
+  72 0006 00000000 		.4byte	.Ldebug_abbrev0
+  73 000a 04       		.byte	0x4
+  74 000b 01       		.uleb128 0x1
+  75 000c 8C000000 		.4byte	.LASF19
+  76 0010 01       		.byte	0x1
+  77 0011 1A010000 		.4byte	.LASF20
+  78 0015 23010000 		.4byte	.LASF21
+  79 0019 00000000 		.4byte	.Ldebug_ranges0+0
+  80 001d 00000000 		.4byte	0
+  81 0021 00000000 		.4byte	.Ldebug_line0
+  82 0025 02       		.uleb128 0x2
+  83 0026 01       		.byte	0x1
+  84 0027 06       		.byte	0x6
+  85 0028 95010000 		.4byte	.LASF0
+  86 002c 02       		.uleb128 0x2
+  87 002d 01       		.byte	0x1
+  88 002e 08       		.byte	0x8
+  89 002f 70000000 		.4byte	.LASF1
+  90 0033 02       		.uleb128 0x2
+  91 0034 02       		.byte	0x2
+  92 0035 05       		.byte	0x5
+  93 0036 BD010000 		.4byte	.LASF2
+  94 003a 02       		.uleb128 0x2
+  95 003b 02       		.byte	0x2
+  96 003c 07       		.byte	0x7
+  97 003d 0E000000 		.4byte	.LASF3
+  98 0041 03       		.uleb128 0x3
+  99 0042 AD010000 		.4byte	.LASF9
+ 100 0046 02       		.byte	0x2
+ 101 0047 3F       		.byte	0x3f
+ 102 0048 4C000000 		.4byte	0x4c
+ 103 004c 02       		.uleb128 0x2
+ 104 004d 04       		.byte	0x4
+ 105 004e 05       		.byte	0x5
+ 106 004f 83000000 		.4byte	.LASF4
+ 107 0053 02       		.uleb128 0x2
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfBpJLK.s 			page 4
 
 
- 108 005a 02       		.uleb128 0x2
- 109 005b 08       		.byte	0x8
- 110 005c 05       		.byte	0x5
- 111 005d 00000000 		.4byte	.LASF6
- 112 0061 02       		.uleb128 0x2
- 113 0062 08       		.byte	0x8
- 114 0063 07       		.byte	0x7
- 115 0064 45000000 		.4byte	.LASF7
- 116 0068 04       		.uleb128 0x4
- 117 0069 04       		.byte	0x4
- 118 006a 05       		.byte	0x5
- 119 006b 696E7400 		.ascii	"int\000"
- 120 006f 02       		.uleb128 0x2
- 121 0070 04       		.byte	0x4
- 122 0071 07       		.byte	0x7
- 123 0072 21000000 		.4byte	.LASF8
- 124 0076 03       		.uleb128 0x3
- 125 0077 B4010000 		.4byte	.LASF10
- 126 007b 03       		.byte	0x3
- 127 007c 2C       		.byte	0x2c
- 128 007d 41000000 		.4byte	0x41
- 129 0081 02       		.uleb128 0x2
- 130 0082 04       		.byte	0x4
- 131 0083 04       		.byte	0x4
- 132 0084 A4010000 		.4byte	.LASF11
- 133 0088 02       		.uleb128 0x2
- 134 0089 08       		.byte	0x8
- 135 008a 04       		.byte	0x4
- 136 008b 6E010000 		.4byte	.LASF12
- 137 008f 02       		.uleb128 0x2
- 138 0090 01       		.byte	0x1
- 139 0091 08       		.byte	0x8
- 140 0092 C9000000 		.4byte	.LASF13
- 141 0096 02       		.uleb128 0x2
- 142 0097 04       		.byte	0x4
- 143 0098 07       		.byte	0x7
- 144 0099 BC010000 		.4byte	.LASF14
- 145 009d 02       		.uleb128 0x2
- 146 009e 08       		.byte	0x8
- 147 009f 04       		.byte	0x4
- 148 00a0 8E010000 		.4byte	.LASF15
- 149 00a4 05       		.uleb128 0x5
- 150 00a5 2E000000 		.4byte	.LASF19
- 151 00a9 01       		.byte	0x1
- 152 00aa 2C       		.byte	0x2c
- 153 00ab 68000000 		.4byte	0x68
- 154 00af 00000000 		.4byte	.LFB63
- 155 00b3 26000000 		.4byte	.LFE63-.LFB63
- 156 00b7 01       		.uleb128 0x1
- 157 00b8 9C       		.byte	0x9c
- 158 00b9 06       		.uleb128 0x6
- 159 00ba 75010000 		.4byte	.LASF20
- 160 00be 04       		.byte	0x4
- 161 00bf 5506     		.2byte	0x655
- 162 00c1 C5000000 		.4byte	0xc5
- 163 00c5 07       		.uleb128 0x7
- 164 00c6 76000000 		.4byte	0x76
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc2sfagC.s 			page 5
+ 108 0054 04       		.byte	0x4
+ 109 0055 07       		.byte	0x7
+ 110 0056 39000000 		.4byte	.LASF5
+ 111 005a 02       		.uleb128 0x2
+ 112 005b 08       		.byte	0x8
+ 113 005c 05       		.byte	0x5
+ 114 005d 00000000 		.4byte	.LASF6
+ 115 0061 02       		.uleb128 0x2
+ 116 0062 08       		.byte	0x8
+ 117 0063 07       		.byte	0x7
+ 118 0064 4B000000 		.4byte	.LASF7
+ 119 0068 04       		.uleb128 0x4
+ 120 0069 04       		.byte	0x4
+ 121 006a 05       		.byte	0x5
+ 122 006b 696E7400 		.ascii	"int\000"
+ 123 006f 02       		.uleb128 0x2
+ 124 0070 04       		.byte	0x4
+ 125 0071 07       		.byte	0x7
+ 126 0072 21000000 		.4byte	.LASF8
+ 127 0076 03       		.uleb128 0x3
+ 128 0077 C7010000 		.4byte	.LASF10
+ 129 007b 03       		.byte	0x3
+ 130 007c 2C       		.byte	0x2c
+ 131 007d 41000000 		.4byte	0x41
+ 132 0081 05       		.uleb128 0x5
+ 133 0082 33000000 		.4byte	.LASF11
+ 134 0086 04       		.byte	0x4
+ 135 0087 3801     		.2byte	0x138
+ 136 0089 2C000000 		.4byte	0x2c
+ 137 008d 02       		.uleb128 0x2
+ 138 008e 04       		.byte	0x4
+ 139 008f 04       		.byte	0x4
+ 140 0090 B7010000 		.4byte	.LASF12
+ 141 0094 02       		.uleb128 0x2
+ 142 0095 08       		.byte	0x8
+ 143 0096 04       		.byte	0x4
+ 144 0097 81010000 		.4byte	.LASF13
+ 145 009b 02       		.uleb128 0x2
+ 146 009c 01       		.byte	0x1
+ 147 009d 08       		.byte	0x8
+ 148 009e 7E000000 		.4byte	.LASF14
+ 149 00a2 02       		.uleb128 0x2
+ 150 00a3 04       		.byte	0x4
+ 151 00a4 07       		.byte	0x7
+ 152 00a5 CF010000 		.4byte	.LASF15
+ 153 00a9 02       		.uleb128 0x2
+ 154 00aa 08       		.byte	0x8
+ 155 00ab 04       		.byte	0x4
+ 156 00ac A1010000 		.4byte	.LASF16
+ 157 00b0 06       		.uleb128 0x6
+ 158 00b1 2E000000 		.4byte	.LASF22
+ 159 00b5 01       		.byte	0x1
+ 160 00b6 2C       		.byte	0x2c
+ 161 00b7 68000000 		.4byte	0x68
+ 162 00bb 00000000 		.4byte	.LFB63
+ 163 00bf 26000000 		.4byte	.LFE63-.LFB63
+ 164 00c3 01       		.uleb128 0x1
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfBpJLK.s 			page 5
 
 
- 165 00ca 00       		.byte	0
- 166              		.section	.debug_abbrev,"",%progbits
- 167              	.Ldebug_abbrev0:
- 168 0000 01       		.uleb128 0x1
- 169 0001 11       		.uleb128 0x11
- 170 0002 01       		.byte	0x1
- 171 0003 25       		.uleb128 0x25
- 172 0004 0E       		.uleb128 0xe
- 173 0005 13       		.uleb128 0x13
- 174 0006 0B       		.uleb128 0xb
- 175 0007 03       		.uleb128 0x3
- 176 0008 0E       		.uleb128 0xe
- 177 0009 1B       		.uleb128 0x1b
- 178 000a 0E       		.uleb128 0xe
- 179 000b 55       		.uleb128 0x55
- 180 000c 17       		.uleb128 0x17
- 181 000d 11       		.uleb128 0x11
- 182 000e 01       		.uleb128 0x1
- 183 000f 10       		.uleb128 0x10
- 184 0010 17       		.uleb128 0x17
- 185 0011 00       		.byte	0
- 186 0012 00       		.byte	0
- 187 0013 02       		.uleb128 0x2
- 188 0014 24       		.uleb128 0x24
- 189 0015 00       		.byte	0
- 190 0016 0B       		.uleb128 0xb
- 191 0017 0B       		.uleb128 0xb
- 192 0018 3E       		.uleb128 0x3e
- 193 0019 0B       		.uleb128 0xb
- 194 001a 03       		.uleb128 0x3
- 195 001b 0E       		.uleb128 0xe
- 196 001c 00       		.byte	0
- 197 001d 00       		.byte	0
- 198 001e 03       		.uleb128 0x3
- 199 001f 16       		.uleb128 0x16
- 200 0020 00       		.byte	0
- 201 0021 03       		.uleb128 0x3
- 202 0022 0E       		.uleb128 0xe
- 203 0023 3A       		.uleb128 0x3a
- 204 0024 0B       		.uleb128 0xb
- 205 0025 3B       		.uleb128 0x3b
- 206 0026 0B       		.uleb128 0xb
- 207 0027 49       		.uleb128 0x49
- 208 0028 13       		.uleb128 0x13
- 209 0029 00       		.byte	0
- 210 002a 00       		.byte	0
- 211 002b 04       		.uleb128 0x4
- 212 002c 24       		.uleb128 0x24
- 213 002d 00       		.byte	0
- 214 002e 0B       		.uleb128 0xb
- 215 002f 0B       		.uleb128 0xb
- 216 0030 3E       		.uleb128 0x3e
- 217 0031 0B       		.uleb128 0xb
- 218 0032 03       		.uleb128 0x3
- 219 0033 08       		.uleb128 0x8
- 220 0034 00       		.byte	0
- 221 0035 00       		.byte	0
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc2sfagC.s 			page 6
+ 165 00c4 9C       		.byte	0x9c
+ 166 00c5 07       		.uleb128 0x7
+ 167 00c6 88010000 		.4byte	.LASF17
+ 168 00ca 05       		.byte	0x5
+ 169 00cb 5506     		.2byte	0x655
+ 170 00cd D1000000 		.4byte	0xd1
+ 171 00d1 08       		.uleb128 0x8
+ 172 00d2 76000000 		.4byte	0x76
+ 173 00d6 09       		.uleb128 0x9
+ 174 00d7 62000000 		.4byte	.LASF18
+ 175 00db 06       		.byte	0x6
+ 176 00dc 52       		.byte	0x52
+ 177 00dd 81000000 		.4byte	0x81
+ 178 00e1 05       		.uleb128 0x5
+ 179 00e2 03       		.byte	0x3
+ 180 00e3 00000000 		.4byte	HoseDispenser
+ 181 00e7 00       		.byte	0
+ 182              		.section	.debug_abbrev,"",%progbits
+ 183              	.Ldebug_abbrev0:
+ 184 0000 01       		.uleb128 0x1
+ 185 0001 11       		.uleb128 0x11
+ 186 0002 01       		.byte	0x1
+ 187 0003 25       		.uleb128 0x25
+ 188 0004 0E       		.uleb128 0xe
+ 189 0005 13       		.uleb128 0x13
+ 190 0006 0B       		.uleb128 0xb
+ 191 0007 03       		.uleb128 0x3
+ 192 0008 0E       		.uleb128 0xe
+ 193 0009 1B       		.uleb128 0x1b
+ 194 000a 0E       		.uleb128 0xe
+ 195 000b 55       		.uleb128 0x55
+ 196 000c 17       		.uleb128 0x17
+ 197 000d 11       		.uleb128 0x11
+ 198 000e 01       		.uleb128 0x1
+ 199 000f 10       		.uleb128 0x10
+ 200 0010 17       		.uleb128 0x17
+ 201 0011 00       		.byte	0
+ 202 0012 00       		.byte	0
+ 203 0013 02       		.uleb128 0x2
+ 204 0014 24       		.uleb128 0x24
+ 205 0015 00       		.byte	0
+ 206 0016 0B       		.uleb128 0xb
+ 207 0017 0B       		.uleb128 0xb
+ 208 0018 3E       		.uleb128 0x3e
+ 209 0019 0B       		.uleb128 0xb
+ 210 001a 03       		.uleb128 0x3
+ 211 001b 0E       		.uleb128 0xe
+ 212 001c 00       		.byte	0
+ 213 001d 00       		.byte	0
+ 214 001e 03       		.uleb128 0x3
+ 215 001f 16       		.uleb128 0x16
+ 216 0020 00       		.byte	0
+ 217 0021 03       		.uleb128 0x3
+ 218 0022 0E       		.uleb128 0xe
+ 219 0023 3A       		.uleb128 0x3a
+ 220 0024 0B       		.uleb128 0xb
+ 221 0025 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfBpJLK.s 			page 6
 
 
- 222 0036 05       		.uleb128 0x5
- 223 0037 2E       		.uleb128 0x2e
- 224 0038 00       		.byte	0
- 225 0039 3F       		.uleb128 0x3f
- 226 003a 19       		.uleb128 0x19
- 227 003b 03       		.uleb128 0x3
- 228 003c 0E       		.uleb128 0xe
- 229 003d 3A       		.uleb128 0x3a
- 230 003e 0B       		.uleb128 0xb
- 231 003f 3B       		.uleb128 0x3b
- 232 0040 0B       		.uleb128 0xb
- 233 0041 49       		.uleb128 0x49
- 234 0042 13       		.uleb128 0x13
- 235 0043 11       		.uleb128 0x11
- 236 0044 01       		.uleb128 0x1
- 237 0045 12       		.uleb128 0x12
- 238 0046 06       		.uleb128 0x6
- 239 0047 40       		.uleb128 0x40
- 240 0048 18       		.uleb128 0x18
- 241 0049 9642     		.uleb128 0x2116
- 242 004b 19       		.uleb128 0x19
- 243 004c 00       		.byte	0
- 244 004d 00       		.byte	0
- 245 004e 06       		.uleb128 0x6
- 246 004f 34       		.uleb128 0x34
- 247 0050 00       		.byte	0
- 248 0051 03       		.uleb128 0x3
- 249 0052 0E       		.uleb128 0xe
- 250 0053 3A       		.uleb128 0x3a
- 251 0054 0B       		.uleb128 0xb
- 252 0055 3B       		.uleb128 0x3b
- 253 0056 05       		.uleb128 0x5
- 254 0057 49       		.uleb128 0x49
- 255 0058 13       		.uleb128 0x13
- 256 0059 3F       		.uleb128 0x3f
- 257 005a 19       		.uleb128 0x19
- 258 005b 3C       		.uleb128 0x3c
- 259 005c 19       		.uleb128 0x19
- 260 005d 00       		.byte	0
- 261 005e 00       		.byte	0
- 262 005f 07       		.uleb128 0x7
- 263 0060 35       		.uleb128 0x35
- 264 0061 00       		.byte	0
- 265 0062 49       		.uleb128 0x49
- 266 0063 13       		.uleb128 0x13
- 267 0064 00       		.byte	0
- 268 0065 00       		.byte	0
- 269 0066 00       		.byte	0
- 270              		.section	.debug_aranges,"",%progbits
- 271 0000 1C000000 		.4byte	0x1c
- 272 0004 0200     		.2byte	0x2
- 273 0006 00000000 		.4byte	.Ldebug_info0
- 274 000a 04       		.byte	0x4
- 275 000b 00       		.byte	0
- 276 000c 0000     		.2byte	0
- 277 000e 0000     		.2byte	0
- 278 0010 00000000 		.4byte	.LFB63
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc2sfagC.s 			page 7
+ 222 0026 0B       		.uleb128 0xb
+ 223 0027 49       		.uleb128 0x49
+ 224 0028 13       		.uleb128 0x13
+ 225 0029 00       		.byte	0
+ 226 002a 00       		.byte	0
+ 227 002b 04       		.uleb128 0x4
+ 228 002c 24       		.uleb128 0x24
+ 229 002d 00       		.byte	0
+ 230 002e 0B       		.uleb128 0xb
+ 231 002f 0B       		.uleb128 0xb
+ 232 0030 3E       		.uleb128 0x3e
+ 233 0031 0B       		.uleb128 0xb
+ 234 0032 03       		.uleb128 0x3
+ 235 0033 08       		.uleb128 0x8
+ 236 0034 00       		.byte	0
+ 237 0035 00       		.byte	0
+ 238 0036 05       		.uleb128 0x5
+ 239 0037 16       		.uleb128 0x16
+ 240 0038 00       		.byte	0
+ 241 0039 03       		.uleb128 0x3
+ 242 003a 0E       		.uleb128 0xe
+ 243 003b 3A       		.uleb128 0x3a
+ 244 003c 0B       		.uleb128 0xb
+ 245 003d 3B       		.uleb128 0x3b
+ 246 003e 05       		.uleb128 0x5
+ 247 003f 49       		.uleb128 0x49
+ 248 0040 13       		.uleb128 0x13
+ 249 0041 00       		.byte	0
+ 250 0042 00       		.byte	0
+ 251 0043 06       		.uleb128 0x6
+ 252 0044 2E       		.uleb128 0x2e
+ 253 0045 00       		.byte	0
+ 254 0046 3F       		.uleb128 0x3f
+ 255 0047 19       		.uleb128 0x19
+ 256 0048 03       		.uleb128 0x3
+ 257 0049 0E       		.uleb128 0xe
+ 258 004a 3A       		.uleb128 0x3a
+ 259 004b 0B       		.uleb128 0xb
+ 260 004c 3B       		.uleb128 0x3b
+ 261 004d 0B       		.uleb128 0xb
+ 262 004e 49       		.uleb128 0x49
+ 263 004f 13       		.uleb128 0x13
+ 264 0050 11       		.uleb128 0x11
+ 265 0051 01       		.uleb128 0x1
+ 266 0052 12       		.uleb128 0x12
+ 267 0053 06       		.uleb128 0x6
+ 268 0054 40       		.uleb128 0x40
+ 269 0055 18       		.uleb128 0x18
+ 270 0056 9642     		.uleb128 0x2116
+ 271 0058 19       		.uleb128 0x19
+ 272 0059 00       		.byte	0
+ 273 005a 00       		.byte	0
+ 274 005b 07       		.uleb128 0x7
+ 275 005c 34       		.uleb128 0x34
+ 276 005d 00       		.byte	0
+ 277 005e 03       		.uleb128 0x3
+ 278 005f 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfBpJLK.s 			page 7
 
 
- 279 0014 26000000 		.4byte	.LFE63-.LFB63
- 280 0018 00000000 		.4byte	0
- 281 001c 00000000 		.4byte	0
- 282              		.section	.debug_ranges,"",%progbits
- 283              	.Ldebug_ranges0:
- 284 0000 00000000 		.4byte	.LFB63
- 285 0004 26000000 		.4byte	.LFE63
- 286 0008 00000000 		.4byte	0
- 287 000c 00000000 		.4byte	0
- 288              		.section	.debug_line,"",%progbits
- 289              	.Ldebug_line0:
- 290 0000 5D010000 		.section	.debug_str,"MS",%progbits,1
- 290      02003C01 
- 290      00000201 
- 290      FB0E0D00 
- 290      01010101 
- 291              	.LASF6:
- 292 0000 6C6F6E67 		.ascii	"long long int\000"
- 292      206C6F6E 
- 292      6720696E 
- 292      7400
- 293              	.LASF3:
- 294 000e 73686F72 		.ascii	"short unsigned int\000"
- 294      7420756E 
- 294      7369676E 
- 294      65642069 
- 294      6E7400
- 295              	.LASF8:
- 296 0021 756E7369 		.ascii	"unsigned int\000"
- 296      676E6564 
- 296      20696E74 
- 296      00
- 297              	.LASF19:
- 298 002e 6D61696E 		.ascii	"main\000"
- 298      00
- 299              	.LASF5:
- 300 0033 6C6F6E67 		.ascii	"long unsigned int\000"
- 300      20756E73 
- 300      69676E65 
- 300      6420696E 
- 300      7400
- 301              	.LASF7:
- 302 0045 6C6F6E67 		.ascii	"long long unsigned int\000"
- 302      206C6F6E 
- 302      6720756E 
- 302      7369676E 
- 302      65642069 
- 303              	.LASF18:
- 304 005c 433A5C54 		.ascii	"C:\\TeamInsepet\\NSX-Prime\\Hardware\\CorEx-MUX-Ker"
- 304      65616D49 
- 304      6E736570 
- 304      65745C4E 
- 304      53582D50 
- 305 008b 6E656C2D 		.ascii	"nel-Enhanced\\Workspace01\\CorEx-Mux-Kernel.cydsn\000"
- 305      456E6861 
- 305      6E636564 
- 305      5C576F72 
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc2sfagC.s 			page 8
+ 279 0060 3A       		.uleb128 0x3a
+ 280 0061 0B       		.uleb128 0xb
+ 281 0062 3B       		.uleb128 0x3b
+ 282 0063 05       		.uleb128 0x5
+ 283 0064 49       		.uleb128 0x49
+ 284 0065 13       		.uleb128 0x13
+ 285 0066 3F       		.uleb128 0x3f
+ 286 0067 19       		.uleb128 0x19
+ 287 0068 3C       		.uleb128 0x3c
+ 288 0069 19       		.uleb128 0x19
+ 289 006a 00       		.byte	0
+ 290 006b 00       		.byte	0
+ 291 006c 08       		.uleb128 0x8
+ 292 006d 35       		.uleb128 0x35
+ 293 006e 00       		.byte	0
+ 294 006f 49       		.uleb128 0x49
+ 295 0070 13       		.uleb128 0x13
+ 296 0071 00       		.byte	0
+ 297 0072 00       		.byte	0
+ 298 0073 09       		.uleb128 0x9
+ 299 0074 34       		.uleb128 0x34
+ 300 0075 00       		.byte	0
+ 301 0076 03       		.uleb128 0x3
+ 302 0077 0E       		.uleb128 0xe
+ 303 0078 3A       		.uleb128 0x3a
+ 304 0079 0B       		.uleb128 0xb
+ 305 007a 3B       		.uleb128 0x3b
+ 306 007b 0B       		.uleb128 0xb
+ 307 007c 49       		.uleb128 0x49
+ 308 007d 13       		.uleb128 0x13
+ 309 007e 3F       		.uleb128 0x3f
+ 310 007f 19       		.uleb128 0x19
+ 311 0080 02       		.uleb128 0x2
+ 312 0081 18       		.uleb128 0x18
+ 313 0082 00       		.byte	0
+ 314 0083 00       		.byte	0
+ 315 0084 00       		.byte	0
+ 316              		.section	.debug_aranges,"",%progbits
+ 317 0000 1C000000 		.4byte	0x1c
+ 318 0004 0200     		.2byte	0x2
+ 319 0006 00000000 		.4byte	.Ldebug_info0
+ 320 000a 04       		.byte	0x4
+ 321 000b 00       		.byte	0
+ 322 000c 0000     		.2byte	0
+ 323 000e 0000     		.2byte	0
+ 324 0010 00000000 		.4byte	.LFB63
+ 325 0014 26000000 		.4byte	.LFE63-.LFB63
+ 326 0018 00000000 		.4byte	0
+ 327 001c 00000000 		.4byte	0
+ 328              		.section	.debug_ranges,"",%progbits
+ 329              	.Ldebug_ranges0:
+ 330 0000 00000000 		.4byte	.LFB63
+ 331 0004 26000000 		.4byte	.LFE63
+ 332 0008 00000000 		.4byte	0
+ 333 000c 00000000 		.4byte	0
+ 334              		.section	.debug_line,"",%progbits
+ 335              	.Ldebug_line0:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfBpJLK.s 			page 8
 
 
- 305      6B737061 
- 306              	.LASF1:
- 307 00bb 756E7369 		.ascii	"unsigned char\000"
- 307      676E6564 
- 307      20636861 
- 307      7200
- 308              	.LASF13:
- 309 00c9 63686172 		.ascii	"char\000"
- 309      00
- 310              	.LASF4:
- 311 00ce 6C6F6E67 		.ascii	"long int\000"
- 311      20696E74 
- 311      00
- 312              	.LASF16:
- 313 00d7 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 313      4320342E 
- 313      392E3320 
- 313      32303135 
- 313      30333033 
- 314 010a 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
- 314      20726576 
- 314      6973696F 
- 314      6E203232 
- 314      31323230 
- 315 013d 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
- 315      66756E63 
- 315      74696F6E 
- 315      2D736563 
- 315      74696F6E 
- 316              	.LASF17:
- 317 0165 2E5C6D61 		.ascii	".\\main.c\000"
- 317      696E2E63 
- 317      00
- 318              	.LASF12:
- 319 016e 646F7562 		.ascii	"double\000"
- 319      6C6500
- 320              	.LASF20:
- 321 0175 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 321      52784275 
- 321      66666572 
- 321      00
- 322              	.LASF0:
- 323 0182 7369676E 		.ascii	"signed char\000"
- 323      65642063 
- 323      68617200 
- 324              	.LASF15:
- 325 018e 6C6F6E67 		.ascii	"long double\000"
- 325      20646F75 
- 325      626C6500 
- 326              	.LASF9:
- 327 019a 5F5F696E 		.ascii	"__int32_t\000"
- 327      7433325F 
- 327      7400
- 328              	.LASF11:
- 329 01a4 666C6F61 		.ascii	"float\000"
- 329      7400
- 330              	.LASF2:
-ARM GAS  C:\Users\RECEPC~1\AppData\Local\Temp\cc2sfagC.s 			page 9
+ 336 0000 83010000 		.section	.debug_str,"MS",%progbits,1
+ 336      02006201 
+ 336      00000201 
+ 336      FB0E0D00 
+ 336      01010101 
+ 337              	.LASF6:
+ 338 0000 6C6F6E67 		.ascii	"long long int\000"
+ 338      206C6F6E 
+ 338      6720696E 
+ 338      7400
+ 339              	.LASF3:
+ 340 000e 73686F72 		.ascii	"short unsigned int\000"
+ 340      7420756E 
+ 340      7369676E 
+ 340      65642069 
+ 340      6E7400
+ 341              	.LASF8:
+ 342 0021 756E7369 		.ascii	"unsigned int\000"
+ 342      676E6564 
+ 342      20696E74 
+ 342      00
+ 343              	.LASF22:
+ 344 002e 6D61696E 		.ascii	"main\000"
+ 344      00
+ 345              	.LASF11:
+ 346 0033 75696E74 		.ascii	"uint8\000"
+ 346      3800
+ 347              	.LASF5:
+ 348 0039 6C6F6E67 		.ascii	"long unsigned int\000"
+ 348      20756E73 
+ 348      69676E65 
+ 348      6420696E 
+ 348      7400
+ 349              	.LASF7:
+ 350 004b 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 350      206C6F6E 
+ 350      6720756E 
+ 350      7369676E 
+ 350      65642069 
+ 351              	.LASF18:
+ 352 0062 486F7365 		.ascii	"HoseDispenser\000"
+ 352      44697370 
+ 352      656E7365 
+ 352      7200
+ 353              	.LASF1:
+ 354 0070 756E7369 		.ascii	"unsigned char\000"
+ 354      676E6564 
+ 354      20636861 
+ 354      7200
+ 355              	.LASF14:
+ 356 007e 63686172 		.ascii	"char\000"
+ 356      00
+ 357              	.LASF4:
+ 358 0083 6C6F6E67 		.ascii	"long int\000"
+ 358      20696E74 
+ 358      00
+ 359              	.LASF19:
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfBpJLK.s 			page 9
 
 
- 331 01aa 73686F72 		.ascii	"short int\000"
- 331      7420696E 
- 331      7400
- 332              	.LASF10:
- 333 01b4 696E7433 		.ascii	"int32_t\000"
- 333      325F7400 
- 334              	.LASF14:
- 335 01bc 73697A65 		.ascii	"sizetype\000"
- 335      74797065 
- 335      00
- 336              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
+ 360 008c 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 360      4320342E 
+ 360      392E3320 
+ 360      32303135 
+ 360      30333033 
+ 361 00bf 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 361      20726576 
+ 361      6973696F 
+ 361      6E203232 
+ 361      31323230 
+ 362 00f2 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 362      66756E63 
+ 362      74696F6E 
+ 362      2D736563 
+ 362      74696F6E 
+ 363              	.LASF20:
+ 364 011a 2E5C6D61 		.ascii	".\\main.c\000"
+ 364      696E2E63 
+ 364      00
+ 365              	.LASF21:
+ 366 0123 433A5C55 		.ascii	"C:\\Users\\Lenovo\\Documents\\GitHub\\CorEx-MUX-Ker"
+ 366      73657273 
+ 366      5C4C656E 
+ 366      6F766F5C 
+ 366      446F6375 
+ 367 0151 6E656C2D 		.ascii	"nel-Enhanced\\Workspace01\\CorEx-Mux-Kernel.cydsn\000"
+ 367      456E6861 
+ 367      6E636564 
+ 367      5C576F72 
+ 367      6B737061 
+ 368              	.LASF13:
+ 369 0181 646F7562 		.ascii	"double\000"
+ 369      6C6500
+ 370              	.LASF17:
+ 371 0188 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 371      52784275 
+ 371      66666572 
+ 371      00
+ 372              	.LASF0:
+ 373 0195 7369676E 		.ascii	"signed char\000"
+ 373      65642063 
+ 373      68617200 
+ 374              	.LASF16:
+ 375 01a1 6C6F6E67 		.ascii	"long double\000"
+ 375      20646F75 
+ 375      626C6500 
+ 376              	.LASF9:
+ 377 01ad 5F5F696E 		.ascii	"__int32_t\000"
+ 377      7433325F 
+ 377      7400
+ 378              	.LASF12:
+ 379 01b7 666C6F61 		.ascii	"float\000"
+ 379      7400
+ 380              	.LASF2:
+ 381 01bd 73686F72 		.ascii	"short int\000"
+ 381      7420696E 
+ 381      7400
+ARM GAS  C:\Users\Lenovo\AppData\Local\Temp\ccfBpJLK.s 			page 10
+
+
+ 382              	.LASF10:
+ 383 01c7 696E7433 		.ascii	"int32_t\000"
+ 383      325F7400 
+ 384              	.LASF15:
+ 385 01cf 73697A65 		.ascii	"sizetype\000"
+ 385      74797065 
+ 385      00
+ 386              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
