@@ -329,7 +329,7 @@ bool RFCashSalePresetReportReqResp(void *pparam)
                     puartdisp->_messagetx[puartdisp->_messagelength++] = pumptrans->_transtate;
                     puartdisp->_messagetx[puartdisp->_messagelength++] = RFUnmapCommand2State(pumptrans->_transtate);
                     #ifdef ADVANTAGE_PROTOCOL
-                    puartdisp->_messagetx[puartdisp->_messagelength++] =_g_pumps[_g_pumps[index]._pumpid-1]._currenthose;////ID Grado/Hose not available
+                    puartdisp->_messagetx[puartdisp->_messagelength++] = HoseDispenser;//_g_pumps[_g_pumps[index]._pumpid-1]._currenthose;////ID Grado/Hose not available
                     #endif
                     #ifdef ENCORE_PROTOCOL
                     puartdisp->_messagetx[puartdisp->_messagelength++] = HoseDispenser;//_g_pumps[_g_pumps[index]._pumpid-1]._currenthose;////ID Grado/Hose not available
