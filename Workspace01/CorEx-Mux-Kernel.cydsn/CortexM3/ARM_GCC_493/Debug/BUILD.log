@@ -1,4 +1,4 @@
---------------- Build Started: 05/09/2017 06:50:37 Project: CorEx-Mux-Kernel, Configuration: ARM GCC 4.9-2015-q1-update Debug ---------------
+--------------- Build Started: 05/12/2017 07:52:31 Project: CorEx-Mux-Kernel, Configuration: ARM GCC 4.9-2015-q1-update Debug ---------------
 The code generation step is up to date.
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/UARTManager.lst -g -D DEBUG -Wall -ffunction-sections -O0 -ffat-lto-objects -c .\UARTManager.c -o .\CortexM3\ARM_GCC_493\Debug\UARTManager.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/Security.lst -g -D DEBUG -Wall -ffunction-sections -O0 -ffat-lto-objects -c .\Security.c -o .\CortexM3\ARM_GCC_493\Debug\Security.o
@@ -32,46 +32,19 @@ arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\P
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/Prime.lst -g -D DEBUG -Wall -ffunction-sections -O0 -ffat-lto-objects -c .\Prime.c -o .\CortexM3\ARM_GCC_493\Debug\Prime.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/PrimeFlow.lst -g -D DEBUG -Wall -ffunction-sections -O0 -ffat-lto-objects -c .\PrimeFlow.c -o .\CortexM3\ARM_GCC_493\Debug\PrimeFlow.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/PrimeImpl.lst -g -D DEBUG -Wall -ffunction-sections -O0 -ffat-lto-objects -c .\PrimeImpl.c -o .\CortexM3\ARM_GCC_493\Debug\PrimeImpl.o
+.\PrimeImpl.c: In function 'ProcessPumpTotalsDataReport':
+.\PrimeImpl.c:541:15: warning: variable 'numhoses' set but not used [-Wunused-but-set-variable]
+         uint8 numhoses = 0x00;
+               ^
+.\PrimeImpl.c:540:14: warning: unused variable 'dataok' [-Wunused-variable]
+         bool dataok = true;
+              ^
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/Encore.lst -g -D DEBUG -Wall -ffunction-sections -O0 -ffat-lto-objects -c .\Encore.c -o .\CortexM3\ARM_GCC_493\Debug\Encore.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/EncoreFlow.lst -g -D DEBUG -Wall -ffunction-sections -O0 -ffat-lto-objects -c .\EncoreFlow.c -o .\CortexM3\ARM_GCC_493\Debug\EncoreFlow.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/EncoreImpl.lst -g -D DEBUG -Wall -ffunction-sections -O0 -ffat-lto-objects -c .\EncoreImpl.c -o .\CortexM3\ARM_GCC_493\Debug\EncoreImpl.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/Advantage.lst -g -D DEBUG -Wall -ffunction-sections -O0 -ffat-lto-objects -c .\Advantage.c -o .\CortexM3\ARM_GCC_493\Debug\Advantage.o
-.\Advantage.c: In function 'PumpTransactionalStateEnqueue':
-.\Advantage.c:263:19: warning: unused variable 'pthispump' [-Wunused-variable]
-     PNEAR_PUMPPTR pthispump = (PNEAR_PUMPPTR)pvthis;
-                   ^
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/AdvantageFlow.lst -g -D DEBUG -Wall -ffunction-sections -O0 -ffat-lto-objects -c .\AdvantageFlow.c -o .\CortexM3\ARM_GCC_493\Debug\AdvantageFlow.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/AdvantageImpl.lst -g -D DEBUG -Wall -ffunction-sections -O0 -ffat-lto-objects -c .\AdvantageImpl.c -o .\CortexM3\ARM_GCC_493\Debug\AdvantageImpl.o
-.\AdvantageImpl.c: In function 'ProcessPumpTotalsDataReport':
-.\AdvantageImpl.c:569:15: warning: variable 'numhoses' set but not used [-Wunused-but-set-variable]
-         uint8 numhoses = 0x00;
-               ^
-.\AdvantageImpl.c:568:14: warning: unused variable 'dataok' [-Wunused-variable]
-         bool dataok = true;
-              ^
-.\AdvantageImpl.c: In function 'PumpPpuChange':
-.\AdvantageImpl.c:1521:19: warning: unused variable 'bufferlength' [-Wunused-variable]
-             uint8 bufferlength = GetBufferLengthFromDisplayID(DISPLAY_PRECIO_POR_UNIDAD);
-                   ^
-.\AdvantageImpl.c: In function 'AcquirePumpCompleteConfiguration':
-.\AdvantageImpl.c:1807:19: warning: unused variable 'msglength' [-Wunused-variable]
-             uint8 msglength = (TranslateSpecialFuncionDigit(pjob->_ppump->_rxbuffer[0x01]) << 0x04) | TranslateSpecialFuncionDigit(pjob->_ppump->_rxbuffer[0x02]);
-                   ^
-.\AdvantageImpl.c:1764:15: warning: unused variable 'remblocks' [-Wunused-variable]
-         uint8 remblocks = (TranslateSpecialFuncionDigit(pjob->_ppump->_rxbuffer[7 + 45*index]) << 0x04) | TranslateSpecialFuncionDigit(pjob->_ppump->_rxbuffer[8 + 45*index]);
-               ^
-.\AdvantageImpl.c: In function 'AcquirePumpSpecialFunctionResponseResolver':
-.\AdvantageImpl.c:2214:19: warning: unused variable 'ppump' [-Wunused-variable]
-     PNEAR_PUMPPTR ppump = (PNEAR_PUMPPTR)pparam;
-                   ^
-.\AdvantageImpl.c: In function 'AcquirePumpTransactionDataResponseResolver':
-.\AdvantageImpl.c:2430:19: warning: unused variable 'ppump' [-Wunused-variable]
-     PNEAR_PUMPPTR ppump = (PNEAR_PUMPPTR)pparam;
-                   ^
-.\AdvantageImpl.c: In function 'FindLRC':
-.\AdvantageImpl.c:2524:13: warning: unused variable 'lrc' [-Wunused-variable]
-     uint8_t lrc = 0;
-             ^
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/RFSink.lst -g -D DEBUG -Wall -ffunction-sections -O0 -ffat-lto-objects -c .\RFSink.c -o .\CortexM3\ARM_GCC_493\Debug\RFSink.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/RFBLL.lst -g -D DEBUG -Wall -ffunction-sections -O0 -ffat-lto-objects -c .\RFBLL.c -o .\CortexM3\ARM_GCC_493\Debug\RFBLL.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/RFResolver.lst -g -D DEBUG -Wall -ffunction-sections -O0 -ffat-lto-objects -c .\RFResolver.c -o .\CortexM3\ARM_GCC_493\Debug\RFResolver.o
@@ -90,6 +63,6 @@ arm-none-eabi-ar.exe: creating .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a
 arm-none-eabi-gcc.exe -Wl,--start-group -o .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.elf .\CortexM3\ARM_GCC_493\Debug\UARTManager.o .\CortexM3\ARM_GCC_493\Debug\UARTResolver.o .\CortexM3\ARM_GCC_493\Debug\UARTManagerSink.o .\CortexM3\ARM_GCC_493\Debug\PseudoRTOS.o .\CortexM3\ARM_GCC_493\Debug\Utils.o .\CortexM3\ARM_GCC_493\Debug\Security.o .\CortexM3\ARM_GCC_493\Debug\SinkManager.o .\CortexM3\ARM_GCC_493\Debug\EepromManager.o .\CortexM3\ARM_GCC_493\Debug\RtcManager.o .\CortexM3\ARM_GCC_493\Debug\Initializers.o .\CortexM3\ARM_GCC_493\Debug\Timers.o .\CortexM3\ARM_GCC_493\Debug\TestFile.o .\CortexM3\ARM_GCC_493\Debug\AuxPSoC.o .\CortexM3\ARM_GCC_493\Debug\WatchDogReset.o .\CortexM3\ARM_GCC_493\Debug\DispenserResolver.o .\CortexM3\ARM_GCC_493\Debug\DispenserBLL.o .\CortexM3\ARM_GCC_493\Debug\DispenserSink.o .\CortexM3\ARM_GCC_493\Debug\DisplayBLL.o .\CortexM3\ARM_GCC_493\Debug\DisplaySink.o .\CortexM3\ARM_GCC_493\Debug\DisplayUtils.o .\CortexM3\ARM_GCC_493\Debug\DisplayFlow.o .\CortexM3\ARM_GCC_493\Debug\DisplayCharacterMap.o .\CortexM3\ARM_GCC_493\Debug\DisplayBufferScreenMap.o .\CortexM3\ARM_GCC_493\Debug\DisplayResolver.o .\CortexM3\ARM_GCC_493\Debug\PrinterBLL.o .\CortexM3\ARM_GCC_493\Debug\PrinterSink.o .\CortexM3\ARM_GCC_493\Debug\PrinterResolver.o .\CortexM3\ARM_GCC_493\Debug\PrinterTemplate.o .\CortexM3\ARM_GCC_493\Debug\iButtonSink.o .\CortexM3\ARM_GCC_493\Debug\iButtonBLL.o .\CortexM3\ARM_GCC_493\Debug\iButtonProtocol.o .\CortexM3\ARM_GCC_493\Debug\Prime.o .\CortexM3\ARM_GCC_493\Debug\PrimeFlow.o .\CortexM3\ARM_GCC_493\Debug\PrimeImpl.o .\CortexM3\ARM_GCC_493\Debug\Encore.o .\CortexM3\ARM_GCC_493\Debug\EncoreFlow.o .\CortexM3\ARM_GCC_493\Debug\EncoreImpl.o .\CortexM3\ARM_GCC_493\Debug\Advantage.o .\CortexM3\ARM_GCC_493\Debug\AdvantageFlow.o .\CortexM3\ARM_GCC_493\Debug\AdvantageImpl.o .\CortexM3\ARM_GCC_493\Debug\RFSink.o .\CortexM3\ARM_GCC_493\Debug\RFBLL.o .\CortexM3\ARM_GCC_493\Debug\RFResolver.o .\CortexM3\ARM_GCC_493\Debug\RFServerStack.o .\CortexM3\ARM_GCC_493\Debug\RFServerStackImpl.o .\CortexM3\ARM_GCC_493\Debug\ClientDefinitions.o .\CortexM3\ARM_GCC_493\Debug\main.o .\CortexM3\ARM_GCC_493\Debug\cymetadata.o .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o .\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.a "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_493\Debug\CyComponentLibrary.a" -mcpu=cortex-m3 -mthumb -g -ffunction-sections -O0 -l m -L Generated_Source\PSoC5 -Wl,-Map,.\CortexM3\ARM_GCC_493\Debug/CorEx-Mux-Kernel.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections -Wl,--end-group
 cyelftool.exe -C C:\TeamInsepet\NSX-Prime\Hardware\CorEx-MUX-Kernel-Enhanced\Workspace01\CorEx-Mux-Kernel.cydsn\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.elf --flash_row_size 256 --flash_size 262144
 cyelftool.exe -S C:\TeamInsepet\NSX-Prime\Hardware\CorEx-MUX-Kernel-Enhanced\Workspace01\CorEx-Mux-Kernel.cydsn\CortexM3\ARM_GCC_493\Debug\CorEx-Mux-Kernel.elf
-Flash used: 143872 of 262144 bytes (54.9 %).
-SRAM used: 64477 of 65536 bytes (98.4 %). Stack: 2048 bytes. Heap: 128 bytes.
---------------- Build Succeeded: 05/09/2017 06:50:49 ---------------
+Flash used: 145152 of 262144 bytes (55.4 %).
+SRAM used: 64965 of 65536 bytes (99.1 %). Stack: 2048 bytes. Heap: 128 bytes.
+--------------- Build Succeeded: 05/12/2017 07:52:40 ---------------
