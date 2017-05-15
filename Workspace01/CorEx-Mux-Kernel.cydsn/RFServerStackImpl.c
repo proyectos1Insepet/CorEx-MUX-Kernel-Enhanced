@@ -335,7 +335,7 @@ bool RFCashSalePresetReportReqResp(void *pparam)
                     puartdisp->_messagetx[puartdisp->_messagelength++] = HoseDispenser;//_g_pumps[_g_pumps[index]._pumpid-1]._currenthose;////ID Grado/Hose not available
                     #endif                    
                     #ifdef PRIME_PROTOCOL
-                    puartdisp->_messagetx[puartdisp->_messagelength++] =_g_pumps[_g_pumps[index]._pumpid-1]._currenthose;////ID Grado/Hose not available
+                    puartdisp->_messagetx[puartdisp->_messagelength++] =HoseDispenser;//_g_pumps[_g_pumps[index]._pumpid-1]._currenthose;////ID Grado/Hose not available
                     #endif
                     //PRESET type defined on this position (for further details see the function "PumpPresetNotification" in the file "PrimeImpl.c")
                     puartdisp->_messagetx[puartdisp->_messagelength++] = (pumptrans->_buffer[0x01] & 0x0F);

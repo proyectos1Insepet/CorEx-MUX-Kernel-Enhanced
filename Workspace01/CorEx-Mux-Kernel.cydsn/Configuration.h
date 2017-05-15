@@ -61,12 +61,12 @@
 //#define  _CLIENT_MOBIL_
 //#define  _CLIENT_PETROBRAS_
 //#define  _CLIENT_PLUS_
-//#define  _CLIENT_TERPEL_
+#define  _CLIENT_TERPEL_
 //#define  _CLIENT_TEXACO_
 //#define  _CLIENT_ZEUS_
 //#define  _CLIENT_PETROMIL_
 //#define  _CLIENT_TREBOL_
-#define  _CLIENT_PUMA_ //No esta para kiosko
+//#define  _CLIENT_PUMA_ //No esta para kiosko
 //#define _NO_LOGO_
 
 #ifdef _NO_LOGO_
